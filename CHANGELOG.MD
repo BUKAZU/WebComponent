@@ -3,6 +3,10 @@
 ## Next release
 
 
+## 2.1.10
+- Fix weekview on mobile
+- Make date bigger on mobile
+
 ## 2.1.4
 - Store filters in localStorage
 
