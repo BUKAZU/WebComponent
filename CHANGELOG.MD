@@ -3,7 +3,7 @@
 ## Next release
 
 
-## 2.1.10
+## 2.1.11
 - Fix weekview on mobile
 - Make date bigger on mobile
 
