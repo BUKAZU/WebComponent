@@ -47436,7 +47436,7 @@ var ReviewsPage = /*#__PURE__*/function (_Component) {
 
 var pjson = {
 	name: "bukazu-portal-react",
-	version: "2.1.10",
+	version: "2.1.12",
 	description: "A package for loading the calendar and search module from bukazu loading into a react app.",
 	main: "build/index.js",
 	repository: "https://github.com/BUKAZU/React-portal",
@@ -47679,7 +47679,7 @@ var App = /*#__PURE__*/function (_Component) {
   _createClass$6(App, [{
     key: "updateDimensions",
     value: function updateDimensions() {
-      if (this.pageWidth.current.offsetWidth < 1200) {
+      if (this.pageWidth.current.offsetWidth < 875) {
         this.pageWidth.current.classList.add('bu-smaller');
       }
     }

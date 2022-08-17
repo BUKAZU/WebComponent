@@ -28,7 +28,7 @@ class App extends Component {
    * Calculate & Update state of new dimensions
    */
   updateDimensions() {
-    if (this.pageWidth.current.offsetWidth < 1200) {
+    if (this.pageWidth.current.offsetWidth < 875) {
       this.pageWidth.current.classList.add('bu-smaller');
     } else {
     }
