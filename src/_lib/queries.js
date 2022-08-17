@@ -56,7 +56,7 @@ export const CALENDAR_QUERY = gql`
     $ends_at: Date!
   ) {
     PortalSite(id: $id) {
-      idx
+      id
       houses(house_code: $house_id) {
         id
         name
