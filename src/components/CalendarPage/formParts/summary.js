@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import format from '../../../_lib/format';
+import { FormatIntl, LONG_DATE_FORMAT } from '../../../_lib/date_helper';
 
 export const Summary = ({ house, bookingPrice }) => (
   <React.Fragment>
@@ -18,7 +18,7 @@ export const Summary = ({ house, bookingPrice }) => (
               <FormattedMessage id={`${house.house_type}.arrival`} />
             </th>
             <td className="price">
-              {format(bookingPrice.arrival_date, 'dddd DD MMMM YYYY')}
+              {FormatIntl(bookingPrice.arrival_date, LONG_DATE_FORMAT)}
             </td>
             <td>{bookingPrice.arrival_time}</td>
           </tr>
@@ -27,7 +27,7 @@ export const Summary = ({ house, bookingPrice }) => (
               <FormattedMessage id={`${house.house_type}.departure`} />
             </th>
             <td className="price">
-              {format(bookingPrice.departure_date, 'dddd DD MMMM YYYY')}
+              {FormatIntl(bookingPrice.departure_date, LONG_DATE_FORMAT)}
             </td>
             <td>{bookingPrice.departure_time}</td>
           </tr>

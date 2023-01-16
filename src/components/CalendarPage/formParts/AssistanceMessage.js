@@ -1,21 +1,23 @@
-import React from "react";
-import { FormattedMessage } from "react-intl";
-import format from "../../../_lib/format";
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
+import { FormatIntl, LONG_DATE_FORMAT, Parse_EN_US } from '../../../_lib/date_helper';
 
-const dateFormat = "dddd DD MMMM YYYY";
-
-const AssistanceMessage = ({ arrivalDate, departureDate, house, minNights }) => {
-
+const AssistanceMessage = ({
+  arrivalDate,
+  departureDate,
+  house,
+  minNights,
+}) => {
   if (departureDate.date) {
     return (
       <div className="assistance">
-        <FormattedMessage id={`${house.house_type}.you_picked_arrival_date`} />:{" "}
-        {format(arrivalDate.date, dateFormat)}
+        <FormattedMessage id={`${house.house_type}.you_picked_arrival_date`} />:{' '}
+        {FormatIntl(Parse_EN_US(arrivalDate.date), LONG_DATE_FORMAT)}
         <br />
         <FormattedMessage
           id={`${house.house_type}.you_picked_departure_date`}
         />
-        : {format(departureDate.date, dateFormat)}
+        : {FormatIntl(Parse_EN_US(departureDate.date), LONG_DATE_FORMAT)}
       </div>
     );
   }
@@ -23,14 +25,18 @@ const AssistanceMessage = ({ arrivalDate, departureDate, house, minNights }) => 
   if (arrivalDate.date) {
     return (
       <div className="assistance">
-        <FormattedMessage id={`${house.house_type}.you_picked_arrival_date`} />:{" "}
-        {format(arrivalDate.date, dateFormat)}
+        <FormattedMessage id={`${house.house_type}.you_picked_arrival_date`} />:{' '}
+        {FormatIntl(Parse_EN_US(arrivalDate.date), LONG_DATE_FORMAT)}
         <br />
         <FormattedMessage
           id={`${house.house_type}.pick_your_departure_in_the_calendar`}
         />
         <br />
-        <FormattedMessage id='minimum_nights' values={{ minimum: minNights }} defaultMessage="Minimum {minimum} nights" />
+        <FormattedMessage
+          id="minimum_nights"
+          values={{ minimum: minNights }}
+          defaultMessage="Minimum {minimum} nights"
+        />
       </div>
     );
   }

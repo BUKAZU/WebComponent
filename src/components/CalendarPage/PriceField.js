@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { Query } from '@apollo/client/react/components';
 import { gql}  from "@apollo/client";
 import Loading from '../icons/loading.svg';
-import format from '../../_lib/format';
+import { FormatIntl, LONG_DATE_FORMAT, Parse_EN_US } from '../../_lib/date_helper';
 import { FormattedMessage, FormattedNumber } from 'react-intl';
 import { createPeronsArray } from './formParts/BookingHelpers';
 import { ApiError } from '../Error';
 
-const dateFormat = 'dddd DD MMMM YYYY';
+const dateFormat = LONG_DATE_FORMAT;
 
 export const CALENDAR_QUERY = gql`
   query BookingPriceQuery(
@@ -64,7 +64,7 @@ class PriceField extends Component {
           </span>
           <span className="detail">
             {startsAt ? (
-              <span>{format(startsAt, dateFormat)}</span>
+              <span>{FormatIntl(Parse_EN_US(startsAt), dateFormat)}</span>
             ) : (
               <FormattedMessage
                 id={`${house.house_type}.pick_your_arrivaldate_in_the_calendar`}
@@ -78,7 +78,7 @@ class PriceField extends Component {
           </span>
           <span className="detail">
             {endsAt ? (
-              <span>{format(endsAt, dateFormat)}</span>
+              <span>{FormatIntl(Parse_EN_US(endsAt), dateFormat)}</span>
             ) : (
               <div>
                 <div>

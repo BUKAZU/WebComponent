@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Query } from '@apollo/client/react/components';
 import { FormattedMessage } from 'react-intl';
-import differenceInCalendarDays from 'date-fns/difference_in_calendar_days';
+import {differenceInCalendarDays} from 'date-fns';
 import Loading from '../icons/loading.svg';
 import SingleResult from './SingleResult';
 import Paginator from './Paginator';

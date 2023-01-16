@@ -7,12 +7,14 @@ import BookingForm from './BookingForm';
 import Loading from '../icons/loading.svg';
 import { ApiError } from '../Error';
 
+
 export const HOUSE_QUERY = gql`
   query PortalSiteHousesQuery($id: ID!, $house_id: String!) {
     PortalSite(id: $id) {
       id
       houses(house_code: $house_id) {
         id
+        code
         name
         max_nights
         last_minute_days

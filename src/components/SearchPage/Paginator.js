@@ -1,9 +1,7 @@
 import React from 'react';
 import { Query } from '@apollo/client/react/components';
-import Pagination from 'react-js-pagination';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-// import { Container } from './Pagination.css';
 import { HOUSE_COUNT_QUERY } from '../../_lib/SearchQueries';
 import Loading from '../icons/loading.svg';
 import ReactPaginate from 'react-paginate';

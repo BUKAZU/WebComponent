@@ -26,7 +26,7 @@ class SearchPage extends Component {
     this.setState({
       filters: JSON.parse(filters) || this.props.filters,
     });
-    this.pageChange(activePage || 1)
+    this.pageChange(activePage || 0)
   }
 
   onFilterChange(data) {
@@ -36,7 +36,7 @@ class SearchPage extends Component {
     });
 
     localStorage.setItem('bukazuFilters', JSON.stringify(filters));
-    this.pageChange(1);
+    this.pageChange(0);
   }
 
   pageChange(pageNumber) {
