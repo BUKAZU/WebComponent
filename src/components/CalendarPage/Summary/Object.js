@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { FormatIntl } from '../../../_lib/date_helper';
+import { FormatIntl, LONG_DATE_FORMAT, Parse_EN_US } from '../../../_lib/date_helper';
 
 export const Object = ({ house, values }) => {
   const { arrivalDate, departureDate } = values
@@ -21,7 +21,7 @@ export const Object = ({ house, values }) => {
                 <FormattedMessage id={`${house.house_type}.arrival`} />
               </th>
               <td className="price">
-                {FormatIntl(arrivalDate.date, 'dddd DD MMMM YYYY')}
+                {FormatIntl(Parse_EN_US(arrivalDate.date), LONG_DATE_FORMAT)}
               </td>
               <td>
                 {arrivalDate.arrival_time_from} - {arrivalDate.arrival_time_to}
@@ -32,7 +32,7 @@ export const Object = ({ house, values }) => {
                 <FormattedMessage id={`${house.house_type}.departure`} />
               </th>
               <td className="price">
-                {FormatIntl(departureDate.date, 'dddd DD MMMM YYYY')}
+                {FormatIntl(Parse_EN_US(departureDate.date), LONG_DATE_FORMAT)}
               </td>
               <td>{departureDate.departure_time}</td>
             </tr>

@@ -37,7 +37,7 @@ class Field extends Component {
 
   handleDateChange(date) {
     if (date) {
-      this.props.onFilterChange(this.props.field.id, format(date, 'YYYY-MM-DD'));
+      this.props.onFilterChange(this.props.field.id, format(date, 'yyyy-MM-dd'));
     } else {
       this.props.onFilterChange(this.props.field.id, '');
     }
@@ -109,7 +109,6 @@ class Field extends Component {
         }
       });
     } else if (field.type === 'select') {
-      console.log({ countries });
       if (options && includes(['countries', 'cities', 'regions'], field.id)) {
         input = (
           <select

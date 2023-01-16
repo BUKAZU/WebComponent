@@ -18,6 +18,7 @@ export const HOUSES_QUERY = gql`
     $skip: Int
   ) {
     PortalSite(id: $id) {
+      id
       houses(
         country_id: $country_id
         region_id: $region_id

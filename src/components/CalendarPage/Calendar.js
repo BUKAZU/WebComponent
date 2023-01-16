@@ -1,32 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  addDays,
-  endOfMonth,
-  endOfWeek,
-  startOfMonth,
-  startOfWeek,
-  subDays,
-  isBefore,
   isAfter,
   differenceInCalendarDays,
   addMonths,
-  isSameMonth,
-  parse,
-  isSameDay,
+  subMonths,
 } from 'date-fns';
-import { Query } from '@apollo/client/react/components';
-import Loading from '../icons/loading.svg';
-import { FormatIntl, Parse_EN_US } from '../../_lib/date_helper';
+import { Parse_EN_US } from '../../_lib/date_helper';
 import CalendarHeader from './CalendarHeader';
 import PriceField from './PriceField';
 
-import { CALENDAR_QUERY } from '../../_lib/queries';
 import AssistanceMessage from './formParts/AssistanceMessage';
-import MonthHeader from './CalendarParts/MonthHeader';
 import Legend from './CalendarParts/Legend';
-import RenderCells from './CalendarParts/RenderCells';
-import WeekDays from './CalendarParts/WeekDays';
 import SingleMonth from './CalendarParts/SingleMonth';
 
 class Calendar extends React.Component {
@@ -63,60 +48,6 @@ class Calendar extends React.Component {
       );
     }
     return template;
-  }
-
-  renderSingleMonth(count) {
-    const {
-      numberOfMonthsInARow,
-      house,
-      arrivalDate,
-      selectedDate,
-      departureDate,
-    } = this.state;
-    let month = addMonths(this.state.currentMonth, count);
-    let monthStart = startOfMonth(month);
-    let monthEnd = endOfMonth(month);
-    const variables = {
-      id: this.props.portalCode,
-      house_id: this.props.objectCode,
-      starts_at: startOfWeek(monthStart),
-      ends_at: endOfWeek(monthEnd),
-      locale: this.props.locale,
-    };
-
-    return (
-      <div className={`calendar calendar-${numberOfMonthsInARow}`} key={month}>
-        <MonthHeader month={month} />
-        <WeekDays month={month} />
-        <Query query={CALENDAR_QUERY} variables={variables}>
-          {({ loading, error, data }) => {
-            if (loading)
-              return (
-                <div>
-                  <Loading />
-                </div>
-              );
-            if (error) {
-              return <div>Error</div>;
-            }
-
-            const results = data.PortalSite.houses[0].availabilities;
-            const discounts = data.Discounts;
-
-            return (
-              <RenderCells
-                availabilities={results}
-                discounts={discounts}
-                month={month}
-                house={house}
-                dates={{ arrivalDate, selectedDate, departureDate }}
-                onDateClick={this.onDateClick}
-              />
-            );
-          }}
-        </Query>
-      </div>
-    );
   }
 
   onDateClick = (day) => {
