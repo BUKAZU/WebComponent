@@ -45,11 +45,7 @@ function Portal({ portalCode, objectCode, pageType, locale, filters, api_url } )
 
   const messages = { en, nl, de, fr, es, it };
 
-
-
   window.__localeId__ = locale;
-
-
 
   return (
     <ApolloProvider client={client}>

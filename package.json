@@ -72,7 +72,7 @@
     "graphql": "^15.6.0",
     "react-date-picker": "^8.1.1",
     "react-intl": "5",
-    "react-js-pagination": "^3.0.2"
+    "react-paginate": "^8.1.4"
   },
   "eslintConfig": {
     "extends": [

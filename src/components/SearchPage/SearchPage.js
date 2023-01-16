@@ -41,7 +41,8 @@ class SearchPage extends Component {
 
   pageChange(pageNumber) {
     const { limit } = this.state;
-    let newSkip = pageNumber * limit - limit;
+    let newSkip = pageNumber * limit;
+    
 
     localStorage.setItem('bukazuActivePage', pageNumber)
     this.setState({

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 // import { Container } from './Pagination.css';
 import { HOUSE_COUNT_QUERY } from '../../_lib/SearchQueries';
 import Loading from '../icons/loading.svg';
+import ReactPaginate from 'react-paginate';
 
 function Paginator({ onPageChange, variables, activePage, limit }) { 
   return (
@@ -28,18 +29,26 @@ function Paginator({ onPageChange, variables, activePage, limit }) {
         };
 
         const results = data.PortalSite.houses;
+
+        const pageCount = Math.ceil(results.length / limit);
         return (
           <div className="bu-paginator">
             <div>
               {results.length} <FormattedMessage id="results" />
             </div>
-            <Pagination
-              activePage={activePage}
-              itemsCountPerPage={limit}
-              totalItemsCount={results.length}
+            <ReactPaginate
+              pageCount={pageCount}
+              onPageChange={({ selected }) => {
+                console.log("clicked");
+                onPageChange(selected);
+              }}
+              forcePage={activePage}
               pageRangeDisplayed={5}
-              onChange={e => { onPageChange(e) }}
-              innerClass="bu-pagination"
+              breakLabel="..."
+              className="bu-pagination"
+              renderOnZeroPageCount={null}
+              nextLabel=">"
+              previousLabel="<"
             />
           </div>
         );
