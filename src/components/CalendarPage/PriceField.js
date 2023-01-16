@@ -10,7 +10,7 @@ import { ApiError } from '../Error';
 
 const dateFormat = LONG_DATE_FORMAT;
 
-export const CALENDAR_QUERY = gql`
+export const BOOKING_PRICE_QUERY = gql`
   query BookingPriceQuery(
     $id: ID!
     $house_id: String!
@@ -45,8 +45,7 @@ class PriceField extends Component {
       portalCode,
       objectCode,
       startsAt,
-      endsAt,
-      locale,
+      endsAt,      
       house,
       disabled,
       onStartBooking,
@@ -123,14 +122,13 @@ class PriceField extends Component {
         <div className="calendar--picker--date">
           {startsAt && endsAt && (
             <Query
-              query={CALENDAR_QUERY}
+              query={BOOKING_PRICE_QUERY}
               variables={{
                 id: portalCode,
                 house_id: objectCode,
                 starts_at: startsAt,
                 ends_at: endsAt,
-                persons: parseInt(persons),
-                locale: locale,
+                persons: parseInt(persons)
               }}
             >
               {({ loading, data, error }) => {

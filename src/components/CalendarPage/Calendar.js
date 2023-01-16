@@ -101,13 +101,12 @@ class Calendar extends React.Component {
   showBooking() {
     const { startBooking, arrivalDate, departureDate, house } =
       this.state;
-    const { portalCode, objectCode, locale } = this.props;
+    const { portalCode, objectCode } = this.props;
 
     return (
       <PriceField
         portalCode={portalCode}
         objectCode={objectCode}
-        locale={locale}
         startsAt={arrivalDate.date || null}
         endsAt={departureDate.date || null}
         minNights={arrivalDate.min_nights || null}
@@ -120,14 +119,13 @@ class Calendar extends React.Component {
 
   bookingStart(status, persons) {
     const { arrivalDate, departureDate } = this.state;
-    const { portalCode, objectCode, locale } = this.props;
+    const { portalCode, objectCode } = this.props;
     const booking = {
       portalCode,
       objectCode,
       arrivalDate,
       departureDate,
       is_option: status,
-      locale,
       persons,
     };
     this.props.onBooking(booking);
