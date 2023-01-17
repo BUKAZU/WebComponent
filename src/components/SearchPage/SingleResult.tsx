@@ -1,9 +1,29 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, FormattedNumber } from 'react-intl';
+import { FiltersFormType } from '../../types';
 import ArrowRight from '../icons/ArrowRight.svg';
 
-function SingleResult({ result, options }) {
+interface Props {
+  result: {
+    image_url: string;
+    name: string;
+    house_url: string;
+    city: string;
+    province: string;
+    country_name: string;
+    description: string;
+    persons: number;
+    bedrooms: number;
+    bathrooms: number;
+    minimum_week_price: number;
+    booking_price: {
+      total_price: number;
+    };
+  };
+  options: FiltersFormType;
+}
+
+function SingleResult({ result, options }: Props): JSX.Element {
   let thisOptions = options || {};
 
   return (
@@ -44,7 +64,7 @@ function SingleResult({ result, options }) {
             <div className="result-price">
               {result.booking_price ? (
                 <>
-                <FormattedMessage id="price_from" />
+                  <FormattedMessage id="price_from" />
                   <span className="price">
                     €{' '}
                     <FormattedNumber
@@ -77,10 +97,5 @@ function SingleResult({ result, options }) {
     </a>
   );
 }
-
-SingleResult.propTypes = {
-  result: PropTypes.object.isRequired,
-  options: PropTypes.object.isRequired,
-};
 
 export default SingleResult;

@@ -43,7 +43,7 @@ function _objectSpread2(target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = null != arguments[i] ? arguments[i] : {};
     i % 2 ? ownKeys$f(Object(source), !0).forEach(function (key) {
-      _defineProperty$g(target, key, source[key]);
+      _defineProperty$M(target, key, source[key]);
     }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$f(Object(source)).forEach(function (key) {
       Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
     });
@@ -52,13 +52,13 @@ function _objectSpread2(target) {
   return target;
 }
 
-function _classCallCheck$4(instance, Constructor) {
+function _classCallCheck$B(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
 }
 
-function _defineProperties$6(target, props) {
+function _defineProperties$D(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
     descriptor.enumerable = descriptor.enumerable || false;
@@ -68,16 +68,16 @@ function _defineProperties$6(target, props) {
   }
 }
 
-function _createClass$6(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties$6(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties$6(Constructor, staticProps);
+function _createClass$D(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties$D(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties$D(Constructor, staticProps);
   Object.defineProperty(Constructor, "prototype", {
     writable: false
   });
   return Constructor;
 }
 
-function _defineProperty$g(obj, key, value) {
+function _defineProperty$M(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
       value: value,
@@ -109,7 +109,7 @@ function _extends$e() {
   return _extends$e.apply(this, arguments);
 }
 
-function _inherits$4(subClass, superClass) {
+function _inherits$A(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
     throw new TypeError("Super expression must either be null or a function");
   }
@@ -124,25 +124,25 @@ function _inherits$4(subClass, superClass) {
   Object.defineProperty(subClass, "prototype", {
     writable: false
   });
-  if (superClass) _setPrototypeOf$4(subClass, superClass);
+  if (superClass) _setPrototypeOf$A(subClass, superClass);
 }
 
-function _getPrototypeOf$4(o) {
-  _getPrototypeOf$4 = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
+function _getPrototypeOf$A(o) {
+  _getPrototypeOf$A = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
     return o.__proto__ || Object.getPrototypeOf(o);
   };
-  return _getPrototypeOf$4(o);
+  return _getPrototypeOf$A(o);
 }
 
-function _setPrototypeOf$4(o, p) {
-  _setPrototypeOf$4 = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
+function _setPrototypeOf$A(o, p) {
+  _setPrototypeOf$A = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
     o.__proto__ = p;
     return o;
   };
-  return _setPrototypeOf$4(o, p);
+  return _setPrototypeOf$A(o, p);
 }
 
-function _isNativeReflectConstruct$4() {
+function _isNativeReflectConstruct$A() {
   if (typeof Reflect === "undefined" || !Reflect.construct) return false;
   if (Reflect.construct.sham) return false;
   if (typeof Proxy === "function") return true;
@@ -191,7 +191,7 @@ function _objectWithoutProperties$b(source, excluded) {
   return target;
 }
 
-function _assertThisInitialized$5(self) {
+function _assertThisInitialized$B(self) {
   if (self === void 0) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
@@ -199,32 +199,32 @@ function _assertThisInitialized$5(self) {
   return self;
 }
 
-function _possibleConstructorReturn$4(self, call) {
+function _possibleConstructorReturn$A(self, call) {
   if (call && (typeof call === "object" || typeof call === "function")) {
     return call;
   } else if (call !== void 0) {
     throw new TypeError("Derived constructors may only return object or undefined");
   }
 
-  return _assertThisInitialized$5(self);
+  return _assertThisInitialized$B(self);
 }
 
-function _createSuper$4(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct$4();
+function _createSuper$A(Derived) {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct$A();
 
   return function _createSuperInternal() {
-    var Super = _getPrototypeOf$4(Derived),
+    var Super = _getPrototypeOf$A(Derived),
         result;
 
     if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf$4(this).constructor;
+      var NewTarget = _getPrototypeOf$A(this).constructor;
 
       result = Reflect.construct(Super, arguments, NewTarget);
     } else {
       result = Super.apply(this, arguments);
     }
 
-    return _possibleConstructorReturn$4(this, result);
+    return _possibleConstructorReturn$A(this, result);
   };
 }
 
@@ -240,16 +240,16 @@ function _taggedTemplateLiteral(strings, raw) {
   }));
 }
 
-function _unsupportedIterableToArray$6(o, minLen) {
+function _unsupportedIterableToArray$7(o, minLen) {
   if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray$6(o, minLen);
+  if (typeof o === "string") return _arrayLikeToArray$7(o, minLen);
   var n = Object.prototype.toString.call(o).slice(8, -1);
   if (n === "Object" && o.constructor) n = o.constructor.name;
   if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$6(o, minLen);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$7(o, minLen);
 }
 
-function _arrayLikeToArray$6(arr, len) {
+function _arrayLikeToArray$7(arr, len) {
   if (len == null || len > arr.length) len = arr.length;
 
   for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
@@ -257,11 +257,11 @@ function _arrayLikeToArray$6(arr, len) {
   return arr2;
 }
 
-function _createForOfIteratorHelper(o, allowArrayLike) {
+function _createForOfIteratorHelper$1(o, allowArrayLike) {
   var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
 
   if (!it) {
-    if (Array.isArray(o) || (it = _unsupportedIterableToArray$6(o)) || allowArrayLike && o && typeof o.length === "number") {
+    if (Array.isArray(o) || (it = _unsupportedIterableToArray$7(o)) || allowArrayLike && o && typeof o.length === "number") {
       if (it) o = it;
       var i = 0;
 
@@ -755,7 +755,7 @@ var checkPropTypes_1 = checkPropTypes$1;
  */
 
 var ReactIs$1 = reactIs$1.exports;
-var assign$1 = objectAssign;
+var assign$2 = objectAssign;
 
 var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
 var has$1 = has$3;
@@ -1194,7 +1194,7 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
         return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
       }
       // We need to check all keys in case some are required but missing from props.
-      var allKeys = assign$1({}, props[propName], shapeTypes);
+      var allKeys = assign$2({}, props[propName], shapeTypes);
       for (var key in allKeys) {
         var checker = shapeTypes[key];
         if (has$1(shapeTypes, key) && typeof checker !== 'function') {
@@ -1510,7 +1510,7 @@ function __generator(thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -1668,14 +1668,14 @@ function remove() {
   }
 }
 
-function _typeof$8(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$8 = function _typeof(obj) { return typeof obj; }; } else { _typeof$8 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$8(obj); }
+function _typeof$H(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$H = function _typeof(obj) { return typeof obj; }; } else { _typeof$H = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$H(obj); }
 
 /**
  * Return true if `value` is object-like. A value is object-like if it's not
  * `null` and has a `typeof` result of "object".
  */
 function isObjectLike$1(value) {
-  return _typeof$8(value) == 'object' && value !== null;
+  return _typeof$H(value) == 'object' && value !== null;
 }
 
 // In ES2015 (or a polyfilled) environment, this will be Symbol.iterator
@@ -1773,39 +1773,39 @@ function leftPad(len, str) {
   return whitespace(len - str.length) + str;
 }
 
-function _typeof$7(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$7 = function _typeof(obj) { return typeof obj; }; } else { _typeof$7 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$7(obj); }
+function _typeof$G(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$G = function _typeof(obj) { return typeof obj; }; } else { _typeof$G = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$G(obj); }
 
 function ownKeys$e(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$e(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$e(Object(source), true).forEach(function (key) { _defineProperty$f(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$e(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$e(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$e(Object(source), true).forEach(function (key) { _defineProperty$L(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$e(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-function _defineProperty$f(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$L(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _classCallCheck$3(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$A(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$5(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$C(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$5(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$5(Constructor.prototype, protoProps); if (staticProps) _defineProperties$5(Constructor, staticProps); return Constructor; }
+function _createClass$C(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$C(Constructor.prototype, protoProps); if (staticProps) _defineProperties$C(Constructor, staticProps); return Constructor; }
 
-function _inherits$3(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$3(subClass, superClass); }
+function _inherits$z(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$z(subClass, superClass); }
 
-function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf$3(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$3(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$3(this, result); }; }
+function _createSuper$z(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$z(); return function _createSuperInternal() { var Super = _getPrototypeOf$z(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$z(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$z(this, result); }; }
 
-function _possibleConstructorReturn$3(self, call) { if (call && (_typeof$7(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$4(self); }
+function _possibleConstructorReturn$z(self, call) { if (call && (_typeof$G(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$A(self); }
 
-function _assertThisInitialized$4(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$A(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf$3(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf$3(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf$z(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf$z(Wrapper, Class); }; return _wrapNativeSuper(Class); }
 
-function _construct(Parent, args, Class) { if (_isNativeReflectConstruct$3()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf$3(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct$z()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf$z(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
 
-function _isNativeReflectConstruct$3() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$z() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
 
-function _setPrototypeOf$3(o, p) { _setPrototypeOf$3 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$3(o, p); }
+function _setPrototypeOf$z(o, p) { _setPrototypeOf$z = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$z(o, p); }
 
-function _getPrototypeOf$3(o) { _getPrototypeOf$3 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$3(o); }
+function _getPrototypeOf$z(o) { _getPrototypeOf$z = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$z(o); }
 /**
  * A GraphQLError describes an Error found during the parse, validate, or
  * execute phases of performing a GraphQL operation. In addition to a message
@@ -1814,9 +1814,9 @@ function _getPrototypeOf$3(o) { _getPrototypeOf$3 = Object.setPrototypeOf ? Obje
  */
 
 var GraphQLError = /*#__PURE__*/function (_Error) {
-  _inherits$3(GraphQLError, _Error);
+  _inherits$z(GraphQLError, _Error);
 
-  var _super = _createSuper$3(GraphQLError);
+  var _super = _createSuper$z(GraphQLError);
 
   /**
    * An array of { line, column } locations within the source GraphQL document
@@ -1864,7 +1864,7 @@ var GraphQLError = /*#__PURE__*/function (_Error) {
 
     var _this;
 
-    _classCallCheck$3(this, GraphQLError);
+    _classCallCheck$A(this, GraphQLError);
 
     _this = _super.call(this, message);
     _this.name = 'GraphQLError';
@@ -1906,7 +1906,7 @@ var GraphQLError = /*#__PURE__*/function (_Error) {
     // This ensures that the simplest possible GraphQL service adheres to the spec.
 
 
-    Object.defineProperties(_assertThisInitialized$4(_this), {
+    Object.defineProperties(_assertThisInitialized$A(_this), {
       message: {
         enumerable: true
       },
@@ -1937,19 +1937,19 @@ var GraphQLError = /*#__PURE__*/function (_Error) {
     }); // Include (non-enumerable) stack trace.
 
     if (originalError !== null && originalError !== void 0 && originalError.stack) {
-      Object.defineProperty(_assertThisInitialized$4(_this), 'stack', {
+      Object.defineProperty(_assertThisInitialized$A(_this), 'stack', {
         value: originalError.stack,
         writable: true,
         configurable: true
       });
-      return _possibleConstructorReturn$3(_this);
+      return _possibleConstructorReturn$z(_this);
     } // istanbul ignore next (See: 'https://github.com/graphql/graphql-js/issues/2317')
 
 
     if (Error.captureStackTrace) {
-      Error.captureStackTrace(_assertThisInitialized$4(_this), GraphQLError);
+      Error.captureStackTrace(_assertThisInitialized$A(_this), GraphQLError);
     } else {
-      Object.defineProperty(_assertThisInitialized$4(_this), 'stack', {
+      Object.defineProperty(_assertThisInitialized$A(_this), 'stack', {
         value: Error().stack,
         writable: true,
         configurable: true
@@ -1959,7 +1959,7 @@ var GraphQLError = /*#__PURE__*/function (_Error) {
     return _this;
   }
 
-  _createClass$5(GraphQLError, [{
+  _createClass$C(GraphQLError, [{
     key: "toString",
     value: function toString() {
       return printError(this);
@@ -2253,7 +2253,7 @@ var TokenKind = Object.freeze({
  * The enum type representing the token kinds values.
  */
 
-function _typeof$6(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$6 = function _typeof(obj) { return typeof obj; }; } else { _typeof$6 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$6(obj); }
+function _typeof$F(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$F = function _typeof(obj) { return typeof obj; }; } else { _typeof$F = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$F(obj); }
 var MAX_ARRAY_LENGTH = 10;
 var MAX_RECURSIVE_DEPTH = 2;
 /**
@@ -2265,7 +2265,7 @@ function inspect(value) {
 }
 
 function formatValue(value, seenValues) {
-  switch (_typeof$6(value)) {
+  switch (_typeof$F(value)) {
     case 'string':
       return JSON.stringify(value);
 
@@ -2383,7 +2383,7 @@ function devAssert(condition, message) {
   }
 }
 
-function _typeof$5(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$5 = function _typeof(obj) { return typeof obj; }; } else { _typeof$5 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$5(obj); }
+function _typeof$E(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$E = function _typeof(obj) { return typeof obj; }; } else { _typeof$E = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$E(obj); }
 /**
  * A replacement for instanceof which includes an error warning when multi-realm
  * constructors are detected.
@@ -2401,7 +2401,7 @@ function instanceOf(value, constructor) {
     return true;
   }
 
-  if (_typeof$5(value) === 'object' && value !== null) {
+  if (_typeof$E(value) === 'object' && value !== null) {
     var _value$constructor;
 
     var className = constructor.prototype[Symbol.toStringTag];
@@ -2417,9 +2417,9 @@ function instanceOf(value, constructor) {
   return false;
 };
 
-function _defineProperties$4(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$B(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$4(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$4(Constructor.prototype, protoProps); if (staticProps) _defineProperties$4(Constructor, staticProps); return Constructor; }
+function _createClass$B(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$B(Constructor.prototype, protoProps); if (staticProps) _defineProperties$B(Constructor, staticProps); return Constructor; }
 
 /**
  * A representation of source input to GraphQL. The `name` and `locationOffset` parameters are
@@ -2444,7 +2444,7 @@ var Source = /*#__PURE__*/function () {
   } // $FlowFixMe[unsupported-syntax] Flow doesn't support computed properties yet
 
 
-  _createClass$4(Source, [{
+  _createClass$B(Source, [{
     key: SYMBOL_TO_STRING_TAG,
     get: function get() {
       return 'Source';
@@ -3300,8 +3300,8 @@ function isNameStart(code) {
  * Given a GraphQL source, parses it into a Document.
  * Throws GraphQLError if a syntax error is encountered.
  */
-function parse$1s(source, options) {
-  var parser = new Parser$1(source, options);
+function parse$2(source, options) {
+  var parser = new Parser$2(source, options);
   return parser.parseDocument();
 }
 /**
@@ -3316,7 +3316,7 @@ function parse$1s(source, options) {
  * @internal
  */
 
-var Parser$1 = /*#__PURE__*/function () {
+var Parser$2 = /*#__PURE__*/function () {
   function Parser(source, options) {
     var sourceObj = isSource(source) ? source : new Source(source);
     this._lexer = new Lexer(sourceObj);
@@ -6188,15 +6188,15 @@ var DeepMerger = (function () {
     return DeepMerger;
 }());
 
-function _createForOfIteratorHelperLoose(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (it) return (it = it.call(o)).next.bind(it); if (Array.isArray(o) || (it = _unsupportedIterableToArray$5(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; return function () { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _createForOfIteratorHelperLoose(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (it) return (it = it.call(o)).next.bind(it); if (Array.isArray(o) || (it = _unsupportedIterableToArray$6(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; return function () { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray$5(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$5(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$5(o, minLen); }
+function _unsupportedIterableToArray$6(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$6(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$6(o, minLen); }
 
-function _arrayLikeToArray$5(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _arrayLikeToArray$6(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _defineProperties$3(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$A(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$3(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$3(Constructor.prototype, protoProps); if (staticProps) _defineProperties$3(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _createClass$A(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$A(Constructor.prototype, protoProps); if (staticProps) _defineProperties$A(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
 // === Symbol Support ===
 var hasSymbols$6 = function () {
@@ -6394,7 +6394,7 @@ var Subscription = /*#__PURE__*/function () {
     }
   };
 
-  _createClass$3(Subscription, [{
+  _createClass$A(Subscription, [{
     key: "closed",
     get: function () {
       return this._state === 'closed';
@@ -6423,7 +6423,7 @@ var SubscriptionObserver = /*#__PURE__*/function () {
     onNotify(this._subscription, 'complete');
   };
 
-  _createClass$3(SubscriptionObserver, [{
+  _createClass$A(SubscriptionObserver, [{
     key: "closed",
     get: function () {
       return this._subscription._state === 'closed';
@@ -6743,7 +6743,7 @@ var Observable = /*#__PURE__*/function () {
     });
   };
 
-  _createClass$3(Observable, null, [{
+  _createClass$A(Observable, null, [{
     key: SymbolSpecies,
     get: function () {
       return this;
@@ -6822,12 +6822,12 @@ if (!prototype[fakeObsSymbol]) {
     prototype[fakeObsSymbol] = function () { return this; };
 }
 
-var toString$3 = Object.prototype.toString;
+var toString$2 = Object.prototype.toString;
 function cloneDeep$1(value) {
     return cloneDeepHelper(value);
 }
 function cloneDeepHelper(val, seen) {
-    switch (toString$3.call(val)) {
+    switch (toString$2.call(val)) {
         case "[object Array]": {
             seen = seen || new Map;
             if (seen.has(val))
@@ -7227,7 +7227,7 @@ function checkIfSnapshotChanged(_a) {
     }
 }
 
-var _a$3 = Object.prototype, toString$2 = _a$3.toString, hasOwnProperty$h = _a$3.hasOwnProperty;
+var _a$3 = Object.prototype, toString$1 = _a$3.toString, hasOwnProperty$h = _a$3.hasOwnProperty;
 var fnToStr$1 = Function.prototype.toString;
 var previousComparisons = new Map();
 /**
@@ -7248,8 +7248,8 @@ function check(a, b) {
     }
     // Object.prototype.toString returns a representation of the runtime type of
     // the given value that is considerably more precise than typeof.
-    var aTag = toString$2.call(a);
-    var bTag = toString$2.call(b);
+    var aTag = toString$1.call(a);
+    var bTag = toString$1.call(b);
     // If the runtime types of a and b are different, they could maybe be equal
     // under some interpretation of equality, but for simplicity and performance
     // we just return false instead.
@@ -7644,13 +7644,13 @@ var defaultHeaders = {
     accept: '*/*',
     'content-type': 'application/json',
 };
-var defaultOptions = {
+var defaultOptions$1 = {
     method: 'POST',
 };
 var fallbackHttpConfig = {
     http: defaultHttpOptions,
     headers: defaultHeaders,
-    options: defaultOptions,
+    options: defaultOptions$1,
 };
 var defaultPrinter = function (ast, printer) { return printer(ast); };
 function selectHttpOptionsAndBodyInternal(operation, printer) {
@@ -10899,7 +10899,7 @@ function isNetworkRequestInFlight(networkStatus) {
     return networkStatus ? networkStatus < 7 : false;
 }
 
-var assign = Object.assign, hasOwnProperty$e = Object.hasOwnProperty;
+var assign$1 = Object.assign, hasOwnProperty$e = Object.hasOwnProperty;
 var ObservableQuery = (function (_super) {
     __extends(ObservableQuery, _super);
     function ObservableQuery(_a) {
@@ -11293,7 +11293,7 @@ var ObservableQuery = (function (_super) {
         var mergedOptions = compact(this.options, newOptions || {});
         var options = useDisposableConcast
             ? mergedOptions
-            : assign(this.options, mergedOptions);
+            : assign$1(this.options, mergedOptions);
         if (!useDisposableConcast) {
             this.updatePolling();
             if (newOptions &&
@@ -13041,7 +13041,7 @@ function stripLoc(doc) {
 function parseDocument(source) {
     var cacheKey = normalize(source);
     if (!docCache.has(cacheKey)) {
-        var parsed = parse$1s(source, {
+        var parsed = parse$2(source, {
             experimentalFragmentVariables: experimentalFragmentVariables,
             allowLegacyFragmentVariables: experimentalFragmentVariables
         });
@@ -13694,8 +13694,8 @@ var Loading = function Loading() {
 
 var _templateObject$5, _templateObject2$1, _templateObject3$1, _templateObject4;
 var PORTAL_QUERY = gql(_templateObject$5 || (_templateObject$5 = _taggedTemplateLiteral(["\n  query PortalSiteQuery($id: ID!) {\n    PortalSite(id: $id) {\n      id\n      portal_code\n      options\n      countries {\n        id\n        name\n      }\n      regions {\n        id\n        name\n        country_id\n      }\n      cities {\n        id\n        name\n        region\n        country_id\n      }\n      extra_search\n      max_bathrooms\n      max_bedrooms\n      max_nights\n      max_persons\n      max_weekprice\n      country_placeholder\n      categories\n      countries_label\n      country_placeholder\n      regions_label\n      cities_label\n      arrival_date_label\n      departure_date_label\n      max_weekprice_label\n      persons_min_label\n      persons_max_label\n      bedrooms_min_label\n      bathrooms_min_label\n      weekprice_max_label\n      no_nights_label\n      extra_search_label\n      properties_label\n    }\n  }\n"])));
-var CALENDAR_QUERY$1 = gql(_templateObject2$1 || (_templateObject2$1 = _taggedTemplateLiteral(["\n  query PortalSiteHousesQuery(\n    $id: ID!\n    $house_id: String!\n    $starts_at: Date!\n    $ends_at: Date!\n  ) {\n    PortalSite(id: $id) {\n      id\n      houses(house_code: $house_id) {\n        id\n        name\n        last_minute_days\n        availabilities(starts_at: $starts_at, ends_at: $ends_at) {\n          arrival\n          arrival_time_from\n          arrival_time_to\n          date\n          departure\n          departure_time\n          max_nights\n          min_nights\n          special_offer\n        }\n      }\n    }\n    Discounts(\n      house_code: $house_id\n      discount_starts_at: $ends_at\n      discount_ends_at: $starts_at\n      active_today: true\n    ) {\n      name\n      discount_starts_at\n      discount_ends_at\n    }\n  }\n"])));
-var BOOKING_PRICE_QUERY = gql(_templateObject3$1 || (_templateObject3$1 = _taggedTemplateLiteral(["\n  query BookingPriceQuery(\n    $id: ID!\n    $house_id: String!\n    $starts_at: Date!\n    $ends_at: Date!\n  ) {\n    PortalSite(id: $id) {\n      id\n      options\n      first_name_label\n      preposition_label\n      last_name_label\n      email_label\n      zipcode_label\n      city_label\n      address_label\n      house_number_label\n      phone_label\n      phone_mobile_label\n      country_label\n      iban_label\n      holder_label\n      bic_label\n      comment_label\n      company_name_label\n      extra_fields_drivers_license_label\n      extra_fields_destination_label\n      booking_fields {\n        id\n        label\n        field_type\n        options\n        placeholder\n      }\n      houses(house_code: $house_id) {\n        id\n        name\n        code\n        allow_option\n        persons\n        image_url\n        discounts\n        discounts_info\n        house_type\n        rental_terms\n        cancel_insurance\n        damage_insurance\n        damage_insurance_required\n        travel_insurance\n        babies_extra\n        booking_price(starts_at: $starts_at, ends_at: $ends_at)\n      }\n    }\n  }\n"])));
+var CALENDAR_QUERY = gql(_templateObject2$1 || (_templateObject2$1 = _taggedTemplateLiteral(["\n  query PortalSiteHousesQuery(\n    $id: ID!\n    $house_id: String!\n    $starts_at: Date!\n    $ends_at: Date!\n  ) {\n    PortalSite(id: $id) {\n      id\n      houses(house_code: $house_id) {\n        id\n        name\n        last_minute_days\n        availabilities(starts_at: $starts_at, ends_at: $ends_at) {\n          arrival\n          arrival_time_from\n          arrival_time_to\n          date\n          departure\n          departure_time\n          max_nights\n          min_nights\n          special_offer\n        }\n      }\n    }\n    Discounts(\n      house_code: $house_id\n      discount_starts_at: $ends_at\n      discount_ends_at: $starts_at\n      active_today: true\n    ) {\n      name\n      discount_starts_at\n      discount_ends_at\n    }\n  }\n"])));
+var BOOKING_PRICE_QUERY$1 = gql(_templateObject3$1 || (_templateObject3$1 = _taggedTemplateLiteral(["\n  query BookingPriceQuery(\n    $id: ID!\n    $house_id: String!\n    $starts_at: Date!\n    $ends_at: Date!\n  ) {\n    PortalSite(id: $id) {\n      id\n      options\n      first_name_label\n      preposition_label\n      last_name_label\n      email_label\n      zipcode_label\n      city_label\n      address_label\n      house_number_label\n      phone_label\n      phone_mobile_label\n      country_label\n      iban_label\n      holder_label\n      bic_label\n      comment_label\n      company_name_label\n      extra_fields_drivers_license_label\n      extra_fields_destination_label\n      booking_fields {\n        id\n        label\n        field_type\n        options\n        placeholder\n      }\n      houses(house_code: $house_id) {\n        id\n        name\n        code\n        allow_option\n        persons\n        image_url\n        discounts\n        discounts_info\n        house_type\n        rental_terms\n        cancel_insurance\n        damage_insurance\n        damage_insurance_required\n        travel_insurance\n        babies_extra\n        booking_price(starts_at: $starts_at, ends_at: $ends_at)\n      }\n    }\n  }\n"])));
 var CREATE_BOOKING_MUTATION = gql(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  mutation CreateBooking(\n    $first_name: String!\n    $preposition: String\n    $last_name: String!\n    $company_name: String\n    $is_option: Boolean!\n    $address: String\n    $house_number: String\n    $zipcode: String\n    $city: String\n    $phone: String\n    $phone_mobile: String\n    $iban: String\n    $bic: String\n    $holder: String\n    $email: String!\n    $house_code: String!\n    $portal_code: String\n    $language: String\n    $country: String!\n    $adults: Int!\n    $children: Int\n    $babies: Int\n    $discount: Int\n    $damage_insurance: Int\n    $cancel_insurance: Int\n    $travel_insurance: Int\n    $discount_reason: String\n    $discount_code: String\n    $comment: String\n    $arrival_date: String!\n    $departure_date: String!\n    $costs: Json\n    $extra_fields: String\n  ) {\n    createBooking(\n      first_name: $first_name\n      preposition: $preposition\n      company_name: $company_name\n      last_name: $last_name\n      is_option: $is_option\n      address: $address\n      house_number: $house_number\n      zipcode: $zipcode\n      city: $city\n      phone: $phone\n      phone_mobile: $phone_mobile\n      iban: $iban\n      bic: $bic\n      holder: $holder\n      email: $email\n      house_code: $house_code\n      portal_code: $portal_code\n      language: $language\n      country: $country\n      adults: $adults\n      children: $children\n      babies: $babies\n      discount: $discount\n      discount_code: $discount_code\n      damage_insurance: $damage_insurance\n      cancel_insurance: $cancel_insurance\n      travel_insurance: $travel_insurance\n      discount_reason: $discount_reason\n      arrival_date: $arrival_date\n      departure_date: $departure_date\n      comment: $comment\n      costs: $costs\n      extra_fields: $extra_fields\n    ) {\n      booking_nr\n    }\n  }\n"])));
 
 var entry = {};
@@ -14559,7 +14559,7 @@ function makeGetRange(functions) {
  */
 
 
-function getYear$1(date) {
+function getYear(date) {
   if (date instanceof Date) {
     return date.getFullYear();
   }
@@ -14582,7 +14582,7 @@ function getYear$1(date) {
  * @param {Date} date Date to get month from.
  */
 
-function getMonth$1(date) {
+function getMonth(date) {
   if (date instanceof Date) {
     return date.getMonth();
   }
@@ -14608,7 +14608,7 @@ function getMonthHuman(date) {
  * @param {Date} date Date to get day of the month from.
  */
 
-function getDate$1(date) {
+function getDate(date) {
   if (date instanceof Date) {
     return date.getDate();
   }
@@ -14621,7 +14621,7 @@ function getDate$1(date) {
  * @param {Date|string} date Date to get hours from.
  */
 
-function getHours$1(date) {
+function getHours(date) {
   if (date instanceof Date) {
     return date.getHours();
   }
@@ -14647,7 +14647,7 @@ function getHours$1(date) {
  * @param {Date|string} date Date to get minutes from.
  */
 
-function getMinutes$1(date) {
+function getMinutes(date) {
   if (date instanceof Date) {
     return date.getMinutes();
   }
@@ -14673,7 +14673,7 @@ function getMinutes$1(date) {
  * @param {Date|string} date Date to get seconds from.
  */
 
-function getSeconds$1(date) {
+function getSeconds(date) {
   if (date instanceof Date) {
     return date.getSeconds();
   }
@@ -14698,53 +14698,53 @@ function getSeconds$1(date) {
  */
 
 function getCenturyStart(date) {
-  var year = getYear$1(date);
+  var year = getYear(date);
   var centuryStartYear = year + (-year + 1) % 100;
   var centuryStartDate = new Date();
   centuryStartDate.setFullYear(centuryStartYear, 0, 1);
   centuryStartDate.setHours(0, 0, 0, 0);
   return centuryStartDate;
 }
-var getPreviousCenturyStart = makeGetEdgeOfNeighbor(getYear$1, getCenturyStart, -100);
-var getNextCenturyStart = makeGetEdgeOfNeighbor(getYear$1, getCenturyStart, 100);
+var getPreviousCenturyStart = makeGetEdgeOfNeighbor(getYear, getCenturyStart, -100);
+var getNextCenturyStart = makeGetEdgeOfNeighbor(getYear, getCenturyStart, 100);
 var getCenturyEnd = makeGetEnd(getNextCenturyStart);
-var getPreviousCenturyEnd = makeGetEdgeOfNeighbor(getYear$1, getCenturyEnd, -100);
-var getNextCenturyEnd = makeGetEdgeOfNeighbor(getYear$1, getCenturyEnd, 100);
+var getPreviousCenturyEnd = makeGetEdgeOfNeighbor(getYear, getCenturyEnd, -100);
+var getNextCenturyEnd = makeGetEdgeOfNeighbor(getYear, getCenturyEnd, 100);
 var getCenturyRange = makeGetRange([getCenturyStart, getCenturyEnd]);
 /**
  * Decade
  */
 
 function getDecadeStart(date) {
-  var year = getYear$1(date);
+  var year = getYear(date);
   var decadeStartYear = year + (-year + 1) % 10;
   var decadeStartDate = new Date();
   decadeStartDate.setFullYear(decadeStartYear, 0, 1);
   decadeStartDate.setHours(0, 0, 0, 0);
   return decadeStartDate;
 }
-var getPreviousDecadeStart = makeGetEdgeOfNeighbor(getYear$1, getDecadeStart, -10);
-var getNextDecadeStart = makeGetEdgeOfNeighbor(getYear$1, getDecadeStart, 10);
+var getPreviousDecadeStart = makeGetEdgeOfNeighbor(getYear, getDecadeStart, -10);
+var getNextDecadeStart = makeGetEdgeOfNeighbor(getYear, getDecadeStart, 10);
 var getDecadeEnd = makeGetEnd(getNextDecadeStart);
-var getPreviousDecadeEnd = makeGetEdgeOfNeighbor(getYear$1, getDecadeEnd, -10);
-var getNextDecadeEnd = makeGetEdgeOfNeighbor(getYear$1, getDecadeEnd, 10);
+var getPreviousDecadeEnd = makeGetEdgeOfNeighbor(getYear, getDecadeEnd, -10);
+var getNextDecadeEnd = makeGetEdgeOfNeighbor(getYear, getDecadeEnd, 10);
 var getDecadeRange = makeGetRange([getDecadeStart, getDecadeEnd]);
 /**
  * Year
  */
 
 function getYearStart(date) {
-  var year = getYear$1(date);
+  var year = getYear(date);
   var yearStartDate = new Date();
   yearStartDate.setFullYear(year, 0, 1);
   yearStartDate.setHours(0, 0, 0, 0);
   return yearStartDate;
 }
-var getPreviousYearStart = makeGetEdgeOfNeighbor(getYear$1, getYearStart, -1);
-var getNextYearStart = makeGetEdgeOfNeighbor(getYear$1, getYearStart, 1);
+var getPreviousYearStart = makeGetEdgeOfNeighbor(getYear, getYearStart, -1);
+var getNextYearStart = makeGetEdgeOfNeighbor(getYear, getYearStart, 1);
 var getYearEnd = makeGetEnd(getNextYearStart);
-var getPreviousYearEnd = makeGetEdgeOfNeighbor(getYear$1, getYearEnd, -1);
-var getNextYearEnd = makeGetEdgeOfNeighbor(getYear$1, getYearEnd, 1);
+var getPreviousYearEnd = makeGetEdgeOfNeighbor(getYear, getYearEnd, -1);
+var getNextYearEnd = makeGetEdgeOfNeighbor(getYear, getYearEnd, 1);
 var getYearRange = makeGetRange([getYearStart, getYearEnd]);
 /**
  * Month
@@ -14753,8 +14753,8 @@ var getYearRange = makeGetRange([getYearStart, getYearEnd]);
 function makeGetEdgeOfNeighborMonth(getEdgeOfPeriod, defaultOffset) {
   return function makeGetEdgeOfNeighborMonthInternal(date) {
     var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultOffset;
-    var year = getYear$1(date);
-    var month = getMonth$1(date) + offset;
+    var year = getYear(date);
+    var month = getMonth(date) + offset;
     var previousPeriod = new Date();
     previousPeriod.setFullYear(year, month, 1);
     previousPeriod.setHours(0, 0, 0, 0);
@@ -14763,8 +14763,8 @@ function makeGetEdgeOfNeighborMonth(getEdgeOfPeriod, defaultOffset) {
 }
 
 function getMonthStart(date) {
-  var year = getYear$1(date);
-  var month = getMonth$1(date);
+  var year = getYear(date);
+  var month = getMonth(date);
   var monthStartDate = new Date();
   monthStartDate.setFullYear(year, month, 1);
   monthStartDate.setHours(0, 0, 0, 0);
@@ -14783,9 +14783,9 @@ var getMonthRange = makeGetRange([getMonthStart, getMonthEnd]);
 function makeGetEdgeOfNeighborDay(getEdgeOfPeriod, defaultOffset) {
   return function makeGetEdgeOfNeighborDayInternal(date) {
     var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultOffset;
-    var year = getYear$1(date);
-    var month = getMonth$1(date);
-    var day = getDate$1(date) + offset;
+    var year = getYear(date);
+    var month = getMonth(date);
+    var day = getDate(date) + offset;
     var previousPeriod = new Date();
     previousPeriod.setFullYear(year, month, day);
     previousPeriod.setHours(0, 0, 0, 0);
@@ -14794,9 +14794,9 @@ function makeGetEdgeOfNeighborDay(getEdgeOfPeriod, defaultOffset) {
 }
 
 function getDayStart(date) {
-  var year = getYear$1(date);
-  var month = getMonth$1(date);
-  var day = getDate$1(date);
+  var year = getYear(date);
+  var month = getMonth(date);
+  var day = getDate(date);
   var dayStartDate = new Date();
   dayStartDate.setFullYear(year, month, day);
   dayStartDate.setHours(0, 0, 0, 0);
@@ -14818,8 +14818,8 @@ var getDayRange = makeGetRange([getDayStart, getDayEnd]);
  * @param {Date} date Date.
  */
 
-function getDaysInMonth$3(date) {
-  return getDate$1(getMonthEnd(date));
+function getDaysInMonth(date) {
+  return getDate(getMonthEnd(date));
 }
 
 function padStart(num) {
@@ -14838,8 +14838,8 @@ function padStart(num) {
 
 
 function getHoursMinutes(date) {
-  var hours = padStart(getHours$1(date));
-  var minutes = padStart(getMinutes$1(date));
+  var hours = padStart(getHours(date));
+  var minutes = padStart(getMinutes(date));
   return "".concat(hours, ":").concat(minutes);
 }
 /**
@@ -14847,9 +14847,9 @@ function getHoursMinutes(date) {
  */
 
 function getHoursMinutesSeconds(date) {
-  var hours = padStart(getHours$1(date));
-  var minutes = padStart(getMinutes$1(date));
-  var seconds = padStart(getSeconds$1(date));
+  var hours = padStart(getHours(date));
+  var minutes = padStart(getMinutes(date));
+  var seconds = padStart(getSeconds(date));
   return "".concat(hours, ":").concat(minutes, ":").concat(seconds);
 }
 /**
@@ -14857,7 +14857,7 @@ function getHoursMinutesSeconds(date) {
  */
 
 function getISOLocalMonth(date) {
-  var year = padStart(getYear$1(date), 4);
+  var year = padStart(getYear(date), 4);
   var month = padStart(getMonthHuman(date));
   return "".concat(year, "-").concat(month);
 }
@@ -14866,9 +14866,9 @@ function getISOLocalMonth(date) {
  */
 
 function getISOLocalDate(date) {
-  var year = padStart(getYear$1(date), 4);
+  var year = padStart(getYear(date), 4);
   var month = padStart(getMonthHuman(date));
-  var day = padStart(getDate$1(date));
+  var day = padStart(getDate(date));
   return "".concat(year, "-").concat(month, "-").concat(day);
 }
 /**
@@ -14881,13 +14881,13 @@ function getISOLocalDateTime(date) {
 
 var esm$3 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  getYear: getYear$1,
-  getMonth: getMonth$1,
+  getYear: getYear,
+  getMonth: getMonth,
   getMonthHuman: getMonthHuman,
-  getDate: getDate$1,
-  getHours: getHours$1,
-  getMinutes: getMinutes$1,
-  getSeconds: getSeconds$1,
+  getDate: getDate,
+  getHours: getHours,
+  getMinutes: getMinutes,
+  getSeconds: getSeconds,
   getCenturyStart: getCenturyStart,
   getPreviousCenturyStart: getPreviousCenturyStart,
   getNextCenturyStart: getNextCenturyStart,
@@ -14923,7 +14923,7 @@ var esm$3 = /*#__PURE__*/Object.freeze({
   getPreviousDayEnd: getPreviousDayEnd,
   getNextDayEnd: getNextDayEnd,
   getDayRange: getDayRange,
-  getDaysInMonth: getDaysInMonth$3,
+  getDaysInMonth: getDaysInMonth,
   getHoursMinutes: getHoursMinutes,
   getHoursMinutesSeconds: getHoursMinutesSeconds,
   getISOLocalMonth: getISOLocalMonth,
@@ -14933,19 +14933,19 @@ var esm$3 = /*#__PURE__*/Object.freeze({
 
 var _CALENDAR_TYPE_LOCALE;
 
-function _toConsumableArray$4(arr) { return _arrayWithoutHoles$4(arr) || _iterableToArray$4(arr) || _unsupportedIterableToArray$4(arr) || _nonIterableSpread$4(); }
+function _toConsumableArray$4(arr) { return _arrayWithoutHoles$4(arr) || _iterableToArray$4(arr) || _unsupportedIterableToArray$5(arr) || _nonIterableSpread$4(); }
 
 function _nonIterableSpread$4() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray$4(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$4(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$4(o, minLen); }
+function _unsupportedIterableToArray$5(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$5(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$5(o, minLen); }
 
 function _iterableToArray$4(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 
-function _arrayWithoutHoles$4(arr) { if (Array.isArray(arr)) return _arrayLikeToArray$4(arr); }
+function _arrayWithoutHoles$4(arr) { if (Array.isArray(arr)) return _arrayLikeToArray$5(arr); }
 
-function _arrayLikeToArray$4(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _arrayLikeToArray$5(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _defineProperty$e(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$K(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var CALENDAR_TYPES = {
   ARABIC: 'Arabic',
@@ -14953,8 +14953,8 @@ var CALENDAR_TYPES = {
   ISO_8601: 'ISO 8601',
   US: 'US'
 };
-var CALENDAR_TYPE_LOCALES = (_CALENDAR_TYPE_LOCALE = {}, _defineProperty$e(_CALENDAR_TYPE_LOCALE, CALENDAR_TYPES.US, ['en-CA', 'en-US', 'es-AR', 'es-BO', 'es-CL', 'es-CO', 'es-CR', 'es-DO', 'es-EC', 'es-GT', 'es-HN', 'es-MX', 'es-NI', 'es-PA', 'es-PE', 'es-PR', 'es-SV', 'es-VE', 'pt-BR']), _defineProperty$e(_CALENDAR_TYPE_LOCALE, CALENDAR_TYPES.ARABIC, [// ar-LB, ar-MA intentionally missing
-'ar', 'ar-AE', 'ar-BH', 'ar-DZ', 'ar-EG', 'ar-IQ', 'ar-JO', 'ar-KW', 'ar-LY', 'ar-OM', 'ar-QA', 'ar-SA', 'ar-SD', 'ar-SY', 'ar-YE', 'dv', 'dv-MV', 'ps', 'ps-AR']), _defineProperty$e(_CALENDAR_TYPE_LOCALE, CALENDAR_TYPES.HEBREW, ['he', 'he-IL']), _CALENDAR_TYPE_LOCALE);
+var CALENDAR_TYPE_LOCALES = (_CALENDAR_TYPE_LOCALE = {}, _defineProperty$K(_CALENDAR_TYPE_LOCALE, CALENDAR_TYPES.US, ['en-CA', 'en-US', 'es-AR', 'es-BO', 'es-CL', 'es-CO', 'es-CR', 'es-DO', 'es-EC', 'es-GT', 'es-HN', 'es-MX', 'es-NI', 'es-PA', 'es-PE', 'es-PR', 'es-SV', 'es-VE', 'pt-BR']), _defineProperty$K(_CALENDAR_TYPE_LOCALE, CALENDAR_TYPES.ARABIC, [// ar-LB, ar-MA intentionally missing
+'ar', 'ar-AE', 'ar-BH', 'ar-DZ', 'ar-EG', 'ar-IQ', 'ar-JO', 'ar-KW', 'ar-LY', 'ar-OM', 'ar-QA', 'ar-SA', 'ar-SD', 'ar-SY', 'ar-YE', 'dv', 'dv-MV', 'ps', 'ps-AR']), _defineProperty$K(_CALENDAR_TYPE_LOCALE, CALENDAR_TYPES.HEBREW, ['he', 'he-IL']), _CALENDAR_TYPE_LOCALE);
 var WEEKDAYS = _toConsumableArray$4(Array(7)).map(function (el, index) {
   return index;
 });
@@ -15062,7 +15062,7 @@ function getDayOfWeek(date) {
 
 function getBeginOfCenturyYear(date) {
   var beginOfCentury = getCenturyStart(date);
-  return getYear$1(beginOfCentury);
+  return getYear(beginOfCentury);
 }
 /**
  * Decade
@@ -15070,7 +15070,7 @@ function getBeginOfCenturyYear(date) {
 
 function getBeginOfDecadeYear(date) {
   var beginOfDecade = getDecadeStart(date);
-  return getYear$1(beginOfDecade);
+  return getYear(beginOfDecade);
 }
 /**
  * Week
@@ -15085,8 +15085,8 @@ function getBeginOfDecadeYear(date) {
 
 function getBeginOfWeek(date) {
   var calendarType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : CALENDAR_TYPES.ISO_8601;
-  var year = getYear$1(date);
-  var monthIndex = getMonth$1(date);
+  var year = getYear(date);
+  var monthIndex = getMonth(date);
   var day = date.getDate() - getDayOfWeek(date, calendarType);
   return new Date(year, monthIndex, day);
 }
@@ -15103,7 +15103,7 @@ function getWeekNumber(date) {
   var calendarType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : CALENDAR_TYPES.ISO_8601;
   var calendarTypeForWeekNumber = calendarType === CALENDAR_TYPES.US ? CALENDAR_TYPES.US : CALENDAR_TYPES.ISO_8601;
   var beginOfWeek = getBeginOfWeek(date, calendarType);
-  var year = getYear$1(date) + 1;
+  var year = getYear(date) + 1;
   var dayInWeekOne;
   var beginOfFirstWeek; // Look for the first week one that does not come after a given date
 
@@ -15351,7 +15351,7 @@ function getDecadeLabel(locale, formatYear, date) {
  * @param {Date} date Date.
  */
 
-function isWeekend$1(date) {
+function isWeekend(date) {
   var calendarType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : CALENDAR_TYPES.ISO_8601;
   var weekday = date.getDay();
 
@@ -15369,7 +15369,7 @@ function isWeekend$1(date) {
   }
 }
 
-function _typeof$4(obj) { "@babel/helpers - typeof"; return _typeof$4 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof$4(obj); }
+function _typeof$D(obj) { "@babel/helpers - typeof"; return _typeof$D = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof$D(obj); }
 var calendarTypes = Object.values(CALENDAR_TYPES);
 var allViews$2 = ['century', 'decade', 'year', 'month'];
 var isCalendarType = PropTypes.oneOf(calendarTypes);
@@ -15382,13 +15382,13 @@ var isMinDate$1 = function isMinDate(props, propName, componentName) {
   }
 
   if (!(minDate instanceof Date)) {
-    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$4(minDate), "` supplied to `").concat(componentName, "`, expected instance of `Date`."));
+    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$D(minDate), "` supplied to `").concat(componentName, "`, expected instance of `Date`."));
   }
 
   var maxDate = props.maxDate;
 
   if (maxDate && minDate > maxDate) {
-    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$4(minDate), "` supplied to `").concat(componentName, "`, minDate cannot be larger than maxDate."));
+    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$D(minDate), "` supplied to `").concat(componentName, "`, minDate cannot be larger than maxDate."));
   }
 
   return null;
@@ -15401,13 +15401,13 @@ var isMaxDate$1 = function isMaxDate(props, propName, componentName) {
   }
 
   if (!(maxDate instanceof Date)) {
-    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$4(maxDate), "` supplied to `").concat(componentName, "`, expected instance of `Date`."));
+    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$D(maxDate), "` supplied to `").concat(componentName, "`, expected instance of `Date`."));
   }
 
   var minDate = props.minDate;
 
   if (minDate && maxDate < minDate) {
-    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$4(maxDate), "` supplied to `").concat(componentName, "`, maxDate cannot be smaller than minDate."));
+    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$D(maxDate), "` supplied to `").concat(componentName, "`, maxDate cannot be smaller than minDate."));
   }
 
   return null;
@@ -15657,9 +15657,9 @@ function _extends$d() { _extends$d = Object.assign || function (target) { for (v
 
 function ownKeys$d(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$d(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$d(Object(source), !0).forEach(function (key) { _defineProperty$d(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$d(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread$d(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$d(Object(source), !0).forEach(function (key) { _defineProperty$J(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$d(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
-function _defineProperty$d(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$J(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _objectWithoutProperties$a(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$b(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
@@ -15708,17 +15708,17 @@ Flex.propTypes = {
   wrap: PropTypes.bool
 };
 
-function _toConsumableArray$3(arr) { return _arrayWithoutHoles$3(arr) || _iterableToArray$3(arr) || _unsupportedIterableToArray$3(arr) || _nonIterableSpread$3(); }
+function _toConsumableArray$3(arr) { return _arrayWithoutHoles$3(arr) || _iterableToArray$3(arr) || _unsupportedIterableToArray$4(arr) || _nonIterableSpread$3(); }
 
 function _nonIterableSpread$3() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray$3(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$3(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$3(o, minLen); }
+function _unsupportedIterableToArray$4(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$4(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$4(o, minLen); }
 
 function _iterableToArray$3(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 
-function _arrayWithoutHoles$3(arr) { if (Array.isArray(arr)) return _arrayLikeToArray$3(arr); }
+function _arrayWithoutHoles$3(arr) { if (Array.isArray(arr)) return _arrayLikeToArray$4(arr); }
 
-function _arrayLikeToArray$3(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _arrayLikeToArray$4(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 /**
  * Returns a value no smaller than min and no larger than max.
  *
@@ -15832,9 +15832,9 @@ var _excluded$c = ["className", "count", "dateTransform", "dateType", "end", "ho
 
 function ownKeys$c(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$c(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$c(Object(source), !0).forEach(function (key) { _defineProperty$c(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$c(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread$c(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$c(Object(source), !0).forEach(function (key) { _defineProperty$I(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$c(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
-function _defineProperty$c(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$I(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _extends$c() { _extends$c = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$c.apply(this, arguments); }
 
@@ -15893,33 +15893,33 @@ TileGroup.propTypes = _objectSpread$c(_objectSpread$c({}, tileGroupProps), {}, {
   tile: PropTypes.func.isRequired
 });
 
-function _typeof$3(obj) { "@babel/helpers - typeof"; return _typeof$3 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof$3(obj); }
+function _typeof$C(obj) { "@babel/helpers - typeof"; return _typeof$C = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof$C(obj); }
 
 function ownKeys$b(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$b(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$b(Object(source), !0).forEach(function (key) { _defineProperty$b(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$b(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread$b(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$b(Object(source), !0).forEach(function (key) { _defineProperty$H(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$b(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
-function _classCallCheck$2(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$z(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$2(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$z(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$2(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$2(Constructor.prototype, protoProps); if (staticProps) _defineProperties$2(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _createClass$z(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$z(Constructor.prototype, protoProps); if (staticProps) _defineProperties$z(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
-function _inherits$2(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf$2(subClass, superClass); }
+function _inherits$y(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf$y(subClass, superClass); }
 
-function _setPrototypeOf$2(o, p) { _setPrototypeOf$2 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$2(o, p); }
+function _setPrototypeOf$y(o, p) { _setPrototypeOf$y = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$y(o, p); }
 
-function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf$2(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$2(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$2(this, result); }; }
+function _createSuper$y(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$y(); return function _createSuperInternal() { var Super = _getPrototypeOf$y(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$y(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$y(this, result); }; }
 
-function _possibleConstructorReturn$2(self, call) { if (call && (_typeof$3(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized$3(self); }
+function _possibleConstructorReturn$y(self, call) { if (call && (_typeof$C(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized$z(self); }
 
-function _assertThisInitialized$3(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$z(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$y() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$2(o) { _getPrototypeOf$2 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$2(o); }
+function _getPrototypeOf$y(o) { _getPrototypeOf$y = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$y(o); }
 
-function _defineProperty$b(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$H(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function datesAreDifferent(date1, date2) {
   return date1 && !date2 || !date1 && date2 || date1 && date2 && date1.getTime() !== date2.getTime();
@@ -15937,14 +15937,14 @@ function getValue$2(nextProps, prop) {
 }
 
 var Tile = /*#__PURE__*/function (_Component) {
-  _inherits$2(Tile, _Component);
+  _inherits$y(Tile, _Component);
 
-  var _super = _createSuper$2(Tile);
+  var _super = _createSuper$y(Tile);
 
   function Tile() {
     var _this;
 
-    _classCallCheck$2(this, Tile);
+    _classCallCheck$z(this, Tile);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -15952,12 +15952,12 @@ var Tile = /*#__PURE__*/function (_Component) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$b(_assertThisInitialized$3(_this), "state", {});
+    _defineProperty$H(_assertThisInitialized$z(_this), "state", {});
 
     return _this;
   }
 
-  _createClass$2(Tile, [{
+  _createClass$z(Tile, [{
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -16037,9 +16037,9 @@ var _excluded$b = ["classes", "formatYear"];
 
 function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$a(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$a(Object(source), !0).forEach(function (key) { _defineProperty$a(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$a(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread$a(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$a(Object(source), !0).forEach(function (key) { _defineProperty$G(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$a(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
-function _defineProperty$a(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$G(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _extends$b() { _extends$b = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$b.apply(this, arguments); }
 
@@ -16068,9 +16068,9 @@ Decade.propTypes = _objectSpread$a(_objectSpread$a({}, tileProps), {}, {
 
 function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$9(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$9(Object(source), !0).forEach(function (key) { _defineProperty$9(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$9(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread$9(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$9(Object(source), !0).forEach(function (key) { _defineProperty$F(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$9(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
-function _defineProperty$9(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$F(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _extends$a() { _extends$a = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$a.apply(this, arguments); }
 function Decades(props) {
@@ -16103,9 +16103,9 @@ var _excluded$a = ["classes", "formatYear"];
 
 function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$8(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$8(Object(source), !0).forEach(function (key) { _defineProperty$8(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$8(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread$8(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$8(Object(source), !0).forEach(function (key) { _defineProperty$E(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$8(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
-function _defineProperty$8(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$E(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _extends$9() { _extends$9 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$9.apply(this, arguments); }
 
@@ -16134,9 +16134,9 @@ Year.propTypes = _objectSpread$8(_objectSpread$8({}, tileProps), {}, {
 
 function ownKeys$7(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$7(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$7(Object(source), !0).forEach(function (key) { _defineProperty$7(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$7(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread$7(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$7(Object(source), !0).forEach(function (key) { _defineProperty$D(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$7(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
-function _defineProperty$7(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$D(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _extends$8() { _extends$8 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$8.apply(this, arguments); }
 function Years(props) {
@@ -16173,9 +16173,9 @@ var _excluded$9 = ["classes", "formatMonth", "formatMonthYear"];
 
 function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$6(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$6(Object(source), !0).forEach(function (key) { _defineProperty$6(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$6(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread$6(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$6(Object(source), !0).forEach(function (key) { _defineProperty$C(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$6(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
-function _defineProperty$6(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$C(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _extends$7() { _extends$7 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$7.apply(this, arguments); }
 
@@ -16208,16 +16208,16 @@ Month.propTypes = _objectSpread$6(_objectSpread$6({}, tileProps), {}, {
 
 function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$5(Object(source), !0).forEach(function (key) { _defineProperty$5(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$5(Object(source), !0).forEach(function (key) { _defineProperty$B(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
-function _defineProperty$5(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$B(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _extends$6() { _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$6.apply(this, arguments); }
 function Months(props) {
   var activeStartDate = props.activeStartDate;
   var start = 0;
   var end = 11;
-  var year = getYear$1(activeStartDate);
+  var year = getYear(activeStartDate);
   return /*#__PURE__*/React__default["default"].createElement(TileGroup, _extends$6({}, props, {
     className: "react-calendar__year-view__months",
     dateTransform: function dateTransform(monthIndex) {
@@ -16250,9 +16250,9 @@ var _excluded$8 = ["formatDay", "formatLongDate", "calendarType", "classes", "cu
 
 function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$4(Object(source), !0).forEach(function (key) { _defineProperty$4(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$4(Object(source), !0).forEach(function (key) { _defineProperty$A(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
-function _defineProperty$4(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$A(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _extends$5() { _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$5.apply(this, arguments); }
 
@@ -16273,7 +16273,7 @@ function Day(_ref) {
   var date = otherProps.date,
       locale = otherProps.locale;
   return /*#__PURE__*/React__default["default"].createElement(Tile, _extends$5({}, otherProps, {
-    classes: [].concat(classes, className$2, isWeekend$1(date, calendarType) ? "".concat(className$2, "--weekend") : null, date.getMonth() !== currentMonthIndex ? "".concat(className$2, "--neighboringMonth") : null),
+    classes: [].concat(classes, className$2, isWeekend(date, calendarType) ? "".concat(className$2, "--weekend") : null, date.getMonth() !== currentMonthIndex ? "".concat(className$2, "--neighboringMonth") : null),
     formatAbbr: formatLongDate$1,
     maxDateTransform: getDayEnd,
     minDateTransform: getDayStart,
@@ -16290,9 +16290,9 @@ var _excluded$7 = ["showFixedNumberOfWeeks", "showNeighboringMonth"];
 
 function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$3(Object(source), !0).forEach(function (key) { _defineProperty$3(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$3(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$3(Object(source), !0).forEach(function (key) { _defineProperty$z(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$3(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
-function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$z(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _extends$4() { _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$4.apply(this, arguments); }
 
@@ -16307,8 +16307,8 @@ function Days(props) {
       showNeighboringMonth = props.showNeighboringMonth,
       otherProps = _objectWithoutProperties$4(props, _excluded$7);
 
-  var year = getYear$1(activeStartDate);
-  var monthIndex = getMonth$1(activeStartDate);
+  var year = getYear(activeStartDate);
+  var monthIndex = getMonth(activeStartDate);
   var hasFixedNumberOfWeeks = showFixedNumberOfWeeks || showNeighboringMonth;
   var dayOfWeek = getDayOfWeek(activeStartDate, calendarType);
   var offset = hasFixedNumberOfWeeks ? 0 : dayOfWeek;
@@ -16331,7 +16331,7 @@ function Days(props) {
       return start + 6 * 7 - 1;
     }
 
-    var daysInMonth = getDaysInMonth$3(activeStartDate);
+    var daysInMonth = getDaysInMonth(activeStartDate);
 
     if (showNeighboringMonth) {
       var activeEndDate = new Date();
@@ -16376,8 +16376,8 @@ function Weekdays(props) {
       onMouseLeave = props.onMouseLeave;
   var anyDate = new Date();
   var beginOfMonth = getMonthStart(anyDate);
-  var year = getYear$1(beginOfMonth);
-  var monthIndex = getMonth$1(beginOfMonth);
+  var year = getYear(beginOfMonth);
+  var monthIndex = getMonth(beginOfMonth);
   var weekdays = [];
 
   for (var weekday = 1; weekday <= 7; weekday += 1) {
@@ -16412,9 +16412,9 @@ function _extends$3() { _extends$3 = Object.assign || function (target) { for (v
 
 function ownKeys$2(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$2(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$2(Object(source), !0).forEach(function (key) { _defineProperty$2(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$2(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread$2(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$2(Object(source), !0).forEach(function (key) { _defineProperty$y(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$2(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$y(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _objectWithoutProperties$3(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$4(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
@@ -16456,16 +16456,16 @@ function WeekNumbers(props) {
       return 6;
     }
 
-    var numberOfDays = getDaysInMonth$3(activeStartDate);
+    var numberOfDays = getDaysInMonth(activeStartDate);
     var startWeekday = getDayOfWeek(activeStartDate, calendarType);
     var days = numberOfDays - (7 - startWeekday);
     return 1 + Math.ceil(days / 7);
   }();
 
   var dates = function () {
-    var year = getYear$1(activeStartDate);
-    var monthIndex = getMonth$1(activeStartDate);
-    var day = getDate$1(activeStartDate);
+    var year = getYear(activeStartDate);
+    var monthIndex = getMonth(activeStartDate);
+    var day = getDate(activeStartDate);
     var result = [];
 
     for (var index = 0; index < numberOfWeeks; index += 1) {
@@ -16591,49 +16591,49 @@ var _excluded$4 = ["activeStartDate", "defaultActiveStartDate", "defaultValue", 
 
 function _extends$1() { _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$1.apply(this, arguments); }
 
-function _typeof$2(obj) { "@babel/helpers - typeof"; return _typeof$2 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof$2(obj); }
+function _typeof$B(obj) { "@babel/helpers - typeof"; return _typeof$B = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof$B(obj); }
 
-function _classCallCheck$1(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$y(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$1(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$y(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$1(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$1(Constructor.prototype, protoProps); if (staticProps) _defineProperties$1(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _createClass$y(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$y(Constructor.prototype, protoProps); if (staticProps) _defineProperties$y(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
-function _inherits$1(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf$1(subClass, superClass); }
+function _inherits$x(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf$x(subClass, superClass); }
 
-function _setPrototypeOf$1(o, p) { _setPrototypeOf$1 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$1(o, p); }
+function _setPrototypeOf$x(o, p) { _setPrototypeOf$x = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$x(o, p); }
 
-function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf$1(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$1(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$1(this, result); }; }
+function _createSuper$x(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$x(); return function _createSuperInternal() { var Super = _getPrototypeOf$x(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$x(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$x(this, result); }; }
 
-function _possibleConstructorReturn$1(self, call) { if (call && (_typeof$2(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized$2(self); }
+function _possibleConstructorReturn$x(self, call) { if (call && (_typeof$B(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized$y(self); }
 
-function _assertThisInitialized$2(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$y(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$x() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$1(o) { _getPrototypeOf$1 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$1(o); }
+function _getPrototypeOf$x(o) { _getPrototypeOf$x = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$x(o); }
 
 function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$1(Object(source), !0).forEach(function (key) { _defineProperty$1(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$1(Object(source), !0).forEach(function (key) { _defineProperty$x(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$x(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _objectWithoutProperties$1(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$2(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
 function _objectWithoutPropertiesLoose$2(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-function _toConsumableArray$2(arr) { return _arrayWithoutHoles$2(arr) || _iterableToArray$2(arr) || _unsupportedIterableToArray$2(arr) || _nonIterableSpread$2(); }
+function _toConsumableArray$2(arr) { return _arrayWithoutHoles$2(arr) || _iterableToArray$2(arr) || _unsupportedIterableToArray$3(arr) || _nonIterableSpread$2(); }
 
 function _nonIterableSpread$2() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray$2(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$2(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$2(o, minLen); }
+function _unsupportedIterableToArray$3(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$3(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$3(o, minLen); }
 
 function _iterableToArray$2(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 
-function _arrayWithoutHoles$2(arr) { if (Array.isArray(arr)) return _arrayLikeToArray$2(arr); }
+function _arrayWithoutHoles$2(arr) { if (Array.isArray(arr)) return _arrayLikeToArray$3(arr); }
 
-function _arrayLikeToArray$2(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _arrayLikeToArray$3(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 var defaultMinDate = new Date();
 defaultMinDate.setFullYear(1, 0, 1);
 defaultMinDate.setHours(0, 0, 0, 0);
@@ -16642,7 +16642,7 @@ var baseClassName = 'react-calendar';
 var allViews$1 = ['century', 'decade', 'year', 'month'];
 var allValueTypes$1 = [].concat(_toConsumableArray$2(allViews$1.slice(1)), ['day']);
 
-function toDate(value) {
+function toDate$1(value) {
   if (value instanceof Date) {
     return value;
   }
@@ -16699,7 +16699,7 @@ function getValue$1(value, index) {
     return null;
   }
 
-  var valueDate = toDate(rawValue);
+  var valueDate = toDate$1(rawValue);
 
   if (isNaN(valueDate.getTime())) {
     throw new Error("Invalid date: ".concat(value));
@@ -16792,14 +16792,14 @@ var getIsSingleValue = function getIsSingleValue(value) {
 };
 
 var Calendar$1 = /*#__PURE__*/function (_Component) {
-  _inherits$1(Calendar, _Component);
+  _inherits$x(Calendar, _Component);
 
-  var _super = _createSuper$1(Calendar);
+  var _super = _createSuper$x(Calendar);
 
   function Calendar() {
     var _this;
 
-    _classCallCheck$1(this, Calendar);
+    _classCallCheck$y(this, Calendar);
 
     for (var _len = arguments.length, _args = new Array(_len), _key = 0; _key < _len; _key++) {
       _args[_key] = arguments[_key];
@@ -16807,14 +16807,14 @@ var Calendar$1 = /*#__PURE__*/function (_Component) {
 
     _this = _super.call.apply(_super, [this].concat(_args));
 
-    _defineProperty$1(_assertThisInitialized$2(_this), "state", {
+    _defineProperty$x(_assertThisInitialized$y(_this), "state", {
       activeStartDate: _this.props.defaultActiveStartDate,
       value: _this.props.defaultValue,
       view: _this.props.defaultView
     });
 
-    _defineProperty$1(_assertThisInitialized$2(_this), "setStateAndCallCallbacks", function (nextState, event, callback) {
-      var _assertThisInitialize = _assertThisInitialized$2(_this),
+    _defineProperty$x(_assertThisInitialized$y(_this), "setStateAndCallCallbacks", function (nextState, event, callback) {
+      var _assertThisInitialize = _assertThisInitialized$y(_this),
           previousActiveStartDate = _assertThisInitialize.activeStartDate,
           previousView = _assertThisInitialize.view;
 
@@ -16840,7 +16840,7 @@ var Calendar$1 = /*#__PURE__*/function (_Component) {
         function shouldUpdate(key) {
           return (// Key must exist, and…
             key in nextState && ( // …key changed from undefined to defined or the other way around, or…
-            _typeof$2(nextState[key]) !== _typeof$2(prevArgs[key]) || ( // …value changed.
+            _typeof$B(nextState[key]) !== _typeof$B(prevArgs[key]) || ( // …value changed.
             nextState[key] instanceof Date ? nextState[key].getTime() !== prevArgs[key].getTime() : nextState[key] !== prevArgs[key]))
           );
         }
@@ -16873,21 +16873,21 @@ var Calendar$1 = /*#__PURE__*/function (_Component) {
       });
     });
 
-    _defineProperty$1(_assertThisInitialized$2(_this), "setActiveStartDate", function (nextActiveStartDate, action) {
+    _defineProperty$x(_assertThisInitialized$y(_this), "setActiveStartDate", function (nextActiveStartDate, action) {
       _this.setStateAndCallCallbacks({
         action: action,
         activeStartDate: nextActiveStartDate
       });
     });
 
-    _defineProperty$1(_assertThisInitialized$2(_this), "drillDown", function (nextActiveStartDate, event) {
+    _defineProperty$x(_assertThisInitialized$y(_this), "drillDown", function (nextActiveStartDate, event) {
       if (!_this.drillDownAvailable) {
         return;
       }
 
       _this.onClickTile(nextActiveStartDate, event);
 
-      var _assertThisInitialize2 = _assertThisInitialized$2(_this),
+      var _assertThisInitialize2 = _assertThisInitialized$y(_this),
           view = _assertThisInitialize2.view,
           views = _assertThisInitialize2.views;
 
@@ -16901,12 +16901,12 @@ var Calendar$1 = /*#__PURE__*/function (_Component) {
       }, undefined, onDrillDown);
     });
 
-    _defineProperty$1(_assertThisInitialized$2(_this), "drillUp", function () {
+    _defineProperty$x(_assertThisInitialized$y(_this), "drillUp", function () {
       if (!_this.drillUpAvailable) {
         return;
       }
 
-      var _assertThisInitialize3 = _assertThisInitialized$2(_this),
+      var _assertThisInitialize3 = _assertThisInitialized$y(_this),
           activeStartDate = _assertThisInitialize3.activeStartDate,
           view = _assertThisInitialize3.view,
           views = _assertThisInitialize3.views;
@@ -16922,7 +16922,7 @@ var Calendar$1 = /*#__PURE__*/function (_Component) {
       }, undefined, onDrillUp);
     });
 
-    _defineProperty$1(_assertThisInitialized$2(_this), "onChange", function (value, event) {
+    _defineProperty$x(_assertThisInitialized$y(_this), "onChange", function (value, event) {
       var selectRange = _this.props.selectRange;
 
       _this.onClickTile(value, event);
@@ -16931,7 +16931,7 @@ var Calendar$1 = /*#__PURE__*/function (_Component) {
 
       if (selectRange) {
         // Range selection turned on
-        var _assertThisInitialize4 = _assertThisInitialized$2(_this),
+        var _assertThisInitialize4 = _assertThisInitialized$y(_this),
             previousValue = _assertThisInitialize4.value,
             valueType = _assertThisInitialize4.valueType;
 
@@ -16960,8 +16960,8 @@ var Calendar$1 = /*#__PURE__*/function (_Component) {
       }, event);
     });
 
-    _defineProperty$1(_assertThisInitialized$2(_this), "onClickTile", function (value, event) {
-      var _assertThisInitialize5 = _assertThisInitialized$2(_this),
+    _defineProperty$x(_assertThisInitialized$y(_this), "onClickTile", function (value, event) {
+      var _assertThisInitialize5 = _assertThisInitialized$y(_this),
           view = _assertThisInitialize5.view;
 
       var _this$props2 = _this.props,
@@ -16992,7 +16992,7 @@ var Calendar$1 = /*#__PURE__*/function (_Component) {
       if (callback) callback(value, event);
     });
 
-    _defineProperty$1(_assertThisInitialized$2(_this), "onMouseOver", function (value) {
+    _defineProperty$x(_assertThisInitialized$y(_this), "onMouseOver", function (value) {
       _this.setState(function (prevState) {
         if (prevState.hover && prevState.hover.getTime() === value.getTime()) {
           return null;
@@ -17004,7 +17004,7 @@ var Calendar$1 = /*#__PURE__*/function (_Component) {
       });
     });
 
-    _defineProperty$1(_assertThisInitialized$2(_this), "onMouseLeave", function () {
+    _defineProperty$x(_assertThisInitialized$y(_this), "onMouseLeave", function () {
       _this.setState({
         hover: null
       });
@@ -17013,7 +17013,7 @@ var Calendar$1 = /*#__PURE__*/function (_Component) {
     return _this;
   }
 
-  _createClass$1(Calendar, [{
+  _createClass$y(Calendar, [{
     key: "activeStartDate",
     get: function get() {
       var activeStartDateProps = this.props.activeStartDate;
@@ -17428,25 +17428,25 @@ function warning(condition, message) {
 
 var _excluded$3 = ["invertAxis", "invertSecondaryAxis"];
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$x(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$x(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _createClass$x(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$x(Constructor.prototype, protoProps); if (staticProps) _defineProperties$x(Constructor, staticProps); return Constructor; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _inherits$w(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$w(subClass, superClass); }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _setPrototypeOf$w(o, p) { _setPrototypeOf$w = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$w(o, p); }
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _createSuper$w(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$w(); return function _createSuperInternal() { var Super = _getPrototypeOf$w(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$w(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$w(this, result); }; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof$1(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized$1(self); }
+function _possibleConstructorReturn$w(self, call) { if (call && (_typeof$A(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized$x(self); }
 
-function _assertThisInitialized$1(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$x(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$w() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _getPrototypeOf$w(o) { _getPrototypeOf$w = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$w(o); }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$1(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
@@ -17454,11 +17454,11 @@ function _objectWithoutPropertiesLoose$1(source, excluded) { if (source == null)
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty$w(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$w(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _typeof$1(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$1 = function _typeof(obj) { return typeof obj; }; } else { _typeof$1 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$1(obj); }
+function _typeof$A(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$A = function _typeof(obj) { return typeof obj; }; } else { _typeof$A = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$A(obj); }
 var isBrowser = typeof window !== 'undefined';
 var isDisplayContentsSupported = isBrowser && 'CSS' in window && 'supports' in window.CSS && CSS.supports('display', 'contents');
 var isMutationObserverSupported = isBrowser && 'MutationObserver' in window;
@@ -17514,9 +17514,9 @@ function alignAxis(_ref) {
   var clientSizeProperty = "client".concat(uppercasedSizeProperty);
   var minSizeProperty = "min-".concat(sizeProperty);
   var scrollbarWidth = scrollContainer[offsetSizeProperty] - scrollContainer[clientSizeProperty];
-  var startSpacing = _typeof$1(spacing) === 'object' ? spacing[startProperty] : spacing;
+  var startSpacing = _typeof$A(spacing) === 'object' ? spacing[startProperty] : spacing;
   var availableStartSpace = -Math.max(scrollContainerCollisions[overflowStartProperty], documentCollisions[overflowStartProperty] + document.documentElement[scrollProperty]) - startSpacing;
-  var endSpacing = _typeof$1(spacing) === 'object' ? spacing[endProperty] : spacing;
+  var endSpacing = _typeof$A(spacing) === 'object' ? spacing[endProperty] : spacing;
   var availableEndSpace = -Math.max(scrollContainerCollisions[overflowEndProperty], documentCollisions[overflowEndProperty] - document.documentElement[scrollProperty]) - endSpacing - scrollbarWidth;
 
   if (secondary) {
@@ -17612,14 +17612,14 @@ function alignBothAxis(args) {
 }
 
 var Fit = /*#__PURE__*/function (_Component) {
-  _inherits(Fit, _Component);
+  _inherits$w(Fit, _Component);
 
-  var _super = _createSuper(Fit);
+  var _super = _createSuper$w(Fit);
 
   function Fit() {
     var _this;
 
-    _classCallCheck(this, Fit);
+    _classCallCheck$x(this, Fit);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -17627,14 +17627,14 @@ var Fit = /*#__PURE__*/function (_Component) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty(_assertThisInitialized$1(_this), "onMutation", function () {
+    _defineProperty$w(_assertThisInitialized$x(_this), "onMutation", function () {
       _this.fit();
     });
 
-    _defineProperty(_assertThisInitialized$1(_this), "mutationObserver", isMutationObserverSupported && new MutationObserver(_this.onMutation));
+    _defineProperty$w(_assertThisInitialized$x(_this), "mutationObserver", isMutationObserverSupported && new MutationObserver(_this.onMutation));
 
-    _defineProperty(_assertThisInitialized$1(_this), "fit", function () {
-      var _assertThisInitialize = _assertThisInitialized$1(_this),
+    _defineProperty$w(_assertThisInitialized$x(_this), "fit", function () {
+      var _assertThisInitialize = _assertThisInitialized$x(_this),
           scrollContainer = _assertThisInitialize.scrollContainer,
           container = _assertThisInitialize.container,
           element = _assertThisInitialize.element;
@@ -17704,7 +17704,7 @@ var Fit = /*#__PURE__*/function (_Component) {
     return _this;
   }
 
-  _createClass(Fit, [{
+  _createClass$x(Fit, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       if (!isDisplayContentsSupported) {
@@ -17945,19 +17945,19 @@ var _propTypes = _interopRequireDefault$1(propTypes$1.exports);
 
 function _interopRequireDefault$1(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _typeof$z(obj) { "@babel/helpers - typeof"; return _typeof$z = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof$z(obj); }
 
-function _toConsumableArray$1(arr) { return _arrayWithoutHoles$1(arr) || _iterableToArray$1(arr) || _unsupportedIterableToArray$1(arr) || _nonIterableSpread$1(); }
+function _toConsumableArray$1(arr) { return _arrayWithoutHoles$1(arr) || _iterableToArray$1(arr) || _unsupportedIterableToArray$2(arr) || _nonIterableSpread$1(); }
 
 function _nonIterableSpread$1() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray$1(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$1(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$1(o, minLen); }
+function _unsupportedIterableToArray$2(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$2(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$2(o, minLen); }
 
 function _iterableToArray$1(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 
-function _arrayWithoutHoles$1(arr) { if (Array.isArray(arr)) return _arrayLikeToArray$1(arr); }
+function _arrayWithoutHoles$1(arr) { if (Array.isArray(arr)) return _arrayLikeToArray$2(arr); }
 
-function _arrayLikeToArray$1(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _arrayLikeToArray$2(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 var allViews = ['century', 'decade', 'year', 'month'];
 var allValueTypes = [].concat(_toConsumableArray$1(allViews.slice(1)), ['day']);
@@ -17974,13 +17974,13 @@ var isMinDate = function isMinDate(props, propName, componentName) {
   }
 
   if (!(minDate instanceof Date)) {
-    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof(minDate), "` supplied to `").concat(componentName, "`, expected instance of `Date`."));
+    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$z(minDate), "` supplied to `").concat(componentName, "`, expected instance of `Date`."));
   }
 
   var maxDate = props.maxDate;
 
   if (maxDate && minDate > maxDate) {
-    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof(minDate), "` supplied to `").concat(componentName, "`, minDate cannot be larger than maxDate."));
+    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$z(minDate), "` supplied to `").concat(componentName, "`, minDate cannot be larger than maxDate."));
   }
 
   return null;
@@ -17996,13 +17996,13 @@ var isMaxDate = function isMaxDate(props, propName, componentName) {
   }
 
   if (!(maxDate instanceof Date)) {
-    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof(maxDate), "` supplied to `").concat(componentName, "`, expected instance of `Date`."));
+    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$z(maxDate), "` supplied to `").concat(componentName, "`, expected instance of `Date`."));
   }
 
   var minDate = props.minDate;
 
   if (minDate && maxDate < minDate) {
-    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof(maxDate), "` supplied to `").concat(componentName, "`, maxDate cannot be smaller than minDate."));
+    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$z(maxDate), "` supplied to `").concat(componentName, "`, maxDate cannot be smaller than minDate."));
   }
 
   return null;
@@ -18208,17 +18208,17 @@ utils.between = between;
 utils.safeMax = safeMax;
 utils.safeMin = safeMin;
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray$1(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _unsupportedIterableToArray$1(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$1(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$1(o, minLen); }
 
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray$1(arr); }
 
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _arrayLikeToArray$1(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 /**
  * Returns a value no smaller than min and no larger than max.
@@ -20956,10 +20956,10 @@ var shams = function hasToStringTagShams() {
 	return hasSymbols$2() && !!Symbol.toStringTag;
 };
 
-var getDay$1 = Date.prototype.getDay;
+var getDay = Date.prototype.getDay;
 var tryDateObject = function tryDateGetDayCall(value) {
 	try {
-		getDay$1.call(value);
+		getDay.call(value);
 		return true;
 	} catch (e) {
 		return false;
@@ -21017,7 +21017,7 @@ var hasSymbols = typeof Symbol === 'function' && typeof Symbol.iterator === 'sym
 
 var isPrimitive$2 = isPrimitive$3;
 var isCallable = isCallable$1;
-var isDate$3 = isDateObject;
+var isDate$1 = isDateObject;
 var isSymbol$1 = isSymbol$2.exports;
 
 var ordinaryToPrimitive = function OrdinaryToPrimitive(O, hint) {
@@ -21081,7 +21081,7 @@ var es2015 = function ToPrimitive(input) {
 		}
 		throw new TypeError('unable to convert exotic object to primitive');
 	}
-	if (hint === 'default' && (isDate$3(input) || isSymbol$1(input))) {
+	if (hint === 'default' && (isDate$1(input) || isSymbol$1(input))) {
 		hint = 'string';
 	}
 	return ordinaryToPrimitive(input, hint === 'default' ? 'number' : hint);
@@ -21393,7 +21393,256 @@ function List(_ref) {
   }
 }
 
-var MILLISECONDS_IN_MINUTE$6 = 60000;
+function toInteger(dirtyNumber) {
+  if (dirtyNumber === null || dirtyNumber === true || dirtyNumber === false) {
+    return NaN;
+  }
+
+  var number = Number(dirtyNumber);
+
+  if (isNaN(number)) {
+    return number;
+  }
+
+  return number < 0 ? Math.ceil(number) : Math.floor(number);
+}
+
+function requiredArgs(required, args) {
+  if (args.length < required) {
+    throw new TypeError(required + ' argument' + (required > 1 ? 's' : '') + ' required, but only ' + args.length + ' present');
+  }
+}
+
+function _typeof$y(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$y = function _typeof(obj) { return typeof obj; }; } else { _typeof$y = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$y(obj); }
+/**
+ * @name toDate
+ * @category Common Helpers
+ * @summary Convert the given argument to an instance of Date.
+ *
+ * @description
+ * Convert the given argument to an instance of Date.
+ *
+ * If the argument is an instance of Date, the function returns its clone.
+ *
+ * If the argument is a number, it is treated as a timestamp.
+ *
+ * If the argument is none of the above, the function returns Invalid Date.
+ *
+ * **Note**: *all* Date arguments passed to any *date-fns* function is processed by `toDate`.
+ *
+ * @param {Date|Number} argument - the value to convert
+ * @returns {Date} the parsed date in the local time zone
+ * @throws {TypeError} 1 argument required
+ *
+ * @example
+ * // Clone the date:
+ * const result = toDate(new Date(2014, 1, 11, 11, 30, 30))
+ * //=> Tue Feb 11 2014 11:30:30
+ *
+ * @example
+ * // Convert the timestamp to date:
+ * const result = toDate(1392098430000)
+ * //=> Tue Feb 11 2014 11:30:30
+ */
+
+function toDate(argument) {
+  requiredArgs(1, arguments);
+  var argStr = Object.prototype.toString.call(argument); // Clone the date
+
+  if (argument instanceof Date || _typeof$y(argument) === 'object' && argStr === '[object Date]') {
+    // Prevent the date to lose the milliseconds when passed to new Date() in IE10
+    return new Date(argument.getTime());
+  } else if (typeof argument === 'number' || argStr === '[object Number]') {
+    return new Date(argument);
+  } else {
+    if ((typeof argument === 'string' || argStr === '[object String]') && typeof console !== 'undefined') {
+      // eslint-disable-next-line no-console
+      console.warn("Starting with v2.0.0-beta.1 date-fns doesn't accept strings as date arguments. Please use `parseISO` to parse strings. See: https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#string-arguments"); // eslint-disable-next-line no-console
+
+      console.warn(new Error().stack);
+    }
+
+    return new Date(NaN);
+  }
+}
+
+/**
+ * @name addDays
+ * @category Day Helpers
+ * @summary Add the specified number of days to the given date.
+ *
+ * @description
+ * Add the specified number of days to the given date.
+ *
+ * @param {Date|Number} date - the date to be changed
+ * @param {Number} amount - the amount of days to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @returns {Date} - the new date with the days added
+ * @throws {TypeError} - 2 arguments required
+ *
+ * @example
+ * // Add 10 days to 1 September 2014:
+ * const result = addDays(new Date(2014, 8, 1), 10)
+ * //=> Thu Sep 11 2014 00:00:00
+ */
+
+function addDays(dirtyDate, dirtyAmount) {
+  requiredArgs(2, arguments);
+  var date = toDate(dirtyDate);
+  var amount = toInteger(dirtyAmount);
+
+  if (isNaN(amount)) {
+    return new Date(NaN);
+  }
+
+  if (!amount) {
+    // If 0 days, no-op to avoid changing times in the hour before end of DST
+    return date;
+  }
+
+  date.setDate(date.getDate() + amount);
+  return date;
+}
+
+/**
+ * @name addMonths
+ * @category Month Helpers
+ * @summary Add the specified number of months to the given date.
+ *
+ * @description
+ * Add the specified number of months to the given date.
+ *
+ * @param {Date|Number} date - the date to be changed
+ * @param {Number} amount - the amount of months to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @returns {Date} the new date with the months added
+ * @throws {TypeError} 2 arguments required
+ *
+ * @example
+ * // Add 5 months to 1 September 2014:
+ * const result = addMonths(new Date(2014, 8, 1), 5)
+ * //=> Sun Feb 01 2015 00:00:00
+ */
+
+function addMonths(dirtyDate, dirtyAmount) {
+  requiredArgs(2, arguments);
+  var date = toDate(dirtyDate);
+  var amount = toInteger(dirtyAmount);
+
+  if (isNaN(amount)) {
+    return new Date(NaN);
+  }
+
+  if (!amount) {
+    // If 0 months, no-op to avoid changing times in the hour before end of DST
+    return date;
+  }
+
+  var dayOfMonth = date.getDate(); // The JS Date object supports date math by accepting out-of-bounds values for
+  // month, day, etc. For example, new Date(2020, 0, 0) returns 31 Dec 2019 and
+  // new Date(2020, 13, 1) returns 1 Feb 2021.  This is *almost* the behavior we
+  // want except that dates will wrap around the end of a month, meaning that
+  // new Date(2020, 13, 31) will return 3 Mar 2021 not 28 Feb 2021 as desired. So
+  // we'll default to the end of the desired month by adding 1 to the desired
+  // month and using a date of 0 to back up one day to the end of the desired
+  // month.
+
+  var endOfDesiredMonth = new Date(date.getTime());
+  endOfDesiredMonth.setMonth(date.getMonth() + amount + 1, 0);
+  var daysInMonth = endOfDesiredMonth.getDate();
+
+  if (dayOfMonth >= daysInMonth) {
+    // If we're already at the end of the month, then this is the correct date
+    // and we're done.
+    return endOfDesiredMonth;
+  } else {
+    // Otherwise, we now know that setting the original day-of-month value won't
+    // cause an overflow, so set the desired day-of-month. Note that we can't
+    // just set the date of `endOfDesiredMonth` because that object may have had
+    // its time changed in the unusual case where where a DST transition was on
+    // the last day of the month and its local time was in the hour skipped or
+    // repeated next to a DST transition.  So we use `date` instead which is
+    // guaranteed to still have the original time.
+    date.setFullYear(endOfDesiredMonth.getFullYear(), endOfDesiredMonth.getMonth(), dayOfMonth);
+    return date;
+  }
+}
+
+/**
+ * @name addMilliseconds
+ * @category Millisecond Helpers
+ * @summary Add the specified number of milliseconds to the given date.
+ *
+ * @description
+ * Add the specified number of milliseconds to the given date.
+ *
+ * @param {Date|Number} date - the date to be changed
+ * @param {Number} amount - the amount of milliseconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @returns {Date} the new date with the milliseconds added
+ * @throws {TypeError} 2 arguments required
+ *
+ * @example
+ * // Add 750 milliseconds to 10 July 2014 12:45:30.000:
+ * const result = addMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
+ * //=> Thu Jul 10 2014 12:45:30.750
+ */
+
+function addMilliseconds(dirtyDate, dirtyAmount) {
+  requiredArgs(2, arguments);
+  var timestamp = toDate(dirtyDate).getTime();
+  var amount = toInteger(dirtyAmount);
+  return new Date(timestamp + amount);
+}
+
+var defaultOptions = {};
+function getDefaultOptions() {
+  return defaultOptions;
+}
+
+/**
+ * @name startOfWeek
+ * @category Week Helpers
+ * @summary Return the start of a week for the given date.
+ *
+ * @description
+ * Return the start of a week for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|Number} date - the original date
+ * @param {Object} [options] - an object with options.
+ * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
+ * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @returns {Date} the start of a week
+ * @throws {TypeError} 1 argument required
+ * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
+ *
+ * @example
+ * // The start of a week for 2 September 2014 11:55:00:
+ * const result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Sun Aug 31 2014 00:00:00
+ *
+ * @example
+ * // If the week starts on Monday, the start of the week for 2 September 2014 11:55:00:
+ * const result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0), { weekStartsOn: 1 })
+ * //=> Mon Sep 01 2014 00:00:00
+ */
+
+function startOfWeek(dirtyDate, options) {
+  var _ref, _ref2, _ref3, _options$weekStartsOn, _options$locale, _options$locale$optio, _defaultOptions$local, _defaultOptions$local2;
+
+  requiredArgs(1, arguments);
+  var defaultOptions = getDefaultOptions();
+  var weekStartsOn = toInteger((_ref = (_ref2 = (_ref3 = (_options$weekStartsOn = options === null || options === void 0 ? void 0 : options.weekStartsOn) !== null && _options$weekStartsOn !== void 0 ? _options$weekStartsOn : options === null || options === void 0 ? void 0 : (_options$locale = options.locale) === null || _options$locale === void 0 ? void 0 : (_options$locale$optio = _options$locale.options) === null || _options$locale$optio === void 0 ? void 0 : _options$locale$optio.weekStartsOn) !== null && _ref3 !== void 0 ? _ref3 : defaultOptions.weekStartsOn) !== null && _ref2 !== void 0 ? _ref2 : (_defaultOptions$local = defaultOptions.locale) === null || _defaultOptions$local === void 0 ? void 0 : (_defaultOptions$local2 = _defaultOptions$local.options) === null || _defaultOptions$local2 === void 0 ? void 0 : _defaultOptions$local2.weekStartsOn) !== null && _ref !== void 0 ? _ref : 0); // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
+
+  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
+    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively');
+  }
+
+  var date = toDate(dirtyDate);
+  var day = date.getDay();
+  var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn;
+  date.setDate(date.getDate() - diff);
+  date.setHours(0, 0, 0, 0);
+  return date;
+}
 
 /**
  * Google Chrome as of 67.0.3396.87 introduced timezones with offset that includes seconds.
@@ -21406,597 +21655,14 @@ var MILLISECONDS_IN_MINUTE$6 = 60000;
  *
  * This function returns the timezone offset in milliseconds that takes seconds in account.
  */
-var getTimezoneOffsetInMilliseconds$1 = function getTimezoneOffsetInMilliseconds (dirtyDate) {
-  var date = new Date(dirtyDate.getTime());
-  var baseTimezoneOffset = date.getTimezoneOffset();
-  date.setSeconds(0, 0);
-  var millisecondsPartOfTimezoneOffset = date.getTime() % MILLISECONDS_IN_MINUTE$6;
-
-  return baseTimezoneOffset * MILLISECONDS_IN_MINUTE$6 + millisecondsPartOfTimezoneOffset
-};
+function getTimezoneOffsetInMilliseconds(date) {
+  var utcDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds()));
+  utcDate.setUTCFullYear(date.getFullYear());
+  return date.getTime() - utcDate.getTime();
+}
 
 /**
- * @category Common Helpers
- * @summary Is the given argument an instance of Date?
- *
- * @description
- * Is the given argument an instance of Date?
- *
- * @param {*} argument - the argument to check
- * @returns {Boolean} the given argument is an instance of Date
- *
- * @example
- * // Is 'mayonnaise' a Date?
- * var result = isDate('mayonnaise')
- * //=> false
- */
-
-function isDate$2 (argument) {
-  return argument instanceof Date
-}
-
-var is_date = isDate$2;
-
-var getTimezoneOffsetInMilliseconds = getTimezoneOffsetInMilliseconds$1;
-var isDate$1 = is_date;
-
-var MILLISECONDS_IN_HOUR$2 = 3600000;
-var MILLISECONDS_IN_MINUTE$5 = 60000;
-var DEFAULT_ADDITIONAL_DIGITS = 2;
-
-var parseTokenDateTimeDelimeter = /[T ]/;
-var parseTokenPlainTime = /:/;
-
-// year tokens
-var parseTokenYY = /^(\d{2})$/;
-var parseTokensYYY = [
-  /^([+-]\d{2})$/, // 0 additional digits
-  /^([+-]\d{3})$/, // 1 additional digit
-  /^([+-]\d{4})$/ // 2 additional digits
-];
-
-var parseTokenYYYY = /^(\d{4})/;
-var parseTokensYYYYY = [
-  /^([+-]\d{4})/, // 0 additional digits
-  /^([+-]\d{5})/, // 1 additional digit
-  /^([+-]\d{6})/ // 2 additional digits
-];
-
-// date tokens
-var parseTokenMM = /^-(\d{2})$/;
-var parseTokenDDD = /^-?(\d{3})$/;
-var parseTokenMMDD = /^-?(\d{2})-?(\d{2})$/;
-var parseTokenWww = /^-?W(\d{2})$/;
-var parseTokenWwwD = /^-?W(\d{2})-?(\d{1})$/;
-
-// time tokens
-var parseTokenHH = /^(\d{2}([.,]\d*)?)$/;
-var parseTokenHHMM = /^(\d{2}):?(\d{2}([.,]\d*)?)$/;
-var parseTokenHHMMSS = /^(\d{2}):?(\d{2}):?(\d{2}([.,]\d*)?)$/;
-
-// timezone tokens
-var parseTokenTimezone = /([Z+-].*)$/;
-var parseTokenTimezoneZ = /^(Z)$/;
-var parseTokenTimezoneHH = /^([+-])(\d{2})$/;
-var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/;
-
-/**
- * @category Common Helpers
- * @summary Convert the given argument to an instance of Date.
- *
- * @description
- * Convert the given argument to an instance of Date.
- *
- * If the argument is an instance of Date, the function returns its clone.
- *
- * If the argument is a number, it is treated as a timestamp.
- *
- * If an argument is a string, the function tries to parse it.
- * Function accepts complete ISO 8601 formats as well as partial implementations.
- * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
- *
- * If all above fails, the function passes the given argument to Date constructor.
- *
- * @param {Date|String|Number} argument - the value to convert
- * @param {Object} [options] - the object with options
- * @param {0 | 1 | 2} [options.additionalDigits=2] - the additional number of digits in the extended year format
- * @returns {Date} the parsed date in the local time zone
- *
- * @example
- * // Convert string '2014-02-11T11:30:30' to date:
- * var result = parse('2014-02-11T11:30:30')
- * //=> Tue Feb 11 2014 11:30:30
- *
- * @example
- * // Parse string '+02014101',
- * // if the additional number of digits in the extended year format is 1:
- * var result = parse('+02014101', {additionalDigits: 1})
- * //=> Fri Apr 11 2014 00:00:00
- */
-function parse$1r (argument, dirtyOptions) {
-  if (isDate$1(argument)) {
-    // Prevent the date to lose the milliseconds when passed to new Date() in IE10
-    return new Date(argument.getTime())
-  } else if (typeof argument !== 'string') {
-    return new Date(argument)
-  }
-
-  var options = dirtyOptions || {};
-  var additionalDigits = options.additionalDigits;
-  if (additionalDigits == null) {
-    additionalDigits = DEFAULT_ADDITIONAL_DIGITS;
-  } else {
-    additionalDigits = Number(additionalDigits);
-  }
-
-  var dateStrings = splitDateString(argument);
-
-  var parseYearResult = parseYear(dateStrings.date, additionalDigits);
-  var year = parseYearResult.year;
-  var restDateString = parseYearResult.restDateString;
-
-  var date = parseDate(restDateString, year);
-
-  if (date) {
-    var timestamp = date.getTime();
-    var time = 0;
-    var offset;
-
-    if (dateStrings.time) {
-      time = parseTime(dateStrings.time);
-    }
-
-    if (dateStrings.timezone) {
-      offset = parseTimezone(dateStrings.timezone) * MILLISECONDS_IN_MINUTE$5;
-    } else {
-      var fullTime = timestamp + time;
-      var fullTimeDate = new Date(fullTime);
-
-      offset = getTimezoneOffsetInMilliseconds(fullTimeDate);
-
-      // Adjust time when it's coming from DST
-      var fullTimeDateNextDay = new Date(fullTime);
-      fullTimeDateNextDay.setDate(fullTimeDate.getDate() + 1);
-      var offsetDiff =
-        getTimezoneOffsetInMilliseconds(fullTimeDateNextDay) -
-        getTimezoneOffsetInMilliseconds(fullTimeDate);
-      if (offsetDiff > 0) {
-        offset += offsetDiff;
-      }
-    }
-
-    return new Date(timestamp + time + offset)
-  } else {
-    return new Date(argument)
-  }
-}
-
-function splitDateString (dateString) {
-  var dateStrings = {};
-  var array = dateString.split(parseTokenDateTimeDelimeter);
-  var timeString;
-
-  if (parseTokenPlainTime.test(array[0])) {
-    dateStrings.date = null;
-    timeString = array[0];
-  } else {
-    dateStrings.date = array[0];
-    timeString = array[1];
-  }
-
-  if (timeString) {
-    var token = parseTokenTimezone.exec(timeString);
-    if (token) {
-      dateStrings.time = timeString.replace(token[1], '');
-      dateStrings.timezone = token[1];
-    } else {
-      dateStrings.time = timeString;
-    }
-  }
-
-  return dateStrings
-}
-
-function parseYear (dateString, additionalDigits) {
-  var parseTokenYYY = parseTokensYYY[additionalDigits];
-  var parseTokenYYYYY = parseTokensYYYYY[additionalDigits];
-
-  var token;
-
-  // YYYY or ±YYYYY
-  token = parseTokenYYYY.exec(dateString) || parseTokenYYYYY.exec(dateString);
-  if (token) {
-    var yearString = token[1];
-    return {
-      year: parseInt(yearString, 10),
-      restDateString: dateString.slice(yearString.length)
-    }
-  }
-
-  // YY or ±YYY
-  token = parseTokenYY.exec(dateString) || parseTokenYYY.exec(dateString);
-  if (token) {
-    var centuryString = token[1];
-    return {
-      year: parseInt(centuryString, 10) * 100,
-      restDateString: dateString.slice(centuryString.length)
-    }
-  }
-
-  // Invalid ISO-formatted year
-  return {
-    year: null
-  }
-}
-
-function parseDate (dateString, year) {
-  // Invalid ISO-formatted year
-  if (year === null) {
-    return null
-  }
-
-  var token;
-  var date;
-  var month;
-  var week;
-
-  // YYYY
-  if (dateString.length === 0) {
-    date = new Date(0);
-    date.setUTCFullYear(year);
-    return date
-  }
-
-  // YYYY-MM
-  token = parseTokenMM.exec(dateString);
-  if (token) {
-    date = new Date(0);
-    month = parseInt(token[1], 10) - 1;
-    date.setUTCFullYear(year, month);
-    return date
-  }
-
-  // YYYY-DDD or YYYYDDD
-  token = parseTokenDDD.exec(dateString);
-  if (token) {
-    date = new Date(0);
-    var dayOfYear = parseInt(token[1], 10);
-    date.setUTCFullYear(year, 0, dayOfYear);
-    return date
-  }
-
-  // YYYY-MM-DD or YYYYMMDD
-  token = parseTokenMMDD.exec(dateString);
-  if (token) {
-    date = new Date(0);
-    month = parseInt(token[1], 10) - 1;
-    var day = parseInt(token[2], 10);
-    date.setUTCFullYear(year, month, day);
-    return date
-  }
-
-  // YYYY-Www or YYYYWww
-  token = parseTokenWww.exec(dateString);
-  if (token) {
-    week = parseInt(token[1], 10) - 1;
-    return dayOfISOYear(year, week)
-  }
-
-  // YYYY-Www-D or YYYYWwwD
-  token = parseTokenWwwD.exec(dateString);
-  if (token) {
-    week = parseInt(token[1], 10) - 1;
-    var dayOfWeek = parseInt(token[2], 10) - 1;
-    return dayOfISOYear(year, week, dayOfWeek)
-  }
-
-  // Invalid ISO-formatted date
-  return null
-}
-
-function parseTime (timeString) {
-  var token;
-  var hours;
-  var minutes;
-
-  // hh
-  token = parseTokenHH.exec(timeString);
-  if (token) {
-    hours = parseFloat(token[1].replace(',', '.'));
-    return (hours % 24) * MILLISECONDS_IN_HOUR$2
-  }
-
-  // hh:mm or hhmm
-  token = parseTokenHHMM.exec(timeString);
-  if (token) {
-    hours = parseInt(token[1], 10);
-    minutes = parseFloat(token[2].replace(',', '.'));
-    return (hours % 24) * MILLISECONDS_IN_HOUR$2 +
-      minutes * MILLISECONDS_IN_MINUTE$5
-  }
-
-  // hh:mm:ss or hhmmss
-  token = parseTokenHHMMSS.exec(timeString);
-  if (token) {
-    hours = parseInt(token[1], 10);
-    minutes = parseInt(token[2], 10);
-    var seconds = parseFloat(token[3].replace(',', '.'));
-    return (hours % 24) * MILLISECONDS_IN_HOUR$2 +
-      minutes * MILLISECONDS_IN_MINUTE$5 +
-      seconds * 1000
-  }
-
-  // Invalid ISO-formatted time
-  return null
-}
-
-function parseTimezone (timezoneString) {
-  var token;
-  var absoluteOffset;
-
-  // Z
-  token = parseTokenTimezoneZ.exec(timezoneString);
-  if (token) {
-    return 0
-  }
-
-  // ±hh
-  token = parseTokenTimezoneHH.exec(timezoneString);
-  if (token) {
-    absoluteOffset = parseInt(token[2], 10) * 60;
-    return (token[1] === '+') ? -absoluteOffset : absoluteOffset
-  }
-
-  // ±hh:mm or ±hhmm
-  token = parseTokenTimezoneHHMM.exec(timezoneString);
-  if (token) {
-    absoluteOffset = parseInt(token[2], 10) * 60 + parseInt(token[3], 10);
-    return (token[1] === '+') ? -absoluteOffset : absoluteOffset
-  }
-
-  return 0
-}
-
-function dayOfISOYear (isoYear, week, day) {
-  week = week || 0;
-  day = day || 0;
-  var date = new Date(0);
-  date.setUTCFullYear(isoYear, 0, 4);
-  var fourthOfJanuaryDay = date.getUTCDay() || 7;
-  var diff = week * 7 + day + 1 - fourthOfJanuaryDay;
-  date.setUTCDate(date.getUTCDate() + diff);
-  return date
-}
-
-var parse_1 = parse$1r;
-
-var parse$1q = parse_1;
-
-/**
- * @category Day Helpers
- * @summary Add the specified number of days to the given date.
- *
- * @description
- * Add the specified number of days to the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of days to be added
- * @returns {Date} the new date with the days added
- *
- * @example
- * // Add 10 days to 1 September 2014:
- * var result = addDays(new Date(2014, 8, 1), 10)
- * //=> Thu Sep 11 2014 00:00:00
- */
-function addDays$4 (dirtyDate, dirtyAmount) {
-  var date = parse$1q(dirtyDate);
-  var amount = Number(dirtyAmount);
-  date.setDate(date.getDate() + amount);
-  return date
-}
-
-var add_days = addDays$4;
-
-var parse$1p = parse_1;
-
-/**
- * @category Millisecond Helpers
- * @summary Add the specified number of milliseconds to the given date.
- *
- * @description
- * Add the specified number of milliseconds to the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of milliseconds to be added
- * @returns {Date} the new date with the milliseconds added
- *
- * @example
- * // Add 750 milliseconds to 10 July 2014 12:45:30.000:
- * var result = addMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
- * //=> Thu Jul 10 2014 12:45:30.750
- */
-function addMilliseconds$4 (dirtyDate, dirtyAmount) {
-  var timestamp = parse$1p(dirtyDate).getTime();
-  var amount = Number(dirtyAmount);
-  return new Date(timestamp + amount)
-}
-
-var add_milliseconds = addMilliseconds$4;
-
-var addMilliseconds$3 = add_milliseconds;
-
-var MILLISECONDS_IN_HOUR$1 = 3600000;
-
-/**
- * @category Hour Helpers
- * @summary Add the specified number of hours to the given date.
- *
- * @description
- * Add the specified number of hours to the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of hours to be added
- * @returns {Date} the new date with the hours added
- *
- * @example
- * // Add 2 hours to 10 July 2014 23:00:00:
- * var result = addHours(new Date(2014, 6, 10, 23, 0), 2)
- * //=> Fri Jul 11 2014 01:00:00
- */
-function addHours$1 (dirtyDate, dirtyAmount) {
-  var amount = Number(dirtyAmount);
-  return addMilliseconds$3(dirtyDate, amount * MILLISECONDS_IN_HOUR$1)
-}
-
-var add_hours = addHours$1;
-
-var parse$1o = parse_1;
-
-/**
- * @category Week Helpers
- * @summary Return the start of a week for the given date.
- *
- * @description
- * Return the start of a week for the given date.
- * The result will be in the local timezone.
- *
- * @param {Date|String|Number} date - the original date
- * @param {Object} [options] - the object with options
- * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @returns {Date} the start of a week
- *
- * @example
- * // The start of a week for 2 September 2014 11:55:00:
- * var result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0))
- * //=> Sun Aug 31 2014 00:00:00
- *
- * @example
- * // If the week starts on Monday, the start of the week for 2 September 2014 11:55:00:
- * var result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})
- * //=> Mon Sep 01 2014 00:00:00
- */
-function startOfWeek$3 (dirtyDate, dirtyOptions) {
-  var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0;
-
-  var date = parse$1o(dirtyDate);
-  var day = date.getDay();
-  var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn;
-
-  date.setDate(date.getDate() - diff);
-  date.setHours(0, 0, 0, 0);
-  return date
-}
-
-var start_of_week = startOfWeek$3;
-
-var startOfWeek$2 = start_of_week;
-
-/**
- * @category ISO Week Helpers
- * @summary Return the start of an ISO week for the given date.
- *
- * @description
- * Return the start of an ISO week for the given date.
- * The result will be in the local timezone.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the start of an ISO week
- *
- * @example
- * // The start of an ISO week for 2 September 2014 11:55:00:
- * var result = startOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
- * //=> Mon Sep 01 2014 00:00:00
- */
-function startOfISOWeek$6 (dirtyDate) {
-  return startOfWeek$2(dirtyDate, {weekStartsOn: 1})
-}
-
-var start_of_iso_week = startOfISOWeek$6;
-
-var parse$1n = parse_1;
-var startOfISOWeek$5 = start_of_iso_week;
-
-/**
- * @category ISO Week-Numbering Year Helpers
- * @summary Get the ISO week-numbering year of the given date.
- *
- * @description
- * Get the ISO week-numbering year of the given date,
- * which always starts 3 days before the year's first Thursday.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} date - the given date
- * @returns {Number} the ISO week-numbering year
- *
- * @example
- * // Which ISO-week numbering year is 2 January 2005?
- * var result = getISOYear(new Date(2005, 0, 2))
- * //=> 2004
- */
-function getISOYear$6 (dirtyDate) {
-  var date = parse$1n(dirtyDate);
-  var year = date.getFullYear();
-
-  var fourthOfJanuaryOfNextYear = new Date(0);
-  fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4);
-  fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0);
-  var startOfNextYear = startOfISOWeek$5(fourthOfJanuaryOfNextYear);
-
-  var fourthOfJanuaryOfThisYear = new Date(0);
-  fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4);
-  fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0);
-  var startOfThisYear = startOfISOWeek$5(fourthOfJanuaryOfThisYear);
-
-  if (date.getTime() >= startOfNextYear.getTime()) {
-    return year + 1
-  } else if (date.getTime() >= startOfThisYear.getTime()) {
-    return year
-  } else {
-    return year - 1
-  }
-}
-
-var get_iso_year = getISOYear$6;
-
-var getISOYear$5 = get_iso_year;
-var startOfISOWeek$4 = start_of_iso_week;
-
-/**
- * @category ISO Week-Numbering Year Helpers
- * @summary Return the start of an ISO week-numbering year for the given date.
- *
- * @description
- * Return the start of an ISO week-numbering year,
- * which always starts 3 days before the year's first Thursday.
- * The result will be in the local timezone.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the start of an ISO year
- *
- * @example
- * // The start of an ISO week-numbering year for 2 July 2005:
- * var result = startOfISOYear(new Date(2005, 6, 2))
- * //=> Mon Jan 03 2005 00:00:00
- */
-function startOfISOYear$4 (dirtyDate) {
-  var year = getISOYear$5(dirtyDate);
-  var fourthOfJanuary = new Date(0);
-  fourthOfJanuary.setFullYear(year, 0, 4);
-  fourthOfJanuary.setHours(0, 0, 0, 0);
-  var date = startOfISOWeek$4(fourthOfJanuary);
-  return date
-}
-
-var start_of_iso_year = startOfISOYear$4;
-
-var parse$1m = parse_1;
-
-/**
+ * @name startOfDay
  * @category Day Helpers
  * @summary Return the start of a day for the given date.
  *
@@ -22004,2111 +21670,251 @@ var parse$1m = parse_1;
  * Return the start of a day for the given date.
  * The result will be in the local timezone.
  *
- * @param {Date|String|Number} date - the original date
+ * @param {Date|Number} date - the original date
  * @returns {Date} the start of a day
+ * @throws {TypeError} 1 argument required
  *
  * @example
  * // The start of a day for 2 September 2014 11:55:00:
- * var result = startOfDay(new Date(2014, 8, 2, 11, 55, 0))
+ * const result = startOfDay(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 02 2014 00:00:00
  */
-function startOfDay$6 (dirtyDate) {
-  var date = parse$1m(dirtyDate);
+
+function startOfDay(dirtyDate) {
+  requiredArgs(1, arguments);
+  var date = toDate(dirtyDate);
   date.setHours(0, 0, 0, 0);
-  return date
+  return date;
 }
 
-var start_of_day = startOfDay$6;
-
-var startOfDay$5 = start_of_day;
-
-var MILLISECONDS_IN_MINUTE$4 = 60000;
 var MILLISECONDS_IN_DAY$1 = 86400000;
-
 /**
+ * @name differenceInCalendarDays
  * @category Day Helpers
  * @summary Get the number of calendar days between the given dates.
  *
  * @description
- * Get the number of calendar days between the given dates.
+ * Get the number of calendar days between the given dates. This means that the times are removed
+ * from the dates and then the difference in days is calculated.
  *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
+ * @param {Date|Number} dateLeft - the later date
+ * @param {Date|Number} dateRight - the earlier date
  * @returns {Number} the number of calendar days
+ * @throws {TypeError} 2 arguments required
  *
  * @example
  * // How many calendar days are between
  * // 2 July 2011 23:00:00 and 2 July 2012 00:00:00?
- * var result = differenceInCalendarDays(
+ * const result = differenceInCalendarDays(
  *   new Date(2012, 6, 2, 0, 0),
  *   new Date(2011, 6, 2, 23, 0)
  * )
  * //=> 366
+ * // How many calendar days are between
+ * // 2 July 2011 23:59:00 and 3 July 2011 00:01:00?
+ * const result = differenceInCalendarDays(
+ *   new Date(2011, 6, 3, 0, 1),
+ *   new Date(2011, 6, 2, 23, 59)
+ * )
+ * //=> 1
  */
-function differenceInCalendarDays$3 (dirtyDateLeft, dirtyDateRight) {
-  var startOfDayLeft = startOfDay$5(dirtyDateLeft);
-  var startOfDayRight = startOfDay$5(dirtyDateRight);
 
-  var timestampLeft = startOfDayLeft.getTime() -
-    startOfDayLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE$4;
-  var timestampRight = startOfDayRight.getTime() -
-    startOfDayRight.getTimezoneOffset() * MILLISECONDS_IN_MINUTE$4;
-
-  // Round the number of days to the nearest integer
+function differenceInCalendarDays(dirtyDateLeft, dirtyDateRight) {
+  requiredArgs(2, arguments);
+  var startOfDayLeft = startOfDay(dirtyDateLeft);
+  var startOfDayRight = startOfDay(dirtyDateRight);
+  var timestampLeft = startOfDayLeft.getTime() - getTimezoneOffsetInMilliseconds(startOfDayLeft);
+  var timestampRight = startOfDayRight.getTime() - getTimezoneOffsetInMilliseconds(startOfDayRight); // Round the number of days to the nearest integer
   // because the number of milliseconds in a day is not constant
   // (e.g. it's different in the day of the daylight saving time clock shift)
-  return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_DAY$1)
+
+  return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_DAY$1);
 }
 
-var difference_in_calendar_days = differenceInCalendarDays$3;
-
-var parse$1l = parse_1;
-var startOfISOYear$3 = start_of_iso_year;
-var differenceInCalendarDays$2 = difference_in_calendar_days;
-
 /**
- * @category ISO Week-Numbering Year Helpers
- * @summary Set the ISO week-numbering year to the given date.
- *
- * @description
- * Set the ISO week-numbering year to the given date,
- * saving the week number and the weekday number.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} isoYear - the ISO week-numbering year of the new date
- * @returns {Date} the new date with the ISO week-numbering year setted
- *
- * @example
- * // Set ISO week-numbering year 2007 to 29 December 2008:
- * var result = setISOYear(new Date(2008, 11, 29), 2007)
- * //=> Mon Jan 01 2007 00:00:00
- */
-function setISOYear$1 (dirtyDate, dirtyISOYear) {
-  var date = parse$1l(dirtyDate);
-  var isoYear = Number(dirtyISOYear);
-  var diff = differenceInCalendarDays$2(date, startOfISOYear$3(date));
-  var fourthOfJanuary = new Date(0);
-  fourthOfJanuary.setFullYear(isoYear, 0, 4);
-  fourthOfJanuary.setHours(0, 0, 0, 0);
-  date = startOfISOYear$3(fourthOfJanuary);
-  date.setDate(date.getDate() + diff);
-  return date
-}
-
-var set_iso_year = setISOYear$1;
-
-var getISOYear$4 = get_iso_year;
-var setISOYear = set_iso_year;
-
-/**
- * @category ISO Week-Numbering Year Helpers
- * @summary Add the specified number of ISO week-numbering years to the given date.
- *
- * @description
- * Add the specified number of ISO week-numbering years to the given date.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of ISO week-numbering years to be added
- * @returns {Date} the new date with the ISO week-numbering years added
- *
- * @example
- * // Add 5 ISO week-numbering years to 2 July 2010:
- * var result = addISOYears(new Date(2010, 6, 2), 5)
- * //=> Fri Jun 26 2015 00:00:00
- */
-function addISOYears$1 (dirtyDate, dirtyAmount) {
-  var amount = Number(dirtyAmount);
-  return setISOYear(dirtyDate, getISOYear$4(dirtyDate) + amount)
-}
-
-var add_iso_years = addISOYears$1;
-
-var addMilliseconds$2 = add_milliseconds;
-
-var MILLISECONDS_IN_MINUTE$3 = 60000;
-
-/**
- * @category Minute Helpers
- * @summary Add the specified number of minutes to the given date.
- *
- * @description
- * Add the specified number of minutes to the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of minutes to be added
- * @returns {Date} the new date with the minutes added
- *
- * @example
- * // Add 30 minutes to 10 July 2014 12:00:00:
- * var result = addMinutes(new Date(2014, 6, 10, 12, 0), 30)
- * //=> Thu Jul 10 2014 12:30:00
- */
-function addMinutes$1 (dirtyDate, dirtyAmount) {
-  var amount = Number(dirtyAmount);
-  return addMilliseconds$2(dirtyDate, amount * MILLISECONDS_IN_MINUTE$3)
-}
-
-var add_minutes = addMinutes$1;
-
-var parse$1k = parse_1;
-
-/**
- * @category Month Helpers
- * @summary Get the number of days in a month of the given date.
- *
- * @description
- * Get the number of days in a month of the given date.
- *
- * @param {Date|String|Number} date - the given date
- * @returns {Number} the number of days in a month
- *
- * @example
- * // How many days are in February 2000?
- * var result = getDaysInMonth(new Date(2000, 1))
- * //=> 29
- */
-function getDaysInMonth$2 (dirtyDate) {
-  var date = parse$1k(dirtyDate);
-  var year = date.getFullYear();
-  var monthIndex = date.getMonth();
-  var lastDayOfMonth = new Date(0);
-  lastDayOfMonth.setFullYear(year, monthIndex + 1, 0);
-  lastDayOfMonth.setHours(0, 0, 0, 0);
-  return lastDayOfMonth.getDate()
-}
-
-var get_days_in_month = getDaysInMonth$2;
-
-var parse$1j = parse_1;
-var getDaysInMonth$1 = get_days_in_month;
-
-/**
- * @category Month Helpers
- * @summary Add the specified number of months to the given date.
- *
- * @description
- * Add the specified number of months to the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of months to be added
- * @returns {Date} the new date with the months added
- *
- * @example
- * // Add 5 months to 1 September 2014:
- * var result = addMonths(new Date(2014, 8, 1), 5)
- * //=> Sun Feb 01 2015 00:00:00
- */
-function addMonths$3 (dirtyDate, dirtyAmount) {
-  var date = parse$1j(dirtyDate);
-  var amount = Number(dirtyAmount);
-  var desiredMonth = date.getMonth() + amount;
-  var dateWithDesiredMonth = new Date(0);
-  dateWithDesiredMonth.setFullYear(date.getFullYear(), desiredMonth, 1);
-  dateWithDesiredMonth.setHours(0, 0, 0, 0);
-  var daysInMonth = getDaysInMonth$1(dateWithDesiredMonth);
-  // Set the last day of the new month
-  // if the original date was the last day of the longer month
-  date.setMonth(desiredMonth, Math.min(daysInMonth, date.getDate()));
-  return date
-}
-
-var add_months = addMonths$3;
-
-var addMonths$2 = add_months;
-
-/**
- * @category Quarter Helpers
- * @summary Add the specified number of year quarters to the given date.
- *
- * @description
- * Add the specified number of year quarters to the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of quarters to be added
- * @returns {Date} the new date with the quarters added
- *
- * @example
- * // Add 1 quarter to 1 September 2014:
- * var result = addQuarters(new Date(2014, 8, 1), 1)
- * //=> Mon Dec 01 2014 00:00:00
- */
-function addQuarters$1 (dirtyDate, dirtyAmount) {
-  var amount = Number(dirtyAmount);
-  var months = amount * 3;
-  return addMonths$2(dirtyDate, months)
-}
-
-var add_quarters = addQuarters$1;
-
-var addMilliseconds$1 = add_milliseconds;
-
-/**
- * @category Second Helpers
- * @summary Add the specified number of seconds to the given date.
- *
- * @description
- * Add the specified number of seconds to the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of seconds to be added
- * @returns {Date} the new date with the seconds added
- *
- * @example
- * // Add 30 seconds to 10 July 2014 12:45:00:
- * var result = addSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
- * //=> Thu Jul 10 2014 12:45:30
- */
-function addSeconds$1 (dirtyDate, dirtyAmount) {
-  var amount = Number(dirtyAmount);
-  return addMilliseconds$1(dirtyDate, amount * 1000)
-}
-
-var add_seconds = addSeconds$1;
-
-var addDays$3 = add_days;
-
-/**
- * @category Week Helpers
- * @summary Add the specified number of weeks to the given date.
- *
- * @description
- * Add the specified number of week to the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of weeks to be added
- * @returns {Date} the new date with the weeks added
- *
- * @example
- * // Add 4 weeks to 1 September 2014:
- * var result = addWeeks(new Date(2014, 8, 1), 4)
- * //=> Mon Sep 29 2014 00:00:00
- */
-function addWeeks$2 (dirtyDate, dirtyAmount) {
-  var amount = Number(dirtyAmount);
-  var days = amount * 7;
-  return addDays$3(dirtyDate, days)
-}
-
-var add_weeks = addWeeks$2;
-
-var addMonths$1 = add_months;
-
-/**
+ * @name addYears
  * @category Year Helpers
  * @summary Add the specified number of years to the given date.
  *
  * @description
  * Add the specified number of years to the given date.
  *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of years to be added
+ * @param {Date|Number} date - the date to be changed
+ * @param {Number} amount - the amount of years to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the years added
+ * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Add 5 years to 1 September 2014:
- * var result = addYears(new Date(2014, 8, 1), 5)
+ * const result = addYears(new Date(2014, 8, 1), 5)
  * //=> Sun Sep 01 2019 00:00:00
  */
-function addYears$1 (dirtyDate, dirtyAmount) {
-  var amount = Number(dirtyAmount);
-  return addMonths$1(dirtyDate, amount * 12)
+
+function addYears(dirtyDate, dirtyAmount) {
+  requiredArgs(2, arguments);
+  var amount = toInteger(dirtyAmount);
+  return addMonths(dirtyDate, amount * 12);
 }
 
-var add_years = addYears$1;
+/**
+ * Days in 1 week.
+ *
+ * @name daysInWeek
+ * @constant
+ * @type {number}
+ * @default
+ */
+/**
+ * Milliseconds in 1 minute
+ *
+ * @name millisecondsInMinute
+ * @constant
+ * @type {number}
+ * @default
+ */
 
-var parse$1i = parse_1;
+var millisecondsInMinute = 60000;
+/**
+ * Milliseconds in 1 hour
+ *
+ * @name millisecondsInHour
+ * @constant
+ * @type {number}
+ * @default
+ */
+
+var millisecondsInHour = 3600000;
+/**
+ * Milliseconds in 1 second
+ *
+ * @name millisecondsInSecond
+ * @constant
+ * @type {number}
+ * @default
+ */
+
+var millisecondsInSecond = 1000;
 
 /**
- * @category Range Helpers
- * @summary Is the given date range overlapping with another date range?
+ * @name isSameDay
+ * @category Day Helpers
+ * @summary Are the given dates in the same day (and year and month)?
  *
  * @description
- * Is the given date range overlapping with another date range?
+ * Are the given dates in the same day (and year and month)?
  *
- * @param {Date|String|Number} initialRangeStartDate - the start of the initial range
- * @param {Date|String|Number} initialRangeEndDate - the end of the initial range
- * @param {Date|String|Number} comparedRangeStartDate - the start of the range to compare it with
- * @param {Date|String|Number} comparedRangeEndDate - the end of the range to compare it with
- * @returns {Boolean} whether the date ranges are overlapping
- * @throws {Error} startDate of a date range cannot be after its endDate
+ * @param {Date|Number} dateLeft - the first date to check
+ * @param {Date|Number} dateRight - the second date to check
+ * @returns {Boolean} the dates are in the same day (and year and month)
+ * @throws {TypeError} 2 arguments required
  *
  * @example
- * // For overlapping date ranges:
- * areRangesOverlapping(
- *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 17), new Date(2014, 0, 21)
- * )
+ * // Are 4 September 06:00:00 and 4 September 18:00:00 in the same day?
+ * const result = isSameDay(new Date(2014, 8, 4, 6, 0), new Date(2014, 8, 4, 18, 0))
  * //=> true
  *
  * @example
- * // For non-overlapping date ranges:
- * areRangesOverlapping(
- *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 21), new Date(2014, 0, 22)
- * )
+ * // Are 4 September and 4 October in the same day?
+ * const result = isSameDay(new Date(2014, 8, 4), new Date(2014, 9, 4))
+ * //=> false
+ *
+ * @example
+ * // Are 4 September, 2014 and 4 September, 2015 in the same day?
+ * const result = isSameDay(new Date(2014, 8, 4), new Date(2015, 8, 4))
  * //=> false
  */
-function areRangesOverlapping (dirtyInitialRangeStartDate, dirtyInitialRangeEndDate, dirtyComparedRangeStartDate, dirtyComparedRangeEndDate) {
-  var initialStartTime = parse$1i(dirtyInitialRangeStartDate).getTime();
-  var initialEndTime = parse$1i(dirtyInitialRangeEndDate).getTime();
-  var comparedStartTime = parse$1i(dirtyComparedRangeStartDate).getTime();
-  var comparedEndTime = parse$1i(dirtyComparedRangeEndDate).getTime();
 
-  if (initialStartTime > initialEndTime || comparedStartTime > comparedEndTime) {
-    throw new Error('The start of the range cannot be after the end of the range')
-  }
-
-  return initialStartTime < comparedEndTime && comparedStartTime < initialEndTime
+function isSameDay(dirtyDateLeft, dirtyDateRight) {
+  requiredArgs(2, arguments);
+  var dateLeftStartOfDay = startOfDay(dirtyDateLeft);
+  var dateRightStartOfDay = startOfDay(dirtyDateRight);
+  return dateLeftStartOfDay.getTime() === dateRightStartOfDay.getTime();
 }
 
-var are_ranges_overlapping = areRangesOverlapping;
-
-var parse$1h = parse_1;
-
+function _typeof$x(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$x = function _typeof(obj) { return typeof obj; }; } else { _typeof$x = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$x(obj); }
 /**
+ * @name isDate
  * @category Common Helpers
- * @summary Return an index of the closest date from the array comparing to the given date.
+ * @summary Is the given value a date?
  *
  * @description
- * Return an index of the closest date from the array comparing to the given date.
+ * Returns true if the given value is an instance of Date. The function works for dates transferred across iframes.
  *
- * @param {Date|String|Number} dateToCompare - the date to compare with
- * @param {Date[]|String[]|Number[]} datesArray - the array to search
- * @returns {Number} an index of the date closest to the given date
- * @throws {TypeError} the second argument must be an instance of Array
+ * @param {*} value - the value to check
+ * @returns {boolean} true if the given value is a date
+ * @throws {TypeError} 1 arguments required
  *
  * @example
- * // Which date is closer to 6 September 2015?
- * var dateToCompare = new Date(2015, 8, 6)
- * var datesArray = [
- *   new Date(2015, 0, 1),
- *   new Date(2016, 0, 1),
- *   new Date(2017, 0, 1)
- * ]
- * var result = closestIndexTo(dateToCompare, datesArray)
- * //=> 1
+ * // For a valid date:
+ * const result = isDate(new Date())
+ * //=> true
+ *
+ * @example
+ * // For an invalid date:
+ * const result = isDate(new Date(NaN))
+ * //=> true
+ *
+ * @example
+ * // For some value:
+ * const result = isDate('2014-02-31')
+ * //=> false
+ *
+ * @example
+ * // For an object:
+ * const result = isDate({})
+ * //=> false
  */
-function closestIndexTo (dirtyDateToCompare, dirtyDatesArray) {
-  if (!(dirtyDatesArray instanceof Array)) {
-    throw new TypeError(toString.call(dirtyDatesArray) + ' is not an instance of Array')
-  }
 
-  var dateToCompare = parse$1h(dirtyDateToCompare);
-  var timeToCompare = dateToCompare.getTime();
-
-  var result;
-  var minDistance;
-
-  dirtyDatesArray.forEach(function (dirtyDate, index) {
-    var currentDate = parse$1h(dirtyDate);
-    var distance = Math.abs(timeToCompare - currentDate.getTime());
-    if (result === undefined || distance < minDistance) {
-      result = index;
-      minDistance = distance;
-    }
-  });
-
-  return result
+function isDate(value) {
+  requiredArgs(1, arguments);
+  return value instanceof Date || _typeof$x(value) === 'object' && Object.prototype.toString.call(value) === '[object Date]';
 }
 
-var closest_index_to = closestIndexTo;
-
-var parse$1g = parse_1;
-
 /**
+ * @name isValid
  * @category Common Helpers
- * @summary Return a date from the array closest to the given date.
+ * @summary Is the given date valid?
  *
  * @description
- * Return a date from the array closest to the given date.
+ * Returns false if argument is Invalid Date and true otherwise.
+ * Argument is converted to Date using `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * Invalid Date is a Date, whose time value is NaN.
  *
- * @param {Date|String|Number} dateToCompare - the date to compare with
- * @param {Date[]|String[]|Number[]} datesArray - the array to search
- * @returns {Date} the date from the array closest to the given date
- * @throws {TypeError} the second argument must be an instance of Array
+ * Time value of Date: http://es5.github.io/#x15.9.1.1
+ *
+ * @param {*} date - the date to check
+ * @returns {Boolean} the date is valid
+ * @throws {TypeError} 1 argument required
  *
  * @example
- * // Which date is closer to 6 September 2015: 1 January 2000 or 1 January 2030?
- * var dateToCompare = new Date(2015, 8, 6)
- * var result = closestTo(dateToCompare, [
- *   new Date(2000, 0, 1),
- *   new Date(2030, 0, 1)
- * ])
- * //=> Tue Jan 01 2030 00:00:00
+ * // For the valid date:
+ * const result = isValid(new Date(2014, 1, 31))
+ * //=> true
+ *
+ * @example
+ * // For the value, convertable into a date:
+ * const result = isValid(1393804800000)
+ * //=> true
+ *
+ * @example
+ * // For the invalid date:
+ * const result = isValid(new Date(''))
+ * //=> false
  */
-function closestTo (dirtyDateToCompare, dirtyDatesArray) {
-  if (!(dirtyDatesArray instanceof Array)) {
-    throw new TypeError(toString.call(dirtyDatesArray) + ' is not an instance of Array')
+
+function isValid(dirtyDate) {
+  requiredArgs(1, arguments);
+
+  if (!isDate(dirtyDate) && typeof dirtyDate !== 'number') {
+    return false;
   }
 
-  var dateToCompare = parse$1g(dirtyDateToCompare);
-  var timeToCompare = dateToCompare.getTime();
-
-  var result;
-  var minDistance;
-
-  dirtyDatesArray.forEach(function (dirtyDate) {
-    var currentDate = parse$1g(dirtyDate);
-    var distance = Math.abs(timeToCompare - currentDate.getTime());
-    if (result === undefined || distance < minDistance) {
-      result = currentDate;
-      minDistance = distance;
-    }
-  });
-
-  return result
+  var date = toDate(dirtyDate);
+  return !isNaN(Number(date));
 }
-
-var closest_to = closestTo;
-
-var parse$1f = parse_1;
 
 /**
- * @category Common Helpers
- * @summary Compare the two dates and return -1, 0 or 1.
- *
- * @description
- * Compare the two dates and return 1 if the first date is after the second,
- * -1 if the first date is before the second or 0 if dates are equal.
- *
- * @param {Date|String|Number} dateLeft - the first date to compare
- * @param {Date|String|Number} dateRight - the second date to compare
- * @returns {Number} the result of the comparison
- *
- * @example
- * // Compare 11 February 1987 and 10 July 1989:
- * var result = compareAsc(
- *   new Date(1987, 1, 11),
- *   new Date(1989, 6, 10)
- * )
- * //=> -1
- *
- * @example
- * // Sort the array of dates:
- * var result = [
- *   new Date(1995, 6, 2),
- *   new Date(1987, 1, 11),
- *   new Date(1989, 6, 10)
- * ].sort(compareAsc)
- * //=> [
- * //   Wed Feb 11 1987 00:00:00,
- * //   Mon Jul 10 1989 00:00:00,
- * //   Sun Jul 02 1995 00:00:00
- * // ]
- */
-function compareAsc$4 (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse$1f(dirtyDateLeft);
-  var timeLeft = dateLeft.getTime();
-  var dateRight = parse$1f(dirtyDateRight);
-  var timeRight = dateRight.getTime();
-
-  if (timeLeft < timeRight) {
-    return -1
-  } else if (timeLeft > timeRight) {
-    return 1
-  } else {
-    return 0
-  }
-}
-
-var compare_asc = compareAsc$4;
-
-var parse$1e = parse_1;
-
-/**
- * @category Common Helpers
- * @summary Compare the two dates reverse chronologically and return -1, 0 or 1.
- *
- * @description
- * Compare the two dates and return -1 if the first date is after the second,
- * 1 if the first date is before the second or 0 if dates are equal.
- *
- * @param {Date|String|Number} dateLeft - the first date to compare
- * @param {Date|String|Number} dateRight - the second date to compare
- * @returns {Number} the result of the comparison
- *
- * @example
- * // Compare 11 February 1987 and 10 July 1989 reverse chronologically:
- * var result = compareDesc(
- *   new Date(1987, 1, 11),
- *   new Date(1989, 6, 10)
- * )
- * //=> 1
- *
- * @example
- * // Sort the array of dates in reverse chronological order:
- * var result = [
- *   new Date(1995, 6, 2),
- *   new Date(1987, 1, 11),
- *   new Date(1989, 6, 10)
- * ].sort(compareDesc)
- * //=> [
- * //   Sun Jul 02 1995 00:00:00,
- * //   Mon Jul 10 1989 00:00:00,
- * //   Wed Feb 11 1987 00:00:00
- * // ]
- */
-function compareDesc$2 (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse$1e(dirtyDateLeft);
-  var timeLeft = dateLeft.getTime();
-  var dateRight = parse$1e(dirtyDateRight);
-  var timeRight = dateRight.getTime();
-
-  if (timeLeft > timeRight) {
-    return -1
-  } else if (timeLeft < timeRight) {
-    return 1
-  } else {
-    return 0
-  }
-}
-
-var compare_desc = compareDesc$2;
-
-var startOfISOWeek$3 = start_of_iso_week;
-
-var MILLISECONDS_IN_MINUTE$2 = 60000;
-var MILLISECONDS_IN_WEEK$3 = 604800000;
-
-/**
- * @category ISO Week Helpers
- * @summary Get the number of calendar ISO weeks between the given dates.
- *
- * @description
- * Get the number of calendar ISO weeks between the given dates.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} the number of calendar ISO weeks
- *
- * @example
- * // How many calendar ISO weeks are between 6 July 2014 and 21 July 2014?
- * var result = differenceInCalendarISOWeeks(
- *   new Date(2014, 6, 21),
- *   new Date(2014, 6, 6)
- * )
- * //=> 3
- */
-function differenceInCalendarISOWeeks (dirtyDateLeft, dirtyDateRight) {
-  var startOfISOWeekLeft = startOfISOWeek$3(dirtyDateLeft);
-  var startOfISOWeekRight = startOfISOWeek$3(dirtyDateRight);
-
-  var timestampLeft = startOfISOWeekLeft.getTime() -
-    startOfISOWeekLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE$2;
-  var timestampRight = startOfISOWeekRight.getTime() -
-    startOfISOWeekRight.getTimezoneOffset() * MILLISECONDS_IN_MINUTE$2;
-
-  // Round the number of days to the nearest integer
-  // because the number of milliseconds in a week is not constant
-  // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_WEEK$3)
-}
-
-var difference_in_calendar_iso_weeks = differenceInCalendarISOWeeks;
-
-var getISOYear$3 = get_iso_year;
-
-/**
- * @category ISO Week-Numbering Year Helpers
- * @summary Get the number of calendar ISO week-numbering years between the given dates.
- *
- * @description
- * Get the number of calendar ISO week-numbering years between the given dates.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} the number of calendar ISO week-numbering years
- *
- * @example
- * // How many calendar ISO week-numbering years are 1 January 2010 and 1 January 2012?
- * var result = differenceInCalendarISOYears(
- *   new Date(2012, 0, 1),
- *   new Date(2010, 0, 1)
- * )
- * //=> 2
- */
-function differenceInCalendarISOYears$1 (dirtyDateLeft, dirtyDateRight) {
-  return getISOYear$3(dirtyDateLeft) - getISOYear$3(dirtyDateRight)
-}
-
-var difference_in_calendar_iso_years = differenceInCalendarISOYears$1;
-
-var parse$1d = parse_1;
-
-/**
- * @category Month Helpers
- * @summary Get the number of calendar months between the given dates.
- *
- * @description
- * Get the number of calendar months between the given dates.
- *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} the number of calendar months
- *
- * @example
- * // How many calendar months are between 31 January 2014 and 1 September 2014?
- * var result = differenceInCalendarMonths(
- *   new Date(2014, 8, 1),
- *   new Date(2014, 0, 31)
- * )
- * //=> 8
- */
-function differenceInCalendarMonths$1 (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse$1d(dirtyDateLeft);
-  var dateRight = parse$1d(dirtyDateRight);
-
-  var yearDiff = dateLeft.getFullYear() - dateRight.getFullYear();
-  var monthDiff = dateLeft.getMonth() - dateRight.getMonth();
-
-  return yearDiff * 12 + monthDiff
-}
-
-var difference_in_calendar_months = differenceInCalendarMonths$1;
-
-var parse$1c = parse_1;
-
-/**
- * @category Quarter Helpers
- * @summary Get the year quarter of the given date.
- *
- * @description
- * Get the year quarter of the given date.
- *
- * @param {Date|String|Number} date - the given date
- * @returns {Number} the quarter
- *
- * @example
- * // Which quarter is 2 July 2014?
- * var result = getQuarter(new Date(2014, 6, 2))
- * //=> 3
- */
-function getQuarter$1 (dirtyDate) {
-  var date = parse$1c(dirtyDate);
-  var quarter = Math.floor(date.getMonth() / 3) + 1;
-  return quarter
-}
-
-var get_quarter = getQuarter$1;
-
-var getQuarter = get_quarter;
-var parse$1b = parse_1;
-
-/**
- * @category Quarter Helpers
- * @summary Get the number of calendar quarters between the given dates.
- *
- * @description
- * Get the number of calendar quarters between the given dates.
- *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} the number of calendar quarters
- *
- * @example
- * // How many calendar quarters are between 31 December 2013 and 2 July 2014?
- * var result = differenceInCalendarQuarters(
- *   new Date(2014, 6, 2),
- *   new Date(2013, 11, 31)
- * )
- * //=> 3
- */
-function differenceInCalendarQuarters (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse$1b(dirtyDateLeft);
-  var dateRight = parse$1b(dirtyDateRight);
-
-  var yearDiff = dateLeft.getFullYear() - dateRight.getFullYear();
-  var quarterDiff = getQuarter(dateLeft) - getQuarter(dateRight);
-
-  return yearDiff * 4 + quarterDiff
-}
-
-var difference_in_calendar_quarters = differenceInCalendarQuarters;
-
-var startOfWeek$1 = start_of_week;
-
-var MILLISECONDS_IN_MINUTE$1 = 60000;
-var MILLISECONDS_IN_WEEK$2 = 604800000;
-
-/**
- * @category Week Helpers
- * @summary Get the number of calendar weeks between the given dates.
- *
- * @description
- * Get the number of calendar weeks between the given dates.
- *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
- * @param {Object} [options] - the object with options
- * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @returns {Number} the number of calendar weeks
- *
- * @example
- * // How many calendar weeks are between 5 July 2014 and 20 July 2014?
- * var result = differenceInCalendarWeeks(
- *   new Date(2014, 6, 20),
- *   new Date(2014, 6, 5)
- * )
- * //=> 3
- *
- * @example
- * // If the week starts on Monday,
- * // how many calendar weeks are between 5 July 2014 and 20 July 2014?
- * var result = differenceInCalendarWeeks(
- *   new Date(2014, 6, 20),
- *   new Date(2014, 6, 5),
- *   {weekStartsOn: 1}
- * )
- * //=> 2
- */
-function differenceInCalendarWeeks (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
-  var startOfWeekLeft = startOfWeek$1(dirtyDateLeft, dirtyOptions);
-  var startOfWeekRight = startOfWeek$1(dirtyDateRight, dirtyOptions);
-
-  var timestampLeft = startOfWeekLeft.getTime() -
-    startOfWeekLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE$1;
-  var timestampRight = startOfWeekRight.getTime() -
-    startOfWeekRight.getTimezoneOffset() * MILLISECONDS_IN_MINUTE$1;
-
-  // Round the number of days to the nearest integer
-  // because the number of milliseconds in a week is not constant
-  // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_WEEK$2)
-}
-
-var difference_in_calendar_weeks = differenceInCalendarWeeks;
-
-var parse$1a = parse_1;
-
-/**
- * @category Year Helpers
- * @summary Get the number of calendar years between the given dates.
- *
- * @description
- * Get the number of calendar years between the given dates.
- *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} the number of calendar years
- *
- * @example
- * // How many calendar years are between 31 December 2013 and 11 February 2015?
- * var result = differenceInCalendarYears(
- *   new Date(2015, 1, 11),
- *   new Date(2013, 11, 31)
- * )
- * //=> 2
- */
-function differenceInCalendarYears$1 (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse$1a(dirtyDateLeft);
-  var dateRight = parse$1a(dirtyDateRight);
-
-  return dateLeft.getFullYear() - dateRight.getFullYear()
-}
-
-var difference_in_calendar_years = differenceInCalendarYears$1;
-
-var parse$19 = parse_1;
-var differenceInCalendarDays$1 = difference_in_calendar_days;
-var compareAsc$3 = compare_asc;
-
-/**
- * @category Day Helpers
- * @summary Get the number of full days between the given dates.
- *
- * @description
- * Get the number of full days between the given dates.
- *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} the number of full days
- *
- * @example
- * // How many full days are between
- * // 2 July 2011 23:00:00 and 2 July 2012 00:00:00?
- * var result = differenceInDays(
- *   new Date(2012, 6, 2, 0, 0),
- *   new Date(2011, 6, 2, 23, 0)
- * )
- * //=> 365
- */
-function differenceInDays$1 (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse$19(dirtyDateLeft);
-  var dateRight = parse$19(dirtyDateRight);
-
-  var sign = compareAsc$3(dateLeft, dateRight);
-  var difference = Math.abs(differenceInCalendarDays$1(dateLeft, dateRight));
-  dateLeft.setDate(dateLeft.getDate() - sign * difference);
-
-  // Math.abs(diff in full days - diff in calendar days) === 1 if last calendar day is not full
-  // If so, result must be decreased by 1 in absolute value
-  var isLastDayNotFull = compareAsc$3(dateLeft, dateRight) === -sign;
-  return sign * (difference - isLastDayNotFull)
-}
-
-var difference_in_days = differenceInDays$1;
-
-var parse$18 = parse_1;
-
-/**
- * @category Millisecond Helpers
- * @summary Get the number of milliseconds between the given dates.
- *
- * @description
- * Get the number of milliseconds between the given dates.
- *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} the number of milliseconds
- *
- * @example
- * // How many milliseconds are between
- * // 2 July 2014 12:30:20.600 and 2 July 2014 12:30:21.700?
- * var result = differenceInMilliseconds(
- *   new Date(2014, 6, 2, 12, 30, 21, 700),
- *   new Date(2014, 6, 2, 12, 30, 20, 600)
- * )
- * //=> 1100
- */
-function differenceInMilliseconds$3 (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse$18(dirtyDateLeft);
-  var dateRight = parse$18(dirtyDateRight);
-  return dateLeft.getTime() - dateRight.getTime()
-}
-
-var difference_in_milliseconds = differenceInMilliseconds$3;
-
-var differenceInMilliseconds$2 = difference_in_milliseconds;
-
-var MILLISECONDS_IN_HOUR = 3600000;
-
-/**
- * @category Hour Helpers
- * @summary Get the number of hours between the given dates.
- *
- * @description
- * Get the number of hours between the given dates.
- *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} the number of hours
- *
- * @example
- * // How many hours are between 2 July 2014 06:50:00 and 2 July 2014 19:00:00?
- * var result = differenceInHours(
- *   new Date(2014, 6, 2, 19, 0),
- *   new Date(2014, 6, 2, 6, 50)
- * )
- * //=> 12
- */
-function differenceInHours (dirtyDateLeft, dirtyDateRight) {
-  var diff = differenceInMilliseconds$2(dirtyDateLeft, dirtyDateRight) / MILLISECONDS_IN_HOUR;
-  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
-}
-
-var difference_in_hours = differenceInHours;
-
-var addISOYears = add_iso_years;
-
-/**
- * @category ISO Week-Numbering Year Helpers
- * @summary Subtract the specified number of ISO week-numbering years from the given date.
- *
- * @description
- * Subtract the specified number of ISO week-numbering years from the given date.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of ISO week-numbering years to be subtracted
- * @returns {Date} the new date with the ISO week-numbering years subtracted
- *
- * @example
- * // Subtract 5 ISO week-numbering years from 1 September 2014:
- * var result = subISOYears(new Date(2014, 8, 1), 5)
- * //=> Mon Aug 31 2009 00:00:00
- */
-function subISOYears$1 (dirtyDate, dirtyAmount) {
-  var amount = Number(dirtyAmount);
-  return addISOYears(dirtyDate, -amount)
-}
-
-var sub_iso_years = subISOYears$1;
-
-var parse$17 = parse_1;
-var differenceInCalendarISOYears = difference_in_calendar_iso_years;
-var compareAsc$2 = compare_asc;
-var subISOYears = sub_iso_years;
-
-/**
- * @category ISO Week-Numbering Year Helpers
- * @summary Get the number of full ISO week-numbering years between the given dates.
- *
- * @description
- * Get the number of full ISO week-numbering years between the given dates.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} the number of full ISO week-numbering years
- *
- * @example
- * // How many full ISO week-numbering years are between 1 January 2010 and 1 January 2012?
- * var result = differenceInISOYears(
- *   new Date(2012, 0, 1),
- *   new Date(2010, 0, 1)
- * )
- * //=> 1
- */
-function differenceInISOYears (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse$17(dirtyDateLeft);
-  var dateRight = parse$17(dirtyDateRight);
-
-  var sign = compareAsc$2(dateLeft, dateRight);
-  var difference = Math.abs(differenceInCalendarISOYears(dateLeft, dateRight));
-  dateLeft = subISOYears(dateLeft, sign * difference);
-
-  // Math.abs(diff in full ISO years - diff in calendar ISO years) === 1
-  // if last calendar ISO year is not full
-  // If so, result must be decreased by 1 in absolute value
-  var isLastISOYearNotFull = compareAsc$2(dateLeft, dateRight) === -sign;
-  return sign * (difference - isLastISOYearNotFull)
-}
-
-var difference_in_iso_years = differenceInISOYears;
-
-var differenceInMilliseconds$1 = difference_in_milliseconds;
-
-var MILLISECONDS_IN_MINUTE = 60000;
-
-/**
- * @category Minute Helpers
- * @summary Get the number of minutes between the given dates.
- *
- * @description
- * Get the number of minutes between the given dates.
- *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} the number of minutes
- *
- * @example
- * // How many minutes are between 2 July 2014 12:07:59 and 2 July 2014 12:20:00?
- * var result = differenceInMinutes(
- *   new Date(2014, 6, 2, 12, 20, 0),
- *   new Date(2014, 6, 2, 12, 7, 59)
- * )
- * //=> 12
- */
-function differenceInMinutes (dirtyDateLeft, dirtyDateRight) {
-  var diff = differenceInMilliseconds$1(dirtyDateLeft, dirtyDateRight) / MILLISECONDS_IN_MINUTE;
-  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
-}
-
-var difference_in_minutes = differenceInMinutes;
-
-var parse$16 = parse_1;
-var differenceInCalendarMonths = difference_in_calendar_months;
-var compareAsc$1 = compare_asc;
-
-/**
- * @category Month Helpers
- * @summary Get the number of full months between the given dates.
- *
- * @description
- * Get the number of full months between the given dates.
- *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} the number of full months
- *
- * @example
- * // How many full months are between 31 January 2014 and 1 September 2014?
- * var result = differenceInMonths(
- *   new Date(2014, 8, 1),
- *   new Date(2014, 0, 31)
- * )
- * //=> 7
- */
-function differenceInMonths$2 (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse$16(dirtyDateLeft);
-  var dateRight = parse$16(dirtyDateRight);
-
-  var sign = compareAsc$1(dateLeft, dateRight);
-  var difference = Math.abs(differenceInCalendarMonths(dateLeft, dateRight));
-  dateLeft.setMonth(dateLeft.getMonth() - sign * difference);
-
-  // Math.abs(diff in full months - diff in calendar months) === 1 if last calendar month is not full
-  // If so, result must be decreased by 1 in absolute value
-  var isLastMonthNotFull = compareAsc$1(dateLeft, dateRight) === -sign;
-  return sign * (difference - isLastMonthNotFull)
-}
-
-var difference_in_months = differenceInMonths$2;
-
-var differenceInMonths$1 = difference_in_months;
-
-/**
- * @category Quarter Helpers
- * @summary Get the number of full quarters between the given dates.
- *
- * @description
- * Get the number of full quarters between the given dates.
- *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} the number of full quarters
- *
- * @example
- * // How many full quarters are between 31 December 2013 and 2 July 2014?
- * var result = differenceInQuarters(
- *   new Date(2014, 6, 2),
- *   new Date(2013, 11, 31)
- * )
- * //=> 2
- */
-function differenceInQuarters (dirtyDateLeft, dirtyDateRight) {
-  var diff = differenceInMonths$1(dirtyDateLeft, dirtyDateRight) / 3;
-  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
-}
-
-var difference_in_quarters = differenceInQuarters;
-
-var differenceInMilliseconds = difference_in_milliseconds;
-
-/**
- * @category Second Helpers
- * @summary Get the number of seconds between the given dates.
- *
- * @description
- * Get the number of seconds between the given dates.
- *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} the number of seconds
- *
- * @example
- * // How many seconds are between
- * // 2 July 2014 12:30:07.999 and 2 July 2014 12:30:20.000?
- * var result = differenceInSeconds(
- *   new Date(2014, 6, 2, 12, 30, 20, 0),
- *   new Date(2014, 6, 2, 12, 30, 7, 999)
- * )
- * //=> 12
- */
-function differenceInSeconds$2 (dirtyDateLeft, dirtyDateRight) {
-  var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / 1000;
-  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
-}
-
-var difference_in_seconds = differenceInSeconds$2;
-
-var differenceInDays = difference_in_days;
-
-/**
- * @category Week Helpers
- * @summary Get the number of full weeks between the given dates.
- *
- * @description
- * Get the number of full weeks between the given dates.
- *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} the number of full weeks
- *
- * @example
- * // How many full weeks are between 5 July 2014 and 20 July 2014?
- * var result = differenceInWeeks(
- *   new Date(2014, 6, 20),
- *   new Date(2014, 6, 5)
- * )
- * //=> 2
- */
-function differenceInWeeks (dirtyDateLeft, dirtyDateRight) {
-  var diff = differenceInDays(dirtyDateLeft, dirtyDateRight) / 7;
-  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
-}
-
-var difference_in_weeks = differenceInWeeks;
-
-var parse$15 = parse_1;
-var differenceInCalendarYears = difference_in_calendar_years;
-var compareAsc = compare_asc;
-
-/**
- * @category Year Helpers
- * @summary Get the number of full years between the given dates.
- *
- * @description
- * Get the number of full years between the given dates.
- *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} the number of full years
- *
- * @example
- * // How many full years are between 31 December 2013 and 11 February 2015?
- * var result = differenceInYears(
- *   new Date(2015, 1, 11),
- *   new Date(2013, 11, 31)
- * )
- * //=> 1
- */
-function differenceInYears (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse$15(dirtyDateLeft);
-  var dateRight = parse$15(dirtyDateRight);
-
-  var sign = compareAsc(dateLeft, dateRight);
-  var difference = Math.abs(differenceInCalendarYears(dateLeft, dateRight));
-  dateLeft.setFullYear(dateLeft.getFullYear() - sign * difference);
-
-  // Math.abs(diff in full years - diff in calendar years) === 1 if last calendar year is not full
-  // If so, result must be decreased by 1 in absolute value
-  var isLastYearNotFull = compareAsc(dateLeft, dateRight) === -sign;
-  return sign * (difference - isLastYearNotFull)
-}
-
-var difference_in_years = differenceInYears;
-
-function buildDistanceInWordsLocale$b () {
-  var distanceInWordsLocale = {
-    lessThanXSeconds: {
-      one: 'less than a second',
-      other: 'less than {{count}} seconds'
-    },
-
-    xSeconds: {
-      one: '1 second',
-      other: '{{count}} seconds'
-    },
-
-    halfAMinute: 'half a minute',
-
-    lessThanXMinutes: {
-      one: 'less than a minute',
-      other: 'less than {{count}} minutes'
-    },
-
-    xMinutes: {
-      one: '1 minute',
-      other: '{{count}} minutes'
-    },
-
-    aboutXHours: {
-      one: 'about 1 hour',
-      other: 'about {{count}} hours'
-    },
-
-    xHours: {
-      one: '1 hour',
-      other: '{{count}} hours'
-    },
-
-    xDays: {
-      one: '1 day',
-      other: '{{count}} days'
-    },
-
-    aboutXMonths: {
-      one: 'about 1 month',
-      other: 'about {{count}} months'
-    },
-
-    xMonths: {
-      one: '1 month',
-      other: '{{count}} months'
-    },
-
-    aboutXYears: {
-      one: 'about 1 year',
-      other: 'about {{count}} years'
-    },
-
-    xYears: {
-      one: '1 year',
-      other: '{{count}} years'
-    },
-
-    overXYears: {
-      one: 'over 1 year',
-      other: 'over {{count}} years'
-    },
-
-    almostXYears: {
-      one: 'almost 1 year',
-      other: 'almost {{count}} years'
-    }
-  };
-
-  function localize (token, count, options) {
-    options = options || {};
-
-    var result;
-    if (typeof distanceInWordsLocale[token] === 'string') {
-      result = distanceInWordsLocale[token];
-    } else if (count === 1) {
-      result = distanceInWordsLocale[token].one;
-    } else {
-      result = distanceInWordsLocale[token].other.replace('{{count}}', count);
-    }
-
-    if (options.addSuffix) {
-      if (options.comparison > 0) {
-        return 'in ' + result
-      } else {
-        return result + ' ago'
-      }
-    }
-
-    return result
-  }
-
-  return {
-    localize: localize
-  }
-}
-
-var build_distance_in_words_locale$5 = buildDistanceInWordsLocale$b;
-
-var commonFormatterKeys = [
-  'M', 'MM', 'Q', 'D', 'DD', 'DDD', 'DDDD', 'd',
-  'E', 'W', 'WW', 'YY', 'YYYY', 'GG', 'GGGG',
-  'H', 'HH', 'h', 'hh', 'm', 'mm',
-  's', 'ss', 'S', 'SS', 'SSS',
-  'Z', 'ZZ', 'X', 'x'
-];
-
-function buildFormattingTokensRegExp$6 (formatters) {
-  var formatterKeys = [];
-  for (var key in formatters) {
-    if (formatters.hasOwnProperty(key)) {
-      formatterKeys.push(key);
-    }
-  }
-
-  var formattingTokens = commonFormatterKeys
-    .concat(formatterKeys)
-    .sort()
-    .reverse();
-  var formattingTokensRegExp = new RegExp(
-    '(\\[[^\\[]*\\])|(\\\\)?' + '(' + formattingTokens.join('|') + '|.)', 'g'
-  );
-
-  return formattingTokensRegExp
-}
-
-var build_formatting_tokens_reg_exp = buildFormattingTokensRegExp$6;
-
-var buildFormattingTokensRegExp$5 = build_formatting_tokens_reg_exp;
-
-function buildFormatLocale$b () {
-  // Note: in English, the names of days of the week and months are capitalized.
-  // If you are making a new locale based on this one, check if the same is true for the language you're working on.
-  // Generally, formatted dates should look like they are in the middle of a sentence,
-  // e.g. in Spanish language the weekdays and months should be in the lowercase.
-  var months3char = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  var monthsFull = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  var weekdays2char = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
-  var weekdays3char = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  var weekdaysFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  var meridiemUppercase = ['AM', 'PM'];
-  var meridiemLowercase = ['am', 'pm'];
-  var meridiemFull = ['a.m.', 'p.m.'];
-
-  var formatters = {
-    // Month: Jan, Feb, ..., Dec
-    'MMM': function (date) {
-      return months3char[date.getMonth()]
-    },
-
-    // Month: January, February, ..., December
-    'MMMM': function (date) {
-      return monthsFull[date.getMonth()]
-    },
-
-    // Day of week: Su, Mo, ..., Sa
-    'dd': function (date) {
-      return weekdays2char[date.getDay()]
-    },
-
-    // Day of week: Sun, Mon, ..., Sat
-    'ddd': function (date) {
-      return weekdays3char[date.getDay()]
-    },
-
-    // Day of week: Sunday, Monday, ..., Saturday
-    'dddd': function (date) {
-      return weekdaysFull[date.getDay()]
-    },
-
-    // AM, PM
-    'A': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemUppercase[1] : meridiemUppercase[0]
-    },
-
-    // am, pm
-    'a': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemLowercase[1] : meridiemLowercase[0]
-    },
-
-    // a.m., p.m.
-    'aa': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]
-    }
-  };
-
-  // Generate ordinal version of formatters: M -> Mo, D -> Do, etc.
-  var ordinalFormatters = ['M', 'D', 'DDD', 'd', 'Q', 'W'];
-  ordinalFormatters.forEach(function (formatterToken) {
-    formatters[formatterToken + 'o'] = function (date, formatters) {
-      return ordinal$4(formatters[formatterToken](date))
-    };
-  });
-
-  return {
-    formatters: formatters,
-    formattingTokensRegExp: buildFormattingTokensRegExp$5(formatters)
-  }
-}
-
-function ordinal$4 (number) {
-  var rem100 = number % 100;
-  if (rem100 > 20 || rem100 < 10) {
-    switch (rem100 % 10) {
-      case 1:
-        return number + 'st'
-      case 2:
-        return number + 'nd'
-      case 3:
-        return number + 'rd'
-    }
-  }
-  return number + 'th'
-}
-
-var build_format_locale$5 = buildFormatLocale$b;
-
-var buildDistanceInWordsLocale$a = build_distance_in_words_locale$5;
-var buildFormatLocale$a = build_format_locale$5;
-
-/**
- * @category Locales
- * @summary English locale.
- */
-var en$2 = {
-  distanceInWords: buildDistanceInWordsLocale$a(),
-  format: buildFormatLocale$a()
-};
-
-var compareDesc$1 = compare_desc;
-var parse$14 = parse_1;
-var differenceInSeconds$1 = difference_in_seconds;
-var differenceInMonths = difference_in_months;
-var enLocale$2 = en$2;
-
-var MINUTES_IN_DAY$1 = 1440;
-var MINUTES_IN_ALMOST_TWO_DAYS = 2520;
-var MINUTES_IN_MONTH$1 = 43200;
-var MINUTES_IN_TWO_MONTHS = 86400;
-
-/**
- * @category Common Helpers
- * @summary Return the distance between the given dates in words.
- *
- * @description
- * Return the distance between the given dates in words.
- *
- * | Distance between dates                                            | Result              |
- * |-------------------------------------------------------------------|---------------------|
- * | 0 ... 30 secs                                                     | less than a minute  |
- * | 30 secs ... 1 min 30 secs                                         | 1 minute            |
- * | 1 min 30 secs ... 44 mins 30 secs                                 | [2..44] minutes     |
- * | 44 mins ... 30 secs ... 89 mins 30 secs                           | about 1 hour        |
- * | 89 mins 30 secs ... 23 hrs 59 mins 30 secs                        | about [2..24] hours |
- * | 23 hrs 59 mins 30 secs ... 41 hrs 59 mins 30 secs                 | 1 day               |
- * | 41 hrs 59 mins 30 secs ... 29 days 23 hrs 59 mins 30 secs         | [2..30] days        |
- * | 29 days 23 hrs 59 mins 30 secs ... 44 days 23 hrs 59 mins 30 secs | about 1 month       |
- * | 44 days 23 hrs 59 mins 30 secs ... 59 days 23 hrs 59 mins 30 secs | about 2 months      |
- * | 59 days 23 hrs 59 mins 30 secs ... 1 yr                           | [2..12] months      |
- * | 1 yr ... 1 yr 3 months                                            | about 1 year        |
- * | 1 yr 3 months ... 1 yr 9 month s                                  | over 1 year         |
- * | 1 yr 9 months ... 2 yrs                                           | almost 2 years      |
- * | N yrs ... N yrs 3 months                                          | about N years       |
- * | N yrs 3 months ... N yrs 9 months                                 | over N years        |
- * | N yrs 9 months ... N+1 yrs                                        | almost N+1 years    |
- *
- * With `options.includeSeconds == true`:
- * | Distance between dates | Result               |
- * |------------------------|----------------------|
- * | 0 secs ... 5 secs      | less than 5 seconds  |
- * | 5 secs ... 10 secs     | less than 10 seconds |
- * | 10 secs ... 20 secs    | less than 20 seconds |
- * | 20 secs ... 40 secs    | half a minute        |
- * | 40 secs ... 60 secs    | less than a minute   |
- * | 60 secs ... 90 secs    | 1 minute             |
- *
- * @param {Date|String|Number} dateToCompare - the date to compare with
- * @param {Date|String|Number} date - the other date
- * @param {Object} [options] - the object with options
- * @param {Boolean} [options.includeSeconds=false] - distances less than a minute are more detailed
- * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
- * @param {Object} [options.locale=enLocale] - the locale object
- * @returns {String} the distance in words
- *
- * @example
- * // What is the distance between 2 July 2014 and 1 January 2015?
- * var result = distanceInWords(
- *   new Date(2014, 6, 2),
- *   new Date(2015, 0, 1)
- * )
- * //=> '6 months'
- *
- * @example
- * // What is the distance between 1 January 2015 00:00:15
- * // and 1 January 2015 00:00:00, including seconds?
- * var result = distanceInWords(
- *   new Date(2015, 0, 1, 0, 0, 15),
- *   new Date(2015, 0, 1, 0, 0, 0),
- *   {includeSeconds: true}
- * )
- * //=> 'less than 20 seconds'
- *
- * @example
- * // What is the distance from 1 January 2016
- * // to 1 January 2015, with a suffix?
- * var result = distanceInWords(
- *   new Date(2016, 0, 1),
- *   new Date(2015, 0, 1),
- *   {addSuffix: true}
- * )
- * //=> 'about 1 year ago'
- *
- * @example
- * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
- * var eoLocale = require('date-fns/locale/eo')
- * var result = distanceInWords(
- *   new Date(2016, 7, 1),
- *   new Date(2015, 0, 1),
- *   {locale: eoLocale}
- * )
- * //=> 'pli ol 1 jaro'
- */
-function distanceInWords$1 (dirtyDateToCompare, dirtyDate, dirtyOptions) {
-  var options = dirtyOptions || {};
-
-  var comparison = compareDesc$1(dirtyDateToCompare, dirtyDate);
-
-  var locale = options.locale;
-  var localize = enLocale$2.distanceInWords.localize;
-  if (locale && locale.distanceInWords && locale.distanceInWords.localize) {
-    localize = locale.distanceInWords.localize;
-  }
-
-  var localizeOptions = {
-    addSuffix: Boolean(options.addSuffix),
-    comparison: comparison
-  };
-
-  var dateLeft, dateRight;
-  if (comparison > 0) {
-    dateLeft = parse$14(dirtyDateToCompare);
-    dateRight = parse$14(dirtyDate);
-  } else {
-    dateLeft = parse$14(dirtyDate);
-    dateRight = parse$14(dirtyDateToCompare);
-  }
-
-  var seconds = differenceInSeconds$1(dateRight, dateLeft);
-  var offset = dateRight.getTimezoneOffset() - dateLeft.getTimezoneOffset();
-  var minutes = Math.round(seconds / 60) - offset;
-  var months;
-
-  // 0 up to 2 mins
-  if (minutes < 2) {
-    if (options.includeSeconds) {
-      if (seconds < 5) {
-        return localize('lessThanXSeconds', 5, localizeOptions)
-      } else if (seconds < 10) {
-        return localize('lessThanXSeconds', 10, localizeOptions)
-      } else if (seconds < 20) {
-        return localize('lessThanXSeconds', 20, localizeOptions)
-      } else if (seconds < 40) {
-        return localize('halfAMinute', null, localizeOptions)
-      } else if (seconds < 60) {
-        return localize('lessThanXMinutes', 1, localizeOptions)
-      } else {
-        return localize('xMinutes', 1, localizeOptions)
-      }
-    } else {
-      if (minutes === 0) {
-        return localize('lessThanXMinutes', 1, localizeOptions)
-      } else {
-        return localize('xMinutes', minutes, localizeOptions)
-      }
-    }
-
-  // 2 mins up to 0.75 hrs
-  } else if (minutes < 45) {
-    return localize('xMinutes', minutes, localizeOptions)
-
-  // 0.75 hrs up to 1.5 hrs
-  } else if (minutes < 90) {
-    return localize('aboutXHours', 1, localizeOptions)
-
-  // 1.5 hrs up to 24 hrs
-  } else if (minutes < MINUTES_IN_DAY$1) {
-    var hours = Math.round(minutes / 60);
-    return localize('aboutXHours', hours, localizeOptions)
-
-  // 1 day up to 1.75 days
-  } else if (minutes < MINUTES_IN_ALMOST_TWO_DAYS) {
-    return localize('xDays', 1, localizeOptions)
-
-  // 1.75 days up to 30 days
-  } else if (minutes < MINUTES_IN_MONTH$1) {
-    var days = Math.round(minutes / MINUTES_IN_DAY$1);
-    return localize('xDays', days, localizeOptions)
-
-  // 1 month up to 2 months
-  } else if (minutes < MINUTES_IN_TWO_MONTHS) {
-    months = Math.round(minutes / MINUTES_IN_MONTH$1);
-    return localize('aboutXMonths', months, localizeOptions)
-  }
-
-  months = differenceInMonths(dateRight, dateLeft);
-
-  // 2 months up to 12 months
-  if (months < 12) {
-    var nearestMonth = Math.round(minutes / MINUTES_IN_MONTH$1);
-    return localize('xMonths', nearestMonth, localizeOptions)
-
-  // 1 year up to max Date
-  } else {
-    var monthsSinceStartOfYear = months % 12;
-    var years = Math.floor(months / 12);
-
-    // N years up to 1 years 3 months
-    if (monthsSinceStartOfYear < 3) {
-      return localize('aboutXYears', years, localizeOptions)
-
-    // N years 3 months up to N years 9 months
-    } else if (monthsSinceStartOfYear < 9) {
-      return localize('overXYears', years, localizeOptions)
-
-    // N years 9 months up to N year 12 months
-    } else {
-      return localize('almostXYears', years + 1, localizeOptions)
-    }
-  }
-}
-
-var distance_in_words = distanceInWords$1;
-
-var compareDesc = compare_desc;
-var parse$13 = parse_1;
-var differenceInSeconds = difference_in_seconds;
-var enLocale$1 = en$2;
-
-var MINUTES_IN_DAY = 1440;
-var MINUTES_IN_MONTH = 43200;
-var MINUTES_IN_YEAR = 525600;
-
-/**
- * @category Common Helpers
- * @summary Return the distance between the given dates in words.
- *
- * @description
- * Return the distance between the given dates in words, using strict units.
- * This is like `distanceInWords`, but does not use helpers like 'almost', 'over',
- * 'less than' and the like.
- *
- * | Distance between dates | Result              |
- * |------------------------|---------------------|
- * | 0 ... 59 secs          | [0..59] seconds     |
- * | 1 ... 59 mins          | [1..59] minutes     |
- * | 1 ... 23 hrs           | [1..23] hours       |
- * | 1 ... 29 days          | [1..29] days        |
- * | 1 ... 11 months        | [1..11] months      |
- * | 1 ... N years          | [1..N]  years       |
- *
- * @param {Date|String|Number} dateToCompare - the date to compare with
- * @param {Date|String|Number} date - the other date
- * @param {Object} [options] - the object with options
- * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
- * @param {'s'|'m'|'h'|'d'|'M'|'Y'} [options.unit] - if specified, will force a unit
- * @param {'floor'|'ceil'|'round'} [options.partialMethod='floor'] - which way to round partial units
- * @param {Object} [options.locale=enLocale] - the locale object
- * @returns {String} the distance in words
- *
- * @example
- * // What is the distance between 2 July 2014 and 1 January 2015?
- * var result = distanceInWordsStrict(
- *   new Date(2014, 6, 2),
- *   new Date(2015, 0, 2)
- * )
- * //=> '6 months'
- *
- * @example
- * // What is the distance between 1 January 2015 00:00:15
- * // and 1 January 2015 00:00:00?
- * var result = distanceInWordsStrict(
- *   new Date(2015, 0, 1, 0, 0, 15),
- *   new Date(2015, 0, 1, 0, 0, 0),
- * )
- * //=> '15 seconds'
- *
- * @example
- * // What is the distance from 1 January 2016
- * // to 1 January 2015, with a suffix?
- * var result = distanceInWordsStrict(
- *   new Date(2016, 0, 1),
- *   new Date(2015, 0, 1),
- *   {addSuffix: true}
- * )
- * //=> '1 year ago'
- *
- * @example
- * // What is the distance from 1 January 2016
- * // to 1 January 2015, in minutes?
- * var result = distanceInWordsStrict(
- *   new Date(2016, 0, 1),
- *   new Date(2015, 0, 1),
- *   {unit: 'm'}
- * )
- * //=> '525600 minutes'
- *
- * @example
- * // What is the distance from 1 January 2016
- * // to 28 January 2015, in months, rounded up?
- * var result = distanceInWordsStrict(
- *   new Date(2015, 0, 28),
- *   new Date(2015, 0, 1),
- *   {unit: 'M', partialMethod: 'ceil'}
- * )
- * //=> '1 month'
- *
- * @example
- * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
- * var eoLocale = require('date-fns/locale/eo')
- * var result = distanceInWordsStrict(
- *   new Date(2016, 7, 1),
- *   new Date(2015, 0, 1),
- *   {locale: eoLocale}
- * )
- * //=> '1 jaro'
- */
-function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, dirtyOptions) {
-  var options = dirtyOptions || {};
-
-  var comparison = compareDesc(dirtyDateToCompare, dirtyDate);
-
-  var locale = options.locale;
-  var localize = enLocale$1.distanceInWords.localize;
-  if (locale && locale.distanceInWords && locale.distanceInWords.localize) {
-    localize = locale.distanceInWords.localize;
-  }
-
-  var localizeOptions = {
-    addSuffix: Boolean(options.addSuffix),
-    comparison: comparison
-  };
-
-  var dateLeft, dateRight;
-  if (comparison > 0) {
-    dateLeft = parse$13(dirtyDateToCompare);
-    dateRight = parse$13(dirtyDate);
-  } else {
-    dateLeft = parse$13(dirtyDate);
-    dateRight = parse$13(dirtyDateToCompare);
-  }
-
-  var unit;
-  var mathPartial = Math[options.partialMethod ? String(options.partialMethod) : 'floor'];
-  var seconds = differenceInSeconds(dateRight, dateLeft);
-  var offset = dateRight.getTimezoneOffset() - dateLeft.getTimezoneOffset();
-  var minutes = mathPartial(seconds / 60) - offset;
-  var hours, days, months, years;
-
-  if (options.unit) {
-    unit = String(options.unit);
-  } else {
-    if (minutes < 1) {
-      unit = 's';
-    } else if (minutes < 60) {
-      unit = 'm';
-    } else if (minutes < MINUTES_IN_DAY) {
-      unit = 'h';
-    } else if (minutes < MINUTES_IN_MONTH) {
-      unit = 'd';
-    } else if (minutes < MINUTES_IN_YEAR) {
-      unit = 'M';
-    } else {
-      unit = 'Y';
-    }
-  }
-
-  // 0 up to 60 seconds
-  if (unit === 's') {
-    return localize('xSeconds', seconds, localizeOptions)
-
-  // 1 up to 60 mins
-  } else if (unit === 'm') {
-    return localize('xMinutes', minutes, localizeOptions)
-
-  // 1 up to 24 hours
-  } else if (unit === 'h') {
-    hours = mathPartial(minutes / 60);
-    return localize('xHours', hours, localizeOptions)
-
-  // 1 up to 30 days
-  } else if (unit === 'd') {
-    days = mathPartial(minutes / MINUTES_IN_DAY);
-    return localize('xDays', days, localizeOptions)
-
-  // 1 up to 12 months
-  } else if (unit === 'M') {
-    months = mathPartial(minutes / MINUTES_IN_MONTH);
-    return localize('xMonths', months, localizeOptions)
-
-  // 1 year up to max Date
-  } else if (unit === 'Y') {
-    years = mathPartial(minutes / MINUTES_IN_YEAR);
-    return localize('xYears', years, localizeOptions)
-  }
-
-  throw new Error('Unknown unit: ' + unit)
-}
-
-var distance_in_words_strict = distanceInWordsStrict;
-
-var distanceInWords = distance_in_words;
-
-/**
- * @category Common Helpers
- * @summary Return the distance between the given date and now in words.
- *
- * @description
- * Return the distance between the given date and now in words.
- *
- * | Distance to now                                                   | Result              |
- * |-------------------------------------------------------------------|---------------------|
- * | 0 ... 30 secs                                                     | less than a minute  |
- * | 30 secs ... 1 min 30 secs                                         | 1 minute            |
- * | 1 min 30 secs ... 44 mins 30 secs                                 | [2..44] minutes     |
- * | 44 mins ... 30 secs ... 89 mins 30 secs                           | about 1 hour        |
- * | 89 mins 30 secs ... 23 hrs 59 mins 30 secs                        | about [2..24] hours |
- * | 23 hrs 59 mins 30 secs ... 41 hrs 59 mins 30 secs                 | 1 day               |
- * | 41 hrs 59 mins 30 secs ... 29 days 23 hrs 59 mins 30 secs         | [2..30] days        |
- * | 29 days 23 hrs 59 mins 30 secs ... 44 days 23 hrs 59 mins 30 secs | about 1 month       |
- * | 44 days 23 hrs 59 mins 30 secs ... 59 days 23 hrs 59 mins 30 secs | about 2 months      |
- * | 59 days 23 hrs 59 mins 30 secs ... 1 yr                           | [2..12] months      |
- * | 1 yr ... 1 yr 3 months                                            | about 1 year        |
- * | 1 yr 3 months ... 1 yr 9 month s                                  | over 1 year         |
- * | 1 yr 9 months ... 2 yrs                                           | almost 2 years      |
- * | N yrs ... N yrs 3 months                                          | about N years       |
- * | N yrs 3 months ... N yrs 9 months                                 | over N years        |
- * | N yrs 9 months ... N+1 yrs                                        | almost N+1 years    |
- *
- * With `options.includeSeconds == true`:
- * | Distance to now     | Result               |
- * |---------------------|----------------------|
- * | 0 secs ... 5 secs   | less than 5 seconds  |
- * | 5 secs ... 10 secs  | less than 10 seconds |
- * | 10 secs ... 20 secs | less than 20 seconds |
- * | 20 secs ... 40 secs | half a minute        |
- * | 40 secs ... 60 secs | less than a minute   |
- * | 60 secs ... 90 secs | 1 minute             |
- *
- * @param {Date|String|Number} date - the given date
- * @param {Object} [options] - the object with options
- * @param {Boolean} [options.includeSeconds=false] - distances less than a minute are more detailed
- * @param {Boolean} [options.addSuffix=false] - result specifies if the second date is earlier or later than the first
- * @param {Object} [options.locale=enLocale] - the locale object
- * @returns {String} the distance in words
- *
- * @example
- * // If today is 1 January 2015, what is the distance to 2 July 2014?
- * var result = distanceInWordsToNow(
- *   new Date(2014, 6, 2)
- * )
- * //=> '6 months'
- *
- * @example
- * // If now is 1 January 2015 00:00:00,
- * // what is the distance to 1 January 2015 00:00:15, including seconds?
- * var result = distanceInWordsToNow(
- *   new Date(2015, 0, 1, 0, 0, 15),
- *   {includeSeconds: true}
- * )
- * //=> 'less than 20 seconds'
- *
- * @example
- * // If today is 1 January 2015,
- * // what is the distance to 1 January 2016, with a suffix?
- * var result = distanceInWordsToNow(
- *   new Date(2016, 0, 1),
- *   {addSuffix: true}
- * )
- * //=> 'in about 1 year'
- *
- * @example
- * // If today is 1 January 2015,
- * // what is the distance to 1 August 2016 in Esperanto?
- * var eoLocale = require('date-fns/locale/eo')
- * var result = distanceInWordsToNow(
- *   new Date(2016, 7, 1),
- *   {locale: eoLocale}
- * )
- * //=> 'pli ol 1 jaro'
- */
-function distanceInWordsToNow (dirtyDate, dirtyOptions) {
-  return distanceInWords(Date.now(), dirtyDate, dirtyOptions)
-}
-
-var distance_in_words_to_now = distanceInWordsToNow;
-
-var parse$12 = parse_1;
-
-/**
- * @category Day Helpers
- * @summary Return the array of dates within the specified range.
- *
- * @description
- * Return the array of dates within the specified range.
- *
- * @param {Date|String|Number} startDate - the first date
- * @param {Date|String|Number} endDate - the last date
- * @param {Number} [step=1] - the step between each day
- * @returns {Date[]} the array with starts of days from the day of startDate to the day of endDate
- * @throws {Error} startDate cannot be after endDate
- *
- * @example
- * // Each day between 6 October 2014 and 10 October 2014:
- * var result = eachDay(
- *   new Date(2014, 9, 6),
- *   new Date(2014, 9, 10)
- * )
- * //=> [
- * //   Mon Oct 06 2014 00:00:00,
- * //   Tue Oct 07 2014 00:00:00,
- * //   Wed Oct 08 2014 00:00:00,
- * //   Thu Oct 09 2014 00:00:00,
- * //   Fri Oct 10 2014 00:00:00
- * // ]
- */
-function eachDay (dirtyStartDate, dirtyEndDate, dirtyStep) {
-  var startDate = parse$12(dirtyStartDate);
-  var endDate = parse$12(dirtyEndDate);
-  var step = dirtyStep !== undefined ? dirtyStep : 1;
-
-  var endTime = endDate.getTime();
-
-  if (startDate.getTime() > endTime) {
-    throw new Error('The first date cannot be after the second date')
-  }
-
-  var dates = [];
-
-  var currentDate = startDate;
-  currentDate.setHours(0, 0, 0, 0);
-
-  while (currentDate.getTime() <= endTime) {
-    dates.push(parse$12(currentDate));
-    currentDate.setDate(currentDate.getDate() + step);
-  }
-
-  return dates
-}
-
-var each_day = eachDay;
-
-var parse$11 = parse_1;
-
-/**
- * @category Day Helpers
- * @summary Return the end of a day for the given date.
- *
- * @description
- * Return the end of a day for the given date.
- * The result will be in the local timezone.
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the end of a day
- *
- * @example
- * // The end of a day for 2 September 2014 11:55:00:
- * var result = endOfDay(new Date(2014, 8, 2, 11, 55, 0))
- * //=> Tue Sep 02 2014 23:59:59.999
- */
-function endOfDay$2 (dirtyDate) {
-  var date = parse$11(dirtyDate);
-  date.setHours(23, 59, 59, 999);
-  return date
-}
-
-var end_of_day = endOfDay$2;
-
-var parse$10 = parse_1;
-
-/**
- * @category Hour Helpers
- * @summary Return the end of an hour for the given date.
- *
- * @description
- * Return the end of an hour for the given date.
- * The result will be in the local timezone.
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the end of an hour
- *
- * @example
- * // The end of an hour for 2 September 2014 11:55:00:
- * var result = endOfHour(new Date(2014, 8, 2, 11, 55))
- * //=> Tue Sep 02 2014 11:59:59.999
- */
-function endOfHour (dirtyDate) {
-  var date = parse$10(dirtyDate);
-  date.setMinutes(59, 59, 999);
-  return date
-}
-
-var end_of_hour = endOfHour;
-
-var parse$$ = parse_1;
-
-/**
- * @category Week Helpers
- * @summary Return the end of a week for the given date.
- *
- * @description
- * Return the end of a week for the given date.
- * The result will be in the local timezone.
- *
- * @param {Date|String|Number} date - the original date
- * @param {Object} [options] - the object with options
- * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @returns {Date} the end of a week
- *
- * @example
- * // The end of a week for 2 September 2014 11:55:00:
- * var result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0))
- * //=> Sat Sep 06 2014 23:59:59.999
- *
- * @example
- * // If the week starts on Monday, the end of the week for 2 September 2014 11:55:00:
- * var result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})
- * //=> Sun Sep 07 2014 23:59:59.999
- */
-function endOfWeek$1 (dirtyDate, dirtyOptions) {
-  var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0;
-
-  var date = parse$$(dirtyDate);
-  var day = date.getDay();
-  var diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn);
-
-  date.setDate(date.getDate() + diff);
-  date.setHours(23, 59, 59, 999);
-  return date
-}
-
-var end_of_week = endOfWeek$1;
-
-var endOfWeek = end_of_week;
-
-/**
- * @category ISO Week Helpers
- * @summary Return the end of an ISO week for the given date.
- *
- * @description
- * Return the end of an ISO week for the given date.
- * The result will be in the local timezone.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the end of an ISO week
- *
- * @example
- * // The end of an ISO week for 2 September 2014 11:55:00:
- * var result = endOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
- * //=> Sun Sep 07 2014 23:59:59.999
- */
-function endOfISOWeek (dirtyDate) {
-  return endOfWeek(dirtyDate, {weekStartsOn: 1})
-}
-
-var end_of_iso_week = endOfISOWeek;
-
-var getISOYear$2 = get_iso_year;
-var startOfISOWeek$2 = start_of_iso_week;
-
-/**
- * @category ISO Week-Numbering Year Helpers
- * @summary Return the end of an ISO week-numbering year for the given date.
- *
- * @description
- * Return the end of an ISO week-numbering year,
- * which always starts 3 days before the year's first Thursday.
- * The result will be in the local timezone.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the end of an ISO week-numbering year
- *
- * @example
- * // The end of an ISO week-numbering year for 2 July 2005:
- * var result = endOfISOYear(new Date(2005, 6, 2))
- * //=> Sun Jan 01 2006 23:59:59.999
- */
-function endOfISOYear (dirtyDate) {
-  var year = getISOYear$2(dirtyDate);
-  var fourthOfJanuaryOfNextYear = new Date(0);
-  fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4);
-  fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0);
-  var date = startOfISOWeek$2(fourthOfJanuaryOfNextYear);
-  date.setMilliseconds(date.getMilliseconds() - 1);
-  return date
-}
-
-var end_of_iso_year = endOfISOYear;
-
-var parse$_ = parse_1;
-
-/**
- * @category Minute Helpers
- * @summary Return the end of a minute for the given date.
- *
- * @description
- * Return the end of a minute for the given date.
- * The result will be in the local timezone.
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the end of a minute
- *
- * @example
- * // The end of a minute for 1 December 2014 22:15:45.400:
- * var result = endOfMinute(new Date(2014, 11, 1, 22, 15, 45, 400))
- * //=> Mon Dec 01 2014 22:15:59.999
- */
-function endOfMinute (dirtyDate) {
-  var date = parse$_(dirtyDate);
-  date.setSeconds(59, 999);
-  return date
-}
-
-var end_of_minute = endOfMinute;
-
-var parse$Z = parse_1;
-
-/**
+ * @name endOfMonth
  * @category Month Helpers
  * @summary Return the end of a month for the given date.
  *
@@ -24116,2781 +21922,27 @@ var parse$Z = parse_1;
  * Return the end of a month for the given date.
  * The result will be in the local timezone.
  *
- * @param {Date|String|Number} date - the original date
+ * @param {Date|Number} date - the original date
  * @returns {Date} the end of a month
+ * @throws {TypeError} 1 argument required
  *
  * @example
  * // The end of a month for 2 September 2014 11:55:00:
- * var result = endOfMonth(new Date(2014, 8, 2, 11, 55, 0))
+ * const result = endOfMonth(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 23:59:59.999
  */
-function endOfMonth$1 (dirtyDate) {
-  var date = parse$Z(dirtyDate);
+
+function endOfMonth(dirtyDate) {
+  requiredArgs(1, arguments);
+  var date = toDate(dirtyDate);
   var month = date.getMonth();
   date.setFullYear(date.getFullYear(), month + 1, 0);
   date.setHours(23, 59, 59, 999);
-  return date
+  return date;
 }
 
-var end_of_month = endOfMonth$1;
-
-var parse$Y = parse_1;
-
-/**
- * @category Quarter Helpers
- * @summary Return the end of a year quarter for the given date.
- *
- * @description
- * Return the end of a year quarter for the given date.
- * The result will be in the local timezone.
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the end of a quarter
- *
- * @example
- * // The end of a quarter for 2 September 2014 11:55:00:
- * var result = endOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
- * //=> Tue Sep 30 2014 23:59:59.999
- */
-function endOfQuarter (dirtyDate) {
-  var date = parse$Y(dirtyDate);
-  var currentMonth = date.getMonth();
-  var month = currentMonth - currentMonth % 3 + 3;
-  date.setMonth(month, 0);
-  date.setHours(23, 59, 59, 999);
-  return date
-}
-
-var end_of_quarter = endOfQuarter;
-
-var parse$X = parse_1;
-
-/**
- * @category Second Helpers
- * @summary Return the end of a second for the given date.
- *
- * @description
- * Return the end of a second for the given date.
- * The result will be in the local timezone.
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the end of a second
- *
- * @example
- * // The end of a second for 1 December 2014 22:15:45.400:
- * var result = endOfSecond(new Date(2014, 11, 1, 22, 15, 45, 400))
- * //=> Mon Dec 01 2014 22:15:45.999
- */
-function endOfSecond (dirtyDate) {
-  var date = parse$X(dirtyDate);
-  date.setMilliseconds(999);
-  return date
-}
-
-var end_of_second = endOfSecond;
-
-var endOfDay$1 = end_of_day;
-
-/**
- * @category Day Helpers
- * @summary Return the end of today.
- *
- * @description
- * Return the end of today.
- *
- * @returns {Date} the end of today
- *
- * @example
- * // If today is 6 October 2014:
- * var result = endOfToday()
- * //=> Mon Oct 6 2014 23:59:59.999
- */
-function endOfToday () {
-  return endOfDay$1(new Date())
-}
-
-var end_of_today = endOfToday;
-
-/**
- * @category Day Helpers
- * @summary Return the end of tomorrow.
- *
- * @description
- * Return the end of tomorrow.
- *
- * @returns {Date} the end of tomorrow
- *
- * @example
- * // If today is 6 October 2014:
- * var result = endOfTomorrow()
- * //=> Tue Oct 7 2014 23:59:59.999
- */
-
-function endOfTomorrow () {
-  var now = new Date();
-  var year = now.getFullYear();
-  var month = now.getMonth();
-  var day = now.getDate();
-
-  var date = new Date(0);
-  date.setFullYear(year, month, day + 1);
-  date.setHours(23, 59, 59, 999);
-  return date
-}
-
-var end_of_tomorrow = endOfTomorrow;
-
-var parse$W = parse_1;
-
-/**
- * @category Year Helpers
- * @summary Return the end of a year for the given date.
- *
- * @description
- * Return the end of a year for the given date.
- * The result will be in the local timezone.
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the end of a year
- *
- * @example
- * // The end of a year for 2 September 2014 11:55:00:
- * var result = endOfYear(new Date(2014, 8, 2, 11, 55, 00))
- * //=> Wed Dec 31 2014 23:59:59.999
- */
-function endOfYear (dirtyDate) {
-  var date = parse$W(dirtyDate);
-  var year = date.getFullYear();
-  date.setFullYear(year + 1, 0, 0);
-  date.setHours(23, 59, 59, 999);
-  return date
-}
-
-var end_of_year = endOfYear;
-
-/**
- * @category Day Helpers
- * @summary Return the end of yesterday.
- *
- * @description
- * Return the end of yesterday.
- *
- * @returns {Date} the end of yesterday
- *
- * @example
- * // If today is 6 October 2014:
- * var result = endOfYesterday()
- * //=> Sun Oct 5 2014 23:59:59.999
- */
-
-function endOfYesterday () {
-  var now = new Date();
-  var year = now.getFullYear();
-  var month = now.getMonth();
-  var day = now.getDate();
-
-  var date = new Date(0);
-  date.setFullYear(year, month, day - 1);
-  date.setHours(23, 59, 59, 999);
-  return date
-}
-
-var end_of_yesterday = endOfYesterday;
-
-var parse$V = parse_1;
-
-/**
- * @category Year Helpers
- * @summary Return the start of a year for the given date.
- *
- * @description
- * Return the start of a year for the given date.
- * The result will be in the local timezone.
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the start of a year
- *
- * @example
- * // The start of a year for 2 September 2014 11:55:00:
- * var result = startOfYear(new Date(2014, 8, 2, 11, 55, 00))
- * //=> Wed Jan 01 2014 00:00:00
- */
-function startOfYear$1 (dirtyDate) {
-  var cleanDate = parse$V(dirtyDate);
-  var date = new Date(0);
-  date.setFullYear(cleanDate.getFullYear(), 0, 1);
-  date.setHours(0, 0, 0, 0);
-  return date
-}
-
-var start_of_year = startOfYear$1;
-
-var parse$U = parse_1;
-var startOfYear = start_of_year;
-var differenceInCalendarDays = difference_in_calendar_days;
-
-/**
- * @category Day Helpers
- * @summary Get the day of the year of the given date.
- *
- * @description
- * Get the day of the year of the given date.
- *
- * @param {Date|String|Number} date - the given date
- * @returns {Number} the day of year
- *
- * @example
- * // Which day of the year is 2 July 2014?
- * var result = getDayOfYear(new Date(2014, 6, 2))
- * //=> 183
- */
-function getDayOfYear$1 (dirtyDate) {
-  var date = parse$U(dirtyDate);
-  var diff = differenceInCalendarDays(date, startOfYear(date));
-  var dayOfYear = diff + 1;
-  return dayOfYear
-}
-
-var get_day_of_year = getDayOfYear$1;
-
-var parse$T = parse_1;
-var startOfISOWeek$1 = start_of_iso_week;
-var startOfISOYear$2 = start_of_iso_year;
-
-var MILLISECONDS_IN_WEEK$1 = 604800000;
-
-/**
- * @category ISO Week Helpers
- * @summary Get the ISO week of the given date.
- *
- * @description
- * Get the ISO week of the given date.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} date - the given date
- * @returns {Number} the ISO week
- *
- * @example
- * // Which week of the ISO-week numbering year is 2 January 2005?
- * var result = getISOWeek(new Date(2005, 0, 2))
- * //=> 53
- */
-function getISOWeek$2 (dirtyDate) {
-  var date = parse$T(dirtyDate);
-  var diff = startOfISOWeek$1(date).getTime() - startOfISOYear$2(date).getTime();
-
-  // Round the number of days to the nearest integer
-  // because the number of milliseconds in a week is not constant
-  // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.round(diff / MILLISECONDS_IN_WEEK$1) + 1
-}
-
-var get_iso_week = getISOWeek$2;
-
-var isDate = is_date;
-
-/**
- * @category Common Helpers
- * @summary Is the given date valid?
- *
- * @description
- * Returns false if argument is Invalid Date and true otherwise.
- * Invalid Date is a Date, whose time value is NaN.
- *
- * Time value of Date: http://es5.github.io/#x15.9.1.1
- *
- * @param {Date} date - the date to check
- * @returns {Boolean} the date is valid
- * @throws {TypeError} argument must be an instance of Date
- *
- * @example
- * // For the valid date:
- * var result = isValid(new Date(2014, 1, 31))
- * //=> true
- *
- * @example
- * // For the invalid date:
- * var result = isValid(new Date(''))
- * //=> false
- */
-function isValid$1 (dirtyDate) {
-  if (isDate(dirtyDate)) {
-    return !isNaN(dirtyDate)
-  } else {
-    throw new TypeError(toString.call(dirtyDate) + ' is not an instance of Date')
-  }
-}
-
-var is_valid = isValid$1;
-
-var getDayOfYear = get_day_of_year;
-var getISOWeek$1 = get_iso_week;
-var getISOYear$1 = get_iso_year;
-var parse$S = parse_1;
-var isValid = is_valid;
-var enLocale = en$2;
-
-/**
- * @category Common Helpers
- * @summary Format the date.
- *
- * @description
- * Return the formatted date string in the given format.
- *
- * Accepted tokens:
- * | Unit                    | Token | Result examples                  |
- * |-------------------------|-------|----------------------------------|
- * | Month                   | M     | 1, 2, ..., 12                    |
- * |                         | Mo    | 1st, 2nd, ..., 12th              |
- * |                         | MM    | 01, 02, ..., 12                  |
- * |                         | MMM   | Jan, Feb, ..., Dec               |
- * |                         | MMMM  | January, February, ..., December |
- * | Quarter                 | Q     | 1, 2, 3, 4                       |
- * |                         | Qo    | 1st, 2nd, 3rd, 4th               |
- * | Day of month            | D     | 1, 2, ..., 31                    |
- * |                         | Do    | 1st, 2nd, ..., 31st              |
- * |                         | DD    | 01, 02, ..., 31                  |
- * | Day of year             | DDD   | 1, 2, ..., 366                   |
- * |                         | DDDo  | 1st, 2nd, ..., 366th             |
- * |                         | DDDD  | 001, 002, ..., 366               |
- * | Day of week             | d     | 0, 1, ..., 6                     |
- * |                         | do    | 0th, 1st, ..., 6th               |
- * |                         | dd    | Su, Mo, ..., Sa                  |
- * |                         | ddd   | Sun, Mon, ..., Sat               |
- * |                         | dddd  | Sunday, Monday, ..., Saturday    |
- * | Day of ISO week         | E     | 1, 2, ..., 7                     |
- * | ISO week                | W     | 1, 2, ..., 53                    |
- * |                         | Wo    | 1st, 2nd, ..., 53rd              |
- * |                         | WW    | 01, 02, ..., 53                  |
- * | Year                    | YY    | 00, 01, ..., 99                  |
- * |                         | YYYY  | 1900, 1901, ..., 2099            |
- * | ISO week-numbering year | GG    | 00, 01, ..., 99                  |
- * |                         | GGGG  | 1900, 1901, ..., 2099            |
- * | AM/PM                   | A     | AM, PM                           |
- * |                         | a     | am, pm                           |
- * |                         | aa    | a.m., p.m.                       |
- * | Hour                    | H     | 0, 1, ... 23                     |
- * |                         | HH    | 00, 01, ... 23                   |
- * |                         | h     | 1, 2, ..., 12                    |
- * |                         | hh    | 01, 02, ..., 12                  |
- * | Minute                  | m     | 0, 1, ..., 59                    |
- * |                         | mm    | 00, 01, ..., 59                  |
- * | Second                  | s     | 0, 1, ..., 59                    |
- * |                         | ss    | 00, 01, ..., 59                  |
- * | 1/10 of second          | S     | 0, 1, ..., 9                     |
- * | 1/100 of second         | SS    | 00, 01, ..., 99                  |
- * | Millisecond             | SSS   | 000, 001, ..., 999               |
- * | Timezone                | Z     | -01:00, +00:00, ... +12:00       |
- * |                         | ZZ    | -0100, +0000, ..., +1200         |
- * | Seconds timestamp       | X     | 512969520                        |
- * | Milliseconds timestamp  | x     | 512969520900                     |
- *
- * The characters wrapped in square brackets are escaped.
- *
- * The result may vary by locale.
- *
- * @param {Date|String|Number} date - the original date
- * @param {String} [format='YYYY-MM-DDTHH:mm:ss.SSSZ'] - the string of tokens
- * @param {Object} [options] - the object with options
- * @param {Object} [options.locale=enLocale] - the locale object
- * @returns {String} the formatted date string
- *
- * @example
- * // Represent 11 February 2014 in middle-endian format:
- * var result = format(
- *   new Date(2014, 1, 11),
- *   'MM/DD/YYYY'
- * )
- * //=> '02/11/2014'
- *
- * @example
- * // Represent 2 July 2014 in Esperanto:
- * var eoLocale = require('date-fns/locale/eo')
- * var result = format(
- *   new Date(2014, 6, 2),
- *   'Do [de] MMMM YYYY',
- *   {locale: eoLocale}
- * )
- * //=> '2-a de julio 2014'
- */
-function format$1 (dirtyDate, dirtyFormatStr, dirtyOptions) {
-  var formatStr = dirtyFormatStr ? String(dirtyFormatStr) : 'YYYY-MM-DDTHH:mm:ss.SSSZ';
-  var options = dirtyOptions || {};
-
-  var locale = options.locale;
-  var localeFormatters = enLocale.format.formatters;
-  var formattingTokensRegExp = enLocale.format.formattingTokensRegExp;
-  if (locale && locale.format && locale.format.formatters) {
-    localeFormatters = locale.format.formatters;
-
-    if (locale.format.formattingTokensRegExp) {
-      formattingTokensRegExp = locale.format.formattingTokensRegExp;
-    }
-  }
-
-  var date = parse$S(dirtyDate);
-
-  if (!isValid(date)) {
-    return 'Invalid Date'
-  }
-
-  var formatFn = buildFormatFn(formatStr, localeFormatters, formattingTokensRegExp);
-
-  return formatFn(date)
-}
-
-var formatters = {
-  // Month: 1, 2, ..., 12
-  'M': function (date) {
-    return date.getMonth() + 1
-  },
-
-  // Month: 01, 02, ..., 12
-  'MM': function (date) {
-    return addLeadingZeros(date.getMonth() + 1, 2)
-  },
-
-  // Quarter: 1, 2, 3, 4
-  'Q': function (date) {
-    return Math.ceil((date.getMonth() + 1) / 3)
-  },
-
-  // Day of month: 1, 2, ..., 31
-  'D': function (date) {
-    return date.getDate()
-  },
-
-  // Day of month: 01, 02, ..., 31
-  'DD': function (date) {
-    return addLeadingZeros(date.getDate(), 2)
-  },
-
-  // Day of year: 1, 2, ..., 366
-  'DDD': function (date) {
-    return getDayOfYear(date)
-  },
-
-  // Day of year: 001, 002, ..., 366
-  'DDDD': function (date) {
-    return addLeadingZeros(getDayOfYear(date), 3)
-  },
-
-  // Day of week: 0, 1, ..., 6
-  'd': function (date) {
-    return date.getDay()
-  },
-
-  // Day of ISO week: 1, 2, ..., 7
-  'E': function (date) {
-    return date.getDay() || 7
-  },
-
-  // ISO week: 1, 2, ..., 53
-  'W': function (date) {
-    return getISOWeek$1(date)
-  },
-
-  // ISO week: 01, 02, ..., 53
-  'WW': function (date) {
-    return addLeadingZeros(getISOWeek$1(date), 2)
-  },
-
-  // Year: 00, 01, ..., 99
-  'YY': function (date) {
-    return addLeadingZeros(date.getFullYear(), 4).substr(2)
-  },
-
-  // Year: 1900, 1901, ..., 2099
-  'YYYY': function (date) {
-    return addLeadingZeros(date.getFullYear(), 4)
-  },
-
-  // ISO week-numbering year: 00, 01, ..., 99
-  'GG': function (date) {
-    return String(getISOYear$1(date)).substr(2)
-  },
-
-  // ISO week-numbering year: 1900, 1901, ..., 2099
-  'GGGG': function (date) {
-    return getISOYear$1(date)
-  },
-
-  // Hour: 0, 1, ... 23
-  'H': function (date) {
-    return date.getHours()
-  },
-
-  // Hour: 00, 01, ..., 23
-  'HH': function (date) {
-    return addLeadingZeros(date.getHours(), 2)
-  },
-
-  // Hour: 1, 2, ..., 12
-  'h': function (date) {
-    var hours = date.getHours();
-    if (hours === 0) {
-      return 12
-    } else if (hours > 12) {
-      return hours % 12
-    } else {
-      return hours
-    }
-  },
-
-  // Hour: 01, 02, ..., 12
-  'hh': function (date) {
-    return addLeadingZeros(formatters['h'](date), 2)
-  },
-
-  // Minute: 0, 1, ..., 59
-  'm': function (date) {
-    return date.getMinutes()
-  },
-
-  // Minute: 00, 01, ..., 59
-  'mm': function (date) {
-    return addLeadingZeros(date.getMinutes(), 2)
-  },
-
-  // Second: 0, 1, ..., 59
-  's': function (date) {
-    return date.getSeconds()
-  },
-
-  // Second: 00, 01, ..., 59
-  'ss': function (date) {
-    return addLeadingZeros(date.getSeconds(), 2)
-  },
-
-  // 1/10 of second: 0, 1, ..., 9
-  'S': function (date) {
-    return Math.floor(date.getMilliseconds() / 100)
-  },
-
-  // 1/100 of second: 00, 01, ..., 99
-  'SS': function (date) {
-    return addLeadingZeros(Math.floor(date.getMilliseconds() / 10), 2)
-  },
-
-  // Millisecond: 000, 001, ..., 999
-  'SSS': function (date) {
-    return addLeadingZeros(date.getMilliseconds(), 3)
-  },
-
-  // Timezone: -01:00, +00:00, ... +12:00
-  'Z': function (date) {
-    return formatTimezone(date.getTimezoneOffset(), ':')
-  },
-
-  // Timezone: -0100, +0000, ... +1200
-  'ZZ': function (date) {
-    return formatTimezone(date.getTimezoneOffset())
-  },
-
-  // Seconds timestamp: 512969520
-  'X': function (date) {
-    return Math.floor(date.getTime() / 1000)
-  },
-
-  // Milliseconds timestamp: 512969520900
-  'x': function (date) {
-    return date.getTime()
-  }
-};
-
-function buildFormatFn (formatStr, localeFormatters, formattingTokensRegExp) {
-  var array = formatStr.match(formattingTokensRegExp);
-  var length = array.length;
-
-  var i;
-  var formatter;
-  for (i = 0; i < length; i++) {
-    formatter = localeFormatters[array[i]] || formatters[array[i]];
-    if (formatter) {
-      array[i] = formatter;
-    } else {
-      array[i] = removeFormattingTokens(array[i]);
-    }
-  }
-
-  return function (date) {
-    var output = '';
-    for (var i = 0; i < length; i++) {
-      if (array[i] instanceof Function) {
-        output += array[i](date, formatters);
-      } else {
-        output += array[i];
-      }
-    }
-    return output
-  }
-}
-
-function removeFormattingTokens (input) {
-  if (input.match(/\[[\s\S]/)) {
-    return input.replace(/^\[|]$/g, '')
-  }
-  return input.replace(/\\/g, '')
-}
-
-function formatTimezone (offset, delimeter) {
-  delimeter = delimeter || '';
-  var sign = offset > 0 ? '-' : '+';
-  var absOffset = Math.abs(offset);
-  var hours = Math.floor(absOffset / 60);
-  var minutes = absOffset % 60;
-  return sign + addLeadingZeros(hours, 2) + delimeter + addLeadingZeros(minutes, 2)
-}
-
-function addLeadingZeros (number, targetLength) {
-  var output = Math.abs(number).toString();
-  while (output.length < targetLength) {
-    output = '0' + output;
-  }
-  return output
-}
-
-var format_1$1 = format$1;
-
-var parse$R = parse_1;
-
-/**
- * @category Day Helpers
- * @summary Get the day of the month of the given date.
- *
- * @description
- * Get the day of the month of the given date.
- *
- * @param {Date|String|Number} date - the given date
- * @returns {Number} the day of month
- *
- * @example
- * // Which day of the month is 29 February 2012?
- * var result = getDate(new Date(2012, 1, 29))
- * //=> 29
- */
-function getDate (dirtyDate) {
-  var date = parse$R(dirtyDate);
-  var dayOfMonth = date.getDate();
-  return dayOfMonth
-}
-
-var get_date = getDate;
-
-var parse$Q = parse_1;
-
-/**
- * @category Weekday Helpers
- * @summary Get the day of the week of the given date.
- *
- * @description
- * Get the day of the week of the given date.
- *
- * @param {Date|String|Number} date - the given date
- * @returns {Number} the day of week
- *
- * @example
- * // Which day of the week is 29 February 2012?
- * var result = getDay(new Date(2012, 1, 29))
- * //=> 3
- */
-function getDay (dirtyDate) {
-  var date = parse$Q(dirtyDate);
-  var day = date.getDay();
-  return day
-}
-
-var get_day = getDay;
-
-var parse$P = parse_1;
-
-/**
- * @category Year Helpers
- * @summary Is the given date in the leap year?
- *
- * @description
- * Is the given date in the leap year?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is in the leap year
- *
- * @example
- * // Is 1 September 2012 in the leap year?
- * var result = isLeapYear(new Date(2012, 8, 1))
- * //=> true
- */
-function isLeapYear$1 (dirtyDate) {
-  var date = parse$P(dirtyDate);
-  var year = date.getFullYear();
-  return year % 400 === 0 || year % 4 === 0 && year % 100 !== 0
-}
-
-var is_leap_year = isLeapYear$1;
-
-var isLeapYear = is_leap_year;
-
-/**
- * @category Year Helpers
- * @summary Get the number of days in a year of the given date.
- *
- * @description
- * Get the number of days in a year of the given date.
- *
- * @param {Date|String|Number} date - the given date
- * @returns {Number} the number of days in a year
- *
- * @example
- * // How many days are in 2012?
- * var result = getDaysInYear(new Date(2012, 0, 1))
- * //=> 366
- */
-function getDaysInYear (dirtyDate) {
-  return isLeapYear(dirtyDate) ? 366 : 365
-}
-
-var get_days_in_year = getDaysInYear;
-
-var parse$O = parse_1;
-
-/**
- * @category Hour Helpers
- * @summary Get the hours of the given date.
- *
- * @description
- * Get the hours of the given date.
- *
- * @param {Date|String|Number} date - the given date
- * @returns {Number} the hours
- *
- * @example
- * // Get the hours of 29 February 2012 11:45:00:
- * var result = getHours(new Date(2012, 1, 29, 11, 45))
- * //=> 11
- */
-function getHours (dirtyDate) {
-  var date = parse$O(dirtyDate);
-  var hours = date.getHours();
-  return hours
-}
-
-var get_hours = getHours;
-
-var parse$N = parse_1;
-
-/**
- * @category Weekday Helpers
- * @summary Get the day of the ISO week of the given date.
- *
- * @description
- * Get the day of the ISO week of the given date,
- * which is 7 for Sunday, 1 for Monday etc.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} date - the given date
- * @returns {Number} the day of ISO week
- *
- * @example
- * // Which day of the ISO week is 26 February 2012?
- * var result = getISODay(new Date(2012, 1, 26))
- * //=> 7
- */
-function getISODay$1 (dirtyDate) {
-  var date = parse$N(dirtyDate);
-  var day = date.getDay();
-
-  if (day === 0) {
-    day = 7;
-  }
-
-  return day
-}
-
-var get_iso_day = getISODay$1;
-
-var startOfISOYear$1 = start_of_iso_year;
-var addWeeks$1 = add_weeks;
-
-var MILLISECONDS_IN_WEEK = 604800000;
-
-/**
- * @category ISO Week-Numbering Year Helpers
- * @summary Get the number of weeks in an ISO week-numbering year of the given date.
- *
- * @description
- * Get the number of weeks in an ISO week-numbering year of the given date.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} date - the given date
- * @returns {Number} the number of ISO weeks in a year
- *
- * @example
- * // How many weeks are in ISO week-numbering year 2015?
- * var result = getISOWeeksInYear(new Date(2015, 1, 11))
- * //=> 53
- */
-function getISOWeeksInYear (dirtyDate) {
-  var thisYear = startOfISOYear$1(dirtyDate);
-  var nextYear = startOfISOYear$1(addWeeks$1(thisYear, 60));
-  var diff = nextYear.valueOf() - thisYear.valueOf();
-  // Round the number of weeks to the nearest integer
-  // because the number of milliseconds in a week is not constant
-  // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.round(diff / MILLISECONDS_IN_WEEK)
-}
-
-var get_iso_weeks_in_year = getISOWeeksInYear;
-
-var parse$M = parse_1;
-
-/**
- * @category Millisecond Helpers
- * @summary Get the milliseconds of the given date.
- *
- * @description
- * Get the milliseconds of the given date.
- *
- * @param {Date|String|Number} date - the given date
- * @returns {Number} the milliseconds
- *
- * @example
- * // Get the milliseconds of 29 February 2012 11:45:05.123:
- * var result = getMilliseconds(new Date(2012, 1, 29, 11, 45, 5, 123))
- * //=> 123
- */
-function getMilliseconds (dirtyDate) {
-  var date = parse$M(dirtyDate);
-  var milliseconds = date.getMilliseconds();
-  return milliseconds
-}
-
-var get_milliseconds = getMilliseconds;
-
-var parse$L = parse_1;
-
-/**
- * @category Minute Helpers
- * @summary Get the minutes of the given date.
- *
- * @description
- * Get the minutes of the given date.
- *
- * @param {Date|String|Number} date - the given date
- * @returns {Number} the minutes
- *
- * @example
- * // Get the minutes of 29 February 2012 11:45:05:
- * var result = getMinutes(new Date(2012, 1, 29, 11, 45, 5))
- * //=> 45
- */
-function getMinutes (dirtyDate) {
-  var date = parse$L(dirtyDate);
-  var minutes = date.getMinutes();
-  return minutes
-}
-
-var get_minutes = getMinutes;
-
-var parse$K = parse_1;
-
-/**
- * @category Month Helpers
- * @summary Get the month of the given date.
- *
- * @description
- * Get the month of the given date.
- *
- * @param {Date|String|Number} date - the given date
- * @returns {Number} the month
- *
- * @example
- * // Which month is 29 February 2012?
- * var result = getMonth(new Date(2012, 1, 29))
- * //=> 1
- */
-function getMonth (dirtyDate) {
-  var date = parse$K(dirtyDate);
-  var month = date.getMonth();
-  return month
-}
-
-var get_month = getMonth;
-
-var parse$J = parse_1;
-
-var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000;
-
-/**
- * @category Range Helpers
- * @summary Get the number of days that overlap in two date ranges
- *
- * @description
- * Get the number of days that overlap in two date ranges
- *
- * @param {Date|String|Number} initialRangeStartDate - the start of the initial range
- * @param {Date|String|Number} initialRangeEndDate - the end of the initial range
- * @param {Date|String|Number} comparedRangeStartDate - the start of the range to compare it with
- * @param {Date|String|Number} comparedRangeEndDate - the end of the range to compare it with
- * @returns {Number} the number of days that overlap in two date ranges
- * @throws {Error} startDate of a date range cannot be after its endDate
- *
- * @example
- * // For overlapping date ranges adds 1 for each started overlapping day:
- * getOverlappingDaysInRanges(
- *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 17), new Date(2014, 0, 21)
- * )
- * //=> 3
- *
- * @example
- * // For non-overlapping date ranges returns 0:
- * getOverlappingDaysInRanges(
- *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 21), new Date(2014, 0, 22)
- * )
- * //=> 0
- */
-function getOverlappingDaysInRanges (dirtyInitialRangeStartDate, dirtyInitialRangeEndDate, dirtyComparedRangeStartDate, dirtyComparedRangeEndDate) {
-  var initialStartTime = parse$J(dirtyInitialRangeStartDate).getTime();
-  var initialEndTime = parse$J(dirtyInitialRangeEndDate).getTime();
-  var comparedStartTime = parse$J(dirtyComparedRangeStartDate).getTime();
-  var comparedEndTime = parse$J(dirtyComparedRangeEndDate).getTime();
-
-  if (initialStartTime > initialEndTime || comparedStartTime > comparedEndTime) {
-    throw new Error('The start of the range cannot be after the end of the range')
-  }
-
-  var isOverlapping = initialStartTime < comparedEndTime && comparedStartTime < initialEndTime;
-
-  if (!isOverlapping) {
-    return 0
-  }
-
-  var overlapStartDate = comparedStartTime < initialStartTime
-    ? initialStartTime
-    : comparedStartTime;
-
-  var overlapEndDate = comparedEndTime > initialEndTime
-    ? initialEndTime
-    : comparedEndTime;
-
-  var differenceInMs = overlapEndDate - overlapStartDate;
-
-  return Math.ceil(differenceInMs / MILLISECONDS_IN_DAY)
-}
-
-var get_overlapping_days_in_ranges = getOverlappingDaysInRanges;
-
-var parse$I = parse_1;
-
-/**
- * @category Second Helpers
- * @summary Get the seconds of the given date.
- *
- * @description
- * Get the seconds of the given date.
- *
- * @param {Date|String|Number} date - the given date
- * @returns {Number} the seconds
- *
- * @example
- * // Get the seconds of 29 February 2012 11:45:05.123:
- * var result = getSeconds(new Date(2012, 1, 29, 11, 45, 5, 123))
- * //=> 5
- */
-function getSeconds (dirtyDate) {
-  var date = parse$I(dirtyDate);
-  var seconds = date.getSeconds();
-  return seconds
-}
-
-var get_seconds = getSeconds;
-
-var parse$H = parse_1;
-
-/**
- * @category Timestamp Helpers
- * @summary Get the milliseconds timestamp of the given date.
- *
- * @description
- * Get the milliseconds timestamp of the given date.
- *
- * @param {Date|String|Number} date - the given date
- * @returns {Number} the timestamp
- *
- * @example
- * // Get the timestamp of 29 February 2012 11:45:05.123:
- * var result = getTime(new Date(2012, 1, 29, 11, 45, 5, 123))
- * //=> 1330515905123
- */
-function getTime (dirtyDate) {
-  var date = parse$H(dirtyDate);
-  var timestamp = date.getTime();
-  return timestamp
-}
-
-var get_time = getTime;
-
-var parse$G = parse_1;
-
-/**
- * @category Year Helpers
- * @summary Get the year of the given date.
- *
- * @description
- * Get the year of the given date.
- *
- * @param {Date|String|Number} date - the given date
- * @returns {Number} the year
- *
- * @example
- * // Which year is 2 July 2014?
- * var result = getYear(new Date(2014, 6, 2))
- * //=> 2014
- */
-function getYear (dirtyDate) {
-  var date = parse$G(dirtyDate);
-  var year = date.getFullYear();
-  return year
-}
-
-var get_year = getYear;
-
-var parse$F = parse_1;
-
-/**
- * @category Common Helpers
- * @summary Is the first date after the second one?
- *
- * @description
- * Is the first date after the second one?
- *
- * @param {Date|String|Number} date - the date that should be after the other one to return true
- * @param {Date|String|Number} dateToCompare - the date to compare with
- * @returns {Boolean} the first date is after the second date
- *
- * @example
- * // Is 10 July 1989 after 11 February 1987?
- * var result = isAfter(new Date(1989, 6, 10), new Date(1987, 1, 11))
- * //=> true
- */
-function isAfter (dirtyDate, dirtyDateToCompare) {
-  var date = parse$F(dirtyDate);
-  var dateToCompare = parse$F(dirtyDateToCompare);
-  return date.getTime() > dateToCompare.getTime()
-}
-
-var is_after = isAfter;
-
-var parse$E = parse_1;
-
-/**
- * @category Common Helpers
- * @summary Is the first date before the second one?
- *
- * @description
- * Is the first date before the second one?
- *
- * @param {Date|String|Number} date - the date that should be before the other one to return true
- * @param {Date|String|Number} dateToCompare - the date to compare with
- * @returns {Boolean} the first date is before the second date
- *
- * @example
- * // Is 10 July 1989 before 11 February 1987?
- * var result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11))
- * //=> false
- */
-function isBefore (dirtyDate, dirtyDateToCompare) {
-  var date = parse$E(dirtyDate);
-  var dateToCompare = parse$E(dirtyDateToCompare);
-  return date.getTime() < dateToCompare.getTime()
-}
-
-var is_before = isBefore;
-
-var parse$D = parse_1;
-
-/**
- * @category Common Helpers
- * @summary Are the given dates equal?
- *
- * @description
- * Are the given dates equal?
- *
- * @param {Date|String|Number} dateLeft - the first date to compare
- * @param {Date|String|Number} dateRight - the second date to compare
- * @returns {Boolean} the dates are equal
- *
- * @example
- * // Are 2 July 2014 06:30:45.000 and 2 July 2014 06:30:45.500 equal?
- * var result = isEqual(
- *   new Date(2014, 6, 2, 6, 30, 45, 0)
- *   new Date(2014, 6, 2, 6, 30, 45, 500)
- * )
- * //=> false
- */
-function isEqual (dirtyLeftDate, dirtyRightDate) {
-  var dateLeft = parse$D(dirtyLeftDate);
-  var dateRight = parse$D(dirtyRightDate);
-  return dateLeft.getTime() === dateRight.getTime()
-}
-
-var is_equal = isEqual;
-
-var parse$C = parse_1;
-
-/**
- * @category Month Helpers
- * @summary Is the given date the first day of a month?
- *
- * @description
- * Is the given date the first day of a month?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is the first day of a month
- *
- * @example
- * // Is 1 September 2014 the first day of a month?
- * var result = isFirstDayOfMonth(new Date(2014, 8, 1))
- * //=> true
- */
-function isFirstDayOfMonth (dirtyDate) {
-  return parse$C(dirtyDate).getDate() === 1
-}
-
-var is_first_day_of_month = isFirstDayOfMonth;
-
-var parse$B = parse_1;
-
-/**
- * @category Weekday Helpers
- * @summary Is the given date Friday?
- *
- * @description
- * Is the given date Friday?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is Friday
- *
- * @example
- * // Is 26 September 2014 Friday?
- * var result = isFriday(new Date(2014, 8, 26))
- * //=> true
- */
-function isFriday (dirtyDate) {
-  return parse$B(dirtyDate).getDay() === 5
-}
-
-var is_friday = isFriday;
-
-var parse$A = parse_1;
-
-/**
- * @category Common Helpers
- * @summary Is the given date in the future?
- *
- * @description
- * Is the given date in the future?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is in the future
- *
- * @example
- * // If today is 6 October 2014, is 31 December 2014 in the future?
- * var result = isFuture(new Date(2014, 11, 31))
- * //=> true
- */
-function isFuture (dirtyDate) {
-  return parse$A(dirtyDate).getTime() > new Date().getTime()
-}
-
-var is_future = isFuture;
-
-var parse$z = parse_1;
-var endOfDay = end_of_day;
-var endOfMonth = end_of_month;
-
-/**
- * @category Month Helpers
- * @summary Is the given date the last day of a month?
- *
- * @description
- * Is the given date the last day of a month?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is the last day of a month
- *
- * @example
- * // Is 28 February 2014 the last day of a month?
- * var result = isLastDayOfMonth(new Date(2014, 1, 28))
- * //=> true
- */
-function isLastDayOfMonth (dirtyDate) {
-  var date = parse$z(dirtyDate);
-  return endOfDay(date).getTime() === endOfMonth(date).getTime()
-}
-
-var is_last_day_of_month = isLastDayOfMonth;
-
-var parse$y = parse_1;
-
-/**
- * @category Weekday Helpers
- * @summary Is the given date Monday?
- *
- * @description
- * Is the given date Monday?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is Monday
- *
- * @example
- * // Is 22 September 2014 Monday?
- * var result = isMonday(new Date(2014, 8, 22))
- * //=> true
- */
-function isMonday (dirtyDate) {
-  return parse$y(dirtyDate).getDay() === 1
-}
-
-var is_monday = isMonday;
-
-var parse$x = parse_1;
-
-/**
- * @category Common Helpers
- * @summary Is the given date in the past?
- *
- * @description
- * Is the given date in the past?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is in the past
- *
- * @example
- * // If today is 6 October 2014, is 2 July 2014 in the past?
- * var result = isPast(new Date(2014, 6, 2))
- * //=> true
- */
-function isPast (dirtyDate) {
-  return parse$x(dirtyDate).getTime() < new Date().getTime()
-}
-
-var is_past = isPast;
-
-var startOfDay$4 = start_of_day;
-
-/**
- * @category Day Helpers
- * @summary Are the given dates in the same day?
- *
- * @description
- * Are the given dates in the same day?
- *
- * @param {Date|String|Number} dateLeft - the first date to check
- * @param {Date|String|Number} dateRight - the second date to check
- * @returns {Boolean} the dates are in the same day
- *
- * @example
- * // Are 4 September 06:00:00 and 4 September 18:00:00 in the same day?
- * var result = isSameDay(
- *   new Date(2014, 8, 4, 6, 0),
- *   new Date(2014, 8, 4, 18, 0)
- * )
- * //=> true
- */
-function isSameDay (dirtyDateLeft, dirtyDateRight) {
-  var dateLeftStartOfDay = startOfDay$4(dirtyDateLeft);
-  var dateRightStartOfDay = startOfDay$4(dirtyDateRight);
-
-  return dateLeftStartOfDay.getTime() === dateRightStartOfDay.getTime()
-}
-
-var is_same_day = isSameDay;
-
-var parse$w = parse_1;
-
-/**
- * @category Hour Helpers
- * @summary Return the start of an hour for the given date.
- *
- * @description
- * Return the start of an hour for the given date.
- * The result will be in the local timezone.
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the start of an hour
- *
- * @example
- * // The start of an hour for 2 September 2014 11:55:00:
- * var result = startOfHour(new Date(2014, 8, 2, 11, 55))
- * //=> Tue Sep 02 2014 11:00:00
- */
-function startOfHour$1 (dirtyDate) {
-  var date = parse$w(dirtyDate);
-  date.setMinutes(0, 0, 0);
-  return date
-}
-
-var start_of_hour = startOfHour$1;
-
-var startOfHour = start_of_hour;
-
-/**
- * @category Hour Helpers
- * @summary Are the given dates in the same hour?
- *
- * @description
- * Are the given dates in the same hour?
- *
- * @param {Date|String|Number} dateLeft - the first date to check
- * @param {Date|String|Number} dateRight - the second date to check
- * @returns {Boolean} the dates are in the same hour
- *
- * @example
- * // Are 4 September 2014 06:00:00 and 4 September 06:30:00 in the same hour?
- * var result = isSameHour(
- *   new Date(2014, 8, 4, 6, 0),
- *   new Date(2014, 8, 4, 6, 30)
- * )
- * //=> true
- */
-function isSameHour$1 (dirtyDateLeft, dirtyDateRight) {
-  var dateLeftStartOfHour = startOfHour(dirtyDateLeft);
-  var dateRightStartOfHour = startOfHour(dirtyDateRight);
-
-  return dateLeftStartOfHour.getTime() === dateRightStartOfHour.getTime()
-}
-
-var is_same_hour = isSameHour$1;
-
-var startOfWeek = start_of_week;
-
-/**
- * @category Week Helpers
- * @summary Are the given dates in the same week?
- *
- * @description
- * Are the given dates in the same week?
- *
- * @param {Date|String|Number} dateLeft - the first date to check
- * @param {Date|String|Number} dateRight - the second date to check
- * @param {Object} [options] - the object with options
- * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @returns {Boolean} the dates are in the same week
- *
- * @example
- * // Are 31 August 2014 and 4 September 2014 in the same week?
- * var result = isSameWeek(
- *   new Date(2014, 7, 31),
- *   new Date(2014, 8, 4)
- * )
- * //=> true
- *
- * @example
- * // If week starts with Monday,
- * // are 31 August 2014 and 4 September 2014 in the same week?
- * var result = isSameWeek(
- *   new Date(2014, 7, 31),
- *   new Date(2014, 8, 4),
- *   {weekStartsOn: 1}
- * )
- * //=> false
- */
-function isSameWeek$2 (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
-  var dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, dirtyOptions);
-  var dateRightStartOfWeek = startOfWeek(dirtyDateRight, dirtyOptions);
-
-  return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime()
-}
-
-var is_same_week = isSameWeek$2;
-
-var isSameWeek$1 = is_same_week;
-
-/**
- * @category ISO Week Helpers
- * @summary Are the given dates in the same ISO week?
- *
- * @description
- * Are the given dates in the same ISO week?
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} dateLeft - the first date to check
- * @param {Date|String|Number} dateRight - the second date to check
- * @returns {Boolean} the dates are in the same ISO week
- *
- * @example
- * // Are 1 September 2014 and 7 September 2014 in the same ISO week?
- * var result = isSameISOWeek(
- *   new Date(2014, 8, 1),
- *   new Date(2014, 8, 7)
- * )
- * //=> true
- */
-function isSameISOWeek$1 (dirtyDateLeft, dirtyDateRight) {
-  return isSameWeek$1(dirtyDateLeft, dirtyDateRight, {weekStartsOn: 1})
-}
-
-var is_same_iso_week = isSameISOWeek$1;
-
-var startOfISOYear = start_of_iso_year;
-
-/**
- * @category ISO Week-Numbering Year Helpers
- * @summary Are the given dates in the same ISO week-numbering year?
- *
- * @description
- * Are the given dates in the same ISO week-numbering year?
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} dateLeft - the first date to check
- * @param {Date|String|Number} dateRight - the second date to check
- * @returns {Boolean} the dates are in the same ISO week-numbering year
- *
- * @example
- * // Are 29 December 2003 and 2 January 2005 in the same ISO week-numbering year?
- * var result = isSameISOYear(
- *   new Date(2003, 11, 29),
- *   new Date(2005, 0, 2)
- * )
- * //=> true
- */
-function isSameISOYear$1 (dirtyDateLeft, dirtyDateRight) {
-  var dateLeftStartOfYear = startOfISOYear(dirtyDateLeft);
-  var dateRightStartOfYear = startOfISOYear(dirtyDateRight);
-
-  return dateLeftStartOfYear.getTime() === dateRightStartOfYear.getTime()
-}
-
-var is_same_iso_year = isSameISOYear$1;
-
-var parse$v = parse_1;
-
-/**
- * @category Minute Helpers
- * @summary Return the start of a minute for the given date.
- *
- * @description
- * Return the start of a minute for the given date.
- * The result will be in the local timezone.
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the start of a minute
- *
- * @example
- * // The start of a minute for 1 December 2014 22:15:45.400:
- * var result = startOfMinute(new Date(2014, 11, 1, 22, 15, 45, 400))
- * //=> Mon Dec 01 2014 22:15:00
- */
-function startOfMinute$1 (dirtyDate) {
-  var date = parse$v(dirtyDate);
-  date.setSeconds(0, 0);
-  return date
-}
-
-var start_of_minute = startOfMinute$1;
-
-var startOfMinute = start_of_minute;
-
-/**
- * @category Minute Helpers
- * @summary Are the given dates in the same minute?
- *
- * @description
- * Are the given dates in the same minute?
- *
- * @param {Date|String|Number} dateLeft - the first date to check
- * @param {Date|String|Number} dateRight - the second date to check
- * @returns {Boolean} the dates are in the same minute
- *
- * @example
- * // Are 4 September 2014 06:30:00 and 4 September 2014 06:30:15
- * // in the same minute?
- * var result = isSameMinute(
- *   new Date(2014, 8, 4, 6, 30),
- *   new Date(2014, 8, 4, 6, 30, 15)
- * )
- * //=> true
- */
-function isSameMinute$1 (dirtyDateLeft, dirtyDateRight) {
-  var dateLeftStartOfMinute = startOfMinute(dirtyDateLeft);
-  var dateRightStartOfMinute = startOfMinute(dirtyDateRight);
-
-  return dateLeftStartOfMinute.getTime() === dateRightStartOfMinute.getTime()
-}
-
-var is_same_minute = isSameMinute$1;
-
-var parse$u = parse_1;
-
-/**
- * @category Month Helpers
- * @summary Are the given dates in the same month?
- *
- * @description
- * Are the given dates in the same month?
- *
- * @param {Date|String|Number} dateLeft - the first date to check
- * @param {Date|String|Number} dateRight - the second date to check
- * @returns {Boolean} the dates are in the same month
- *
- * @example
- * // Are 2 September 2014 and 25 September 2014 in the same month?
- * var result = isSameMonth(
- *   new Date(2014, 8, 2),
- *   new Date(2014, 8, 25)
- * )
- * //=> true
- */
-function isSameMonth$1 (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse$u(dirtyDateLeft);
-  var dateRight = parse$u(dirtyDateRight);
-  return dateLeft.getFullYear() === dateRight.getFullYear() &&
-    dateLeft.getMonth() === dateRight.getMonth()
-}
-
-var is_same_month = isSameMonth$1;
-
-var parse$t = parse_1;
-
-/**
- * @category Quarter Helpers
- * @summary Return the start of a year quarter for the given date.
- *
- * @description
- * Return the start of a year quarter for the given date.
- * The result will be in the local timezone.
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the start of a quarter
- *
- * @example
- * // The start of a quarter for 2 September 2014 11:55:00:
- * var result = startOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
- * //=> Tue Jul 01 2014 00:00:00
- */
-function startOfQuarter$1 (dirtyDate) {
-  var date = parse$t(dirtyDate);
-  var currentMonth = date.getMonth();
-  var month = currentMonth - currentMonth % 3;
-  date.setMonth(month, 1);
-  date.setHours(0, 0, 0, 0);
-  return date
-}
-
-var start_of_quarter = startOfQuarter$1;
-
-var startOfQuarter = start_of_quarter;
-
-/**
- * @category Quarter Helpers
- * @summary Are the given dates in the same year quarter?
- *
- * @description
- * Are the given dates in the same year quarter?
- *
- * @param {Date|String|Number} dateLeft - the first date to check
- * @param {Date|String|Number} dateRight - the second date to check
- * @returns {Boolean} the dates are in the same quarter
- *
- * @example
- * // Are 1 January 2014 and 8 March 2014 in the same quarter?
- * var result = isSameQuarter(
- *   new Date(2014, 0, 1),
- *   new Date(2014, 2, 8)
- * )
- * //=> true
- */
-function isSameQuarter$1 (dirtyDateLeft, dirtyDateRight) {
-  var dateLeftStartOfQuarter = startOfQuarter(dirtyDateLeft);
-  var dateRightStartOfQuarter = startOfQuarter(dirtyDateRight);
-
-  return dateLeftStartOfQuarter.getTime() === dateRightStartOfQuarter.getTime()
-}
-
-var is_same_quarter = isSameQuarter$1;
-
-var parse$s = parse_1;
-
-/**
- * @category Second Helpers
- * @summary Return the start of a second for the given date.
- *
- * @description
- * Return the start of a second for the given date.
- * The result will be in the local timezone.
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the start of a second
- *
- * @example
- * // The start of a second for 1 December 2014 22:15:45.400:
- * var result = startOfSecond(new Date(2014, 11, 1, 22, 15, 45, 400))
- * //=> Mon Dec 01 2014 22:15:45.000
- */
-function startOfSecond$1 (dirtyDate) {
-  var date = parse$s(dirtyDate);
-  date.setMilliseconds(0);
-  return date
-}
-
-var start_of_second = startOfSecond$1;
-
-var startOfSecond = start_of_second;
-
-/**
- * @category Second Helpers
- * @summary Are the given dates in the same second?
- *
- * @description
- * Are the given dates in the same second?
- *
- * @param {Date|String|Number} dateLeft - the first date to check
- * @param {Date|String|Number} dateRight - the second date to check
- * @returns {Boolean} the dates are in the same second
- *
- * @example
- * // Are 4 September 2014 06:30:15.000 and 4 September 2014 06:30.15.500
- * // in the same second?
- * var result = isSameSecond(
- *   new Date(2014, 8, 4, 6, 30, 15),
- *   new Date(2014, 8, 4, 6, 30, 15, 500)
- * )
- * //=> true
- */
-function isSameSecond$1 (dirtyDateLeft, dirtyDateRight) {
-  var dateLeftStartOfSecond = startOfSecond(dirtyDateLeft);
-  var dateRightStartOfSecond = startOfSecond(dirtyDateRight);
-
-  return dateLeftStartOfSecond.getTime() === dateRightStartOfSecond.getTime()
-}
-
-var is_same_second = isSameSecond$1;
-
-var parse$r = parse_1;
-
-/**
- * @category Year Helpers
- * @summary Are the given dates in the same year?
- *
- * @description
- * Are the given dates in the same year?
- *
- * @param {Date|String|Number} dateLeft - the first date to check
- * @param {Date|String|Number} dateRight - the second date to check
- * @returns {Boolean} the dates are in the same year
- *
- * @example
- * // Are 2 September 2014 and 25 September 2014 in the same year?
- * var result = isSameYear(
- *   new Date(2014, 8, 2),
- *   new Date(2014, 8, 25)
- * )
- * //=> true
- */
-function isSameYear$1 (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse$r(dirtyDateLeft);
-  var dateRight = parse$r(dirtyDateRight);
-  return dateLeft.getFullYear() === dateRight.getFullYear()
-}
-
-var is_same_year = isSameYear$1;
-
-var parse$q = parse_1;
-
-/**
- * @category Weekday Helpers
- * @summary Is the given date Saturday?
- *
- * @description
- * Is the given date Saturday?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is Saturday
- *
- * @example
- * // Is 27 September 2014 Saturday?
- * var result = isSaturday(new Date(2014, 8, 27))
- * //=> true
- */
-function isSaturday (dirtyDate) {
-  return parse$q(dirtyDate).getDay() === 6
-}
-
-var is_saturday = isSaturday;
-
-var parse$p = parse_1;
-
-/**
- * @category Weekday Helpers
- * @summary Is the given date Sunday?
- *
- * @description
- * Is the given date Sunday?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is Sunday
- *
- * @example
- * // Is 21 September 2014 Sunday?
- * var result = isSunday(new Date(2014, 8, 21))
- * //=> true
- */
-function isSunday (dirtyDate) {
-  return parse$p(dirtyDate).getDay() === 0
-}
-
-var is_sunday = isSunday;
-
-var isSameHour = is_same_hour;
-
-/**
- * @category Hour Helpers
- * @summary Is the given date in the same hour as the current date?
- *
- * @description
- * Is the given date in the same hour as the current date?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is in this hour
- *
- * @example
- * // If now is 25 September 2014 18:30:15.500,
- * // is 25 September 2014 18:00:00 in this hour?
- * var result = isThisHour(new Date(2014, 8, 25, 18))
- * //=> true
- */
-function isThisHour (dirtyDate) {
-  return isSameHour(new Date(), dirtyDate)
-}
-
-var is_this_hour = isThisHour;
-
-var isSameISOWeek = is_same_iso_week;
-
-/**
- * @category ISO Week Helpers
- * @summary Is the given date in the same ISO week as the current date?
- *
- * @description
- * Is the given date in the same ISO week as the current date?
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is in this ISO week
- *
- * @example
- * // If today is 25 September 2014, is 22 September 2014 in this ISO week?
- * var result = isThisISOWeek(new Date(2014, 8, 22))
- * //=> true
- */
-function isThisISOWeek (dirtyDate) {
-  return isSameISOWeek(new Date(), dirtyDate)
-}
-
-var is_this_iso_week = isThisISOWeek;
-
-var isSameISOYear = is_same_iso_year;
-
-/**
- * @category ISO Week-Numbering Year Helpers
- * @summary Is the given date in the same ISO week-numbering year as the current date?
- *
- * @description
- * Is the given date in the same ISO week-numbering year as the current date?
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is in this ISO week-numbering year
- *
- * @example
- * // If today is 25 September 2014,
- * // is 30 December 2013 in this ISO week-numbering year?
- * var result = isThisISOYear(new Date(2013, 11, 30))
- * //=> true
- */
-function isThisISOYear (dirtyDate) {
-  return isSameISOYear(new Date(), dirtyDate)
-}
-
-var is_this_iso_year = isThisISOYear;
-
-var isSameMinute = is_same_minute;
-
-/**
- * @category Minute Helpers
- * @summary Is the given date in the same minute as the current date?
- *
- * @description
- * Is the given date in the same minute as the current date?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is in this minute
- *
- * @example
- * // If now is 25 September 2014 18:30:15.500,
- * // is 25 September 2014 18:30:00 in this minute?
- * var result = isThisMinute(new Date(2014, 8, 25, 18, 30))
- * //=> true
- */
-function isThisMinute (dirtyDate) {
-  return isSameMinute(new Date(), dirtyDate)
-}
-
-var is_this_minute = isThisMinute;
-
-var isSameMonth = is_same_month;
-
-/**
- * @category Month Helpers
- * @summary Is the given date in the same month as the current date?
- *
- * @description
- * Is the given date in the same month as the current date?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is in this month
- *
- * @example
- * // If today is 25 September 2014, is 15 September 2014 in this month?
- * var result = isThisMonth(new Date(2014, 8, 15))
- * //=> true
- */
-function isThisMonth (dirtyDate) {
-  return isSameMonth(new Date(), dirtyDate)
-}
-
-var is_this_month = isThisMonth;
-
-var isSameQuarter = is_same_quarter;
-
-/**
- * @category Quarter Helpers
- * @summary Is the given date in the same quarter as the current date?
- *
- * @description
- * Is the given date in the same quarter as the current date?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is in this quarter
- *
- * @example
- * // If today is 25 September 2014, is 2 July 2014 in this quarter?
- * var result = isThisQuarter(new Date(2014, 6, 2))
- * //=> true
- */
-function isThisQuarter (dirtyDate) {
-  return isSameQuarter(new Date(), dirtyDate)
-}
-
-var is_this_quarter = isThisQuarter;
-
-var isSameSecond = is_same_second;
-
-/**
- * @category Second Helpers
- * @summary Is the given date in the same second as the current date?
- *
- * @description
- * Is the given date in the same second as the current date?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is in this second
- *
- * @example
- * // If now is 25 September 2014 18:30:15.500,
- * // is 25 September 2014 18:30:15.000 in this second?
- * var result = isThisSecond(new Date(2014, 8, 25, 18, 30, 15))
- * //=> true
- */
-function isThisSecond (dirtyDate) {
-  return isSameSecond(new Date(), dirtyDate)
-}
-
-var is_this_second = isThisSecond;
-
-var isSameWeek = is_same_week;
-
-/**
- * @category Week Helpers
- * @summary Is the given date in the same week as the current date?
- *
- * @description
- * Is the given date in the same week as the current date?
- *
- * @param {Date|String|Number} date - the date to check
- * @param {Object} [options] - the object with options
- * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @returns {Boolean} the date is in this week
- *
- * @example
- * // If today is 25 September 2014, is 21 September 2014 in this week?
- * var result = isThisWeek(new Date(2014, 8, 21))
- * //=> true
- *
- * @example
- * // If today is 25 September 2014 and week starts with Monday
- * // is 21 September 2014 in this week?
- * var result = isThisWeek(new Date(2014, 8, 21), {weekStartsOn: 1})
- * //=> false
- */
-function isThisWeek (dirtyDate, dirtyOptions) {
-  return isSameWeek(new Date(), dirtyDate, dirtyOptions)
-}
-
-var is_this_week = isThisWeek;
-
-var isSameYear = is_same_year;
-
-/**
- * @category Year Helpers
- * @summary Is the given date in the same year as the current date?
- *
- * @description
- * Is the given date in the same year as the current date?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is in this year
- *
- * @example
- * // If today is 25 September 2014, is 2 July 2014 in this year?
- * var result = isThisYear(new Date(2014, 6, 2))
- * //=> true
- */
-function isThisYear (dirtyDate) {
-  return isSameYear(new Date(), dirtyDate)
-}
-
-var is_this_year = isThisYear;
-
-var parse$o = parse_1;
-
-/**
- * @category Weekday Helpers
- * @summary Is the given date Thursday?
- *
- * @description
- * Is the given date Thursday?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is Thursday
- *
- * @example
- * // Is 25 September 2014 Thursday?
- * var result = isThursday(new Date(2014, 8, 25))
- * //=> true
- */
-function isThursday (dirtyDate) {
-  return parse$o(dirtyDate).getDay() === 4
-}
-
-var is_thursday = isThursday;
-
-var startOfDay$3 = start_of_day;
-
-/**
- * @category Day Helpers
- * @summary Is the given date today?
- *
- * @description
- * Is the given date today?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is today
- *
- * @example
- * // If today is 6 October 2014, is 6 October 14:00:00 today?
- * var result = isToday(new Date(2014, 9, 6, 14, 0))
- * //=> true
- */
-function isToday (dirtyDate) {
-  return startOfDay$3(dirtyDate).getTime() === startOfDay$3(new Date()).getTime()
-}
-
-var is_today = isToday;
-
-var startOfDay$2 = start_of_day;
-
-/**
- * @category Day Helpers
- * @summary Is the given date tomorrow?
- *
- * @description
- * Is the given date tomorrow?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is tomorrow
- *
- * @example
- * // If today is 6 October 2014, is 7 October 14:00:00 tomorrow?
- * var result = isTomorrow(new Date(2014, 9, 7, 14, 0))
- * //=> true
- */
-function isTomorrow (dirtyDate) {
-  var tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  return startOfDay$2(dirtyDate).getTime() === startOfDay$2(tomorrow).getTime()
-}
-
-var is_tomorrow = isTomorrow;
-
-var parse$n = parse_1;
-
-/**
- * @category Weekday Helpers
- * @summary Is the given date Tuesday?
- *
- * @description
- * Is the given date Tuesday?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is Tuesday
- *
- * @example
- * // Is 23 September 2014 Tuesday?
- * var result = isTuesday(new Date(2014, 8, 23))
- * //=> true
- */
-function isTuesday (dirtyDate) {
-  return parse$n(dirtyDate).getDay() === 2
-}
-
-var is_tuesday = isTuesday;
-
-var parse$m = parse_1;
-
-/**
- * @category Weekday Helpers
- * @summary Is the given date Wednesday?
- *
- * @description
- * Is the given date Wednesday?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is Wednesday
- *
- * @example
- * // Is 24 September 2014 Wednesday?
- * var result = isWednesday(new Date(2014, 8, 24))
- * //=> true
- */
-function isWednesday (dirtyDate) {
-  return parse$m(dirtyDate).getDay() === 3
-}
-
-var is_wednesday = isWednesday;
-
-var parse$l = parse_1;
-
-/**
- * @category Weekday Helpers
- * @summary Does the given date fall on a weekend?
- *
- * @description
- * Does the given date fall on a weekend?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date falls on a weekend
- *
- * @example
- * // Does 5 October 2014 fall on a weekend?
- * var result = isWeekend(new Date(2014, 9, 5))
- * //=> true
- */
-function isWeekend (dirtyDate) {
-  var date = parse$l(dirtyDate);
-  var day = date.getDay();
-  return day === 0 || day === 6
-}
-
-var is_weekend = isWeekend;
-
-var parse$k = parse_1;
-
-/**
- * @category Range Helpers
- * @summary Is the given date within the range?
- *
- * @description
- * Is the given date within the range?
- *
- * @param {Date|String|Number} date - the date to check
- * @param {Date|String|Number} startDate - the start of range
- * @param {Date|String|Number} endDate - the end of range
- * @returns {Boolean} the date is within the range
- * @throws {Error} startDate cannot be after endDate
- *
- * @example
- * // For the date within the range:
- * isWithinRange(
- *   new Date(2014, 0, 3), new Date(2014, 0, 1), new Date(2014, 0, 7)
- * )
- * //=> true
- *
- * @example
- * // For the date outside of the range:
- * isWithinRange(
- *   new Date(2014, 0, 10), new Date(2014, 0, 1), new Date(2014, 0, 7)
- * )
- * //=> false
- */
-function isWithinRange (dirtyDate, dirtyStartDate, dirtyEndDate) {
-  var time = parse$k(dirtyDate).getTime();
-  var startTime = parse$k(dirtyStartDate).getTime();
-  var endTime = parse$k(dirtyEndDate).getTime();
-
-  if (startTime > endTime) {
-    throw new Error('The start of the range cannot be after the end of the range')
-  }
-
-  return time >= startTime && time <= endTime
-}
-
-var is_within_range = isWithinRange;
-
-var startOfDay$1 = start_of_day;
-
-/**
- * @category Day Helpers
- * @summary Is the given date yesterday?
- *
- * @description
- * Is the given date yesterday?
- *
- * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is yesterday
- *
- * @example
- * // If today is 6 October 2014, is 5 October 14:00:00 yesterday?
- * var result = isYesterday(new Date(2014, 9, 5, 14, 0))
- * //=> true
- */
-function isYesterday (dirtyDate) {
-  var yesterday = new Date();
-  yesterday.setDate(yesterday.getDate() - 1);
-  return startOfDay$1(dirtyDate).getTime() === startOfDay$1(yesterday).getTime()
-}
-
-var is_yesterday = isYesterday;
-
-var parse$j = parse_1;
-
-/**
- * @category Week Helpers
- * @summary Return the last day of a week for the given date.
- *
- * @description
- * Return the last day of a week for the given date.
- * The result will be in the local timezone.
- *
- * @param {Date|String|Number} date - the original date
- * @param {Object} [options] - the object with options
- * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @returns {Date} the last day of a week
- *
- * @example
- * // The last day of a week for 2 September 2014 11:55:00:
- * var result = lastDayOfWeek(new Date(2014, 8, 2, 11, 55, 0))
- * //=> Sat Sep 06 2014 00:00:00
- *
- * @example
- * // If the week starts on Monday, the last day of the week for 2 September 2014 11:55:00:
- * var result = lastDayOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})
- * //=> Sun Sep 07 2014 00:00:00
- */
-function lastDayOfWeek$1 (dirtyDate, dirtyOptions) {
-  var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0;
-
-  var date = parse$j(dirtyDate);
-  var day = date.getDay();
-  var diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn);
-
-  date.setHours(0, 0, 0, 0);
-  date.setDate(date.getDate() + diff);
-  return date
-}
-
-var last_day_of_week = lastDayOfWeek$1;
-
-var lastDayOfWeek = last_day_of_week;
-
-/**
- * @category ISO Week Helpers
- * @summary Return the last day of an ISO week for the given date.
- *
- * @description
- * Return the last day of an ISO week for the given date.
- * The result will be in the local timezone.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the last day of an ISO week
- *
- * @example
- * // The last day of an ISO week for 2 September 2014 11:55:00:
- * var result = lastDayOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
- * //=> Sun Sep 07 2014 00:00:00
- */
-function lastDayOfISOWeek (dirtyDate) {
-  return lastDayOfWeek(dirtyDate, {weekStartsOn: 1})
-}
-
-var last_day_of_iso_week = lastDayOfISOWeek;
-
-var getISOYear = get_iso_year;
-var startOfISOWeek = start_of_iso_week;
-
-/**
- * @category ISO Week-Numbering Year Helpers
- * @summary Return the last day of an ISO week-numbering year for the given date.
- *
- * @description
- * Return the last day of an ISO week-numbering year,
- * which always starts 3 days before the year's first Thursday.
- * The result will be in the local timezone.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the end of an ISO week-numbering year
- *
- * @example
- * // The last day of an ISO week-numbering year for 2 July 2005:
- * var result = lastDayOfISOYear(new Date(2005, 6, 2))
- * //=> Sun Jan 01 2006 00:00:00
- */
-function lastDayOfISOYear (dirtyDate) {
-  var year = getISOYear(dirtyDate);
-  var fourthOfJanuary = new Date(0);
-  fourthOfJanuary.setFullYear(year + 1, 0, 4);
-  fourthOfJanuary.setHours(0, 0, 0, 0);
-  var date = startOfISOWeek(fourthOfJanuary);
-  date.setDate(date.getDate() - 1);
-  return date
-}
-
-var last_day_of_iso_year = lastDayOfISOYear;
-
-var parse$i = parse_1;
-
-/**
- * @category Month Helpers
- * @summary Return the last day of a month for the given date.
- *
- * @description
- * Return the last day of a month for the given date.
- * The result will be in the local timezone.
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the last day of a month
- *
- * @example
- * // The last day of a month for 2 September 2014 11:55:00:
- * var result = lastDayOfMonth(new Date(2014, 8, 2, 11, 55, 0))
- * //=> Tue Sep 30 2014 00:00:00
- */
-function lastDayOfMonth (dirtyDate) {
-  var date = parse$i(dirtyDate);
-  var month = date.getMonth();
-  date.setFullYear(date.getFullYear(), month + 1, 0);
-  date.setHours(0, 0, 0, 0);
-  return date
-}
-
-var last_day_of_month = lastDayOfMonth;
-
-var parse$h = parse_1;
-
-/**
- * @category Quarter Helpers
- * @summary Return the last day of a year quarter for the given date.
- *
- * @description
- * Return the last day of a year quarter for the given date.
- * The result will be in the local timezone.
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the last day of a quarter
- *
- * @example
- * // The last day of a quarter for 2 September 2014 11:55:00:
- * var result = lastDayOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
- * //=> Tue Sep 30 2014 00:00:00
- */
-function lastDayOfQuarter (dirtyDate) {
-  var date = parse$h(dirtyDate);
-  var currentMonth = date.getMonth();
-  var month = currentMonth - currentMonth % 3 + 3;
-  date.setMonth(month, 0);
-  date.setHours(0, 0, 0, 0);
-  return date
-}
-
-var last_day_of_quarter = lastDayOfQuarter;
-
-var parse$g = parse_1;
-
-/**
- * @category Year Helpers
- * @summary Return the last day of a year for the given date.
- *
- * @description
- * Return the last day of a year for the given date.
- * The result will be in the local timezone.
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the last day of a year
- *
- * @example
- * // The last day of a year for 2 September 2014 11:55:00:
- * var result = lastDayOfYear(new Date(2014, 8, 2, 11, 55, 00))
- * //=> Wed Dec 31 2014 00:00:00
- */
-function lastDayOfYear (dirtyDate) {
-  var date = parse$g(dirtyDate);
-  var year = date.getFullYear();
-  date.setFullYear(year + 1, 0, 0);
-  date.setHours(0, 0, 0, 0);
-  return date
-}
-
-var last_day_of_year = lastDayOfYear;
-
-var parse$f = parse_1;
-
-/**
- * @category Common Helpers
- * @summary Return the latest of the given dates.
- *
- * @description
- * Return the latest of the given dates.
- *
- * @param {...(Date|String|Number)} dates - the dates to compare
- * @returns {Date} the latest of the dates
- *
- * @example
- * // Which of these dates is the latest?
- * var result = max(
- *   new Date(1989, 6, 10),
- *   new Date(1987, 1, 11),
- *   new Date(1995, 6, 2),
- *   new Date(1990, 0, 1)
- * )
- * //=> Sun Jul 02 1995 00:00:00
- */
-function max () {
-  var dirtyDates = Array.prototype.slice.call(arguments);
-  var dates = dirtyDates.map(function (dirtyDate) {
-    return parse$f(dirtyDate)
-  });
-  var latestTimestamp = Math.max.apply(null, dates);
-  return new Date(latestTimestamp)
-}
-
-var max_1 = max;
-
-var parse$e = parse_1;
-
-/**
- * @category Common Helpers
- * @summary Return the earliest of the given dates.
- *
- * @description
- * Return the earliest of the given dates.
- *
- * @param {...(Date|String|Number)} dates - the dates to compare
- * @returns {Date} the earliest of the dates
- *
- * @example
- * // Which of these dates is the earliest?
- * var result = min(
- *   new Date(1989, 6, 10),
- *   new Date(1987, 1, 11),
- *   new Date(1995, 6, 2),
- *   new Date(1990, 0, 1)
- * )
- * //=> Wed Feb 11 1987 00:00:00
- */
-function min () {
-  var dirtyDates = Array.prototype.slice.call(arguments);
-  var dates = dirtyDates.map(function (dirtyDate) {
-    return parse$e(dirtyDate)
-  });
-  var earliestTimestamp = Math.min.apply(null, dates);
-  return new Date(earliestTimestamp)
-}
-
-var min_1 = min;
-
-var parse$d = parse_1;
-
-/**
- * @category Day Helpers
- * @summary Set the day of the month to the given date.
- *
- * @description
- * Set the day of the month to the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} dayOfMonth - the day of the month of the new date
- * @returns {Date} the new date with the day of the month setted
- *
- * @example
- * // Set the 30th day of the month to 1 September 2014:
- * var result = setDate(new Date(2014, 8, 1), 30)
- * //=> Tue Sep 30 2014 00:00:00
- */
-function setDate (dirtyDate, dirtyDayOfMonth) {
-  var date = parse$d(dirtyDate);
-  var dayOfMonth = Number(dirtyDayOfMonth);
-  date.setDate(dayOfMonth);
-  return date
-}
-
-var set_date = setDate;
-
-var parse$c = parse_1;
-var addDays$2 = add_days;
-
-/**
- * @category Weekday Helpers
- * @summary Set the day of the week to the given date.
- *
- * @description
- * Set the day of the week to the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} day - the day of the week of the new date
- * @param {Object} [options] - the object with options
- * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @returns {Date} the new date with the day of the week setted
- *
- * @example
- * // Set Sunday to 1 September 2014:
- * var result = setDay(new Date(2014, 8, 1), 0)
- * //=> Sun Aug 31 2014 00:00:00
- *
- * @example
- * // If week starts with Monday, set Sunday to 1 September 2014:
- * var result = setDay(new Date(2014, 8, 1), 0, {weekStartsOn: 1})
- * //=> Sun Sep 07 2014 00:00:00
- */
-function setDay (dirtyDate, dirtyDay, dirtyOptions) {
-  var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0;
-  var date = parse$c(dirtyDate);
-  var day = Number(dirtyDay);
-  var currentDay = date.getDay();
-
-  var remainder = day % 7;
-  var dayIndex = (remainder + 7) % 7;
-
-  var diff = (dayIndex < weekStartsOn ? 7 : 0) + day - currentDay;
-  return addDays$2(date, diff)
-}
-
-var set_day = setDay;
-
-var parse$b = parse_1;
-
-/**
- * @category Day Helpers
- * @summary Set the day of the year to the given date.
- *
- * @description
- * Set the day of the year to the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} dayOfYear - the day of the year of the new date
- * @returns {Date} the new date with the day of the year setted
- *
- * @example
- * // Set the 2nd day of the year to 2 July 2014:
- * var result = setDayOfYear(new Date(2014, 6, 2), 2)
- * //=> Thu Jan 02 2014 00:00:00
- */
-function setDayOfYear (dirtyDate, dirtyDayOfYear) {
-  var date = parse$b(dirtyDate);
-  var dayOfYear = Number(dirtyDayOfYear);
-  date.setMonth(0);
-  date.setDate(dayOfYear);
-  return date
-}
-
-var set_day_of_year = setDayOfYear;
-
-var parse$a = parse_1;
-
-/**
- * @category Hour Helpers
- * @summary Set the hours to the given date.
- *
- * @description
- * Set the hours to the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} hours - the hours of the new date
- * @returns {Date} the new date with the hours setted
- *
- * @example
- * // Set 4 hours to 1 September 2014 11:30:00:
- * var result = setHours(new Date(2014, 8, 1, 11, 30), 4)
- * //=> Mon Sep 01 2014 04:30:00
- */
-function setHours (dirtyDate, dirtyHours) {
-  var date = parse$a(dirtyDate);
-  var hours = Number(dirtyHours);
-  date.setHours(hours);
-  return date
-}
-
-var set_hours = setHours;
-
-var parse$9 = parse_1;
-var addDays$1 = add_days;
-var getISODay = get_iso_day;
-
-/**
- * @category Weekday Helpers
- * @summary Set the day of the ISO week to the given date.
- *
- * @description
- * Set the day of the ISO week to the given date.
- * ISO week starts with Monday.
- * 7 is the index of Sunday, 1 is the index of Monday etc.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} day - the day of the ISO week of the new date
- * @returns {Date} the new date with the day of the ISO week setted
- *
- * @example
- * // Set Sunday to 1 September 2014:
- * var result = setISODay(new Date(2014, 8, 1), 7)
- * //=> Sun Sep 07 2014 00:00:00
- */
-function setISODay (dirtyDate, dirtyDay) {
-  var date = parse$9(dirtyDate);
-  var day = Number(dirtyDay);
-  var currentDay = getISODay(date);
-  var diff = day - currentDay;
-  return addDays$1(date, diff)
-}
-
-var set_iso_day = setISODay;
-
-var parse$8 = parse_1;
-var getISOWeek = get_iso_week;
-
-/**
- * @category ISO Week Helpers
- * @summary Set the ISO week to the given date.
- *
- * @description
- * Set the ISO week to the given date, saving the weekday number.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} isoWeek - the ISO week of the new date
- * @returns {Date} the new date with the ISO week setted
- *
- * @example
- * // Set the 53rd ISO week to 7 August 2004:
- * var result = setISOWeek(new Date(2004, 7, 7), 53)
- * //=> Sat Jan 01 2005 00:00:00
- */
-function setISOWeek (dirtyDate, dirtyISOWeek) {
-  var date = parse$8(dirtyDate);
-  var isoWeek = Number(dirtyISOWeek);
-  var diff = getISOWeek(date) - isoWeek;
-  date.setDate(date.getDate() - diff * 7);
-  return date
-}
-
-var set_iso_week = setISOWeek;
-
-var parse$7 = parse_1;
-
-/**
- * @category Millisecond Helpers
- * @summary Set the milliseconds to the given date.
- *
- * @description
- * Set the milliseconds to the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} milliseconds - the milliseconds of the new date
- * @returns {Date} the new date with the milliseconds setted
- *
- * @example
- * // Set 300 milliseconds to 1 September 2014 11:30:40.500:
- * var result = setMilliseconds(new Date(2014, 8, 1, 11, 30, 40, 500), 300)
- * //=> Mon Sep 01 2014 11:30:40.300
- */
-function setMilliseconds (dirtyDate, dirtyMilliseconds) {
-  var date = parse$7(dirtyDate);
-  var milliseconds = Number(dirtyMilliseconds);
-  date.setMilliseconds(milliseconds);
-  return date
-}
-
-var set_milliseconds = setMilliseconds;
-
-var parse$6 = parse_1;
-
-/**
- * @category Minute Helpers
- * @summary Set the minutes to the given date.
- *
- * @description
- * Set the minutes to the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} minutes - the minutes of the new date
- * @returns {Date} the new date with the minutes setted
- *
- * @example
- * // Set 45 minutes to 1 September 2014 11:30:40:
- * var result = setMinutes(new Date(2014, 8, 1, 11, 30, 40), 45)
- * //=> Mon Sep 01 2014 11:45:40
- */
-function setMinutes (dirtyDate, dirtyMinutes) {
-  var date = parse$6(dirtyDate);
-  var minutes = Number(dirtyMinutes);
-  date.setMinutes(minutes);
-  return date
-}
-
-var set_minutes = setMinutes;
-
-var parse$5 = parse_1;
-var getDaysInMonth = get_days_in_month;
-
-/**
- * @category Month Helpers
- * @summary Set the month to the given date.
- *
- * @description
- * Set the month to the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} month - the month of the new date
- * @returns {Date} the new date with the month setted
- *
- * @example
- * // Set February to 1 September 2014:
- * var result = setMonth(new Date(2014, 8, 1), 1)
- * //=> Sat Feb 01 2014 00:00:00
- */
-function setMonth$1 (dirtyDate, dirtyMonth) {
-  var date = parse$5(dirtyDate);
-  var month = Number(dirtyMonth);
-  var year = date.getFullYear();
-  var day = date.getDate();
-
-  var dateWithDesiredMonth = new Date(0);
-  dateWithDesiredMonth.setFullYear(year, month, 15);
-  dateWithDesiredMonth.setHours(0, 0, 0, 0);
-  var daysInMonth = getDaysInMonth(dateWithDesiredMonth);
-  // Set the last day of the new month
-  // if the original date was the last day of the longer month
-  date.setMonth(month, Math.min(day, daysInMonth));
-  return date
-}
-
-var set_month = setMonth$1;
-
-var parse$4 = parse_1;
-var setMonth = set_month;
-
-/**
- * @category Quarter Helpers
- * @summary Set the year quarter to the given date.
- *
- * @description
- * Set the year quarter to the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} quarter - the quarter of the new date
- * @returns {Date} the new date with the quarter setted
- *
- * @example
- * // Set the 2nd quarter to 2 July 2014:
- * var result = setQuarter(new Date(2014, 6, 2), 2)
- * //=> Wed Apr 02 2014 00:00:00
- */
-function setQuarter (dirtyDate, dirtyQuarter) {
-  var date = parse$4(dirtyDate);
-  var quarter = Number(dirtyQuarter);
-  var oldQuarter = Math.floor(date.getMonth() / 3) + 1;
-  var diff = quarter - oldQuarter;
-  return setMonth(date, date.getMonth() + diff * 3)
-}
-
-var set_quarter = setQuarter;
-
-var parse$3 = parse_1;
-
-/**
- * @category Second Helpers
- * @summary Set the seconds to the given date.
- *
- * @description
- * Set the seconds to the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} seconds - the seconds of the new date
- * @returns {Date} the new date with the seconds setted
- *
- * @example
- * // Set 45 seconds to 1 September 2014 11:30:40:
- * var result = setSeconds(new Date(2014, 8, 1, 11, 30, 40), 45)
- * //=> Mon Sep 01 2014 11:30:45
- */
-function setSeconds (dirtyDate, dirtySeconds) {
-  var date = parse$3(dirtyDate);
-  var seconds = Number(dirtySeconds);
-  date.setSeconds(seconds);
-  return date
-}
-
-var set_seconds = setSeconds;
-
-var parse$2 = parse_1;
-
-/**
- * @category Year Helpers
- * @summary Set the year to the given date.
- *
- * @description
- * Set the year to the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} year - the year of the new date
- * @returns {Date} the new date with the year setted
- *
- * @example
- * // Set year 2013 to 1 September 2014:
- * var result = setYear(new Date(2014, 8, 1), 2013)
- * //=> Sun Sep 01 2013 00:00:00
- */
-function setYear (dirtyDate, dirtyYear) {
-  var date = parse$2(dirtyDate);
-  var year = Number(dirtyYear);
-  date.setFullYear(year);
-  return date
-}
-
-var set_year = setYear;
-
-var parse$1 = parse_1;
-
 /**
+ * @name startOfMonth
  * @category Month Helpers
  * @summary Return the start of a month for the given date.
  *
@@ -26898,504 +21950,6259 @@ var parse$1 = parse_1;
  * Return the start of a month for the given date.
  * The result will be in the local timezone.
  *
- * @param {Date|String|Number} date - the original date
+ * @param {Date|Number} date - the original date
  * @returns {Date} the start of a month
+ * @throws {TypeError} 1 argument required
  *
  * @example
  * // The start of a month for 2 September 2014 11:55:00:
- * var result = startOfMonth(new Date(2014, 8, 2, 11, 55, 0))
+ * const result = startOfMonth(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Mon Sep 01 2014 00:00:00
  */
-function startOfMonth (dirtyDate) {
-  var date = parse$1(dirtyDate);
+
+function startOfMonth(dirtyDate) {
+  requiredArgs(1, arguments);
+  var date = toDate(dirtyDate);
   date.setDate(1);
   date.setHours(0, 0, 0, 0);
-  return date
+  return date;
 }
 
-var start_of_month = startOfMonth;
-
-var startOfDay = start_of_day;
-
 /**
- * @category Day Helpers
- * @summary Return the start of today.
+ * @name endOfWeek
+ * @category Week Helpers
+ * @summary Return the end of a week for the given date.
  *
  * @description
- * Return the start of today.
+ * Return the end of a week for the given date.
+ * The result will be in the local timezone.
  *
- * @returns {Date} the start of today
- *
- * @example
- * // If today is 6 October 2014:
- * var result = startOfToday()
- * //=> Mon Oct 6 2014 00:00:00
- */
-function startOfToday () {
-  return startOfDay(new Date())
-}
-
-var start_of_today = startOfToday;
-
-/**
- * @category Day Helpers
- * @summary Return the start of tomorrow.
- *
- * @description
- * Return the start of tomorrow.
- *
- * @returns {Date} the start of tomorrow
+ * @param {Date|Number} date - the original date
+ * @param {Object} [options] - an object with options.
+ * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
+ * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @returns {Date} the end of a week
+ * @throws {TypeError} 1 argument required
+ * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example
- * // If today is 6 October 2014:
- * var result = startOfTomorrow()
- * //=> Tue Oct 7 2014 00:00:00
- */
-
-function startOfTomorrow () {
-  var now = new Date();
-  var year = now.getFullYear();
-  var month = now.getMonth();
-  var day = now.getDate();
-
-  var date = new Date(0);
-  date.setFullYear(year, month, day + 1);
-  date.setHours(0, 0, 0, 0);
-  return date
-}
-
-var start_of_tomorrow = startOfTomorrow;
-
-/**
- * @category Day Helpers
- * @summary Return the start of yesterday.
- *
- * @description
- * Return the start of yesterday.
- *
- * @returns {Date} the start of yesterday
+ * // The end of a week for 2 September 2014 11:55:00:
+ * const result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Sat Sep 06 2014 23:59:59.999
  *
  * @example
- * // If today is 6 October 2014:
- * var result = startOfYesterday()
- * //=> Sun Oct 5 2014 00:00:00
+ * // If the week starts on Monday, the end of the week for 2 September 2014 11:55:00:
+ * const result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0), { weekStartsOn: 1 })
+ * //=> Sun Sep 07 2014 23:59:59.999
  */
+function endOfWeek(dirtyDate, options) {
+  var _ref, _ref2, _ref3, _options$weekStartsOn, _options$locale, _options$locale$optio, _defaultOptions$local, _defaultOptions$local2;
 
-function startOfYesterday () {
-  var now = new Date();
-  var year = now.getFullYear();
-  var month = now.getMonth();
-  var day = now.getDate();
+  requiredArgs(1, arguments);
+  var defaultOptions = getDefaultOptions();
+  var weekStartsOn = toInteger((_ref = (_ref2 = (_ref3 = (_options$weekStartsOn = options === null || options === void 0 ? void 0 : options.weekStartsOn) !== null && _options$weekStartsOn !== void 0 ? _options$weekStartsOn : options === null || options === void 0 ? void 0 : (_options$locale = options.locale) === null || _options$locale === void 0 ? void 0 : (_options$locale$optio = _options$locale.options) === null || _options$locale$optio === void 0 ? void 0 : _options$locale$optio.weekStartsOn) !== null && _ref3 !== void 0 ? _ref3 : defaultOptions.weekStartsOn) !== null && _ref2 !== void 0 ? _ref2 : (_defaultOptions$local = defaultOptions.locale) === null || _defaultOptions$local === void 0 ? void 0 : (_defaultOptions$local2 = _defaultOptions$local.options) === null || _defaultOptions$local2 === void 0 ? void 0 : _defaultOptions$local2.weekStartsOn) !== null && _ref !== void 0 ? _ref : 0); // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
 
-  var date = new Date(0);
-  date.setFullYear(year, month, day - 1);
-  date.setHours(0, 0, 0, 0);
-  return date
+  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
+    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively');
+  }
+
+  var date = toDate(dirtyDate);
+  var day = date.getDay();
+  var diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn);
+  date.setDate(date.getDate() + diff);
+  date.setHours(23, 59, 59, 999);
+  return date;
 }
 
-var start_of_yesterday = startOfYesterday;
-
-var addDays = add_days;
-
 /**
- * @category Day Helpers
- * @summary Subtract the specified number of days from the given date.
- *
- * @description
- * Subtract the specified number of days from the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of days to be subtracted
- * @returns {Date} the new date with the days subtracted
- *
- * @example
- * // Subtract 10 days from 1 September 2014:
- * var result = subDays(new Date(2014, 8, 1), 10)
- * //=> Fri Aug 22 2014 00:00:00
- */
-function subDays (dirtyDate, dirtyAmount) {
-  var amount = Number(dirtyAmount);
-  return addDays(dirtyDate, -amount)
-}
-
-var sub_days = subDays;
-
-var addHours = add_hours;
-
-/**
- * @category Hour Helpers
- * @summary Subtract the specified number of hours from the given date.
- *
- * @description
- * Subtract the specified number of hours from the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of hours to be subtracted
- * @returns {Date} the new date with the hours subtracted
- *
- * @example
- * // Subtract 2 hours from 11 July 2014 01:00:00:
- * var result = subHours(new Date(2014, 6, 11, 1, 0), 2)
- * //=> Thu Jul 10 2014 23:00:00
- */
-function subHours (dirtyDate, dirtyAmount) {
-  var amount = Number(dirtyAmount);
-  return addHours(dirtyDate, -amount)
-}
-
-var sub_hours = subHours;
-
-var addMilliseconds = add_milliseconds;
-
-/**
+ * @name subMilliseconds
  * @category Millisecond Helpers
  * @summary Subtract the specified number of milliseconds from the given date.
  *
  * @description
  * Subtract the specified number of milliseconds from the given date.
  *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of milliseconds to be subtracted
+ * @param {Date|Number} date - the date to be changed
+ * @param {Number} amount - the amount of milliseconds to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the milliseconds subtracted
+ * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Subtract 750 milliseconds from 10 July 2014 12:45:30.000:
- * var result = subMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
+ * const result = subMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
  * //=> Thu Jul 10 2014 12:45:29.250
  */
-function subMilliseconds (dirtyDate, dirtyAmount) {
-  var amount = Number(dirtyAmount);
-  return addMilliseconds(dirtyDate, -amount)
+
+function subMilliseconds(dirtyDate, dirtyAmount) {
+  requiredArgs(2, arguments);
+  var amount = toInteger(dirtyAmount);
+  return addMilliseconds(dirtyDate, -amount);
 }
 
-var sub_milliseconds = subMilliseconds;
+var MILLISECONDS_IN_DAY = 86400000;
+function getUTCDayOfYear(dirtyDate) {
+  requiredArgs(1, arguments);
+  var date = toDate(dirtyDate);
+  var timestamp = date.getTime();
+  date.setUTCMonth(0, 1);
+  date.setUTCHours(0, 0, 0, 0);
+  var startOfYearTimestamp = date.getTime();
+  var difference = timestamp - startOfYearTimestamp;
+  return Math.floor(difference / MILLISECONDS_IN_DAY) + 1;
+}
 
-var addMinutes = add_minutes;
+function startOfUTCISOWeek(dirtyDate) {
+  requiredArgs(1, arguments);
+  var weekStartsOn = 1;
+  var date = toDate(dirtyDate);
+  var day = date.getUTCDay();
+  var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn;
+  date.setUTCDate(date.getUTCDate() - diff);
+  date.setUTCHours(0, 0, 0, 0);
+  return date;
+}
+
+function getUTCISOWeekYear(dirtyDate) {
+  requiredArgs(1, arguments);
+  var date = toDate(dirtyDate);
+  var year = date.getUTCFullYear();
+  var fourthOfJanuaryOfNextYear = new Date(0);
+  fourthOfJanuaryOfNextYear.setUTCFullYear(year + 1, 0, 4);
+  fourthOfJanuaryOfNextYear.setUTCHours(0, 0, 0, 0);
+  var startOfNextYear = startOfUTCISOWeek(fourthOfJanuaryOfNextYear);
+  var fourthOfJanuaryOfThisYear = new Date(0);
+  fourthOfJanuaryOfThisYear.setUTCFullYear(year, 0, 4);
+  fourthOfJanuaryOfThisYear.setUTCHours(0, 0, 0, 0);
+  var startOfThisYear = startOfUTCISOWeek(fourthOfJanuaryOfThisYear);
+
+  if (date.getTime() >= startOfNextYear.getTime()) {
+    return year + 1;
+  } else if (date.getTime() >= startOfThisYear.getTime()) {
+    return year;
+  } else {
+    return year - 1;
+  }
+}
+
+function startOfUTCISOWeekYear(dirtyDate) {
+  requiredArgs(1, arguments);
+  var year = getUTCISOWeekYear(dirtyDate);
+  var fourthOfJanuary = new Date(0);
+  fourthOfJanuary.setUTCFullYear(year, 0, 4);
+  fourthOfJanuary.setUTCHours(0, 0, 0, 0);
+  var date = startOfUTCISOWeek(fourthOfJanuary);
+  return date;
+}
+
+var MILLISECONDS_IN_WEEK$1 = 604800000;
+function getUTCISOWeek(dirtyDate) {
+  requiredArgs(1, arguments);
+  var date = toDate(dirtyDate);
+  var diff = startOfUTCISOWeek(date).getTime() - startOfUTCISOWeekYear(date).getTime(); // Round the number of days to the nearest integer
+  // because the number of milliseconds in a week is not constant
+  // (e.g. it's different in the week of the daylight saving time clock shift)
+
+  return Math.round(diff / MILLISECONDS_IN_WEEK$1) + 1;
+}
+
+function startOfUTCWeek(dirtyDate, options) {
+  var _ref, _ref2, _ref3, _options$weekStartsOn, _options$locale, _options$locale$optio, _defaultOptions$local, _defaultOptions$local2;
+
+  requiredArgs(1, arguments);
+  var defaultOptions = getDefaultOptions();
+  var weekStartsOn = toInteger((_ref = (_ref2 = (_ref3 = (_options$weekStartsOn = options === null || options === void 0 ? void 0 : options.weekStartsOn) !== null && _options$weekStartsOn !== void 0 ? _options$weekStartsOn : options === null || options === void 0 ? void 0 : (_options$locale = options.locale) === null || _options$locale === void 0 ? void 0 : (_options$locale$optio = _options$locale.options) === null || _options$locale$optio === void 0 ? void 0 : _options$locale$optio.weekStartsOn) !== null && _ref3 !== void 0 ? _ref3 : defaultOptions.weekStartsOn) !== null && _ref2 !== void 0 ? _ref2 : (_defaultOptions$local = defaultOptions.locale) === null || _defaultOptions$local === void 0 ? void 0 : (_defaultOptions$local2 = _defaultOptions$local.options) === null || _defaultOptions$local2 === void 0 ? void 0 : _defaultOptions$local2.weekStartsOn) !== null && _ref !== void 0 ? _ref : 0); // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
+
+  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
+    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively');
+  }
+
+  var date = toDate(dirtyDate);
+  var day = date.getUTCDay();
+  var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn;
+  date.setUTCDate(date.getUTCDate() - diff);
+  date.setUTCHours(0, 0, 0, 0);
+  return date;
+}
+
+function getUTCWeekYear(dirtyDate, options) {
+  var _ref, _ref2, _ref3, _options$firstWeekCon, _options$locale, _options$locale$optio, _defaultOptions$local, _defaultOptions$local2;
+
+  requiredArgs(1, arguments);
+  var date = toDate(dirtyDate);
+  var year = date.getUTCFullYear();
+  var defaultOptions = getDefaultOptions();
+  var firstWeekContainsDate = toInteger((_ref = (_ref2 = (_ref3 = (_options$firstWeekCon = options === null || options === void 0 ? void 0 : options.firstWeekContainsDate) !== null && _options$firstWeekCon !== void 0 ? _options$firstWeekCon : options === null || options === void 0 ? void 0 : (_options$locale = options.locale) === null || _options$locale === void 0 ? void 0 : (_options$locale$optio = _options$locale.options) === null || _options$locale$optio === void 0 ? void 0 : _options$locale$optio.firstWeekContainsDate) !== null && _ref3 !== void 0 ? _ref3 : defaultOptions.firstWeekContainsDate) !== null && _ref2 !== void 0 ? _ref2 : (_defaultOptions$local = defaultOptions.locale) === null || _defaultOptions$local === void 0 ? void 0 : (_defaultOptions$local2 = _defaultOptions$local.options) === null || _defaultOptions$local2 === void 0 ? void 0 : _defaultOptions$local2.firstWeekContainsDate) !== null && _ref !== void 0 ? _ref : 1); // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
+
+  if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
+    throw new RangeError('firstWeekContainsDate must be between 1 and 7 inclusively');
+  }
+
+  var firstWeekOfNextYear = new Date(0);
+  firstWeekOfNextYear.setUTCFullYear(year + 1, 0, firstWeekContainsDate);
+  firstWeekOfNextYear.setUTCHours(0, 0, 0, 0);
+  var startOfNextYear = startOfUTCWeek(firstWeekOfNextYear, options);
+  var firstWeekOfThisYear = new Date(0);
+  firstWeekOfThisYear.setUTCFullYear(year, 0, firstWeekContainsDate);
+  firstWeekOfThisYear.setUTCHours(0, 0, 0, 0);
+  var startOfThisYear = startOfUTCWeek(firstWeekOfThisYear, options);
+
+  if (date.getTime() >= startOfNextYear.getTime()) {
+    return year + 1;
+  } else if (date.getTime() >= startOfThisYear.getTime()) {
+    return year;
+  } else {
+    return year - 1;
+  }
+}
+
+function startOfUTCWeekYear(dirtyDate, options) {
+  var _ref, _ref2, _ref3, _options$firstWeekCon, _options$locale, _options$locale$optio, _defaultOptions$local, _defaultOptions$local2;
+
+  requiredArgs(1, arguments);
+  var defaultOptions = getDefaultOptions();
+  var firstWeekContainsDate = toInteger((_ref = (_ref2 = (_ref3 = (_options$firstWeekCon = options === null || options === void 0 ? void 0 : options.firstWeekContainsDate) !== null && _options$firstWeekCon !== void 0 ? _options$firstWeekCon : options === null || options === void 0 ? void 0 : (_options$locale = options.locale) === null || _options$locale === void 0 ? void 0 : (_options$locale$optio = _options$locale.options) === null || _options$locale$optio === void 0 ? void 0 : _options$locale$optio.firstWeekContainsDate) !== null && _ref3 !== void 0 ? _ref3 : defaultOptions.firstWeekContainsDate) !== null && _ref2 !== void 0 ? _ref2 : (_defaultOptions$local = defaultOptions.locale) === null || _defaultOptions$local === void 0 ? void 0 : (_defaultOptions$local2 = _defaultOptions$local.options) === null || _defaultOptions$local2 === void 0 ? void 0 : _defaultOptions$local2.firstWeekContainsDate) !== null && _ref !== void 0 ? _ref : 1);
+  var year = getUTCWeekYear(dirtyDate, options);
+  var firstWeek = new Date(0);
+  firstWeek.setUTCFullYear(year, 0, firstWeekContainsDate);
+  firstWeek.setUTCHours(0, 0, 0, 0);
+  var date = startOfUTCWeek(firstWeek, options);
+  return date;
+}
+
+var MILLISECONDS_IN_WEEK = 604800000;
+function getUTCWeek(dirtyDate, options) {
+  requiredArgs(1, arguments);
+  var date = toDate(dirtyDate);
+  var diff = startOfUTCWeek(date, options).getTime() - startOfUTCWeekYear(date, options).getTime(); // Round the number of days to the nearest integer
+  // because the number of milliseconds in a week is not constant
+  // (e.g. it's different in the week of the daylight saving time clock shift)
+
+  return Math.round(diff / MILLISECONDS_IN_WEEK) + 1;
+}
+
+function addLeadingZeros(number, targetLength) {
+  var sign = number < 0 ? '-' : '';
+  var output = Math.abs(number).toString();
+
+  while (output.length < targetLength) {
+    output = '0' + output;
+  }
+
+  return sign + output;
+}
+
+/*
+ * |     | Unit                           |     | Unit                           |
+ * |-----|--------------------------------|-----|--------------------------------|
+ * |  a  | AM, PM                         |  A* |                                |
+ * |  d  | Day of month                   |  D  |                                |
+ * |  h  | Hour [1-12]                    |  H  | Hour [0-23]                    |
+ * |  m  | Minute                         |  M  | Month                          |
+ * |  s  | Second                         |  S  | Fraction of second             |
+ * |  y  | Year (abs)                     |  Y  |                                |
+ *
+ * Letters marked by * are not implemented but reserved by Unicode standard.
+ */
+
+var formatters$2 = {
+  // Year
+  y: function y(date, token) {
+    // From http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_tokens
+    // | Year     |     y | yy |   yyy |  yyyy | yyyyy |
+    // |----------|-------|----|-------|-------|-------|
+    // | AD 1     |     1 | 01 |   001 |  0001 | 00001 |
+    // | AD 12    |    12 | 12 |   012 |  0012 | 00012 |
+    // | AD 123   |   123 | 23 |   123 |  0123 | 00123 |
+    // | AD 1234  |  1234 | 34 |  1234 |  1234 | 01234 |
+    // | AD 12345 | 12345 | 45 | 12345 | 12345 | 12345 |
+    var signedYear = date.getUTCFullYear(); // Returns 1 for 1 BC (which is year 0 in JavaScript)
+
+    var year = signedYear > 0 ? signedYear : 1 - signedYear;
+    return addLeadingZeros(token === 'yy' ? year % 100 : year, token.length);
+  },
+  // Month
+  M: function M(date, token) {
+    var month = date.getUTCMonth();
+    return token === 'M' ? String(month + 1) : addLeadingZeros(month + 1, 2);
+  },
+  // Day of the month
+  d: function d(date, token) {
+    return addLeadingZeros(date.getUTCDate(), token.length);
+  },
+  // AM or PM
+  a: function a(date, token) {
+    var dayPeriodEnumValue = date.getUTCHours() / 12 >= 1 ? 'pm' : 'am';
+
+    switch (token) {
+      case 'a':
+      case 'aa':
+        return dayPeriodEnumValue.toUpperCase();
+
+      case 'aaa':
+        return dayPeriodEnumValue;
+
+      case 'aaaaa':
+        return dayPeriodEnumValue[0];
+
+      case 'aaaa':
+      default:
+        return dayPeriodEnumValue === 'am' ? 'a.m.' : 'p.m.';
+    }
+  },
+  // Hour [1-12]
+  h: function h(date, token) {
+    return addLeadingZeros(date.getUTCHours() % 12 || 12, token.length);
+  },
+  // Hour [0-23]
+  H: function H(date, token) {
+    return addLeadingZeros(date.getUTCHours(), token.length);
+  },
+  // Minute
+  m: function m(date, token) {
+    return addLeadingZeros(date.getUTCMinutes(), token.length);
+  },
+  // Second
+  s: function s(date, token) {
+    return addLeadingZeros(date.getUTCSeconds(), token.length);
+  },
+  // Fraction of second
+  S: function S(date, token) {
+    var numberOfDigits = token.length;
+    var milliseconds = date.getUTCMilliseconds();
+    var fractionalSeconds = Math.floor(milliseconds * Math.pow(10, numberOfDigits - 3));
+    return addLeadingZeros(fractionalSeconds, token.length);
+  }
+};
+var formatters$3 = formatters$2;
+
+var dayPeriodEnum = {
+  am: 'am',
+  pm: 'pm',
+  midnight: 'midnight',
+  noon: 'noon',
+  morning: 'morning',
+  afternoon: 'afternoon',
+  evening: 'evening',
+  night: 'night'
+};
+
+/*
+ * |     | Unit                           |     | Unit                           |
+ * |-----|--------------------------------|-----|--------------------------------|
+ * |  a  | AM, PM                         |  A* | Milliseconds in day            |
+ * |  b  | AM, PM, noon, midnight         |  B  | Flexible day period            |
+ * |  c  | Stand-alone local day of week  |  C* | Localized hour w/ day period   |
+ * |  d  | Day of month                   |  D  | Day of year                    |
+ * |  e  | Local day of week              |  E  | Day of week                    |
+ * |  f  |                                |  F* | Day of week in month           |
+ * |  g* | Modified Julian day            |  G  | Era                            |
+ * |  h  | Hour [1-12]                    |  H  | Hour [0-23]                    |
+ * |  i! | ISO day of week                |  I! | ISO week of year               |
+ * |  j* | Localized hour w/ day period   |  J* | Localized hour w/o day period  |
+ * |  k  | Hour [1-24]                    |  K  | Hour [0-11]                    |
+ * |  l* | (deprecated)                   |  L  | Stand-alone month              |
+ * |  m  | Minute                         |  M  | Month                          |
+ * |  n  |                                |  N  |                                |
+ * |  o! | Ordinal number modifier        |  O  | Timezone (GMT)                 |
+ * |  p! | Long localized time            |  P! | Long localized date            |
+ * |  q  | Stand-alone quarter            |  Q  | Quarter                        |
+ * |  r* | Related Gregorian year         |  R! | ISO week-numbering year        |
+ * |  s  | Second                         |  S  | Fraction of second             |
+ * |  t! | Seconds timestamp              |  T! | Milliseconds timestamp         |
+ * |  u  | Extended year                  |  U* | Cyclic year                    |
+ * |  v* | Timezone (generic non-locat.)  |  V* | Timezone (location)            |
+ * |  w  | Local week of year             |  W* | Week of month                  |
+ * |  x  | Timezone (ISO-8601 w/o Z)      |  X  | Timezone (ISO-8601)            |
+ * |  y  | Year (abs)                     |  Y  | Local week-numbering year      |
+ * |  z  | Timezone (specific non-locat.) |  Z* | Timezone (aliases)             |
+ *
+ * Letters marked by * are not implemented but reserved by Unicode standard.
+ *
+ * Letters marked by ! are non-standard, but implemented by date-fns:
+ * - `o` modifies the previous token to turn it into an ordinal (see `format` docs)
+ * - `i` is ISO day of week. For `i` and `ii` is returns numeric ISO week days,
+ *   i.e. 7 for Sunday, 1 for Monday, etc.
+ * - `I` is ISO week of year, as opposed to `w` which is local week of year.
+ * - `R` is ISO week-numbering year, as opposed to `Y` which is local week-numbering year.
+ *   `R` is supposed to be used in conjunction with `I` and `i`
+ *   for universal ISO week-numbering date, whereas
+ *   `Y` is supposed to be used in conjunction with `w` and `e`
+ *   for week-numbering date specific to the locale.
+ * - `P` is long localized date format
+ * - `p` is long localized time format
+ */
+var formatters = {
+  // Era
+  G: function G(date, token, localize) {
+    var era = date.getUTCFullYear() > 0 ? 1 : 0;
+
+    switch (token) {
+      // AD, BC
+      case 'G':
+      case 'GG':
+      case 'GGG':
+        return localize.era(era, {
+          width: 'abbreviated'
+        });
+      // A, B
+
+      case 'GGGGG':
+        return localize.era(era, {
+          width: 'narrow'
+        });
+      // Anno Domini, Before Christ
+
+      case 'GGGG':
+      default:
+        return localize.era(era, {
+          width: 'wide'
+        });
+    }
+  },
+  // Year
+  y: function y(date, token, localize) {
+    // Ordinal number
+    if (token === 'yo') {
+      var signedYear = date.getUTCFullYear(); // Returns 1 for 1 BC (which is year 0 in JavaScript)
+
+      var year = signedYear > 0 ? signedYear : 1 - signedYear;
+      return localize.ordinalNumber(year, {
+        unit: 'year'
+      });
+    }
+
+    return formatters$3.y(date, token);
+  },
+  // Local week-numbering year
+  Y: function Y(date, token, localize, options) {
+    var signedWeekYear = getUTCWeekYear(date, options); // Returns 1 for 1 BC (which is year 0 in JavaScript)
+
+    var weekYear = signedWeekYear > 0 ? signedWeekYear : 1 - signedWeekYear; // Two digit year
+
+    if (token === 'YY') {
+      var twoDigitYear = weekYear % 100;
+      return addLeadingZeros(twoDigitYear, 2);
+    } // Ordinal number
+
+
+    if (token === 'Yo') {
+      return localize.ordinalNumber(weekYear, {
+        unit: 'year'
+      });
+    } // Padding
+
+
+    return addLeadingZeros(weekYear, token.length);
+  },
+  // ISO week-numbering year
+  R: function R(date, token) {
+    var isoWeekYear = getUTCISOWeekYear(date); // Padding
+
+    return addLeadingZeros(isoWeekYear, token.length);
+  },
+  // Extended year. This is a single number designating the year of this calendar system.
+  // The main difference between `y` and `u` localizers are B.C. years:
+  // | Year | `y` | `u` |
+  // |------|-----|-----|
+  // | AC 1 |   1 |   1 |
+  // | BC 1 |   1 |   0 |
+  // | BC 2 |   2 |  -1 |
+  // Also `yy` always returns the last two digits of a year,
+  // while `uu` pads single digit years to 2 characters and returns other years unchanged.
+  u: function u(date, token) {
+    var year = date.getUTCFullYear();
+    return addLeadingZeros(year, token.length);
+  },
+  // Quarter
+  Q: function Q(date, token, localize) {
+    var quarter = Math.ceil((date.getUTCMonth() + 1) / 3);
+
+    switch (token) {
+      // 1, 2, 3, 4
+      case 'Q':
+        return String(quarter);
+      // 01, 02, 03, 04
+
+      case 'QQ':
+        return addLeadingZeros(quarter, 2);
+      // 1st, 2nd, 3rd, 4th
+
+      case 'Qo':
+        return localize.ordinalNumber(quarter, {
+          unit: 'quarter'
+        });
+      // Q1, Q2, Q3, Q4
+
+      case 'QQQ':
+        return localize.quarter(quarter, {
+          width: 'abbreviated',
+          context: 'formatting'
+        });
+      // 1, 2, 3, 4 (narrow quarter; could be not numerical)
+
+      case 'QQQQQ':
+        return localize.quarter(quarter, {
+          width: 'narrow',
+          context: 'formatting'
+        });
+      // 1st quarter, 2nd quarter, ...
+
+      case 'QQQQ':
+      default:
+        return localize.quarter(quarter, {
+          width: 'wide',
+          context: 'formatting'
+        });
+    }
+  },
+  // Stand-alone quarter
+  q: function q(date, token, localize) {
+    var quarter = Math.ceil((date.getUTCMonth() + 1) / 3);
+
+    switch (token) {
+      // 1, 2, 3, 4
+      case 'q':
+        return String(quarter);
+      // 01, 02, 03, 04
+
+      case 'qq':
+        return addLeadingZeros(quarter, 2);
+      // 1st, 2nd, 3rd, 4th
+
+      case 'qo':
+        return localize.ordinalNumber(quarter, {
+          unit: 'quarter'
+        });
+      // Q1, Q2, Q3, Q4
+
+      case 'qqq':
+        return localize.quarter(quarter, {
+          width: 'abbreviated',
+          context: 'standalone'
+        });
+      // 1, 2, 3, 4 (narrow quarter; could be not numerical)
+
+      case 'qqqqq':
+        return localize.quarter(quarter, {
+          width: 'narrow',
+          context: 'standalone'
+        });
+      // 1st quarter, 2nd quarter, ...
+
+      case 'qqqq':
+      default:
+        return localize.quarter(quarter, {
+          width: 'wide',
+          context: 'standalone'
+        });
+    }
+  },
+  // Month
+  M: function M(date, token, localize) {
+    var month = date.getUTCMonth();
+
+    switch (token) {
+      case 'M':
+      case 'MM':
+        return formatters$3.M(date, token);
+      // 1st, 2nd, ..., 12th
+
+      case 'Mo':
+        return localize.ordinalNumber(month + 1, {
+          unit: 'month'
+        });
+      // Jan, Feb, ..., Dec
+
+      case 'MMM':
+        return localize.month(month, {
+          width: 'abbreviated',
+          context: 'formatting'
+        });
+      // J, F, ..., D
+
+      case 'MMMMM':
+        return localize.month(month, {
+          width: 'narrow',
+          context: 'formatting'
+        });
+      // January, February, ..., December
+
+      case 'MMMM':
+      default:
+        return localize.month(month, {
+          width: 'wide',
+          context: 'formatting'
+        });
+    }
+  },
+  // Stand-alone month
+  L: function L(date, token, localize) {
+    var month = date.getUTCMonth();
+
+    switch (token) {
+      // 1, 2, ..., 12
+      case 'L':
+        return String(month + 1);
+      // 01, 02, ..., 12
+
+      case 'LL':
+        return addLeadingZeros(month + 1, 2);
+      // 1st, 2nd, ..., 12th
+
+      case 'Lo':
+        return localize.ordinalNumber(month + 1, {
+          unit: 'month'
+        });
+      // Jan, Feb, ..., Dec
+
+      case 'LLL':
+        return localize.month(month, {
+          width: 'abbreviated',
+          context: 'standalone'
+        });
+      // J, F, ..., D
+
+      case 'LLLLL':
+        return localize.month(month, {
+          width: 'narrow',
+          context: 'standalone'
+        });
+      // January, February, ..., December
+
+      case 'LLLL':
+      default:
+        return localize.month(month, {
+          width: 'wide',
+          context: 'standalone'
+        });
+    }
+  },
+  // Local week of year
+  w: function w(date, token, localize, options) {
+    var week = getUTCWeek(date, options);
+
+    if (token === 'wo') {
+      return localize.ordinalNumber(week, {
+        unit: 'week'
+      });
+    }
+
+    return addLeadingZeros(week, token.length);
+  },
+  // ISO week of year
+  I: function I(date, token, localize) {
+    var isoWeek = getUTCISOWeek(date);
+
+    if (token === 'Io') {
+      return localize.ordinalNumber(isoWeek, {
+        unit: 'week'
+      });
+    }
+
+    return addLeadingZeros(isoWeek, token.length);
+  },
+  // Day of the month
+  d: function d(date, token, localize) {
+    if (token === 'do') {
+      return localize.ordinalNumber(date.getUTCDate(), {
+        unit: 'date'
+      });
+    }
+
+    return formatters$3.d(date, token);
+  },
+  // Day of year
+  D: function D(date, token, localize) {
+    var dayOfYear = getUTCDayOfYear(date);
+
+    if (token === 'Do') {
+      return localize.ordinalNumber(dayOfYear, {
+        unit: 'dayOfYear'
+      });
+    }
+
+    return addLeadingZeros(dayOfYear, token.length);
+  },
+  // Day of week
+  E: function E(date, token, localize) {
+    var dayOfWeek = date.getUTCDay();
+
+    switch (token) {
+      // Tue
+      case 'E':
+      case 'EE':
+      case 'EEE':
+        return localize.day(dayOfWeek, {
+          width: 'abbreviated',
+          context: 'formatting'
+        });
+      // T
+
+      case 'EEEEE':
+        return localize.day(dayOfWeek, {
+          width: 'narrow',
+          context: 'formatting'
+        });
+      // Tu
+
+      case 'EEEEEE':
+        return localize.day(dayOfWeek, {
+          width: 'short',
+          context: 'formatting'
+        });
+      // Tuesday
+
+      case 'EEEE':
+      default:
+        return localize.day(dayOfWeek, {
+          width: 'wide',
+          context: 'formatting'
+        });
+    }
+  },
+  // Local day of week
+  e: function e(date, token, localize, options) {
+    var dayOfWeek = date.getUTCDay();
+    var localDayOfWeek = (dayOfWeek - options.weekStartsOn + 8) % 7 || 7;
+
+    switch (token) {
+      // Numerical value (Nth day of week with current locale or weekStartsOn)
+      case 'e':
+        return String(localDayOfWeek);
+      // Padded numerical value
+
+      case 'ee':
+        return addLeadingZeros(localDayOfWeek, 2);
+      // 1st, 2nd, ..., 7th
+
+      case 'eo':
+        return localize.ordinalNumber(localDayOfWeek, {
+          unit: 'day'
+        });
+
+      case 'eee':
+        return localize.day(dayOfWeek, {
+          width: 'abbreviated',
+          context: 'formatting'
+        });
+      // T
+
+      case 'eeeee':
+        return localize.day(dayOfWeek, {
+          width: 'narrow',
+          context: 'formatting'
+        });
+      // Tu
+
+      case 'eeeeee':
+        return localize.day(dayOfWeek, {
+          width: 'short',
+          context: 'formatting'
+        });
+      // Tuesday
+
+      case 'eeee':
+      default:
+        return localize.day(dayOfWeek, {
+          width: 'wide',
+          context: 'formatting'
+        });
+    }
+  },
+  // Stand-alone local day of week
+  c: function c(date, token, localize, options) {
+    var dayOfWeek = date.getUTCDay();
+    var localDayOfWeek = (dayOfWeek - options.weekStartsOn + 8) % 7 || 7;
+
+    switch (token) {
+      // Numerical value (same as in `e`)
+      case 'c':
+        return String(localDayOfWeek);
+      // Padded numerical value
+
+      case 'cc':
+        return addLeadingZeros(localDayOfWeek, token.length);
+      // 1st, 2nd, ..., 7th
+
+      case 'co':
+        return localize.ordinalNumber(localDayOfWeek, {
+          unit: 'day'
+        });
+
+      case 'ccc':
+        return localize.day(dayOfWeek, {
+          width: 'abbreviated',
+          context: 'standalone'
+        });
+      // T
+
+      case 'ccccc':
+        return localize.day(dayOfWeek, {
+          width: 'narrow',
+          context: 'standalone'
+        });
+      // Tu
+
+      case 'cccccc':
+        return localize.day(dayOfWeek, {
+          width: 'short',
+          context: 'standalone'
+        });
+      // Tuesday
+
+      case 'cccc':
+      default:
+        return localize.day(dayOfWeek, {
+          width: 'wide',
+          context: 'standalone'
+        });
+    }
+  },
+  // ISO day of week
+  i: function i(date, token, localize) {
+    var dayOfWeek = date.getUTCDay();
+    var isoDayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek;
+
+    switch (token) {
+      // 2
+      case 'i':
+        return String(isoDayOfWeek);
+      // 02
+
+      case 'ii':
+        return addLeadingZeros(isoDayOfWeek, token.length);
+      // 2nd
+
+      case 'io':
+        return localize.ordinalNumber(isoDayOfWeek, {
+          unit: 'day'
+        });
+      // Tue
+
+      case 'iii':
+        return localize.day(dayOfWeek, {
+          width: 'abbreviated',
+          context: 'formatting'
+        });
+      // T
+
+      case 'iiiii':
+        return localize.day(dayOfWeek, {
+          width: 'narrow',
+          context: 'formatting'
+        });
+      // Tu
+
+      case 'iiiiii':
+        return localize.day(dayOfWeek, {
+          width: 'short',
+          context: 'formatting'
+        });
+      // Tuesday
+
+      case 'iiii':
+      default:
+        return localize.day(dayOfWeek, {
+          width: 'wide',
+          context: 'formatting'
+        });
+    }
+  },
+  // AM or PM
+  a: function a(date, token, localize) {
+    var hours = date.getUTCHours();
+    var dayPeriodEnumValue = hours / 12 >= 1 ? 'pm' : 'am';
+
+    switch (token) {
+      case 'a':
+      case 'aa':
+        return localize.dayPeriod(dayPeriodEnumValue, {
+          width: 'abbreviated',
+          context: 'formatting'
+        });
+
+      case 'aaa':
+        return localize.dayPeriod(dayPeriodEnumValue, {
+          width: 'abbreviated',
+          context: 'formatting'
+        }).toLowerCase();
+
+      case 'aaaaa':
+        return localize.dayPeriod(dayPeriodEnumValue, {
+          width: 'narrow',
+          context: 'formatting'
+        });
+
+      case 'aaaa':
+      default:
+        return localize.dayPeriod(dayPeriodEnumValue, {
+          width: 'wide',
+          context: 'formatting'
+        });
+    }
+  },
+  // AM, PM, midnight, noon
+  b: function b(date, token, localize) {
+    var hours = date.getUTCHours();
+    var dayPeriodEnumValue;
+
+    if (hours === 12) {
+      dayPeriodEnumValue = dayPeriodEnum.noon;
+    } else if (hours === 0) {
+      dayPeriodEnumValue = dayPeriodEnum.midnight;
+    } else {
+      dayPeriodEnumValue = hours / 12 >= 1 ? 'pm' : 'am';
+    }
+
+    switch (token) {
+      case 'b':
+      case 'bb':
+        return localize.dayPeriod(dayPeriodEnumValue, {
+          width: 'abbreviated',
+          context: 'formatting'
+        });
+
+      case 'bbb':
+        return localize.dayPeriod(dayPeriodEnumValue, {
+          width: 'abbreviated',
+          context: 'formatting'
+        }).toLowerCase();
+
+      case 'bbbbb':
+        return localize.dayPeriod(dayPeriodEnumValue, {
+          width: 'narrow',
+          context: 'formatting'
+        });
+
+      case 'bbbb':
+      default:
+        return localize.dayPeriod(dayPeriodEnumValue, {
+          width: 'wide',
+          context: 'formatting'
+        });
+    }
+  },
+  // in the morning, in the afternoon, in the evening, at night
+  B: function B(date, token, localize) {
+    var hours = date.getUTCHours();
+    var dayPeriodEnumValue;
+
+    if (hours >= 17) {
+      dayPeriodEnumValue = dayPeriodEnum.evening;
+    } else if (hours >= 12) {
+      dayPeriodEnumValue = dayPeriodEnum.afternoon;
+    } else if (hours >= 4) {
+      dayPeriodEnumValue = dayPeriodEnum.morning;
+    } else {
+      dayPeriodEnumValue = dayPeriodEnum.night;
+    }
+
+    switch (token) {
+      case 'B':
+      case 'BB':
+      case 'BBB':
+        return localize.dayPeriod(dayPeriodEnumValue, {
+          width: 'abbreviated',
+          context: 'formatting'
+        });
+
+      case 'BBBBB':
+        return localize.dayPeriod(dayPeriodEnumValue, {
+          width: 'narrow',
+          context: 'formatting'
+        });
+
+      case 'BBBB':
+      default:
+        return localize.dayPeriod(dayPeriodEnumValue, {
+          width: 'wide',
+          context: 'formatting'
+        });
+    }
+  },
+  // Hour [1-12]
+  h: function h(date, token, localize) {
+    if (token === 'ho') {
+      var hours = date.getUTCHours() % 12;
+      if (hours === 0) hours = 12;
+      return localize.ordinalNumber(hours, {
+        unit: 'hour'
+      });
+    }
+
+    return formatters$3.h(date, token);
+  },
+  // Hour [0-23]
+  H: function H(date, token, localize) {
+    if (token === 'Ho') {
+      return localize.ordinalNumber(date.getUTCHours(), {
+        unit: 'hour'
+      });
+    }
+
+    return formatters$3.H(date, token);
+  },
+  // Hour [0-11]
+  K: function K(date, token, localize) {
+    var hours = date.getUTCHours() % 12;
+
+    if (token === 'Ko') {
+      return localize.ordinalNumber(hours, {
+        unit: 'hour'
+      });
+    }
+
+    return addLeadingZeros(hours, token.length);
+  },
+  // Hour [1-24]
+  k: function k(date, token, localize) {
+    var hours = date.getUTCHours();
+    if (hours === 0) hours = 24;
+
+    if (token === 'ko') {
+      return localize.ordinalNumber(hours, {
+        unit: 'hour'
+      });
+    }
+
+    return addLeadingZeros(hours, token.length);
+  },
+  // Minute
+  m: function m(date, token, localize) {
+    if (token === 'mo') {
+      return localize.ordinalNumber(date.getUTCMinutes(), {
+        unit: 'minute'
+      });
+    }
+
+    return formatters$3.m(date, token);
+  },
+  // Second
+  s: function s(date, token, localize) {
+    if (token === 'so') {
+      return localize.ordinalNumber(date.getUTCSeconds(), {
+        unit: 'second'
+      });
+    }
+
+    return formatters$3.s(date, token);
+  },
+  // Fraction of second
+  S: function S(date, token) {
+    return formatters$3.S(date, token);
+  },
+  // Timezone (ISO-8601. If offset is 0, output is always `'Z'`)
+  X: function X(date, token, _localize, options) {
+    var originalDate = options._originalDate || date;
+    var timezoneOffset = originalDate.getTimezoneOffset();
+
+    if (timezoneOffset === 0) {
+      return 'Z';
+    }
+
+    switch (token) {
+      // Hours and optional minutes
+      case 'X':
+        return formatTimezoneWithOptionalMinutes(timezoneOffset);
+      // Hours, minutes and optional seconds without `:` delimiter
+      // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
+      // so this token always has the same output as `XX`
+
+      case 'XXXX':
+      case 'XX':
+        // Hours and minutes without `:` delimiter
+        return formatTimezone(timezoneOffset);
+      // Hours, minutes and optional seconds with `:` delimiter
+      // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
+      // so this token always has the same output as `XXX`
+
+      case 'XXXXX':
+      case 'XXX': // Hours and minutes with `:` delimiter
+
+      default:
+        return formatTimezone(timezoneOffset, ':');
+    }
+  },
+  // Timezone (ISO-8601. If offset is 0, output is `'+00:00'` or equivalent)
+  x: function x(date, token, _localize, options) {
+    var originalDate = options._originalDate || date;
+    var timezoneOffset = originalDate.getTimezoneOffset();
+
+    switch (token) {
+      // Hours and optional minutes
+      case 'x':
+        return formatTimezoneWithOptionalMinutes(timezoneOffset);
+      // Hours, minutes and optional seconds without `:` delimiter
+      // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
+      // so this token always has the same output as `xx`
+
+      case 'xxxx':
+      case 'xx':
+        // Hours and minutes without `:` delimiter
+        return formatTimezone(timezoneOffset);
+      // Hours, minutes and optional seconds with `:` delimiter
+      // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
+      // so this token always has the same output as `xxx`
+
+      case 'xxxxx':
+      case 'xxx': // Hours and minutes with `:` delimiter
+
+      default:
+        return formatTimezone(timezoneOffset, ':');
+    }
+  },
+  // Timezone (GMT)
+  O: function O(date, token, _localize, options) {
+    var originalDate = options._originalDate || date;
+    var timezoneOffset = originalDate.getTimezoneOffset();
+
+    switch (token) {
+      // Short
+      case 'O':
+      case 'OO':
+      case 'OOO':
+        return 'GMT' + formatTimezoneShort(timezoneOffset, ':');
+      // Long
+
+      case 'OOOO':
+      default:
+        return 'GMT' + formatTimezone(timezoneOffset, ':');
+    }
+  },
+  // Timezone (specific non-location)
+  z: function z(date, token, _localize, options) {
+    var originalDate = options._originalDate || date;
+    var timezoneOffset = originalDate.getTimezoneOffset();
+
+    switch (token) {
+      // Short
+      case 'z':
+      case 'zz':
+      case 'zzz':
+        return 'GMT' + formatTimezoneShort(timezoneOffset, ':');
+      // Long
+
+      case 'zzzz':
+      default:
+        return 'GMT' + formatTimezone(timezoneOffset, ':');
+    }
+  },
+  // Seconds timestamp
+  t: function t(date, token, _localize, options) {
+    var originalDate = options._originalDate || date;
+    var timestamp = Math.floor(originalDate.getTime() / 1000);
+    return addLeadingZeros(timestamp, token.length);
+  },
+  // Milliseconds timestamp
+  T: function T(date, token, _localize, options) {
+    var originalDate = options._originalDate || date;
+    var timestamp = originalDate.getTime();
+    return addLeadingZeros(timestamp, token.length);
+  }
+};
+
+function formatTimezoneShort(offset, dirtyDelimiter) {
+  var sign = offset > 0 ? '-' : '+';
+  var absOffset = Math.abs(offset);
+  var hours = Math.floor(absOffset / 60);
+  var minutes = absOffset % 60;
+
+  if (minutes === 0) {
+    return sign + String(hours);
+  }
+
+  var delimiter = dirtyDelimiter || '';
+  return sign + String(hours) + delimiter + addLeadingZeros(minutes, 2);
+}
+
+function formatTimezoneWithOptionalMinutes(offset, dirtyDelimiter) {
+  if (offset % 60 === 0) {
+    var sign = offset > 0 ? '-' : '+';
+    return sign + addLeadingZeros(Math.abs(offset) / 60, 2);
+  }
+
+  return formatTimezone(offset, dirtyDelimiter);
+}
+
+function formatTimezone(offset, dirtyDelimiter) {
+  var delimiter = dirtyDelimiter || '';
+  var sign = offset > 0 ? '-' : '+';
+  var absOffset = Math.abs(offset);
+  var hours = addLeadingZeros(Math.floor(absOffset / 60), 2);
+  var minutes = addLeadingZeros(absOffset % 60, 2);
+  return sign + hours + delimiter + minutes;
+}
+
+var formatters$1 = formatters;
+
+var dateLongFormatter = function dateLongFormatter(pattern, formatLong) {
+  switch (pattern) {
+    case 'P':
+      return formatLong.date({
+        width: 'short'
+      });
+
+    case 'PP':
+      return formatLong.date({
+        width: 'medium'
+      });
+
+    case 'PPP':
+      return formatLong.date({
+        width: 'long'
+      });
+
+    case 'PPPP':
+    default:
+      return formatLong.date({
+        width: 'full'
+      });
+  }
+};
+
+var timeLongFormatter = function timeLongFormatter(pattern, formatLong) {
+  switch (pattern) {
+    case 'p':
+      return formatLong.time({
+        width: 'short'
+      });
+
+    case 'pp':
+      return formatLong.time({
+        width: 'medium'
+      });
+
+    case 'ppp':
+      return formatLong.time({
+        width: 'long'
+      });
+
+    case 'pppp':
+    default:
+      return formatLong.time({
+        width: 'full'
+      });
+  }
+};
+
+var dateTimeLongFormatter = function dateTimeLongFormatter(pattern, formatLong) {
+  var matchResult = pattern.match(/(P+)(p+)?/) || [];
+  var datePattern = matchResult[1];
+  var timePattern = matchResult[2];
+
+  if (!timePattern) {
+    return dateLongFormatter(pattern, formatLong);
+  }
+
+  var dateTimeFormat;
+
+  switch (datePattern) {
+    case 'P':
+      dateTimeFormat = formatLong.dateTime({
+        width: 'short'
+      });
+      break;
+
+    case 'PP':
+      dateTimeFormat = formatLong.dateTime({
+        width: 'medium'
+      });
+      break;
+
+    case 'PPP':
+      dateTimeFormat = formatLong.dateTime({
+        width: 'long'
+      });
+      break;
+
+    case 'PPPP':
+    default:
+      dateTimeFormat = formatLong.dateTime({
+        width: 'full'
+      });
+      break;
+  }
+
+  return dateTimeFormat.replace('{{date}}', dateLongFormatter(datePattern, formatLong)).replace('{{time}}', timeLongFormatter(timePattern, formatLong));
+};
+
+var longFormatters = {
+  p: timeLongFormatter,
+  P: dateTimeLongFormatter
+};
+var longFormatters$1 = longFormatters;
+
+var protectedDayOfYearTokens = ['D', 'DD'];
+var protectedWeekYearTokens = ['YY', 'YYYY'];
+function isProtectedDayOfYearToken(token) {
+  return protectedDayOfYearTokens.indexOf(token) !== -1;
+}
+function isProtectedWeekYearToken(token) {
+  return protectedWeekYearTokens.indexOf(token) !== -1;
+}
+function throwProtectedError(token, format, input) {
+  if (token === 'YYYY') {
+    throw new RangeError("Use `yyyy` instead of `YYYY` (in `".concat(format, "`) for formatting years to the input `").concat(input, "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"));
+  } else if (token === 'YY') {
+    throw new RangeError("Use `yy` instead of `YY` (in `".concat(format, "`) for formatting years to the input `").concat(input, "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"));
+  } else if (token === 'D') {
+    throw new RangeError("Use `d` instead of `D` (in `".concat(format, "`) for formatting days of the month to the input `").concat(input, "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"));
+  } else if (token === 'DD') {
+    throw new RangeError("Use `dd` instead of `DD` (in `".concat(format, "`) for formatting days of the month to the input `").concat(input, "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"));
+  }
+}
+
+var formatDistanceLocale$5 = {
+  lessThanXSeconds: {
+    one: 'less than a second',
+    other: 'less than {{count}} seconds'
+  },
+  xSeconds: {
+    one: '1 second',
+    other: '{{count}} seconds'
+  },
+  halfAMinute: 'half a minute',
+  lessThanXMinutes: {
+    one: 'less than a minute',
+    other: 'less than {{count}} minutes'
+  },
+  xMinutes: {
+    one: '1 minute',
+    other: '{{count}} minutes'
+  },
+  aboutXHours: {
+    one: 'about 1 hour',
+    other: 'about {{count}} hours'
+  },
+  xHours: {
+    one: '1 hour',
+    other: '{{count}} hours'
+  },
+  xDays: {
+    one: '1 day',
+    other: '{{count}} days'
+  },
+  aboutXWeeks: {
+    one: 'about 1 week',
+    other: 'about {{count}} weeks'
+  },
+  xWeeks: {
+    one: '1 week',
+    other: '{{count}} weeks'
+  },
+  aboutXMonths: {
+    one: 'about 1 month',
+    other: 'about {{count}} months'
+  },
+  xMonths: {
+    one: '1 month',
+    other: '{{count}} months'
+  },
+  aboutXYears: {
+    one: 'about 1 year',
+    other: 'about {{count}} years'
+  },
+  xYears: {
+    one: '1 year',
+    other: '{{count}} years'
+  },
+  overXYears: {
+    one: 'over 1 year',
+    other: 'over {{count}} years'
+  },
+  almostXYears: {
+    one: 'almost 1 year',
+    other: 'almost {{count}} years'
+  }
+};
+
+var formatDistance$a = function formatDistance(token, count, options) {
+  var result;
+  var tokenValue = formatDistanceLocale$5[token];
+
+  if (typeof tokenValue === 'string') {
+    result = tokenValue;
+  } else if (count === 1) {
+    result = tokenValue.one;
+  } else {
+    result = tokenValue.other.replace('{{count}}', count.toString());
+  }
+
+  if (options !== null && options !== void 0 && options.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
+      return 'in ' + result;
+    } else {
+      return result + ' ago';
+    }
+  }
+
+  return result;
+};
+
+var formatDistance$b = formatDistance$a;
+
+function buildFormatLongFn(args) {
+  return function () {
+    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    // TODO: Remove String()
+    var width = options.width ? String(options.width) : args.defaultWidth;
+    var format = args.formats[width] || args.formats[args.defaultWidth];
+    return format;
+  };
+}
+
+var dateFormats$6 = {
+  full: 'EEEE, MMMM do, y',
+  long: 'MMMM do, y',
+  medium: 'MMM d, y',
+  short: 'MM/dd/yyyy'
+};
+var timeFormats$6 = {
+  full: 'h:mm:ss a zzzz',
+  long: 'h:mm:ss a z',
+  medium: 'h:mm:ss a',
+  short: 'h:mm a'
+};
+var dateTimeFormats$6 = {
+  full: "{{date}} 'at' {{time}}",
+  long: "{{date}} 'at' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong$c = {
+  date: buildFormatLongFn({
+    formats: dateFormats$6,
+    defaultWidth: 'full'
+  }),
+  time: buildFormatLongFn({
+    formats: timeFormats$6,
+    defaultWidth: 'full'
+  }),
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats$6,
+    defaultWidth: 'full'
+  })
+};
+var formatLong$d = formatLong$c;
+
+var formatRelativeLocale$5 = {
+  lastWeek: "'last' eeee 'at' p",
+  yesterday: "'yesterday at' p",
+  today: "'today at' p",
+  tomorrow: "'tomorrow at' p",
+  nextWeek: "eeee 'at' p",
+  other: 'P'
+};
+
+var formatRelative$a = function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale$5[token];
+};
+
+var formatRelative$b = formatRelative$a;
+
+function buildLocalizeFn(args) {
+  return function (dirtyIndex, options) {
+    var context = options !== null && options !== void 0 && options.context ? String(options.context) : 'standalone';
+    var valuesArray;
+
+    if (context === 'formatting' && args.formattingValues) {
+      var defaultWidth = args.defaultFormattingWidth || args.defaultWidth;
+      var width = options !== null && options !== void 0 && options.width ? String(options.width) : defaultWidth;
+      valuesArray = args.formattingValues[width] || args.formattingValues[defaultWidth];
+    } else {
+      var _defaultWidth = args.defaultWidth;
+
+      var _width = options !== null && options !== void 0 && options.width ? String(options.width) : args.defaultWidth;
+
+      valuesArray = args.values[_width] || args.values[_defaultWidth];
+    }
+
+    var index = args.argumentCallback ? args.argumentCallback(dirtyIndex) : dirtyIndex; // @ts-ignore: For some reason TypeScript just don't want to match it, no matter how hard we try. I challenge you to try to remove it!
+
+    return valuesArray[index];
+  };
+}
+
+var eraValues$5 = {
+  narrow: ['B', 'A'],
+  abbreviated: ['BC', 'AD'],
+  wide: ['Before Christ', 'Anno Domini']
+};
+var quarterValues$5 = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
+  wide: ['1st quarter', '2nd quarter', '3rd quarter', '4th quarter']
+}; // Note: in English, the names of days of the week and months are capitalized.
+// If you are making a new locale based on this one, check if the same is true for the language you're working on.
+// Generally, formatted dates should look like they are in the middle of a sentence,
+// e.g. in Spanish language the weekdays and months should be in the lowercase.
+
+var monthValues$5 = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  wide: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+};
+var dayValues$5 = {
+  narrow: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+  short: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+  abbreviated: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+  wide: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+};
+var dayPeriodValues$5 = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'mi',
+    noon: 'n',
+    morning: 'morning',
+    afternoon: 'afternoon',
+    evening: 'evening',
+    night: 'night'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'midnight',
+    noon: 'noon',
+    morning: 'morning',
+    afternoon: 'afternoon',
+    evening: 'evening',
+    night: 'night'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'midnight',
+    noon: 'noon',
+    morning: 'morning',
+    afternoon: 'afternoon',
+    evening: 'evening',
+    night: 'night'
+  }
+};
+var formattingDayPeriodValues$3 = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'mi',
+    noon: 'n',
+    morning: 'in the morning',
+    afternoon: 'in the afternoon',
+    evening: 'in the evening',
+    night: 'at night'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'midnight',
+    noon: 'noon',
+    morning: 'in the morning',
+    afternoon: 'in the afternoon',
+    evening: 'in the evening',
+    night: 'at night'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'midnight',
+    noon: 'noon',
+    morning: 'in the morning',
+    afternoon: 'in the afternoon',
+    evening: 'in the evening',
+    night: 'at night'
+  }
+};
+
+var ordinalNumber$5 = function ordinalNumber(dirtyNumber, _options) {
+  var number = Number(dirtyNumber); // If ordinal numbers depend on context, for example,
+  // if they are different for different grammatical genders,
+  // use `options.unit`.
+  //
+  // `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
+  // 'day', 'hour', 'minute', 'second'.
+
+  var rem100 = number % 100;
+
+  if (rem100 > 20 || rem100 < 10) {
+    switch (rem100 % 10) {
+      case 1:
+        return number + 'st';
+
+      case 2:
+        return number + 'nd';
+
+      case 3:
+        return number + 'rd';
+    }
+  }
+
+  return number + 'th';
+};
+
+var localize$a = {
+  ordinalNumber: ordinalNumber$5,
+  era: buildLocalizeFn({
+    values: eraValues$5,
+    defaultWidth: 'wide'
+  }),
+  quarter: buildLocalizeFn({
+    values: quarterValues$5,
+    defaultWidth: 'wide',
+    argumentCallback: function argumentCallback(quarter) {
+      return quarter - 1;
+    }
+  }),
+  month: buildLocalizeFn({
+    values: monthValues$5,
+    defaultWidth: 'wide'
+  }),
+  day: buildLocalizeFn({
+    values: dayValues$5,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues$5,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues$3,
+    defaultFormattingWidth: 'wide'
+  })
+};
+var localize$b = localize$a;
+
+function buildMatchFn(args) {
+  return function (string) {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    var width = options.width;
+    var matchPattern = width && args.matchPatterns[width] || args.matchPatterns[args.defaultMatchWidth];
+    var matchResult = string.match(matchPattern);
+
+    if (!matchResult) {
+      return null;
+    }
+
+    var matchedString = matchResult[0];
+    var parsePatterns = width && args.parsePatterns[width] || args.parsePatterns[args.defaultParseWidth];
+    var key = Array.isArray(parsePatterns) ? findIndex(parsePatterns, function (pattern) {
+      return pattern.test(matchedString);
+    }) : findKey(parsePatterns, function (pattern) {
+      return pattern.test(matchedString);
+    });
+    var value;
+    value = args.valueCallback ? args.valueCallback(key) : key;
+    value = options.valueCallback ? options.valueCallback(value) : value;
+    var rest = string.slice(matchedString.length);
+    return {
+      value: value,
+      rest: rest
+    };
+  };
+}
+
+function findKey(object, predicate) {
+  for (var key in object) {
+    if (object.hasOwnProperty(key) && predicate(object[key])) {
+      return key;
+    }
+  }
+
+  return undefined;
+}
+
+function findIndex(array, predicate) {
+  for (var key = 0; key < array.length; key++) {
+    if (predicate(array[key])) {
+      return key;
+    }
+  }
+
+  return undefined;
+}
+
+function buildMatchPatternFn(args) {
+  return function (string) {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    var matchResult = string.match(args.matchPattern);
+    if (!matchResult) return null;
+    var matchedString = matchResult[0];
+    var parseResult = string.match(args.parsePattern);
+    if (!parseResult) return null;
+    var value = args.valueCallback ? args.valueCallback(parseResult[0]) : parseResult[0];
+    value = options.valueCallback ? options.valueCallback(value) : value;
+    var rest = string.slice(matchedString.length);
+    return {
+      value: value,
+      rest: rest
+    };
+  };
+}
+
+var matchOrdinalNumberPattern$5 = /^(\d+)(th|st|nd|rd)?/i;
+var parseOrdinalNumberPattern$5 = /\d+/i;
+var matchEraPatterns$5 = {
+  narrow: /^(b|a)/i,
+  abbreviated: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)/i,
+  wide: /^(before christ|before common era|anno domini|common era)/i
+};
+var parseEraPatterns$5 = {
+  any: [/^b/i, /^(a|c)/i]
+};
+var matchQuarterPatterns$5 = {
+  narrow: /^[1234]/i,
+  abbreviated: /^q[1234]/i,
+  wide: /^[1234](th|st|nd|rd)? quarter/i
+};
+var parseQuarterPatterns$5 = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns$5 = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i,
+  wide: /^(january|february|march|april|may|june|july|august|september|october|november|december)/i
+};
+var parseMonthPatterns$5 = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ja/i, /^f/i, /^mar/i, /^ap/i, /^may/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns$5 = {
+  narrow: /^[smtwf]/i,
+  short: /^(su|mo|tu|we|th|fr|sa)/i,
+  abbreviated: /^(sun|mon|tue|wed|thu|fri|sat)/i,
+  wide: /^(sunday|monday|tuesday|wednesday|thursday|friday|saturday)/i
+};
+var parseDayPatterns$5 = {
+  narrow: [/^s/i, /^m/i, /^t/i, /^w/i, /^t/i, /^f/i, /^s/i],
+  any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i]
+};
+var matchDayPeriodPatterns$5 = {
+  narrow: /^(a|p|mi|n|(in the|at) (morning|afternoon|evening|night))/i,
+  any: /^([ap]\.?\s?m\.?|midnight|noon|(in the|at) (morning|afternoon|evening|night))/i
+};
+var parseDayPeriodPatterns$5 = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^mi/i,
+    noon: /^no/i,
+    morning: /morning/i,
+    afternoon: /afternoon/i,
+    evening: /evening/i,
+    night: /night/i
+  }
+};
+var match$a = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern$5,
+    parsePattern: parseOrdinalNumberPattern$5,
+    valueCallback: function valueCallback(value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns$5,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns$5,
+    defaultParseWidth: 'any'
+  }),
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns$5,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns$5,
+    defaultParseWidth: 'any',
+    valueCallback: function valueCallback(index) {
+      return index + 1;
+    }
+  }),
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns$5,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns$5,
+    defaultParseWidth: 'any'
+  }),
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns$5,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns$5,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns$5,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns$5,
+    defaultParseWidth: 'any'
+  })
+};
+var match$b = match$a;
 
 /**
- * @category Minute Helpers
- * @summary Subtract the specified number of minutes from the given date.
+ * @type {Locale}
+ * @category Locales
+ * @summary English locale (United States).
+ * @language English
+ * @iso-639-2 eng
+ * @author Sasha Koss [@kossnocorp]{@link https://github.com/kossnocorp}
+ * @author Lesha Koss [@leshakoss]{@link https://github.com/leshakoss}
+ */
+var locale$6 = {
+  code: 'en-US',
+  formatDistance: formatDistance$b,
+  formatLong: formatLong$d,
+  formatRelative: formatRelative$b,
+  localize: localize$b,
+  match: match$b,
+  options: {
+    weekStartsOn: 0
+    /* Sunday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+var defaultLocale = locale$6;
+
+// - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
+//   (one of the certain letters followed by `o`)
+// - (\w)\1* matches any sequences of the same letter
+// - '' matches two quote characters in a row
+// - '(''|[^'])+('|$) matches anything surrounded by two quote characters ('),
+//   except a single quote symbol, which ends the sequence.
+//   Two quote characters do not end the sequence.
+//   If there is no matching single quote
+//   then the sequence will continue until the end of the string.
+// - . matches any single character unmatched by previous parts of the RegExps
+
+var formattingTokensRegExp$1 = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g; // This RegExp catches symbols escaped by quotes, and also
+// sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
+
+var longFormattingTokensRegExp$1 = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g;
+var escapedStringRegExp$1 = /^'([^]*?)'?$/;
+var doubleQuoteRegExp$1 = /''/g;
+var unescapedLatinCharacterRegExp$1 = /[a-zA-Z]/;
+/**
+ * @name format
+ * @category Common Helpers
+ * @summary Format the date.
  *
  * @description
- * Subtract the specified number of minutes from the given date.
+ * Return the formatted date string in the given format. The result may vary by locale.
  *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of minutes to be subtracted
- * @returns {Date} the new date with the mintues subtracted
+ * > ⚠️ Please note that the `format` tokens differ from Moment.js and other libraries.
+ * > See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ *
+ * The characters wrapped between two single quotes characters (') are escaped.
+ * Two single quotes in a row, whether inside or outside a quoted sequence, represent a 'real' single quote.
+ * (see the last example)
+ *
+ * Format of the string is based on Unicode Technical Standard #35:
+ * https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
+ * with a few additions (see note 7 below the table).
+ *
+ * Accepted patterns:
+ * | Unit                            | Pattern | Result examples                   | Notes |
+ * |---------------------------------|---------|-----------------------------------|-------|
+ * | Era                             | G..GGG  | AD, BC                            |       |
+ * |                                 | GGGG    | Anno Domini, Before Christ        | 2     |
+ * |                                 | GGGGG   | A, B                              |       |
+ * | Calendar year                   | y       | 44, 1, 1900, 2017                 | 5     |
+ * |                                 | yo      | 44th, 1st, 0th, 17th              | 5,7   |
+ * |                                 | yy      | 44, 01, 00, 17                    | 5     |
+ * |                                 | yyy     | 044, 001, 1900, 2017              | 5     |
+ * |                                 | yyyy    | 0044, 0001, 1900, 2017            | 5     |
+ * |                                 | yyyyy   | ...                               | 3,5   |
+ * | Local week-numbering year       | Y       | 44, 1, 1900, 2017                 | 5     |
+ * |                                 | Yo      | 44th, 1st, 1900th, 2017th         | 5,7   |
+ * |                                 | YY      | 44, 01, 00, 17                    | 5,8   |
+ * |                                 | YYY     | 044, 001, 1900, 2017              | 5     |
+ * |                                 | YYYY    | 0044, 0001, 1900, 2017            | 5,8   |
+ * |                                 | YYYYY   | ...                               | 3,5   |
+ * | ISO week-numbering year         | R       | -43, 0, 1, 1900, 2017             | 5,7   |
+ * |                                 | RR      | -43, 00, 01, 1900, 2017           | 5,7   |
+ * |                                 | RRR     | -043, 000, 001, 1900, 2017        | 5,7   |
+ * |                                 | RRRR    | -0043, 0000, 0001, 1900, 2017     | 5,7   |
+ * |                                 | RRRRR   | ...                               | 3,5,7 |
+ * | Extended year                   | u       | -43, 0, 1, 1900, 2017             | 5     |
+ * |                                 | uu      | -43, 01, 1900, 2017               | 5     |
+ * |                                 | uuu     | -043, 001, 1900, 2017             | 5     |
+ * |                                 | uuuu    | -0043, 0001, 1900, 2017           | 5     |
+ * |                                 | uuuuu   | ...                               | 3,5   |
+ * | Quarter (formatting)            | Q       | 1, 2, 3, 4                        |       |
+ * |                                 | Qo      | 1st, 2nd, 3rd, 4th                | 7     |
+ * |                                 | QQ      | 01, 02, 03, 04                    |       |
+ * |                                 | QQQ     | Q1, Q2, Q3, Q4                    |       |
+ * |                                 | QQQQ    | 1st quarter, 2nd quarter, ...     | 2     |
+ * |                                 | QQQQQ   | 1, 2, 3, 4                        | 4     |
+ * | Quarter (stand-alone)           | q       | 1, 2, 3, 4                        |       |
+ * |                                 | qo      | 1st, 2nd, 3rd, 4th                | 7     |
+ * |                                 | qq      | 01, 02, 03, 04                    |       |
+ * |                                 | qqq     | Q1, Q2, Q3, Q4                    |       |
+ * |                                 | qqqq    | 1st quarter, 2nd quarter, ...     | 2     |
+ * |                                 | qqqqq   | 1, 2, 3, 4                        | 4     |
+ * | Month (formatting)              | M       | 1, 2, ..., 12                     |       |
+ * |                                 | Mo      | 1st, 2nd, ..., 12th               | 7     |
+ * |                                 | MM      | 01, 02, ..., 12                   |       |
+ * |                                 | MMM     | Jan, Feb, ..., Dec                |       |
+ * |                                 | MMMM    | January, February, ..., December  | 2     |
+ * |                                 | MMMMM   | J, F, ..., D                      |       |
+ * | Month (stand-alone)             | L       | 1, 2, ..., 12                     |       |
+ * |                                 | Lo      | 1st, 2nd, ..., 12th               | 7     |
+ * |                                 | LL      | 01, 02, ..., 12                   |       |
+ * |                                 | LLL     | Jan, Feb, ..., Dec                |       |
+ * |                                 | LLLL    | January, February, ..., December  | 2     |
+ * |                                 | LLLLL   | J, F, ..., D                      |       |
+ * | Local week of year              | w       | 1, 2, ..., 53                     |       |
+ * |                                 | wo      | 1st, 2nd, ..., 53th               | 7     |
+ * |                                 | ww      | 01, 02, ..., 53                   |       |
+ * | ISO week of year                | I       | 1, 2, ..., 53                     | 7     |
+ * |                                 | Io      | 1st, 2nd, ..., 53th               | 7     |
+ * |                                 | II      | 01, 02, ..., 53                   | 7     |
+ * | Day of month                    | d       | 1, 2, ..., 31                     |       |
+ * |                                 | do      | 1st, 2nd, ..., 31st               | 7     |
+ * |                                 | dd      | 01, 02, ..., 31                   |       |
+ * | Day of year                     | D       | 1, 2, ..., 365, 366               | 9     |
+ * |                                 | Do      | 1st, 2nd, ..., 365th, 366th       | 7     |
+ * |                                 | DD      | 01, 02, ..., 365, 366             | 9     |
+ * |                                 | DDD     | 001, 002, ..., 365, 366           |       |
+ * |                                 | DDDD    | ...                               | 3     |
+ * | Day of week (formatting)        | E..EEE  | Mon, Tue, Wed, ..., Sun           |       |
+ * |                                 | EEEE    | Monday, Tuesday, ..., Sunday      | 2     |
+ * |                                 | EEEEE   | M, T, W, T, F, S, S               |       |
+ * |                                 | EEEEEE  | Mo, Tu, We, Th, Fr, Sa, Su        |       |
+ * | ISO day of week (formatting)    | i       | 1, 2, 3, ..., 7                   | 7     |
+ * |                                 | io      | 1st, 2nd, ..., 7th                | 7     |
+ * |                                 | ii      | 01, 02, ..., 07                   | 7     |
+ * |                                 | iii     | Mon, Tue, Wed, ..., Sun           | 7     |
+ * |                                 | iiii    | Monday, Tuesday, ..., Sunday      | 2,7   |
+ * |                                 | iiiii   | M, T, W, T, F, S, S               | 7     |
+ * |                                 | iiiiii  | Mo, Tu, We, Th, Fr, Sa, Su        | 7     |
+ * | Local day of week (formatting)  | e       | 2, 3, 4, ..., 1                   |       |
+ * |                                 | eo      | 2nd, 3rd, ..., 1st                | 7     |
+ * |                                 | ee      | 02, 03, ..., 01                   |       |
+ * |                                 | eee     | Mon, Tue, Wed, ..., Sun           |       |
+ * |                                 | eeee    | Monday, Tuesday, ..., Sunday      | 2     |
+ * |                                 | eeeee   | M, T, W, T, F, S, S               |       |
+ * |                                 | eeeeee  | Mo, Tu, We, Th, Fr, Sa, Su        |       |
+ * | Local day of week (stand-alone) | c       | 2, 3, 4, ..., 1                   |       |
+ * |                                 | co      | 2nd, 3rd, ..., 1st                | 7     |
+ * |                                 | cc      | 02, 03, ..., 01                   |       |
+ * |                                 | ccc     | Mon, Tue, Wed, ..., Sun           |       |
+ * |                                 | cccc    | Monday, Tuesday, ..., Sunday      | 2     |
+ * |                                 | ccccc   | M, T, W, T, F, S, S               |       |
+ * |                                 | cccccc  | Mo, Tu, We, Th, Fr, Sa, Su        |       |
+ * | AM, PM                          | a..aa   | AM, PM                            |       |
+ * |                                 | aaa     | am, pm                            |       |
+ * |                                 | aaaa    | a.m., p.m.                        | 2     |
+ * |                                 | aaaaa   | a, p                              |       |
+ * | AM, PM, noon, midnight          | b..bb   | AM, PM, noon, midnight            |       |
+ * |                                 | bbb     | am, pm, noon, midnight            |       |
+ * |                                 | bbbb    | a.m., p.m., noon, midnight        | 2     |
+ * |                                 | bbbbb   | a, p, n, mi                       |       |
+ * | Flexible day period             | B..BBB  | at night, in the morning, ...     |       |
+ * |                                 | BBBB    | at night, in the morning, ...     | 2     |
+ * |                                 | BBBBB   | at night, in the morning, ...     |       |
+ * | Hour [1-12]                     | h       | 1, 2, ..., 11, 12                 |       |
+ * |                                 | ho      | 1st, 2nd, ..., 11th, 12th         | 7     |
+ * |                                 | hh      | 01, 02, ..., 11, 12               |       |
+ * | Hour [0-23]                     | H       | 0, 1, 2, ..., 23                  |       |
+ * |                                 | Ho      | 0th, 1st, 2nd, ..., 23rd          | 7     |
+ * |                                 | HH      | 00, 01, 02, ..., 23               |       |
+ * | Hour [0-11]                     | K       | 1, 2, ..., 11, 0                  |       |
+ * |                                 | Ko      | 1st, 2nd, ..., 11th, 0th          | 7     |
+ * |                                 | KK      | 01, 02, ..., 11, 00               |       |
+ * | Hour [1-24]                     | k       | 24, 1, 2, ..., 23                 |       |
+ * |                                 | ko      | 24th, 1st, 2nd, ..., 23rd         | 7     |
+ * |                                 | kk      | 24, 01, 02, ..., 23               |       |
+ * | Minute                          | m       | 0, 1, ..., 59                     |       |
+ * |                                 | mo      | 0th, 1st, ..., 59th               | 7     |
+ * |                                 | mm      | 00, 01, ..., 59                   |       |
+ * | Second                          | s       | 0, 1, ..., 59                     |       |
+ * |                                 | so      | 0th, 1st, ..., 59th               | 7     |
+ * |                                 | ss      | 00, 01, ..., 59                   |       |
+ * | Fraction of second              | S       | 0, 1, ..., 9                      |       |
+ * |                                 | SS      | 00, 01, ..., 99                   |       |
+ * |                                 | SSS     | 000, 001, ..., 999                |       |
+ * |                                 | SSSS    | ...                               | 3     |
+ * | Timezone (ISO-8601 w/ Z)        | X       | -08, +0530, Z                     |       |
+ * |                                 | XX      | -0800, +0530, Z                   |       |
+ * |                                 | XXX     | -08:00, +05:30, Z                 |       |
+ * |                                 | XXXX    | -0800, +0530, Z, +123456          | 2     |
+ * |                                 | XXXXX   | -08:00, +05:30, Z, +12:34:56      |       |
+ * | Timezone (ISO-8601 w/o Z)       | x       | -08, +0530, +00                   |       |
+ * |                                 | xx      | -0800, +0530, +0000               |       |
+ * |                                 | xxx     | -08:00, +05:30, +00:00            | 2     |
+ * |                                 | xxxx    | -0800, +0530, +0000, +123456      |       |
+ * |                                 | xxxxx   | -08:00, +05:30, +00:00, +12:34:56 |       |
+ * | Timezone (GMT)                  | O...OOO | GMT-8, GMT+5:30, GMT+0            |       |
+ * |                                 | OOOO    | GMT-08:00, GMT+05:30, GMT+00:00   | 2     |
+ * | Timezone (specific non-locat.)  | z...zzz | GMT-8, GMT+5:30, GMT+0            | 6     |
+ * |                                 | zzzz    | GMT-08:00, GMT+05:30, GMT+00:00   | 2,6   |
+ * | Seconds timestamp               | t       | 512969520                         | 7     |
+ * |                                 | tt      | ...                               | 3,7   |
+ * | Milliseconds timestamp          | T       | 512969520900                      | 7     |
+ * |                                 | TT      | ...                               | 3,7   |
+ * | Long localized date             | P       | 04/29/1453                        | 7     |
+ * |                                 | PP      | Apr 29, 1453                      | 7     |
+ * |                                 | PPP     | April 29th, 1453                  | 7     |
+ * |                                 | PPPP    | Friday, April 29th, 1453          | 2,7   |
+ * | Long localized time             | p       | 12:00 AM                          | 7     |
+ * |                                 | pp      | 12:00:00 AM                       | 7     |
+ * |                                 | ppp     | 12:00:00 AM GMT+2                 | 7     |
+ * |                                 | pppp    | 12:00:00 AM GMT+02:00             | 2,7   |
+ * | Combination of date and time    | Pp      | 04/29/1453, 12:00 AM              | 7     |
+ * |                                 | PPpp    | Apr 29, 1453, 12:00:00 AM         | 7     |
+ * |                                 | PPPppp  | April 29th, 1453 at ...           | 7     |
+ * |                                 | PPPPpppp| Friday, April 29th, 1453 at ...   | 2,7   |
+ * Notes:
+ * 1. "Formatting" units (e.g. formatting quarter) in the default en-US locale
+ *    are the same as "stand-alone" units, but are different in some languages.
+ *    "Formatting" units are declined according to the rules of the language
+ *    in the context of a date. "Stand-alone" units are always nominative singular:
+ *
+ *    `format(new Date(2017, 10, 6), 'do LLLL', {locale: cs}) //=> '6. listopad'`
+ *
+ *    `format(new Date(2017, 10, 6), 'do MMMM', {locale: cs}) //=> '6. listopadu'`
+ *
+ * 2. Any sequence of the identical letters is a pattern, unless it is escaped by
+ *    the single quote characters (see below).
+ *    If the sequence is longer than listed in table (e.g. `EEEEEEEEEEE`)
+ *    the output will be the same as default pattern for this unit, usually
+ *    the longest one (in case of ISO weekdays, `EEEE`). Default patterns for units
+ *    are marked with "2" in the last column of the table.
+ *
+ *    `format(new Date(2017, 10, 6), 'MMM') //=> 'Nov'`
+ *
+ *    `format(new Date(2017, 10, 6), 'MMMM') //=> 'November'`
+ *
+ *    `format(new Date(2017, 10, 6), 'MMMMM') //=> 'N'`
+ *
+ *    `format(new Date(2017, 10, 6), 'MMMMMM') //=> 'November'`
+ *
+ *    `format(new Date(2017, 10, 6), 'MMMMMMM') //=> 'November'`
+ *
+ * 3. Some patterns could be unlimited length (such as `yyyyyyyy`).
+ *    The output will be padded with zeros to match the length of the pattern.
+ *
+ *    `format(new Date(2017, 10, 6), 'yyyyyyyy') //=> '00002017'`
+ *
+ * 4. `QQQQQ` and `qqqqq` could be not strictly numerical in some locales.
+ *    These tokens represent the shortest form of the quarter.
+ *
+ * 5. The main difference between `y` and `u` patterns are B.C. years:
+ *
+ *    | Year | `y` | `u` |
+ *    |------|-----|-----|
+ *    | AC 1 |   1 |   1 |
+ *    | BC 1 |   1 |   0 |
+ *    | BC 2 |   2 |  -1 |
+ *
+ *    Also `yy` always returns the last two digits of a year,
+ *    while `uu` pads single digit years to 2 characters and returns other years unchanged:
+ *
+ *    | Year | `yy` | `uu` |
+ *    |------|------|------|
+ *    | 1    |   01 |   01 |
+ *    | 14   |   14 |   14 |
+ *    | 376  |   76 |  376 |
+ *    | 1453 |   53 | 1453 |
+ *
+ *    The same difference is true for local and ISO week-numbering years (`Y` and `R`),
+ *    except local week-numbering years are dependent on `options.weekStartsOn`
+ *    and `options.firstWeekContainsDate` (compare [getISOWeekYear]{@link https://date-fns.org/docs/getISOWeekYear}
+ *    and [getWeekYear]{@link https://date-fns.org/docs/getWeekYear}).
+ *
+ * 6. Specific non-location timezones are currently unavailable in `date-fns`,
+ *    so right now these tokens fall back to GMT timezones.
+ *
+ * 7. These patterns are not in the Unicode Technical Standard #35:
+ *    - `i`: ISO day of week
+ *    - `I`: ISO week of year
+ *    - `R`: ISO week-numbering year
+ *    - `t`: seconds timestamp
+ *    - `T`: milliseconds timestamp
+ *    - `o`: ordinal number modifier
+ *    - `P`: long localized date
+ *    - `p`: long localized time
+ *
+ * 8. `YY` and `YYYY` tokens represent week-numbering years but they are often confused with years.
+ *    You should enable `options.useAdditionalWeekYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ *
+ * 9. `D` and `DD` tokens represent days of the year but they are often confused with days of the month.
+ *    You should enable `options.useAdditionalDayOfYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ *
+ * @param {Date|Number} date - the original date
+ * @param {String} format - the string of tokens
+ * @param {Object} [options] - an object with options.
+ * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
+ * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @param {Number} [options.firstWeekContainsDate=1] - the day of January, which is
+ * @param {Boolean} [options.useAdditionalWeekYearTokens=false] - if true, allows usage of the week-numbering year tokens `YY` and `YYYY`;
+ *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @param {Boolean} [options.useAdditionalDayOfYearTokens=false] - if true, allows usage of the day of year tokens `D` and `DD`;
+ *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @returns {String} the formatted date string
+ * @throws {TypeError} 2 arguments required
+ * @throws {RangeError} `date` must not be Invalid Date
+ * @throws {RangeError} `options.locale` must contain `localize` property
+ * @throws {RangeError} `options.locale` must contain `formatLong` property
+ * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
+ * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
+ * @throws {RangeError} use `yyyy` instead of `YYYY` for formatting years using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @throws {RangeError} use `yy` instead of `YY` for formatting years using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @throws {RangeError} use `d` instead of `D` for formatting days of the month using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @throws {RangeError} use `dd` instead of `DD` for formatting days of the month using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @throws {RangeError} format string contains an unescaped latin alphabet character
  *
  * @example
- * // Subtract 30 minutes from 10 July 2014 12:00:00:
- * var result = subMinutes(new Date(2014, 6, 10, 12, 0), 30)
- * //=> Thu Jul 10 2014 11:30:00
+ * // Represent 11 February 2014 in middle-endian format:
+ * const result = format(new Date(2014, 1, 11), 'MM/dd/yyyy')
+ * //=> '02/11/2014'
+ *
+ * @example
+ * // Represent 2 July 2014 in Esperanto:
+ * import { eoLocale } from 'date-fns/locale/eo'
+ * const result = format(new Date(2014, 6, 2), "do 'de' MMMM yyyy", {
+ *   locale: eoLocale
+ * })
+ * //=> '2-a de julio 2014'
+ *
+ * @example
+ * // Escape string by single quote characters:
+ * const result = format(new Date(2014, 6, 2, 15), "h 'o''clock'")
+ * //=> "3 o'clock"
  */
-function subMinutes (dirtyDate, dirtyAmount) {
-  var amount = Number(dirtyAmount);
-  return addMinutes(dirtyDate, -amount)
+
+function format(dirtyDate, dirtyFormatStr, options) {
+  var _ref, _options$locale, _ref2, _ref3, _ref4, _options$firstWeekCon, _options$locale2, _options$locale2$opti, _defaultOptions$local, _defaultOptions$local2, _ref5, _ref6, _ref7, _options$weekStartsOn, _options$locale3, _options$locale3$opti, _defaultOptions$local3, _defaultOptions$local4;
+
+  requiredArgs(2, arguments);
+  var formatStr = String(dirtyFormatStr);
+  var defaultOptions = getDefaultOptions();
+  var locale = (_ref = (_options$locale = options === null || options === void 0 ? void 0 : options.locale) !== null && _options$locale !== void 0 ? _options$locale : defaultOptions.locale) !== null && _ref !== void 0 ? _ref : defaultLocale;
+  var firstWeekContainsDate = toInteger((_ref2 = (_ref3 = (_ref4 = (_options$firstWeekCon = options === null || options === void 0 ? void 0 : options.firstWeekContainsDate) !== null && _options$firstWeekCon !== void 0 ? _options$firstWeekCon : options === null || options === void 0 ? void 0 : (_options$locale2 = options.locale) === null || _options$locale2 === void 0 ? void 0 : (_options$locale2$opti = _options$locale2.options) === null || _options$locale2$opti === void 0 ? void 0 : _options$locale2$opti.firstWeekContainsDate) !== null && _ref4 !== void 0 ? _ref4 : defaultOptions.firstWeekContainsDate) !== null && _ref3 !== void 0 ? _ref3 : (_defaultOptions$local = defaultOptions.locale) === null || _defaultOptions$local === void 0 ? void 0 : (_defaultOptions$local2 = _defaultOptions$local.options) === null || _defaultOptions$local2 === void 0 ? void 0 : _defaultOptions$local2.firstWeekContainsDate) !== null && _ref2 !== void 0 ? _ref2 : 1); // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
+
+  if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
+    throw new RangeError('firstWeekContainsDate must be between 1 and 7 inclusively');
+  }
+
+  var weekStartsOn = toInteger((_ref5 = (_ref6 = (_ref7 = (_options$weekStartsOn = options === null || options === void 0 ? void 0 : options.weekStartsOn) !== null && _options$weekStartsOn !== void 0 ? _options$weekStartsOn : options === null || options === void 0 ? void 0 : (_options$locale3 = options.locale) === null || _options$locale3 === void 0 ? void 0 : (_options$locale3$opti = _options$locale3.options) === null || _options$locale3$opti === void 0 ? void 0 : _options$locale3$opti.weekStartsOn) !== null && _ref7 !== void 0 ? _ref7 : defaultOptions.weekStartsOn) !== null && _ref6 !== void 0 ? _ref6 : (_defaultOptions$local3 = defaultOptions.locale) === null || _defaultOptions$local3 === void 0 ? void 0 : (_defaultOptions$local4 = _defaultOptions$local3.options) === null || _defaultOptions$local4 === void 0 ? void 0 : _defaultOptions$local4.weekStartsOn) !== null && _ref5 !== void 0 ? _ref5 : 0); // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
+
+  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
+    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively');
+  }
+
+  if (!locale.localize) {
+    throw new RangeError('locale must contain localize property');
+  }
+
+  if (!locale.formatLong) {
+    throw new RangeError('locale must contain formatLong property');
+  }
+
+  var originalDate = toDate(dirtyDate);
+
+  if (!isValid(originalDate)) {
+    throw new RangeError('Invalid time value');
+  } // Convert the date in system timezone to the same date in UTC+00:00 timezone.
+  // This ensures that when UTC functions will be implemented, locales will be compatible with them.
+  // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/376
+
+
+  var timezoneOffset = getTimezoneOffsetInMilliseconds(originalDate);
+  var utcDate = subMilliseconds(originalDate, timezoneOffset);
+  var formatterOptions = {
+    firstWeekContainsDate: firstWeekContainsDate,
+    weekStartsOn: weekStartsOn,
+    locale: locale,
+    _originalDate: originalDate
+  };
+  var result = formatStr.match(longFormattingTokensRegExp$1).map(function (substring) {
+    var firstCharacter = substring[0];
+
+    if (firstCharacter === 'p' || firstCharacter === 'P') {
+      var longFormatter = longFormatters$1[firstCharacter];
+      return longFormatter(substring, locale.formatLong);
+    }
+
+    return substring;
+  }).join('').match(formattingTokensRegExp$1).map(function (substring) {
+    // Replace two single quote characters with one single quote character
+    if (substring === "''") {
+      return "'";
+    }
+
+    var firstCharacter = substring[0];
+
+    if (firstCharacter === "'") {
+      return cleanEscapedString$1(substring);
+    }
+
+    var formatter = formatters$1[firstCharacter];
+
+    if (formatter) {
+      if (!(options !== null && options !== void 0 && options.useAdditionalWeekYearTokens) && isProtectedWeekYearToken(substring)) {
+        throwProtectedError(substring, dirtyFormatStr, String(dirtyDate));
+      }
+
+      if (!(options !== null && options !== void 0 && options.useAdditionalDayOfYearTokens) && isProtectedDayOfYearToken(substring)) {
+        throwProtectedError(substring, dirtyFormatStr, String(dirtyDate));
+      }
+
+      return formatter(utcDate, substring, locale.localize, formatterOptions);
+    }
+
+    if (firstCharacter.match(unescapedLatinCharacterRegExp$1)) {
+      throw new RangeError('Format string contains an unescaped latin alphabet character `' + firstCharacter + '`');
+    }
+
+    return substring;
+  }).join('');
+  return result;
 }
 
-var sub_minutes = subMinutes;
+function cleanEscapedString$1(input) {
+  var matched = input.match(escapedStringRegExp$1);
 
-var addMonths = add_months;
+  if (!matched) {
+    return input;
+  }
+
+  return matched[1].replace(doubleQuoteRegExp$1, "'");
+}
+
+function assign(target, object) {
+  if (target == null) {
+    throw new TypeError('assign requires that input parameter not be null or undefined');
+  }
+
+  for (var property in object) {
+    if (Object.prototype.hasOwnProperty.call(object, property)) {
+      target[property] = object[property];
+    }
+  }
+
+  return target;
+}
 
 /**
+ * @name isAfter
+ * @category Common Helpers
+ * @summary Is the first date after the second one?
+ *
+ * @description
+ * Is the first date after the second one?
+ *
+ * @param {Date|Number} date - the date that should be after the other one to return true
+ * @param {Date|Number} dateToCompare - the date to compare with
+ * @returns {Boolean} the first date is after the second date
+ * @throws {TypeError} 2 arguments required
+ *
+ * @example
+ * // Is 10 July 1989 after 11 February 1987?
+ * const result = isAfter(new Date(1989, 6, 10), new Date(1987, 1, 11))
+ * //=> true
+ */
+
+function isAfter(dirtyDate, dirtyDateToCompare) {
+  requiredArgs(2, arguments);
+  var date = toDate(dirtyDate);
+  var dateToCompare = toDate(dirtyDateToCompare);
+  return date.getTime() > dateToCompare.getTime();
+}
+
+/**
+ * @name isBefore
+ * @category Common Helpers
+ * @summary Is the first date before the second one?
+ *
+ * @description
+ * Is the first date before the second one?
+ *
+ * @param {Date|Number} date - the date that should be before the other one to return true
+ * @param {Date|Number} dateToCompare - the date to compare with
+ * @returns {Boolean} the first date is before the second date
+ * @throws {TypeError} 2 arguments required
+ *
+ * @example
+ * // Is 10 July 1989 before 11 February 1987?
+ * const result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11))
+ * //=> false
+ */
+
+function isBefore(dirtyDate, dirtyDateToCompare) {
+  requiredArgs(2, arguments);
+  var date = toDate(dirtyDate);
+  var dateToCompare = toDate(dirtyDateToCompare);
+  return date.getTime() < dateToCompare.getTime();
+}
+
+function _typeof$w(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$w = function _typeof(obj) { return typeof obj; }; } else { _typeof$w = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$w(obj); }
+
+function _inherits$v(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$v(subClass, superClass); }
+
+function _setPrototypeOf$v(o, p) { _setPrototypeOf$v = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$v(o, p); }
+
+function _createSuper$v(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$v(); return function _createSuperInternal() { var Super = _getPrototypeOf$v(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$v(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$v(this, result); }; }
+
+function _possibleConstructorReturn$v(self, call) { if (call && (_typeof$w(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$w(self); }
+
+function _assertThisInitialized$w(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$v() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$v(o) { _getPrototypeOf$v = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$v(o); }
+
+function _classCallCheck$w(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$w(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$w(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$w(Constructor.prototype, protoProps); if (staticProps) _defineProperties$w(Constructor, staticProps); return Constructor; }
+
+function _defineProperty$v(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var TIMEZONE_UNIT_PRIORITY = 10;
+var Setter = /*#__PURE__*/function () {
+  function Setter() {
+    _classCallCheck$w(this, Setter);
+
+    _defineProperty$v(this, "subPriority", 0);
+  }
+
+  _createClass$w(Setter, [{
+    key: "validate",
+    value: function validate(_utcDate, _options) {
+      return true;
+    }
+  }]);
+
+  return Setter;
+}();
+var ValueSetter = /*#__PURE__*/function (_Setter) {
+  _inherits$v(ValueSetter, _Setter);
+
+  var _super = _createSuper$v(ValueSetter);
+
+  function ValueSetter(value, validateValue, setValue, priority, subPriority) {
+    var _this;
+
+    _classCallCheck$w(this, ValueSetter);
+
+    _this = _super.call(this);
+    _this.value = value;
+    _this.validateValue = validateValue;
+    _this.setValue = setValue;
+    _this.priority = priority;
+
+    if (subPriority) {
+      _this.subPriority = subPriority;
+    }
+
+    return _this;
+  }
+
+  _createClass$w(ValueSetter, [{
+    key: "validate",
+    value: function validate(utcDate, options) {
+      return this.validateValue(utcDate, this.value, options);
+    }
+  }, {
+    key: "set",
+    value: function set(utcDate, flags, options) {
+      return this.setValue(utcDate, flags, this.value, options);
+    }
+  }]);
+
+  return ValueSetter;
+}(Setter);
+var DateToSystemTimezoneSetter = /*#__PURE__*/function (_Setter2) {
+  _inherits$v(DateToSystemTimezoneSetter, _Setter2);
+
+  var _super2 = _createSuper$v(DateToSystemTimezoneSetter);
+
+  function DateToSystemTimezoneSetter() {
+    var _this2;
+
+    _classCallCheck$w(this, DateToSystemTimezoneSetter);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this2 = _super2.call.apply(_super2, [this].concat(args));
+
+    _defineProperty$v(_assertThisInitialized$w(_this2), "priority", TIMEZONE_UNIT_PRIORITY);
+
+    _defineProperty$v(_assertThisInitialized$w(_this2), "subPriority", -1);
+
+    return _this2;
+  }
+
+  _createClass$w(DateToSystemTimezoneSetter, [{
+    key: "set",
+    value: function set(date, flags) {
+      if (flags.timestampIsSet) {
+        return date;
+      }
+
+      var convertedDate = new Date(0);
+      convertedDate.setFullYear(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
+      convertedDate.setHours(date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds(), date.getUTCMilliseconds());
+      return convertedDate;
+    }
+  }]);
+
+  return DateToSystemTimezoneSetter;
+}(Setter);
+
+function _classCallCheck$v(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$v(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$v(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$v(Constructor.prototype, protoProps); if (staticProps) _defineProperties$v(Constructor, staticProps); return Constructor; }
+var Parser$1 = /*#__PURE__*/function () {
+  function Parser() {
+    _classCallCheck$v(this, Parser);
+  }
+
+  _createClass$v(Parser, [{
+    key: "run",
+    value: function run(dateString, token, match, options) {
+      var result = this.parse(dateString, token, match, options);
+
+      if (!result) {
+        return null;
+      }
+
+      return {
+        setter: new ValueSetter(result.value, this.validate, this.set, this.priority, this.subPriority),
+        rest: result.rest
+      };
+    }
+  }, {
+    key: "validate",
+    value: function validate(_utcDate, _value, _options) {
+      return true;
+    }
+  }]);
+
+  return Parser;
+}();
+
+function _typeof$v(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$v = function _typeof(obj) { return typeof obj; }; } else { _typeof$v = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$v(obj); }
+
+function _classCallCheck$u(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$u(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$u(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$u(Constructor.prototype, protoProps); if (staticProps) _defineProperties$u(Constructor, staticProps); return Constructor; }
+
+function _inherits$u(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$u(subClass, superClass); }
+
+function _setPrototypeOf$u(o, p) { _setPrototypeOf$u = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$u(o, p); }
+
+function _createSuper$u(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$u(); return function _createSuperInternal() { var Super = _getPrototypeOf$u(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$u(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$u(this, result); }; }
+
+function _possibleConstructorReturn$u(self, call) { if (call && (_typeof$v(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$v(self); }
+
+function _assertThisInitialized$v(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$u() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$u(o) { _getPrototypeOf$u = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$u(o); }
+
+function _defineProperty$u(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var EraParser = /*#__PURE__*/function (_Parser) {
+  _inherits$u(EraParser, _Parser);
+
+  var _super = _createSuper$u(EraParser);
+
+  function EraParser() {
+    var _this;
+
+    _classCallCheck$u(this, EraParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$u(_assertThisInitialized$v(_this), "priority", 140);
+
+    _defineProperty$u(_assertThisInitialized$v(_this), "incompatibleTokens", ['R', 'u', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$u(EraParser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      switch (token) {
+        // AD, BC
+        case 'G':
+        case 'GG':
+        case 'GGG':
+          return match.era(dateString, {
+            width: 'abbreviated'
+          }) || match.era(dateString, {
+            width: 'narrow'
+          });
+        // A, B
+
+        case 'GGGGG':
+          return match.era(dateString, {
+            width: 'narrow'
+          });
+        // Anno Domini, Before Christ
+
+        case 'GGGG':
+        default:
+          return match.era(dateString, {
+            width: 'wide'
+          }) || match.era(dateString, {
+            width: 'abbreviated'
+          }) || match.era(dateString, {
+            width: 'narrow'
+          });
+      }
+    }
+  }, {
+    key: "set",
+    value: function set(date, flags, value) {
+      flags.era = value;
+      date.setUTCFullYear(value, 0, 1);
+      date.setUTCHours(0, 0, 0, 0);
+      return date;
+    }
+  }]);
+
+  return EraParser;
+}(Parser$1);
+
+var numericPatterns = {
+  month: /^(1[0-2]|0?\d)/,
+  // 0 to 12
+  date: /^(3[0-1]|[0-2]?\d)/,
+  // 0 to 31
+  dayOfYear: /^(36[0-6]|3[0-5]\d|[0-2]?\d?\d)/,
+  // 0 to 366
+  week: /^(5[0-3]|[0-4]?\d)/,
+  // 0 to 53
+  hour23h: /^(2[0-3]|[0-1]?\d)/,
+  // 0 to 23
+  hour24h: /^(2[0-4]|[0-1]?\d)/,
+  // 0 to 24
+  hour11h: /^(1[0-1]|0?\d)/,
+  // 0 to 11
+  hour12h: /^(1[0-2]|0?\d)/,
+  // 0 to 12
+  minute: /^[0-5]?\d/,
+  // 0 to 59
+  second: /^[0-5]?\d/,
+  // 0 to 59
+  singleDigit: /^\d/,
+  // 0 to 9
+  twoDigits: /^\d{1,2}/,
+  // 0 to 99
+  threeDigits: /^\d{1,3}/,
+  // 0 to 999
+  fourDigits: /^\d{1,4}/,
+  // 0 to 9999
+  anyDigitsSigned: /^-?\d+/,
+  singleDigitSigned: /^-?\d/,
+  // 0 to 9, -0 to -9
+  twoDigitsSigned: /^-?\d{1,2}/,
+  // 0 to 99, -0 to -99
+  threeDigitsSigned: /^-?\d{1,3}/,
+  // 0 to 999, -0 to -999
+  fourDigitsSigned: /^-?\d{1,4}/ // 0 to 9999, -0 to -9999
+
+};
+var timezonePatterns = {
+  basicOptionalMinutes: /^([+-])(\d{2})(\d{2})?|Z/,
+  basic: /^([+-])(\d{2})(\d{2})|Z/,
+  basicOptionalSeconds: /^([+-])(\d{2})(\d{2})((\d{2}))?|Z/,
+  extended: /^([+-])(\d{2}):(\d{2})|Z/,
+  extendedOptionalSeconds: /^([+-])(\d{2}):(\d{2})(:(\d{2}))?|Z/
+};
+
+function mapValue(parseFnResult, mapFn) {
+  if (!parseFnResult) {
+    return parseFnResult;
+  }
+
+  return {
+    value: mapFn(parseFnResult.value),
+    rest: parseFnResult.rest
+  };
+}
+function parseNumericPattern(pattern, dateString) {
+  var matchResult = dateString.match(pattern);
+
+  if (!matchResult) {
+    return null;
+  }
+
+  return {
+    value: parseInt(matchResult[0], 10),
+    rest: dateString.slice(matchResult[0].length)
+  };
+}
+function parseTimezonePattern(pattern, dateString) {
+  var matchResult = dateString.match(pattern);
+
+  if (!matchResult) {
+    return null;
+  } // Input is 'Z'
+
+
+  if (matchResult[0] === 'Z') {
+    return {
+      value: 0,
+      rest: dateString.slice(1)
+    };
+  }
+
+  var sign = matchResult[1] === '+' ? 1 : -1;
+  var hours = matchResult[2] ? parseInt(matchResult[2], 10) : 0;
+  var minutes = matchResult[3] ? parseInt(matchResult[3], 10) : 0;
+  var seconds = matchResult[5] ? parseInt(matchResult[5], 10) : 0;
+  return {
+    value: sign * (hours * millisecondsInHour + minutes * millisecondsInMinute + seconds * millisecondsInSecond),
+    rest: dateString.slice(matchResult[0].length)
+  };
+}
+function parseAnyDigitsSigned(dateString) {
+  return parseNumericPattern(numericPatterns.anyDigitsSigned, dateString);
+}
+function parseNDigits(n, dateString) {
+  switch (n) {
+    case 1:
+      return parseNumericPattern(numericPatterns.singleDigit, dateString);
+
+    case 2:
+      return parseNumericPattern(numericPatterns.twoDigits, dateString);
+
+    case 3:
+      return parseNumericPattern(numericPatterns.threeDigits, dateString);
+
+    case 4:
+      return parseNumericPattern(numericPatterns.fourDigits, dateString);
+
+    default:
+      return parseNumericPattern(new RegExp('^\\d{1,' + n + '}'), dateString);
+  }
+}
+function parseNDigitsSigned(n, dateString) {
+  switch (n) {
+    case 1:
+      return parseNumericPattern(numericPatterns.singleDigitSigned, dateString);
+
+    case 2:
+      return parseNumericPattern(numericPatterns.twoDigitsSigned, dateString);
+
+    case 3:
+      return parseNumericPattern(numericPatterns.threeDigitsSigned, dateString);
+
+    case 4:
+      return parseNumericPattern(numericPatterns.fourDigitsSigned, dateString);
+
+    default:
+      return parseNumericPattern(new RegExp('^-?\\d{1,' + n + '}'), dateString);
+  }
+}
+function dayPeriodEnumToHours(dayPeriod) {
+  switch (dayPeriod) {
+    case 'morning':
+      return 4;
+
+    case 'evening':
+      return 17;
+
+    case 'pm':
+    case 'noon':
+    case 'afternoon':
+      return 12;
+
+    case 'am':
+    case 'midnight':
+    case 'night':
+    default:
+      return 0;
+  }
+}
+function normalizeTwoDigitYear(twoDigitYear, currentYear) {
+  var isCommonEra = currentYear > 0; // Absolute number of the current year:
+  // 1 -> 1 AC
+  // 0 -> 1 BC
+  // -1 -> 2 BC
+
+  var absCurrentYear = isCommonEra ? currentYear : 1 - currentYear;
+  var result;
+
+  if (absCurrentYear <= 50) {
+    result = twoDigitYear || 100;
+  } else {
+    var rangeEnd = absCurrentYear + 50;
+    var rangeEndCentury = Math.floor(rangeEnd / 100) * 100;
+    var isPreviousCentury = twoDigitYear >= rangeEnd % 100;
+    result = twoDigitYear + rangeEndCentury - (isPreviousCentury ? 100 : 0);
+  }
+
+  return isCommonEra ? result : 1 - result;
+}
+function isLeapYearIndex(year) {
+  return year % 400 === 0 || year % 4 === 0 && year % 100 !== 0;
+}
+
+function _typeof$u(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$u = function _typeof(obj) { return typeof obj; }; } else { _typeof$u = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$u(obj); }
+
+function _classCallCheck$t(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$t(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$t(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$t(Constructor.prototype, protoProps); if (staticProps) _defineProperties$t(Constructor, staticProps); return Constructor; }
+
+function _inherits$t(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$t(subClass, superClass); }
+
+function _setPrototypeOf$t(o, p) { _setPrototypeOf$t = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$t(o, p); }
+
+function _createSuper$t(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$t(); return function _createSuperInternal() { var Super = _getPrototypeOf$t(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$t(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$t(this, result); }; }
+
+function _possibleConstructorReturn$t(self, call) { if (call && (_typeof$u(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$u(self); }
+
+function _assertThisInitialized$u(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$t() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$t(o) { _getPrototypeOf$t = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$t(o); }
+
+function _defineProperty$t(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+// From http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
+// | Year     |     y | yy |   yyy |  yyyy | yyyyy |
+// |----------|-------|----|-------|-------|-------|
+// | AD 1     |     1 | 01 |   001 |  0001 | 00001 |
+// | AD 12    |    12 | 12 |   012 |  0012 | 00012 |
+// | AD 123   |   123 | 23 |   123 |  0123 | 00123 |
+// | AD 1234  |  1234 | 34 |  1234 |  1234 | 01234 |
+// | AD 12345 | 12345 | 45 | 12345 | 12345 | 12345 |
+var YearParser = /*#__PURE__*/function (_Parser) {
+  _inherits$t(YearParser, _Parser);
+
+  var _super = _createSuper$t(YearParser);
+
+  function YearParser() {
+    var _this;
+
+    _classCallCheck$t(this, YearParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$t(_assertThisInitialized$u(_this), "priority", 130);
+
+    _defineProperty$t(_assertThisInitialized$u(_this), "incompatibleTokens", ['Y', 'R', 'u', 'w', 'I', 'i', 'e', 'c', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$t(YearParser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      var valueCallback = function valueCallback(year) {
+        return {
+          year: year,
+          isTwoDigitYear: token === 'yy'
+        };
+      };
+
+      switch (token) {
+        case 'y':
+          return mapValue(parseNDigits(4, dateString), valueCallback);
+
+        case 'yo':
+          return mapValue(match.ordinalNumber(dateString, {
+            unit: 'year'
+          }), valueCallback);
+
+        default:
+          return mapValue(parseNDigits(token.length, dateString), valueCallback);
+      }
+    }
+  }, {
+    key: "validate",
+    value: function validate(_date, value) {
+      return value.isTwoDigitYear || value.year > 0;
+    }
+  }, {
+    key: "set",
+    value: function set(date, flags, value) {
+      var currentYear = date.getUTCFullYear();
+
+      if (value.isTwoDigitYear) {
+        var normalizedTwoDigitYear = normalizeTwoDigitYear(value.year, currentYear);
+        date.setUTCFullYear(normalizedTwoDigitYear, 0, 1);
+        date.setUTCHours(0, 0, 0, 0);
+        return date;
+      }
+
+      var year = !('era' in flags) || flags.era === 1 ? value.year : 1 - value.year;
+      date.setUTCFullYear(year, 0, 1);
+      date.setUTCHours(0, 0, 0, 0);
+      return date;
+    }
+  }]);
+
+  return YearParser;
+}(Parser$1);
+
+function _typeof$t(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$t = function _typeof(obj) { return typeof obj; }; } else { _typeof$t = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$t(obj); }
+
+function _classCallCheck$s(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$s(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$s(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$s(Constructor.prototype, protoProps); if (staticProps) _defineProperties$s(Constructor, staticProps); return Constructor; }
+
+function _inherits$s(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$s(subClass, superClass); }
+
+function _setPrototypeOf$s(o, p) { _setPrototypeOf$s = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$s(o, p); }
+
+function _createSuper$s(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$s(); return function _createSuperInternal() { var Super = _getPrototypeOf$s(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$s(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$s(this, result); }; }
+
+function _possibleConstructorReturn$s(self, call) { if (call && (_typeof$t(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$t(self); }
+
+function _assertThisInitialized$t(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$s() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$s(o) { _getPrototypeOf$s = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$s(o); }
+
+function _defineProperty$s(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+// Local week-numbering year
+var LocalWeekYearParser = /*#__PURE__*/function (_Parser) {
+  _inherits$s(LocalWeekYearParser, _Parser);
+
+  var _super = _createSuper$s(LocalWeekYearParser);
+
+  function LocalWeekYearParser() {
+    var _this;
+
+    _classCallCheck$s(this, LocalWeekYearParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$s(_assertThisInitialized$t(_this), "priority", 130);
+
+    _defineProperty$s(_assertThisInitialized$t(_this), "incompatibleTokens", ['y', 'R', 'u', 'Q', 'q', 'M', 'L', 'I', 'd', 'D', 'i', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$s(LocalWeekYearParser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      var valueCallback = function valueCallback(year) {
+        return {
+          year: year,
+          isTwoDigitYear: token === 'YY'
+        };
+      };
+
+      switch (token) {
+        case 'Y':
+          return mapValue(parseNDigits(4, dateString), valueCallback);
+
+        case 'Yo':
+          return mapValue(match.ordinalNumber(dateString, {
+            unit: 'year'
+          }), valueCallback);
+
+        default:
+          return mapValue(parseNDigits(token.length, dateString), valueCallback);
+      }
+    }
+  }, {
+    key: "validate",
+    value: function validate(_date, value) {
+      return value.isTwoDigitYear || value.year > 0;
+    }
+  }, {
+    key: "set",
+    value: function set(date, flags, value, options) {
+      var currentYear = getUTCWeekYear(date, options);
+
+      if (value.isTwoDigitYear) {
+        var normalizedTwoDigitYear = normalizeTwoDigitYear(value.year, currentYear);
+        date.setUTCFullYear(normalizedTwoDigitYear, 0, options.firstWeekContainsDate);
+        date.setUTCHours(0, 0, 0, 0);
+        return startOfUTCWeek(date, options);
+      }
+
+      var year = !('era' in flags) || flags.era === 1 ? value.year : 1 - value.year;
+      date.setUTCFullYear(year, 0, options.firstWeekContainsDate);
+      date.setUTCHours(0, 0, 0, 0);
+      return startOfUTCWeek(date, options);
+    }
+  }]);
+
+  return LocalWeekYearParser;
+}(Parser$1);
+
+function _typeof$s(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$s = function _typeof(obj) { return typeof obj; }; } else { _typeof$s = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$s(obj); }
+
+function _classCallCheck$r(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$r(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$r(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$r(Constructor.prototype, protoProps); if (staticProps) _defineProperties$r(Constructor, staticProps); return Constructor; }
+
+function _inherits$r(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$r(subClass, superClass); }
+
+function _setPrototypeOf$r(o, p) { _setPrototypeOf$r = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$r(o, p); }
+
+function _createSuper$r(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$r(); return function _createSuperInternal() { var Super = _getPrototypeOf$r(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$r(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$r(this, result); }; }
+
+function _possibleConstructorReturn$r(self, call) { if (call && (_typeof$s(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$s(self); }
+
+function _assertThisInitialized$s(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$r() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$r(o) { _getPrototypeOf$r = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$r(o); }
+
+function _defineProperty$r(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var ISOWeekYearParser = /*#__PURE__*/function (_Parser) {
+  _inherits$r(ISOWeekYearParser, _Parser);
+
+  var _super = _createSuper$r(ISOWeekYearParser);
+
+  function ISOWeekYearParser() {
+    var _this;
+
+    _classCallCheck$r(this, ISOWeekYearParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$r(_assertThisInitialized$s(_this), "priority", 130);
+
+    _defineProperty$r(_assertThisInitialized$s(_this), "incompatibleTokens", ['G', 'y', 'Y', 'u', 'Q', 'q', 'M', 'L', 'w', 'd', 'D', 'e', 'c', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$r(ISOWeekYearParser, [{
+    key: "parse",
+    value: function parse(dateString, token) {
+      if (token === 'R') {
+        return parseNDigitsSigned(4, dateString);
+      }
+
+      return parseNDigitsSigned(token.length, dateString);
+    }
+  }, {
+    key: "set",
+    value: function set(_date, _flags, value) {
+      var firstWeekOfYear = new Date(0);
+      firstWeekOfYear.setUTCFullYear(value, 0, 4);
+      firstWeekOfYear.setUTCHours(0, 0, 0, 0);
+      return startOfUTCISOWeek(firstWeekOfYear);
+    }
+  }]);
+
+  return ISOWeekYearParser;
+}(Parser$1);
+
+function _typeof$r(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$r = function _typeof(obj) { return typeof obj; }; } else { _typeof$r = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$r(obj); }
+
+function _classCallCheck$q(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$q(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$q(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$q(Constructor.prototype, protoProps); if (staticProps) _defineProperties$q(Constructor, staticProps); return Constructor; }
+
+function _inherits$q(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$q(subClass, superClass); }
+
+function _setPrototypeOf$q(o, p) { _setPrototypeOf$q = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$q(o, p); }
+
+function _createSuper$q(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$q(); return function _createSuperInternal() { var Super = _getPrototypeOf$q(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$q(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$q(this, result); }; }
+
+function _possibleConstructorReturn$q(self, call) { if (call && (_typeof$r(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$r(self); }
+
+function _assertThisInitialized$r(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$q() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$q(o) { _getPrototypeOf$q = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$q(o); }
+
+function _defineProperty$q(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var ExtendedYearParser = /*#__PURE__*/function (_Parser) {
+  _inherits$q(ExtendedYearParser, _Parser);
+
+  var _super = _createSuper$q(ExtendedYearParser);
+
+  function ExtendedYearParser() {
+    var _this;
+
+    _classCallCheck$q(this, ExtendedYearParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$q(_assertThisInitialized$r(_this), "priority", 130);
+
+    _defineProperty$q(_assertThisInitialized$r(_this), "incompatibleTokens", ['G', 'y', 'Y', 'R', 'w', 'I', 'i', 'e', 'c', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$q(ExtendedYearParser, [{
+    key: "parse",
+    value: function parse(dateString, token) {
+      if (token === 'u') {
+        return parseNDigitsSigned(4, dateString);
+      }
+
+      return parseNDigitsSigned(token.length, dateString);
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value) {
+      date.setUTCFullYear(value, 0, 1);
+      date.setUTCHours(0, 0, 0, 0);
+      return date;
+    }
+  }]);
+
+  return ExtendedYearParser;
+}(Parser$1);
+
+function _typeof$q(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$q = function _typeof(obj) { return typeof obj; }; } else { _typeof$q = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$q(obj); }
+
+function _classCallCheck$p(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$p(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$p(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$p(Constructor.prototype, protoProps); if (staticProps) _defineProperties$p(Constructor, staticProps); return Constructor; }
+
+function _inherits$p(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$p(subClass, superClass); }
+
+function _setPrototypeOf$p(o, p) { _setPrototypeOf$p = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$p(o, p); }
+
+function _createSuper$p(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$p(); return function _createSuperInternal() { var Super = _getPrototypeOf$p(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$p(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$p(this, result); }; }
+
+function _possibleConstructorReturn$p(self, call) { if (call && (_typeof$q(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$q(self); }
+
+function _assertThisInitialized$q(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$p() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$p(o) { _getPrototypeOf$p = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$p(o); }
+
+function _defineProperty$p(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var QuarterParser = /*#__PURE__*/function (_Parser) {
+  _inherits$p(QuarterParser, _Parser);
+
+  var _super = _createSuper$p(QuarterParser);
+
+  function QuarterParser() {
+    var _this;
+
+    _classCallCheck$p(this, QuarterParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$p(_assertThisInitialized$q(_this), "priority", 120);
+
+    _defineProperty$p(_assertThisInitialized$q(_this), "incompatibleTokens", ['Y', 'R', 'q', 'M', 'L', 'w', 'I', 'd', 'D', 'i', 'e', 'c', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$p(QuarterParser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      switch (token) {
+        // 1, 2, 3, 4
+        case 'Q':
+        case 'QQ':
+          // 01, 02, 03, 04
+          return parseNDigits(token.length, dateString);
+        // 1st, 2nd, 3rd, 4th
+
+        case 'Qo':
+          return match.ordinalNumber(dateString, {
+            unit: 'quarter'
+          });
+        // Q1, Q2, Q3, Q4
+
+        case 'QQQ':
+          return match.quarter(dateString, {
+            width: 'abbreviated',
+            context: 'formatting'
+          }) || match.quarter(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+        // 1, 2, 3, 4 (narrow quarter; could be not numerical)
+
+        case 'QQQQQ':
+          return match.quarter(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+        // 1st quarter, 2nd quarter, ...
+
+        case 'QQQQ':
+        default:
+          return match.quarter(dateString, {
+            width: 'wide',
+            context: 'formatting'
+          }) || match.quarter(dateString, {
+            width: 'abbreviated',
+            context: 'formatting'
+          }) || match.quarter(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+      }
+    }
+  }, {
+    key: "validate",
+    value: function validate(_date, value) {
+      return value >= 1 && value <= 4;
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value) {
+      date.setUTCMonth((value - 1) * 3, 1);
+      date.setUTCHours(0, 0, 0, 0);
+      return date;
+    }
+  }]);
+
+  return QuarterParser;
+}(Parser$1);
+
+function _typeof$p(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$p = function _typeof(obj) { return typeof obj; }; } else { _typeof$p = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$p(obj); }
+
+function _classCallCheck$o(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$o(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$o(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$o(Constructor.prototype, protoProps); if (staticProps) _defineProperties$o(Constructor, staticProps); return Constructor; }
+
+function _inherits$o(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$o(subClass, superClass); }
+
+function _setPrototypeOf$o(o, p) { _setPrototypeOf$o = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$o(o, p); }
+
+function _createSuper$o(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$o(); return function _createSuperInternal() { var Super = _getPrototypeOf$o(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$o(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$o(this, result); }; }
+
+function _possibleConstructorReturn$o(self, call) { if (call && (_typeof$p(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$p(self); }
+
+function _assertThisInitialized$p(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$o() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$o(o) { _getPrototypeOf$o = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$o(o); }
+
+function _defineProperty$o(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var StandAloneQuarterParser = /*#__PURE__*/function (_Parser) {
+  _inherits$o(StandAloneQuarterParser, _Parser);
+
+  var _super = _createSuper$o(StandAloneQuarterParser);
+
+  function StandAloneQuarterParser() {
+    var _this;
+
+    _classCallCheck$o(this, StandAloneQuarterParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$o(_assertThisInitialized$p(_this), "priority", 120);
+
+    _defineProperty$o(_assertThisInitialized$p(_this), "incompatibleTokens", ['Y', 'R', 'Q', 'M', 'L', 'w', 'I', 'd', 'D', 'i', 'e', 'c', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$o(StandAloneQuarterParser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      switch (token) {
+        // 1, 2, 3, 4
+        case 'q':
+        case 'qq':
+          // 01, 02, 03, 04
+          return parseNDigits(token.length, dateString);
+        // 1st, 2nd, 3rd, 4th
+
+        case 'qo':
+          return match.ordinalNumber(dateString, {
+            unit: 'quarter'
+          });
+        // Q1, Q2, Q3, Q4
+
+        case 'qqq':
+          return match.quarter(dateString, {
+            width: 'abbreviated',
+            context: 'standalone'
+          }) || match.quarter(dateString, {
+            width: 'narrow',
+            context: 'standalone'
+          });
+        // 1, 2, 3, 4 (narrow quarter; could be not numerical)
+
+        case 'qqqqq':
+          return match.quarter(dateString, {
+            width: 'narrow',
+            context: 'standalone'
+          });
+        // 1st quarter, 2nd quarter, ...
+
+        case 'qqqq':
+        default:
+          return match.quarter(dateString, {
+            width: 'wide',
+            context: 'standalone'
+          }) || match.quarter(dateString, {
+            width: 'abbreviated',
+            context: 'standalone'
+          }) || match.quarter(dateString, {
+            width: 'narrow',
+            context: 'standalone'
+          });
+      }
+    }
+  }, {
+    key: "validate",
+    value: function validate(_date, value) {
+      return value >= 1 && value <= 4;
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value) {
+      date.setUTCMonth((value - 1) * 3, 1);
+      date.setUTCHours(0, 0, 0, 0);
+      return date;
+    }
+  }]);
+
+  return StandAloneQuarterParser;
+}(Parser$1);
+
+function _typeof$o(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$o = function _typeof(obj) { return typeof obj; }; } else { _typeof$o = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$o(obj); }
+
+function _classCallCheck$n(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$n(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$n(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$n(Constructor.prototype, protoProps); if (staticProps) _defineProperties$n(Constructor, staticProps); return Constructor; }
+
+function _inherits$n(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$n(subClass, superClass); }
+
+function _setPrototypeOf$n(o, p) { _setPrototypeOf$n = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$n(o, p); }
+
+function _createSuper$n(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$n(); return function _createSuperInternal() { var Super = _getPrototypeOf$n(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$n(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$n(this, result); }; }
+
+function _possibleConstructorReturn$n(self, call) { if (call && (_typeof$o(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$o(self); }
+
+function _assertThisInitialized$o(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$n() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$n(o) { _getPrototypeOf$n = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$n(o); }
+
+function _defineProperty$n(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var MonthParser = /*#__PURE__*/function (_Parser) {
+  _inherits$n(MonthParser, _Parser);
+
+  var _super = _createSuper$n(MonthParser);
+
+  function MonthParser() {
+    var _this;
+
+    _classCallCheck$n(this, MonthParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$n(_assertThisInitialized$o(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'L', 'w', 'I', 'D', 'i', 'e', 'c', 't', 'T']);
+
+    _defineProperty$n(_assertThisInitialized$o(_this), "priority", 110);
+
+    return _this;
+  }
+
+  _createClass$n(MonthParser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      var valueCallback = function valueCallback(value) {
+        return value - 1;
+      };
+
+      switch (token) {
+        // 1, 2, ..., 12
+        case 'M':
+          return mapValue(parseNumericPattern(numericPatterns.month, dateString), valueCallback);
+        // 01, 02, ..., 12
+
+        case 'MM':
+          return mapValue(parseNDigits(2, dateString), valueCallback);
+        // 1st, 2nd, ..., 12th
+
+        case 'Mo':
+          return mapValue(match.ordinalNumber(dateString, {
+            unit: 'month'
+          }), valueCallback);
+        // Jan, Feb, ..., Dec
+
+        case 'MMM':
+          return match.month(dateString, {
+            width: 'abbreviated',
+            context: 'formatting'
+          }) || match.month(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+        // J, F, ..., D
+
+        case 'MMMMM':
+          return match.month(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+        // January, February, ..., December
+
+        case 'MMMM':
+        default:
+          return match.month(dateString, {
+            width: 'wide',
+            context: 'formatting'
+          }) || match.month(dateString, {
+            width: 'abbreviated',
+            context: 'formatting'
+          }) || match.month(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+      }
+    }
+  }, {
+    key: "validate",
+    value: function validate(_date, value) {
+      return value >= 0 && value <= 11;
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value) {
+      date.setUTCMonth(value, 1);
+      date.setUTCHours(0, 0, 0, 0);
+      return date;
+    }
+  }]);
+
+  return MonthParser;
+}(Parser$1);
+
+function _typeof$n(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$n = function _typeof(obj) { return typeof obj; }; } else { _typeof$n = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$n(obj); }
+
+function _classCallCheck$m(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$m(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$m(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$m(Constructor.prototype, protoProps); if (staticProps) _defineProperties$m(Constructor, staticProps); return Constructor; }
+
+function _inherits$m(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$m(subClass, superClass); }
+
+function _setPrototypeOf$m(o, p) { _setPrototypeOf$m = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$m(o, p); }
+
+function _createSuper$m(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$m(); return function _createSuperInternal() { var Super = _getPrototypeOf$m(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$m(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$m(this, result); }; }
+
+function _possibleConstructorReturn$m(self, call) { if (call && (_typeof$n(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$n(self); }
+
+function _assertThisInitialized$n(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$m() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$m(o) { _getPrototypeOf$m = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$m(o); }
+
+function _defineProperty$m(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var StandAloneMonthParser = /*#__PURE__*/function (_Parser) {
+  _inherits$m(StandAloneMonthParser, _Parser);
+
+  var _super = _createSuper$m(StandAloneMonthParser);
+
+  function StandAloneMonthParser() {
+    var _this;
+
+    _classCallCheck$m(this, StandAloneMonthParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$m(_assertThisInitialized$n(_this), "priority", 110);
+
+    _defineProperty$m(_assertThisInitialized$n(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'M', 'w', 'I', 'D', 'i', 'e', 'c', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$m(StandAloneMonthParser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      var valueCallback = function valueCallback(value) {
+        return value - 1;
+      };
+
+      switch (token) {
+        // 1, 2, ..., 12
+        case 'L':
+          return mapValue(parseNumericPattern(numericPatterns.month, dateString), valueCallback);
+        // 01, 02, ..., 12
+
+        case 'LL':
+          return mapValue(parseNDigits(2, dateString), valueCallback);
+        // 1st, 2nd, ..., 12th
+
+        case 'Lo':
+          return mapValue(match.ordinalNumber(dateString, {
+            unit: 'month'
+          }), valueCallback);
+        // Jan, Feb, ..., Dec
+
+        case 'LLL':
+          return match.month(dateString, {
+            width: 'abbreviated',
+            context: 'standalone'
+          }) || match.month(dateString, {
+            width: 'narrow',
+            context: 'standalone'
+          });
+        // J, F, ..., D
+
+        case 'LLLLL':
+          return match.month(dateString, {
+            width: 'narrow',
+            context: 'standalone'
+          });
+        // January, February, ..., December
+
+        case 'LLLL':
+        default:
+          return match.month(dateString, {
+            width: 'wide',
+            context: 'standalone'
+          }) || match.month(dateString, {
+            width: 'abbreviated',
+            context: 'standalone'
+          }) || match.month(dateString, {
+            width: 'narrow',
+            context: 'standalone'
+          });
+      }
+    }
+  }, {
+    key: "validate",
+    value: function validate(_date, value) {
+      return value >= 0 && value <= 11;
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value) {
+      date.setUTCMonth(value, 1);
+      date.setUTCHours(0, 0, 0, 0);
+      return date;
+    }
+  }]);
+
+  return StandAloneMonthParser;
+}(Parser$1);
+
+function setUTCWeek(dirtyDate, dirtyWeek, options) {
+  requiredArgs(2, arguments);
+  var date = toDate(dirtyDate);
+  var week = toInteger(dirtyWeek);
+  var diff = getUTCWeek(date, options) - week;
+  date.setUTCDate(date.getUTCDate() - diff * 7);
+  return date;
+}
+
+function _typeof$m(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$m = function _typeof(obj) { return typeof obj; }; } else { _typeof$m = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$m(obj); }
+
+function _classCallCheck$l(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$l(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$l(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$l(Constructor.prototype, protoProps); if (staticProps) _defineProperties$l(Constructor, staticProps); return Constructor; }
+
+function _inherits$l(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$l(subClass, superClass); }
+
+function _setPrototypeOf$l(o, p) { _setPrototypeOf$l = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$l(o, p); }
+
+function _createSuper$l(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$l(); return function _createSuperInternal() { var Super = _getPrototypeOf$l(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$l(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$l(this, result); }; }
+
+function _possibleConstructorReturn$l(self, call) { if (call && (_typeof$m(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$m(self); }
+
+function _assertThisInitialized$m(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$l() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$l(o) { _getPrototypeOf$l = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$l(o); }
+
+function _defineProperty$l(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var LocalWeekParser = /*#__PURE__*/function (_Parser) {
+  _inherits$l(LocalWeekParser, _Parser);
+
+  var _super = _createSuper$l(LocalWeekParser);
+
+  function LocalWeekParser() {
+    var _this;
+
+    _classCallCheck$l(this, LocalWeekParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$l(_assertThisInitialized$m(_this), "priority", 100);
+
+    _defineProperty$l(_assertThisInitialized$m(_this), "incompatibleTokens", ['y', 'R', 'u', 'q', 'Q', 'M', 'L', 'I', 'd', 'D', 'i', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$l(LocalWeekParser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      switch (token) {
+        case 'w':
+          return parseNumericPattern(numericPatterns.week, dateString);
+
+        case 'wo':
+          return match.ordinalNumber(dateString, {
+            unit: 'week'
+          });
+
+        default:
+          return parseNDigits(token.length, dateString);
+      }
+    }
+  }, {
+    key: "validate",
+    value: function validate(_date, value) {
+      return value >= 1 && value <= 53;
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value, options) {
+      return startOfUTCWeek(setUTCWeek(date, value, options), options);
+    }
+  }]);
+
+  return LocalWeekParser;
+}(Parser$1);
+
+function setUTCISOWeek(dirtyDate, dirtyISOWeek) {
+  requiredArgs(2, arguments);
+  var date = toDate(dirtyDate);
+  var isoWeek = toInteger(dirtyISOWeek);
+  var diff = getUTCISOWeek(date) - isoWeek;
+  date.setUTCDate(date.getUTCDate() - diff * 7);
+  return date;
+}
+
+function _typeof$l(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$l = function _typeof(obj) { return typeof obj; }; } else { _typeof$l = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$l(obj); }
+
+function _classCallCheck$k(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$k(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$k(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$k(Constructor.prototype, protoProps); if (staticProps) _defineProperties$k(Constructor, staticProps); return Constructor; }
+
+function _inherits$k(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$k(subClass, superClass); }
+
+function _setPrototypeOf$k(o, p) { _setPrototypeOf$k = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$k(o, p); }
+
+function _createSuper$k(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$k(); return function _createSuperInternal() { var Super = _getPrototypeOf$k(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$k(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$k(this, result); }; }
+
+function _possibleConstructorReturn$k(self, call) { if (call && (_typeof$l(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$l(self); }
+
+function _assertThisInitialized$l(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$k() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$k(o) { _getPrototypeOf$k = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$k(o); }
+
+function _defineProperty$k(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var ISOWeekParser = /*#__PURE__*/function (_Parser) {
+  _inherits$k(ISOWeekParser, _Parser);
+
+  var _super = _createSuper$k(ISOWeekParser);
+
+  function ISOWeekParser() {
+    var _this;
+
+    _classCallCheck$k(this, ISOWeekParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$k(_assertThisInitialized$l(_this), "priority", 100);
+
+    _defineProperty$k(_assertThisInitialized$l(_this), "incompatibleTokens", ['y', 'Y', 'u', 'q', 'Q', 'M', 'L', 'w', 'd', 'D', 'e', 'c', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$k(ISOWeekParser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      switch (token) {
+        case 'I':
+          return parseNumericPattern(numericPatterns.week, dateString);
+
+        case 'Io':
+          return match.ordinalNumber(dateString, {
+            unit: 'week'
+          });
+
+        default:
+          return parseNDigits(token.length, dateString);
+      }
+    }
+  }, {
+    key: "validate",
+    value: function validate(_date, value) {
+      return value >= 1 && value <= 53;
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value) {
+      return startOfUTCISOWeek(setUTCISOWeek(date, value));
+    }
+  }]);
+
+  return ISOWeekParser;
+}(Parser$1);
+
+function _typeof$k(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$k = function _typeof(obj) { return typeof obj; }; } else { _typeof$k = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$k(obj); }
+
+function _classCallCheck$j(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$j(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$j(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$j(Constructor.prototype, protoProps); if (staticProps) _defineProperties$j(Constructor, staticProps); return Constructor; }
+
+function _inherits$j(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$j(subClass, superClass); }
+
+function _setPrototypeOf$j(o, p) { _setPrototypeOf$j = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$j(o, p); }
+
+function _createSuper$j(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$j(); return function _createSuperInternal() { var Super = _getPrototypeOf$j(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$j(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$j(this, result); }; }
+
+function _possibleConstructorReturn$j(self, call) { if (call && (_typeof$k(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$k(self); }
+
+function _assertThisInitialized$k(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$j() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$j(o) { _getPrototypeOf$j = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$j(o); }
+
+function _defineProperty$j(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+var DAYS_IN_MONTH_LEAP_YEAR = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; // Day of the month
+
+var DateParser = /*#__PURE__*/function (_Parser) {
+  _inherits$j(DateParser, _Parser);
+
+  var _super = _createSuper$j(DateParser);
+
+  function DateParser() {
+    var _this;
+
+    _classCallCheck$j(this, DateParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$j(_assertThisInitialized$k(_this), "priority", 90);
+
+    _defineProperty$j(_assertThisInitialized$k(_this), "subPriority", 1);
+
+    _defineProperty$j(_assertThisInitialized$k(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'w', 'I', 'D', 'i', 'e', 'c', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$j(DateParser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      switch (token) {
+        case 'd':
+          return parseNumericPattern(numericPatterns.date, dateString);
+
+        case 'do':
+          return match.ordinalNumber(dateString, {
+            unit: 'date'
+          });
+
+        default:
+          return parseNDigits(token.length, dateString);
+      }
+    }
+  }, {
+    key: "validate",
+    value: function validate(date, value) {
+      var year = date.getUTCFullYear();
+      var isLeapYear = isLeapYearIndex(year);
+      var month = date.getUTCMonth();
+
+      if (isLeapYear) {
+        return value >= 1 && value <= DAYS_IN_MONTH_LEAP_YEAR[month];
+      } else {
+        return value >= 1 && value <= DAYS_IN_MONTH[month];
+      }
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value) {
+      date.setUTCDate(value);
+      date.setUTCHours(0, 0, 0, 0);
+      return date;
+    }
+  }]);
+
+  return DateParser;
+}(Parser$1);
+
+function _typeof$j(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$j = function _typeof(obj) { return typeof obj; }; } else { _typeof$j = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$j(obj); }
+
+function _classCallCheck$i(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$i(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$i(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$i(Constructor.prototype, protoProps); if (staticProps) _defineProperties$i(Constructor, staticProps); return Constructor; }
+
+function _inherits$i(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$i(subClass, superClass); }
+
+function _setPrototypeOf$i(o, p) { _setPrototypeOf$i = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$i(o, p); }
+
+function _createSuper$i(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$i(); return function _createSuperInternal() { var Super = _getPrototypeOf$i(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$i(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$i(this, result); }; }
+
+function _possibleConstructorReturn$i(self, call) { if (call && (_typeof$j(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$j(self); }
+
+function _assertThisInitialized$j(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$i() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$i(o) { _getPrototypeOf$i = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$i(o); }
+
+function _defineProperty$i(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var DayOfYearParser = /*#__PURE__*/function (_Parser) {
+  _inherits$i(DayOfYearParser, _Parser);
+
+  var _super = _createSuper$i(DayOfYearParser);
+
+  function DayOfYearParser() {
+    var _this;
+
+    _classCallCheck$i(this, DayOfYearParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$i(_assertThisInitialized$j(_this), "priority", 90);
+
+    _defineProperty$i(_assertThisInitialized$j(_this), "subpriority", 1);
+
+    _defineProperty$i(_assertThisInitialized$j(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'M', 'L', 'w', 'I', 'd', 'E', 'i', 'e', 'c', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$i(DayOfYearParser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      switch (token) {
+        case 'D':
+        case 'DD':
+          return parseNumericPattern(numericPatterns.dayOfYear, dateString);
+
+        case 'Do':
+          return match.ordinalNumber(dateString, {
+            unit: 'date'
+          });
+
+        default:
+          return parseNDigits(token.length, dateString);
+      }
+    }
+  }, {
+    key: "validate",
+    value: function validate(date, value) {
+      var year = date.getUTCFullYear();
+      var isLeapYear = isLeapYearIndex(year);
+
+      if (isLeapYear) {
+        return value >= 1 && value <= 366;
+      } else {
+        return value >= 1 && value <= 365;
+      }
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value) {
+      date.setUTCMonth(0, value);
+      date.setUTCHours(0, 0, 0, 0);
+      return date;
+    }
+  }]);
+
+  return DayOfYearParser;
+}(Parser$1);
+
+function setUTCDay(dirtyDate, dirtyDay, options) {
+  var _ref, _ref2, _ref3, _options$weekStartsOn, _options$locale, _options$locale$optio, _defaultOptions$local, _defaultOptions$local2;
+
+  requiredArgs(2, arguments);
+  var defaultOptions = getDefaultOptions();
+  var weekStartsOn = toInteger((_ref = (_ref2 = (_ref3 = (_options$weekStartsOn = options === null || options === void 0 ? void 0 : options.weekStartsOn) !== null && _options$weekStartsOn !== void 0 ? _options$weekStartsOn : options === null || options === void 0 ? void 0 : (_options$locale = options.locale) === null || _options$locale === void 0 ? void 0 : (_options$locale$optio = _options$locale.options) === null || _options$locale$optio === void 0 ? void 0 : _options$locale$optio.weekStartsOn) !== null && _ref3 !== void 0 ? _ref3 : defaultOptions.weekStartsOn) !== null && _ref2 !== void 0 ? _ref2 : (_defaultOptions$local = defaultOptions.locale) === null || _defaultOptions$local === void 0 ? void 0 : (_defaultOptions$local2 = _defaultOptions$local.options) === null || _defaultOptions$local2 === void 0 ? void 0 : _defaultOptions$local2.weekStartsOn) !== null && _ref !== void 0 ? _ref : 0); // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
+
+  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
+    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively');
+  }
+
+  var date = toDate(dirtyDate);
+  var day = toInteger(dirtyDay);
+  var currentDay = date.getUTCDay();
+  var remainder = day % 7;
+  var dayIndex = (remainder + 7) % 7;
+  var diff = (dayIndex < weekStartsOn ? 7 : 0) + day - currentDay;
+  date.setUTCDate(date.getUTCDate() + diff);
+  return date;
+}
+
+function _typeof$i(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$i = function _typeof(obj) { return typeof obj; }; } else { _typeof$i = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$i(obj); }
+
+function _classCallCheck$h(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$h(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$h(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$h(Constructor.prototype, protoProps); if (staticProps) _defineProperties$h(Constructor, staticProps); return Constructor; }
+
+function _inherits$h(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$h(subClass, superClass); }
+
+function _setPrototypeOf$h(o, p) { _setPrototypeOf$h = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$h(o, p); }
+
+function _createSuper$h(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$h(); return function _createSuperInternal() { var Super = _getPrototypeOf$h(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$h(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$h(this, result); }; }
+
+function _possibleConstructorReturn$h(self, call) { if (call && (_typeof$i(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$i(self); }
+
+function _assertThisInitialized$i(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$h() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$h(o) { _getPrototypeOf$h = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$h(o); }
+
+function _defineProperty$h(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var DayParser = /*#__PURE__*/function (_Parser) {
+  _inherits$h(DayParser, _Parser);
+
+  var _super = _createSuper$h(DayParser);
+
+  function DayParser() {
+    var _this;
+
+    _classCallCheck$h(this, DayParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$h(_assertThisInitialized$i(_this), "priority", 90);
+
+    _defineProperty$h(_assertThisInitialized$i(_this), "incompatibleTokens", ['D', 'i', 'e', 'c', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$h(DayParser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      switch (token) {
+        // Tue
+        case 'E':
+        case 'EE':
+        case 'EEE':
+          return match.day(dateString, {
+            width: 'abbreviated',
+            context: 'formatting'
+          }) || match.day(dateString, {
+            width: 'short',
+            context: 'formatting'
+          }) || match.day(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+        // T
+
+        case 'EEEEE':
+          return match.day(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+        // Tu
+
+        case 'EEEEEE':
+          return match.day(dateString, {
+            width: 'short',
+            context: 'formatting'
+          }) || match.day(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+        // Tuesday
+
+        case 'EEEE':
+        default:
+          return match.day(dateString, {
+            width: 'wide',
+            context: 'formatting'
+          }) || match.day(dateString, {
+            width: 'abbreviated',
+            context: 'formatting'
+          }) || match.day(dateString, {
+            width: 'short',
+            context: 'formatting'
+          }) || match.day(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+      }
+    }
+  }, {
+    key: "validate",
+    value: function validate(_date, value) {
+      return value >= 0 && value <= 6;
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value, options) {
+      date = setUTCDay(date, value, options);
+      date.setUTCHours(0, 0, 0, 0);
+      return date;
+    }
+  }]);
+
+  return DayParser;
+}(Parser$1);
+
+function _typeof$h(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$h = function _typeof(obj) { return typeof obj; }; } else { _typeof$h = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$h(obj); }
+
+function _classCallCheck$g(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$g(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$g(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$g(Constructor.prototype, protoProps); if (staticProps) _defineProperties$g(Constructor, staticProps); return Constructor; }
+
+function _inherits$g(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$g(subClass, superClass); }
+
+function _setPrototypeOf$g(o, p) { _setPrototypeOf$g = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$g(o, p); }
+
+function _createSuper$g(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$g(); return function _createSuperInternal() { var Super = _getPrototypeOf$g(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$g(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$g(this, result); }; }
+
+function _possibleConstructorReturn$g(self, call) { if (call && (_typeof$h(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$h(self); }
+
+function _assertThisInitialized$h(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$g() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$g(o) { _getPrototypeOf$g = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$g(o); }
+
+function _defineProperty$g(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var LocalDayParser = /*#__PURE__*/function (_Parser) {
+  _inherits$g(LocalDayParser, _Parser);
+
+  var _super = _createSuper$g(LocalDayParser);
+
+  function LocalDayParser() {
+    var _this;
+
+    _classCallCheck$g(this, LocalDayParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$g(_assertThisInitialized$h(_this), "priority", 90);
+
+    _defineProperty$g(_assertThisInitialized$h(_this), "incompatibleTokens", ['y', 'R', 'u', 'q', 'Q', 'M', 'L', 'I', 'd', 'D', 'E', 'i', 'c', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$g(LocalDayParser, [{
+    key: "parse",
+    value: function parse(dateString, token, match, options) {
+      var valueCallback = function valueCallback(value) {
+        var wholeWeekDays = Math.floor((value - 1) / 7) * 7;
+        return (value + options.weekStartsOn + 6) % 7 + wholeWeekDays;
+      };
+
+      switch (token) {
+        // 3
+        case 'e':
+        case 'ee':
+          // 03
+          return mapValue(parseNDigits(token.length, dateString), valueCallback);
+        // 3rd
+
+        case 'eo':
+          return mapValue(match.ordinalNumber(dateString, {
+            unit: 'day'
+          }), valueCallback);
+        // Tue
+
+        case 'eee':
+          return match.day(dateString, {
+            width: 'abbreviated',
+            context: 'formatting'
+          }) || match.day(dateString, {
+            width: 'short',
+            context: 'formatting'
+          }) || match.day(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+        // T
+
+        case 'eeeee':
+          return match.day(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+        // Tu
+
+        case 'eeeeee':
+          return match.day(dateString, {
+            width: 'short',
+            context: 'formatting'
+          }) || match.day(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+        // Tuesday
+
+        case 'eeee':
+        default:
+          return match.day(dateString, {
+            width: 'wide',
+            context: 'formatting'
+          }) || match.day(dateString, {
+            width: 'abbreviated',
+            context: 'formatting'
+          }) || match.day(dateString, {
+            width: 'short',
+            context: 'formatting'
+          }) || match.day(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+      }
+    }
+  }, {
+    key: "validate",
+    value: function validate(_date, value) {
+      return value >= 0 && value <= 6;
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value, options) {
+      date = setUTCDay(date, value, options);
+      date.setUTCHours(0, 0, 0, 0);
+      return date;
+    }
+  }]);
+
+  return LocalDayParser;
+}(Parser$1);
+
+function _typeof$g(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$g = function _typeof(obj) { return typeof obj; }; } else { _typeof$g = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$g(obj); }
+
+function _classCallCheck$f(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$f(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$f(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$f(Constructor.prototype, protoProps); if (staticProps) _defineProperties$f(Constructor, staticProps); return Constructor; }
+
+function _inherits$f(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$f(subClass, superClass); }
+
+function _setPrototypeOf$f(o, p) { _setPrototypeOf$f = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$f(o, p); }
+
+function _createSuper$f(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$f(); return function _createSuperInternal() { var Super = _getPrototypeOf$f(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$f(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$f(this, result); }; }
+
+function _possibleConstructorReturn$f(self, call) { if (call && (_typeof$g(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$g(self); }
+
+function _assertThisInitialized$g(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$f() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$f(o) { _getPrototypeOf$f = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$f(o); }
+
+function _defineProperty$f(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var StandAloneLocalDayParser = /*#__PURE__*/function (_Parser) {
+  _inherits$f(StandAloneLocalDayParser, _Parser);
+
+  var _super = _createSuper$f(StandAloneLocalDayParser);
+
+  function StandAloneLocalDayParser() {
+    var _this;
+
+    _classCallCheck$f(this, StandAloneLocalDayParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$f(_assertThisInitialized$g(_this), "priority", 90);
+
+    _defineProperty$f(_assertThisInitialized$g(_this), "incompatibleTokens", ['y', 'R', 'u', 'q', 'Q', 'M', 'L', 'I', 'd', 'D', 'E', 'i', 'e', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$f(StandAloneLocalDayParser, [{
+    key: "parse",
+    value: function parse(dateString, token, match, options) {
+      var valueCallback = function valueCallback(value) {
+        var wholeWeekDays = Math.floor((value - 1) / 7) * 7;
+        return (value + options.weekStartsOn + 6) % 7 + wholeWeekDays;
+      };
+
+      switch (token) {
+        // 3
+        case 'c':
+        case 'cc':
+          // 03
+          return mapValue(parseNDigits(token.length, dateString), valueCallback);
+        // 3rd
+
+        case 'co':
+          return mapValue(match.ordinalNumber(dateString, {
+            unit: 'day'
+          }), valueCallback);
+        // Tue
+
+        case 'ccc':
+          return match.day(dateString, {
+            width: 'abbreviated',
+            context: 'standalone'
+          }) || match.day(dateString, {
+            width: 'short',
+            context: 'standalone'
+          }) || match.day(dateString, {
+            width: 'narrow',
+            context: 'standalone'
+          });
+        // T
+
+        case 'ccccc':
+          return match.day(dateString, {
+            width: 'narrow',
+            context: 'standalone'
+          });
+        // Tu
+
+        case 'cccccc':
+          return match.day(dateString, {
+            width: 'short',
+            context: 'standalone'
+          }) || match.day(dateString, {
+            width: 'narrow',
+            context: 'standalone'
+          });
+        // Tuesday
+
+        case 'cccc':
+        default:
+          return match.day(dateString, {
+            width: 'wide',
+            context: 'standalone'
+          }) || match.day(dateString, {
+            width: 'abbreviated',
+            context: 'standalone'
+          }) || match.day(dateString, {
+            width: 'short',
+            context: 'standalone'
+          }) || match.day(dateString, {
+            width: 'narrow',
+            context: 'standalone'
+          });
+      }
+    }
+  }, {
+    key: "validate",
+    value: function validate(_date, value) {
+      return value >= 0 && value <= 6;
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value, options) {
+      date = setUTCDay(date, value, options);
+      date.setUTCHours(0, 0, 0, 0);
+      return date;
+    }
+  }]);
+
+  return StandAloneLocalDayParser;
+}(Parser$1);
+
+function setUTCISODay(dirtyDate, dirtyDay) {
+  requiredArgs(2, arguments);
+  var day = toInteger(dirtyDay);
+
+  if (day % 7 === 0) {
+    day = day - 7;
+  }
+
+  var weekStartsOn = 1;
+  var date = toDate(dirtyDate);
+  var currentDay = date.getUTCDay();
+  var remainder = day % 7;
+  var dayIndex = (remainder + 7) % 7;
+  var diff = (dayIndex < weekStartsOn ? 7 : 0) + day - currentDay;
+  date.setUTCDate(date.getUTCDate() + diff);
+  return date;
+}
+
+function _typeof$f(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$f = function _typeof(obj) { return typeof obj; }; } else { _typeof$f = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$f(obj); }
+
+function _classCallCheck$e(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$e(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$e(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$e(Constructor.prototype, protoProps); if (staticProps) _defineProperties$e(Constructor, staticProps); return Constructor; }
+
+function _inherits$e(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$e(subClass, superClass); }
+
+function _setPrototypeOf$e(o, p) { _setPrototypeOf$e = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$e(o, p); }
+
+function _createSuper$e(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$e(); return function _createSuperInternal() { var Super = _getPrototypeOf$e(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$e(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$e(this, result); }; }
+
+function _possibleConstructorReturn$e(self, call) { if (call && (_typeof$f(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$f(self); }
+
+function _assertThisInitialized$f(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$e() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$e(o) { _getPrototypeOf$e = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$e(o); }
+
+function _defineProperty$e(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var ISODayParser = /*#__PURE__*/function (_Parser) {
+  _inherits$e(ISODayParser, _Parser);
+
+  var _super = _createSuper$e(ISODayParser);
+
+  function ISODayParser() {
+    var _this;
+
+    _classCallCheck$e(this, ISODayParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$e(_assertThisInitialized$f(_this), "priority", 90);
+
+    _defineProperty$e(_assertThisInitialized$f(_this), "incompatibleTokens", ['y', 'Y', 'u', 'q', 'Q', 'M', 'L', 'w', 'd', 'D', 'E', 'e', 'c', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$e(ISODayParser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      var valueCallback = function valueCallback(value) {
+        if (value === 0) {
+          return 7;
+        }
+
+        return value;
+      };
+
+      switch (token) {
+        // 2
+        case 'i':
+        case 'ii':
+          // 02
+          return parseNDigits(token.length, dateString);
+        // 2nd
+
+        case 'io':
+          return match.ordinalNumber(dateString, {
+            unit: 'day'
+          });
+        // Tue
+
+        case 'iii':
+          return mapValue(match.day(dateString, {
+            width: 'abbreviated',
+            context: 'formatting'
+          }) || match.day(dateString, {
+            width: 'short',
+            context: 'formatting'
+          }) || match.day(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          }), valueCallback);
+        // T
+
+        case 'iiiii':
+          return mapValue(match.day(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          }), valueCallback);
+        // Tu
+
+        case 'iiiiii':
+          return mapValue(match.day(dateString, {
+            width: 'short',
+            context: 'formatting'
+          }) || match.day(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          }), valueCallback);
+        // Tuesday
+
+        case 'iiii':
+        default:
+          return mapValue(match.day(dateString, {
+            width: 'wide',
+            context: 'formatting'
+          }) || match.day(dateString, {
+            width: 'abbreviated',
+            context: 'formatting'
+          }) || match.day(dateString, {
+            width: 'short',
+            context: 'formatting'
+          }) || match.day(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          }), valueCallback);
+      }
+    }
+  }, {
+    key: "validate",
+    value: function validate(_date, value) {
+      return value >= 1 && value <= 7;
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value) {
+      date = setUTCISODay(date, value);
+      date.setUTCHours(0, 0, 0, 0);
+      return date;
+    }
+  }]);
+
+  return ISODayParser;
+}(Parser$1);
+
+function _typeof$e(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$e = function _typeof(obj) { return typeof obj; }; } else { _typeof$e = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$e(obj); }
+
+function _classCallCheck$d(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$d(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$d(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$d(Constructor.prototype, protoProps); if (staticProps) _defineProperties$d(Constructor, staticProps); return Constructor; }
+
+function _inherits$d(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$d(subClass, superClass); }
+
+function _setPrototypeOf$d(o, p) { _setPrototypeOf$d = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$d(o, p); }
+
+function _createSuper$d(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$d(); return function _createSuperInternal() { var Super = _getPrototypeOf$d(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$d(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$d(this, result); }; }
+
+function _possibleConstructorReturn$d(self, call) { if (call && (_typeof$e(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$e(self); }
+
+function _assertThisInitialized$e(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$d() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$d(o) { _getPrototypeOf$d = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$d(o); }
+
+function _defineProperty$d(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var AMPMParser = /*#__PURE__*/function (_Parser) {
+  _inherits$d(AMPMParser, _Parser);
+
+  var _super = _createSuper$d(AMPMParser);
+
+  function AMPMParser() {
+    var _this;
+
+    _classCallCheck$d(this, AMPMParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$d(_assertThisInitialized$e(_this), "priority", 80);
+
+    _defineProperty$d(_assertThisInitialized$e(_this), "incompatibleTokens", ['b', 'B', 'H', 'k', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$d(AMPMParser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      switch (token) {
+        case 'a':
+        case 'aa':
+        case 'aaa':
+          return match.dayPeriod(dateString, {
+            width: 'abbreviated',
+            context: 'formatting'
+          }) || match.dayPeriod(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+
+        case 'aaaaa':
+          return match.dayPeriod(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+
+        case 'aaaa':
+        default:
+          return match.dayPeriod(dateString, {
+            width: 'wide',
+            context: 'formatting'
+          }) || match.dayPeriod(dateString, {
+            width: 'abbreviated',
+            context: 'formatting'
+          }) || match.dayPeriod(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+      }
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value) {
+      date.setUTCHours(dayPeriodEnumToHours(value), 0, 0, 0);
+      return date;
+    }
+  }]);
+
+  return AMPMParser;
+}(Parser$1);
+
+function _typeof$d(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$d = function _typeof(obj) { return typeof obj; }; } else { _typeof$d = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$d(obj); }
+
+function _classCallCheck$c(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$c(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$c(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$c(Constructor.prototype, protoProps); if (staticProps) _defineProperties$c(Constructor, staticProps); return Constructor; }
+
+function _inherits$c(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$c(subClass, superClass); }
+
+function _setPrototypeOf$c(o, p) { _setPrototypeOf$c = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$c(o, p); }
+
+function _createSuper$c(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$c(); return function _createSuperInternal() { var Super = _getPrototypeOf$c(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$c(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$c(this, result); }; }
+
+function _possibleConstructorReturn$c(self, call) { if (call && (_typeof$d(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$d(self); }
+
+function _assertThisInitialized$d(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$c() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$c(o) { _getPrototypeOf$c = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$c(o); }
+
+function _defineProperty$c(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var AMPMMidnightParser = /*#__PURE__*/function (_Parser) {
+  _inherits$c(AMPMMidnightParser, _Parser);
+
+  var _super = _createSuper$c(AMPMMidnightParser);
+
+  function AMPMMidnightParser() {
+    var _this;
+
+    _classCallCheck$c(this, AMPMMidnightParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$c(_assertThisInitialized$d(_this), "priority", 80);
+
+    _defineProperty$c(_assertThisInitialized$d(_this), "incompatibleTokens", ['a', 'B', 'H', 'k', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$c(AMPMMidnightParser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      switch (token) {
+        case 'b':
+        case 'bb':
+        case 'bbb':
+          return match.dayPeriod(dateString, {
+            width: 'abbreviated',
+            context: 'formatting'
+          }) || match.dayPeriod(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+
+        case 'bbbbb':
+          return match.dayPeriod(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+
+        case 'bbbb':
+        default:
+          return match.dayPeriod(dateString, {
+            width: 'wide',
+            context: 'formatting'
+          }) || match.dayPeriod(dateString, {
+            width: 'abbreviated',
+            context: 'formatting'
+          }) || match.dayPeriod(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+      }
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value) {
+      date.setUTCHours(dayPeriodEnumToHours(value), 0, 0, 0);
+      return date;
+    }
+  }]);
+
+  return AMPMMidnightParser;
+}(Parser$1);
+
+function _typeof$c(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$c = function _typeof(obj) { return typeof obj; }; } else { _typeof$c = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$c(obj); }
+
+function _classCallCheck$b(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$b(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$b(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$b(Constructor.prototype, protoProps); if (staticProps) _defineProperties$b(Constructor, staticProps); return Constructor; }
+
+function _inherits$b(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$b(subClass, superClass); }
+
+function _setPrototypeOf$b(o, p) { _setPrototypeOf$b = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$b(o, p); }
+
+function _createSuper$b(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$b(); return function _createSuperInternal() { var Super = _getPrototypeOf$b(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$b(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$b(this, result); }; }
+
+function _possibleConstructorReturn$b(self, call) { if (call && (_typeof$c(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$c(self); }
+
+function _assertThisInitialized$c(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$b() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$b(o) { _getPrototypeOf$b = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$b(o); }
+
+function _defineProperty$b(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var DayPeriodParser = /*#__PURE__*/function (_Parser) {
+  _inherits$b(DayPeriodParser, _Parser);
+
+  var _super = _createSuper$b(DayPeriodParser);
+
+  function DayPeriodParser() {
+    var _this;
+
+    _classCallCheck$b(this, DayPeriodParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$b(_assertThisInitialized$c(_this), "priority", 80);
+
+    _defineProperty$b(_assertThisInitialized$c(_this), "incompatibleTokens", ['a', 'b', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$b(DayPeriodParser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      switch (token) {
+        case 'B':
+        case 'BB':
+        case 'BBB':
+          return match.dayPeriod(dateString, {
+            width: 'abbreviated',
+            context: 'formatting'
+          }) || match.dayPeriod(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+
+        case 'BBBBB':
+          return match.dayPeriod(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+
+        case 'BBBB':
+        default:
+          return match.dayPeriod(dateString, {
+            width: 'wide',
+            context: 'formatting'
+          }) || match.dayPeriod(dateString, {
+            width: 'abbreviated',
+            context: 'formatting'
+          }) || match.dayPeriod(dateString, {
+            width: 'narrow',
+            context: 'formatting'
+          });
+      }
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value) {
+      date.setUTCHours(dayPeriodEnumToHours(value), 0, 0, 0);
+      return date;
+    }
+  }]);
+
+  return DayPeriodParser;
+}(Parser$1);
+
+function _typeof$b(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$b = function _typeof(obj) { return typeof obj; }; } else { _typeof$b = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$b(obj); }
+
+function _classCallCheck$a(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$a(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$a(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$a(Constructor.prototype, protoProps); if (staticProps) _defineProperties$a(Constructor, staticProps); return Constructor; }
+
+function _inherits$a(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$a(subClass, superClass); }
+
+function _setPrototypeOf$a(o, p) { _setPrototypeOf$a = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$a(o, p); }
+
+function _createSuper$a(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$a(); return function _createSuperInternal() { var Super = _getPrototypeOf$a(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$a(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$a(this, result); }; }
+
+function _possibleConstructorReturn$a(self, call) { if (call && (_typeof$b(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$b(self); }
+
+function _assertThisInitialized$b(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$a() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$a(o) { _getPrototypeOf$a = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$a(o); }
+
+function _defineProperty$a(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var Hour1to12Parser = /*#__PURE__*/function (_Parser) {
+  _inherits$a(Hour1to12Parser, _Parser);
+
+  var _super = _createSuper$a(Hour1to12Parser);
+
+  function Hour1to12Parser() {
+    var _this;
+
+    _classCallCheck$a(this, Hour1to12Parser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$a(_assertThisInitialized$b(_this), "priority", 70);
+
+    _defineProperty$a(_assertThisInitialized$b(_this), "incompatibleTokens", ['H', 'K', 'k', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$a(Hour1to12Parser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      switch (token) {
+        case 'h':
+          return parseNumericPattern(numericPatterns.hour12h, dateString);
+
+        case 'ho':
+          return match.ordinalNumber(dateString, {
+            unit: 'hour'
+          });
+
+        default:
+          return parseNDigits(token.length, dateString);
+      }
+    }
+  }, {
+    key: "validate",
+    value: function validate(_date, value) {
+      return value >= 1 && value <= 12;
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value) {
+      var isPM = date.getUTCHours() >= 12;
+
+      if (isPM && value < 12) {
+        date.setUTCHours(value + 12, 0, 0, 0);
+      } else if (!isPM && value === 12) {
+        date.setUTCHours(0, 0, 0, 0);
+      } else {
+        date.setUTCHours(value, 0, 0, 0);
+      }
+
+      return date;
+    }
+  }]);
+
+  return Hour1to12Parser;
+}(Parser$1);
+
+function _typeof$a(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$a = function _typeof(obj) { return typeof obj; }; } else { _typeof$a = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$a(obj); }
+
+function _classCallCheck$9(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$9(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$9(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$9(Constructor.prototype, protoProps); if (staticProps) _defineProperties$9(Constructor, staticProps); return Constructor; }
+
+function _inherits$9(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$9(subClass, superClass); }
+
+function _setPrototypeOf$9(o, p) { _setPrototypeOf$9 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$9(o, p); }
+
+function _createSuper$9(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$9(); return function _createSuperInternal() { var Super = _getPrototypeOf$9(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$9(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$9(this, result); }; }
+
+function _possibleConstructorReturn$9(self, call) { if (call && (_typeof$a(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$a(self); }
+
+function _assertThisInitialized$a(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$9() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$9(o) { _getPrototypeOf$9 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$9(o); }
+
+function _defineProperty$9(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var Hour0to23Parser = /*#__PURE__*/function (_Parser) {
+  _inherits$9(Hour0to23Parser, _Parser);
+
+  var _super = _createSuper$9(Hour0to23Parser);
+
+  function Hour0to23Parser() {
+    var _this;
+
+    _classCallCheck$9(this, Hour0to23Parser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$9(_assertThisInitialized$a(_this), "priority", 70);
+
+    _defineProperty$9(_assertThisInitialized$a(_this), "incompatibleTokens", ['a', 'b', 'h', 'K', 'k', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$9(Hour0to23Parser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      switch (token) {
+        case 'H':
+          return parseNumericPattern(numericPatterns.hour23h, dateString);
+
+        case 'Ho':
+          return match.ordinalNumber(dateString, {
+            unit: 'hour'
+          });
+
+        default:
+          return parseNDigits(token.length, dateString);
+      }
+    }
+  }, {
+    key: "validate",
+    value: function validate(_date, value) {
+      return value >= 0 && value <= 23;
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value) {
+      date.setUTCHours(value, 0, 0, 0);
+      return date;
+    }
+  }]);
+
+  return Hour0to23Parser;
+}(Parser$1);
+
+function _typeof$9(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$9 = function _typeof(obj) { return typeof obj; }; } else { _typeof$9 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$9(obj); }
+
+function _classCallCheck$8(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$8(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$8(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$8(Constructor.prototype, protoProps); if (staticProps) _defineProperties$8(Constructor, staticProps); return Constructor; }
+
+function _inherits$8(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$8(subClass, superClass); }
+
+function _setPrototypeOf$8(o, p) { _setPrototypeOf$8 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$8(o, p); }
+
+function _createSuper$8(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$8(); return function _createSuperInternal() { var Super = _getPrototypeOf$8(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$8(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$8(this, result); }; }
+
+function _possibleConstructorReturn$8(self, call) { if (call && (_typeof$9(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$9(self); }
+
+function _assertThisInitialized$9(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$8() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$8(o) { _getPrototypeOf$8 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$8(o); }
+
+function _defineProperty$8(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var Hour0To11Parser = /*#__PURE__*/function (_Parser) {
+  _inherits$8(Hour0To11Parser, _Parser);
+
+  var _super = _createSuper$8(Hour0To11Parser);
+
+  function Hour0To11Parser() {
+    var _this;
+
+    _classCallCheck$8(this, Hour0To11Parser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$8(_assertThisInitialized$9(_this), "priority", 70);
+
+    _defineProperty$8(_assertThisInitialized$9(_this), "incompatibleTokens", ['h', 'H', 'k', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$8(Hour0To11Parser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      switch (token) {
+        case 'K':
+          return parseNumericPattern(numericPatterns.hour11h, dateString);
+
+        case 'Ko':
+          return match.ordinalNumber(dateString, {
+            unit: 'hour'
+          });
+
+        default:
+          return parseNDigits(token.length, dateString);
+      }
+    }
+  }, {
+    key: "validate",
+    value: function validate(_date, value) {
+      return value >= 0 && value <= 11;
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value) {
+      var isPM = date.getUTCHours() >= 12;
+
+      if (isPM && value < 12) {
+        date.setUTCHours(value + 12, 0, 0, 0);
+      } else {
+        date.setUTCHours(value, 0, 0, 0);
+      }
+
+      return date;
+    }
+  }]);
+
+  return Hour0To11Parser;
+}(Parser$1);
+
+function _typeof$8(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$8 = function _typeof(obj) { return typeof obj; }; } else { _typeof$8 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$8(obj); }
+
+function _classCallCheck$7(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$7(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$7(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$7(Constructor.prototype, protoProps); if (staticProps) _defineProperties$7(Constructor, staticProps); return Constructor; }
+
+function _inherits$7(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$7(subClass, superClass); }
+
+function _setPrototypeOf$7(o, p) { _setPrototypeOf$7 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$7(o, p); }
+
+function _createSuper$7(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$7(); return function _createSuperInternal() { var Super = _getPrototypeOf$7(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$7(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$7(this, result); }; }
+
+function _possibleConstructorReturn$7(self, call) { if (call && (_typeof$8(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$8(self); }
+
+function _assertThisInitialized$8(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$7() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$7(o) { _getPrototypeOf$7 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$7(o); }
+
+function _defineProperty$7(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var Hour1To24Parser = /*#__PURE__*/function (_Parser) {
+  _inherits$7(Hour1To24Parser, _Parser);
+
+  var _super = _createSuper$7(Hour1To24Parser);
+
+  function Hour1To24Parser() {
+    var _this;
+
+    _classCallCheck$7(this, Hour1To24Parser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$7(_assertThisInitialized$8(_this), "priority", 70);
+
+    _defineProperty$7(_assertThisInitialized$8(_this), "incompatibleTokens", ['a', 'b', 'h', 'H', 'K', 't', 'T']);
+
+    return _this;
+  }
+
+  _createClass$7(Hour1To24Parser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      switch (token) {
+        case 'k':
+          return parseNumericPattern(numericPatterns.hour24h, dateString);
+
+        case 'ko':
+          return match.ordinalNumber(dateString, {
+            unit: 'hour'
+          });
+
+        default:
+          return parseNDigits(token.length, dateString);
+      }
+    }
+  }, {
+    key: "validate",
+    value: function validate(_date, value) {
+      return value >= 1 && value <= 24;
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value) {
+      var hours = value <= 24 ? value % 24 : value;
+      date.setUTCHours(hours, 0, 0, 0);
+      return date;
+    }
+  }]);
+
+  return Hour1To24Parser;
+}(Parser$1);
+
+function _typeof$7(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$7 = function _typeof(obj) { return typeof obj; }; } else { _typeof$7 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$7(obj); }
+
+function _classCallCheck$6(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$6(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$6(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$6(Constructor.prototype, protoProps); if (staticProps) _defineProperties$6(Constructor, staticProps); return Constructor; }
+
+function _inherits$6(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$6(subClass, superClass); }
+
+function _setPrototypeOf$6(o, p) { _setPrototypeOf$6 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$6(o, p); }
+
+function _createSuper$6(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$6(); return function _createSuperInternal() { var Super = _getPrototypeOf$6(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$6(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$6(this, result); }; }
+
+function _possibleConstructorReturn$6(self, call) { if (call && (_typeof$7(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$7(self); }
+
+function _assertThisInitialized$7(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$6() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$6(o) { _getPrototypeOf$6 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$6(o); }
+
+function _defineProperty$6(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var MinuteParser = /*#__PURE__*/function (_Parser) {
+  _inherits$6(MinuteParser, _Parser);
+
+  var _super = _createSuper$6(MinuteParser);
+
+  function MinuteParser() {
+    var _this;
+
+    _classCallCheck$6(this, MinuteParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$6(_assertThisInitialized$7(_this), "priority", 60);
+
+    _defineProperty$6(_assertThisInitialized$7(_this), "incompatibleTokens", ['t', 'T']);
+
+    return _this;
+  }
+
+  _createClass$6(MinuteParser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      switch (token) {
+        case 'm':
+          return parseNumericPattern(numericPatterns.minute, dateString);
+
+        case 'mo':
+          return match.ordinalNumber(dateString, {
+            unit: 'minute'
+          });
+
+        default:
+          return parseNDigits(token.length, dateString);
+      }
+    }
+  }, {
+    key: "validate",
+    value: function validate(_date, value) {
+      return value >= 0 && value <= 59;
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value) {
+      date.setUTCMinutes(value, 0, 0);
+      return date;
+    }
+  }]);
+
+  return MinuteParser;
+}(Parser$1);
+
+function _typeof$6(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$6 = function _typeof(obj) { return typeof obj; }; } else { _typeof$6 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$6(obj); }
+
+function _classCallCheck$5(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$5(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$5(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$5(Constructor.prototype, protoProps); if (staticProps) _defineProperties$5(Constructor, staticProps); return Constructor; }
+
+function _inherits$5(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$5(subClass, superClass); }
+
+function _setPrototypeOf$5(o, p) { _setPrototypeOf$5 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$5(o, p); }
+
+function _createSuper$5(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$5(); return function _createSuperInternal() { var Super = _getPrototypeOf$5(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$5(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$5(this, result); }; }
+
+function _possibleConstructorReturn$5(self, call) { if (call && (_typeof$6(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$6(self); }
+
+function _assertThisInitialized$6(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$5() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$5(o) { _getPrototypeOf$5 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$5(o); }
+
+function _defineProperty$5(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var SecondParser = /*#__PURE__*/function (_Parser) {
+  _inherits$5(SecondParser, _Parser);
+
+  var _super = _createSuper$5(SecondParser);
+
+  function SecondParser() {
+    var _this;
+
+    _classCallCheck$5(this, SecondParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$5(_assertThisInitialized$6(_this), "priority", 50);
+
+    _defineProperty$5(_assertThisInitialized$6(_this), "incompatibleTokens", ['t', 'T']);
+
+    return _this;
+  }
+
+  _createClass$5(SecondParser, [{
+    key: "parse",
+    value: function parse(dateString, token, match) {
+      switch (token) {
+        case 's':
+          return parseNumericPattern(numericPatterns.second, dateString);
+
+        case 'so':
+          return match.ordinalNumber(dateString, {
+            unit: 'second'
+          });
+
+        default:
+          return parseNDigits(token.length, dateString);
+      }
+    }
+  }, {
+    key: "validate",
+    value: function validate(_date, value) {
+      return value >= 0 && value <= 59;
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value) {
+      date.setUTCSeconds(value, 0);
+      return date;
+    }
+  }]);
+
+  return SecondParser;
+}(Parser$1);
+
+function _typeof$5(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$5 = function _typeof(obj) { return typeof obj; }; } else { _typeof$5 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$5(obj); }
+
+function _classCallCheck$4(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$4(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$4(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$4(Constructor.prototype, protoProps); if (staticProps) _defineProperties$4(Constructor, staticProps); return Constructor; }
+
+function _inherits$4(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$4(subClass, superClass); }
+
+function _setPrototypeOf$4(o, p) { _setPrototypeOf$4 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$4(o, p); }
+
+function _createSuper$4(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$4(); return function _createSuperInternal() { var Super = _getPrototypeOf$4(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$4(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$4(this, result); }; }
+
+function _possibleConstructorReturn$4(self, call) { if (call && (_typeof$5(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$5(self); }
+
+function _assertThisInitialized$5(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$4() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$4(o) { _getPrototypeOf$4 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$4(o); }
+
+function _defineProperty$4(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var FractionOfSecondParser = /*#__PURE__*/function (_Parser) {
+  _inherits$4(FractionOfSecondParser, _Parser);
+
+  var _super = _createSuper$4(FractionOfSecondParser);
+
+  function FractionOfSecondParser() {
+    var _this;
+
+    _classCallCheck$4(this, FractionOfSecondParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$4(_assertThisInitialized$5(_this), "priority", 30);
+
+    _defineProperty$4(_assertThisInitialized$5(_this), "incompatibleTokens", ['t', 'T']);
+
+    return _this;
+  }
+
+  _createClass$4(FractionOfSecondParser, [{
+    key: "parse",
+    value: function parse(dateString, token) {
+      var valueCallback = function valueCallback(value) {
+        return Math.floor(value * Math.pow(10, -token.length + 3));
+      };
+
+      return mapValue(parseNDigits(token.length, dateString), valueCallback);
+    }
+  }, {
+    key: "set",
+    value: function set(date, _flags, value) {
+      date.setUTCMilliseconds(value);
+      return date;
+    }
+  }]);
+
+  return FractionOfSecondParser;
+}(Parser$1);
+
+function _typeof$4(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$4 = function _typeof(obj) { return typeof obj; }; } else { _typeof$4 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$4(obj); }
+
+function _classCallCheck$3(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$3(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$3(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$3(Constructor.prototype, protoProps); if (staticProps) _defineProperties$3(Constructor, staticProps); return Constructor; }
+
+function _inherits$3(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$3(subClass, superClass); }
+
+function _setPrototypeOf$3(o, p) { _setPrototypeOf$3 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$3(o, p); }
+
+function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf$3(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$3(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$3(this, result); }; }
+
+function _possibleConstructorReturn$3(self, call) { if (call && (_typeof$4(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$4(self); }
+
+function _assertThisInitialized$4(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$3() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$3(o) { _getPrototypeOf$3 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$3(o); }
+
+function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var ISOTimezoneWithZParser = /*#__PURE__*/function (_Parser) {
+  _inherits$3(ISOTimezoneWithZParser, _Parser);
+
+  var _super = _createSuper$3(ISOTimezoneWithZParser);
+
+  function ISOTimezoneWithZParser() {
+    var _this;
+
+    _classCallCheck$3(this, ISOTimezoneWithZParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$3(_assertThisInitialized$4(_this), "priority", 10);
+
+    _defineProperty$3(_assertThisInitialized$4(_this), "incompatibleTokens", ['t', 'T', 'x']);
+
+    return _this;
+  }
+
+  _createClass$3(ISOTimezoneWithZParser, [{
+    key: "parse",
+    value: function parse(dateString, token) {
+      switch (token) {
+        case 'X':
+          return parseTimezonePattern(timezonePatterns.basicOptionalMinutes, dateString);
+
+        case 'XX':
+          return parseTimezonePattern(timezonePatterns.basic, dateString);
+
+        case 'XXXX':
+          return parseTimezonePattern(timezonePatterns.basicOptionalSeconds, dateString);
+
+        case 'XXXXX':
+          return parseTimezonePattern(timezonePatterns.extendedOptionalSeconds, dateString);
+
+        case 'XXX':
+        default:
+          return parseTimezonePattern(timezonePatterns.extended, dateString);
+      }
+    }
+  }, {
+    key: "set",
+    value: function set(date, flags, value) {
+      if (flags.timestampIsSet) {
+        return date;
+      }
+
+      return new Date(date.getTime() - value);
+    }
+  }]);
+
+  return ISOTimezoneWithZParser;
+}(Parser$1);
+
+function _typeof$3(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$3 = function _typeof(obj) { return typeof obj; }; } else { _typeof$3 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$3(obj); }
+
+function _classCallCheck$2(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$2(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$2(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$2(Constructor.prototype, protoProps); if (staticProps) _defineProperties$2(Constructor, staticProps); return Constructor; }
+
+function _inherits$2(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$2(subClass, superClass); }
+
+function _setPrototypeOf$2(o, p) { _setPrototypeOf$2 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$2(o, p); }
+
+function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf$2(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$2(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$2(this, result); }; }
+
+function _possibleConstructorReturn$2(self, call) { if (call && (_typeof$3(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$3(self); }
+
+function _assertThisInitialized$3(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$2(o) { _getPrototypeOf$2 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$2(o); }
+
+function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var ISOTimezoneParser = /*#__PURE__*/function (_Parser) {
+  _inherits$2(ISOTimezoneParser, _Parser);
+
+  var _super = _createSuper$2(ISOTimezoneParser);
+
+  function ISOTimezoneParser() {
+    var _this;
+
+    _classCallCheck$2(this, ISOTimezoneParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$2(_assertThisInitialized$3(_this), "priority", 10);
+
+    _defineProperty$2(_assertThisInitialized$3(_this), "incompatibleTokens", ['t', 'T', 'X']);
+
+    return _this;
+  }
+
+  _createClass$2(ISOTimezoneParser, [{
+    key: "parse",
+    value: function parse(dateString, token) {
+      switch (token) {
+        case 'x':
+          return parseTimezonePattern(timezonePatterns.basicOptionalMinutes, dateString);
+
+        case 'xx':
+          return parseTimezonePattern(timezonePatterns.basic, dateString);
+
+        case 'xxxx':
+          return parseTimezonePattern(timezonePatterns.basicOptionalSeconds, dateString);
+
+        case 'xxxxx':
+          return parseTimezonePattern(timezonePatterns.extendedOptionalSeconds, dateString);
+
+        case 'xxx':
+        default:
+          return parseTimezonePattern(timezonePatterns.extended, dateString);
+      }
+    }
+  }, {
+    key: "set",
+    value: function set(date, flags, value) {
+      if (flags.timestampIsSet) {
+        return date;
+      }
+
+      return new Date(date.getTime() - value);
+    }
+  }]);
+
+  return ISOTimezoneParser;
+}(Parser$1);
+
+function _typeof$2(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$2 = function _typeof(obj) { return typeof obj; }; } else { _typeof$2 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$2(obj); }
+
+function _classCallCheck$1(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$1(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$1(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$1(Constructor.prototype, protoProps); if (staticProps) _defineProperties$1(Constructor, staticProps); return Constructor; }
+
+function _inherits$1(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$1(subClass, superClass); }
+
+function _setPrototypeOf$1(o, p) { _setPrototypeOf$1 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$1(o, p); }
+
+function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf$1(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$1(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$1(this, result); }; }
+
+function _possibleConstructorReturn$1(self, call) { if (call && (_typeof$2(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$2(self); }
+
+function _assertThisInitialized$2(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$1(o) { _getPrototypeOf$1 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$1(o); }
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var TimestampSecondsParser = /*#__PURE__*/function (_Parser) {
+  _inherits$1(TimestampSecondsParser, _Parser);
+
+  var _super = _createSuper$1(TimestampSecondsParser);
+
+  function TimestampSecondsParser() {
+    var _this;
+
+    _classCallCheck$1(this, TimestampSecondsParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 40);
+
+    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", '*');
+
+    return _this;
+  }
+
+  _createClass$1(TimestampSecondsParser, [{
+    key: "parse",
+    value: function parse(dateString) {
+      return parseAnyDigitsSigned(dateString);
+    }
+  }, {
+    key: "set",
+    value: function set(_date, _flags, value) {
+      return [new Date(value * 1000), {
+        timestampIsSet: true
+      }];
+    }
+  }]);
+
+  return TimestampSecondsParser;
+}(Parser$1);
+
+function _typeof$1(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$1 = function _typeof(obj) { return typeof obj; }; } else { _typeof$1 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$1(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof$1(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$1(self); }
+
+function _assertThisInitialized$1(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var TimestampMillisecondsParser = /*#__PURE__*/function (_Parser) {
+  _inherits(TimestampMillisecondsParser, _Parser);
+
+  var _super = _createSuper(TimestampMillisecondsParser);
+
+  function TimestampMillisecondsParser() {
+    var _this;
+
+    _classCallCheck(this, TimestampMillisecondsParser);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized$1(_this), "priority", 20);
+
+    _defineProperty(_assertThisInitialized$1(_this), "incompatibleTokens", '*');
+
+    return _this;
+  }
+
+  _createClass(TimestampMillisecondsParser, [{
+    key: "parse",
+    value: function parse(dateString) {
+      return parseAnyDigitsSigned(dateString);
+    }
+  }, {
+    key: "set",
+    value: function set(_date, _flags, value) {
+      return [new Date(value), {
+        timestampIsSet: true
+      }];
+    }
+  }]);
+
+  return TimestampMillisecondsParser;
+}(Parser$1);
+
+/*
+ * |     | Unit                           |     | Unit                           |
+ * |-----|--------------------------------|-----|--------------------------------|
+ * |  a  | AM, PM                         |  A* | Milliseconds in day            |
+ * |  b  | AM, PM, noon, midnight         |  B  | Flexible day period            |
+ * |  c  | Stand-alone local day of week  |  C* | Localized hour w/ day period   |
+ * |  d  | Day of month                   |  D  | Day of year                    |
+ * |  e  | Local day of week              |  E  | Day of week                    |
+ * |  f  |                                |  F* | Day of week in month           |
+ * |  g* | Modified Julian day            |  G  | Era                            |
+ * |  h  | Hour [1-12]                    |  H  | Hour [0-23]                    |
+ * |  i! | ISO day of week                |  I! | ISO week of year               |
+ * |  j* | Localized hour w/ day period   |  J* | Localized hour w/o day period  |
+ * |  k  | Hour [1-24]                    |  K  | Hour [0-11]                    |
+ * |  l* | (deprecated)                   |  L  | Stand-alone month              |
+ * |  m  | Minute                         |  M  | Month                          |
+ * |  n  |                                |  N  |                                |
+ * |  o! | Ordinal number modifier        |  O* | Timezone (GMT)                 |
+ * |  p  |                                |  P  |                                |
+ * |  q  | Stand-alone quarter            |  Q  | Quarter                        |
+ * |  r* | Related Gregorian year         |  R! | ISO week-numbering year        |
+ * |  s  | Second                         |  S  | Fraction of second             |
+ * |  t! | Seconds timestamp              |  T! | Milliseconds timestamp         |
+ * |  u  | Extended year                  |  U* | Cyclic year                    |
+ * |  v* | Timezone (generic non-locat.)  |  V* | Timezone (location)            |
+ * |  w  | Local week of year             |  W* | Week of month                  |
+ * |  x  | Timezone (ISO-8601 w/o Z)      |  X  | Timezone (ISO-8601)            |
+ * |  y  | Year (abs)                     |  Y  | Local week-numbering year      |
+ * |  z* | Timezone (specific non-locat.) |  Z* | Timezone (aliases)             |
+ *
+ * Letters marked by * are not implemented but reserved by Unicode standard.
+ *
+ * Letters marked by ! are non-standard, but implemented by date-fns:
+ * - `o` modifies the previous token to turn it into an ordinal (see `parse` docs)
+ * - `i` is ISO day of week. For `i` and `ii` is returns numeric ISO week days,
+ *   i.e. 7 for Sunday, 1 for Monday, etc.
+ * - `I` is ISO week of year, as opposed to `w` which is local week of year.
+ * - `R` is ISO week-numbering year, as opposed to `Y` which is local week-numbering year.
+ *   `R` is supposed to be used in conjunction with `I` and `i`
+ *   for universal ISO week-numbering date, whereas
+ *   `Y` is supposed to be used in conjunction with `w` and `e`
+ *   for week-numbering date specific to the locale.
+ */
+
+var parsers = {
+  G: new EraParser(),
+  y: new YearParser(),
+  Y: new LocalWeekYearParser(),
+  R: new ISOWeekYearParser(),
+  u: new ExtendedYearParser(),
+  Q: new QuarterParser(),
+  q: new StandAloneQuarterParser(),
+  M: new MonthParser(),
+  L: new StandAloneMonthParser(),
+  w: new LocalWeekParser(),
+  I: new ISOWeekParser(),
+  d: new DateParser(),
+  D: new DayOfYearParser(),
+  E: new DayParser(),
+  e: new LocalDayParser(),
+  c: new StandAloneLocalDayParser(),
+  i: new ISODayParser(),
+  a: new AMPMParser(),
+  b: new AMPMMidnightParser(),
+  B: new DayPeriodParser(),
+  h: new Hour1to12Parser(),
+  H: new Hour0to23Parser(),
+  K: new Hour0To11Parser(),
+  k: new Hour1To24Parser(),
+  m: new MinuteParser(),
+  s: new SecondParser(),
+  S: new FractionOfSecondParser(),
+  X: new ISOTimezoneWithZParser(),
+  x: new ISOTimezoneParser(),
+  t: new TimestampSecondsParser(),
+  T: new TimestampMillisecondsParser()
+};
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+// - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
+//   (one of the certain letters followed by `o`)
+// - (\w)\1* matches any sequences of the same letter
+// - '' matches two quote characters in a row
+// - '(''|[^'])+('|$) matches anything surrounded by two quote characters ('),
+//   except a single quote symbol, which ends the sequence.
+//   Two quote characters do not end the sequence.
+//   If there is no matching single quote
+//   then the sequence will continue until the end of the string.
+// - . matches any single character unmatched by previous parts of the RegExps
+
+var formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g; // This RegExp catches symbols escaped by quotes, and also
+// sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
+
+var longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g;
+var escapedStringRegExp = /^'([^]*?)'?$/;
+var doubleQuoteRegExp = /''/g;
+var notWhitespaceRegExp = /\S/;
+var unescapedLatinCharacterRegExp = /[a-zA-Z]/;
+/**
+ * @name parse
+ * @category Common Helpers
+ * @summary Parse the date.
+ *
+ * @description
+ * Return the date parsed from string using the given format string.
+ *
+ * > ⚠️ Please note that the `format` tokens differ from Moment.js and other libraries.
+ * > See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ *
+ * The characters in the format string wrapped between two single quotes characters (') are escaped.
+ * Two single quotes in a row, whether inside or outside a quoted sequence, represent a 'real' single quote.
+ *
+ * Format of the format string is based on Unicode Technical Standard #35:
+ * https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
+ * with a few additions (see note 5 below the table).
+ *
+ * Not all tokens are compatible. Combinations that don't make sense or could lead to bugs are prohibited
+ * and will throw `RangeError`. For example usage of 24-hour format token with AM/PM token will throw an exception:
+ *
+ * ```javascript
+ * parse('23 AM', 'HH a', new Date())
+ * //=> RangeError: The format string mustn't contain `HH` and `a` at the same time
+ * ```
+ *
+ * See the compatibility table: https://docs.google.com/spreadsheets/d/e/2PACX-1vQOPU3xUhplll6dyoMmVUXHKl_8CRDs6_ueLmex3SoqwhuolkuN3O05l4rqx5h1dKX8eb46Ul-CCSrq/pubhtml?gid=0&single=true
+ *
+ * Accepted format string patterns:
+ * | Unit                            |Prior| Pattern | Result examples                   | Notes |
+ * |---------------------------------|-----|---------|-----------------------------------|-------|
+ * | Era                             | 140 | G..GGG  | AD, BC                            |       |
+ * |                                 |     | GGGG    | Anno Domini, Before Christ        | 2     |
+ * |                                 |     | GGGGG   | A, B                              |       |
+ * | Calendar year                   | 130 | y       | 44, 1, 1900, 2017, 9999           | 4     |
+ * |                                 |     | yo      | 44th, 1st, 1900th, 9999999th      | 4,5   |
+ * |                                 |     | yy      | 44, 01, 00, 17                    | 4     |
+ * |                                 |     | yyy     | 044, 001, 123, 999                | 4     |
+ * |                                 |     | yyyy    | 0044, 0001, 1900, 2017            | 4     |
+ * |                                 |     | yyyyy   | ...                               | 2,4   |
+ * | Local week-numbering year       | 130 | Y       | 44, 1, 1900, 2017, 9000           | 4     |
+ * |                                 |     | Yo      | 44th, 1st, 1900th, 9999999th      | 4,5   |
+ * |                                 |     | YY      | 44, 01, 00, 17                    | 4,6   |
+ * |                                 |     | YYY     | 044, 001, 123, 999                | 4     |
+ * |                                 |     | YYYY    | 0044, 0001, 1900, 2017            | 4,6   |
+ * |                                 |     | YYYYY   | ...                               | 2,4   |
+ * | ISO week-numbering year         | 130 | R       | -43, 1, 1900, 2017, 9999, -9999   | 4,5   |
+ * |                                 |     | RR      | -43, 01, 00, 17                   | 4,5   |
+ * |                                 |     | RRR     | -043, 001, 123, 999, -999         | 4,5   |
+ * |                                 |     | RRRR    | -0043, 0001, 2017, 9999, -9999    | 4,5   |
+ * |                                 |     | RRRRR   | ...                               | 2,4,5 |
+ * | Extended year                   | 130 | u       | -43, 1, 1900, 2017, 9999, -999    | 4     |
+ * |                                 |     | uu      | -43, 01, 99, -99                  | 4     |
+ * |                                 |     | uuu     | -043, 001, 123, 999, -999         | 4     |
+ * |                                 |     | uuuu    | -0043, 0001, 2017, 9999, -9999    | 4     |
+ * |                                 |     | uuuuu   | ...                               | 2,4   |
+ * | Quarter (formatting)            | 120 | Q       | 1, 2, 3, 4                        |       |
+ * |                                 |     | Qo      | 1st, 2nd, 3rd, 4th                | 5     |
+ * |                                 |     | QQ      | 01, 02, 03, 04                    |       |
+ * |                                 |     | QQQ     | Q1, Q2, Q3, Q4                    |       |
+ * |                                 |     | QQQQ    | 1st quarter, 2nd quarter, ...     | 2     |
+ * |                                 |     | QQQQQ   | 1, 2, 3, 4                        | 4     |
+ * | Quarter (stand-alone)           | 120 | q       | 1, 2, 3, 4                        |       |
+ * |                                 |     | qo      | 1st, 2nd, 3rd, 4th                | 5     |
+ * |                                 |     | qq      | 01, 02, 03, 04                    |       |
+ * |                                 |     | qqq     | Q1, Q2, Q3, Q4                    |       |
+ * |                                 |     | qqqq    | 1st quarter, 2nd quarter, ...     | 2     |
+ * |                                 |     | qqqqq   | 1, 2, 3, 4                        | 3     |
+ * | Month (formatting)              | 110 | M       | 1, 2, ..., 12                     |       |
+ * |                                 |     | Mo      | 1st, 2nd, ..., 12th               | 5     |
+ * |                                 |     | MM      | 01, 02, ..., 12                   |       |
+ * |                                 |     | MMM     | Jan, Feb, ..., Dec                |       |
+ * |                                 |     | MMMM    | January, February, ..., December  | 2     |
+ * |                                 |     | MMMMM   | J, F, ..., D                      |       |
+ * | Month (stand-alone)             | 110 | L       | 1, 2, ..., 12                     |       |
+ * |                                 |     | Lo      | 1st, 2nd, ..., 12th               | 5     |
+ * |                                 |     | LL      | 01, 02, ..., 12                   |       |
+ * |                                 |     | LLL     | Jan, Feb, ..., Dec                |       |
+ * |                                 |     | LLLL    | January, February, ..., December  | 2     |
+ * |                                 |     | LLLLL   | J, F, ..., D                      |       |
+ * | Local week of year              | 100 | w       | 1, 2, ..., 53                     |       |
+ * |                                 |     | wo      | 1st, 2nd, ..., 53th               | 5     |
+ * |                                 |     | ww      | 01, 02, ..., 53                   |       |
+ * | ISO week of year                | 100 | I       | 1, 2, ..., 53                     | 5     |
+ * |                                 |     | Io      | 1st, 2nd, ..., 53th               | 5     |
+ * |                                 |     | II      | 01, 02, ..., 53                   | 5     |
+ * | Day of month                    |  90 | d       | 1, 2, ..., 31                     |       |
+ * |                                 |     | do      | 1st, 2nd, ..., 31st               | 5     |
+ * |                                 |     | dd      | 01, 02, ..., 31                   |       |
+ * | Day of year                     |  90 | D       | 1, 2, ..., 365, 366               | 7     |
+ * |                                 |     | Do      | 1st, 2nd, ..., 365th, 366th       | 5     |
+ * |                                 |     | DD      | 01, 02, ..., 365, 366             | 7     |
+ * |                                 |     | DDD     | 001, 002, ..., 365, 366           |       |
+ * |                                 |     | DDDD    | ...                               | 2     |
+ * | Day of week (formatting)        |  90 | E..EEE  | Mon, Tue, Wed, ..., Sun           |       |
+ * |                                 |     | EEEE    | Monday, Tuesday, ..., Sunday      | 2     |
+ * |                                 |     | EEEEE   | M, T, W, T, F, S, S               |       |
+ * |                                 |     | EEEEEE  | Mo, Tu, We, Th, Fr, Sa, Su        |       |
+ * | ISO day of week (formatting)    |  90 | i       | 1, 2, 3, ..., 7                   | 5     |
+ * |                                 |     | io      | 1st, 2nd, ..., 7th                | 5     |
+ * |                                 |     | ii      | 01, 02, ..., 07                   | 5     |
+ * |                                 |     | iii     | Mon, Tue, Wed, ..., Sun           | 5     |
+ * |                                 |     | iiii    | Monday, Tuesday, ..., Sunday      | 2,5   |
+ * |                                 |     | iiiii   | M, T, W, T, F, S, S               | 5     |
+ * |                                 |     | iiiiii  | Mo, Tu, We, Th, Fr, Sa, Su        | 5     |
+ * | Local day of week (formatting)  |  90 | e       | 2, 3, 4, ..., 1                   |       |
+ * |                                 |     | eo      | 2nd, 3rd, ..., 1st                | 5     |
+ * |                                 |     | ee      | 02, 03, ..., 01                   |       |
+ * |                                 |     | eee     | Mon, Tue, Wed, ..., Sun           |       |
+ * |                                 |     | eeee    | Monday, Tuesday, ..., Sunday      | 2     |
+ * |                                 |     | eeeee   | M, T, W, T, F, S, S               |       |
+ * |                                 |     | eeeeee  | Mo, Tu, We, Th, Fr, Sa, Su        |       |
+ * | Local day of week (stand-alone) |  90 | c       | 2, 3, 4, ..., 1                   |       |
+ * |                                 |     | co      | 2nd, 3rd, ..., 1st                | 5     |
+ * |                                 |     | cc      | 02, 03, ..., 01                   |       |
+ * |                                 |     | ccc     | Mon, Tue, Wed, ..., Sun           |       |
+ * |                                 |     | cccc    | Monday, Tuesday, ..., Sunday      | 2     |
+ * |                                 |     | ccccc   | M, T, W, T, F, S, S               |       |
+ * |                                 |     | cccccc  | Mo, Tu, We, Th, Fr, Sa, Su        |       |
+ * | AM, PM                          |  80 | a..aaa  | AM, PM                            |       |
+ * |                                 |     | aaaa    | a.m., p.m.                        | 2     |
+ * |                                 |     | aaaaa   | a, p                              |       |
+ * | AM, PM, noon, midnight          |  80 | b..bbb  | AM, PM, noon, midnight            |       |
+ * |                                 |     | bbbb    | a.m., p.m., noon, midnight        | 2     |
+ * |                                 |     | bbbbb   | a, p, n, mi                       |       |
+ * | Flexible day period             |  80 | B..BBB  | at night, in the morning, ...     |       |
+ * |                                 |     | BBBB    | at night, in the morning, ...     | 2     |
+ * |                                 |     | BBBBB   | at night, in the morning, ...     |       |
+ * | Hour [1-12]                     |  70 | h       | 1, 2, ..., 11, 12                 |       |
+ * |                                 |     | ho      | 1st, 2nd, ..., 11th, 12th         | 5     |
+ * |                                 |     | hh      | 01, 02, ..., 11, 12               |       |
+ * | Hour [0-23]                     |  70 | H       | 0, 1, 2, ..., 23                  |       |
+ * |                                 |     | Ho      | 0th, 1st, 2nd, ..., 23rd          | 5     |
+ * |                                 |     | HH      | 00, 01, 02, ..., 23               |       |
+ * | Hour [0-11]                     |  70 | K       | 1, 2, ..., 11, 0                  |       |
+ * |                                 |     | Ko      | 1st, 2nd, ..., 11th, 0th          | 5     |
+ * |                                 |     | KK      | 01, 02, ..., 11, 00               |       |
+ * | Hour [1-24]                     |  70 | k       | 24, 1, 2, ..., 23                 |       |
+ * |                                 |     | ko      | 24th, 1st, 2nd, ..., 23rd         | 5     |
+ * |                                 |     | kk      | 24, 01, 02, ..., 23               |       |
+ * | Minute                          |  60 | m       | 0, 1, ..., 59                     |       |
+ * |                                 |     | mo      | 0th, 1st, ..., 59th               | 5     |
+ * |                                 |     | mm      | 00, 01, ..., 59                   |       |
+ * | Second                          |  50 | s       | 0, 1, ..., 59                     |       |
+ * |                                 |     | so      | 0th, 1st, ..., 59th               | 5     |
+ * |                                 |     | ss      | 00, 01, ..., 59                   |       |
+ * | Seconds timestamp               |  40 | t       | 512969520                         |       |
+ * |                                 |     | tt      | ...                               | 2     |
+ * | Fraction of second              |  30 | S       | 0, 1, ..., 9                      |       |
+ * |                                 |     | SS      | 00, 01, ..., 99                   |       |
+ * |                                 |     | SSS     | 000, 001, ..., 999                |       |
+ * |                                 |     | SSSS    | ...                               | 2     |
+ * | Milliseconds timestamp          |  20 | T       | 512969520900                      |       |
+ * |                                 |     | TT      | ...                               | 2     |
+ * | Timezone (ISO-8601 w/ Z)        |  10 | X       | -08, +0530, Z                     |       |
+ * |                                 |     | XX      | -0800, +0530, Z                   |       |
+ * |                                 |     | XXX     | -08:00, +05:30, Z                 |       |
+ * |                                 |     | XXXX    | -0800, +0530, Z, +123456          | 2     |
+ * |                                 |     | XXXXX   | -08:00, +05:30, Z, +12:34:56      |       |
+ * | Timezone (ISO-8601 w/o Z)       |  10 | x       | -08, +0530, +00                   |       |
+ * |                                 |     | xx      | -0800, +0530, +0000               |       |
+ * |                                 |     | xxx     | -08:00, +05:30, +00:00            | 2     |
+ * |                                 |     | xxxx    | -0800, +0530, +0000, +123456      |       |
+ * |                                 |     | xxxxx   | -08:00, +05:30, +00:00, +12:34:56 |       |
+ * | Long localized date             |  NA | P       | 05/29/1453                        | 5,8   |
+ * |                                 |     | PP      | May 29, 1453                      |       |
+ * |                                 |     | PPP     | May 29th, 1453                    |       |
+ * |                                 |     | PPPP    | Sunday, May 29th, 1453            | 2,5,8 |
+ * | Long localized time             |  NA | p       | 12:00 AM                          | 5,8   |
+ * |                                 |     | pp      | 12:00:00 AM                       |       |
+ * | Combination of date and time    |  NA | Pp      | 05/29/1453, 12:00 AM              |       |
+ * |                                 |     | PPpp    | May 29, 1453, 12:00:00 AM         |       |
+ * |                                 |     | PPPpp   | May 29th, 1453 at ...             |       |
+ * |                                 |     | PPPPpp  | Sunday, May 29th, 1453 at ...     | 2,5,8 |
+ * Notes:
+ * 1. "Formatting" units (e.g. formatting quarter) in the default en-US locale
+ *    are the same as "stand-alone" units, but are different in some languages.
+ *    "Formatting" units are declined according to the rules of the language
+ *    in the context of a date. "Stand-alone" units are always nominative singular.
+ *    In `format` function, they will produce different result:
+ *
+ *    `format(new Date(2017, 10, 6), 'do LLLL', {locale: cs}) //=> '6. listopad'`
+ *
+ *    `format(new Date(2017, 10, 6), 'do MMMM', {locale: cs}) //=> '6. listopadu'`
+ *
+ *    `parse` will try to match both formatting and stand-alone units interchangably.
+ *
+ * 2. Any sequence of the identical letters is a pattern, unless it is escaped by
+ *    the single quote characters (see below).
+ *    If the sequence is longer than listed in table:
+ *    - for numerical units (`yyyyyyyy`) `parse` will try to match a number
+ *      as wide as the sequence
+ *    - for text units (`MMMMMMMM`) `parse` will try to match the widest variation of the unit.
+ *      These variations are marked with "2" in the last column of the table.
+ *
+ * 3. `QQQQQ` and `qqqqq` could be not strictly numerical in some locales.
+ *    These tokens represent the shortest form of the quarter.
+ *
+ * 4. The main difference between `y` and `u` patterns are B.C. years:
+ *
+ *    | Year | `y` | `u` |
+ *    |------|-----|-----|
+ *    | AC 1 |   1 |   1 |
+ *    | BC 1 |   1 |   0 |
+ *    | BC 2 |   2 |  -1 |
+ *
+ *    Also `yy` will try to guess the century of two digit year by proximity with `referenceDate`:
+ *
+ *    `parse('50', 'yy', new Date(2018, 0, 1)) //=> Sat Jan 01 2050 00:00:00`
+ *
+ *    `parse('75', 'yy', new Date(2018, 0, 1)) //=> Wed Jan 01 1975 00:00:00`
+ *
+ *    while `uu` will just assign the year as is:
+ *
+ *    `parse('50', 'uu', new Date(2018, 0, 1)) //=> Sat Jan 01 0050 00:00:00`
+ *
+ *    `parse('75', 'uu', new Date(2018, 0, 1)) //=> Tue Jan 01 0075 00:00:00`
+ *
+ *    The same difference is true for local and ISO week-numbering years (`Y` and `R`),
+ *    except local week-numbering years are dependent on `options.weekStartsOn`
+ *    and `options.firstWeekContainsDate` (compare [setISOWeekYear]{@link https://date-fns.org/docs/setISOWeekYear}
+ *    and [setWeekYear]{@link https://date-fns.org/docs/setWeekYear}).
+ *
+ * 5. These patterns are not in the Unicode Technical Standard #35:
+ *    - `i`: ISO day of week
+ *    - `I`: ISO week of year
+ *    - `R`: ISO week-numbering year
+ *    - `o`: ordinal number modifier
+ *    - `P`: long localized date
+ *    - `p`: long localized time
+ *
+ * 6. `YY` and `YYYY` tokens represent week-numbering years but they are often confused with years.
+ *    You should enable `options.useAdditionalWeekYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ *
+ * 7. `D` and `DD` tokens represent days of the year but they are ofthen confused with days of the month.
+ *    You should enable `options.useAdditionalDayOfYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ *
+ * 8. `P+` tokens do not have a defined priority since they are merely aliases to other tokens based
+ *    on the given locale.
+ *
+ *    using `en-US` locale: `P` => `MM/dd/yyyy`
+ *    using `en-US` locale: `p` => `hh:mm a`
+ *    using `pt-BR` locale: `P` => `dd/MM/yyyy`
+ *    using `pt-BR` locale: `p` => `HH:mm`
+ *
+ * Values will be assigned to the date in the descending order of its unit's priority.
+ * Units of an equal priority overwrite each other in the order of appearance.
+ *
+ * If no values of higher priority are parsed (e.g. when parsing string 'January 1st' without a year),
+ * the values will be taken from 3rd argument `referenceDate` which works as a context of parsing.
+ *
+ * `referenceDate` must be passed for correct work of the function.
+ * If you're not sure which `referenceDate` to supply, create a new instance of Date:
+ * `parse('02/11/2014', 'MM/dd/yyyy', new Date())`
+ * In this case parsing will be done in the context of the current date.
+ * If `referenceDate` is `Invalid Date` or a value not convertible to valid `Date`,
+ * then `Invalid Date` will be returned.
+ *
+ * The result may vary by locale.
+ *
+ * If `formatString` matches with `dateString` but does not provides tokens, `referenceDate` will be returned.
+ *
+ * If parsing failed, `Invalid Date` will be returned.
+ * Invalid Date is a Date, whose time value is NaN.
+ * Time value of Date: http://es5.github.io/#x15.9.1.1
+ *
+ * @param {String} dateString - the string to parse
+ * @param {String} formatString - the string of tokens
+ * @param {Date|Number} referenceDate - defines values missing from the parsed dateString
+ * @param {Object} [options] - an object with options.
+ * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
+ * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @param {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
+ * @param {Boolean} [options.useAdditionalWeekYearTokens=false] - if true, allows usage of the week-numbering year tokens `YY` and `YYYY`;
+ *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @param {Boolean} [options.useAdditionalDayOfYearTokens=false] - if true, allows usage of the day of year tokens `D` and `DD`;
+ *   see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @returns {Date} the parsed date
+ * @throws {TypeError} 3 arguments required
+ * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
+ * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
+ * @throws {RangeError} `options.locale` must contain `match` property
+ * @throws {RangeError} use `yyyy` instead of `YYYY` for formatting years using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @throws {RangeError} use `yy` instead of `YY` for formatting years using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @throws {RangeError} use `d` instead of `D` for formatting days of the month using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @throws {RangeError} use `dd` instead of `DD` for formatting days of the month using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+ * @throws {RangeError} format string contains an unescaped latin alphabet character
+ *
+ * @example
+ * // Parse 11 February 2014 from middle-endian format:
+ * var result = parse('02/11/2014', 'MM/dd/yyyy', new Date())
+ * //=> Tue Feb 11 2014 00:00:00
+ *
+ * @example
+ * // Parse 28th of February in Esperanto locale in the context of 2010 year:
+ * import eo from 'date-fns/locale/eo'
+ * var result = parse('28-a de februaro', "do 'de' MMMM", new Date(2010, 0, 1), {
+ *   locale: eo
+ * })
+ * //=> Sun Feb 28 2010 00:00:00
+ */
+
+function parse$1(dirtyDateString, dirtyFormatString, dirtyReferenceDate, options) {
+  var _ref, _options$locale, _ref2, _ref3, _ref4, _options$firstWeekCon, _options$locale2, _options$locale2$opti, _defaultOptions$local, _defaultOptions$local2, _ref5, _ref6, _ref7, _options$weekStartsOn, _options$locale3, _options$locale3$opti, _defaultOptions$local3, _defaultOptions$local4;
+
+  requiredArgs(3, arguments);
+  var dateString = String(dirtyDateString);
+  var formatString = String(dirtyFormatString);
+  var defaultOptions = getDefaultOptions();
+  var locale = (_ref = (_options$locale = options === null || options === void 0 ? void 0 : options.locale) !== null && _options$locale !== void 0 ? _options$locale : defaultOptions.locale) !== null && _ref !== void 0 ? _ref : defaultLocale;
+
+  if (!locale.match) {
+    throw new RangeError('locale must contain match property');
+  }
+
+  var firstWeekContainsDate = toInteger((_ref2 = (_ref3 = (_ref4 = (_options$firstWeekCon = options === null || options === void 0 ? void 0 : options.firstWeekContainsDate) !== null && _options$firstWeekCon !== void 0 ? _options$firstWeekCon : options === null || options === void 0 ? void 0 : (_options$locale2 = options.locale) === null || _options$locale2 === void 0 ? void 0 : (_options$locale2$opti = _options$locale2.options) === null || _options$locale2$opti === void 0 ? void 0 : _options$locale2$opti.firstWeekContainsDate) !== null && _ref4 !== void 0 ? _ref4 : defaultOptions.firstWeekContainsDate) !== null && _ref3 !== void 0 ? _ref3 : (_defaultOptions$local = defaultOptions.locale) === null || _defaultOptions$local === void 0 ? void 0 : (_defaultOptions$local2 = _defaultOptions$local.options) === null || _defaultOptions$local2 === void 0 ? void 0 : _defaultOptions$local2.firstWeekContainsDate) !== null && _ref2 !== void 0 ? _ref2 : 1); // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
+
+  if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
+    throw new RangeError('firstWeekContainsDate must be between 1 and 7 inclusively');
+  }
+
+  var weekStartsOn = toInteger((_ref5 = (_ref6 = (_ref7 = (_options$weekStartsOn = options === null || options === void 0 ? void 0 : options.weekStartsOn) !== null && _options$weekStartsOn !== void 0 ? _options$weekStartsOn : options === null || options === void 0 ? void 0 : (_options$locale3 = options.locale) === null || _options$locale3 === void 0 ? void 0 : (_options$locale3$opti = _options$locale3.options) === null || _options$locale3$opti === void 0 ? void 0 : _options$locale3$opti.weekStartsOn) !== null && _ref7 !== void 0 ? _ref7 : defaultOptions.weekStartsOn) !== null && _ref6 !== void 0 ? _ref6 : (_defaultOptions$local3 = defaultOptions.locale) === null || _defaultOptions$local3 === void 0 ? void 0 : (_defaultOptions$local4 = _defaultOptions$local3.options) === null || _defaultOptions$local4 === void 0 ? void 0 : _defaultOptions$local4.weekStartsOn) !== null && _ref5 !== void 0 ? _ref5 : 0); // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
+
+  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
+    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively');
+  }
+
+  if (formatString === '') {
+    if (dateString === '') {
+      return toDate(dirtyReferenceDate);
+    } else {
+      return new Date(NaN);
+    }
+  }
+
+  var subFnOptions = {
+    firstWeekContainsDate: firstWeekContainsDate,
+    weekStartsOn: weekStartsOn,
+    locale: locale
+  }; // If timezone isn't specified, it will be set to the system timezone
+
+  var setters = [new DateToSystemTimezoneSetter()];
+  var tokens = formatString.match(longFormattingTokensRegExp).map(function (substring) {
+    var firstCharacter = substring[0];
+
+    if (firstCharacter in longFormatters$1) {
+      var longFormatter = longFormatters$1[firstCharacter];
+      return longFormatter(substring, locale.formatLong);
+    }
+
+    return substring;
+  }).join('').match(formattingTokensRegExp);
+  var usedTokens = [];
+
+  var _iterator = _createForOfIteratorHelper(tokens),
+      _step;
+
+  try {
+    var _loop = function _loop() {
+      var token = _step.value;
+
+      if (!(options !== null && options !== void 0 && options.useAdditionalWeekYearTokens) && isProtectedWeekYearToken(token)) {
+        throwProtectedError(token, formatString, dirtyDateString);
+      }
+
+      if (!(options !== null && options !== void 0 && options.useAdditionalDayOfYearTokens) && isProtectedDayOfYearToken(token)) {
+        throwProtectedError(token, formatString, dirtyDateString);
+      }
+
+      var firstCharacter = token[0];
+      var parser = parsers[firstCharacter];
+
+      if (parser) {
+        var incompatibleTokens = parser.incompatibleTokens;
+
+        if (Array.isArray(incompatibleTokens)) {
+          var incompatibleToken = usedTokens.find(function (usedToken) {
+            return incompatibleTokens.includes(usedToken.token) || usedToken.token === firstCharacter;
+          });
+
+          if (incompatibleToken) {
+            throw new RangeError("The format string mustn't contain `".concat(incompatibleToken.fullToken, "` and `").concat(token, "` at the same time"));
+          }
+        } else if (parser.incompatibleTokens === '*' && usedTokens.length > 0) {
+          throw new RangeError("The format string mustn't contain `".concat(token, "` and any other token at the same time"));
+        }
+
+        usedTokens.push({
+          token: firstCharacter,
+          fullToken: token
+        });
+        var parseResult = parser.run(dateString, token, locale.match, subFnOptions);
+
+        if (!parseResult) {
+          return {
+            v: new Date(NaN)
+          };
+        }
+
+        setters.push(parseResult.setter);
+        dateString = parseResult.rest;
+      } else {
+        if (firstCharacter.match(unescapedLatinCharacterRegExp)) {
+          throw new RangeError('Format string contains an unescaped latin alphabet character `' + firstCharacter + '`');
+        } // Replace two single quote characters with one single quote character
+
+
+        if (token === "''") {
+          token = "'";
+        } else if (firstCharacter === "'") {
+          token = cleanEscapedString(token);
+        } // Cut token from string, or, if string doesn't match the token, return Invalid Date
+
+
+        if (dateString.indexOf(token) === 0) {
+          dateString = dateString.slice(token.length);
+        } else {
+          return {
+            v: new Date(NaN)
+          };
+        }
+      }
+    };
+
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var _ret = _loop();
+
+      if (_typeof(_ret) === "object") return _ret.v;
+    } // Check if the remaining input contains something other than whitespace
+
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+
+  if (dateString.length > 0 && notWhitespaceRegExp.test(dateString)) {
+    return new Date(NaN);
+  }
+
+  var uniquePrioritySetters = setters.map(function (setter) {
+    return setter.priority;
+  }).sort(function (a, b) {
+    return b - a;
+  }).filter(function (priority, index, array) {
+    return array.indexOf(priority) === index;
+  }).map(function (priority) {
+    return setters.filter(function (setter) {
+      return setter.priority === priority;
+    }).sort(function (a, b) {
+      return b.subPriority - a.subPriority;
+    });
+  }).map(function (setterArray) {
+    return setterArray[0];
+  });
+  var date = toDate(dirtyReferenceDate);
+
+  if (isNaN(date.getTime())) {
+    return new Date(NaN);
+  } // Convert the date in system timezone to the same date in UTC+00:00 timezone.
+
+
+  var utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date));
+  var flags = {};
+
+  var _iterator2 = _createForOfIteratorHelper(uniquePrioritySetters),
+      _step2;
+
+  try {
+    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+      var setter = _step2.value;
+
+      if (!setter.validate(utcDate, subFnOptions)) {
+        return new Date(NaN);
+      }
+
+      var result = setter.set(utcDate, flags, subFnOptions); // Result is tuple (date, flags)
+
+      if (Array.isArray(result)) {
+        utcDate = result[0];
+        assign(flags, result[1]); // Result is date
+      } else {
+        utcDate = result;
+      }
+    }
+  } catch (err) {
+    _iterator2.e(err);
+  } finally {
+    _iterator2.f();
+  }
+
+  return utcDate;
+}
+
+function cleanEscapedString(input) {
+  return input.match(escapedStringRegExp)[1].replace(doubleQuoteRegExp, "'");
+}
+
+/**
+ * @name isSameMonth
+ * @category Month Helpers
+ * @summary Are the given dates in the same month (and year)?
+ *
+ * @description
+ * Are the given dates in the same month (and year)?
+ *
+ * @param {Date|Number} dateLeft - the first date to check
+ * @param {Date|Number} dateRight - the second date to check
+ * @returns {Boolean} the dates are in the same month (and year)
+ * @throws {TypeError} 2 arguments required
+ *
+ * @example
+ * // Are 2 September 2014 and 25 September 2014 in the same month?
+ * const result = isSameMonth(new Date(2014, 8, 2), new Date(2014, 8, 25))
+ * //=> true
+ *
+ * @example
+ * // Are 2 September 2014 and 25 September 2015 in the same month?
+ * const result = isSameMonth(new Date(2014, 8, 2), new Date(2015, 8, 25))
+ * //=> false
+ */
+
+function isSameMonth(dirtyDateLeft, dirtyDateRight) {
+  requiredArgs(2, arguments);
+  var dateLeft = toDate(dirtyDateLeft);
+  var dateRight = toDate(dirtyDateRight);
+  return dateLeft.getFullYear() === dateRight.getFullYear() && dateLeft.getMonth() === dateRight.getMonth();
+}
+
+/**
+ * @name subDays
+ * @category Day Helpers
+ * @summary Subtract the specified number of days from the given date.
+ *
+ * @description
+ * Subtract the specified number of days from the given date.
+ *
+ * @param {Date|Number} date - the date to be changed
+ * @param {Number} amount - the amount of days to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @returns {Date} the new date with the days subtracted
+ * @throws {TypeError} 2 arguments required
+ *
+ * @example
+ * // Subtract 10 days from 1 September 2014:
+ * const result = subDays(new Date(2014, 8, 1), 10)
+ * //=> Fri Aug 22 2014 00:00:00
+ */
+
+function subDays(dirtyDate, dirtyAmount) {
+  requiredArgs(2, arguments);
+  var amount = toInteger(dirtyAmount);
+  return addDays(dirtyDate, -amount);
+}
+
+/**
+ * @name subMonths
  * @category Month Helpers
  * @summary Subtract the specified number of months from the given date.
  *
  * @description
  * Subtract the specified number of months from the given date.
  *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of months to be subtracted
+ * @param {Date|Number} date - the date to be changed
+ * @param {Number} amount - the amount of months to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the months subtracted
+ * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Subtract 5 months from 1 February 2015:
- * var result = subMonths(new Date(2015, 1, 1), 5)
+ * const result = subMonths(new Date(2015, 1, 1), 5)
  * //=> Mon Sep 01 2014 00:00:00
  */
-function subMonths (dirtyDate, dirtyAmount) {
-  var amount = Number(dirtyAmount);
-  return addMonths(dirtyDate, -amount)
+
+function subMonths(dirtyDate, dirtyAmount) {
+  requiredArgs(2, arguments);
+  var amount = toInteger(dirtyAmount);
+  return addMonths(dirtyDate, -amount);
 }
 
-var sub_months = subMonths;
-
-var addQuarters = add_quarters;
-
 /**
- * @category Quarter Helpers
- * @summary Subtract the specified number of year quarters from the given date.
- *
- * @description
- * Subtract the specified number of year quarters from the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of quarters to be subtracted
- * @returns {Date} the new date with the quarters subtracted
- *
- * @example
- * // Subtract 3 quarters from 1 September 2014:
- * var result = subQuarters(new Date(2014, 8, 1), 3)
- * //=> Sun Dec 01 2013 00:00:00
- */
-function subQuarters (dirtyDate, dirtyAmount) {
-  var amount = Number(dirtyAmount);
-  return addQuarters(dirtyDate, -amount)
-}
-
-var sub_quarters = subQuarters;
-
-var addSeconds = add_seconds;
-
-/**
- * @category Second Helpers
- * @summary Subtract the specified number of seconds from the given date.
- *
- * @description
- * Subtract the specified number of seconds from the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of seconds to be subtracted
- * @returns {Date} the new date with the seconds subtracted
- *
- * @example
- * // Subtract 30 seconds from 10 July 2014 12:45:00:
- * var result = subSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
- * //=> Thu Jul 10 2014 12:44:30
- */
-function subSeconds (dirtyDate, dirtyAmount) {
-  var amount = Number(dirtyAmount);
-  return addSeconds(dirtyDate, -amount)
-}
-
-var sub_seconds = subSeconds;
-
-var addWeeks = add_weeks;
-
-/**
- * @category Week Helpers
- * @summary Subtract the specified number of weeks from the given date.
- *
- * @description
- * Subtract the specified number of weeks from the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of weeks to be subtracted
- * @returns {Date} the new date with the weeks subtracted
- *
- * @example
- * // Subtract 4 weeks from 1 September 2014:
- * var result = subWeeks(new Date(2014, 8, 1), 4)
- * //=> Mon Aug 04 2014 00:00:00
- */
-function subWeeks (dirtyDate, dirtyAmount) {
-  var amount = Number(dirtyAmount);
-  return addWeeks(dirtyDate, -amount)
-}
-
-var sub_weeks = subWeeks;
-
-var addYears = add_years;
-
-/**
+ * @name subYears
  * @category Year Helpers
  * @summary Subtract the specified number of years from the given date.
  *
  * @description
  * Subtract the specified number of years from the given date.
  *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of years to be subtracted
+ * @param {Date|Number} date - the date to be changed
+ * @param {Number} amount - the amount of years to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the years subtracted
+ * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Subtract 5 years from 1 September 2014:
- * var result = subYears(new Date(2014, 8, 1), 5)
+ * const result = subYears(new Date(2014, 8, 1), 5)
  * //=> Tue Sep 01 2009 00:00:00
  */
-function subYears (dirtyDate, dirtyAmount) {
-  var amount = Number(dirtyAmount);
-  return addYears(dirtyDate, -amount)
+
+function subYears(dirtyDate, dirtyAmount) {
+  requiredArgs(2, arguments);
+  var amount = toInteger(dirtyAmount);
+  return addYears(dirtyDate, -amount);
 }
 
-var sub_years = subYears;
-
-var dateFns = {
-  addDays: add_days,
-  addHours: add_hours,
-  addISOYears: add_iso_years,
-  addMilliseconds: add_milliseconds,
-  addMinutes: add_minutes,
-  addMonths: add_months,
-  addQuarters: add_quarters,
-  addSeconds: add_seconds,
-  addWeeks: add_weeks,
-  addYears: add_years,
-  areRangesOverlapping: are_ranges_overlapping,
-  closestIndexTo: closest_index_to,
-  closestTo: closest_to,
-  compareAsc: compare_asc,
-  compareDesc: compare_desc,
-  differenceInCalendarDays: difference_in_calendar_days,
-  differenceInCalendarISOWeeks: difference_in_calendar_iso_weeks,
-  differenceInCalendarISOYears: difference_in_calendar_iso_years,
-  differenceInCalendarMonths: difference_in_calendar_months,
-  differenceInCalendarQuarters: difference_in_calendar_quarters,
-  differenceInCalendarWeeks: difference_in_calendar_weeks,
-  differenceInCalendarYears: difference_in_calendar_years,
-  differenceInDays: difference_in_days,
-  differenceInHours: difference_in_hours,
-  differenceInISOYears: difference_in_iso_years,
-  differenceInMilliseconds: difference_in_milliseconds,
-  differenceInMinutes: difference_in_minutes,
-  differenceInMonths: difference_in_months,
-  differenceInQuarters: difference_in_quarters,
-  differenceInSeconds: difference_in_seconds,
-  differenceInWeeks: difference_in_weeks,
-  differenceInYears: difference_in_years,
-  distanceInWords: distance_in_words,
-  distanceInWordsStrict: distance_in_words_strict,
-  distanceInWordsToNow: distance_in_words_to_now,
-  eachDay: each_day,
-  endOfDay: end_of_day,
-  endOfHour: end_of_hour,
-  endOfISOWeek: end_of_iso_week,
-  endOfISOYear: end_of_iso_year,
-  endOfMinute: end_of_minute,
-  endOfMonth: end_of_month,
-  endOfQuarter: end_of_quarter,
-  endOfSecond: end_of_second,
-  endOfToday: end_of_today,
-  endOfTomorrow: end_of_tomorrow,
-  endOfWeek: end_of_week,
-  endOfYear: end_of_year,
-  endOfYesterday: end_of_yesterday,
-  format: format_1$1,
-  getDate: get_date,
-  getDay: get_day,
-  getDayOfYear: get_day_of_year,
-  getDaysInMonth: get_days_in_month,
-  getDaysInYear: get_days_in_year,
-  getHours: get_hours,
-  getISODay: get_iso_day,
-  getISOWeek: get_iso_week,
-  getISOWeeksInYear: get_iso_weeks_in_year,
-  getISOYear: get_iso_year,
-  getMilliseconds: get_milliseconds,
-  getMinutes: get_minutes,
-  getMonth: get_month,
-  getOverlappingDaysInRanges: get_overlapping_days_in_ranges,
-  getQuarter: get_quarter,
-  getSeconds: get_seconds,
-  getTime: get_time,
-  getYear: get_year,
-  isAfter: is_after,
-  isBefore: is_before,
-  isDate: is_date,
-  isEqual: is_equal,
-  isFirstDayOfMonth: is_first_day_of_month,
-  isFriday: is_friday,
-  isFuture: is_future,
-  isLastDayOfMonth: is_last_day_of_month,
-  isLeapYear: is_leap_year,
-  isMonday: is_monday,
-  isPast: is_past,
-  isSameDay: is_same_day,
-  isSameHour: is_same_hour,
-  isSameISOWeek: is_same_iso_week,
-  isSameISOYear: is_same_iso_year,
-  isSameMinute: is_same_minute,
-  isSameMonth: is_same_month,
-  isSameQuarter: is_same_quarter,
-  isSameSecond: is_same_second,
-  isSameWeek: is_same_week,
-  isSameYear: is_same_year,
-  isSaturday: is_saturday,
-  isSunday: is_sunday,
-  isThisHour: is_this_hour,
-  isThisISOWeek: is_this_iso_week,
-  isThisISOYear: is_this_iso_year,
-  isThisMinute: is_this_minute,
-  isThisMonth: is_this_month,
-  isThisQuarter: is_this_quarter,
-  isThisSecond: is_this_second,
-  isThisWeek: is_this_week,
-  isThisYear: is_this_year,
-  isThursday: is_thursday,
-  isToday: is_today,
-  isTomorrow: is_tomorrow,
-  isTuesday: is_tuesday,
-  isValid: is_valid,
-  isWednesday: is_wednesday,
-  isWeekend: is_weekend,
-  isWithinRange: is_within_range,
-  isYesterday: is_yesterday,
-  lastDayOfISOWeek: last_day_of_iso_week,
-  lastDayOfISOYear: last_day_of_iso_year,
-  lastDayOfMonth: last_day_of_month,
-  lastDayOfQuarter: last_day_of_quarter,
-  lastDayOfWeek: last_day_of_week,
-  lastDayOfYear: last_day_of_year,
-  max: max_1,
-  min: min_1,
-  parse: parse_1,
-  setDate: set_date,
-  setDay: set_day,
-  setDayOfYear: set_day_of_year,
-  setHours: set_hours,
-  setISODay: set_iso_day,
-  setISOWeek: set_iso_week,
-  setISOYear: set_iso_year,
-  setMilliseconds: set_milliseconds,
-  setMinutes: set_minutes,
-  setMonth: set_month,
-  setQuarter: set_quarter,
-  setSeconds: set_seconds,
-  setYear: set_year,
-  startOfDay: start_of_day,
-  startOfHour: start_of_hour,
-  startOfISOWeek: start_of_iso_week,
-  startOfISOYear: start_of_iso_year,
-  startOfMinute: start_of_minute,
-  startOfMonth: start_of_month,
-  startOfQuarter: start_of_quarter,
-  startOfSecond: start_of_second,
-  startOfToday: start_of_today,
-  startOfTomorrow: start_of_tomorrow,
-  startOfWeek: start_of_week,
-  startOfYear: start_of_year,
-  startOfYesterday: start_of_yesterday,
-  subDays: sub_days,
-  subHours: sub_hours,
-  subISOYears: sub_iso_years,
-  subMilliseconds: sub_milliseconds,
-  subMinutes: sub_minutes,
-  subMonths: sub_months,
-  subQuarters: sub_quarters,
-  subSeconds: sub_seconds,
-  subWeeks: sub_weeks,
-  subYears: sub_years
-};
-
 var Field$1 = /*#__PURE__*/function (_Component) {
-  _inherits$4(Field, _Component);
+  _inherits$A(Field, _Component);
 
-  var _super = _createSuper$4(Field);
+  var _super = _createSuper$A(Field);
 
   function Field(props) {
     var _this;
 
-    _classCallCheck$4(this, Field);
+    _classCallCheck$B(this, Field);
 
     _this = _super.call(this, props);
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized$5(_this));
-    _this.handleCheckboxChange = _this.handleCheckboxChange.bind(_assertThisInitialized$5(_this));
-    _this.handlePropertyChange = _this.handlePropertyChange.bind(_assertThisInitialized$5(_this));
-    _this.handleDateChange = _this.handleDateChange.bind(_assertThisInitialized$5(_this));
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized$B(_this));
+    _this.handleCheckboxChange = _this.handleCheckboxChange.bind(_assertThisInitialized$B(_this));
+    _this.handlePropertyChange = _this.handlePropertyChange.bind(_assertThisInitialized$B(_this));
+    _this.handleDateChange = _this.handleDateChange.bind(_assertThisInitialized$B(_this));
     return _this;
   }
 
-  _createClass$6(Field, [{
+  _createClass$D(Field, [{
     key: "handleChange",
     value: function handleChange(event) {
       this.props.onFilterChange(this.props.field.id, event.target.value);
@@ -27426,7 +28233,7 @@ var Field$1 = /*#__PURE__*/function (_Component) {
     key: "handleDateChange",
     value: function handleDateChange(date) {
       if (date) {
-        this.props.onFilterChange(this.props.field.id, dateFns.format(date, 'YYYY-MM-DD'));
+        this.props.onFilterChange(this.props.field.id, format(date, 'yyyy-MM-dd'));
       } else {
         this.props.onFilterChange(this.props.field.id, '');
       }
@@ -27501,10 +28308,6 @@ var Field$1 = /*#__PURE__*/function (_Component) {
           }
         });
       } else if (field.type === 'select') {
-        console.log({
-          countries: countries
-        });
-
         if (options && arrayIncludes(['countries', 'cities', 'regions'], field.id)) {
           input = /*#__PURE__*/React__default["default"].createElement("select", {
             name: field.id,
@@ -31356,8 +32159,8 @@ function createDefaultFormatters(cache) {
 }
 var IntlMessageFormat = /** @class */ (function () {
     function IntlMessageFormat(message, locales, overrideFormats, opts) {
-        var _this = this;
         if (locales === void 0) { locales = IntlMessageFormat.defaultLocale; }
+        var _this = this;
         this.formatterCache = {
             number: {},
             dateTime: {},
@@ -31388,9 +32191,13 @@ var IntlMessageFormat = /** @class */ (function () {
         this.formatToParts = function (values) {
             return formatToParts(_this.ast, _this.locales, _this.formatters, _this.formats, values, undefined, _this.message);
         };
-        this.resolvedOptions = function () { return ({
-            locale: _this.resolvedLocale.toString(),
-        }); };
+        this.resolvedOptions = function () {
+            var _a;
+            return ({
+                locale: ((_a = _this.resolvedLocale) === null || _a === void 0 ? void 0 : _a.toString()) ||
+                    Intl.NumberFormat.supportedLocalesOf(_this.locales)[0],
+            });
+        };
         this.getAst = function () { return _this.ast; };
         // Defined first because it's used to build the format pattern.
         this.locales = locales;
@@ -31431,6 +32238,9 @@ var IntlMessageFormat = /** @class */ (function () {
     });
     IntlMessageFormat.memoizedDefaultLocale = null;
     IntlMessageFormat.resolveLocale = function (locales) {
+        if (typeof Intl.Locale === 'undefined') {
+            return;
+        }
         var supportedLocales = Intl.NumberFormat.supportedLocalesOf(locales);
         if (supportedLocales.length > 0) {
             return new Intl.Locale(supportedLocales[0]);
@@ -31520,7 +32330,7 @@ var IntlError = /** @class */ (function (_super) {
                 ? exception
                 : new Error(String(exception))
             : undefined;
-        _this = _super.call(this, "[@formatjs/intl Error ".concat(code, "] ").concat(message, " \n").concat(err ? "\n".concat(err.message, "\n").concat(err.stack) : '')) || this;
+        _this = _super.call(this, "[@formatjs/intl Error ".concat(code, "] ").concat(message, "\n").concat(err ? "\n".concat(err.message, "\n").concat(err.stack) : '')) || this;
         _this.code = code;
         // @ts-ignore just so we don't need to declare dep on @types/node
         if (typeof Error.captureStackTrace === 'function') {
@@ -31555,14 +32365,14 @@ var MissingDataError = /** @class */ (function (_super) {
 var IntlFormatError = /** @class */ (function (_super) {
     __extends(IntlFormatError, _super);
     function IntlFormatError(message, locale, exception) {
-        return _super.call(this, IntlErrorCode.FORMAT_ERROR, "".concat(message, " \nLocale: ").concat(locale, "\n"), exception) || this;
+        return _super.call(this, IntlErrorCode.FORMAT_ERROR, "".concat(message, "\nLocale: ").concat(locale, "\n"), exception) || this;
     }
     return IntlFormatError;
 }(IntlError));
 var MessageFormatError = /** @class */ (function (_super) {
     __extends(MessageFormatError, _super);
     function MessageFormatError(message, locale, descriptor, exception) {
-        var _this = _super.call(this, "".concat(message, " \nMessageID: ").concat(descriptor === null || descriptor === void 0 ? void 0 : descriptor.id, "\nDefault Message: ").concat(descriptor === null || descriptor === void 0 ? void 0 : descriptor.defaultMessage, "\nDescription: ").concat(descriptor === null || descriptor === void 0 ? void 0 : descriptor.description, " \n"), locale, exception) || this;
+        var _this = _super.call(this, "".concat(message, "\nMessageID: ").concat(descriptor === null || descriptor === void 0 ? void 0 : descriptor.id, "\nDefault Message: ").concat(descriptor === null || descriptor === void 0 ? void 0 : descriptor.defaultMessage, "\nDescription: ").concat(descriptor === null || descriptor === void 0 ? void 0 : descriptor.description, "\n"), locale, exception) || this;
         _this.descriptor = descriptor;
         return _this;
     }
@@ -31571,7 +32381,13 @@ var MessageFormatError = /** @class */ (function (_super) {
 var MissingTranslationError = /** @class */ (function (_super) {
     __extends(MissingTranslationError, _super);
     function MissingTranslationError(descriptor, locale) {
-        var _this = _super.call(this, IntlErrorCode.MISSING_TRANSLATION, "Missing message: \"".concat(descriptor.id, "\" for locale \"").concat(locale, "\", using ").concat(descriptor.defaultMessage ? 'default message' : 'id', " as fallback.")) || this;
+        var _this = _super.call(this, IntlErrorCode.MISSING_TRANSLATION, "Missing message: \"".concat(descriptor.id, "\" for locale \"").concat(locale, "\", using ").concat(descriptor.defaultMessage
+            ? "default message (".concat(typeof descriptor.defaultMessage === 'string'
+                ? descriptor.defaultMessage
+                : descriptor.defaultMessage
+                    .map(function (e) { var _a; return (_a = e.value) !== null && _a !== void 0 ? _a : JSON.stringify(e); })
+                    .join(), ")")
+            : 'id', " as fallback.")) || this;
         _this.descriptor = descriptor;
         return _this;
     }
@@ -31757,7 +32573,7 @@ function deepMergeFormatsAndSetTimeZone(f1, timeZone) {
     var mfFormats = IntlMessageFormat.formats;
     return __assign(__assign(__assign({}, mfFormats), f1), { date: deepMergeOptions(setTimeZoneInOptions(mfFormats.date, timeZone), setTimeZoneInOptions(f1.date || {}, timeZone)), time: deepMergeOptions(setTimeZoneInOptions(mfFormats.time, timeZone), setTimeZoneInOptions(f1.time || {}, timeZone)) });
 }
-function formatMessage$1(_a, state, messageDescriptor, values, opts) {
+var formatMessage$1 = function (_a, state, messageDescriptor, values, opts) {
     var locale = _a.locale, formats = _a.formats, messages = _a.messages, defaultLocale = _a.defaultLocale, defaultFormats = _a.defaultFormats, fallbackOnEmptyString = _a.fallbackOnEmptyString, onError = _a.onError, timeZone = _a.timeZone, defaultRichTextElements = _a.defaultRichTextElements;
     if (messageDescriptor === void 0) { messageDescriptor = { id: '' }; }
     var msgId = messageDescriptor.id, defaultMessage = messageDescriptor.defaultMessage;
@@ -31834,10 +32650,9 @@ function formatMessage$1(_a, state, messageDescriptor, values, opts) {
         return defaultMessage;
     }
     return id;
-}
+};
 
 var DATE_TIME_FORMAT_OPTIONS = [
-    'localeMatcher',
     'formatMatcher',
     'timeZone',
     'hour12',
@@ -31856,6 +32671,7 @@ var DATE_TIME_FORMAT_OPTIONS = [
     'calendar',
     // 'dayPeriod',
     'numberingSystem',
+    'fractionalSecondDigits',
 ];
 function getFormatter$2(_a, type, getDateTimeFormat, options) {
     var locale = _a.locale, formats = _a.formats, onError = _a.onError, timeZone = _a.timeZone;
@@ -31928,7 +32744,7 @@ function formatDateToParts(config, getDateTimeFormat) {
     var value = _a[0], _b = _a[1], options = _b === void 0 ? {} : _b;
     var date = typeof value === 'string' ? new Date(value || 0) : value;
     try {
-        return getFormatter$2(config, 'date', getDateTimeFormat, options).formatToParts(date);
+        return getFormatter$2(config, 'date', getDateTimeFormat, options).formatToParts(date); // TODO: remove this when https://github.com/microsoft/TypeScript/pull/50402 is merged
     }
     catch (e) {
         config.onError(new IntlError(IntlErrorCode.FORMAT_ERROR, 'Error formatting date.', e));
@@ -31943,7 +32759,7 @@ function formatTimeToParts(config, getDateTimeFormat) {
     var value = _a[0], _b = _a[1], options = _b === void 0 ? {} : _b;
     var date = typeof value === 'string' ? new Date(value || 0) : value;
     try {
-        return getFormatter$2(config, 'time', getDateTimeFormat, options).formatToParts(date);
+        return getFormatter$2(config, 'time', getDateTimeFormat, options).formatToParts(date); // TODO: remove this when https://github.com/microsoft/TypeScript/pull/50402 is merged
     }
     catch (e) {
         config.onError(new IntlError(IntlErrorCode.FORMAT_ERROR, 'Error formatting time.', e));
@@ -31952,10 +32768,10 @@ function formatTimeToParts(config, getDateTimeFormat) {
 }
 
 var DISPLAY_NAMES_OPTONS = [
-    'localeMatcher',
     'style',
     'type',
     'fallback',
+    'languageDisplay',
 ];
 function formatDisplayName(_a, getDisplayNames, value, options) {
     var locale = _a.locale, onError = _a.onError;
@@ -31973,7 +32789,6 @@ function formatDisplayName(_a, getDisplayNames, value, options) {
 }
 
 var LIST_FORMAT_OPTIONS = [
-    'localeMatcher',
     'type',
     'style',
 ];
@@ -31996,7 +32811,7 @@ function formatList(opts, getListFormat, values, options) {
         }
         return all;
     }, []);
-    return results.length === 1 ? results[0] : results;
+    return results.length === 1 ? results[0] : results.length === 0 ? '' : results;
 }
 function formatListToParts(_a, getListFormat, values, options) {
     var locale = _a.locale, onError = _a.onError;
@@ -32031,10 +32846,7 @@ function formatListToParts(_a, getListFormat, values, options) {
     return values;
 }
 
-var PLURAL_FORMAT_OPTIONS = [
-    'localeMatcher',
-    'type',
-];
+var PLURAL_FORMAT_OPTIONS = ['type'];
 function formatPlural(_a, getPluralRules, value, options) {
     var locale = _a.locale, onError = _a.onError;
     if (options === void 0) { options = {}; }
@@ -32079,7 +32891,6 @@ function formatRelativeTime(config, getRelativeTimeFormat, value, unit, options)
 }
 
 var NUMBER_FORMAT_OPTIONS = [
-    'localeMatcher',
     'style',
     'currency',
     'currencyDisplay',
@@ -32171,7 +32982,11 @@ function createIntl$1(config, cache) {
         onError(new MissingDataError("Missing locale data for locale: \"".concat(locale, "\" in Intl.DateTimeFormat. Using default locale: \"").concat(defaultLocale, "\" as fallback. See https://formatjs.io/docs/react-intl#runtime-requirements for more details")));
     }
     verifyConfigMessages(resolvedConfig);
-    return __assign(__assign({}, resolvedConfig), { formatters: formatters, formatNumber: formatNumber.bind(null, resolvedConfig, formatters.getNumberFormat), formatNumberToParts: formatNumberToParts.bind(null, resolvedConfig, formatters.getNumberFormat), formatRelativeTime: formatRelativeTime.bind(null, resolvedConfig, formatters.getRelativeTimeFormat), formatDate: formatDate.bind(null, resolvedConfig, formatters.getDateTimeFormat), formatDateToParts: formatDateToParts.bind(null, resolvedConfig, formatters.getDateTimeFormat), formatTime: formatTime.bind(null, resolvedConfig, formatters.getDateTimeFormat), formatDateTimeRange: formatDateTimeRange.bind(null, resolvedConfig, formatters.getDateTimeFormat), formatTimeToParts: formatTimeToParts.bind(null, resolvedConfig, formatters.getDateTimeFormat), formatPlural: formatPlural.bind(null, resolvedConfig, formatters.getPluralRules), formatMessage: formatMessage$1.bind(null, resolvedConfig, formatters), $t: formatMessage$1.bind(null, resolvedConfig, formatters), formatList: formatList.bind(null, resolvedConfig, formatters.getListFormat), formatListToParts: formatListToParts.bind(null, resolvedConfig, formatters.getListFormat), formatDisplayName: formatDisplayName.bind(null, resolvedConfig, formatters.getDisplayNames) });
+    return __assign(__assign({}, resolvedConfig), { formatters: formatters, formatNumber: formatNumber.bind(null, resolvedConfig, formatters.getNumberFormat), formatNumberToParts: formatNumberToParts.bind(null, resolvedConfig, formatters.getNumberFormat), formatRelativeTime: formatRelativeTime.bind(null, resolvedConfig, formatters.getRelativeTimeFormat), formatDate: formatDate.bind(null, resolvedConfig, formatters.getDateTimeFormat), formatDateToParts: formatDateToParts.bind(null, resolvedConfig, formatters.getDateTimeFormat), formatTime: formatTime.bind(null, resolvedConfig, formatters.getDateTimeFormat), formatDateTimeRange: formatDateTimeRange.bind(null, resolvedConfig, formatters.getDateTimeFormat), formatTimeToParts: formatTimeToParts.bind(null, resolvedConfig, formatters.getDateTimeFormat), formatPlural: formatPlural.bind(null, resolvedConfig, formatters.getPluralRules), 
+        // @ts-expect-error TODO: will get to this later
+        formatMessage: formatMessage$1.bind(null, resolvedConfig, formatters), 
+        // @ts-expect-error TODO: will get to this later
+        $t: formatMessage$1.bind(null, resolvedConfig, formatters), formatList: formatList.bind(null, resolvedConfig, formatters.getListFormat), formatListToParts: formatListToParts.bind(null, resolvedConfig, formatters.getListFormat), formatDisplayName: formatDisplayName.bind(null, resolvedConfig, formatters.getDisplayNames) });
 }
 
 function invariantIntlContext(intl) {
@@ -32331,17 +33146,22 @@ var createIntl = function (_a, cache) {
     var rawDefaultRichTextElements = _a.defaultRichTextElements, config = __rest(_a, ["defaultRichTextElements"]);
     var defaultRichTextElements = assignUniqueKeysToFormatXMLElementFnArgument(rawDefaultRichTextElements);
     var coreIntl = createIntl$1(__assign(__assign(__assign({}, DEFAULT_INTL_CONFIG), config), { defaultRichTextElements: defaultRichTextElements }), cache);
-    return __assign(__assign({}, coreIntl), { formatMessage: formatMessage.bind(null, {
-            locale: coreIntl.locale,
-            timeZone: coreIntl.timeZone,
-            fallbackOnEmptyString: coreIntl.fallbackOnEmptyString,
-            formats: coreIntl.formats,
-            defaultLocale: coreIntl.defaultLocale,
-            defaultFormats: coreIntl.defaultFormats,
-            messages: coreIntl.messages,
-            onError: coreIntl.onError,
-            defaultRichTextElements: defaultRichTextElements,
-        }, coreIntl.formatters) });
+    var resolvedConfig = {
+        locale: coreIntl.locale,
+        timeZone: coreIntl.timeZone,
+        fallbackOnEmptyString: coreIntl.fallbackOnEmptyString,
+        formats: coreIntl.formats,
+        defaultLocale: coreIntl.defaultLocale,
+        defaultFormats: coreIntl.defaultFormats,
+        messages: coreIntl.messages,
+        onError: coreIntl.onError,
+        defaultRichTextElements: defaultRichTextElements,
+    };
+    return __assign(__assign({}, coreIntl), { 
+        // @ts-expect-error fix this
+        formatMessage: formatMessage.bind(null, resolvedConfig, coreIntl.formatters), 
+        // @ts-expect-error fix this
+        $t: formatMessage.bind(null, resolvedConfig, coreIntl.formatters) });
 };
 var IntlProvider = /** @class */ (function (_super) {
     __extends(IntlProvider, _super);
@@ -32411,7 +33231,6 @@ var FormattedMessage$2 = MemoizedFormattedMessage;
 // IMPORTANT: Explicit here to prevent api-extractor from outputing `import('./src/types').CustomFormatConfig`
 createFormattedComponent('formatDate');
 createFormattedComponent('formatTime');
-// @ts-ignore issue w/ TS Intl types
 var FormattedNumber = createFormattedComponent('formatNumber');
 createFormattedComponent('formatList');
 createFormattedComponent('formatDisplayName');
@@ -32419,25 +33238,25 @@ createFormattedDateTimePartsComponent('formatDate');
 createFormattedDateTimePartsComponent('formatTime');
 
 var Filters = /*#__PURE__*/function (_Component) {
-  _inherits$4(Filters, _Component);
+  _inherits$A(Filters, _Component);
 
-  var _super = _createSuper$4(Filters);
+  var _super = _createSuper$A(Filters);
 
   function Filters(props) {
     var _this;
 
-    _classCallCheck$4(this, Filters);
+    _classCallCheck$B(this, Filters);
 
     _this = _super.call(this, props);
-    _this.saveFilters = _this.saveFilters.bind(_assertThisInitialized$5(_this));
-    _this.toggle = _this.toggle.bind(_assertThisInitialized$5(_this));
+    _this.saveFilters = _this.saveFilters.bind(_assertThisInitialized$B(_this));
+    _this.toggle = _this.toggle.bind(_assertThisInitialized$B(_this));
     _this.state = {
       show: false
     };
     return _this;
   }
 
-  _createClass$6(Filters, [{
+  _createClass$D(Filters, [{
     key: "saveFilters",
     value: function saveFilters(field, input) {
       var newFilters = this.props.filters;
@@ -32596,546 +33415,22 @@ SingleResult.propTypes = {
   options: PropTypes.object.isRequired
 };
 
-var Pagination$1 = {};
-
-var paginator = Paginator$1;
-
-// Paginator constructor
-//
-// `per_page` is the number of results per page, `length` is the number of
-// pages to display. They default to `25` and `10` respectively.
-function Paginator$1(per_page, length) {
-  // You really should be calling this with `new Paginator`, but WHATEVER.
-  if (!(this instanceof Paginator$1)) {
-    return new Paginator$1(per_page, length);
-  }
-
-  // Woo, defaults!
-  this.per_page = per_page || 25;
-  this.length = length || 10;
-}
-
-// Build an object with all the necessary information for outputting pagination
-// controls.
-//
-// (new Paginator(paginator.build(100, 2)
-Paginator$1.prototype.build = function(total_results, current_page) {
-  // We want the number of pages, rounded up to the nearest page.
-  var total_pages = Math.ceil(total_results / this.per_page);
-
-  // Ensure both total_results and current_page are treated as Numbers
-  total_results = parseInt(total_results, 10);
-  current_page  = parseInt(current_page, 10) || 1;
-
-  // Obviously we can't be on a negative or 0 page.
-  if (current_page < 1) { current_page = 1; }
-  // If the user has done something like /page/99999 we want to clamp that back
-  // down.
-  if (current_page > total_pages) { current_page = total_pages; }
-
-  // This is the first page to be displayed as a numbered link.
-  var first_page = Math.max(1, current_page - Math.floor(this.length / 2));
-
-  // And here's the last page to be displayed specifically.
-  var last_page = Math.min(total_pages, current_page + Math.floor(this.length / 2));
-
-  // This is triggered if we're at or near one of the extremes; we won't have
-  // enough page links. We need to adjust our bounds accordingly.
-  if (last_page - first_page + 1 < this.length) {
-    if (current_page < (total_pages / 2)) {
-      last_page = Math.min(total_pages, last_page + (this.length - (last_page - first_page)));
-    } else {
-      first_page = Math.max(1, first_page - (this.length - (last_page - first_page)));
-    }
-  }
-
-  // This can be triggered if the user wants an odd number of pages.
-  if (last_page - first_page + 1 > this.length) {
-    // We want to move towards whatever extreme we're closest to at the time.
-    if (current_page > (total_pages / 2)) {
-      first_page++;
-    } else {
-      last_page--;
-    }
-  }
-
-  // First result on the page. This, along with the field below, can be used to
-  // do "showing x to y of z results" style things.
-  var first_result = this.per_page * (current_page - 1);
-  if (first_result < 0) { first_result = 0; }
-
-  // Last result on the page.
-  var last_result = (this.per_page * current_page) - 1;
-  if (last_result < 0) { last_result = 0; }
-  if (last_result > Math.max(total_results - 1, 0)) { last_result = Math.max(total_results - 1, 0); }
-
-  // GIMME THAT OBJECT
-  return {
-    total_pages: total_pages,
-    pages: Math.min(last_page - first_page + 1, total_pages),
-    current_page: current_page,
-    first_page: first_page,
-    last_page: last_page,
-    previous_page: current_page - 1,
-    next_page: current_page + 1,
-    has_previous_page: current_page > 1,
-    has_next_page: current_page < total_pages,
-    total_results: total_results,
-    results: Math.min(last_result - first_result + 1, total_results),
-    first_result: first_result,
-    last_result: last_result,
-  };
-};
-
-var Page = {};
-
-var classnames = {exports: {}};
-
-/*!
-  Copyright (c) 2018 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-
-(function (module) {
-/* global define */
-
-(function () {
-
-	var hasOwn = {}.hasOwnProperty;
-
-	function classNames() {
-		var classes = [];
-
-		for (var i = 0; i < arguments.length; i++) {
-			var arg = arguments[i];
-			if (!arg) continue;
-
-			var argType = typeof arg;
-
-			if (argType === 'string' || argType === 'number') {
-				classes.push(arg);
-			} else if (Array.isArray(arg)) {
-				if (arg.length) {
-					var inner = classNames.apply(null, arg);
-					if (inner) {
-						classes.push(inner);
-					}
-				}
-			} else if (argType === 'object') {
-				if (arg.toString === Object.prototype.toString) {
-					for (var key in arg) {
-						if (hasOwn.call(arg, key) && arg[key]) {
-							classes.push(key);
-						}
-					}
-				} else {
-					classes.push(arg.toString());
-				}
-			}
-		}
-
-		return classes.join(' ');
-	}
-
-	if (module.exports) {
-		classNames.default = classNames;
-		module.exports = classNames;
-	} else {
-		window.classNames = classNames;
-	}
-}());
-}(classnames));
-
-(function (exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
-var _react = _interopRequireWildcard(React__default["default"]);
-
-var _propTypes = _interopRequireDefault(propTypes$1.exports);
-
-var _classnames = _interopRequireDefault(classnames.exports);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var Page =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Page, _Component);
-
-  function Page() {
-    _classCallCheck(this, Page);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(Page).apply(this, arguments));
-  }
-
-  _createClass(Page, [{
-    key: "handleClick",
-    value: function handleClick(e) {
-      var _this$props = this.props,
-          isDisabled = _this$props.isDisabled,
-          pageNumber = _this$props.pageNumber;
-      e.preventDefault();
-
-      if (isDisabled) {
-        return;
-      }
-
-      this.props.onClick(pageNumber);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _cx;
-
-      var _this$props2 = this.props,
-          pageText = _this$props2.pageText;
-          _this$props2.pageNumber;
-          var activeClass = _this$props2.activeClass,
-          itemClass = _this$props2.itemClass,
-          linkClass = _this$props2.linkClass,
-          activeLinkClass = _this$props2.activeLinkClass,
-          disabledClass = _this$props2.disabledClass,
-          isActive = _this$props2.isActive,
-          isDisabled = _this$props2.isDisabled,
-          href = _this$props2.href,
-          ariaLabel = _this$props2.ariaLabel;
-      var css = (0, _classnames["default"])(itemClass, (_cx = {}, _defineProperty(_cx, activeClass, isActive), _defineProperty(_cx, disabledClass, isDisabled), _cx));
-      var linkCss = (0, _classnames["default"])(linkClass, _defineProperty({}, activeLinkClass, isActive));
-      return _react["default"].createElement("li", {
-        className: css,
-        onClick: this.handleClick.bind(this)
-      }, _react["default"].createElement("a", {
-        className: linkCss,
-        href: href,
-        "aria-label": ariaLabel
-      }, pageText));
-    }
-  }]);
-
-  return Page;
-}(_react.Component);
-
-exports["default"] = Page;
-
-_defineProperty(Page, "propTypes", {
-  pageText: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].element]),
-  pageNumber: _propTypes["default"].number.isRequired,
-  onClick: _propTypes["default"].func.isRequired,
-  isActive: _propTypes["default"].bool.isRequired,
-  isDisabled: _propTypes["default"].bool,
-  activeClass: _propTypes["default"].string,
-  activeLinkClass: _propTypes["default"].string,
-  itemClass: _propTypes["default"].string,
-  linkClass: _propTypes["default"].string,
-  disabledClass: _propTypes["default"].string,
-  href: _propTypes["default"].string
-});
-
-_defineProperty(Page, "defaultProps", {
-  activeClass: "active",
-  disabledClass: "disabled",
-  itemClass: undefined,
-  linkClass: undefined,
-  activeLinkCLass: undefined,
-  isActive: false,
-  isDisabled: false,
-  href: "#"
-});
-}(Page));
-
-(function (exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
-var _react = _interopRequireWildcard(React__default["default"]);
-
-var _propTypes = _interopRequireDefault(propTypes$1.exports);
-
-var _paginator = _interopRequireDefault(paginator);
-
-var _Page = _interopRequireDefault(Page);
-
-var _classnames = _interopRequireDefault(classnames.exports);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var Pagination =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(Pagination, _React$Component);
-
-  function Pagination() {
-    _classCallCheck(this, Pagination);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(Pagination).apply(this, arguments));
-  }
-
-  _createClass(Pagination, [{
-    key: "isFirstPageVisible",
-    value: function isFirstPageVisible(has_previous_page) {
-      var _this$props = this.props,
-          hideDisabled = _this$props.hideDisabled;
-          _this$props.hideNavigation;
-          var hideFirstLastPages = _this$props.hideFirstLastPages;
-      if (hideFirstLastPages || hideDisabled && !has_previous_page) return false;
-      return true;
-    }
-  }, {
-    key: "isPrevPageVisible",
-    value: function isPrevPageVisible(has_previous_page) {
-      var _this$props2 = this.props,
-          hideDisabled = _this$props2.hideDisabled,
-          hideNavigation = _this$props2.hideNavigation;
-      if (hideNavigation || hideDisabled && !has_previous_page) return false;
-      return true;
-    }
-  }, {
-    key: "isNextPageVisible",
-    value: function isNextPageVisible(has_next_page) {
-      var _this$props3 = this.props,
-          hideDisabled = _this$props3.hideDisabled,
-          hideNavigation = _this$props3.hideNavigation;
-      if (hideNavigation || hideDisabled && !has_next_page) return false;
-      return true;
-    }
-  }, {
-    key: "isLastPageVisible",
-    value: function isLastPageVisible(has_next_page) {
-      var _this$props4 = this.props,
-          hideDisabled = _this$props4.hideDisabled;
-          _this$props4.hideNavigation;
-          var hideFirstLastPages = _this$props4.hideFirstLastPages;
-      if (hideFirstLastPages || hideDisabled && !has_next_page) return false;
-      return true;
-    }
-  }, {
-    key: "buildPages",
-    value: function buildPages() {
-      var pages = [];
-      var _this$props5 = this.props,
-          itemsCountPerPage = _this$props5.itemsCountPerPage,
-          pageRangeDisplayed = _this$props5.pageRangeDisplayed,
-          activePage = _this$props5.activePage,
-          prevPageText = _this$props5.prevPageText,
-          nextPageText = _this$props5.nextPageText,
-          firstPageText = _this$props5.firstPageText,
-          lastPageText = _this$props5.lastPageText,
-          totalItemsCount = _this$props5.totalItemsCount,
-          onChange = _this$props5.onChange,
-          activeClass = _this$props5.activeClass,
-          itemClass = _this$props5.itemClass,
-          itemClassFirst = _this$props5.itemClassFirst,
-          itemClassPrev = _this$props5.itemClassPrev,
-          itemClassNext = _this$props5.itemClassNext,
-          itemClassLast = _this$props5.itemClassLast,
-          activeLinkClass = _this$props5.activeLinkClass,
-          disabledClass = _this$props5.disabledClass;
-          _this$props5.hideDisabled;
-          _this$props5.hideNavigation;
-          var linkClass = _this$props5.linkClass,
-          linkClassFirst = _this$props5.linkClassFirst,
-          linkClassPrev = _this$props5.linkClassPrev,
-          linkClassNext = _this$props5.linkClassNext,
-          linkClassLast = _this$props5.linkClassLast;
-          _this$props5.hideFirstLastPages;
-          var getPageUrl = _this$props5.getPageUrl;
-      var paginationInfo = new _paginator["default"](itemsCountPerPage, pageRangeDisplayed).build(totalItemsCount, activePage);
-
-      for (var i = paginationInfo.first_page; i <= paginationInfo.last_page; i++) {
-        pages.push(_react["default"].createElement(_Page["default"], {
-          isActive: i === activePage,
-          key: i,
-          href: getPageUrl(i),
-          pageNumber: i,
-          pageText: i + "",
-          onClick: onChange,
-          itemClass: itemClass,
-          linkClass: linkClass,
-          activeClass: activeClass,
-          activeLinkClass: activeLinkClass,
-          ariaLabel: "Go to page number ".concat(i)
-        }));
-      }
-
-      this.isPrevPageVisible(paginationInfo.has_previous_page) && pages.unshift(_react["default"].createElement(_Page["default"], {
-        key: "prev" + paginationInfo.previous_page,
-        href: getPageUrl(paginationInfo.previous_page),
-        pageNumber: paginationInfo.previous_page,
-        onClick: onChange,
-        pageText: prevPageText,
-        isDisabled: !paginationInfo.has_previous_page,
-        itemClass: (0, _classnames["default"])(itemClass, itemClassPrev),
-        linkClass: (0, _classnames["default"])(linkClass, linkClassPrev),
-        disabledClass: disabledClass,
-        ariaLabel: "Go to previous page"
-      }));
-      this.isFirstPageVisible(paginationInfo.has_previous_page) && pages.unshift(_react["default"].createElement(_Page["default"], {
-        key: "first",
-        href: getPageUrl(1),
-        pageNumber: 1,
-        onClick: onChange,
-        pageText: firstPageText,
-        isDisabled: !paginationInfo.has_previous_page,
-        itemClass: (0, _classnames["default"])(itemClass, itemClassFirst),
-        linkClass: (0, _classnames["default"])(linkClass, linkClassFirst),
-        disabledClass: disabledClass,
-        ariaLabel: "Go to first page"
-      }));
-      this.isNextPageVisible(paginationInfo.has_next_page) && pages.push(_react["default"].createElement(_Page["default"], {
-        key: "next" + paginationInfo.next_page,
-        href: getPageUrl(paginationInfo.next_page),
-        pageNumber: paginationInfo.next_page,
-        onClick: onChange,
-        pageText: nextPageText,
-        isDisabled: !paginationInfo.has_next_page,
-        itemClass: (0, _classnames["default"])(itemClass, itemClassNext),
-        linkClass: (0, _classnames["default"])(linkClass, linkClassNext),
-        disabledClass: disabledClass,
-        ariaLabel: "Go to next page"
-      }));
-      this.isLastPageVisible(paginationInfo.has_next_page) && pages.push(_react["default"].createElement(_Page["default"], {
-        key: "last",
-        href: getPageUrl(paginationInfo.total_pages),
-        pageNumber: paginationInfo.total_pages,
-        onClick: onChange,
-        pageText: lastPageText,
-        isDisabled: paginationInfo.current_page === paginationInfo.total_pages,
-        itemClass: (0, _classnames["default"])(itemClass, itemClassLast),
-        linkClass: (0, _classnames["default"])(linkClass, linkClassLast),
-        disabledClass: disabledClass,
-        ariaLabel: "Go to last page"
-      }));
-      return pages;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var pages = this.buildPages();
-      return _react["default"].createElement("ul", {
-        className: this.props.innerClass
-      }, pages);
-    }
-  }]);
-
-  return Pagination;
-}(_react["default"].Component);
-
-exports["default"] = Pagination;
-
-_defineProperty(Pagination, "propTypes", {
-  totalItemsCount: _propTypes["default"].number.isRequired,
-  onChange: _propTypes["default"].func.isRequired,
-  activePage: _propTypes["default"].number,
-  itemsCountPerPage: _propTypes["default"].number,
-  pageRangeDisplayed: _propTypes["default"].number,
-  prevPageText: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].element]),
-  nextPageText: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].element]),
-  lastPageText: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].element]),
-  firstPageText: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].element]),
-  disabledClass: _propTypes["default"].string,
-  hideDisabled: _propTypes["default"].bool,
-  hideNavigation: _propTypes["default"].bool,
-  innerClass: _propTypes["default"].string,
-  itemClass: _propTypes["default"].string,
-  itemClassFirst: _propTypes["default"].string,
-  itemClassPrev: _propTypes["default"].string,
-  itemClassNext: _propTypes["default"].string,
-  itemClassLast: _propTypes["default"].string,
-  linkClass: _propTypes["default"].string,
-  activeClass: _propTypes["default"].string,
-  activeLinkClass: _propTypes["default"].string,
-  linkClassFirst: _propTypes["default"].string,
-  linkClassPrev: _propTypes["default"].string,
-  linkClassNext: _propTypes["default"].string,
-  linkClassLast: _propTypes["default"].string,
-  hideFirstLastPages: _propTypes["default"].bool,
-  getPageUrl: _propTypes["default"].func
-});
-
-_defineProperty(Pagination, "defaultProps", {
-  itemsCountPerPage: 10,
-  pageRangeDisplayed: 5,
-  activePage: 1,
-  prevPageText: "⟨",
-  firstPageText: "«",
-  nextPageText: "⟩",
-  lastPageText: "»",
-  innerClass: "pagination",
-  itemClass: undefined,
-  linkClass: undefined,
-  activeLinkClass: undefined,
-  hideFirstLastPages: false,
-  getPageUrl: function getPageUrl(i) {
-    return "#";
-  }
-});
-}(Pagination$1));
-
-var Pagination = /*@__PURE__*/getDefaultExportFromCjs(Pagination$1);
-
 var _templateObject$4, _templateObject2, _templateObject3;
-var HOUSES_QUERY = gql(_templateObject$4 || (_templateObject$4 = _taggedTemplateLiteral(["\n  query PortalSiteHousesQuery(\n    $id: ID!\n    $country_id: ID\n    $region_id: String\n    $city_id: String\n    $persons_min: Int\n    $persons_max: Int\n    $bedrooms_min: Int\n    $bathrooms_min: Int\n    $arrival_date: String\n    $no_nights: Int\n    $properties: String\n    $weekprice_max: Int\n    $limit: Int\n    $skip: Int\n  ) {\n    PortalSite(id: $id) {\n      houses(\n        country_id: $country_id\n        region_id: $region_id\n        city_id: $city_id\n        persons_min: $persons_min\n        persons_max: $persons_max\n        bedrooms_min: $bedrooms_min\n        bathrooms_min: $bathrooms_min\n        arrival_date: $arrival_date\n        weekprice_max: $weekprice_max\n        no_nights_min: $no_nights\n        properties: $properties\n        limit: $limit\n        skip: $skip\n      ) {\n        id\n        name\n        persons\n        bathrooms\n        bedrooms\n        description\n        image_url\n        house_url\n        province\n        city\n        country_name\n        minimum_week_price\n      }\n    }\n  }\n"])));
+var HOUSES_QUERY = gql(_templateObject$4 || (_templateObject$4 = _taggedTemplateLiteral(["\n  query PortalSiteHousesQuery(\n    $id: ID!\n    $country_id: ID\n    $region_id: String\n    $city_id: String\n    $persons_min: Int\n    $persons_max: Int\n    $bedrooms_min: Int\n    $bathrooms_min: Int\n    $arrival_date: String\n    $no_nights: Int\n    $properties: String\n    $weekprice_max: Int\n    $limit: Int\n    $skip: Int\n  ) {\n    PortalSite(id: $id) {\n      id\n      houses(\n        country_id: $country_id\n        region_id: $region_id\n        city_id: $city_id\n        persons_min: $persons_min\n        persons_max: $persons_max\n        bedrooms_min: $bedrooms_min\n        bathrooms_min: $bathrooms_min\n        arrival_date: $arrival_date\n        weekprice_max: $weekprice_max\n        no_nights_min: $no_nights\n        properties: $properties\n        limit: $limit\n        skip: $skip\n      ) {\n        id\n        name\n        persons\n        bathrooms\n        bedrooms\n        description\n        image_url\n        house_url\n        province\n        city\n        country_name\n        minimum_week_price\n      }\n    }\n  }\n"])));
 var HOUSES_PRICE_QUERY = gql(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  query PortalSiteHousesQuery(\n    $id: ID!\n    $country_id: ID\n    $region_id: String\n    $city_id: String\n    $persons_min: Int\n    $persons_max: Int\n    $bedrooms_min: Int\n    $bathrooms_min: Int\n    $arrival_date: String\n    $starts_at: Date!\n    $ends_at: Date!\n    $no_nights: Int\n    $properties: String\n    $weekprice_max: Int\n    $limit: Int\n    $skip: Int\n  ) {\n    PortalSite(id: $id) {\n      houses(\n        country_id: $country_id\n        region_id: $region_id\n        city_id: $city_id\n        persons_min: $persons_min\n        persons_max: $persons_max\n        bedrooms_min: $bedrooms_min\n        bathrooms_min: $bathrooms_min\n        arrival_date: $arrival_date\n        weekprice_max: $weekprice_max\n        no_nights_min: $no_nights\n        properties: $properties\n        limit: $limit\n        skip: $skip\n      ) {\n        id\n        name\n        persons\n        bathrooms\n        bedrooms\n        description\n        image_url\n        house_url\n        province\n        city\n        country_name\n        minimum_week_price\n        booking_price(starts_at: $starts_at, ends_at: $ends_at)\n      }\n    }\n  }\n"])));
 var HOUSE_COUNT_QUERY = gql(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  query PortalSiteHousesQuery(\n    $id: ID!\n    $country_id: ID\n    $region_id: String\n    $city_id: String\n    $persons_min: Int\n    $persons_max: Int\n    $bedrooms_min: Int\n    $bathrooms_min: Int\n    $arrival_date: String\n    $no_nights: Int\n    $properties: String\n    $weekprice_max: Int\n  ) {\n    PortalSite(id: $id) {\n      houses(\n        country_id: $country_id\n        region_id: $region_id\n        city_id: $city_id\n        persons_min: $persons_min\n        persons_max: $persons_max\n        bedrooms_min: $bedrooms_min\n        bathrooms_min: $bathrooms_min\n        arrival_date: $arrival_date\n        weekprice_max: $weekprice_max\n        no_nights_min: $no_nights\n        properties: $properties\n      ) {\n        id\n      }\n    }\n  }\n"])));
 
+var reactPaginate = {exports: {}};
+
+(function (module, exports) {
+!function(e,t){module.exports=t(React__default["default"]);}(commonjsGlobal,(e=>(()=>{var t={703:(e,t,a)=>{var r=a(414);function n(){}function i(){}i.resetWarningCache=n,e.exports=function(){function e(e,t,a,n,i,o){if(o!==r){var s=new Error("Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types");throw s.name="Invariant Violation",s}}function t(){return e}e.isRequired=e;var a={array:e,bigint:e,bool:e,func:e,number:e,object:e,string:e,symbol:e,any:e,arrayOf:t,element:e,elementType:e,instanceOf:t,node:e,objectOf:t,oneOf:t,oneOfType:t,shape:t,exact:t,checkPropTypes:i,resetWarningCache:n};return a.PropTypes=a,a};},697:(e,t,a)=>{e.exports=a(703)();},414:e=>{e.exports="SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED";},98:t=>{t.exports=e;}},a={};function r(e){var n=a[e];if(void 0!==n)return n.exports;var i=a[e]={exports:{}};return t[e](i,i.exports,r),i.exports}r.n=e=>{var t=e&&e.__esModule?()=>e.default:()=>e;return r.d(t,{a:t}),t},r.d=(e,t)=>{for(var a in t)r.o(t,a)&&!r.o(e,a)&&Object.defineProperty(e,a,{enumerable:!0,get:t[a]});},r.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),r.r=e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0});};var n={};return (()=>{r.r(n),r.d(n,{default:()=>k});var e=r(98),t=r.n(e),a=r(697),i=r.n(a);function o(){return o=Object.assign?Object.assign.bind():function(e){for(var t=1;t<arguments.length;t++){var a=arguments[t];for(var r in a)Object.prototype.hasOwnProperty.call(a,r)&&(e[r]=a[r]);}return e},o.apply(this,arguments)}var s=function(e){var a=e.pageClassName,r=e.pageLinkClassName,n=e.page,i=e.selected,s=e.activeClassName,l=e.activeLinkClassName,c=e.getEventListener,p=e.pageSelectedHandler,u=e.href,g=e.extraAriaContext,d=e.pageLabelBuilder,f=e.rel,v=e.ariaLabel||"Page "+n+(g?" "+g:""),b=null;return i&&(b="page",v=e.ariaLabel||"Page "+n+" is your current page",a=void 0!==a?a+" "+s:s,void 0!==r?void 0!==l&&(r=r+" "+l):r=l),t().createElement("li",{className:a},t().createElement("a",o({rel:f,role:u?void 0:"button",className:r,href:u,tabIndex:i?"-1":"0","aria-label":v,"aria-current":b,onKeyPress:p},c(p)),d(n)))};s.propTypes={pageSelectedHandler:i().func.isRequired,selected:i().bool.isRequired,pageClassName:i().string,pageLinkClassName:i().string,activeClassName:i().string,activeLinkClassName:i().string,extraAriaContext:i().string,href:i().string,ariaLabel:i().string,page:i().number.isRequired,getEventListener:i().func.isRequired,pageLabelBuilder:i().func.isRequired,rel:i().string};const l=s;function c(){return c=Object.assign?Object.assign.bind():function(e){for(var t=1;t<arguments.length;t++){var a=arguments[t];for(var r in a)Object.prototype.hasOwnProperty.call(a,r)&&(e[r]=a[r]);}return e},c.apply(this,arguments)}var p=function(e){var a=e.breakLabel,r=e.breakClassName,n=e.breakLinkClassName,i=e.breakHandler,o=e.getEventListener,s=r||"break";return t().createElement("li",{className:s},t().createElement("a",c({className:n,role:"button",tabIndex:"0",onKeyPress:i},o(i)),a))};p.propTypes={breakLabel:i().oneOfType([i().string,i().node]),breakClassName:i().string,breakLinkClassName:i().string,breakHandler:i().func.isRequired,getEventListener:i().func.isRequired};const u=p;function g(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"";return null!=e?e:t}function d(e){return d="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},d(e)}function f(){return f=Object.assign?Object.assign.bind():function(e){for(var t=1;t<arguments.length;t++){var a=arguments[t];for(var r in a)Object.prototype.hasOwnProperty.call(a,r)&&(e[r]=a[r]);}return e},f.apply(this,arguments)}function v(e,t){for(var a=0;a<t.length;a++){var r=t[a];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r);}}function b(e,t){return b=Object.setPrototypeOf?Object.setPrototypeOf.bind():function(e,t){return e.__proto__=t,e},b(e,t)}function h(e,t){if(t&&("object"===d(t)||"function"==typeof t))return t;if(void 0!==t)throw new TypeError("Derived constructors may only return object or undefined");return m(e)}function m(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function y(e){return y=Object.setPrototypeOf?Object.getPrototypeOf.bind():function(e){return e.__proto__||Object.getPrototypeOf(e)},y(e)}function C(e,t,a){return t in e?Object.defineProperty(e,t,{value:a,enumerable:!0,configurable:!0,writable:!0}):e[t]=a,e}var P=function(e){!function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),Object.defineProperty(e,"prototype",{writable:!1}),t&&b(e,t);}(s,e);var a,r,n,i,o=(n=s,i=function(){if("undefined"==typeof Reflect||!Reflect.construct)return !1;if(Reflect.construct.sham)return !1;if("function"==typeof Proxy)return !0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return !1}}(),function(){var e,t=y(n);if(i){var a=y(this).constructor;e=Reflect.construct(t,arguments,a);}else e=t.apply(this,arguments);return h(this,e)});function s(e){var a,r;return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,s),C(m(a=o.call(this,e)),"handlePreviousPage",(function(e){var t=a.state.selected;a.handleClick(e,null,t>0?t-1:void 0,{isPrevious:!0});})),C(m(a),"handleNextPage",(function(e){var t=a.state.selected,r=a.props.pageCount;a.handleClick(e,null,t<r-1?t+1:void 0,{isNext:!0});})),C(m(a),"handlePageSelected",(function(e,t){if(a.state.selected===e)return a.callActiveCallback(e),void a.handleClick(t,null,void 0,{isActive:!0});a.handleClick(t,null,e);})),C(m(a),"handlePageChange",(function(e){a.state.selected!==e&&(a.setState({selected:e}),a.callCallback(e));})),C(m(a),"getEventListener",(function(e){return C({},a.props.eventListener,e)})),C(m(a),"handleClick",(function(e,t,r){var n=arguments.length>3&&void 0!==arguments[3]?arguments[3]:{},i=n.isPrevious,o=void 0!==i&&i,s=n.isNext,l=void 0!==s&&s,c=n.isBreak,p=void 0!==c&&c,u=n.isActive,g=void 0!==u&&u;e.preventDefault?e.preventDefault():e.returnValue=!1;var d=a.state.selected,f=a.props.onClick,v=r;if(f){var b=f({index:t,selected:d,nextSelectedPage:r,event:e,isPrevious:o,isNext:l,isBreak:p,isActive:g});if(!1===b)return;Number.isInteger(b)&&(v=b);}void 0!==v&&a.handlePageChange(v);})),C(m(a),"handleBreakClick",(function(e,t){var r=a.state.selected;a.handleClick(t,e,r<e?a.getForwardJump():a.getBackwardJump(),{isBreak:!0});})),C(m(a),"callCallback",(function(e){void 0!==a.props.onPageChange&&"function"==typeof a.props.onPageChange&&a.props.onPageChange({selected:e});})),C(m(a),"callActiveCallback",(function(e){void 0!==a.props.onPageActive&&"function"==typeof a.props.onPageActive&&a.props.onPageActive({selected:e});})),C(m(a),"getElementPageRel",(function(e){var t=a.state.selected,r=a.props,n=r.nextPageRel,i=r.prevPageRel,o=r.selectedPageRel;return t-1===e?i:t===e?o:t+1===e?n:void 0})),C(m(a),"pagination",(function(){var e=[],r=a.props,n=r.pageRangeDisplayed,i=r.pageCount,o=r.marginPagesDisplayed,s=r.breakLabel,l=r.breakClassName,c=r.breakLinkClassName,p=a.state.selected;if(i<=n)for(var g=0;g<i;g++)e.push(a.getPageElement(g));else {var d=n/2,f=n-d;p>i-n/2?d=n-(f=i-p):p<n/2&&(f=n-(d=p));var v,b,h=function(e){return a.getPageElement(e)},m=[];for(v=0;v<i;v++){var y=v+1;y<=o||y>i-o||v>=p-d&&v<=p+(0===p&&n>1?f-1:f)?m.push({type:"page",index:v,display:h(v)}):s&&m.length>0&&m[m.length-1].display!==b&&(n>0||o>0)&&(b=t().createElement(u,{key:v,breakLabel:s,breakClassName:l,breakLinkClassName:c,breakHandler:a.handleBreakClick.bind(null,v),getEventListener:a.getEventListener}),m.push({type:"break",index:v,display:b}));}m.forEach((function(t,a){var r=t;"break"===t.type&&m[a-1]&&"page"===m[a-1].type&&m[a+1]&&"page"===m[a+1].type&&m[a+1].index-m[a-1].index<=2&&(r={type:"page",index:t.index,display:h(t.index)}),e.push(r.display);}));}return e})),void 0!==e.initialPage&&void 0!==e.forcePage&&console.warn("(react-paginate): Both initialPage (".concat(e.initialPage,") and forcePage (").concat(e.forcePage,") props are provided, which is discouraged.")+" Use exclusively forcePage prop for a controlled component.\nSee https://reactjs.org/docs/forms.html#controlled-components"),r=e.initialPage?e.initialPage:e.forcePage?e.forcePage:0,a.state={selected:r},a}return a=s,(r=[{key:"componentDidMount",value:function(){var e=this.props,t=e.initialPage,a=e.disableInitialCallback,r=e.extraAriaContext,n=e.pageCount,i=e.forcePage;void 0===t||a||this.callCallback(t),r&&console.warn("DEPRECATED (react-paginate): The extraAriaContext prop is deprecated. You should now use the ariaLabelBuilder instead."),Number.isInteger(n)||console.warn("(react-paginate): The pageCount prop value provided is not an integer (".concat(n,"). Did you forget a Math.ceil()?")),void 0!==t&&t>n-1&&console.warn("(react-paginate): The initialPage prop provided is greater than the maximum page index from pageCount prop (".concat(t," > ").concat(n-1,").")),void 0!==i&&i>n-1&&console.warn("(react-paginate): The forcePage prop provided is greater than the maximum page index from pageCount prop (".concat(i," > ").concat(n-1,")."));}},{key:"componentDidUpdate",value:function(e){void 0!==this.props.forcePage&&this.props.forcePage!==e.forcePage&&(this.props.forcePage>this.props.pageCount-1&&console.warn("(react-paginate): The forcePage prop provided is greater than the maximum page index from pageCount prop (".concat(this.props.forcePage," > ").concat(this.props.pageCount-1,").")),this.setState({selected:this.props.forcePage})),Number.isInteger(e.pageCount)&&!Number.isInteger(this.props.pageCount)&&console.warn("(react-paginate): The pageCount prop value provided is not an integer (".concat(this.props.pageCount,"). Did you forget a Math.ceil()?"));}},{key:"getForwardJump",value:function(){var e=this.state.selected,t=this.props,a=t.pageCount,r=e+t.pageRangeDisplayed;return r>=a?a-1:r}},{key:"getBackwardJump",value:function(){var e=this.state.selected-this.props.pageRangeDisplayed;return e<0?0:e}},{key:"getElementHref",value:function(e){var t=this.props,a=t.hrefBuilder,r=t.pageCount,n=t.hrefAllControls;if(a)return n||e>=0&&e<r?a(e+1,r,this.state.selected):void 0}},{key:"ariaLabelBuilder",value:function(e){var t=e===this.state.selected;if(this.props.ariaLabelBuilder&&e>=0&&e<this.props.pageCount){var a=this.props.ariaLabelBuilder(e+1,t);return this.props.extraAriaContext&&!t&&(a=a+" "+this.props.extraAriaContext),a}}},{key:"getPageElement",value:function(e){var a=this.state.selected,r=this.props,n=r.pageClassName,i=r.pageLinkClassName,o=r.activeClassName,s=r.activeLinkClassName,c=r.extraAriaContext,p=r.pageLabelBuilder;return t().createElement(l,{key:e,pageSelectedHandler:this.handlePageSelected.bind(null,e),selected:a===e,rel:this.getElementPageRel(e),pageClassName:n,pageLinkClassName:i,activeClassName:o,activeLinkClassName:s,extraAriaContext:c,href:this.getElementHref(e),ariaLabel:this.ariaLabelBuilder(e),page:e+1,pageLabelBuilder:p,getEventListener:this.getEventListener})}},{key:"render",value:function(){var e=this.props.renderOnZeroPageCount;if(0===this.props.pageCount&&void 0!==e)return e?e(this.props):e;var a=this.props,r=a.disabledClassName,n=a.disabledLinkClassName,i=a.pageCount,o=a.className,s=a.containerClassName,l=a.previousLabel,c=a.previousClassName,p=a.previousLinkClassName,u=a.previousAriaLabel,d=a.prevRel,v=a.nextLabel,b=a.nextClassName,h=a.nextLinkClassName,m=a.nextAriaLabel,y=a.nextRel,C=this.state.selected,P=0===C,k=C===i-1,x="".concat(g(c)).concat(P?" ".concat(g(r)):""),N="".concat(g(b)).concat(k?" ".concat(g(r)):""),L="".concat(g(p)).concat(P?" ".concat(g(n)):""),O="".concat(g(h)).concat(k?" ".concat(g(n)):""),R=P?"true":"false",E=k?"true":"false";return t().createElement("ul",{className:o||s,role:"navigation","aria-label":"Pagination"},t().createElement("li",{className:x},t().createElement("a",f({className:L,href:this.getElementHref(C-1),tabIndex:P?"-1":"0",role:"button",onKeyPress:this.handlePreviousPage,"aria-disabled":R,"aria-label":u,rel:d},this.getEventListener(this.handlePreviousPage)),l)),this.pagination(),t().createElement("li",{className:N},t().createElement("a",f({className:O,href:this.getElementHref(C+1),tabIndex:k?"-1":"0",role:"button",onKeyPress:this.handleNextPage,"aria-disabled":E,"aria-label":m,rel:y},this.getEventListener(this.handleNextPage)),v)))}}])&&v(a.prototype,r),Object.defineProperty(a,"prototype",{writable:!1}),s}(e.Component);C(P,"propTypes",{pageCount:i().number.isRequired,pageRangeDisplayed:i().number,marginPagesDisplayed:i().number,previousLabel:i().node,previousAriaLabel:i().string,prevPageRel:i().string,prevRel:i().string,nextLabel:i().node,nextAriaLabel:i().string,nextPageRel:i().string,nextRel:i().string,breakLabel:i().oneOfType([i().string,i().node]),hrefBuilder:i().func,hrefAllControls:i().bool,onPageChange:i().func,onPageActive:i().func,onClick:i().func,initialPage:i().number,forcePage:i().number,disableInitialCallback:i().bool,containerClassName:i().string,className:i().string,pageClassName:i().string,pageLinkClassName:i().string,pageLabelBuilder:i().func,activeClassName:i().string,activeLinkClassName:i().string,previousClassName:i().string,nextClassName:i().string,previousLinkClassName:i().string,nextLinkClassName:i().string,disabledClassName:i().string,disabledLinkClassName:i().string,breakClassName:i().string,breakLinkClassName:i().string,extraAriaContext:i().string,ariaLabelBuilder:i().func,eventListener:i().string,renderOnZeroPageCount:i().func,selectedPageRel:i().string}),C(P,"defaultProps",{pageRangeDisplayed:2,marginPagesDisplayed:3,activeClassName:"selected",previousLabel:"Previous",previousClassName:"previous",previousAriaLabel:"Previous page",prevPageRel:"prev",prevRel:"prev",nextLabel:"Next",nextClassName:"next",nextAriaLabel:"Next page",nextPageRel:"next",nextRel:"next",breakLabel:"...",disabledClassName:"disabled",disableInitialCallback:!1,pageLabelBuilder:function(e){return e},eventListener:"onClick",renderOnZeroPageCount:void 0,selectedPageRel:"canonical",hrefAllControls:!1});const k=P;})(),n})()));
+
+}(reactPaginate));
+
+var ReactPaginate = /*@__PURE__*/getDefaultExportFromCjs(reactPaginate.exports);
+
 function Paginator(_ref) {
-  var onPageChange = _ref.onPageChange,
+  var _onPageChange = _ref.onPageChange,
       variables = _ref.variables,
       activePage = _ref.activePage,
       limit = _ref.limit;
@@ -33158,19 +33453,26 @@ function Paginator(_ref) {
       return /*#__PURE__*/React__default["default"].createElement("div", null, "Error");
     }
     var results = data.PortalSite.houses;
+    var pageCount = Math.ceil(results.length / limit);
     return /*#__PURE__*/React__default["default"].createElement("div", {
       className: "bu-paginator"
     }, /*#__PURE__*/React__default["default"].createElement("div", null, results.length, " ", /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
       id: "results"
-    })), /*#__PURE__*/React__default["default"].createElement(Pagination, {
-      activePage: activePage,
-      itemsCountPerPage: limit,
-      totalItemsCount: results.length,
-      pageRangeDisplayed: 5,
-      onChange: function onChange(e) {
-        onPageChange(e);
+    })), /*#__PURE__*/React__default["default"].createElement(ReactPaginate, {
+      pageCount: pageCount,
+      onPageChange: function onPageChange(_ref3) {
+        var selected = _ref3.selected;
+        console.log("clicked");
+
+        _onPageChange(selected);
       },
-      innerClass: "bu-pagination"
+      forcePage: activePage,
+      pageRangeDisplayed: 5,
+      breakLabel: "...",
+      className: "bu-pagination",
+      renderOnZeroPageCount: null,
+      nextLabel: ">",
+      previousLabel: "<"
     }));
   });
 }
@@ -33183,14 +33485,14 @@ Paginator.propTypes = {
 };
 
 var Modal = /*#__PURE__*/function (_Component) {
-  _inherits$4(Modal, _Component);
+  _inherits$A(Modal, _Component);
 
-  var _super = _createSuper$4(Modal);
+  var _super = _createSuper$A(Modal);
 
   function Modal() {
     var _this;
 
-    _classCallCheck$4(this, Modal);
+    _classCallCheck$B(this, Modal);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -33198,14 +33500,14 @@ var Modal = /*#__PURE__*/function (_Component) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$g(_assertThisInitialized$5(_this), "state", {
+    _defineProperty$M(_assertThisInitialized$B(_this), "state", {
       visible: _this.props.show
     });
 
     return _this;
   }
 
-  _createClass$6(Modal, [{
+  _createClass$D(Modal, [{
     key: "setVisible",
     value: function setVisible(visible) {
       this.setState({
@@ -33353,7 +33655,7 @@ function Results(_ref) {
   var requestPrices = false;
 
   if (filters.departure_date && filters.arrival_date) {
-    min_nights = difference_in_calendar_days(filters.departure_date, filters.arrival_date);
+    min_nights = differenceInCalendarDays(filters.departure_date, filters.arrival_date);
     requestPrices = true;
   } else if (filters.arrival_date) {
     min_nights = 1;
@@ -33438,14 +33740,14 @@ Results.propTypes = {
 };
 
 var SearchPage = /*#__PURE__*/function (_Component) {
-  _inherits$4(SearchPage, _Component);
+  _inherits$A(SearchPage, _Component);
 
-  var _super = _createSuper$4(SearchPage);
+  var _super = _createSuper$A(SearchPage);
 
   function SearchPage(props) {
     var _this;
 
-    _classCallCheck$4(this, SearchPage);
+    _classCallCheck$B(this, SearchPage);
 
     _this = _super.call(this, props);
     var limit = _this.props.options.filtersForm ? Number(_this.props.options.filtersForm.no_results) : 20;
@@ -33455,12 +33757,12 @@ var SearchPage = /*#__PURE__*/function (_Component) {
       limit: limit,
       skip: 0
     };
-    _this.onFilterChange = _this.onFilterChange.bind(_assertThisInitialized$5(_this));
-    _this.pageChange = _this.pageChange.bind(_assertThisInitialized$5(_this));
+    _this.onFilterChange = _this.onFilterChange.bind(_assertThisInitialized$B(_this));
+    _this.pageChange = _this.pageChange.bind(_assertThisInitialized$B(_this));
     return _this;
   }
 
-  _createClass$6(SearchPage, [{
+  _createClass$D(SearchPage, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var filters = localStorage.getItem('bukazuFilters');
@@ -33468,7 +33770,7 @@ var SearchPage = /*#__PURE__*/function (_Component) {
       this.setState({
         filters: JSON.parse(filters) || this.props.filters
       });
-      this.pageChange(activePage || 1);
+      this.pageChange(activePage || 0);
     }
   }, {
     key: "onFilterChange",
@@ -33478,13 +33780,13 @@ var SearchPage = /*#__PURE__*/function (_Component) {
         filters: filters
       });
       localStorage.setItem('bukazuFilters', JSON.stringify(filters));
-      this.pageChange(1);
+      this.pageChange(0);
     }
   }, {
     key: "pageChange",
     value: function pageChange(pageNumber) {
       var limit = this.state.limit;
-      var newSkip = pageNumber * limit - limit;
+      var newSkip = pageNumber * limit;
       localStorage.setItem('bukazuActivePage', pageNumber);
       this.setState({
         activePage: pageNumber,
@@ -33532,1102 +33834,2124 @@ SearchPage.propTypes = {
   filters: PropTypes.object.isRequired
 };
 
-function buildDistanceInWordsLocale$9 () {
-  var distanceInWordsLocale = {
-    lessThanXSeconds: {
-      one: 'minder dan een seconde',
-      other: 'minder dan {{count}} seconden'
-    },
-
-    xSeconds: {
-      one: '1 seconde',
-      other: '{{count}} seconden'
-    },
-
-    halfAMinute: 'een halve minuut',
-
-    lessThanXMinutes: {
-      one: 'minder dan een minuut',
-      other: 'minder dan {{count}} minuten'
-    },
-
-    xMinutes: {
-      one: 'een minuut',
-      other: '{{count}} minuten'
-    },
-
-    aboutXHours: {
-      one: 'ongeveer 1 uur',
-      other: 'ongeveer {{count}} uur'
-    },
-
-    xHours: {
-      one: '1 uur',
-      other: '{{count}} uur'
-    },
-
-    xDays: {
-      one: '1 dag',
-      other: '{{count}} dagen'
-    },
-
-    aboutXMonths: {
-      one: 'ongeveer 1 maand',
-      other: 'ongeveer {{count}} maanden'
-    },
-
-    xMonths: {
-      one: '1 maand',
-      other: '{{count}} maanden'
-    },
-
-    aboutXYears: {
-      one: 'ongeveer 1 jaar',
-      other: 'ongeveer {{count}} jaar'
-    },
-
-    xYears: {
-      one: '1 jaar',
-      other: '{{count}} jaar'
-    },
-
-    overXYears: {
-      one: 'meer dan 1 jaar',
-      other: 'meer dan {{count}} jaar'
-    },
-
-    almostXYears: {
-      one: 'bijna 1 jaar',
-      other: 'bijna {{count}} jaar'
-    }
-  };
-
-  function localize (token, count, options) {
-    options = options || {};
-
-    var result;
-    if (typeof distanceInWordsLocale[token] === 'string') {
-      result = distanceInWordsLocale[token];
-    } else if (count === 1) {
-      result = distanceInWordsLocale[token].one;
-    } else {
-      result = distanceInWordsLocale[token].other.replace('{{count}}', count);
-    }
-
-    if (options.addSuffix) {
-      if (options.comparison > 0) {
-        return 'over ' + result
-      } else {
-        return result + ' geleden'
-      }
-    }
-
-    return result
-  }
-
-  return {
-    localize: localize
-  }
+function isSameUTCWeek(dirtyDateLeft, dirtyDateRight, options) {
+  requiredArgs(2, arguments);
+  var dateLeftStartOfWeek = startOfUTCWeek(dirtyDateLeft, options);
+  var dateRightStartOfWeek = startOfUTCWeek(dirtyDateRight, options);
+  return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime();
 }
 
-var build_distance_in_words_locale$4 = buildDistanceInWordsLocale$9;
-
-var buildFormattingTokensRegExp$4 = build_formatting_tokens_reg_exp;
-
-function buildFormatLocale$9 () {
-  var months3char = ['jan', 'feb', 'mar', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
-  var monthsFull = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
-  var weekdays2char = ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'];
-  var weekdays3char = ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'];
-  var weekdaysFull = ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'];
-  var meridiemUppercase = ['AM', 'PM'];
-  var meridiemLowercase = ['am', 'pm'];
-  var meridiemFull = ['a.m.', 'p.m.'];
-
-  var formatters = {
-    // Month: Jan, Feb, ..., Dec
-    'MMM': function (date) {
-      return months3char[date.getMonth()]
+var formatDistanceLocale$4 = {
+  lessThanXSeconds: {
+    standalone: {
+      one: 'weniger als 1 Sekunde',
+      other: 'weniger als {{count}} Sekunden'
     },
-
-    // Month: January, February, ..., December
-    'MMMM': function (date) {
-      return monthsFull[date.getMonth()]
-    },
-
-    // Day of week: Su, Mo, ..., Sa
-    'dd': function (date) {
-      return weekdays2char[date.getDay()]
-    },
-
-    // Day of week: Sun, Mon, ..., Sat
-    'ddd': function (date) {
-      return weekdays3char[date.getDay()]
-    },
-
-    // Day of week: Sunday, Monday, ..., Saturday
-    'dddd': function (date) {
-      return weekdaysFull[date.getDay()]
-    },
-
-    // AM, PM
-    'A': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemUppercase[1] : meridiemUppercase[0]
-    },
-
-    // am, pm
-    'a': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemLowercase[1] : meridiemLowercase[0]
-    },
-
-    // a.m., p.m.
-    'aa': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]
+    withPreposition: {
+      one: 'weniger als 1 Sekunde',
+      other: 'weniger als {{count}} Sekunden'
     }
-  };
-
-  // Generate ordinal version of formatters: M -> Mo, D -> Do, etc.
-  var ordinalFormatters = ['M', 'D', 'DDD', 'd', 'Q', 'W'];
-  ordinalFormatters.forEach(function (formatterToken) {
-    formatters[formatterToken + 'o'] = function (date, formatters) {
-      return ordinal$3(formatters[formatterToken](date))
-    };
-  });
-
-  return {
-    formatters: formatters,
-    formattingTokensRegExp: buildFormattingTokensRegExp$4(formatters)
+  },
+  xSeconds: {
+    standalone: {
+      one: '1 Sekunde',
+      other: '{{count}} Sekunden'
+    },
+    withPreposition: {
+      one: '1 Sekunde',
+      other: '{{count}} Sekunden'
+    }
+  },
+  halfAMinute: {
+    standalone: 'halbe Minute',
+    withPreposition: 'halben Minute'
+  },
+  lessThanXMinutes: {
+    standalone: {
+      one: 'weniger als 1 Minute',
+      other: 'weniger als {{count}} Minuten'
+    },
+    withPreposition: {
+      one: 'weniger als 1 Minute',
+      other: 'weniger als {{count}} Minuten'
+    }
+  },
+  xMinutes: {
+    standalone: {
+      one: '1 Minute',
+      other: '{{count}} Minuten'
+    },
+    withPreposition: {
+      one: '1 Minute',
+      other: '{{count}} Minuten'
+    }
+  },
+  aboutXHours: {
+    standalone: {
+      one: 'etwa 1 Stunde',
+      other: 'etwa {{count}} Stunden'
+    },
+    withPreposition: {
+      one: 'etwa 1 Stunde',
+      other: 'etwa {{count}} Stunden'
+    }
+  },
+  xHours: {
+    standalone: {
+      one: '1 Stunde',
+      other: '{{count}} Stunden'
+    },
+    withPreposition: {
+      one: '1 Stunde',
+      other: '{{count}} Stunden'
+    }
+  },
+  xDays: {
+    standalone: {
+      one: '1 Tag',
+      other: '{{count}} Tage'
+    },
+    withPreposition: {
+      one: '1 Tag',
+      other: '{{count}} Tagen'
+    }
+  },
+  aboutXWeeks: {
+    standalone: {
+      one: 'etwa 1 Woche',
+      other: 'etwa {{count}} Wochen'
+    },
+    withPreposition: {
+      one: 'etwa 1 Woche',
+      other: 'etwa {{count}} Wochen'
+    }
+  },
+  xWeeks: {
+    standalone: {
+      one: '1 Woche',
+      other: '{{count}} Wochen'
+    },
+    withPreposition: {
+      one: '1 Woche',
+      other: '{{count}} Wochen'
+    }
+  },
+  aboutXMonths: {
+    standalone: {
+      one: 'etwa 1 Monat',
+      other: 'etwa {{count}} Monate'
+    },
+    withPreposition: {
+      one: 'etwa 1 Monat',
+      other: 'etwa {{count}} Monaten'
+    }
+  },
+  xMonths: {
+    standalone: {
+      one: '1 Monat',
+      other: '{{count}} Monate'
+    },
+    withPreposition: {
+      one: '1 Monat',
+      other: '{{count}} Monaten'
+    }
+  },
+  aboutXYears: {
+    standalone: {
+      one: 'etwa 1 Jahr',
+      other: 'etwa {{count}} Jahre'
+    },
+    withPreposition: {
+      one: 'etwa 1 Jahr',
+      other: 'etwa {{count}} Jahren'
+    }
+  },
+  xYears: {
+    standalone: {
+      one: '1 Jahr',
+      other: '{{count}} Jahre'
+    },
+    withPreposition: {
+      one: '1 Jahr',
+      other: '{{count}} Jahren'
+    }
+  },
+  overXYears: {
+    standalone: {
+      one: 'mehr als 1 Jahr',
+      other: 'mehr als {{count}} Jahre'
+    },
+    withPreposition: {
+      one: 'mehr als 1 Jahr',
+      other: 'mehr als {{count}} Jahren'
+    }
+  },
+  almostXYears: {
+    standalone: {
+      one: 'fast 1 Jahr',
+      other: 'fast {{count}} Jahre'
+    },
+    withPreposition: {
+      one: 'fast 1 Jahr',
+      other: 'fast {{count}} Jahren'
+    }
   }
-}
-
-function ordinal$3 (number) {
-  return number + 'e'
-}
-
-var build_format_locale$4 = buildFormatLocale$9;
-
-var buildDistanceInWordsLocale$8 = build_distance_in_words_locale$4;
-var buildFormatLocale$8 = build_format_locale$4;
-
-/**
- * @category Locales
- * @summary Dutch locale.
- * @author Jorik Tangelder [@jtangelder]{@link https://github.com/jtangelder}
- * @author Ruben Stolk [@rubenstolk]{@link https://github.com/rubenstolk}
- */
-var nl$2 = {
-  distanceInWords: buildDistanceInWordsLocale$8(),
-  format: buildFormatLocale$8()
 };
 
-function buildDistanceInWordsLocale$7 () {
-  var distanceInWordsLocale = {
-    lessThanXSeconds: {
-      standalone: {
-        one: 'weniger als eine Sekunde',
-        other: 'weniger als {{count}} Sekunden'
-      },
-      withPreposition: {
-        one: 'weniger als einer Sekunde',
-        other: 'weniger als {{count}} Sekunden'
-      }
-    },
+var formatDistance$8 = function formatDistance(token, count, options) {
+  var result;
+  var tokenValue = options !== null && options !== void 0 && options.addSuffix ? formatDistanceLocale$4[token].withPreposition : formatDistanceLocale$4[token].standalone;
 
-    xSeconds: {
-      standalone: {
-        one: 'eine Sekunde',
-        other: '{{count}} Sekunden'
-      },
-      withPreposition: {
-        one: 'einer Sekunde',
-        other: '{{count}} Sekunden'
-      }
-    },
+  if (typeof tokenValue === 'string') {
+    result = tokenValue;
+  } else if (count === 1) {
+    result = tokenValue.one;
+  } else {
+    result = tokenValue.other.replace('{{count}}', String(count));
+  }
 
-    halfAMinute: {
-      standalone: 'eine halbe Minute',
-      withPreposition: 'einer halben Minute'
-    },
-
-    lessThanXMinutes: {
-      standalone: {
-        one: 'weniger als eine Minute',
-        other: 'weniger als {{count}} Minuten'
-      },
-      withPreposition: {
-        one: 'weniger als einer Minute',
-        other: 'weniger als {{count}} Minuten'
-      }
-    },
-
-    xMinutes: {
-      standalone: {
-        one: 'eine Minute',
-        other: '{{count}} Minuten'
-      },
-      withPreposition: {
-        one: 'einer Minute',
-        other: '{{count}} Minuten'
-      }
-    },
-
-    aboutXHours: {
-      standalone: {
-        one: 'etwa eine Stunde',
-        other: 'etwa {{count}} Stunden'
-      },
-      withPreposition: {
-        one: 'etwa einer Stunde',
-        other: 'etwa {{count}} Stunden'
-      }
-    },
-
-    xHours: {
-      standalone: {
-        one: 'eine Stunde',
-        other: '{{count}} Stunden'
-      },
-      withPreposition: {
-        one: 'einer Stunde',
-        other: '{{count}} Stunden'
-      }
-    },
-
-    xDays: {
-      standalone: {
-        one: 'ein Tag',
-        other: '{{count}} Tage'
-      },
-      withPreposition: {
-        one: 'einem Tag',
-        other: '{{count}} Tagen'
-      }
-
-    },
-
-    aboutXMonths: {
-      standalone: {
-        one: 'etwa ein Monat',
-        other: 'etwa {{count}} Monate'
-      },
-      withPreposition: {
-        one: 'etwa einem Monat',
-        other: 'etwa {{count}} Monaten'
-      }
-    },
-
-    xMonths: {
-      standalone: {
-        one: 'ein Monat',
-        other: '{{count}} Monate'
-      },
-      withPreposition: {
-        one: 'einem Monat',
-        other: '{{count}} Monaten'
-      }
-    },
-
-    aboutXYears: {
-      standalone: {
-        one: 'etwa ein Jahr',
-        other: 'etwa {{count}} Jahre'
-      },
-      withPreposition: {
-        one: 'etwa einem Jahr',
-        other: 'etwa {{count}} Jahren'
-      }
-    },
-
-    xYears: {
-      standalone: {
-        one: 'ein Jahr',
-        other: '{{count}} Jahre'
-      },
-      withPreposition: {
-        one: 'einem Jahr',
-        other: '{{count}} Jahren'
-      }
-    },
-
-    overXYears: {
-      standalone: {
-        one: 'mehr als ein Jahr',
-        other: 'mehr als {{count}} Jahre'
-      },
-      withPreposition: {
-        one: 'mehr als einem Jahr',
-        other: 'mehr als {{count}} Jahren'
-      }
-    },
-
-    almostXYears: {
-      standalone: {
-        one: 'fast ein Jahr',
-        other: 'fast {{count}} Jahre'
-      },
-      withPreposition: {
-        one: 'fast einem Jahr',
-        other: 'fast {{count}} Jahren'
-      }
-    }
-  };
-
-  function localize (token, count, options) {
-    options = options || {};
-
-    var usageGroup = options.addSuffix
-      ? distanceInWordsLocale[token].withPreposition
-      : distanceInWordsLocale[token].standalone;
-
-    var result;
-    if (typeof usageGroup === 'string') {
-      result = usageGroup;
-    } else if (count === 1) {
-      result = usageGroup.one;
+  if (options !== null && options !== void 0 && options.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
+      return 'in ' + result;
     } else {
-      result = usageGroup.other.replace('{{count}}', count);
+      return 'vor ' + result;
     }
-
-    if (options.addSuffix) {
-      if (options.comparison > 0) {
-        return 'in ' + result
-      } else {
-        return 'vor ' + result
-      }
-    }
-
-    return result
   }
 
-  return {
-    localize: localize
+  return result;
+};
+
+var formatDistance$9 = formatDistance$8;
+
+// DIN 5008: https://de.wikipedia.org/wiki/Datumsformat#DIN_5008
+var dateFormats$5 = {
+  full: 'EEEE, do MMMM y',
+  // Montag, 7. Januar 2018
+  long: 'do MMMM y',
+  // 7. Januar 2018
+  medium: 'do MMM y',
+  // 7. Jan. 2018
+  short: 'dd.MM.y' // 07.01.2018
+
+};
+var timeFormats$5 = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats$5 = {
+  full: "{{date}} 'um' {{time}}",
+  long: "{{date}} 'um' {{time}}",
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong$a = {
+  date: buildFormatLongFn({
+    formats: dateFormats$5,
+    defaultWidth: 'full'
+  }),
+  time: buildFormatLongFn({
+    formats: timeFormats$5,
+    defaultWidth: 'full'
+  }),
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats$5,
+    defaultWidth: 'full'
+  })
+};
+var formatLong$b = formatLong$a;
+
+var formatRelativeLocale$4 = {
+  lastWeek: "'letzten' eeee 'um' p",
+  yesterday: "'gestern um' p",
+  today: "'heute um' p",
+  tomorrow: "'morgen um' p",
+  nextWeek: "eeee 'um' p",
+  other: 'P'
+};
+
+var formatRelative$8 = function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale$4[token];
+};
+
+var formatRelative$9 = formatRelative$8;
+
+var eraValues$4 = {
+  narrow: ['v.Chr.', 'n.Chr.'],
+  abbreviated: ['v.Chr.', 'n.Chr.'],
+  wide: ['vor Christus', 'nach Christus']
+};
+var quarterValues$4 = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
+  wide: ['1. Quartal', '2. Quartal', '3. Quartal', '4. Quartal']
+}; // Note: in German, the names of days of the week and months are capitalized.
+// If you are making a new locale based on this one, check if the same is true for the language you're working on.
+// Generally, formatted dates should look like they are in the middle of a sentence,
+// e.g. in Spanish language the weekdays and months should be in the lowercase.
+
+var monthValues$4 = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+  wide: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
+}; // https://st.unicode.org/cldr-apps/v#/de/Gregorian/
+
+var formattingMonthValues = {
+  narrow: monthValues$4.narrow,
+  abbreviated: ['Jan.', 'Feb.', 'März', 'Apr.', 'Mai', 'Juni', 'Juli', 'Aug.', 'Sep.', 'Okt.', 'Nov.', 'Dez.'],
+  wide: monthValues$4.wide
+};
+var dayValues$4 = {
+  narrow: ['S', 'M', 'D', 'M', 'D', 'F', 'S'],
+  short: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+  abbreviated: ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'],
+  wide: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag']
+}; // https://www.unicode.org/cldr/charts/32/summary/de.html#1881
+
+var dayPeriodValues$4 = {
+  narrow: {
+    am: 'vm.',
+    pm: 'nm.',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'Morgen',
+    afternoon: 'Nachm.',
+    evening: 'Abend',
+    night: 'Nacht'
+  },
+  abbreviated: {
+    am: 'vorm.',
+    pm: 'nachm.',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'Morgen',
+    afternoon: 'Nachmittag',
+    evening: 'Abend',
+    night: 'Nacht'
+  },
+  wide: {
+    am: 'vormittags',
+    pm: 'nachmittags',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'Morgen',
+    afternoon: 'Nachmittag',
+    evening: 'Abend',
+    night: 'Nacht'
   }
-}
+};
+var formattingDayPeriodValues$2 = {
+  narrow: {
+    am: 'vm.',
+    pm: 'nm.',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'morgens',
+    afternoon: 'nachm.',
+    evening: 'abends',
+    night: 'nachts'
+  },
+  abbreviated: {
+    am: 'vorm.',
+    pm: 'nachm.',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'morgens',
+    afternoon: 'nachmittags',
+    evening: 'abends',
+    night: 'nachts'
+  },
+  wide: {
+    am: 'vormittags',
+    pm: 'nachmittags',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'morgens',
+    afternoon: 'nachmittags',
+    evening: 'abends',
+    night: 'nachts'
+  }
+};
 
-var build_distance_in_words_locale$3 = buildDistanceInWordsLocale$7;
+var ordinalNumber$4 = function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  return number + '.';
+};
 
-var buildFormattingTokensRegExp$3 = build_formatting_tokens_reg_exp;
-
-function buildFormatLocale$7 () {
-  // Note: in German, the names of days of the week and months are capitalized.
-  // If you are making a new locale based on this one, check if the same is true for the language you're working on.
-  // Generally, formatted dates should look like they are in the middle of a sentence,
-  // e.g. in Spanish language the weekdays and months should be in the lowercase.
-  var months3char = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
-  var monthsFull = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
-  var weekdays2char = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
-  var weekdays3char = ['Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam'];
-  var weekdaysFull = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
-  var meridiemUppercase = ['AM', 'PM'];
-  var meridiemLowercase = ['am', 'pm'];
-  var meridiemFull = ['a.m.', 'p.m.'];
-
-  var formatters = {
-    // Month: Jan, Feb, ..., Dec
-    'MMM': function (date) {
-      return months3char[date.getMonth()]
-    },
-
-    // Month: January, February, ..., December
-    'MMMM': function (date) {
-      return monthsFull[date.getMonth()]
-    },
-
-    // Day of week: Su, Mo, ..., Sa
-    'dd': function (date) {
-      return weekdays2char[date.getDay()]
-    },
-
-    // Day of week: Sun, Mon, ..., Sat
-    'ddd': function (date) {
-      return weekdays3char[date.getDay()]
-    },
-
-    // Day of week: Sunday, Monday, ..., Saturday
-    'dddd': function (date) {
-      return weekdaysFull[date.getDay()]
-    },
-
-    // AM, PM
-    'A': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemUppercase[1] : meridiemUppercase[0]
-    },
-
-    // am, pm
-    'a': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemLowercase[1] : meridiemLowercase[0]
-    },
-
-    // a.m., p.m.
-    'aa': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]
+var localize$8 = {
+  ordinalNumber: ordinalNumber$4,
+  era: buildLocalizeFn({
+    values: eraValues$4,
+    defaultWidth: 'wide'
+  }),
+  quarter: buildLocalizeFn({
+    values: quarterValues$4,
+    defaultWidth: 'wide',
+    argumentCallback: function argumentCallback(quarter) {
+      return quarter - 1;
     }
-  };
+  }),
+  month: buildLocalizeFn({
+    values: monthValues$4,
+    formattingValues: formattingMonthValues,
+    defaultWidth: 'wide'
+  }),
+  day: buildLocalizeFn({
+    values: dayValues$4,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues$4,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues$2,
+    defaultFormattingWidth: 'wide'
+  })
+};
+var localize$9 = localize$8;
 
-  // Generate ordinal version of formatters: M -> Mo, D -> Do, etc.
-  var ordinalFormatters = ['M', 'D', 'DDD', 'd', 'Q', 'W'];
-  ordinalFormatters.forEach(function (formatterToken) {
-    formatters[formatterToken + 'o'] = function (date, formatters) {
-      return ordinal$2(formatters[formatterToken](date))
-    };
-  });
+var matchOrdinalNumberPattern$4 = /^(\d+)(\.)?/i;
+var parseOrdinalNumberPattern$4 = /\d+/i;
+var matchEraPatterns$4 = {
+  narrow: /^(v\.? ?Chr\.?|n\.? ?Chr\.?)/i,
+  abbreviated: /^(v\.? ?Chr\.?|n\.? ?Chr\.?)/i,
+  wide: /^(vor Christus|vor unserer Zeitrechnung|nach Christus|unserer Zeitrechnung)/i
+};
+var parseEraPatterns$4 = {
+  any: [/^v/i, /^n/i]
+};
+var matchQuarterPatterns$4 = {
+  narrow: /^[1234]/i,
+  abbreviated: /^q[1234]/i,
+  wide: /^[1234](\.)? Quartal/i
+};
+var parseQuarterPatterns$4 = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns$4 = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(j[aä]n|feb|mär[z]?|apr|mai|jun[i]?|jul[i]?|aug|sep|okt|nov|dez)\.?/i,
+  wide: /^(januar|februar|märz|april|mai|juni|juli|august|september|oktober|november|dezember)/i
+};
+var parseMonthPatterns$4 = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^j[aä]/i, /^f/i, /^mär/i, /^ap/i, /^mai/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns$4 = {
+  narrow: /^[smdmf]/i,
+  short: /^(so|mo|di|mi|do|fr|sa)/i,
+  abbreviated: /^(son?|mon?|die?|mit?|don?|fre?|sam?)\.?/i,
+  wide: /^(sonntag|montag|dienstag|mittwoch|donnerstag|freitag|samstag)/i
+};
+var parseDayPatterns$4 = {
+  any: [/^so/i, /^mo/i, /^di/i, /^mi/i, /^do/i, /^f/i, /^sa/i]
+};
+var matchDayPeriodPatterns$4 = {
+  narrow: /^(vm\.?|nm\.?|Mitternacht|Mittag|morgens|nachm\.?|abends|nachts)/i,
+  abbreviated: /^(vorm\.?|nachm\.?|Mitternacht|Mittag|morgens|nachm\.?|abends|nachts)/i,
+  wide: /^(vormittags|nachmittags|Mitternacht|Mittag|morgens|nachmittags|abends|nachts)/i
+};
+var parseDayPeriodPatterns$4 = {
+  any: {
+    am: /^v/i,
+    pm: /^n/i,
+    midnight: /^Mitte/i,
+    noon: /^Mitta/i,
+    morning: /morgens/i,
+    afternoon: /nachmittags/i,
+    // will never be matched. Afternoon is matched by `pm`
+    evening: /abends/i,
+    night: /nachts/i // will never be matched. Night is matched by `pm`
 
-  return {
-    formatters: formatters,
-    formattingTokensRegExp: buildFormattingTokensRegExp$3(formatters)
   }
-}
-
-function ordinal$2 (number) {
-  return number + '.'
-}
-
-var build_format_locale$3 = buildFormatLocale$7;
-
-var buildDistanceInWordsLocale$6 = build_distance_in_words_locale$3;
-var buildFormatLocale$6 = build_format_locale$3;
+};
+var match$8 = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern$4,
+    parsePattern: parseOrdinalNumberPattern$4,
+    valueCallback: function valueCallback(value) {
+      return parseInt(value);
+    }
+  }),
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns$4,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns$4,
+    defaultParseWidth: 'any'
+  }),
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns$4,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns$4,
+    defaultParseWidth: 'any',
+    valueCallback: function valueCallback(index) {
+      return index + 1;
+    }
+  }),
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns$4,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns$4,
+    defaultParseWidth: 'any'
+  }),
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns$4,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns$4,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns$4,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPeriodPatterns$4,
+    defaultParseWidth: 'any'
+  })
+};
+var match$9 = match$8;
 
 /**
+ * @type {Locale}
  * @category Locales
  * @summary German locale.
+ * @language German
+ * @iso-639-2 deu
  * @author Thomas Eilmsteiner [@DeMuu]{@link https://github.com/DeMuu}
  * @author Asia [@asia-t]{@link https://github.com/asia-t}
+ * @author Van Vuong Ngo [@vanvuongngo]{@link https://github.com/vanvuongngo}
+ * @author RomanErnst [@pex]{@link https://github.com/pex}
+ * @author Philipp Keck [@Philipp91]{@link https://github.com/Philipp91}
  */
-var de$2 = {
-  distanceInWords: buildDistanceInWordsLocale$6(),
-  format: buildFormatLocale$6()
+var locale$5 = {
+  code: 'de',
+  formatDistance: formatDistance$9,
+  formatLong: formatLong$b,
+  formatRelative: formatRelative$9,
+  localize: localize$9,
+  match: match$9,
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
 };
+var de$2 = locale$5;
 
-function buildDistanceInWordsLocale$5 () {
-  var distanceInWordsLocale = {
-    lessThanXSeconds: {
-      one: 'moins d’une seconde',
-      other: 'moins de {{count}} secondes'
-    },
-
-    xSeconds: {
-      one: '1 seconde',
-      other: '{{count}} secondes'
-    },
-
-    halfAMinute: '30 secondes',
-
-    lessThanXMinutes: {
-      one: 'moins d’une minute',
-      other: 'moins de {{count}} minutes'
-    },
-
-    xMinutes: {
-      one: '1 minute',
-      other: '{{count}} minutes'
-    },
-
-    aboutXHours: {
-      one: 'environ 1 heure',
-      other: 'environ {{count}} heures'
-    },
-
-    xHours: {
-      one: '1 heure',
-      other: '{{count}} heures'
-    },
-
-    xDays: {
-      one: '1 jour',
-      other: '{{count}} jours'
-    },
-
-    aboutXMonths: {
-      one: 'environ 1 mois',
-      other: 'environ {{count}} mois'
-    },
-
-    xMonths: {
-      one: '1 mois',
-      other: '{{count}} mois'
-    },
-
-    aboutXYears: {
-      one: 'environ 1 an',
-      other: 'environ {{count}} ans'
-    },
-
-    xYears: {
-      one: '1 an',
-      other: '{{count}} ans'
-    },
-
-    overXYears: {
-      one: 'plus d’un an',
-      other: 'plus de {{count}} ans'
-    },
-
-    almostXYears: {
-      one: 'presqu’un an',
-      other: 'presque {{count}} ans'
-    }
-  };
-
-  function localize (token, count, options) {
-    options = options || {};
-
-    var result;
-    if (typeof distanceInWordsLocale[token] === 'string') {
-      result = distanceInWordsLocale[token];
-    } else if (count === 1) {
-      result = distanceInWordsLocale[token].one;
-    } else {
-      result = distanceInWordsLocale[token].other.replace('{{count}}', count);
-    }
-
-    if (options.addSuffix) {
-      if (options.comparison > 0) {
-        return 'dans ' + result
-      } else {
-        return 'il y a ' + result
-      }
-    }
-
-    return result
-  }
-
-  return {
-    localize: localize
-  }
-}
-
-var build_distance_in_words_locale$2 = buildDistanceInWordsLocale$5;
-
-var buildFormattingTokensRegExp$2 = build_formatting_tokens_reg_exp;
-
-function buildFormatLocale$5 () {
-  var months3char = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juill.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
-  var monthsFull = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
-  var weekdays2char = ['di', 'lu', 'ma', 'me', 'je', 've', 'sa'];
-  var weekdays3char = ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'];
-  var weekdaysFull = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
-  var meridiemUppercase = ['AM', 'PM'];
-  var meridiemLowercase = ['am', 'pm'];
-  var meridiemFull = ['du matin', 'de l’après-midi', 'du soir'];
-
-  var formatters = {
-    // Month: Jan, Feb, …, Dec
-    'MMM': function (date) {
-      return months3char[date.getMonth()]
-    },
-
-    // Month: January, February, …, December
-    'MMMM': function (date) {
-      return monthsFull[date.getMonth()]
-    },
-
-    // Day of week: Su, Mo, …, Sa
-    'dd': function (date) {
-      return weekdays2char[date.getDay()]
-    },
-
-    // Day of week: Sun, Mon, …, Sat
-    'ddd': function (date) {
-      return weekdays3char[date.getDay()]
-    },
-
-    // Day of week: Sunday, Monday, …, Saturday
-    'dddd': function (date) {
-      return weekdaysFull[date.getDay()]
-    },
-
-    // AM, PM
-    'A': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemUppercase[1] : meridiemUppercase[0]
-    },
-
-    // am, pm
-    'a': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemLowercase[1] : meridiemLowercase[0]
-    },
-
-    // a.m., p.m.
-    'aa': function (date) {
-      var hours = date.getHours();
-
-      if (hours <= 12) {
-        return meridiemFull[0]
-      }
-
-      if (hours <= 16) {
-        return meridiemFull[1]
-      }
-
-      return meridiemFull[2]
-    },
-
-    // ISO week, ordinal version: 1st, 2nd, …, 53rd
-    // NOTE: Week has feminine grammatical gender in French: semaine
-    'Wo': function (date, formatters) {
-      return feminineOrdinal(formatters.W(date))
-    }
-  };
-
-  // Generate ordinal version of formatters: M → Mo, D → Do, etc.
-  // NOTE: For words with masculine grammatical gender in French: mois, jour, trimestre
-  var formatterTokens = ['M', 'D', 'DDD', 'd', 'Q'];
-  formatterTokens.forEach(function (formatterToken) {
-    formatters[formatterToken + 'o'] = function (date, formatters) {
-      return masculineOrdinal(formatters[formatterToken](date))
-    };
-  });
-
-  // Special case for day of month ordinals in long date format context:
-  // 1er mars, 2 mars, 3 mars, …
-  // See https://github.com/date-fns/date-fns/issues/437
-  //
-  // NOTE: The below implementation works because parsing of tokens inside a
-  // format string is done by a greedy regular expression, i.e. longer tokens
-  // have priority. E.g. formatter for "Do MMMM" has priority over individual
-  // formatters for "Do" and "MMMM".
-  var monthsTokens = ['MMM', 'MMMM'];
-  monthsTokens.forEach(function (monthToken) {
-    formatters['Do ' + monthToken] = function (date, commonFormatters) {
-      var dayOfMonthToken = date.getDate() === 1
-        ? 'Do'
-        : 'D';
-      var dayOfMonthFormatter = formatters[dayOfMonthToken] || commonFormatters[dayOfMonthToken];
-
-      return dayOfMonthFormatter(date, commonFormatters) + ' ' + formatters[monthToken](date)
-    };
-  });
-
-  return {
-    formatters: formatters,
-    formattingTokensRegExp: buildFormattingTokensRegExp$2(formatters)
-  }
-}
-
-function masculineOrdinal (number) {
-  if (number === 1) {
-    return '1er'
-  }
-
-  return number + 'e'
-}
-
-function feminineOrdinal (number) {
-  if (number === 1) {
-    return '1re'
-  }
-
-  return number + 'e'
-}
-
-var build_format_locale$2 = buildFormatLocale$5;
-
-var buildDistanceInWordsLocale$4 = build_distance_in_words_locale$2;
-var buildFormatLocale$4 = build_format_locale$2;
+var dateFormats$4 = {
+  full: 'EEEE, d MMMM yyyy',
+  long: 'd MMMM yyyy',
+  medium: 'd MMM yyyy',
+  short: 'dd/MM/yyyy'
+};
+var timeFormats$4 = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats$4 = {
+  full: "{{date}} 'at' {{time}}",
+  long: "{{date}} 'at' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong$8 = {
+  date: buildFormatLongFn({
+    formats: dateFormats$4,
+    defaultWidth: 'full'
+  }),
+  time: buildFormatLongFn({
+    formats: timeFormats$4,
+    defaultWidth: 'full'
+  }),
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats$4,
+    defaultWidth: 'full'
+  })
+};
+var formatLong$9 = formatLong$8;
 
 /**
+ * @type {Locale}
  * @category Locales
- * @summary French locale.
- * @author Jean Dupouy [@izeau]{@link https://github.com/izeau}
- * @author François B [@fbonzon]{@link https://github.com/fbonzon}
+ * @summary English locale (United Kingdom).
+ * @language English
+ * @iso-639-2 eng
+ * @author Alex [@glintik]{@link https://github.com/glintik}
  */
-var fr$2 = {
-  distanceInWords: buildDistanceInWordsLocale$4(),
-  format: buildFormatLocale$4()
+
+var locale$4 = {
+  code: 'en-GB',
+  formatDistance: formatDistance$b,
+  formatLong: formatLong$9,
+  formatRelative: formatRelative$b,
+  localize: localize$b,
+  match: match$b,
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+var enGB = locale$4;
+
+var formatDistanceLocale$3 = {
+  lessThanXSeconds: {
+    one: 'menos de un segundo',
+    other: 'menos de {{count}} segundos'
+  },
+  xSeconds: {
+    one: '1 segundo',
+    other: '{{count}} segundos'
+  },
+  halfAMinute: 'medio minuto',
+  lessThanXMinutes: {
+    one: 'menos de un minuto',
+    other: 'menos de {{count}} minutos'
+  },
+  xMinutes: {
+    one: '1 minuto',
+    other: '{{count}} minutos'
+  },
+  aboutXHours: {
+    one: 'alrededor de 1 hora',
+    other: 'alrededor de {{count}} horas'
+  },
+  xHours: {
+    one: '1 hora',
+    other: '{{count}} horas'
+  },
+  xDays: {
+    one: '1 día',
+    other: '{{count}} días'
+  },
+  aboutXWeeks: {
+    one: 'alrededor de 1 semana',
+    other: 'alrededor de {{count}} semanas'
+  },
+  xWeeks: {
+    one: '1 semana',
+    other: '{{count}} semanas'
+  },
+  aboutXMonths: {
+    one: 'alrededor de 1 mes',
+    other: 'alrededor de {{count}} meses'
+  },
+  xMonths: {
+    one: '1 mes',
+    other: '{{count}} meses'
+  },
+  aboutXYears: {
+    one: 'alrededor de 1 año',
+    other: 'alrededor de {{count}} años'
+  },
+  xYears: {
+    one: '1 año',
+    other: '{{count}} años'
+  },
+  overXYears: {
+    one: 'más de 1 año',
+    other: 'más de {{count}} años'
+  },
+  almostXYears: {
+    one: 'casi 1 año',
+    other: 'casi {{count}} años'
+  }
 };
 
-function buildDistanceInWordsLocale$3 () {
-  var distanceInWordsLocale = {
-    lessThanXSeconds: {
-      one: 'meno di un secondo',
-      other: 'meno di {{count}} secondi'
-    },
+var formatDistance$6 = function formatDistance(token, count, options) {
+  var result;
+  var tokenValue = formatDistanceLocale$3[token];
 
-    xSeconds: {
-      one: 'un secondo',
-      other: '{{count}} secondi'
-    },
+  if (typeof tokenValue === 'string') {
+    result = tokenValue;
+  } else if (count === 1) {
+    result = tokenValue.one;
+  } else {
+    result = tokenValue.other.replace('{{count}}', count.toString());
+  }
 
-    halfAMinute: 'alcuni secondi',
-
-    lessThanXMinutes: {
-      one: 'meno di un minuto',
-      other: 'meno di {{count}} minuti'
-    },
-
-    xMinutes: {
-      one: 'un minuto',
-      other: '{{count}} minuti'
-    },
-
-    aboutXHours: {
-      one: 'circa un\'ora',
-      other: 'circa {{count}} ore'
-    },
-
-    xHours: {
-      one: 'un\'ora',
-      other: '{{count}} ore'
-    },
-
-    xDays: {
-      one: 'un giorno',
-      other: '{{count}} giorni'
-    },
-
-    aboutXMonths: {
-      one: 'circa un mese',
-      other: 'circa {{count}} mesi'
-    },
-
-    xMonths: {
-      one: 'un mese',
-      other: '{{count}} mesi'
-    },
-
-    aboutXYears: {
-      one: 'circa un anno',
-      other: 'circa {{count}} anni'
-    },
-
-    xYears: {
-      one: 'un anno',
-      other: '{{count}} anni'
-    },
-
-    overXYears: {
-      one: 'più di un anno',
-      other: 'più di {{count}} anni'
-    },
-
-    almostXYears: {
-      one: 'quasi un anno',
-      other: 'quasi {{count}} anni'
-    }
-  };
-
-  function localize (token, count, options) {
-    options = options || {};
-
-    var result;
-    if (typeof distanceInWordsLocale[token] === 'string') {
-      result = distanceInWordsLocale[token];
-    } else if (count === 1) {
-      result = distanceInWordsLocale[token].one;
+  if (options !== null && options !== void 0 && options.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
+      return 'en ' + result;
     } else {
-      result = distanceInWordsLocale[token].other.replace('{{count}}', count);
+      return 'hace ' + result;
     }
-
-    if (options.addSuffix) {
-      if (options.comparison > 0) {
-        return 'tra ' + result
-      } else {
-        return result + ' fa'
-      }
-    }
-
-    return result
   }
 
-  return {
-    localize: localize
-  }
-}
-
-var build_distance_in_words_locale$1 = buildDistanceInWordsLocale$3;
-
-var buildFormattingTokensRegExp$1 = build_formatting_tokens_reg_exp;
-
-function buildFormatLocale$3 () {
-  var months3char = ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic'];
-  var monthsFull = ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto', 'settembre', 'ottobre', 'novembre', 'dicembre'];
-  var weekdays2char = ['do', 'lu', 'ma', 'me', 'gi', 've', 'sa'];
-  var weekdays3char = ['dom', 'lun', 'mar', 'mer', 'gio', 'ven', 'sab'];
-  var weekdaysFull = ['domenica', 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato'];
-  var meridiemUppercase = ['AM', 'PM'];
-  var meridiemLowercase = ['am', 'pm'];
-  var meridiemFull = ['a.m.', 'p.m.'];
-
-  var formatters = {
-    // Month: Jan, Feb, ..., Dec
-    'MMM': function (date) {
-      return months3char[date.getMonth()]
-    },
-
-    // Month: January, February, ..., December
-    'MMMM': function (date) {
-      return monthsFull[date.getMonth()]
-    },
-
-    // Day of week: Su, Mo, ..., Sa
-    'dd': function (date) {
-      return weekdays2char[date.getDay()]
-    },
-
-    // Day of week: Sun, Mon, ..., Sat
-    'ddd': function (date) {
-      return weekdays3char[date.getDay()]
-    },
-
-    // Day of week: Sunday, Monday, ..., Saturday
-    'dddd': function (date) {
-      return weekdaysFull[date.getDay()]
-    },
-
-    // AM, PM
-    'A': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemUppercase[1] : meridiemUppercase[0]
-    },
-
-    // am, pm
-    'a': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemLowercase[1] : meridiemLowercase[0]
-    },
-
-    // a.m., p.m.
-    'aa': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]
-    }
-  };
-
-  // Generate ordinal version of formatters: M -> Mo, D -> Do, etc.
-  var ordinalFormatters = ['M', 'D', 'DDD', 'd', 'Q', 'W'];
-  ordinalFormatters.forEach(function (formatterToken) {
-    formatters[formatterToken + 'o'] = function (date, formatters) {
-      return ordinal$1(formatters[formatterToken](date))
-    };
-  });
-
-  return {
-    formatters: formatters,
-    formattingTokensRegExp: buildFormattingTokensRegExp$1(formatters)
-  }
-}
-
-function ordinal$1 (number) {
-  return number + 'º'
-}
-
-var build_format_locale$1 = buildFormatLocale$3;
-
-var buildDistanceInWordsLocale$2 = build_distance_in_words_locale$1;
-var buildFormatLocale$2 = build_format_locale$1;
-
-/**
- * @category Locales
- * @summary Italian locale.
- * @author Alberto Restifo [@albertorestifo]{@link https://github.com/albertorestifo}
- */
-var it$2 = {
-  distanceInWords: buildDistanceInWordsLocale$2(),
-  format: buildFormatLocale$2()
+  return result;
 };
 
-function buildDistanceInWordsLocale$1 () {
-  var distanceInWordsLocale = {
-    lessThanXSeconds: {
-      one: 'menos de un segundo',
-      other: 'menos de {{count}} segundos'
-    },
+var formatDistance$7 = formatDistance$6;
 
-    xSeconds: {
-      one: '1 segundo',
-      other: '{{count}} segundos'
-    },
+var dateFormats$3 = {
+  full: "EEEE, d 'de' MMMM 'de' y",
+  long: "d 'de' MMMM 'de' y",
+  medium: 'd MMM y',
+  short: 'dd/MM/y'
+};
+var timeFormats$3 = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats$3 = {
+  full: "{{date}} 'a las' {{time}}",
+  long: "{{date}} 'a las' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong$6 = {
+  date: buildFormatLongFn({
+    formats: dateFormats$3,
+    defaultWidth: 'full'
+  }),
+  time: buildFormatLongFn({
+    formats: timeFormats$3,
+    defaultWidth: 'full'
+  }),
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats$3,
+    defaultWidth: 'full'
+  })
+};
+var formatLong$7 = formatLong$6;
 
-    halfAMinute: 'medio minuto',
+var formatRelativeLocale$3 = {
+  lastWeek: "'el' eeee 'pasado a la' p",
+  yesterday: "'ayer a la' p",
+  today: "'hoy a la' p",
+  tomorrow: "'mañana a la' p",
+  nextWeek: "eeee 'a la' p",
+  other: 'P'
+};
+var formatRelativeLocalePlural = {
+  lastWeek: "'el' eeee 'pasado a las' p",
+  yesterday: "'ayer a las' p",
+  today: "'hoy a las' p",
+  tomorrow: "'mañana a las' p",
+  nextWeek: "eeee 'a las' p",
+  other: 'P'
+};
 
-    lessThanXMinutes: {
-      one: 'menos de un minuto',
-      other: 'menos de {{count}} minutos'
-    },
-
-    xMinutes: {
-      one: '1 minuto',
-      other: '{{count}} minutos'
-    },
-
-    aboutXHours: {
-      one: 'alrededor de 1 hora',
-      other: 'alrededor de {{count}} horas'
-    },
-
-    xHours: {
-      one: '1 hora',
-      other: '{{count}} horas'
-    },
-
-    xDays: {
-      one: '1 día',
-      other: '{{count}} días'
-    },
-
-    aboutXMonths: {
-      one: 'alrededor de 1 mes',
-      other: 'alrededor de {{count}} meses'
-    },
-
-    xMonths: {
-      one: '1 mes',
-      other: '{{count}} meses'
-    },
-
-    aboutXYears: {
-      one: 'alrededor de 1 año',
-      other: 'alrededor de {{count}} años'
-    },
-
-    xYears: {
-      one: '1 año',
-      other: '{{count}} años'
-    },
-
-    overXYears: {
-      one: 'más de 1 año',
-      other: 'más de {{count}} años'
-    },
-
-    almostXYears: {
-      one: 'casi 1 año',
-      other: 'casi {{count}} años'
-    }
-  };
-
-  function localize (token, count, options) {
-    options = options || {};
-
-    var result;
-    if (typeof distanceInWordsLocale[token] === 'string') {
-      result = distanceInWordsLocale[token];
-    } else if (count === 1) {
-      result = distanceInWordsLocale[token].one;
-    } else {
-      result = distanceInWordsLocale[token].other.replace('{{count}}', count);
-    }
-
-    if (options.addSuffix) {
-      if (options.comparison > 0) {
-        return 'en ' + result
-      } else {
-        return 'hace ' + result
-      }
-    }
-
-    return result
+var formatRelative$6 = function formatRelative(token, date, _baseDate, _options) {
+  if (date.getUTCHours() !== 1) {
+    return formatRelativeLocalePlural[token];
+  } else {
+    return formatRelativeLocale$3[token];
   }
+};
 
-  return {
-    localize: localize
+var formatRelative$7 = formatRelative$6;
+
+var eraValues$3 = {
+  narrow: ['AC', 'DC'],
+  abbreviated: ['AC', 'DC'],
+  wide: ['antes de cristo', 'después de cristo']
+};
+var quarterValues$3 = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['T1', 'T2', 'T3', 'T4'],
+  wide: ['1º trimestre', '2º trimestre', '3º trimestre', '4º trimestre']
+};
+var monthValues$3 = {
+  narrow: ['e', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
+  abbreviated: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
+  wide: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+};
+var dayValues$3 = {
+  narrow: ['d', 'l', 'm', 'm', 'j', 'v', 's'],
+  short: ['do', 'lu', 'ma', 'mi', 'ju', 'vi', 'sá'],
+  abbreviated: ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'],
+  wide: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado']
+};
+var dayPeriodValues$3 = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'mn',
+    noon: 'md',
+    morning: 'mañana',
+    afternoon: 'tarde',
+    evening: 'tarde',
+    night: 'noche'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'medianoche',
+    noon: 'mediodia',
+    morning: 'mañana',
+    afternoon: 'tarde',
+    evening: 'tarde',
+    night: 'noche'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'medianoche',
+    noon: 'mediodia',
+    morning: 'mañana',
+    afternoon: 'tarde',
+    evening: 'tarde',
+    night: 'noche'
   }
-}
+};
+var formattingDayPeriodValues$1 = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'mn',
+    noon: 'md',
+    morning: 'de la mañana',
+    afternoon: 'de la tarde',
+    evening: 'de la tarde',
+    night: 'de la noche'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'medianoche',
+    noon: 'mediodia',
+    morning: 'de la mañana',
+    afternoon: 'de la tarde',
+    evening: 'de la tarde',
+    night: 'de la noche'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'medianoche',
+    noon: 'mediodia',
+    morning: 'de la mañana',
+    afternoon: 'de la tarde',
+    evening: 'de la tarde',
+    night: 'de la noche'
+  }
+};
 
-var build_distance_in_words_locale = buildDistanceInWordsLocale$1;
+var ordinalNumber$3 = function ordinalNumber(dirtyNumber, _options) {
+  var number = Number(dirtyNumber);
+  return number + 'º';
+};
 
-var buildFormattingTokensRegExp = build_formatting_tokens_reg_exp;
-
-function buildFormatLocale$1 () {
-  var months3char = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
-  var monthsFull = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
-  var weekdays2char = ['do', 'lu', 'ma', 'mi', 'ju', 'vi', 'sa'];
-  var weekdays3char = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'];
-  var weekdaysFull = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
-  var meridiemUppercase = ['AM', 'PM'];
-  var meridiemLowercase = ['am', 'pm'];
-  var meridiemFull = ['a.m.', 'p.m.'];
-
-  var formatters = {
-    // Month: Jan, Feb, ..., Dec
-    'MMM': function (date) {
-      return months3char[date.getMonth()]
-    },
-
-    // Month: January, February, ..., December
-    'MMMM': function (date) {
-      return monthsFull[date.getMonth()]
-    },
-
-    // Day of week: Su, Mo, ..., Sa
-    'dd': function (date) {
-      return weekdays2char[date.getDay()]
-    },
-
-    // Day of week: Sun, Mon, ..., Sat
-    'ddd': function (date) {
-      return weekdays3char[date.getDay()]
-    },
-
-    // Day of week: Sunday, Monday, ..., Saturday
-    'dddd': function (date) {
-      return weekdaysFull[date.getDay()]
-    },
-
-    // AM, PM
-    'A': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemUppercase[1] : meridiemUppercase[0]
-    },
-
-    // am, pm
-    'a': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemLowercase[1] : meridiemLowercase[0]
-    },
-
-    // a.m., p.m.
-    'aa': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]
+var localize$6 = {
+  ordinalNumber: ordinalNumber$3,
+  era: buildLocalizeFn({
+    values: eraValues$3,
+    defaultWidth: 'wide'
+  }),
+  quarter: buildLocalizeFn({
+    values: quarterValues$3,
+    defaultWidth: 'wide',
+    argumentCallback: function argumentCallback(quarter) {
+      return Number(quarter) - 1;
     }
-  };
+  }),
+  month: buildLocalizeFn({
+    values: monthValues$3,
+    defaultWidth: 'wide'
+  }),
+  day: buildLocalizeFn({
+    values: dayValues$3,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues$3,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues$1,
+    defaultFormattingWidth: 'wide'
+  })
+};
+var localize$7 = localize$6;
 
-  // Generate ordinal version of formatters: M -> Mo, D -> Do, etc.
-  var ordinalFormatters = ['M', 'D', 'DDD', 'd', 'Q', 'W'];
-  ordinalFormatters.forEach(function (formatterToken) {
-    formatters[formatterToken + 'o'] = function (date, formatters) {
-      return ordinal(formatters[formatterToken](date))
-    };
-  });
-
-  return {
-    formatters: formatters,
-    formattingTokensRegExp: buildFormattingTokensRegExp(formatters)
+var matchOrdinalNumberPattern$3 = /^(\d+)(º)?/i;
+var parseOrdinalNumberPattern$3 = /\d+/i;
+var matchEraPatterns$3 = {
+  narrow: /^(ac|dc|a|d)/i,
+  abbreviated: /^(a\.?\s?c\.?|a\.?\s?e\.?\s?c\.?|d\.?\s?c\.?|e\.?\s?c\.?)/i,
+  wide: /^(antes de cristo|antes de la era com[uú]n|despu[eé]s de cristo|era com[uú]n)/i
+};
+var parseEraPatterns$3 = {
+  any: [/^ac/i, /^dc/i],
+  wide: [/^(antes de cristo|antes de la era com[uú]n)/i, /^(despu[eé]s de cristo|era com[uú]n)/i]
+};
+var matchQuarterPatterns$3 = {
+  narrow: /^[1234]/i,
+  abbreviated: /^T[1234]/i,
+  wide: /^[1234](º)? trimestre/i
+};
+var parseQuarterPatterns$3 = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns$3 = {
+  narrow: /^[efmajsond]/i,
+  abbreviated: /^(ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic)/i,
+  wide: /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/i
+};
+var parseMonthPatterns$3 = {
+  narrow: [/^e/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^en/i, /^feb/i, /^mar/i, /^abr/i, /^may/i, /^jun/i, /^jul/i, /^ago/i, /^sep/i, /^oct/i, /^nov/i, /^dic/i]
+};
+var matchDayPatterns$3 = {
+  narrow: /^[dlmjvs]/i,
+  short: /^(do|lu|ma|mi|ju|vi|s[áa])/i,
+  abbreviated: /^(dom|lun|mar|mi[ée]|jue|vie|s[áa]b)/i,
+  wide: /^(domingo|lunes|martes|mi[ée]rcoles|jueves|viernes|s[áa]bado)/i
+};
+var parseDayPatterns$3 = {
+  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^j/i, /^v/i, /^s/i],
+  any: [/^do/i, /^lu/i, /^ma/i, /^mi/i, /^ju/i, /^vi/i, /^sa/i]
+};
+var matchDayPeriodPatterns$3 = {
+  narrow: /^(a|p|mn|md|(de la|a las) (mañana|tarde|noche))/i,
+  any: /^([ap]\.?\s?m\.?|medianoche|mediodia|(de la|a las) (mañana|tarde|noche))/i
+};
+var parseDayPeriodPatterns$3 = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^mn/i,
+    noon: /^md/i,
+    morning: /mañana/i,
+    afternoon: /tarde/i,
+    evening: /tarde/i,
+    night: /noche/i
   }
-}
-
-function ordinal (number) {
-  return number + 'º'
-}
-
-var build_format_locale = buildFormatLocale$1;
-
-var buildDistanceInWordsLocale = build_distance_in_words_locale;
-var buildFormatLocale = build_format_locale;
+};
+var match$6 = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern$3,
+    parsePattern: parseOrdinalNumberPattern$3,
+    valueCallback: function valueCallback(value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns$3,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns$3,
+    defaultParseWidth: 'any'
+  }),
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns$3,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns$3,
+    defaultParseWidth: 'any',
+    valueCallback: function valueCallback(index) {
+      return index + 1;
+    }
+  }),
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns$3,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns$3,
+    defaultParseWidth: 'any'
+  }),
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns$3,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns$3,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns$3,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns$3,
+    defaultParseWidth: 'any'
+  })
+};
+var match$7 = match$6;
 
 /**
+ * @type {Locale}
  * @category Locales
  * @summary Spanish locale.
+ * @language Spanish
+ * @iso-639-2 spa
  * @author Juan Angosto [@juanangosto]{@link https://github.com/juanangosto}
  * @author Guillermo Grau [@guigrpa]{@link https://github.com/guigrpa}
  * @author Fernando Agüero [@fjaguero]{@link https://github.com/fjaguero}
+ * @author Gastón Haro [@harogaston]{@link https://github.com/harogaston}
+ * @author Yago Carballo [@YagoCarballo]{@link https://github.com/YagoCarballo}
  */
-var es$2 = {
-  distanceInWords: buildDistanceInWordsLocale(),
-  format: buildFormatLocale()
+var locale$3 = {
+  code: 'es',
+  formatDistance: formatDistance$7,
+  formatLong: formatLong$7,
+  formatRelative: formatRelative$7,
+  localize: localize$7,
+  match: match$7,
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+var es$2 = locale$3;
+
+var formatDistanceLocale$2 = {
+  lessThanXSeconds: {
+    one: 'moins d’une seconde',
+    other: 'moins de {{count}} secondes'
+  },
+  xSeconds: {
+    one: '1 seconde',
+    other: '{{count}} secondes'
+  },
+  halfAMinute: '30 secondes',
+  lessThanXMinutes: {
+    one: 'moins d’une minute',
+    other: 'moins de {{count}} minutes'
+  },
+  xMinutes: {
+    one: '1 minute',
+    other: '{{count}} minutes'
+  },
+  aboutXHours: {
+    one: 'environ 1 heure',
+    other: 'environ {{count}} heures'
+  },
+  xHours: {
+    one: '1 heure',
+    other: '{{count}} heures'
+  },
+  xDays: {
+    one: '1 jour',
+    other: '{{count}} jours'
+  },
+  aboutXWeeks: {
+    one: 'environ 1 semaine',
+    other: 'environ {{count}} semaines'
+  },
+  xWeeks: {
+    one: '1 semaine',
+    other: '{{count}} semaines'
+  },
+  aboutXMonths: {
+    one: 'environ 1 mois',
+    other: 'environ {{count}} mois'
+  },
+  xMonths: {
+    one: '1 mois',
+    other: '{{count}} mois'
+  },
+  aboutXYears: {
+    one: 'environ 1 an',
+    other: 'environ {{count}} ans'
+  },
+  xYears: {
+    one: '1 an',
+    other: '{{count}} ans'
+  },
+  overXYears: {
+    one: 'plus d’un an',
+    other: 'plus de {{count}} ans'
+  },
+  almostXYears: {
+    one: 'presqu’un an',
+    other: 'presque {{count}} ans'
+  }
 };
 
-var format = format_1$1;
+var formatDistance$4 = function formatDistance(token, count, options) {
+  var result;
+  var form = formatDistanceLocale$2[token];
 
-var locales = {
-  en: en$2,
-  nl: nl$2,
-  de: de$2,
-  fr: fr$2,
-  it: it$2,
-  es: es$2
+  if (typeof form === 'string') {
+    result = form;
+  } else if (count === 1) {
+    result = form.one;
+  } else {
+    result = form.other.replace('{{count}}', String(count));
+  }
+
+  if (options !== null && options !== void 0 && options.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
+      return 'dans ' + result;
+    } else {
+      return 'il y a ' + result;
+    }
+  }
+
+  return result;
 };
 
-var format_1 = function (date, formatStr) {
-  return format(date, formatStr, {
-    locale: locales[window.__localeId__] // or global.__localeId__
+var formatDistance$5 = formatDistance$4;
 
-  });
+var dateFormats$2 = {
+  full: 'EEEE d MMMM y',
+  long: 'd MMMM y',
+  medium: 'd MMM y',
+  short: 'dd/MM/y'
 };
+var timeFormats$2 = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats$2 = {
+  full: "{{date}} 'à' {{time}}",
+  long: "{{date}} 'à' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong$4 = {
+  date: buildFormatLongFn({
+    formats: dateFormats$2,
+    defaultWidth: 'full'
+  }),
+  time: buildFormatLongFn({
+    formats: timeFormats$2,
+    defaultWidth: 'full'
+  }),
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats$2,
+    defaultWidth: 'full'
+  })
+};
+var formatLong$5 = formatLong$4;
+
+var formatRelativeLocale$2 = {
+  lastWeek: "eeee 'dernier à' p",
+  yesterday: "'hier à' p",
+  today: "'aujourd’hui à' p",
+  tomorrow: "'demain à' p'",
+  nextWeek: "eeee 'prochain à' p",
+  other: 'P'
+};
+
+var formatRelative$4 = function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale$2[token];
+};
+
+var formatRelative$5 = formatRelative$4;
+
+var eraValues$2 = {
+  narrow: ['av. J.-C', 'ap. J.-C'],
+  abbreviated: ['av. J.-C', 'ap. J.-C'],
+  wide: ['avant Jésus-Christ', 'après Jésus-Christ']
+};
+var quarterValues$2 = {
+  narrow: ['T1', 'T2', 'T3', 'T4'],
+  abbreviated: ['1er trim.', '2ème trim.', '3ème trim.', '4ème trim.'],
+  wide: ['1er trimestre', '2ème trimestre', '3ème trimestre', '4ème trimestre']
+};
+var monthValues$2 = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'],
+  wide: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
+};
+var dayValues$2 = {
+  narrow: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+  short: ['di', 'lu', 'ma', 'me', 'je', 've', 'sa'],
+  abbreviated: ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'],
+  wide: ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi']
+};
+var dayPeriodValues$2 = {
+  narrow: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'minuit',
+    noon: 'midi',
+    morning: 'mat.',
+    afternoon: 'ap.m.',
+    evening: 'soir',
+    night: 'mat.'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'minuit',
+    noon: 'midi',
+    morning: 'matin',
+    afternoon: 'après-midi',
+    evening: 'soir',
+    night: 'matin'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'minuit',
+    noon: 'midi',
+    morning: 'du matin',
+    afternoon: 'de l’après-midi',
+    evening: 'du soir',
+    night: 'du matin'
+  }
+};
+
+var ordinalNumber$2 = function ordinalNumber(dirtyNumber, options) {
+  var number = Number(dirtyNumber);
+  var unit = options === null || options === void 0 ? void 0 : options.unit;
+  if (number === 0) return '0';
+  var feminineUnits = ['year', 'week', 'hour', 'minute', 'second'];
+  var suffix;
+
+  if (number === 1) {
+    suffix = unit && feminineUnits.includes(unit) ? 'ère' : 'er';
+  } else {
+    suffix = 'ème';
+  }
+
+  return number + suffix;
+};
+
+var localize$4 = {
+  ordinalNumber: ordinalNumber$2,
+  era: buildLocalizeFn({
+    values: eraValues$2,
+    defaultWidth: 'wide'
+  }),
+  quarter: buildLocalizeFn({
+    values: quarterValues$2,
+    defaultWidth: 'wide',
+    argumentCallback: function argumentCallback(quarter) {
+      return quarter - 1;
+    }
+  }),
+  month: buildLocalizeFn({
+    values: monthValues$2,
+    defaultWidth: 'wide'
+  }),
+  day: buildLocalizeFn({
+    values: dayValues$2,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues$2,
+    defaultWidth: 'wide'
+  })
+};
+var localize$5 = localize$4;
+
+var matchOrdinalNumberPattern$2 = /^(\d+)(ième|ère|ème|er|e)?/i;
+var parseOrdinalNumberPattern$2 = /\d+/i;
+var matchEraPatterns$2 = {
+  narrow: /^(av\.J\.C|ap\.J\.C|ap\.J\.-C)/i,
+  abbreviated: /^(av\.J\.-C|av\.J-C|apr\.J\.-C|apr\.J-C|ap\.J-C)/i,
+  wide: /^(avant Jésus-Christ|après Jésus-Christ)/i
+};
+var parseEraPatterns$2 = {
+  any: [/^av/i, /^ap/i]
+};
+var matchQuarterPatterns$2 = {
+  narrow: /^T?[1234]/i,
+  abbreviated: /^[1234](er|ème|e)? trim\.?/i,
+  wide: /^[1234](er|ème|e)? trimestre/i
+};
+var parseQuarterPatterns$2 = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns$2 = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(janv|févr|mars|avr|mai|juin|juill|juil|août|sept|oct|nov|déc)\.?/i,
+  wide: /^(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)/i
+};
+var parseMonthPatterns$2 = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ja/i, /^f/i, /^mar/i, /^av/i, /^ma/i, /^juin/i, /^juil/i, /^ao/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns$2 = {
+  narrow: /^[lmjvsd]/i,
+  short: /^(di|lu|ma|me|je|ve|sa)/i,
+  abbreviated: /^(dim|lun|mar|mer|jeu|ven|sam)\.?/i,
+  wide: /^(dimanche|lundi|mardi|mercredi|jeudi|vendredi|samedi)/i
+};
+var parseDayPatterns$2 = {
+  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^j/i, /^v/i, /^s/i],
+  any: [/^di/i, /^lu/i, /^ma/i, /^me/i, /^je/i, /^ve/i, /^sa/i]
+};
+var matchDayPeriodPatterns$2 = {
+  narrow: /^(a|p|minuit|midi|mat\.?|ap\.?m\.?|soir|nuit)/i,
+  any: /^([ap]\.?\s?m\.?|du matin|de l'après[-\s]midi|du soir|de la nuit)/i
+};
+var parseDayPeriodPatterns$2 = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^min/i,
+    noon: /^mid/i,
+    morning: /mat/i,
+    afternoon: /ap/i,
+    evening: /soir/i,
+    night: /nuit/i
+  }
+};
+var match$4 = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern$2,
+    parsePattern: parseOrdinalNumberPattern$2,
+    valueCallback: function valueCallback(value) {
+      return parseInt(value);
+    }
+  }),
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns$2,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns$2,
+    defaultParseWidth: 'any'
+  }),
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns$2,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns$2,
+    defaultParseWidth: 'any',
+    valueCallback: function valueCallback(index) {
+      return index + 1;
+    }
+  }),
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns$2,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns$2,
+    defaultParseWidth: 'any'
+  }),
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns$2,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns$2,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns$2,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns$2,
+    defaultParseWidth: 'any'
+  })
+};
+var match$5 = match$4;
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary French locale.
+ * @language French
+ * @iso-639-2 fra
+ * @author Jean Dupouy [@izeau]{@link https://github.com/izeau}
+ * @author François B [@fbonzon]{@link https://github.com/fbonzon}
+ */
+
+var locale$2 = {
+  code: 'fr',
+  formatDistance: formatDistance$5,
+  formatLong: formatLong$5,
+  formatRelative: formatRelative$5,
+  localize: localize$5,
+  match: match$5,
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+var fr$2 = locale$2;
+
+var formatDistanceLocale$1 = {
+  lessThanXSeconds: {
+    one: 'meno di un secondo',
+    other: 'meno di {{count}} secondi'
+  },
+  xSeconds: {
+    one: 'un secondo',
+    other: '{{count}} secondi'
+  },
+  halfAMinute: 'alcuni secondi',
+  lessThanXMinutes: {
+    one: 'meno di un minuto',
+    other: 'meno di {{count}} minuti'
+  },
+  xMinutes: {
+    one: 'un minuto',
+    other: '{{count}} minuti'
+  },
+  aboutXHours: {
+    one: "circa un'ora",
+    other: 'circa {{count}} ore'
+  },
+  xHours: {
+    one: "un'ora",
+    other: '{{count}} ore'
+  },
+  xDays: {
+    one: 'un giorno',
+    other: '{{count}} giorni'
+  },
+  aboutXWeeks: {
+    one: 'circa una settimana',
+    other: 'circa {{count}} settimane'
+  },
+  xWeeks: {
+    one: 'una settimana',
+    other: '{{count}} settimane'
+  },
+  aboutXMonths: {
+    one: 'circa un mese',
+    other: 'circa {{count}} mesi'
+  },
+  xMonths: {
+    one: 'un mese',
+    other: '{{count}} mesi'
+  },
+  aboutXYears: {
+    one: 'circa un anno',
+    other: 'circa {{count}} anni'
+  },
+  xYears: {
+    one: 'un anno',
+    other: '{{count}} anni'
+  },
+  overXYears: {
+    one: 'più di un anno',
+    other: 'più di {{count}} anni'
+  },
+  almostXYears: {
+    one: 'quasi un anno',
+    other: 'quasi {{count}} anni'
+  }
+};
+
+var formatDistance$2 = function formatDistance(token, count, options) {
+  var result;
+  var tokenValue = formatDistanceLocale$1[token];
+
+  if (typeof tokenValue === 'string') {
+    result = tokenValue;
+  } else if (count === 1) {
+    result = tokenValue.one;
+  } else {
+    result = tokenValue.other.replace('{{count}}', count.toString());
+  }
+
+  if (options !== null && options !== void 0 && options.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
+      return 'tra ' + result;
+    } else {
+      return result + ' fa';
+    }
+  }
+
+  return result;
+};
+
+var formatDistance$3 = formatDistance$2;
+
+var dateFormats$1 = {
+  full: 'EEEE d MMMM y',
+  long: 'd MMMM y',
+  medium: 'd MMM y',
+  short: 'dd/MM/y'
+};
+var timeFormats$1 = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats$1 = {
+  full: '{{date}} {{time}}',
+  long: '{{date}} {{time}}',
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong$2 = {
+  date: buildFormatLongFn({
+    formats: dateFormats$1,
+    defaultWidth: 'full'
+  }),
+  time: buildFormatLongFn({
+    formats: timeFormats$1,
+    defaultWidth: 'full'
+  }),
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats$1,
+    defaultWidth: 'full'
+  })
+};
+var formatLong$3 = formatLong$2;
+
+var weekdays = ['domenica', 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato'];
+
+function _lastWeek(day) {
+  switch (day) {
+    case 0:
+      return "'domenica scorsa alle' p";
+
+    default:
+      return "'" + weekdays[day] + " scorso alle' p";
+  }
+}
+
+function thisWeek(day) {
+  return "'" + weekdays[day] + " alle' p";
+}
+
+function _nextWeek(day) {
+  switch (day) {
+    case 0:
+      return "'domenica prossima alle' p";
+
+    default:
+      return "'" + weekdays[day] + " prossimo alle' p";
+  }
+}
+
+var formatRelativeLocale$1 = {
+  lastWeek: function lastWeek(date, baseDate, options) {
+    var day = date.getUTCDay();
+
+    if (isSameUTCWeek(date, baseDate, options)) {
+      return thisWeek(day);
+    } else {
+      return _lastWeek(day);
+    }
+  },
+  yesterday: "'ieri alle' p",
+  today: "'oggi alle' p",
+  tomorrow: "'domani alle' p",
+  nextWeek: function nextWeek(date, baseDate, options) {
+    var day = date.getUTCDay();
+
+    if (isSameUTCWeek(date, baseDate, options)) {
+      return thisWeek(day);
+    } else {
+      return _nextWeek(day);
+    }
+  },
+  other: 'P'
+};
+
+var formatRelative$2 = function formatRelative(token, date, baseDate, options) {
+  var format = formatRelativeLocale$1[token];
+
+  if (typeof format === 'function') {
+    return format(date, baseDate, options);
+  }
+
+  return format;
+};
+
+var formatRelative$3 = formatRelative$2;
+
+var eraValues$1 = {
+  narrow: ['aC', 'dC'],
+  abbreviated: ['a.C.', 'd.C.'],
+  wide: ['avanti Cristo', 'dopo Cristo']
+};
+var quarterValues$1 = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['T1', 'T2', 'T3', 'T4'],
+  wide: ['1º trimestre', '2º trimestre', '3º trimestre', '4º trimestre']
+};
+var monthValues$1 = {
+  narrow: ['G', 'F', 'M', 'A', 'M', 'G', 'L', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic'],
+  wide: ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto', 'settembre', 'ottobre', 'novembre', 'dicembre']
+};
+var dayValues$1 = {
+  narrow: ['D', 'L', 'M', 'M', 'G', 'V', 'S'],
+  short: ['dom', 'lun', 'mar', 'mer', 'gio', 'ven', 'sab'],
+  abbreviated: ['dom', 'lun', 'mar', 'mer', 'gio', 'ven', 'sab'],
+  wide: ['domenica', 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato']
+};
+var dayPeriodValues$1 = {
+  narrow: {
+    am: 'm.',
+    pm: 'p.',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'mattina',
+    afternoon: 'pomeriggio',
+    evening: 'sera',
+    night: 'notte'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'mattina',
+    afternoon: 'pomeriggio',
+    evening: 'sera',
+    night: 'notte'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'mattina',
+    afternoon: 'pomeriggio',
+    evening: 'sera',
+    night: 'notte'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'm.',
+    pm: 'p.',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'di mattina',
+    afternoon: 'del pomeriggio',
+    evening: 'di sera',
+    night: 'di notte'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'di mattina',
+    afternoon: 'del pomeriggio',
+    evening: 'di sera',
+    night: 'di notte'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'di mattina',
+    afternoon: 'del pomeriggio',
+    evening: 'di sera',
+    night: 'di notte'
+  }
+};
+
+var ordinalNumber$1 = function ordinalNumber(dirtyNumber, _options) {
+  var number = Number(dirtyNumber);
+  return String(number);
+};
+
+var localize$2 = {
+  ordinalNumber: ordinalNumber$1,
+  era: buildLocalizeFn({
+    values: eraValues$1,
+    defaultWidth: 'wide'
+  }),
+  quarter: buildLocalizeFn({
+    values: quarterValues$1,
+    defaultWidth: 'wide',
+    argumentCallback: function argumentCallback(quarter) {
+      return quarter - 1;
+    }
+  }),
+  month: buildLocalizeFn({
+    values: monthValues$1,
+    defaultWidth: 'wide'
+  }),
+  day: buildLocalizeFn({
+    values: dayValues$1,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues$1,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+var localize$3 = localize$2;
+
+var matchOrdinalNumberPattern$1 = /^(\d+)(º)?/i;
+var parseOrdinalNumberPattern$1 = /\d+/i;
+var matchEraPatterns$1 = {
+  narrow: /^(aC|dC)/i,
+  abbreviated: /^(a\.?\s?C\.?|a\.?\s?e\.?\s?v\.?|d\.?\s?C\.?|e\.?\s?v\.?)/i,
+  wide: /^(avanti Cristo|avanti Era Volgare|dopo Cristo|Era Volgare)/i
+};
+var parseEraPatterns$1 = {
+  any: [/^a/i, /^(d|e)/i]
+};
+var matchQuarterPatterns$1 = {
+  narrow: /^[1234]/i,
+  abbreviated: /^t[1234]/i,
+  wide: /^[1234](º)? trimestre/i
+};
+var parseQuarterPatterns$1 = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns$1 = {
+  narrow: /^[gfmalsond]/i,
+  abbreviated: /^(gen|feb|mar|apr|mag|giu|lug|ago|set|ott|nov|dic)/i,
+  wide: /^(gennaio|febbraio|marzo|aprile|maggio|giugno|luglio|agosto|settembre|ottobre|novembre|dicembre)/i
+};
+var parseMonthPatterns$1 = {
+  narrow: [/^g/i, /^f/i, /^m/i, /^a/i, /^m/i, /^g/i, /^l/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ge/i, /^f/i, /^mar/i, /^ap/i, /^mag/i, /^gi/i, /^l/i, /^ag/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns$1 = {
+  narrow: /^[dlmgvs]/i,
+  short: /^(do|lu|ma|me|gi|ve|sa)/i,
+  abbreviated: /^(dom|lun|mar|mer|gio|ven|sab)/i,
+  wide: /^(domenica|luned[i|ì]|marted[i|ì]|mercoled[i|ì]|gioved[i|ì]|venerd[i|ì]|sabato)/i
+};
+var parseDayPatterns$1 = {
+  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^g/i, /^v/i, /^s/i],
+  any: [/^d/i, /^l/i, /^ma/i, /^me/i, /^g/i, /^v/i, /^s/i]
+};
+var matchDayPeriodPatterns$1 = {
+  narrow: /^(a|m\.|p|mezzanotte|mezzogiorno|(di|del) (mattina|pomeriggio|sera|notte))/i,
+  any: /^([ap]\.?\s?m\.?|mezzanotte|mezzogiorno|(di|del) (mattina|pomeriggio|sera|notte))/i
+};
+var parseDayPeriodPatterns$1 = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^mezza/i,
+    noon: /^mezzo/i,
+    morning: /mattina/i,
+    afternoon: /pomeriggio/i,
+    evening: /sera/i,
+    night: /notte/i
+  }
+};
+var match$2 = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern$1,
+    parsePattern: parseOrdinalNumberPattern$1,
+    valueCallback: function valueCallback(value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns$1,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns$1,
+    defaultParseWidth: 'any'
+  }),
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns$1,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns$1,
+    defaultParseWidth: 'any',
+    valueCallback: function valueCallback(index) {
+      return index + 1;
+    }
+  }),
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns$1,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns$1,
+    defaultParseWidth: 'any'
+  }),
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns$1,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns$1,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns$1,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns$1,
+    defaultParseWidth: 'any'
+  })
+};
+var match$3 = match$2;
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Italian locale.
+ * @language Italian
+ * @iso-639-2 ita
+ * @author Alberto Restifo [@albertorestifo]{@link https://github.com/albertorestifo}
+ * @author Giovanni Polimeni [@giofilo]{@link https://github.com/giofilo}
+ * @author Vincenzo Carrese [@vin-car]{@link https://github.com/vin-car}
+ */
+
+var locale$1 = {
+  code: 'it',
+  formatDistance: formatDistance$3,
+  formatLong: formatLong$3,
+  formatRelative: formatRelative$3,
+  localize: localize$3,
+  match: match$3,
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+var it$2 = locale$1;
+
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'minder dan een seconde',
+    other: 'minder dan {{count}} seconden'
+  },
+  xSeconds: {
+    one: '1 seconde',
+    other: '{{count}} seconden'
+  },
+  halfAMinute: 'een halve minuut',
+  lessThanXMinutes: {
+    one: 'minder dan een minuut',
+    other: 'minder dan {{count}} minuten'
+  },
+  xMinutes: {
+    one: 'een minuut',
+    other: '{{count}} minuten'
+  },
+  aboutXHours: {
+    one: 'ongeveer 1 uur',
+    other: 'ongeveer {{count}} uur'
+  },
+  xHours: {
+    one: '1 uur',
+    other: '{{count}} uur'
+  },
+  xDays: {
+    one: '1 dag',
+    other: '{{count}} dagen'
+  },
+  aboutXWeeks: {
+    one: 'ongeveer 1 week',
+    other: 'ongeveer {{count}} weken'
+  },
+  xWeeks: {
+    one: '1 week',
+    other: '{{count}} weken'
+  },
+  aboutXMonths: {
+    one: 'ongeveer 1 maand',
+    other: 'ongeveer {{count}} maanden'
+  },
+  xMonths: {
+    one: '1 maand',
+    other: '{{count}} maanden'
+  },
+  aboutXYears: {
+    one: 'ongeveer 1 jaar',
+    other: 'ongeveer {{count}} jaar'
+  },
+  xYears: {
+    one: '1 jaar',
+    other: '{{count}} jaar'
+  },
+  overXYears: {
+    one: 'meer dan 1 jaar',
+    other: 'meer dan {{count}} jaar'
+  },
+  almostXYears: {
+    one: 'bijna 1 jaar',
+    other: 'bijna {{count}} jaar'
+  }
+};
+
+var formatDistance = function formatDistance(token, count, options) {
+  var result;
+  var tokenValue = formatDistanceLocale[token];
+
+  if (typeof tokenValue === 'string') {
+    result = tokenValue;
+  } else if (count === 1) {
+    result = tokenValue.one;
+  } else {
+    result = tokenValue.other.replace('{{count}}', String(count));
+  }
+
+  if (options !== null && options !== void 0 && options.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
+      return 'over ' + result;
+    } else {
+      return result + ' geleden';
+    }
+  }
+
+  return result;
+};
+
+var formatDistance$1 = formatDistance;
+
+var dateFormats = {
+  full: 'EEEE d MMMM y',
+  long: 'd MMMM y',
+  medium: 'd MMM y',
+  short: 'dd-MM-y'
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'om' {{time}}",
+  long: "{{date}} 'om' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: buildFormatLongFn({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: buildFormatLongFn({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+var formatLong$1 = formatLong;
+
+var formatRelativeLocale = {
+  lastWeek: "'afgelopen' eeee 'om' p",
+  yesterday: "'gisteren om' p",
+  today: "'vandaag om' p",
+  tomorrow: "'morgen om' p",
+  nextWeek: "eeee 'om' p",
+  other: 'P'
+};
+
+var formatRelative = function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+};
+
+var formatRelative$1 = formatRelative;
+
+var eraValues = {
+  narrow: ['v.C.', 'n.C.'],
+  abbreviated: ['v.Chr.', 'n.Chr.'],
+  wide: ['voor Christus', 'na Christus']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['K1', 'K2', 'K3', 'K4'],
+  wide: ['1e kwartaal', '2e kwartaal', '3e kwartaal', '4e kwartaal']
+};
+var monthValues = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['jan.', 'feb.', 'mrt.', 'apr.', 'mei', 'jun.', 'jul.', 'aug.', 'sep.', 'okt.', 'nov.', 'dec.'],
+  wide: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
+};
+var dayValues = {
+  narrow: ['Z', 'M', 'D', 'W', 'D', 'V', 'Z'],
+  short: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
+  abbreviated: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
+  wide: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'middernacht',
+    noon: 'het middaguur',
+    morning: "'s ochtends",
+    afternoon: "'s middags",
+    evening: "'s avonds",
+    night: "'s nachts"
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'middernacht',
+    noon: 'het middaguur',
+    morning: "'s ochtends",
+    afternoon: "'s middags",
+    evening: "'s avonds",
+    night: "'s nachts"
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'middernacht',
+    noon: 'het middaguur',
+    morning: "'s ochtends",
+    afternoon: "'s middags",
+    evening: "'s avonds",
+    night: "'s nachts"
+  }
+};
+
+var ordinalNumber = function ordinalNumber(dirtyNumber, _options) {
+  var number = Number(dirtyNumber);
+  return number + 'e';
+};
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function argumentCallback(quarter) {
+      return quarter - 1;
+    }
+  }),
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: 'wide'
+  })
+};
+var localize$1 = localize;
+
+var matchOrdinalNumberPattern = /^(\d+)e?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^([vn]\.? ?C\.?)/,
+  abbreviated: /^([vn]\. ?Chr\.?)/,
+  wide: /^((voor|na) Christus)/
+};
+var parseEraPatterns = {
+  any: [/^v/, /^n/]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^K[1234]/i,
+  wide: /^[1234]e kwartaal/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(jan.|feb.|mrt.|apr.|mei|jun.|jul.|aug.|sep.|okt.|nov.|dec.)/i,
+  wide: /^(januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^jan/i, /^feb/i, /^m(r|a)/i, /^apr/i, /^mei/i, /^jun/i, /^jul/i, /^aug/i, /^sep/i, /^okt/i, /^nov/i, /^dec/i]
+};
+var matchDayPatterns = {
+  narrow: /^[zmdwv]/i,
+  short: /^(zo|ma|di|wo|do|vr|za)/i,
+  abbreviated: /^(zon|maa|din|woe|don|vri|zat)/i,
+  wide: /^(zondag|maandag|dinsdag|woensdag|donderdag|vrijdag|zaterdag)/i
+};
+var parseDayPatterns = {
+  narrow: [/^z/i, /^m/i, /^d/i, /^w/i, /^d/i, /^v/i, /^z/i],
+  any: [/^zo/i, /^ma/i, /^di/i, /^wo/i, /^do/i, /^vr/i, /^za/i]
+};
+var matchDayPeriodPatterns = {
+  any: /^(am|pm|middernacht|het middaguur|'s (ochtends|middags|avonds|nachts))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^am/i,
+    pm: /^pm/i,
+    midnight: /^middernacht/i,
+    noon: /^het middaguur/i,
+    morning: /ochtend/i,
+    afternoon: /middag/i,
+    evening: /avond/i,
+    night: /nacht/i
+  }
+};
+var match = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function valueCallback(value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function valueCallback(index) {
+      return index + 1;
+    }
+  }),
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+var match$1 = match;
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Dutch locale.
+ * @language Dutch
+ * @iso-639-2 nld
+ * @author Jorik Tangelder [@jtangelder]{@link https://github.com/jtangelder}
+ * @author Ruben Stolk [@rubenstolk]{@link https://github.com/rubenstolk}
+ * @author Lode Vanhove [@bitcrumb]{@link https://github.com/bitcrumb}
+ * @author Edo Rivai [@edorivai]{@link https://github.com/edorivai}
+ * @author Niels Keurentjes [@curry684]{@link https://github.com/curry684}
+ * @author Stefan Vermaas [@stefanvermaas]{@link https://github.com/stefanvermaas}
+ */
+
+var locale = {
+  code: 'nl',
+  formatDistance: formatDistance$1,
+  formatLong: formatLong$1,
+  formatRelative: formatRelative$1,
+  localize: localize$1,
+  match: match$1,
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+var nl$2 = locale;
+
+const locales = {
+    en: enGB,
+    nl: nl$2,
+    de: de$2,
+    fr: fr$2,
+    it: it$2,
+    es: es$2,
+};
+function FormatIntl(date, formatStr) {
+    return format(date, formatStr, {
+        locale: locales[global.__localeId__], // or global.__localeId__
+    });
+}
+function Parse_EN_US(date_string) {
+    return parse$1(date_string, 'yyyy-MM-dd', new Date());
+}
+const MONTH_FORMAT = 'MMMM yyyy';
+const LONG_DATE_FORMAT = 'EEEE dd MMMM yyyy';
 
 var ArrowRight = function ArrowRight() {
   return /*#__PURE__*/React__default["default"].createElement("svg", {
@@ -34736,26 +36060,26 @@ function translatedOption(id, value) {
 }
 function validateAge(string) {
   var dob = new Date(string);
-  var minAge = dateFns.subYears(new Date(), 18);
+  var minAge = subYears(new Date(), 18);
 
-  if (dateFns.isAfter(dob, minAge)) {
+  if (isAfter(dob, minAge)) {
     return true;
   } else return false;
 }
 
 var _templateObject$3;
-var dateFormat$1 = 'dddd DD MMMM YYYY';
-var CALENDAR_QUERY = gql(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteral(["\n  query BookingPriceQuery(\n    $id: ID!\n    $house_id: String!\n    $starts_at: Date!\n    $ends_at: Date!\n    $persons: Int\n  ) {\n    PortalSite(id: $id) {\n      houses(house_code: $house_id) {\n        id\n        name\n        booking_price(\n          starts_at: $starts_at\n          ends_at: $ends_at\n          persons: $persons\n        )\n      }\n    }\n  }\n"])));
+var dateFormat = LONG_DATE_FORMAT;
+var BOOKING_PRICE_QUERY = gql(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteral(["\n  query BookingPriceQuery(\n    $id: ID!\n    $house_id: String!\n    $starts_at: Date!\n    $ends_at: Date!\n    $persons: Int\n  ) {\n    PortalSite(id: $id) {\n      houses(house_code: $house_id) {\n        id\n        name\n        booking_price(\n          starts_at: $starts_at\n          ends_at: $ends_at\n          persons: $persons\n        )\n      }\n    }\n  }\n"])));
 
 var PriceField = /*#__PURE__*/function (_Component) {
-  _inherits$4(PriceField, _Component);
+  _inherits$A(PriceField, _Component);
 
-  var _super = _createSuper$4(PriceField);
+  var _super = _createSuper$A(PriceField);
 
   function PriceField() {
     var _this;
 
-    _classCallCheck$4(this, PriceField);
+    _classCallCheck$B(this, PriceField);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -34763,14 +36087,14 @@ var PriceField = /*#__PURE__*/function (_Component) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$g(_assertThisInitialized$5(_this), "state", {
+    _defineProperty$M(_assertThisInitialized$B(_this), "state", {
       persons: 2
     });
 
     return _this;
   }
 
-  _createClass$6(PriceField, [{
+  _createClass$D(PriceField, [{
     key: "setPersons",
     value: function setPersons(persons) {
       this.setState({
@@ -34787,7 +36111,6 @@ var PriceField = /*#__PURE__*/function (_Component) {
           objectCode = _this$props.objectCode,
           startsAt = _this$props.startsAt,
           endsAt = _this$props.endsAt,
-          locale = _this$props.locale,
           house = _this$props.house,
           disabled = _this$props.disabled,
           onStartBooking = _this$props.onStartBooking,
@@ -34804,7 +36127,7 @@ var PriceField = /*#__PURE__*/function (_Component) {
         id: "".concat(house.house_type, ".arrival")
       })), /*#__PURE__*/React__default["default"].createElement("span", {
         className: "detail"
-      }, startsAt ? /*#__PURE__*/React__default["default"].createElement("span", null, format_1(startsAt, dateFormat$1)) : /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
+      }, startsAt ? /*#__PURE__*/React__default["default"].createElement("span", null, FormatIntl(Parse_EN_US(startsAt), dateFormat)) : /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
         id: "".concat(house.house_type, ".pick_your_arrivaldate_in_the_calendar")
       }))), /*#__PURE__*/React__default["default"].createElement("div", {
         className: "calendar--picker--date"
@@ -34814,7 +36137,7 @@ var PriceField = /*#__PURE__*/function (_Component) {
         id: "".concat(house.house_type, ".departure")
       })), /*#__PURE__*/React__default["default"].createElement("span", {
         className: "detail"
-      }, endsAt ? /*#__PURE__*/React__default["default"].createElement("span", null, format_1(endsAt, dateFormat$1)) : /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
+      }, endsAt ? /*#__PURE__*/React__default["default"].createElement("span", null, FormatIntl(Parse_EN_US(endsAt), dateFormat)) : /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
         id: "".concat(house.house_type, ".pick_your_departure_in_the_calendar")
       })), minNights && /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
         id: "minimum_nights",
@@ -34846,14 +36169,13 @@ var PriceField = /*#__PURE__*/function (_Component) {
       })))), /*#__PURE__*/React__default["default"].createElement("div", {
         className: "calendar--picker--date"
       }, startsAt && endsAt && /*#__PURE__*/React__default["default"].createElement(Query, {
-        query: CALENDAR_QUERY,
+        query: BOOKING_PRICE_QUERY,
         variables: {
           id: portalCode,
           house_id: objectCode,
           starts_at: startsAt,
           ends_at: endsAt,
-          persons: parseInt(persons),
-          locale: locale
+          persons: parseInt(persons)
         }
       }, function (_ref) {
         var loading = _ref.loading,
@@ -34913,8 +36235,6 @@ PriceField.propTypes = {
   minNights: PropTypes.number
 };
 
-var dateFormat = "dddd DD MMMM YYYY";
-
 var AssistanceMessage = function AssistanceMessage(_ref) {
   var arrivalDate = _ref.arrivalDate,
       departureDate = _ref.departureDate,
@@ -34926,9 +36246,9 @@ var AssistanceMessage = function AssistanceMessage(_ref) {
       className: "assistance"
     }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
       id: "".concat(house.house_type, ".you_picked_arrival_date")
-    }), ":", " ", format_1(arrivalDate.date, dateFormat), /*#__PURE__*/React__default["default"].createElement("br", null), /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
+    }), ":", ' ', FormatIntl(Parse_EN_US(arrivalDate.date), LONG_DATE_FORMAT), /*#__PURE__*/React__default["default"].createElement("br", null), /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
       id: "".concat(house.house_type, ".you_picked_departure_date")
-    }), ": ", format_1(departureDate.date, dateFormat));
+    }), ": ", FormatIntl(Parse_EN_US(departureDate.date), LONG_DATE_FORMAT));
   }
 
   if (arrivalDate.date) {
@@ -34936,7 +36256,7 @@ var AssistanceMessage = function AssistanceMessage(_ref) {
       className: "assistance"
     }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
       id: "".concat(house.house_type, ".you_picked_arrival_date")
-    }), ":", " ", format_1(arrivalDate.date, dateFormat), /*#__PURE__*/React__default["default"].createElement("br", null), /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
+    }), ":", ' ', FormatIntl(Parse_EN_US(arrivalDate.date), LONG_DATE_FORMAT), /*#__PURE__*/React__default["default"].createElement("br", null), /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
       id: "".concat(house.house_type, ".pick_your_departure_in_the_calendar")
     }), /*#__PURE__*/React__default["default"].createElement("br", null), /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
       id: "minimum_nights",
@@ -34954,37 +36274,184 @@ var AssistanceMessage = function AssistanceMessage(_ref) {
   }));
 };
 
-var Calendar = /*#__PURE__*/function (_React$Component) {
-  _inherits$4(Calendar, _React$Component);
+function Legend({ house }) {
+    return (React__default["default"].createElement("div", { className: "legend" },
+        React__default["default"].createElement("div", null,
+            React__default["default"].createElement("span", { className: "legend-field arrival" }),
+            React__default["default"].createElement(FormattedMessage$2, { id: `${house.house_type}.arrival_date` })),
+        React__default["default"].createElement("div", null,
+            React__default["default"].createElement("span", { className: "legend-field booked" }),
+            React__default["default"].createElement(FormattedMessage$2, { id: "booked" })),
+        React__default["default"].createElement("div", null,
+            React__default["default"].createElement("span", { className: "legend-field departure" }),
+            React__default["default"].createElement(FormattedMessage$2, { id: `${house.house_type}.departure_date` })),
+        React__default["default"].createElement("div", null,
+            React__default["default"].createElement("span", { className: "legend-field last_minute_discount" }),
+            React__default["default"].createElement(FormattedMessage$2, { id: "discount" }))));
+}
 
-  var _super = _createSuper$4(Calendar);
+const MonthHeader = ({ month }) => (React__default["default"].createElement("div", { className: "header row flex-middle" },
+    React__default["default"].createElement("div", { className: "col col-center", style: { textAlign: 'center' } },
+        React__default["default"].createElement("span", null, FormatIntl(month, MONTH_FORMAT)))));
+
+function DayClasses({ day, monthStart, buDate, prevBooked, dates, house, discounts }) {
+    const { selectedDate, departureDate, arrivalDate } = dates;
+    let classes = ['col', 'cell'];
+    if (!isSameMonth(day, monthStart)) {
+        classes.push('disabled');
+        return classes.join(" ");
+    }
+    if (buDate) {
+        if (buDate.arrival && isAfter(day, new Date()) && buDate.max_nights !== 0) {
+            if (prevBooked.max_nights === 0) {
+                classes.push('departure-arrival');
+            }
+            else {
+                classes.push('arrival');
+                classes.push('arrival');
+            }
+        }
+        else if (buDate.max_nights === 0) {
+            if (prevBooked.max_nights !== 0) {
+                classes.push("booked-departure");
+            }
+            else {
+                classes.push("booked");
+            }
+        }
+    }
+    if (selectedDate) {
+        if (isSameDay(day, selectedDate)) {
+            classes.push('selected');
+        }
+        const minimum = differenceInCalendarDays(day, selectedDate) >=
+            arrivalDate.min_nights;
+        const maximum = differenceInCalendarDays(day, selectedDate) <= house.max_nights &&
+            differenceInCalendarDays(day, selectedDate) <=
+                arrivalDate.max_nights;
+        if (buDate.departure && isAfter(day, selectedDate) && minimum && maximum && prevBooked.max_nights !== 0) {
+            classes.push('departure');
+        }
+    }
+    if (departureDate) {
+        if (isAfter(day, selectedDate) &&
+            isBefore(day, Parse_EN_US(departureDate.date))) {
+            classes.push('selected');
+        }
+        if (isSameDay(day, Parse_EN_US(departureDate.date))) {
+            classes.push('selected');
+        }
+    }
+    const daysFromToday = differenceInCalendarDays(day, new Date());
+    const last_minute = daysFromToday <= house.last_minute_days && daysFromToday > 0;
+    const discount = discounts.find((x) => isBefore(subDays(Parse_EN_US(x.discount_starts_at), 1), day) &&
+        isAfter(addDays(Parse_EN_US(x.discount_ends_at), 1), day));
+    if (last_minute || discount || buDate.special_offer > 0) {
+        classes.push('discount');
+    }
+    return classes.join(" ");
+}
+
+function RenderCells({ availabilities, month, discounts, dates, house, onDateClick }) {
+    const monthStart = startOfMonth(month);
+    const monthEnd = endOfMonth(monthStart);
+    const startDate = startOfWeek(monthStart);
+    const endDate = endOfWeek(monthEnd);
+    const rows = [];
+    let days = [];
+    let day = startDate;
+    while (day <= endDate) {
+        // for (let daz of dayz) {
+        for (let i = 0; i < 7; i++) {
+            let date = FormatIntl(day, 'yyyy-MM-dd');
+            let yesterday = FormatIntl(subDays(day, 1), 'yyyy-MM-dd');
+            let daz = availabilities.find((x) => x.date === date);
+            const prevBooked = availabilities.find((x) => x.date === yesterday);
+            const cloneDay = daz;
+            days.push(React__default["default"].createElement("div", { className: DayClasses({
+                    day,
+                    monthStart,
+                    discounts,
+                    buDate: daz,
+                    prevBooked,
+                    house,
+                    dates,
+                }), key: daz.date, date: daz.date, role: "button", tabIndex: 0, onClick: () => onDateClick(cloneDay), onKeyPress: () => onDateClick(cloneDay) },
+                React__default["default"].createElement("span", null, FormatIntl(day, 'd'))));
+            day = addDays(day, 1);
+        }
+        rows.push(React__default["default"].createElement("div", { className: "row", key: day }, days));
+        days = [];
+    }
+    return React__default["default"].createElement("div", { className: "body" }, rows);
+}
+
+function WeekDays({ month }) {
+    const dateFormat = 'E';
+    let days = [];
+    let startDate = startOfWeek(month);
+    for (let i = 0; i < 7; i++) {
+        days.push(React__default["default"].createElement("div", { className: "col col-center", key: i }, FormatIntl(addDays(startDate, i), dateFormat)));
+    }
+    return React__default["default"].createElement("div", { className: "days row" }, days);
+}
+
+function SingleMonth({ count, currentMonth, house, numberOfMonthsInARow, dates, portalCode, onDateClick }) {
+    let month = addMonths(currentMonth, count);
+    let monthStart = startOfMonth(month);
+    let monthEnd = endOfMonth(month);
+    const variables = {
+        id: portalCode,
+        house_id: house.code,
+        starts_at: startOfWeek(monthStart),
+        ends_at: endOfWeek(monthEnd)
+    };
+    const { loading, error, data } = useQuery(CALENDAR_QUERY, { variables });
+    if (loading)
+        return (React__default["default"].createElement("div", null,
+            React__default["default"].createElement(Loading, null)));
+    if (error) {
+        return React__default["default"].createElement("div", null, "Error");
+    }
+    const results = data.PortalSite.houses[0].availabilities;
+    const discounts = data.Discounts;
+    return (React__default["default"].createElement("div", { className: `calendar calendar-${numberOfMonthsInARow}`, key: month },
+        React__default["default"].createElement(MonthHeader, { month: month }),
+        React__default["default"].createElement(WeekDays, { month: month }),
+        React__default["default"].createElement(RenderCells, { availabilities: results, discounts: discounts, month: month, house: house, dates: dates, onDateClick: onDateClick })));
+}
+
+var Calendar = /*#__PURE__*/function (_React$Component) {
+  _inherits$A(Calendar, _React$Component);
+
+  var _super = _createSuper$A(Calendar);
 
   function Calendar(props) {
     var _this;
 
-    _classCallCheck$4(this, Calendar);
+    _classCallCheck$B(this, Calendar);
 
     _this = _super.call(this, props);
 
-    _defineProperty$g(_assertThisInitialized$5(_this), "state", {
+    _defineProperty$M(_assertThisInitialized$B(_this), "state", {
       currentMonth: new Date(),
-      selectedDate: "",
+      selectedDate: '',
       numberOfMonths: _this.props.numberOfMonths,
       numberOfMonthsInARow: _this.props.numberOfMonthsInARow,
       house: _this.props.house,
-      arrivalDate: "",
-      departureDate: "",
-      minNights: null,
+      arrivalDate: '',
+      departureDate: '',
       startBooking: false
     });
 
-    _defineProperty$g(_assertThisInitialized$5(_this), "onDateClick", function (day) {
+    _defineProperty$M(_assertThisInitialized$B(_this), "onDateClick", function (day) {
       var _this$state = _this.state,
           arrivalDate = _this$state.arrivalDate,
           selectedDate = _this$state.selectedDate,
           house = _this$state.house;
+      var date = Parse_EN_US(day.date);
 
-      if (day.departure && is_after(day.date, selectedDate) && difference_in_calendar_days(day.date, selectedDate) <= house.max_nights && difference_in_calendar_days(day.date, selectedDate) >= arrivalDate.min_nights && difference_in_calendar_days(day.date, selectedDate) <= arrivalDate.max_nights) {
+      if (day.departure && isAfter(date, selectedDate) && differenceInCalendarDays(date, selectedDate) <= house.max_nights && differenceInCalendarDays(date, selectedDate) >= arrivalDate.min_nights && differenceInCalendarDays(date, selectedDate) <= arrivalDate.max_nights) {
         _this.setState({
           departureDate: day,
           startBooking: true
@@ -34992,199 +36459,76 @@ var Calendar = /*#__PURE__*/function (_React$Component) {
       } else if (day.arrival) {
         _this.setState({
           startBooking: false,
-          selectedDate: dateFns.parse(day.date),
+          selectedDate: date,
           arrivalDate: day,
-          minNights: day.min_nights,
-          departureDate: ""
+          departureDate: ''
         });
       }
     });
 
-    _defineProperty$g(_assertThisInitialized$5(_this), "nextMonth", function () {
+    _defineProperty$M(_assertThisInitialized$B(_this), "nextMonth", function () {
       var _this$state2 = _this.state,
           numberOfMonths = _this$state2.numberOfMonths,
           currentMonth = _this$state2.currentMonth;
 
       _this.setState({
-        currentMonth: dateFns.addMonths(currentMonth, numberOfMonths)
+        currentMonth: addMonths(currentMonth, numberOfMonths)
       });
     });
 
-    _defineProperty$g(_assertThisInitialized$5(_this), "prevMonth", function () {
+    _defineProperty$M(_assertThisInitialized$B(_this), "prevMonth", function () {
       var _this$state3 = _this.state,
           numberOfMonths = _this$state3.numberOfMonths,
           currentMonth = _this$state3.currentMonth;
 
       _this.setState({
-        currentMonth: dateFns.subMonths(currentMonth, numberOfMonths)
+        currentMonth: subMonths(currentMonth, numberOfMonths)
       });
     });
 
-    _defineProperty$g(_assertThisInitialized$5(_this), "reset", function () {
+    _defineProperty$M(_assertThisInitialized$B(_this), "reset", function () {
       _this.setState({
-        selectedDate: "",
-        arrivalDate: "",
-        departureDate: "",
+        selectedDate: '',
+        arrivalDate: '',
+        departureDate: '',
         startBooking: false
       });
     });
 
-    _this.bookingStart = _this.bookingStart.bind(_assertThisInitialized$5(_this));
+    _this.bookingStart = _this.bookingStart.bind(_assertThisInitialized$B(_this));
     return _this;
   }
 
-  _createClass$6(Calendar, [{
-    key: "renderHeader",
-    value: function renderHeader(month) {
-      var dateFormat = "MMMM YYYY";
-      return /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "header row flex-middle"
-      }, /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "col col-center",
-        style: {
-          textAlign: "center"
-        }
-      }, /*#__PURE__*/React__default["default"].createElement("span", null, format_1(month, dateFormat))));
-    }
-  }, {
-    key: "renderDays",
-    value: function renderDays() {
-      var dateFormat = "dd";
-      var days = [];
-      var startDate = dateFns.startOfWeek(this.state.currentMonth);
-
-      for (var i = 0; i < 7; i++) {
-        days.push( /*#__PURE__*/React__default["default"].createElement("div", {
-          className: "col col-center",
-          key: i
-        }, format_1(dateFns.addDays(startDate, i), dateFormat)));
-      }
-
-      return /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "days row"
-      }, days);
-    }
-  }, {
-    key: "renderCells",
-    value: function renderCells(availabilities, month, discounts) {
-      var _this2 = this;
-
-      var _this$state4 = this.state,
-          selectedDate = _this$state4.selectedDate,
-          departureDate = _this$state4.departureDate,
-          house = _this$state4.house,
-          arrivalDate = _this$state4.arrivalDate;
-      var monthStart = dateFns.startOfMonth(month);
-      var monthEnd = dateFns.endOfMonth(monthStart);
-      var startDate = dateFns.startOfWeek(monthStart);
-      var endDate = dateFns.endOfWeek(monthEnd);
-      var today = new Date();
-      var dateFormat = "D";
-      var rows = [];
-      var days = [];
-      var day = startDate;
-      var formattedDate = "";
-      var dayz = availabilities;
-
-      while (day <= endDate) {
-        var _loop = function _loop(i) {
-          formattedDate = dateFns.format(day, dateFormat);
-          var date = dateFns.format(day, "YYYY-MM-DD");
-          var yesterday = dateFns.format(dateFns.subDays(date, 1), "YYYY-MM-DD");
-          var daz = dayz.find(function (x) {
-            return x.date === date;
-          });
-          var prevBooked = dayz.find(function (x) {
-            return x.date === yesterday;
-          });
-          var cloneDay = daz;
-          var discount = discounts.find(function (x) {
-            return dateFns.isBefore(dateFns.subDays(x.discount_starts_at, 1), date) && is_after(dateFns.addDays(x.discount_ends_at, 1), date);
-          });
-          var minimum = difference_in_calendar_days(daz.date, selectedDate) >= arrivalDate.min_nights;
-          var maximum = difference_in_calendar_days(daz.date, selectedDate) <= house.max_nights && difference_in_calendar_days(daz.date, selectedDate) <= arrivalDate.max_nights;
-          var daysFromToday = difference_in_calendar_days(daz.date, today);
-          var last_minute = daysFromToday <= house.last_minute_days && daysFromToday > 0;
-          var highlight = daz.departure && is_after(daz.date, selectedDate) ? minimum ? maximum ? prevBooked.max_nights !== 0 ? "departure" : null : "" : "" : "";
-          days.push( /*#__PURE__*/React__default["default"].createElement("div", {
-            className: "col cell\n        ".concat(!dateFns.isSameMonth(day, monthStart) ? "disabled" : dateFns.isSameDay(day, selectedDate) || dateFns.isSameDay(day, departureDate.date) ? "selected" : "", "\n              ").concat(dateFns.isAfter(day, selectedDate) && dateFns.isBefore(day, departureDate.date) ? "selected" : "", "\n              ").concat(last_minute || daz.special_offer > 0 ? "discount" : "", "\n              ").concat(discount ? "discount" : "", "\n              ").concat(daz.arrival ? dateFns.isAfter(daz.date, new Date()) ? daz.max_nights !== 0 ? prevBooked.max_nights === 0 ? "departure-arrival" : "arrival" : "" : "" : "", "\n              ").concat(highlight, "\n              ").concat(daz.max_nights === 0 ? prevBooked.max_nights !== 0 ? "booked-departure" : "booked" : prevBooked.max_nights === 0 ? "booked" : ""),
-            key: day,
-            date: daz.date,
-            role: "button",
-            tabIndex: 0,
-            onClick: function onClick() {
-              return _this2.onDateClick(cloneDay);
-            },
-            onKeyPress: function onKeyPress() {
-              return _this2.onDateClick(cloneDay);
-            }
-          }, /*#__PURE__*/React__default["default"].createElement("span", null, !dateFns.isSameMonth(day, monthStart) ? "" : formattedDate)));
-          day = dateFns.addDays(day, 1);
-        };
-
-        // for (let daz of dayz) {
-        for (var i = 0; i < 7; i++) {
-          _loop(i);
-        }
-
-        rows.push( /*#__PURE__*/React__default["default"].createElement("div", {
-          className: "row",
-          key: day
-        }, days));
-        days = [];
-      }
-
-      return /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "body"
-      }, rows);
-    }
-  }, {
+  _createClass$D(Calendar, [{
     key: "renderMonths",
     value: function renderMonths() {
+      var _this$state4 = this.state,
+          numberOfMonthsInARow = _this$state4.numberOfMonthsInARow,
+          house = _this$state4.house,
+          arrivalDate = _this$state4.arrivalDate,
+          selectedDate = _this$state4.selectedDate,
+          departureDate = _this$state4.departureDate,
+          currentMonth = _this$state4.currentMonth;
       var template = [];
 
       for (var i = 0; i < this.state.numberOfMonths; i++) {
-        template.push(this.renderSingleMonth(i));
+        template.push( /*#__PURE__*/React__default["default"].createElement(SingleMonth, {
+          key: currentMonth + i,
+          house: house,
+          numberOfMonthsInARow: numberOfMonthsInARow,
+          dates: {
+            arrivalDate: arrivalDate,
+            selectedDate: selectedDate,
+            departureDate: departureDate
+          },
+          currentMonth: currentMonth,
+          count: i,
+          portalCode: this.props.portalCode,
+          onDateClick: this.onDateClick
+        }));
       }
 
       return template;
-    }
-  }, {
-    key: "renderSingleMonth",
-    value: function renderSingleMonth(count) {
-      var _this3 = this;
-
-      var numberOfMonthsInARow = this.state.numberOfMonthsInARow;
-      var month = dateFns.addMonths(this.state.currentMonth, count);
-      var monthStart = dateFns.startOfMonth(month);
-      var monthEnd = dateFns.endOfMonth(month);
-      var variables = {
-        id: this.props.portalCode,
-        house_id: this.props.objectCode,
-        starts_at: dateFns.startOfWeek(monthStart),
-        ends_at: dateFns.endOfWeek(monthEnd),
-        locale: this.props.locale
-      };
-      return /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "calendar calendar-".concat(numberOfMonthsInARow),
-        key: month
-      }, this.renderHeader(month), this.renderDays(), /*#__PURE__*/React__default["default"].createElement(Query, {
-        query: CALENDAR_QUERY$1,
-        variables: variables
-      }, function (_ref) {
-        var loading = _ref.loading,
-            error = _ref.error,
-            data = _ref.data;
-        if (loading) return /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(Loading, null));
-
-        if (error) {
-          return /*#__PURE__*/React__default["default"].createElement("div", null, "Error");
-        }
-
-        var results = data.PortalSite.houses[0].availabilities;
-        var discounts = data.Discounts;
-        return _this3.renderCells(results, month, discounts);
-      }));
     }
   }, {
     key: "showBooking",
@@ -35193,19 +36537,16 @@ var Calendar = /*#__PURE__*/function (_React$Component) {
           startBooking = _this$state5.startBooking,
           arrivalDate = _this$state5.arrivalDate,
           departureDate = _this$state5.departureDate,
-          house = _this$state5.house,
-          minNights = _this$state5.minNights;
+          house = _this$state5.house;
       var _this$props = this.props,
           portalCode = _this$props.portalCode,
-          objectCode = _this$props.objectCode,
-          locale = _this$props.locale;
+          objectCode = _this$props.objectCode;
       return /*#__PURE__*/React__default["default"].createElement(PriceField, {
         portalCode: portalCode,
         objectCode: objectCode,
-        locale: locale,
         startsAt: arrivalDate.date || null,
         endsAt: departureDate.date || null,
-        minNights: minNights,
+        minNights: arrivalDate.min_nights || null,
         disabled: startBooking,
         onStartBooking: this.bookingStart,
         house: house
@@ -35219,15 +36560,13 @@ var Calendar = /*#__PURE__*/function (_React$Component) {
           departureDate = _this$state6.departureDate;
       var _this$props2 = this.props,
           portalCode = _this$props2.portalCode,
-          objectCode = _this$props2.objectCode,
-          locale = _this$props2.locale;
+          objectCode = _this$props2.objectCode;
       var booking = {
         portalCode: portalCode,
         objectCode: objectCode,
         arrivalDate: arrivalDate,
         departureDate: departureDate,
         is_option: status,
-        locale: locale,
         persons: persons
       };
       this.props.onBooking(booking);
@@ -35238,8 +36577,7 @@ var Calendar = /*#__PURE__*/function (_React$Component) {
       var _this$state7 = this.state,
           house = _this$state7.house,
           arrivalDate = _this$state7.arrivalDate,
-          departureDate = _this$state7.departureDate,
-          minNights = _this$state7.minNights;
+          departureDate = _this$state7.departureDate;
       return /*#__PURE__*/React__default["default"].createElement("div", {
         className: "calendar-container "
       }, /*#__PURE__*/React__default["default"].createElement("div", {
@@ -35252,29 +36590,13 @@ var Calendar = /*#__PURE__*/function (_React$Component) {
         onReset: this.reset
       }), /*#__PURE__*/React__default["default"].createElement("div", {
         className: "calendars-row"
-      }, this.renderMonths()), /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "legend"
-      }, /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement("span", {
-        className: "legend-field arrival"
-      }), /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-        id: "".concat(house.house_type, ".arrival_date")
-      })), /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement("span", {
-        className: "legend-field booked"
-      }), /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-        id: "booked"
-      })), /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement("span", {
-        className: "legend-field departure"
-      }), /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-        id: "".concat(house.house_type, ".departure_date")
-      })), /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement("span", {
-        className: "legend-field last_minute_discount"
-      }), /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-        id: "discount"
-      }))), /*#__PURE__*/React__default["default"].createElement(AssistanceMessage, {
+      }, this.renderMonths()), /*#__PURE__*/React__default["default"].createElement(Legend, {
+        house: house
+      }), /*#__PURE__*/React__default["default"].createElement(AssistanceMessage, {
         house: house,
         arrivalDate: arrivalDate,
         departureDate: departureDate,
-        minNights: minNights
+        minNights: arrivalDate.min_nights
       })));
     }
   }]);
@@ -38084,7 +39406,7 @@ function baseToString(value) {
  * _.toString([1, 2, 3]);
  * // => '1,2,3'
  */
-function toString$1(value) {
+function toString(value) {
   return value == null ? '' : baseToString(value);
 }
 
@@ -38109,7 +39431,7 @@ function toPath(value) {
   if (isArray$1(value)) {
     return arrayMap(value, toKey);
   }
-  return isSymbol(value) ? [value] : copyArray(stringToPath$1(toString$1(value)));
+  return isSymbol(value) ? [value] : copyArray(stringToPath$1(toString(value)));
 }
 
 /** Used to compose bitmasks for cloning. */
@@ -39931,8 +41253,8 @@ function DateField(_ref) {
       format: "dd-MM-y",
       value: tempval,
       onChange: function onChange(e) {
-        field.onChange(dateFns.format(e, 'YYYY-MM-DD'));
-        form.setFieldValue(name, dateFns.format(e, 'YYYY-MM-DD'));
+        field.onChange(format(e, 'YYYY-MM-DD'));
+        form.setFieldValue(name, format(e, 'YYYY-MM-DD'));
       }
     }), /*#__PURE__*/React__default["default"].createElement("span", {
       className: "bu-input-description"
@@ -40544,11 +41866,11 @@ var Object$1 = function Object(_ref) {
     id: "".concat(house.house_type, ".arrival")
   })), /*#__PURE__*/React__default["default"].createElement("td", {
     className: "price"
-  }, format_1(arrivalDate.date, 'dddd DD MMMM YYYY')), /*#__PURE__*/React__default["default"].createElement("td", null, arrivalDate.arrival_time_from, " - ", arrivalDate.arrival_time_to)), /*#__PURE__*/React__default["default"].createElement("tr", null, /*#__PURE__*/React__default["default"].createElement("th", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
+  }, FormatIntl(Parse_EN_US(arrivalDate.date), LONG_DATE_FORMAT)), /*#__PURE__*/React__default["default"].createElement("td", null, arrivalDate.arrival_time_from, " - ", arrivalDate.arrival_time_to)), /*#__PURE__*/React__default["default"].createElement("tr", null, /*#__PURE__*/React__default["default"].createElement("th", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
     id: "".concat(house.house_type, ".departure")
   })), /*#__PURE__*/React__default["default"].createElement("td", {
     className: "price"
-  }, format_1(departureDate.date, 'dddd DD MMMM YYYY')), /*#__PURE__*/React__default["default"].createElement("td", null, departureDate.departure_time))))));
+  }, FormatIntl(Parse_EN_US(departureDate.date), LONG_DATE_FORMAT)), /*#__PURE__*/React__default["default"].createElement("td", null, departureDate.departure_time))))));
 };
 Object$1.propTypes = {
   house: PropTypes.object.isRequired,
@@ -46923,14 +48245,14 @@ function Guests(_ref) {
 }
 
 var FormCreator = /*#__PURE__*/function (_React$Component) {
-  _inherits$4(FormCreator, _React$Component);
+  _inherits$A(FormCreator, _React$Component);
 
-  var _super = _createSuper$4(FormCreator);
+  var _super = _createSuper$A(FormCreator);
 
   function FormCreator() {
     var _this;
 
-    _classCallCheck$4(this, FormCreator);
+    _classCallCheck$B(this, FormCreator);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -46938,12 +48260,12 @@ var FormCreator = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$g(_assertThisInitialized$5(_this), "state", {
+    _defineProperty$M(_assertThisInitialized$B(_this), "state", {
       formSubmit: false,
       bookingFields: _this.props.options.bookingFields || DefaultBookingFields
     });
 
-    _defineProperty$g(_assertThisInitialized$5(_this), "validate", function (values) {
+    _defineProperty$M(_assertThisInitialized$B(_this), "validate", function (values) {
       var _values$extra_fields;
 
       var _this$props$house = _this.props.house,
@@ -46958,7 +48280,7 @@ var FormCreator = /*#__PURE__*/function (_React$Component) {
 
       values.persons = Number(values.children) + Number(values.adults) + babies;
 
-      var _iterator = _createForOfIteratorHelper(_this.state.bookingFields),
+      var _iterator = _createForOfIteratorHelper$1(_this.state.bookingFields),
           _step;
 
       try {
@@ -47033,7 +48355,7 @@ var FormCreator = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass$6(FormCreator, [{
+  _createClass$D(FormCreator, [{
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -47048,7 +48370,7 @@ var FormCreator = /*#__PURE__*/function (_React$Component) {
       var bookingPrice = house.booking_price;
       var costs = {};
 
-      var _iterator2 = _createForOfIteratorHelper(bookingPrice.optional_house_costs),
+      var _iterator2 = _createForOfIteratorHelper$1(bookingPrice.optional_house_costs),
           _step2;
 
       try {
@@ -47089,7 +48411,6 @@ var FormCreator = /*#__PURE__*/function (_React$Component) {
               portal_code: values.portalCode,
               comment: values.comment || '',
               language: locale,
-              locale: locale,
               country: values.country.toUpperCase(),
               adults: Number(values.adults),
               children: Number(values.children) || 0,
@@ -47231,37 +48552,36 @@ function BookingForm(_ref) {
   var booking = _ref.booking,
       locale = _ref.locale,
       _onReturn = _ref.onReturn;
-  return /*#__PURE__*/React__default["default"].createElement(Query, {
-    query: BOOKING_PRICE_QUERY,
+
+  var _useQuery = useQuery(BOOKING_PRICE_QUERY$1, {
     variables: {
       id: booking.portalCode,
       house_id: booking.objectCode,
       starts_at: booking.arrivalDate.date,
-      ends_at: booking.departureDate.date,
-      locale: locale
+      ends_at: booking.departureDate.date
     }
-  }, function (_ref2) {
-    var loading = _ref2.loading,
-        error = _ref2.error,
-        data = _ref2.data;
-    if (loading) return /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(Loading, null));
+  }),
+      data = _useQuery.data,
+      loading = _useQuery.loading,
+      error = _useQuery.error;
 
-    if (error) {
-      return /*#__PURE__*/React__default["default"].createElement("div", null, "Error");
+  if (loading) return /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(Loading, null));
+
+  if (error) {
+    return /*#__PURE__*/React__default["default"].createElement("div", null, "Error");
+  }
+
+  var result = data.PortalSite.houses[0];
+  var options = data.PortalSite.options;
+  return /*#__PURE__*/React__default["default"].createElement(FormCreator, {
+    house: result,
+    options: options,
+    booking: booking,
+    PortalSite: data.PortalSite,
+    locale: locale,
+    onReturn: function onReturn() {
+      _onReturn(booking);
     }
-
-    var result = data.PortalSite.houses[0];
-    var options = data.PortalSite.options;
-    return /*#__PURE__*/React__default["default"].createElement(FormCreator, {
-      house: result,
-      options: options,
-      booking: booking,
-      PortalSite: data.PortalSite,
-      locale: locale,
-      onReturn: function onReturn() {
-        _onReturn(booking);
-      }
-    });
   });
 }
 
@@ -47272,21 +48592,21 @@ BookingForm.propTypes = {
 };
 
 var _templateObject;
-var HOUSE_QUERY = gql(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query PortalSiteHousesQuery($id: ID!, $house_id: String!) {\n    PortalSite(id: $id) {\n      id\n      houses(house_code: $house_id) {\n        id\n        name\n        max_nights\n        last_minute_days\n        discounts\n        discounts_info\n        house_type\n        persons\n      }\n    }\n  }\n"])));
+var HOUSE_QUERY = gql(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query PortalSiteHousesQuery($id: ID!, $house_id: String!) {\n    PortalSite(id: $id) {\n      id\n      houses(house_code: $house_id) {\n        id\n        code\n        name\n        max_nights\n        last_minute_days\n        discounts\n        discounts_info\n        house_type\n        persons\n      }\n    }\n  }\n"])));
 
 var CalendarPage = /*#__PURE__*/function (_Component) {
-  _inherits$4(CalendarPage, _Component);
+  _inherits$A(CalendarPage, _Component);
 
-  var _super = _createSuper$4(CalendarPage);
+  var _super = _createSuper$A(CalendarPage);
 
   function CalendarPage(props) {
     var _this;
 
-    _classCallCheck$4(this, CalendarPage);
+    _classCallCheck$B(this, CalendarPage);
 
     _this = _super.call(this, props);
-    _this.onBooking = _this.onBooking.bind(_assertThisInitialized$5(_this));
-    _this.onReturn = _this.onReturn.bind(_assertThisInitialized$5(_this));
+    _this.onBooking = _this.onBooking.bind(_assertThisInitialized$B(_this));
+    _this.onReturn = _this.onReturn.bind(_assertThisInitialized$B(_this));
     _this.state = {
       bookingStarted: false,
       booking: {
@@ -47300,7 +48620,7 @@ var CalendarPage = /*#__PURE__*/function (_Component) {
     return _this;
   }
 
-  _createClass$6(CalendarPage, [{
+  _createClass$D(CalendarPage, [{
     key: "onBooking",
     value: function onBooking(booking) {
       this.setState({
@@ -47410,21 +48730,21 @@ CalendarPage.propTypes = {
 };
 
 var ReviewsPage = /*#__PURE__*/function (_Component) {
-  _inherits$4(ReviewsPage, _Component);
+  _inherits$A(ReviewsPage, _Component);
 
-  var _super = _createSuper$4(ReviewsPage);
+  var _super = _createSuper$A(ReviewsPage);
 
   function ReviewsPage(props) {
     var _this;
 
-    _classCallCheck$4(this, ReviewsPage);
+    _classCallCheck$B(this, ReviewsPage);
 
     _this = _super.call(this, props);
     _this.state = {};
     return _this;
   }
 
-  _createClass$6(ReviewsPage, [{
+  _createClass$D(ReviewsPage, [{
     key: "render",
     value: function render() {
       return /*#__PURE__*/React__default["default"].createElement("div", null, "Display Reviews");
@@ -47436,7 +48756,7 @@ var ReviewsPage = /*#__PURE__*/function (_Component) {
 
 var pjson = {
 	name: "bukazu-portal-react",
-	version: "2.1.20",
+	version: "2.1.21",
 	description: "A package for loading the calendar and search module from bukazu loading into a react app.",
 	main: "build/index.js",
 	repository: "https://github.com/BUKAZU/React-portal",
@@ -47449,19 +48769,25 @@ var pjson = {
 	author: "Bob van Oorschot",
 	license: "MIT",
 	peerDependencies: {
-		react: "^16.14.0 || ^17.0.2",
-		"react-dom": "^16.14.0 || ^17.0.2"
+		react: "^16.14.0 || ^17.0.2 || ^18.0.0",
+		"react-dom": "^16.14.0 || ^17.0.2 || ^18.0.0"
 	},
 	devDependencies: {
 		"@babel/core": "^7.15.0",
 		"@babel/plugin-proposal-class-properties": "^7.13.0",
 		"@babel/preset-env": "^7.15.0",
 		"@babel/preset-react": "^7.14.5",
+		"@babel/preset-typescript": "^7.18.6",
 		"@cypress/react": "^5.3.3",
 		"@cypress/webpack-dev-server": "^1.1.3",
 		"@rollup/plugin-commonjs": "^21.0.0",
 		"@rollup/plugin-json": "^4.1.0",
+		"@rollup/plugin-typescript": "^11.0.0",
+		"@types/node": "^18.11.18",
+		"@types/react": "^18.0.26",
+		"@types/react-dom": "^18.0.10",
 		autoprefixer: "^10.2.5",
+		"awesome-typescript-loader": "^5.2.1",
 		"babel-core": "^6.26.3",
 		"babel-loader": "^8.2.2",
 		"babel-runtime": "^6.26.0",
@@ -47475,9 +48801,11 @@ var pjson = {
 		"eslint-plugin-prettier": "^3.4.0",
 		"eslint-plugin-react": "^7.24.0",
 		"fs-extra": "3.0.1",
-		jest: "24.5.0",
 		"mini-css-extract-plugin": "^1.5.0",
 		"npm-run-all": "^4.1.5",
+		parcel: "^2.8.2",
+		path: "^0.12.7",
+		"path-browserify": "^1.0.0",
 		postcss: "^8.2.12",
 		"postcss-import": "^14.0.1",
 		"postcss-loader": "^5.2.0",
@@ -47485,6 +48813,7 @@ var pjson = {
 		"postcss-nested": "^5.0.5",
 		"postcss-preset-env": "^7.4.3",
 		prettier: "^2.3.1",
+		process: "^0.11.10",
 		react: "^16.4.1",
 		"react-dev-utils": "^5.0.1",
 		"react-dom": "^16.14.0",
@@ -47494,21 +48823,23 @@ var pjson = {
 		"rollup-plugin-node-resolve": "^5.2.0",
 		"rollup-plugin-postcss": "^4.0.1",
 		"rollup-plugin-replace": "^2.2.0",
+		"source-map-loader": "^4.0.1",
+		"ts-loader": "^9.4.2",
+		typescript: "^4.9.4",
 		webpack: "^5",
-		"webpack-cli": "^4.6.0",
-		"webpack-dev-server": "^3.0.0",
+		"webpack-cli": "^5.0.1",
+		"webpack-dev-server": "^4.11.1",
 		"whatwg-fetch": "2.0.3"
 	},
 	dependencies: {
 		"@apollo/client": "^3.4.15",
 		"array-includes": "^3.0.3",
-		"array-sort": "^1.0.0",
-		"date-fns": "^1.29.0",
+		"date-fns": "^2.29.3",
 		formik: "^2.2.9",
 		graphql: "^15.6.0",
 		"react-date-picker": "^8.1.1",
-		"react-intl": "5",
-		"react-js-pagination": "^3.0.2"
+		"react-intl": "^6.2.5",
+		"react-paginate": "^8.1.4"
 	},
 	eslintConfig: {
 		"extends": [
@@ -47612,14 +48943,14 @@ function SafeBooking(_ref) {
 }
 
 var ErrorBoundary = /*#__PURE__*/function (_React$Component) {
-  _inherits$4(ErrorBoundary, _React$Component);
+  _inherits$A(ErrorBoundary, _React$Component);
 
-  var _super = _createSuper$4(ErrorBoundary);
+  var _super = _createSuper$A(ErrorBoundary);
 
   function ErrorBoundary(props) {
     var _this;
 
-    _classCallCheck$4(this, ErrorBoundary);
+    _classCallCheck$B(this, ErrorBoundary);
 
     _this = _super.call(this, props);
     _this.state = {
@@ -47628,7 +48959,7 @@ var ErrorBoundary = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass$6(ErrorBoundary, [{
+  _createClass$D(ErrorBoundary, [{
     key: "componentDidCatch",
     value: function componentDidCatch(error, errorInfo) {
       // You can also log the error to an error reporting service
@@ -47658,14 +48989,14 @@ var ErrorBoundary = /*#__PURE__*/function (_React$Component) {
 }(React__default["default"].Component);
 
 var App = /*#__PURE__*/function (_Component) {
-  _inherits$4(App, _Component);
+  _inherits$A(App, _Component);
 
-  var _super = _createSuper$4(App);
+  var _super = _createSuper$A(App);
 
   function App(props) {
     var _this;
 
-    _classCallCheck$4(this, App);
+    _classCallCheck$B(this, App);
 
     _this = _super.call(this, props);
     _this.pageWidth = /*#__PURE__*/React__default["default"].createRef();
@@ -47676,7 +49007,7 @@ var App = /*#__PURE__*/function (_Component) {
    */
 
 
-  _createClass$6(App, [{
+  _createClass$D(App, [{
     key: "updateDimensions",
     value: function updateDimensions() {
       if (this.pageWidth.current.offsetWidth < 875) {
@@ -47778,8 +49109,8 @@ App.propTypes = {
 };
 
 var en = {
-	next: "pijltje",
-	previous: "pijltje",
+	next: "Next",
+	previous: "Previous",
 	price: "Price",
 	calculate: "Next",
 	book: "Book",
@@ -47895,8 +49226,8 @@ var en = {
 };
 
 var nl = {
-	next: "pijltje",
-	previous: "pijltje",
+	next: "Volgende",
+	previous: "Vorige",
 	price: "Prijs",
 	calculate: "Volgende",
 	book: "Boeken",
@@ -48012,8 +49343,8 @@ var nl = {
 };
 
 var de = {
-	next: "pijltje",
-	previous: "pijltje",
+	next: "Nächste",
+	previous: "Vorherige",
 	price: "Preis",
 	calculate: "Nächst",
 	book: "Buchen",
@@ -48128,8 +49459,8 @@ var de = {
 };
 
 var fr = {
-	next: "pijltje",
-	previous: "pijltje",
+	next: "Suivant",
+	previous: "Précédent",
 	price: "Prix",
 	calculate: "Suivante",
 	book: "Réserver",
@@ -48240,8 +49571,8 @@ var fr = {
 };
 
 var es = {
-	next: "pijltje",
-	previous: "pijltje",
+	next: "Siguiente",
+	previous: "Anterior",
 	price: "Precio",
 	calculate: "Próximo",
 	book: "Reservar",
@@ -48352,8 +49683,8 @@ var es = {
 };
 
 var it = {
-	next: "pijltje",
-	previous: "pijltje",
+	next: "Prossimo",
+	previous: "Precedente",
 	price: "Prezzo",
 	calculate: "Prossimo",
 	book: "Prenotare",
@@ -48463,66 +49794,35 @@ var it = {
 	price_from: "Prezzo da"
 };
 
-function Portal(_ref) {
-  var portalCode = _ref.portalCode,
-      objectCode = _ref.objectCode,
-      pageType = _ref.pageType,
-      locale = _ref.locale,
-      filters = _ref.filters,
-      api_url = _ref.api_url;
-  var errors = IntegrationError({
-    portalCode: portalCode,
-    pageType: pageType,
-    locale: locale,
-    filters: filters
-  });
-
-  if (errors) {
-    return errors;
-  }
-
-  if (!locale) {
-    locale = 'en';
-  }
-
-  var client = new ApolloClient({
-    uri: api_url,
-    cache: new InMemoryCache(),
-    headers: {
-      locale: locale
-    },
-    defaultOptions: {
-      watchQuery: {
-        fetchPolicy: "cache-and-network"
-      }
+function Portal({ portalCode, objectCode, pageType, locale, filters, api_url }) {
+    const errors = IntegrationError({ portalCode, pageType, locale, filters });
+    if (errors) {
+        return errors;
     }
-  });
-  var messages = {
-    en: en,
-    nl: nl,
-    de: de,
-    fr: fr,
-    es: es,
-    it: it
-  };
-  window.__localeId__ = locale;
-  return /*#__PURE__*/React__default["default"].createElement(ApolloProvider, {
-    client: client
-  }, /*#__PURE__*/React__default["default"].createElement(IntlProvider$1, {
-    locale: locale,
-    messages: messages[locale]
-  }, /*#__PURE__*/React__default["default"].createElement(App, {
-    portalCode: portalCode,
-    objectCode: objectCode,
-    pageType: pageType,
-    locale: locale,
-    filters: filters
-  })));
+    if (!locale) {
+        locale = 'en';
+    }
+    const client = new ApolloClient({
+        uri: api_url,
+        cache: new InMemoryCache(),
+        headers: {
+            locale,
+        },
+        defaultOptions: {
+            watchQuery: {
+                fetchPolicy: "cache-and-network",
+            },
+        },
+    });
+    const messages = { en, nl, de, fr, es, it };
+    window.__localeId__ = locale;
+    return (React__default["default"].createElement(ApolloProvider, { client: client },
+        React__default["default"].createElement(IntlProvider$1, { locale: locale, messages: messages[locale] },
+            React__default["default"].createElement(App, { portalCode: portalCode, objectCode: objectCode, pageType: pageType, locale: locale, filters: filters }))));
 }
-
 Portal.defaultProps = {
-  pageType: null,
-  api_url: "https://api.bukazu.com/graphql"
+    pageType: null,
+    api_url: "https://api.bukazu.com/graphql"
 };
 
 module.exports = Portal;

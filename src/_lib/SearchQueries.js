@@ -105,7 +105,7 @@ export const HOUSES_PRICE_QUERY = gql`
 `;
 
 export const HOUSE_COUNT_QUERY = gql`
-  query PortalSiteHousesQuery(
+  query PortalSiteHouseCountQuery(
     $id: ID!
     $country_id: ID
     $region_id: String
@@ -120,6 +120,7 @@ export const HOUSE_COUNT_QUERY = gql`
     $weekprice_max: Int
   ) {
     PortalSite(id: $id) {
+      id
       houses(
         country_id: $country_id
         region_id: $region_id

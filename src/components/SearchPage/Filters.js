@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Field from './Field';
 import Reload from '../icons/Reload.svg';
 import { FormattedMessage } from 'react-intl';
+import { defaultFilter } from './filters/helper';
 
 class Filters extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class Filters extends Component {
     this.saveFilters = this.saveFilters.bind(this);
     this.toggle = this.toggle.bind(this);
     this.state = {
-      show: false,
+      show: false
     };
   }
 
@@ -24,22 +25,13 @@ class Filters extends Component {
     const { show } = this.state;
     let newShow = !show;
     this.setState({
-      show: newShow,
+      show: newShow
     });
   }
 
   render() {
     const { PortalSite, filters, options } = this.props;
-    const searchFields = PortalSite.options.searchFields || [
-      {
-        label: 'Land',
-        id: 'countries',
-        type: 'select',
-        required: false,
-        mandatory: true,
-        options: ['select', 'list', 'radio', 'text'],
-      },
-    ];
+    const searchFields = PortalSite.options.searchFields || defaultFilter;
     let fixed = options.filtersForm
       ? options.filtersForm.fixedMobile
         ? 'fixed-mobile'
@@ -55,7 +47,7 @@ class Filters extends Component {
     let show = this.state.show && 'showOnMobile';
 
     return (
-      <React.Fragment>
+      <>
         <button className={`filters-button ${fixed}`} onClick={this.toggle}>
           <FormattedMessage id="filters" />
         </button>
@@ -72,12 +64,12 @@ class Filters extends Component {
           >
             <Reload />
           </button>
-          {searchFields.map(field => (
+          {searchFields.map((field) => (
             <div key={field.id} className="bu-field" id={field.id}>
               <label
                 style={{
                   width: '100%',
-                  display: 'block',
+                  display: 'block'
                 }}
                 htmlFor={field.id}
               >
@@ -93,7 +85,7 @@ class Filters extends Component {
             </div>
           ))}
         </div>
-      </React.Fragment>
+      </>
     );
   }
 }
@@ -102,7 +94,7 @@ Filters.propTypes = {
   PortalSite: PropTypes.object.isRequired,
   filters: PropTypes.object.isRequired,
   options: PropTypes.object.isRequired,
-  onFilterChange: PropTypes.func.isRequired,
+  onFilterChange: PropTypes.func.isRequired
 };
 
 export default Filters;
