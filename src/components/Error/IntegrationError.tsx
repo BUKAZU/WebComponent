@@ -1,11 +1,19 @@
 import React from 'react';
+import { FiltersType } from '../SearchPage/filters/filter_types';
+
+interface Props {
+  portalCode: string;
+  pageType: string;
+  locale: string;
+  filters: FiltersType;
+}
 
 export default function IntegrationError({
   portalCode,
   pageType,
   locale,
-  filters,
-}) {
+  filters
+}: Props): JSX.Element {
   let errors = [];
 
   if (!portalCode) {
@@ -13,13 +21,13 @@ export default function IntegrationError({
     console.error(message);
     errors.push(message);
   }
-  
+
   if (pageType && pageType !== 'reviews') {
     let message = `'${pageType}' is not a valid page`;
     console.error(message);
     errors.push(message);
   }
-  
+
   if (!locale) {
     console.warn('No locale is set default to English');
   } else {
@@ -27,7 +35,7 @@ export default function IntegrationError({
       errors.push('Invalid locale');
     }
   }
-  
+
   if (filters && !isObject(filters)) {
     let message = 'Filters variable is not an object';
     console.error(message, filters);
@@ -39,8 +47,7 @@ export default function IntegrationError({
 
   return (
     <div>
-      <h2>
-       Something went wrong please try again      </h2>
+      <h2>Something went wrong please try again </h2>
       <ul>
         {errors.map((err) => (
           <li>{err}</li>
@@ -49,7 +56,6 @@ export default function IntegrationError({
     </div>
   );
 }
-
 
 const isObject = (obj) => {
   return Object.prototype.toString.call(obj) === '[object Object]';

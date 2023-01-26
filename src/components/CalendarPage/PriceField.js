@@ -1,39 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Query } from '@apollo/client/react/components';
-import { gql}  from "@apollo/client";
-import Loading from '../icons/loading.svg';
-import { FormatIntl, LONG_DATE_FORMAT, Parse_EN_US } from '../../_lib/date_helper';
-import { FormattedMessage, FormattedNumber } from 'react-intl';
+import {
+  FormatIntl,
+  LONG_DATE_FORMAT,
+  Parse_EN_US
+} from '../../_lib/date_helper';
+import { FormattedMessage } from 'react-intl';
 import { createPeronsArray } from './formParts/BookingHelpers';
-import { ApiError } from '../Error';
+import Price from './PriceField/Price';
 
 const dateFormat = LONG_DATE_FORMAT;
 
-export const BOOKING_PRICE_QUERY = gql`
-  query BookingPriceQuery(
-    $id: ID!
-    $house_id: String!
-    $starts_at: Date!
-    $ends_at: Date!
-    $persons: Int
-  ) {
-    PortalSite(id: $id) {
-      houses(house_code: $house_id) {
-        id
-        name
-        booking_price(
-          starts_at: $starts_at
-          ends_at: $ends_at
-          persons: $persons
-        )
-      }
-    }
-  }
-`;
 class PriceField extends Component {
   state = {
-    persons: 2,
+    persons: 2
   };
 
   setPersons(persons) {
@@ -45,11 +25,11 @@ class PriceField extends Component {
       portalCode,
       objectCode,
       startsAt,
-      endsAt,      
+      endsAt,
       house,
       disabled,
       onStartBooking,
-      minNights,
+      minNights
     } = this.props;
     const { persons } = this.state;
 
@@ -121,55 +101,15 @@ class PriceField extends Component {
         </div>
         <div className="calendar--picker--date">
           {startsAt && endsAt && (
-            <Query
-              query={BOOKING_PRICE_QUERY}
+            <Price
+              persons={parseInt(persons)}
               variables={{
                 id: portalCode,
                 house_id: objectCode,
                 starts_at: startsAt,
-                ends_at: endsAt,
-                persons: parseInt(persons)
+                ends_at: endsAt
               }}
-            >
-              {({ loading, data, error }) => {
-                if (loading)
-                  return (
-                    <div className="price-overview--build">
-                      <Loading />
-                    </div>
-                  );
-                if (error) {
-                  return (
-                    <div className="price-overview--build">
-                      <ApiError errors={error}></ApiError>
-                    </div>
-                  );
-                }
-                const result = data.PortalSite.houses[0].booking_price;
-                return (
-                  <>
-                    <div className="price-overview--book">
-                      <div className="price">
-                        €{' '}
-                        <FormattedNumber
-                          value={Math.round(result.total_price)}
-                          minimumFractionDigits={2}
-                          maximumFractionDigits={2}
-                        />
-                      </div>
-                      <div>
-                        <i>
-                          <FormattedMessage
-                            id="based_on_one_person"
-                            values={{ persons }}
-                          />
-                        </i>
-                      </div>
-                    </div>
-                  </>
-                );
-              }}
-            </Query>
+            />
           )}
         </div>
         <button
@@ -194,8 +134,7 @@ PriceField.propTypes = {
   startsAt: PropTypes.string,
   endsAt: PropTypes.string,
   onStartBooking: PropTypes.func.isRequired,
-  locale: PropTypes.string.isRequired,
-  minNights: PropTypes.number,
+  minNights: PropTypes.number
 };
 
 export default PriceField;

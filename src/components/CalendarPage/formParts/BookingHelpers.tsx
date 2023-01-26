@@ -2,11 +2,11 @@ import { subYears, isAfter } from 'date-fns'
 import React from 'react'
 import { FormattedMessage } from 'react-intl';
 
-export function createPeronsArray(persons) {
+export function createPeronsArray(persons: number): number[] {
   return Array.apply(null, { length: persons + 1 }).map(Number.call, Number);
 }
 
-export function initializeBookingFields(bookingFields) {
+export function initializeBookingFields(bookingFields: any[]) {
   let obj = {};
   bookingFields.map((field) => {
     obj[field.id] = '';
@@ -29,7 +29,7 @@ export function byString(o, s) {
   return o;
 }
 
-export function translatedOption(id, value) {
+export function translatedOption(id:string, value: string):JSX.Element {
   return (
     <FormattedMessage id={id}>
       {(formattedMessage) => <option value={value}>{formattedMessage}</option>}

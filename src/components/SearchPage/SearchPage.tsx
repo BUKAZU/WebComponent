@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Filters from './Filters';
 import Results from './Results';
+import { PortalOptions, PortalSiteType } from '../../types';
+import { FiltersType } from './filters/filter_types';
 
-class SearchPage extends Component {
-  constructor(props) {
+type MyProps = {
+  options: PortalOptions;
+  filters: FiltersType;
+  PortalSite: PortalSiteType;
+  locale: string;
+};
+
+type MyState = {
+  filters: FiltersType;
+  activePage: number;
+  limit: number;
+  skip: number;
+};
+
+class SearchPage extends Component<MyProps, MyState> {
+  constructor(props: MyProps) {
     super(props);
     let limit = this.props.options.filtersForm
       ? Number(this.props.options.filtersForm.no_results)
@@ -13,26 +28,26 @@ class SearchPage extends Component {
       filters: this.props.filters,
       activePage: 1,
       limit,
-      skip: 0,
+      skip: 0
     };
     this.onFilterChange = this.onFilterChange.bind(this);
     this.pageChange = this.pageChange.bind(this);
   }
 
   componentDidMount() {
-    let filters = localStorage.getItem('bukazuFilters')
-    let activePage = localStorage.getItem('bukazuActivePage')
+    let filters = localStorage.getItem('bukazuFilters');
+    let activePage = localStorage.getItem('bukazuActivePage');
 
     this.setState({
-      filters: JSON.parse(filters) || this.props.filters,
+      filters: JSON.parse(filters) || this.props.filters
     });
-    this.pageChange(activePage || 0)
+    this.pageChange(activePage || 0);
   }
 
   onFilterChange(data) {
     let filters = data;
     this.setState({
-      filters,
+      filters
     });
 
     localStorage.setItem('bukazuFilters', JSON.stringify(filters));
@@ -42,18 +57,17 @@ class SearchPage extends Component {
   pageChange(pageNumber) {
     const { limit } = this.state;
     let newSkip = pageNumber * limit;
-    
 
-    localStorage.setItem('bukazuActivePage', pageNumber)
+    localStorage.setItem('bukazuActivePage', pageNumber);
     this.setState({
       activePage: pageNumber,
-      skip: newSkip,
+      skip: newSkip
     });
   }
 
   render() {
     const { filters, activePage, limit, skip } = this.state;
-    const { options, locale } = this.props;
+    const { options, locale, PortalSite } = this.props;
 
     return (
       <div
@@ -69,13 +83,13 @@ class SearchPage extends Component {
         }
       >
         <Filters
-          PortalSite={this.props.PortalSite}
+          PortalSite={PortalSite}
           filters={filters}
           onFilterChange={this.onFilterChange}
           options={options}
         />
         <Results
-          PortalSite={this.props.PortalSite}
+          PortalSite={PortalSite}
           filters={filters}
           activePage={activePage}
           locale={locale}
@@ -87,12 +101,5 @@ class SearchPage extends Component {
     );
   }
 }
-
-SearchPage.propTypes = {
-  PortalSite: PropTypes.object.isRequired,
-  options: PropTypes.object.isRequired,
-  locale: PropTypes.string.isRequired,
-  filters: PropTypes.object.isRequired,
-};
 
 export default SearchPage;

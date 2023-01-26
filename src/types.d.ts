@@ -6,7 +6,9 @@ export type FiltersFormType = {
   showBathrooms: boolean;
   showBedrooms: boolean;
   showPrice: boolean;
-  categories: number[]
+  categories: number[];
+  no_results: number;
+  location: string;
 };
 
 type name_id_type = {

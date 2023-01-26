@@ -1,9 +1,8 @@
 import React from 'react';
 import Modal from '../Modal';
-
 import { FormattedMessage } from 'react-intl';
 
-function ApiError(errors, modal) {
+function ApiError(errors: object[], modal: boolean): JSX.Element {
   console.error({ errors });
   const errorMessage = (
     <div className="bukazu-error-message">
@@ -25,7 +24,7 @@ function ApiError(errors, modal) {
 }
 
 ApiError.defaultProps = {
-  modal: false,
+  modal: false
 };
 
 export default ApiError;
