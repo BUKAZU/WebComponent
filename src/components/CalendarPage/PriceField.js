@@ -117,7 +117,7 @@ class PriceField extends Component {
           disabled={!disabled}
           onClick={() => {
             if (startsAt && endsAt) {
-              onStartBooking('false', persons);
+              onStartBooking({ persons });
             }
           }}
         >

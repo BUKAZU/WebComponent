@@ -30,4 +30,18 @@ export type PortalSiteType = {
   max_weekprice: number;
 };
 
-export type BuDate = {};
+export type LocaleType = 'nl' | 'en' | 'de' | 'es' | 'fr' | 'it';
+
+export type BuDate = {
+  arrival: Boolean;
+  departure: Boolean;
+  min_nights: Number;
+  max_nights: Number;
+  date: string;
+  special_offer: Number;
+};
+
+export type HouseType = {
+  id: number;
+  code: string;
+};

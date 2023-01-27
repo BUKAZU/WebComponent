@@ -15,8 +15,6 @@ import SafeBooking from './SafeBooking';
 import { ApiError } from './Error';
 import ErrorBoundary from './ErrorBoundary';
 
-// import 'react-dates/lib/css/_datepicker.css';
-
 class App extends Component {
   constructor(props) {
     super(props);

@@ -4,7 +4,7 @@ import {
   isAfter,
   differenceInCalendarDays,
   addMonths,
-  subMonths,
+  subMonths
 } from 'date-fns';
 import { Parse_EN_US } from '../../_lib/date_helper';
 import CalendarHeader from './CalendarHeader';
@@ -13,12 +13,12 @@ import PriceField from './PriceField';
 import AssistanceMessage from './formParts/AssistanceMessage';
 import Legend from './CalendarParts/Legend';
 import SingleMonth from './CalendarParts/SingleMonth';
+import Months from './CalendarParts/Months';
+import StartBooking from './CalendarParts/StartBooking';
 
 class Calendar extends React.Component {
   constructor(props) {
     super(props);
-
-    this.bookingStart = this.bookingStart.bind(this);
   }
 
   state = {
@@ -29,48 +29,32 @@ class Calendar extends React.Component {
     house: this.props.house,
     arrivalDate: '',
     departureDate: '',
-    startBooking: false,
+    startBooking: false
   };
 
-  renderMonths() {
-    const {
-      numberOfMonthsInARow,
-      house,
-      arrivalDate,
-      selectedDate,
-      departureDate,
-      currentMonth
-    } = this.state;
-    let template = [];
-    for (let i = 0; i < this.state.numberOfMonths; i++) {
-      template.push(
-        <SingleMonth key={currentMonth + i} house={house} numberOfMonthsInARow={numberOfMonthsInARow} dates={{ arrivalDate, selectedDate, departureDate }} currentMonth={currentMonth} count={i} portalCode={this.props.portalCode} onDateClick={this.onDateClick} />
-      );
-    }
-    return template;
-  }
-
   onDateClick = (day) => {
-    const { arrivalDate, selectedDate, house } = this.state;
-    const date = Parse_EN_US(day.date)
+    const { arrivalDate, selectedDate } = this.state;
+    const { house } = this.props
+    
+    const date = Parse_EN_US(day.date);
+
     if (
       day.departure &&
       isAfter(date, selectedDate) &&
       differenceInCalendarDays(date, selectedDate) <= house.max_nights &&
-      differenceInCalendarDays(date, selectedDate) >=
-        arrivalDate.min_nights &&
+      differenceInCalendarDays(date, selectedDate) >= arrivalDate.min_nights &&
       differenceInCalendarDays(date, selectedDate) <= arrivalDate.max_nights
     ) {
       this.setState({
         departureDate: day,
-        startBooking: true,
+        startBooking: true
       });
     } else if (day.arrival) {
       this.setState({
         startBooking: false,
         selectedDate: date,
         arrivalDate: day,
-        departureDate: '',
+        departureDate: ''
       });
     }
   };
@@ -78,14 +62,14 @@ class Calendar extends React.Component {
   nextMonth = () => {
     const { numberOfMonths, currentMonth } = this.state;
     this.setState({
-      currentMonth: addMonths(currentMonth, numberOfMonths),
+      currentMonth: addMonths(currentMonth, numberOfMonths)
     });
   };
 
   prevMonth = () => {
     const { numberOfMonths, currentMonth } = this.state;
     this.setState({
-      currentMonth: subMonths(currentMonth, numberOfMonths),
+      currentMonth: subMonths(currentMonth, numberOfMonths)
     });
   };
 
@@ -94,56 +78,63 @@ class Calendar extends React.Component {
       selectedDate: '',
       arrivalDate: '',
       departureDate: '',
-      startBooking: false,
+      startBooking: false
     });
   };
 
-  showBooking() {
-    const { startBooking, arrivalDate, departureDate, house } =
-      this.state;
-    const { portalCode, objectCode } = this.props;
-
-    return (
-      <PriceField
-        portalCode={portalCode}
-        objectCode={objectCode}
-        startsAt={arrivalDate.date || null}
-        endsAt={departureDate.date || null}
-        minNights={arrivalDate.min_nights || null}
-        disabled={startBooking}
-        onStartBooking={this.bookingStart}
-        house={house}
-      />
-    );
-  }
-
-  bookingStart(status, persons) {
-    const { arrivalDate, departureDate } = this.state;
-    const { portalCode, objectCode } = this.props;
-    const booking = {
-      portalCode,
-      objectCode,
+  render() {
+    const {
       arrivalDate,
       departureDate,
-      is_option: status,
-      persons,
-    };
-    this.props.onBooking(booking);
-  }
+      selectedDate,
+      currentMonth,
+      startBooking
+    } = this.state;
+    const {
+      numberOfMonths,
+      numberOfMonthsInARow,
+      portalCode,
+      house,
+      onBooking
+    } = this.props;
 
-  render() {
-    const { house, arrivalDate, departureDate } = this.state;
+    console.log({ house });
 
     return (
       <div className="calendar-container ">
-        <div className="price-overview">{this.showBooking()}</div>
+        <div className="price-overview">
+          <StartBooking
+            dates={{
+              arrivalDate,
+              departureDate,
+              startBooking
+            }}
+            house={house}
+            portalCode={portalCode}
+            onStartBooking={onBooking}
+          />
+        </div>
         <div className="calendar-section">
           <CalendarHeader
             onGoNext={this.nextMonth}
             onGoPrev={this.prevMonth}
             onReset={this.reset}
           />
-          <div className="calendars-row">{this.renderMonths()}</div>
+          <div className="calendars-row">
+            <Months
+              house={house}
+              numberOfMonths={numberOfMonths}
+              numberOfMonthsInARow={numberOfMonthsInARow}
+              portalCode={portalCode}
+              dates={{
+                arrivalDate,
+                departureDate,
+                selectedDate
+              }}
+              onDateClick={this.onDateClick}
+              currentMonth={currentMonth}
+            />
+          </div>
           <Legend house={house} />
           <AssistanceMessage
             house={house}
@@ -159,7 +150,7 @@ class Calendar extends React.Component {
 
 Calendar.defaultProps = {
   numberOfMonths: 4,
-  numberOfMonthsInARow: 2,
+  numberOfMonthsInARow: 2
 };
 
 Calendar.propTypes = {
@@ -168,7 +159,7 @@ Calendar.propTypes = {
   onBooking: PropTypes.func.isRequired,
   objectCode: PropTypes.string.isRequired,
   portalCode: PropTypes.string.isRequired,
-  locale: PropTypes.string.isRequired,
+  locale: PropTypes.string.isRequired
 };
 
 export default Calendar;

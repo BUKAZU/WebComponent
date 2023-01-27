@@ -13692,7705 +13692,133 @@ var Loading = function Loading() {
   })));
 };
 
-var _templateObject$5, _templateObject2$1, _templateObject3$1, _templateObject4;
-var PORTAL_QUERY = gql(_templateObject$5 || (_templateObject$5 = _taggedTemplateLiteral(["\n  query PortalSiteQuery($id: ID!) {\n    PortalSite(id: $id) {\n      id\n      portal_code\n      options\n      countries {\n        id\n        name\n      }\n      regions {\n        id\n        name\n        country_id\n      }\n      cities {\n        id\n        name\n        region\n        country_id\n      }\n      extra_search\n      max_bathrooms\n      max_bedrooms\n      max_nights\n      max_persons\n      max_weekprice\n      country_placeholder\n      categories\n      countries_label\n      country_placeholder\n      regions_label\n      cities_label\n      arrival_date_label\n      departure_date_label\n      max_weekprice_label\n      persons_min_label\n      persons_max_label\n      bedrooms_min_label\n      bathrooms_min_label\n      weekprice_max_label\n      no_nights_label\n      extra_search_label\n      properties_label\n    }\n  }\n"])));
+var _templateObject$4, _templateObject2$1, _templateObject3$1, _templateObject4;
+var PORTAL_QUERY = gql(_templateObject$4 || (_templateObject$4 = _taggedTemplateLiteral(["\n  query PortalSiteQuery($id: ID!) {\n    PortalSite(id: $id) {\n      id\n      portal_code\n      options\n      countries {\n        id\n        name\n      }\n      regions {\n        id\n        name\n        country_id\n      }\n      cities {\n        id\n        name\n        region\n        country_id\n      }\n      extra_search\n      max_bathrooms\n      max_bedrooms\n      max_nights\n      max_persons\n      max_weekprice\n      country_placeholder\n      categories\n      countries_label\n      country_placeholder\n      regions_label\n      cities_label\n      arrival_date_label\n      departure_date_label\n      max_weekprice_label\n      persons_min_label\n      persons_max_label\n      bedrooms_min_label\n      bathrooms_min_label\n      weekprice_max_label\n      no_nights_label\n      extra_search_label\n      properties_label\n    }\n  }\n"])));
 var CALENDAR_QUERY = gql(_templateObject2$1 || (_templateObject2$1 = _taggedTemplateLiteral(["\n  query PortalSiteHousesQuery(\n    $id: ID!\n    $house_id: String!\n    $starts_at: Date!\n    $ends_at: Date!\n  ) {\n    PortalSite(id: $id) {\n      id\n      houses(house_code: $house_id) {\n        id\n        name\n        last_minute_days\n        availabilities(starts_at: $starts_at, ends_at: $ends_at) {\n          arrival\n          arrival_time_from\n          arrival_time_to\n          date\n          departure\n          departure_time\n          max_nights\n          min_nights\n          special_offer\n        }\n      }\n    }\n    Discounts(\n      house_code: $house_id\n      discount_starts_at: $ends_at\n      discount_ends_at: $starts_at\n      active_today: true\n    ) {\n      name\n      discount_starts_at\n      discount_ends_at\n    }\n  }\n"])));
 var BOOKING_PRICE_QUERY$1 = gql(_templateObject3$1 || (_templateObject3$1 = _taggedTemplateLiteral(["\n  query BookingPriceQuery(\n    $id: ID!\n    $house_id: String!\n    $starts_at: Date!\n    $ends_at: Date!\n  ) {\n    PortalSite(id: $id) {\n      id\n      options\n      first_name_label\n      preposition_label\n      last_name_label\n      email_label\n      zipcode_label\n      city_label\n      address_label\n      house_number_label\n      phone_label\n      phone_mobile_label\n      country_label\n      iban_label\n      holder_label\n      bic_label\n      comment_label\n      company_name_label\n      extra_fields_drivers_license_label\n      extra_fields_destination_label\n      booking_fields {\n        id\n        label\n        field_type\n        options\n        placeholder\n      }\n      houses(house_code: $house_id) {\n        id\n        name\n        code\n        allow_option\n        persons\n        image_url\n        discounts\n        discounts_info\n        house_type\n        rental_terms\n        cancel_insurance\n        damage_insurance\n        damage_insurance_required\n        travel_insurance\n        babies_extra\n        booking_price(starts_at: $starts_at, ends_at: $ends_at)\n      }\n    }\n  }\n"])));
 var CREATE_BOOKING_MUTATION = gql(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  mutation CreateBooking(\n    $first_name: String!\n    $preposition: String\n    $last_name: String!\n    $company_name: String\n    $is_option: Boolean!\n    $address: String\n    $house_number: String\n    $zipcode: String\n    $city: String\n    $phone: String\n    $phone_mobile: String\n    $iban: String\n    $bic: String\n    $holder: String\n    $email: String!\n    $house_code: String!\n    $portal_code: String\n    $language: String\n    $country: String!\n    $adults: Int!\n    $children: Int\n    $babies: Int\n    $discount: Int\n    $damage_insurance: Int\n    $cancel_insurance: Int\n    $travel_insurance: Int\n    $discount_reason: String\n    $discount_code: String\n    $comment: String\n    $arrival_date: String!\n    $departure_date: String!\n    $costs: Json\n    $extra_fields: String\n  ) {\n    createBooking(\n      first_name: $first_name\n      preposition: $preposition\n      company_name: $company_name\n      last_name: $last_name\n      is_option: $is_option\n      address: $address\n      house_number: $house_number\n      zipcode: $zipcode\n      city: $city\n      phone: $phone\n      phone_mobile: $phone_mobile\n      iban: $iban\n      bic: $bic\n      holder: $holder\n      email: $email\n      house_code: $house_code\n      portal_code: $portal_code\n      language: $language\n      country: $country\n      adults: $adults\n      children: $children\n      babies: $babies\n      discount: $discount\n      discount_code: $discount_code\n      damage_insurance: $damage_insurance\n      cancel_insurance: $cancel_insurance\n      travel_insurance: $travel_insurance\n      discount_reason: $discount_reason\n      arrival_date: $arrival_date\n      departure_date: $departure_date\n      comment: $comment\n      costs: $costs\n      extra_fields: $extra_fields\n    ) {\n      booking_nr\n    }\n  }\n"])));
 
-var entry = {};
-
-var DatePicker$1 = {};
-
-// As defined on the list of supported events: https://reactjs.org/docs/events.html
-var clipboardEvents = ['onCopy', 'onCut', 'onPaste'];
-var compositionEvents = ['onCompositionEnd', 'onCompositionStart', 'onCompositionUpdate'];
-var keyboardEvents = ['onKeyDown', 'onKeyPress', 'onKeyUp'];
-var focusEvents = ['onFocus', 'onBlur'];
-var formEvents = ['onChange', 'onInput', 'onInvalid', 'onReset', 'onSubmit'];
-var genericEvents = ['onError', 'onLoad'];
-var mouseEvents = ['onClick', 'onContextMenu', 'onDoubleClick', 'onDrag', 'onDragEnd', 'onDragEnter', 'onDragExit', 'onDragLeave', 'onDragOver', 'onDragStart', 'onDrop', 'onMouseDown', 'onMouseEnter', 'onMouseLeave', 'onMouseMove', 'onMouseOut', 'onMouseOver', 'onMouseUp'];
-var pointerEvents = ['onPointerDown', 'onPointerMove', 'onPointerUp', 'onPointerCancel', 'onGotPointerCapture', 'onLostPointerCapture', 'onPointerEnter', 'onPointerLeave', 'onPointerOver', 'onPointerOut'];
-var selectionEvents = ['onSelect'];
-var touchEvents = ['onTouchCancel', 'onTouchEnd', 'onTouchMove', 'onTouchStart'];
-var uiEvents = ['onScroll'];
-var wheelEvents = ['onWheel'];
-var mediaEvents = ['onAbort', 'onCanPlay', 'onCanPlayThrough', 'onDurationChange', 'onEmptied', 'onEncrypted', 'onEnded', 'onError', 'onLoadedData', 'onLoadedMetadata', 'onLoadStart', 'onPause', 'onPlay', 'onPlaying', 'onProgress', 'onRateChange', 'onSeeked', 'onSeeking', 'onStalled', 'onSuspend', 'onTimeUpdate', 'onVolumeChange', 'onWaiting'];
-var imageEvents = ['onLoad', 'onError'];
-var animationEvents = ['onAnimationStart', 'onAnimationEnd', 'onAnimationIteration'];
-var transitionEvents = ['onTransitionEnd'];
-var otherEvents = ['onToggle'];
-var allEvents = [].concat(clipboardEvents, compositionEvents, keyboardEvents, focusEvents, formEvents, genericEvents, mouseEvents, pointerEvents, selectionEvents, touchEvents, uiEvents, wheelEvents, mediaEvents, imageEvents, animationEvents, transitionEvents, otherEvents);
-/**
- * Returns an object with on-event callback props curried with provided args.
- * @param {Object} props Props passed to a component.
- * @param {Function=} getArgs A function that returns argument(s) on-event callbacks
- *   shall be curried with.
- */
-
-var makeEventProps = function makeEventProps(props, getArgs) {
-  var eventProps = {};
-  allEvents.forEach(function (eventName) {
-    if (!(eventName in props)) {
-      return;
-    }
-
-    if (!getArgs) {
-      eventProps[eventName] = props[eventName];
-      return;
-    }
-
-    eventProps[eventName] = function (event) {
-      return props[eventName](event, getArgs(eventName));
-    };
-  });
-  return eventProps;
-};
-
-var esm$6 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  clipboardEvents: clipboardEvents,
-  compositionEvents: compositionEvents,
-  keyboardEvents: keyboardEvents,
-  focusEvents: focusEvents,
-  formEvents: formEvents,
-  genericEvents: genericEvents,
-  mouseEvents: mouseEvents,
-  pointerEvents: pointerEvents,
-  selectionEvents: selectionEvents,
-  touchEvents: touchEvents,
-  uiEvents: uiEvents,
-  wheelEvents: wheelEvents,
-  mediaEvents: mediaEvents,
-  imageEvents: imageEvents,
-  animationEvents: animationEvents,
-  transitionEvents: transitionEvents,
-  otherEvents: otherEvents,
-  allEvents: allEvents,
-  'default': makeEventProps
-});
-
-var require$$2$1 = /*@__PURE__*/getAugmentedNamespace(esm$6);
-
-function mergeClassNames() {
-  return Array.prototype.slice.call(arguments).reduce(function (classList, arg) {
-    return classList.concat(arg);
-  }, []).filter(function (arg) {
-    return typeof arg === 'string';
-  }).join(' ');
-}
-
-var esm$5 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': mergeClassNames
-});
-
-var require$$3$1 = /*@__PURE__*/getAugmentedNamespace(esm$5);
-
-/**
- * lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash modularize exports="npm" -o ./`
- * Copyright jQuery Foundation and other contributors <https://jquery.org/>
- * Released under MIT license <https://lodash.com/license>
- * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
- * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
- */
-
-/** Used as the `TypeError` message for "Functions" methods. */
-var FUNC_ERROR_TEXT$1 = 'Expected a function';
-
-/** Used to stand-in for `undefined` hash values. */
-var HASH_UNDEFINED$2 = '__lodash_hash_undefined__';
-
-/** `Object#toString` result references. */
-var funcTag$3 = '[object Function]',
-    genTag$2 = '[object GeneratorFunction]';
-
-/**
- * Used to match `RegExp`
- * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
- */
-var reRegExpChar$1 = /[\\^$.*+?()[\]{}|]/g;
-
-/** Used to detect host constructors (Safari). */
-var reIsHostCtor$1 = /^\[object .+?Constructor\]$/;
-
-/** Detect free variable `global` from Node.js. */
-var freeGlobal$2 = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
-
-/** Detect free variable `self`. */
-var freeSelf$1 = typeof self == 'object' && self && self.Object === Object && self;
-
-/** Used as a reference to the global object. */
-var root$2 = freeGlobal$2 || freeSelf$1 || Function('return this')();
-
-/**
- * Gets the value at `key` of `object`.
- *
- * @private
- * @param {Object} [object] The object to query.
- * @param {string} key The key of the property to get.
- * @returns {*} Returns the property value.
- */
-function getValue$3(object, key) {
-  return object == null ? undefined : object[key];
-}
-
-/**
- * Checks if `value` is a host object in IE < 9.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
- */
-function isHostObject(value) {
-  // Many host objects are `Object` objects that can coerce to strings
-  // despite having improperly defined `toString` methods.
-  var result = false;
-  if (value != null && typeof value.toString != 'function') {
-    try {
-      result = !!(value + '');
-    } catch (e) {}
-  }
-  return result;
-}
-
-/** Used for built-in method references. */
-var arrayProto$1 = Array.prototype,
-    funcProto$3 = Function.prototype,
-    objectProto$e = Object.prototype;
-
-/** Used to detect overreaching core-js shims. */
-var coreJsData$2 = root$2['__core-js_shared__'];
-
-/** Used to detect methods masquerading as native. */
-var maskSrcKey$1 = (function() {
-  var uid = /[^.]+$/.exec(coreJsData$2 && coreJsData$2.keys && coreJsData$2.keys.IE_PROTO || '');
-  return uid ? ('Symbol(src)_1.' + uid) : '';
-}());
-
-/** Used to resolve the decompiled source of functions. */
-var funcToString$3 = funcProto$3.toString;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty$b = objectProto$e.hasOwnProperty;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var objectToString$1 = objectProto$e.toString;
-
-/** Used to detect if a method is native. */
-var reIsNative$1 = RegExp('^' +
-  funcToString$3.call(hasOwnProperty$b).replace(reRegExpChar$1, '\\$&')
-  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
-);
-
-/** Built-in value references. */
-var splice$1 = arrayProto$1.splice;
-
-/* Built-in method references that are verified to be native. */
-var Map$3 = getNative$1(root$2, 'Map'),
-    nativeCreate$2 = getNative$1(Object, 'create');
-
-/**
- * Creates a hash object.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */
-function Hash$1(entries) {
-  var index = -1,
-      length = entries ? entries.length : 0;
-
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
-}
-
-/**
- * Removes all key-value entries from the hash.
- *
- * @private
- * @name clear
- * @memberOf Hash
- */
-function hashClear$1() {
-  this.__data__ = nativeCreate$2 ? nativeCreate$2(null) : {};
-}
-
-/**
- * Removes `key` and its value from the hash.
- *
- * @private
- * @name delete
- * @memberOf Hash
- * @param {Object} hash The hash to modify.
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */
-function hashDelete$1(key) {
-  return this.has(key) && delete this.__data__[key];
-}
-
-/**
- * Gets the hash value for `key`.
- *
- * @private
- * @name get
- * @memberOf Hash
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */
-function hashGet$1(key) {
-  var data = this.__data__;
-  if (nativeCreate$2) {
-    var result = data[key];
-    return result === HASH_UNDEFINED$2 ? undefined : result;
-  }
-  return hasOwnProperty$b.call(data, key) ? data[key] : undefined;
-}
-
-/**
- * Checks if a hash value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf Hash
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function hashHas$1(key) {
-  var data = this.__data__;
-  return nativeCreate$2 ? data[key] !== undefined : hasOwnProperty$b.call(data, key);
-}
-
-/**
- * Sets the hash `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf Hash
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the hash instance.
- */
-function hashSet$1(key, value) {
-  var data = this.__data__;
-  data[key] = (nativeCreate$2 && value === undefined) ? HASH_UNDEFINED$2 : value;
-  return this;
-}
-
-// Add methods to `Hash`.
-Hash$1.prototype.clear = hashClear$1;
-Hash$1.prototype['delete'] = hashDelete$1;
-Hash$1.prototype.get = hashGet$1;
-Hash$1.prototype.has = hashHas$1;
-Hash$1.prototype.set = hashSet$1;
-
-/**
- * Creates an list cache object.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */
-function ListCache$1(entries) {
-  var index = -1,
-      length = entries ? entries.length : 0;
-
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
-}
-
-/**
- * Removes all key-value entries from the list cache.
- *
- * @private
- * @name clear
- * @memberOf ListCache
- */
-function listCacheClear$1() {
-  this.__data__ = [];
-}
-
-/**
- * Removes `key` and its value from the list cache.
- *
- * @private
- * @name delete
- * @memberOf ListCache
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */
-function listCacheDelete$1(key) {
-  var data = this.__data__,
-      index = assocIndexOf$1(data, key);
-
-  if (index < 0) {
-    return false;
-  }
-  var lastIndex = data.length - 1;
-  if (index == lastIndex) {
-    data.pop();
-  } else {
-    splice$1.call(data, index, 1);
-  }
-  return true;
-}
-
-/**
- * Gets the list cache value for `key`.
- *
- * @private
- * @name get
- * @memberOf ListCache
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */
-function listCacheGet$1(key) {
-  var data = this.__data__,
-      index = assocIndexOf$1(data, key);
-
-  return index < 0 ? undefined : data[index][1];
-}
-
-/**
- * Checks if a list cache value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf ListCache
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function listCacheHas$1(key) {
-  return assocIndexOf$1(this.__data__, key) > -1;
-}
-
-/**
- * Sets the list cache `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf ListCache
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the list cache instance.
- */
-function listCacheSet$1(key, value) {
-  var data = this.__data__,
-      index = assocIndexOf$1(data, key);
-
-  if (index < 0) {
-    data.push([key, value]);
-  } else {
-    data[index][1] = value;
-  }
-  return this;
-}
-
-// Add methods to `ListCache`.
-ListCache$1.prototype.clear = listCacheClear$1;
-ListCache$1.prototype['delete'] = listCacheDelete$1;
-ListCache$1.prototype.get = listCacheGet$1;
-ListCache$1.prototype.has = listCacheHas$1;
-ListCache$1.prototype.set = listCacheSet$1;
-
-/**
- * Creates a map cache object to store key-value pairs.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */
-function MapCache$1(entries) {
-  var index = -1,
-      length = entries ? entries.length : 0;
-
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
-}
-
-/**
- * Removes all key-value entries from the map.
- *
- * @private
- * @name clear
- * @memberOf MapCache
- */
-function mapCacheClear$1() {
-  this.__data__ = {
-    'hash': new Hash$1,
-    'map': new (Map$3 || ListCache$1),
-    'string': new Hash$1
-  };
-}
-
-/**
- * Removes `key` and its value from the map.
- *
- * @private
- * @name delete
- * @memberOf MapCache
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */
-function mapCacheDelete$1(key) {
-  return getMapData$1(this, key)['delete'](key);
-}
-
-/**
- * Gets the map value for `key`.
- *
- * @private
- * @name get
- * @memberOf MapCache
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */
-function mapCacheGet$1(key) {
-  return getMapData$1(this, key).get(key);
-}
-
-/**
- * Checks if a map value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf MapCache
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function mapCacheHas$1(key) {
-  return getMapData$1(this, key).has(key);
-}
-
-/**
- * Sets the map `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf MapCache
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the map cache instance.
- */
-function mapCacheSet$1(key, value) {
-  getMapData$1(this, key).set(key, value);
-  return this;
-}
-
-// Add methods to `MapCache`.
-MapCache$1.prototype.clear = mapCacheClear$1;
-MapCache$1.prototype['delete'] = mapCacheDelete$1;
-MapCache$1.prototype.get = mapCacheGet$1;
-MapCache$1.prototype.has = mapCacheHas$1;
-MapCache$1.prototype.set = mapCacheSet$1;
-
-/**
- * Gets the index at which the `key` is found in `array` of key-value pairs.
- *
- * @private
- * @param {Array} array The array to inspect.
- * @param {*} key The key to search for.
- * @returns {number} Returns the index of the matched value, else `-1`.
- */
-function assocIndexOf$1(array, key) {
-  var length = array.length;
-  while (length--) {
-    if (eq$1(array[length][0], key)) {
-      return length;
-    }
-  }
-  return -1;
-}
-
-/**
- * The base implementation of `_.isNative` without bad shim checks.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a native function,
- *  else `false`.
- */
-function baseIsNative$1(value) {
-  if (!isObject$3(value) || isMasked$1(value)) {
-    return false;
-  }
-  var pattern = (isFunction$3(value) || isHostObject(value)) ? reIsNative$1 : reIsHostCtor$1;
-  return pattern.test(toSource$1(value));
-}
-
-/**
- * Gets the data for `map`.
- *
- * @private
- * @param {Object} map The map to query.
- * @param {string} key The reference key.
- * @returns {*} Returns the map data.
- */
-function getMapData$1(map, key) {
-  var data = map.__data__;
-  return isKeyable$1(key)
-    ? data[typeof key == 'string' ? 'string' : 'hash']
-    : data.map;
-}
-
-/**
- * Gets the native function at `key` of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {string} key The key of the method to get.
- * @returns {*} Returns the function if it's native, else `undefined`.
- */
-function getNative$1(object, key) {
-  var value = getValue$3(object, key);
-  return baseIsNative$1(value) ? value : undefined;
-}
-
-/**
- * Checks if `value` is suitable for use as unique object key.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
- */
-function isKeyable$1(value) {
-  var type = typeof value;
-  return (type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean')
-    ? (value !== '__proto__')
-    : (value === null);
-}
-
-/**
- * Checks if `func` has its source masked.
- *
- * @private
- * @param {Function} func The function to check.
- * @returns {boolean} Returns `true` if `func` is masked, else `false`.
- */
-function isMasked$1(func) {
-  return !!maskSrcKey$1 && (maskSrcKey$1 in func);
-}
-
-/**
- * Converts `func` to its source code.
- *
- * @private
- * @param {Function} func The function to process.
- * @returns {string} Returns the source code.
- */
-function toSource$1(func) {
-  if (func != null) {
-    try {
-      return funcToString$3.call(func);
-    } catch (e) {}
-    try {
-      return (func + '');
-    } catch (e) {}
-  }
-  return '';
-}
-
-/**
- * Creates a function that memoizes the result of `func`. If `resolver` is
- * provided, it determines the cache key for storing the result based on the
- * arguments provided to the memoized function. By default, the first argument
- * provided to the memoized function is used as the map cache key. The `func`
- * is invoked with the `this` binding of the memoized function.
- *
- * **Note:** The cache is exposed as the `cache` property on the memoized
- * function. Its creation may be customized by replacing the `_.memoize.Cache`
- * constructor with one whose instances implement the
- * [`Map`](http://ecma-international.org/ecma-262/7.0/#sec-properties-of-the-map-prototype-object)
- * method interface of `delete`, `get`, `has`, and `set`.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Function
- * @param {Function} func The function to have its output memoized.
- * @param {Function} [resolver] The function to resolve the cache key.
- * @returns {Function} Returns the new memoized function.
- * @example
- *
- * var object = { 'a': 1, 'b': 2 };
- * var other = { 'c': 3, 'd': 4 };
- *
- * var values = _.memoize(_.values);
- * values(object);
- * // => [1, 2]
- *
- * values(other);
- * // => [3, 4]
- *
- * object.a = 2;
- * values(object);
- * // => [1, 2]
- *
- * // Modify the result cache.
- * values.cache.set(object, ['a', 'b']);
- * values(object);
- * // => ['a', 'b']
- *
- * // Replace `_.memoize.Cache`.
- * _.memoize.Cache = WeakMap;
- */
-function memoize$2(func, resolver) {
-  if (typeof func != 'function' || (resolver && typeof resolver != 'function')) {
-    throw new TypeError(FUNC_ERROR_TEXT$1);
-  }
-  var memoized = function() {
-    var args = arguments,
-        key = resolver ? resolver.apply(this, args) : args[0],
-        cache = memoized.cache;
-
-    if (cache.has(key)) {
-      return cache.get(key);
-    }
-    var result = func.apply(this, args);
-    memoized.cache = cache.set(key, result);
-    return result;
-  };
-  memoized.cache = new (memoize$2.Cache || MapCache$1);
-  return memoized;
-}
-
-// Assign cache to `_.memoize`.
-memoize$2.Cache = MapCache$1;
-
-/**
- * Performs a
- * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
- * comparison between two values to determine if they are equivalent.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to compare.
- * @param {*} other The other value to compare.
- * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
- * @example
- *
- * var object = { 'a': 1 };
- * var other = { 'a': 1 };
- *
- * _.eq(object, object);
- * // => true
- *
- * _.eq(object, other);
- * // => false
- *
- * _.eq('a', 'a');
- * // => true
- *
- * _.eq('a', Object('a'));
- * // => false
- *
- * _.eq(NaN, NaN);
- * // => true
- */
-function eq$1(value, other) {
-  return value === other || (value !== value && other !== other);
-}
-
-/**
- * Checks if `value` is classified as a `Function` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a function, else `false`.
- * @example
- *
- * _.isFunction(_);
- * // => true
- *
- * _.isFunction(/abc/);
- * // => false
- */
-function isFunction$3(value) {
-  // The use of `Object#toString` avoids issues with the `typeof` operator
-  // in Safari 8-9 which returns 'object' for typed array and other constructors.
-  var tag = isObject$3(value) ? objectToString$1.call(value) : '';
-  return tag == funcTag$3 || tag == genTag$2;
-}
-
-/**
- * Checks if `value` is the
- * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
- * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- * @example
- *
- * _.isObject({});
- * // => true
- *
- * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(_.noop);
- * // => true
- *
- * _.isObject(null);
- * // => false
- */
-function isObject$3(value) {
-  var type = typeof value;
-  return !!value && (type == 'object' || type == 'function');
-}
-
-var lodash_memoize = memoize$2;
-
-var memoize$3 = lodash_memoize;
-
-function resolver(options) {
-  return JSON.stringify(options);
-}
-
-function uniqDefined(arr) {
-  return arr.filter(function (el, index) {
-    return el && arr.indexOf(el) === index;
-  });
-}
-
-function normalizeLocales(arr) {
-  return arr.map(function (el) {
-    if (!el || el.indexOf('-') === -1 || el.toLowerCase() !== el) {
-      return el;
-    }
-
-    var splitEl = el.split('-');
-    return splitEl[0] + "-" + splitEl[1].toUpperCase();
-  });
-}
-
-function getUserLocalesInternal(_temp) {
-  var _ref = _temp === void 0 ? {} : _temp,
-      _ref$useFallbackLocal = _ref.useFallbackLocale,
-      useFallbackLocale = _ref$useFallbackLocal === void 0 ? true : _ref$useFallbackLocal,
-      _ref$fallbackLocale = _ref.fallbackLocale,
-      fallbackLocale = _ref$fallbackLocale === void 0 ? 'en-US' : _ref$fallbackLocale;
-
-  var languageList = [];
-
-  if (typeof window !== 'undefined') {
-    var _window = window,
-        navigator = _window.navigator;
-    languageList = languageList.concat(navigator.languages, navigator.language, navigator.userLanguage, navigator.browserLanguage, navigator.systemLanguage);
-  }
-
-  if (useFallbackLocale) {
-    languageList.push(fallbackLocale);
-  }
-
-  return normalizeLocales(uniqDefined(languageList));
-}
-
-var getUserLocales = memoize$3(getUserLocalesInternal, resolver);
-
-function getUserLocaleInternal(options) {
-  return getUserLocales(options)[0] || null;
-}
-
-var getUserLocale = memoize$3(getUserLocaleInternal, resolver);
-
-var esm$4 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  getUserLocales: getUserLocales,
-  getUserLocale: getUserLocale,
-  'default': getUserLocale
-});
-
-/**
- * Utils
- */
-function makeGetEdgeOfNeighbor(getPeriod, getEdgeOfPeriod, defaultOffset) {
-  return function makeGetEdgeOfNeighborInternal(date) {
-    var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultOffset;
-    var previousPeriod = getPeriod(date) + offset;
-    return getEdgeOfPeriod(previousPeriod);
-  };
-}
-
-function makeGetEnd(getBeginOfNextPeriod) {
-  return function makeGetEndInternal(date) {
-    return new Date(getBeginOfNextPeriod(date).getTime() - 1);
-  };
-}
-
-function makeGetRange(functions) {
-  return function makeGetRangeInternal(date) {
-    return functions.map(function (fn) {
-      return fn(date);
-    });
-  };
-}
-/**
- * Simple getters - getting a property of a given point in time
- */
-
-/**
- * Gets year from date.
- *
- * @param {Date|number|string} date Date to get year from.
- */
-
-
-function getYear(date) {
-  if (date instanceof Date) {
-    return date.getFullYear();
-  }
-
-  if (typeof date === 'number') {
-    return date;
-  }
-
-  var year = parseInt(date, 10);
-
-  if (typeof date === 'string' && !isNaN(year)) {
-    return year;
-  }
-
-  throw new Error("Failed to get year from date: ".concat(date, "."));
-}
-/**
- * Gets month from date.
- *
- * @param {Date} date Date to get month from.
- */
-
-function getMonth(date) {
-  if (date instanceof Date) {
-    return date.getMonth();
-  }
-
-  throw new Error("Failed to get month from date: ".concat(date, "."));
-}
-/**
- * Gets human-readable month from date.
- *
- * @param {Date} date Date to get human-readable month from.
- */
-
-function getMonthHuman(date) {
-  if (date instanceof Date) {
-    return date.getMonth() + 1;
-  }
-
-  throw new Error("Failed to get human-readable month from date: ".concat(date, "."));
-}
-/**
- * Gets human-readable day of the month from date.
- *
- * @param {Date} date Date to get day of the month from.
- */
-
-function getDate(date) {
-  if (date instanceof Date) {
-    return date.getDate();
-  }
-
-  throw new Error("Failed to get year from date: ".concat(date, "."));
-}
-/**
- * Gets hours from date.
- *
- * @param {Date|string} date Date to get hours from.
- */
-
-function getHours(date) {
-  if (date instanceof Date) {
-    return date.getHours();
-  }
-
-  if (typeof date === 'string') {
-    var datePieces = date.split(':');
-
-    if (datePieces.length >= 2) {
-      var hoursString = datePieces[0];
-      var hours = parseInt(hoursString, 10);
-
-      if (!isNaN(hours)) {
-        return hours;
-      }
-    }
-  }
-
-  throw new Error("Failed to get hours from date: ".concat(date, "."));
-}
-/**
- * Gets minutes from date.
- *
- * @param {Date|string} date Date to get minutes from.
- */
-
-function getMinutes(date) {
-  if (date instanceof Date) {
-    return date.getMinutes();
-  }
-
-  if (typeof date === 'string') {
-    var datePieces = date.split(':');
-
-    if (datePieces.length >= 2) {
-      var minutesString = datePieces[1] || 0;
-      var minutes = parseInt(minutesString, 10);
-
-      if (!isNaN(minutes)) {
-        return minutes;
-      }
-    }
-  }
-
-  throw new Error("Failed to get minutes from date: ".concat(date, "."));
-}
-/**
- * Gets seconds from date.
- *
- * @param {Date|string} date Date to get seconds from.
- */
-
-function getSeconds(date) {
-  if (date instanceof Date) {
-    return date.getSeconds();
-  }
-
-  if (typeof date === 'string') {
-    var datePieces = date.split(':');
-
-    if (datePieces.length >= 2) {
-      var secondsString = datePieces[2] || 0;
-      var seconds = parseInt(secondsString, 10);
-
-      if (!isNaN(seconds)) {
-        return seconds;
-      }
-    }
-  }
-
-  throw new Error("Failed to get seconds from date: ".concat(date, "."));
-}
-/**
- * Century
- */
-
-function getCenturyStart(date) {
-  var year = getYear(date);
-  var centuryStartYear = year + (-year + 1) % 100;
-  var centuryStartDate = new Date();
-  centuryStartDate.setFullYear(centuryStartYear, 0, 1);
-  centuryStartDate.setHours(0, 0, 0, 0);
-  return centuryStartDate;
-}
-var getPreviousCenturyStart = makeGetEdgeOfNeighbor(getYear, getCenturyStart, -100);
-var getNextCenturyStart = makeGetEdgeOfNeighbor(getYear, getCenturyStart, 100);
-var getCenturyEnd = makeGetEnd(getNextCenturyStart);
-var getPreviousCenturyEnd = makeGetEdgeOfNeighbor(getYear, getCenturyEnd, -100);
-var getNextCenturyEnd = makeGetEdgeOfNeighbor(getYear, getCenturyEnd, 100);
-var getCenturyRange = makeGetRange([getCenturyStart, getCenturyEnd]);
-/**
- * Decade
- */
-
-function getDecadeStart(date) {
-  var year = getYear(date);
-  var decadeStartYear = year + (-year + 1) % 10;
-  var decadeStartDate = new Date();
-  decadeStartDate.setFullYear(decadeStartYear, 0, 1);
-  decadeStartDate.setHours(0, 0, 0, 0);
-  return decadeStartDate;
-}
-var getPreviousDecadeStart = makeGetEdgeOfNeighbor(getYear, getDecadeStart, -10);
-var getNextDecadeStart = makeGetEdgeOfNeighbor(getYear, getDecadeStart, 10);
-var getDecadeEnd = makeGetEnd(getNextDecadeStart);
-var getPreviousDecadeEnd = makeGetEdgeOfNeighbor(getYear, getDecadeEnd, -10);
-var getNextDecadeEnd = makeGetEdgeOfNeighbor(getYear, getDecadeEnd, 10);
-var getDecadeRange = makeGetRange([getDecadeStart, getDecadeEnd]);
-/**
- * Year
- */
-
-function getYearStart(date) {
-  var year = getYear(date);
-  var yearStartDate = new Date();
-  yearStartDate.setFullYear(year, 0, 1);
-  yearStartDate.setHours(0, 0, 0, 0);
-  return yearStartDate;
-}
-var getPreviousYearStart = makeGetEdgeOfNeighbor(getYear, getYearStart, -1);
-var getNextYearStart = makeGetEdgeOfNeighbor(getYear, getYearStart, 1);
-var getYearEnd = makeGetEnd(getNextYearStart);
-var getPreviousYearEnd = makeGetEdgeOfNeighbor(getYear, getYearEnd, -1);
-var getNextYearEnd = makeGetEdgeOfNeighbor(getYear, getYearEnd, 1);
-var getYearRange = makeGetRange([getYearStart, getYearEnd]);
-/**
- * Month
- */
-
-function makeGetEdgeOfNeighborMonth(getEdgeOfPeriod, defaultOffset) {
-  return function makeGetEdgeOfNeighborMonthInternal(date) {
-    var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultOffset;
-    var year = getYear(date);
-    var month = getMonth(date) + offset;
-    var previousPeriod = new Date();
-    previousPeriod.setFullYear(year, month, 1);
-    previousPeriod.setHours(0, 0, 0, 0);
-    return getEdgeOfPeriod(previousPeriod);
-  };
-}
-
-function getMonthStart(date) {
-  var year = getYear(date);
-  var month = getMonth(date);
-  var monthStartDate = new Date();
-  monthStartDate.setFullYear(year, month, 1);
-  monthStartDate.setHours(0, 0, 0, 0);
-  return monthStartDate;
-}
-var getPreviousMonthStart = makeGetEdgeOfNeighborMonth(getMonthStart, -1);
-var getNextMonthStart = makeGetEdgeOfNeighborMonth(getMonthStart, 1);
-var getMonthEnd = makeGetEnd(getNextMonthStart);
-var getPreviousMonthEnd = makeGetEdgeOfNeighborMonth(getMonthEnd, -1);
-var getNextMonthEnd = makeGetEdgeOfNeighborMonth(getMonthEnd, 1);
-var getMonthRange = makeGetRange([getMonthStart, getMonthEnd]);
-/**
- * Day
- */
-
-function makeGetEdgeOfNeighborDay(getEdgeOfPeriod, defaultOffset) {
-  return function makeGetEdgeOfNeighborDayInternal(date) {
-    var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultOffset;
-    var year = getYear(date);
-    var month = getMonth(date);
-    var day = getDate(date) + offset;
-    var previousPeriod = new Date();
-    previousPeriod.setFullYear(year, month, day);
-    previousPeriod.setHours(0, 0, 0, 0);
-    return getEdgeOfPeriod(previousPeriod);
-  };
-}
-
-function getDayStart(date) {
-  var year = getYear(date);
-  var month = getMonth(date);
-  var day = getDate(date);
-  var dayStartDate = new Date();
-  dayStartDate.setFullYear(year, month, day);
-  dayStartDate.setHours(0, 0, 0, 0);
-  return dayStartDate;
-}
-var getPreviousDayStart = makeGetEdgeOfNeighborDay(getDayStart, -1);
-var getNextDayStart = makeGetEdgeOfNeighborDay(getDayStart, 1);
-var getDayEnd = makeGetEnd(getNextDayStart);
-var getPreviousDayEnd = makeGetEdgeOfNeighborDay(getDayEnd, -1);
-var getNextDayEnd = makeGetEdgeOfNeighborDay(getDayEnd, 1);
-var getDayRange = makeGetRange([getDayStart, getDayEnd]);
-/**
- * Other
- */
-
-/**
- * Returns a number of days in a month of a given date.
- *
- * @param {Date} date Date.
- */
-
-function getDaysInMonth(date) {
-  return getDate(getMonthEnd(date));
-}
-
-function padStart(num) {
-  var val = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
-  var numStr = "".concat(num);
-
-  if (numStr.length >= val) {
-    return num;
-  }
-
-  return "0000".concat(numStr).slice(-val);
-}
-/**
- * Returns local hours and minutes (hh:mm).
- */
-
-
-function getHoursMinutes(date) {
-  var hours = padStart(getHours(date));
-  var minutes = padStart(getMinutes(date));
-  return "".concat(hours, ":").concat(minutes);
-}
-/**
- * Returns local hours, minutes and seconds (hh:mm:ss).
- */
-
-function getHoursMinutesSeconds(date) {
-  var hours = padStart(getHours(date));
-  var minutes = padStart(getMinutes(date));
-  var seconds = padStart(getSeconds(date));
-  return "".concat(hours, ":").concat(minutes, ":").concat(seconds);
-}
-/**
- * Returns local month in ISO-like format (YYYY-MM).
- */
-
-function getISOLocalMonth(date) {
-  var year = padStart(getYear(date), 4);
-  var month = padStart(getMonthHuman(date));
-  return "".concat(year, "-").concat(month);
-}
-/**
- * Returns local date in ISO-like format (YYYY-MM-DD).
- */
-
-function getISOLocalDate(date) {
-  var year = padStart(getYear(date), 4);
-  var month = padStart(getMonthHuman(date));
-  var day = padStart(getDate(date));
-  return "".concat(year, "-").concat(month, "-").concat(day);
-}
-/**
- * Returns local date & time in ISO-like format (YYYY-MM-DDThh:mm:ss).
- */
-
-function getISOLocalDateTime(date) {
-  return "".concat(getISOLocalDate(date), "T").concat(getHoursMinutesSeconds(date));
-}
-
-var esm$3 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  getYear: getYear,
-  getMonth: getMonth,
-  getMonthHuman: getMonthHuman,
-  getDate: getDate,
-  getHours: getHours,
-  getMinutes: getMinutes,
-  getSeconds: getSeconds,
-  getCenturyStart: getCenturyStart,
-  getPreviousCenturyStart: getPreviousCenturyStart,
-  getNextCenturyStart: getNextCenturyStart,
-  getCenturyEnd: getCenturyEnd,
-  getPreviousCenturyEnd: getPreviousCenturyEnd,
-  getNextCenturyEnd: getNextCenturyEnd,
-  getCenturyRange: getCenturyRange,
-  getDecadeStart: getDecadeStart,
-  getPreviousDecadeStart: getPreviousDecadeStart,
-  getNextDecadeStart: getNextDecadeStart,
-  getDecadeEnd: getDecadeEnd,
-  getPreviousDecadeEnd: getPreviousDecadeEnd,
-  getNextDecadeEnd: getNextDecadeEnd,
-  getDecadeRange: getDecadeRange,
-  getYearStart: getYearStart,
-  getPreviousYearStart: getPreviousYearStart,
-  getNextYearStart: getNextYearStart,
-  getYearEnd: getYearEnd,
-  getPreviousYearEnd: getPreviousYearEnd,
-  getNextYearEnd: getNextYearEnd,
-  getYearRange: getYearRange,
-  getMonthStart: getMonthStart,
-  getPreviousMonthStart: getPreviousMonthStart,
-  getNextMonthStart: getNextMonthStart,
-  getMonthEnd: getMonthEnd,
-  getPreviousMonthEnd: getPreviousMonthEnd,
-  getNextMonthEnd: getNextMonthEnd,
-  getMonthRange: getMonthRange,
-  getDayStart: getDayStart,
-  getPreviousDayStart: getPreviousDayStart,
-  getNextDayStart: getNextDayStart,
-  getDayEnd: getDayEnd,
-  getPreviousDayEnd: getPreviousDayEnd,
-  getNextDayEnd: getNextDayEnd,
-  getDayRange: getDayRange,
-  getDaysInMonth: getDaysInMonth,
-  getHoursMinutes: getHoursMinutes,
-  getHoursMinutesSeconds: getHoursMinutesSeconds,
-  getISOLocalMonth: getISOLocalMonth,
-  getISOLocalDate: getISOLocalDate,
-  getISOLocalDateTime: getISOLocalDateTime
-});
-
-var _CALENDAR_TYPE_LOCALE;
-
-function _toConsumableArray$4(arr) { return _arrayWithoutHoles$4(arr) || _iterableToArray$4(arr) || _unsupportedIterableToArray$5(arr) || _nonIterableSpread$4(); }
-
-function _nonIterableSpread$4() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray$5(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$5(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$5(o, minLen); }
-
-function _iterableToArray$4(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles$4(arr) { if (Array.isArray(arr)) return _arrayLikeToArray$5(arr); }
-
-function _arrayLikeToArray$5(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _defineProperty$K(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var CALENDAR_TYPES = {
-  ARABIC: 'Arabic',
-  HEBREW: 'Hebrew',
-  ISO_8601: 'ISO 8601',
-  US: 'US'
-};
-var CALENDAR_TYPE_LOCALES = (_CALENDAR_TYPE_LOCALE = {}, _defineProperty$K(_CALENDAR_TYPE_LOCALE, CALENDAR_TYPES.US, ['en-CA', 'en-US', 'es-AR', 'es-BO', 'es-CL', 'es-CO', 'es-CR', 'es-DO', 'es-EC', 'es-GT', 'es-HN', 'es-MX', 'es-NI', 'es-PA', 'es-PE', 'es-PR', 'es-SV', 'es-VE', 'pt-BR']), _defineProperty$K(_CALENDAR_TYPE_LOCALE, CALENDAR_TYPES.ARABIC, [// ar-LB, ar-MA intentionally missing
-'ar', 'ar-AE', 'ar-BH', 'ar-DZ', 'ar-EG', 'ar-IQ', 'ar-JO', 'ar-KW', 'ar-LY', 'ar-OM', 'ar-QA', 'ar-SA', 'ar-SD', 'ar-SY', 'ar-YE', 'dv', 'dv-MV', 'ps', 'ps-AR']), _defineProperty$K(_CALENDAR_TYPE_LOCALE, CALENDAR_TYPES.HEBREW, ['he', 'he-IL']), _CALENDAR_TYPE_LOCALE);
-var WEEKDAYS = _toConsumableArray$4(Array(7)).map(function (el, index) {
-  return index;
-});
-
-var formatterCache$1 = new Map();
-
-function getFormatter$4(options) {
-  return function (locale, date) {
-    var localeWithDefault = locale || getUserLocale();
-
-    if (!formatterCache$1.has(localeWithDefault)) {
-      formatterCache$1.set(localeWithDefault, new Map());
-    }
-
-    var formatterCacheLocale = formatterCache$1.get(localeWithDefault);
-
-    if (!formatterCacheLocale.has(options)) {
-      formatterCacheLocale.set(options, new Intl.DateTimeFormat(localeWithDefault, options).format);
-    }
-
-    return formatterCacheLocale.get(options)(date);
-  };
-}
-/**
- * Changes the hour in a Date to ensure right date formatting even if DST is messed up.
- * Workaround for bug in WebKit and Firefox with historical dates.
- * For more details, see:
- * https://bugs.chromium.org/p/chromium/issues/detail?id=750465
- * https://bugzilla.mozilla.org/show_bug.cgi?id=1385643
- *
- * @param {Date} date Date.
- */
-
-
-function toSafeHour$1(date) {
-  var safeDate = new Date(date);
-  return new Date(safeDate.setHours(12));
-}
-
-function getSafeFormatter$1(options) {
-  return function (locale, date) {
-    return getFormatter$4(options)(locale, toSafeHour$1(date));
-  };
-}
-var formatDayOptions = {
-  day: 'numeric'
-};
-var formatLongDateOptions = {
-  day: 'numeric',
-  month: 'long',
-  year: 'numeric'
-};
-var formatMonthOptions$1 = {
-  month: 'long'
-};
-var formatMonthYearOptions = {
-  month: 'long',
-  year: 'numeric'
-};
-var formatShortWeekdayOptions = {
-  weekday: 'short'
-};
-var formatWeekdayOptions = {
-  weekday: 'long'
-};
-var formatYearOptions = {
-  year: 'numeric'
-};
-var formatDay = getSafeFormatter$1(formatDayOptions);
-var formatLongDate = getSafeFormatter$1(formatLongDateOptions);
-var formatMonth$1 = getSafeFormatter$1(formatMonthOptions$1);
-var formatMonthYear = getSafeFormatter$1(formatMonthYearOptions);
-var formatShortWeekday = getSafeFormatter$1(formatShortWeekdayOptions);
-var formatWeekday = getSafeFormatter$1(formatWeekdayOptions);
-var formatYear = getSafeFormatter$1(formatYearOptions);
-
-var SUNDAY = WEEKDAYS[0];
-var FRIDAY = WEEKDAYS[5];
-var SATURDAY = WEEKDAYS[6];
-/* Simple getters - getting a property of a given point in time */
-
-function getDayOfWeek(date) {
-  var calendarType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : CALENDAR_TYPES.ISO_8601;
-  var weekday = date.getDay();
-
-  switch (calendarType) {
-    case CALENDAR_TYPES.ISO_8601:
-      // Shifts days of the week so that Monday is 0, Sunday is 6
-      return (weekday + 6) % 7;
-
-    case CALENDAR_TYPES.ARABIC:
-      return (weekday + 1) % 7;
-
-    case CALENDAR_TYPES.HEBREW:
-    case CALENDAR_TYPES.US:
-      return weekday;
-
-    default:
-      throw new Error('Unsupported calendar type.');
-  }
-}
-/**
- * Century
- */
-
-function getBeginOfCenturyYear(date) {
-  var beginOfCentury = getCenturyStart(date);
-  return getYear(beginOfCentury);
-}
-/**
- * Decade
- */
-
-function getBeginOfDecadeYear(date) {
-  var beginOfDecade = getDecadeStart(date);
-  return getYear(beginOfDecade);
-}
-/**
- * Week
- */
-
-/**
- * Returns the beginning of a given week.
- *
- * @param {Date} date Date.
- * @param {string} calendarType Calendar type. Can be ISO 8601 or US.
- */
-
-function getBeginOfWeek(date) {
-  var calendarType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : CALENDAR_TYPES.ISO_8601;
-  var year = getYear(date);
-  var monthIndex = getMonth(date);
-  var day = date.getDate() - getDayOfWeek(date, calendarType);
-  return new Date(year, monthIndex, day);
-}
-/**
- * Gets week number according to ISO 8601 or US standard.
- * In ISO 8601, Arabic and Hebrew week 1 is the one with January 4.
- * In US calendar week 1 is the one with January 1.
- *
- * @param {Date} date Date.
- * @param {string} calendarType Calendar type. Can be ISO 8601 or US.
- */
-
-function getWeekNumber(date) {
-  var calendarType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : CALENDAR_TYPES.ISO_8601;
-  var calendarTypeForWeekNumber = calendarType === CALENDAR_TYPES.US ? CALENDAR_TYPES.US : CALENDAR_TYPES.ISO_8601;
-  var beginOfWeek = getBeginOfWeek(date, calendarType);
-  var year = getYear(date) + 1;
-  var dayInWeekOne;
-  var beginOfFirstWeek; // Look for the first week one that does not come after a given date
-
-  do {
-    dayInWeekOne = new Date(year, 0, calendarTypeForWeekNumber === CALENDAR_TYPES.ISO_8601 ? 4 : 1);
-    beginOfFirstWeek = getBeginOfWeek(dayInWeekOne, calendarType);
-    year -= 1;
-  } while (date < beginOfFirstWeek);
-
-  return Math.round((beginOfWeek - beginOfFirstWeek) / (8.64e7 * 7)) + 1;
-}
-/**
- * Others
- */
-
-/**
- * Returns the beginning of a given range.
- *
- * @param {string} rangeType Range type (e.g. 'day')
- * @param {Date} date Date.
- */
-
-function getBegin$1(rangeType, date) {
-  switch (rangeType) {
-    case 'century':
-      return getCenturyStart(date);
-
-    case 'decade':
-      return getDecadeStart(date);
-
-    case 'year':
-      return getYearStart(date);
-
-    case 'month':
-      return getMonthStart(date);
-
-    case 'day':
-      return getDayStart(date);
-
-    default:
-      throw new Error("Invalid rangeType: ".concat(rangeType));
-  }
-}
-function getBeginPrevious(rangeType, date) {
-  switch (rangeType) {
-    case 'century':
-      return getPreviousCenturyStart(date);
-
-    case 'decade':
-      return getPreviousDecadeStart(date);
-
-    case 'year':
-      return getPreviousYearStart(date);
-
-    case 'month':
-      return getPreviousMonthStart(date);
-
-    default:
-      throw new Error("Invalid rangeType: ".concat(rangeType));
-  }
-}
-function getBeginNext(rangeType, date) {
-  switch (rangeType) {
-    case 'century':
-      return getNextCenturyStart(date);
-
-    case 'decade':
-      return getNextDecadeStart(date);
-
-    case 'year':
-      return getNextYearStart(date);
-
-    case 'month':
-      return getNextMonthStart(date);
-
-    default:
-      throw new Error("Invalid rangeType: ".concat(rangeType));
-  }
-}
-var getBeginPrevious2 = function getBeginPrevious2(rangeType, date) {
-  switch (rangeType) {
-    case 'decade':
-      return getPreviousDecadeStart(date, -100);
-
-    case 'year':
-      return getPreviousYearStart(date, -10);
-
-    case 'month':
-      return getPreviousMonthStart(date, -12);
-
-    default:
-      throw new Error("Invalid rangeType: ".concat(rangeType));
-  }
-};
-var getBeginNext2 = function getBeginNext2(rangeType, date) {
-  switch (rangeType) {
-    case 'decade':
-      return getNextDecadeStart(date, 100);
-
-    case 'year':
-      return getNextYearStart(date, 10);
-
-    case 'month':
-      return getNextMonthStart(date, 12);
-
-    default:
-      throw new Error("Invalid rangeType: ".concat(rangeType));
-  }
-};
-/**
- * Returns the end of a given range.
- *
- * @param {string} rangeType Range type (e.g. 'day')
- * @param {Date} date Date.
- */
-
-function getEnd$1(rangeType, date) {
-  switch (rangeType) {
-    case 'century':
-      return getCenturyEnd(date);
-
-    case 'decade':
-      return getDecadeEnd(date);
-
-    case 'year':
-      return getYearEnd(date);
-
-    case 'month':
-      return getMonthEnd(date);
-
-    case 'day':
-      return getDayEnd(date);
-
-    default:
-      throw new Error("Invalid rangeType: ".concat(rangeType));
-  }
-}
-function getEndPrevious(rangeType, date) {
-  switch (rangeType) {
-    case 'century':
-      return getPreviousCenturyEnd(date);
-
-    case 'decade':
-      return getPreviousDecadeEnd(date);
-
-    case 'year':
-      return getPreviousYearEnd(date);
-
-    case 'month':
-      return getPreviousMonthEnd(date);
-
-    default:
-      throw new Error("Invalid rangeType: ".concat(rangeType));
-  }
-}
-var getEndPrevious2 = function getEndPrevious2(rangeType, date) {
-  switch (rangeType) {
-    case 'decade':
-      return getPreviousDecadeEnd(date, -100);
-
-    case 'year':
-      return getPreviousYearEnd(date, -10);
-
-    case 'month':
-      return getPreviousMonthEnd(date, -12);
-
-    default:
-      throw new Error("Invalid rangeType: ".concat(rangeType));
-  }
-};
-/**
- * Returns an array with the beginning and the end of a given range.
- *
- * @param {string} rangeType Range type (e.g. 'day')
- * @param {Date} date Date.
- */
-
-function getRange(rangeType, date) {
-  switch (rangeType) {
-    case 'century':
-      return getCenturyRange(date);
-
-    case 'decade':
-      return getDecadeRange(date);
-
-    case 'year':
-      return getYearRange(date);
-
-    case 'month':
-      return getMonthRange(date);
-
-    case 'day':
-      return getDayRange(date);
-
-    default:
-      throw new Error("Invalid rangeType: ".concat(rangeType));
-  }
-}
-/**
- * Creates a range out of two values, ensuring they are in order and covering entire period ranges.
- *
- * @param {string} rangeType Range type (e.g. 'day')
- * @param {Date} date1 First date.
- * @param {Date} date2 Second date.
- */
-
-function getValueRange(rangeType, date1, date2) {
-  var rawNextValue = [date1, date2].sort(function (a, b) {
-    return a - b;
-  });
-  return [getBegin$1(rangeType, rawNextValue[0]), getEnd$1(rangeType, rawNextValue[1])];
-}
-
-function toYearLabel(locale) {
-  var formatYear$1 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : formatYear;
-  var dates = arguments.length > 2 ? arguments[2] : undefined;
-  return dates.map(function (date) {
-    return formatYear$1(locale, date);
-  }).join(' – ');
-}
-/**
- * Returns a string labelling a century of a given date.
- * For example, for 2017 it will return 2001-2100.
- *
- * @param {Date|String|Number} date Date or a year as a string or as a number.
- */
-
-
-function getCenturyLabel(locale, formatYear, date) {
-  return toYearLabel(locale, formatYear, getCenturyRange(date));
-}
-/**
- * Returns a string labelling a century of a given date.
- * For example, for 2017 it will return 2011-2020.
- *
- * @param {Date|String|Number} date Date or a year as a string or as a number.
- */
-
-function getDecadeLabel(locale, formatYear, date) {
-  return toYearLabel(locale, formatYear, getDecadeRange(date));
-}
-/**
- * Returns a boolean determining whether a given date is on Saturday or Sunday.
- *
- * @param {Date} date Date.
- */
-
-function isWeekend(date) {
-  var calendarType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : CALENDAR_TYPES.ISO_8601;
-  var weekday = date.getDay();
-
-  switch (calendarType) {
-    case CALENDAR_TYPES.ARABIC:
-    case CALENDAR_TYPES.HEBREW:
-      return weekday === FRIDAY || weekday === SATURDAY;
-
-    case CALENDAR_TYPES.ISO_8601:
-    case CALENDAR_TYPES.US:
-      return weekday === SATURDAY || weekday === SUNDAY;
-
-    default:
-      throw new Error('Unsupported calendar type.');
-  }
-}
-
-function _typeof$D(obj) { "@babel/helpers - typeof"; return _typeof$D = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof$D(obj); }
-var calendarTypes = Object.values(CALENDAR_TYPES);
-var allViews$2 = ['century', 'decade', 'year', 'month'];
-var isCalendarType = PropTypes.oneOf(calendarTypes);
-var isClassName = PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]);
-var isMinDate$1 = function isMinDate(props, propName, componentName) {
-  var minDate = props[propName];
-
-  if (!minDate) {
-    return null;
-  }
-
-  if (!(minDate instanceof Date)) {
-    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$D(minDate), "` supplied to `").concat(componentName, "`, expected instance of `Date`."));
-  }
-
-  var maxDate = props.maxDate;
-
-  if (maxDate && minDate > maxDate) {
-    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$D(minDate), "` supplied to `").concat(componentName, "`, minDate cannot be larger than maxDate."));
-  }
-
-  return null;
-};
-var isMaxDate$1 = function isMaxDate(props, propName, componentName) {
-  var maxDate = props[propName];
-
-  if (!maxDate) {
-    return null;
-  }
-
-  if (!(maxDate instanceof Date)) {
-    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$D(maxDate), "` supplied to `").concat(componentName, "`, expected instance of `Date`."));
-  }
-
-  var minDate = props.minDate;
-
-  if (minDate && maxDate < minDate) {
-    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$D(maxDate), "` supplied to `").concat(componentName, "`, maxDate cannot be smaller than minDate."));
-  }
-
-  return null;
-};
-var isRef$1 = PropTypes.oneOfType([PropTypes.func, PropTypes.shape({
-  current: PropTypes.any
-})]);
-var isValue = PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.arrayOf(PropTypes.instanceOf(Date))]);
-var isViews = PropTypes.arrayOf(PropTypes.oneOf(allViews$2));
-var isView = function isView(props, propName, componentName) {
-  var view = props[propName];
-  var views = props.views;
-  var allowedViews = views || allViews$2;
-
-  if (view !== undefined && allowedViews.indexOf(view) === -1) {
-    return new Error("Invalid prop `".concat(propName, "` of value `").concat(view, "` supplied to `").concat(componentName, "`, expected one of [").concat(allowedViews.map(function (a) {
-      return "\"".concat(a, "\"");
-    }).join(', '), "]."));
-  } // Everything is fine
-
-
-  return null;
-};
-
-isView.isRequired = function (props, propName, componentName) {
-  var view = props[propName];
-
-  if (!view) {
-    return new Error("The prop `".concat(propName, "` is marked as required in `").concat(componentName, "`, but its value is `").concat(view, "`."));
-  }
-
-  return isView(props, propName, componentName);
-};
-
-var tileGroupProps = {
-  activeStartDate: PropTypes.instanceOf(Date).isRequired,
-  hover: PropTypes.instanceOf(Date),
-  locale: PropTypes.string,
-  maxDate: isMaxDate$1,
-  minDate: isMinDate$1,
-  onClick: PropTypes.func,
-  onMouseOver: PropTypes.func,
-  tileClassName: PropTypes.oneOfType([PropTypes.func, isClassName]),
-  tileContent: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
-  value: isValue,
-  valueType: PropTypes.string
-};
-var tileProps = {
-  activeStartDate: PropTypes.instanceOf(Date).isRequired,
-  classes: PropTypes.arrayOf(PropTypes.string).isRequired,
-  date: PropTypes.instanceOf(Date).isRequired,
-  locale: PropTypes.string,
-  maxDate: isMaxDate$1,
-  minDate: isMinDate$1,
-  onClick: PropTypes.func,
-  onMouseOver: PropTypes.func,
-  style: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
-  tileClassName: PropTypes.oneOfType([PropTypes.func, isClassName]),
-  tileContent: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
-  tileDisabled: PropTypes.func
-};
-
-var className$6 = 'react-calendar__navigation';
-function Navigation(_ref) {
-  var activeStartDate = _ref.activeStartDate,
-      drillUp = _ref.drillUp,
-      _ref$formatMonthYear = _ref.formatMonthYear,
-      formatMonthYear$1 = _ref$formatMonthYear === void 0 ? formatMonthYear : _ref$formatMonthYear,
-      _ref$formatYear = _ref.formatYear,
-      formatYear$1 = _ref$formatYear === void 0 ? formatYear : _ref$formatYear,
-      locale = _ref.locale,
-      maxDate = _ref.maxDate,
-      minDate = _ref.minDate,
-      _ref$navigationAriaLa = _ref.navigationAriaLabel,
-      navigationAriaLabel = _ref$navigationAriaLa === void 0 ? '' : _ref$navigationAriaLa,
-      navigationAriaLive = _ref.navigationAriaLive,
-      navigationLabel = _ref.navigationLabel,
-      _ref$next2AriaLabel = _ref.next2AriaLabel,
-      next2AriaLabel = _ref$next2AriaLabel === void 0 ? '' : _ref$next2AriaLabel,
-      _ref$next2Label = _ref.next2Label,
-      next2Label = _ref$next2Label === void 0 ? '»' : _ref$next2Label,
-      _ref$nextAriaLabel = _ref.nextAriaLabel,
-      nextAriaLabel = _ref$nextAriaLabel === void 0 ? '' : _ref$nextAriaLabel,
-      _ref$nextLabel = _ref.nextLabel,
-      nextLabel = _ref$nextLabel === void 0 ? '›' : _ref$nextLabel,
-      _ref$prev2AriaLabel = _ref.prev2AriaLabel,
-      prev2AriaLabel = _ref$prev2AriaLabel === void 0 ? '' : _ref$prev2AriaLabel,
-      _ref$prev2Label = _ref.prev2Label,
-      prev2Label = _ref$prev2Label === void 0 ? '«' : _ref$prev2Label,
-      _ref$prevAriaLabel = _ref.prevAriaLabel,
-      prevAriaLabel = _ref$prevAriaLabel === void 0 ? '' : _ref$prevAriaLabel,
-      _ref$prevLabel = _ref.prevLabel,
-      prevLabel = _ref$prevLabel === void 0 ? '‹' : _ref$prevLabel,
-      setActiveStartDate = _ref.setActiveStartDate,
-      showDoubleView = _ref.showDoubleView,
-      view = _ref.view,
-      views = _ref.views;
-  var drillUpAvailable = views.indexOf(view) > 0;
-  var shouldShowPrevNext2Buttons = view !== 'century';
-  var previousActiveStartDate = getBeginPrevious(view, activeStartDate);
-  var previousActiveStartDate2 = shouldShowPrevNext2Buttons && getBeginPrevious2(view, activeStartDate);
-  var nextActiveStartDate = getBeginNext(view, activeStartDate);
-  var nextActiveStartDate2 = shouldShowPrevNext2Buttons && getBeginNext2(view, activeStartDate);
-
-  var prevButtonDisabled = function () {
-    if (previousActiveStartDate.getFullYear() < 0) {
-      return true;
-    }
-
-    var previousActiveEndDate = getEndPrevious(view, activeStartDate);
-    return minDate && minDate >= previousActiveEndDate;
-  }();
-
-  var prev2ButtonDisabled = shouldShowPrevNext2Buttons && function () {
-    if (previousActiveStartDate2.getFullYear() < 0) {
-      return true;
-    }
-
-    var previousActiveEndDate = getEndPrevious2(view, activeStartDate);
-    return minDate && minDate >= previousActiveEndDate;
-  }();
-
-  var nextButtonDisabled = maxDate && maxDate < nextActiveStartDate;
-  var next2ButtonDisabled = shouldShowPrevNext2Buttons && maxDate && maxDate < nextActiveStartDate2;
-
-  function onClickPrevious() {
-    setActiveStartDate(previousActiveStartDate, 'prev');
-  }
-
-  function onClickPrevious2() {
-    setActiveStartDate(previousActiveStartDate2, 'prev2');
-  }
-
-  function onClickNext() {
-    setActiveStartDate(nextActiveStartDate, 'next');
-  }
-
-  function onClickNext2() {
-    setActiveStartDate(nextActiveStartDate2, 'next2');
-  }
-
-  function renderLabel(date) {
-    var label = function () {
-      switch (view) {
-        case 'century':
-          return getCenturyLabel(locale, formatYear$1, date);
-
-        case 'decade':
-          return getDecadeLabel(locale, formatYear$1, date);
-
-        case 'year':
-          return formatYear$1(locale, date);
-
-        case 'month':
-          return formatMonthYear$1(locale, date);
-
-        default:
-          throw new Error("Invalid view: ".concat(view, "."));
-      }
-    }();
-
-    return navigationLabel ? navigationLabel({
-      date: date,
-      label: label,
-      locale: locale || getUserLocale(),
-      view: view
-    }) : label;
-  }
-
-  function renderButton() {
-    var labelClassName = "".concat(className$6, "__label");
-    return /*#__PURE__*/React__default["default"].createElement("button", {
-      "aria-label": navigationAriaLabel,
-      "aria-live": navigationAriaLive,
-      className: labelClassName,
-      disabled: !drillUpAvailable,
-      onClick: drillUp,
-      style: {
-        flexGrow: 1
-      },
-      type: "button"
-    }, /*#__PURE__*/React__default["default"].createElement("span", {
-      className: "".concat(labelClassName, "__labelText ").concat(labelClassName, "__labelText--from")
-    }, renderLabel(activeStartDate)), showDoubleView && /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("span", {
-      className: "".concat(labelClassName, "__divider")
-    }, " \u2013 "), /*#__PURE__*/React__default["default"].createElement("span", {
-      className: "".concat(labelClassName, "__labelText ").concat(labelClassName, "__labelText--to")
-    }, renderLabel(nextActiveStartDate))));
-  }
-
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: className$6
-  }, prev2Label !== null && shouldShowPrevNext2Buttons && /*#__PURE__*/React__default["default"].createElement("button", {
-    "aria-label": prev2AriaLabel,
-    className: "".concat(className$6, "__arrow ").concat(className$6, "__prev2-button"),
-    disabled: prev2ButtonDisabled,
-    onClick: onClickPrevious2,
-    type: "button"
-  }, prev2Label), prevLabel !== null && /*#__PURE__*/React__default["default"].createElement("button", {
-    "aria-label": prevAriaLabel,
-    className: "".concat(className$6, "__arrow ").concat(className$6, "__prev-button"),
-    disabled: prevButtonDisabled,
-    onClick: onClickPrevious,
-    type: "button"
-  }, prevLabel), renderButton(), nextLabel !== null && /*#__PURE__*/React__default["default"].createElement("button", {
-    "aria-label": nextAriaLabel,
-    className: "".concat(className$6, "__arrow ").concat(className$6, "__next-button"),
-    disabled: nextButtonDisabled,
-    onClick: onClickNext,
-    type: "button"
-  }, nextLabel), next2Label !== null && shouldShowPrevNext2Buttons && /*#__PURE__*/React__default["default"].createElement("button", {
-    "aria-label": next2AriaLabel,
-    className: "".concat(className$6, "__arrow ").concat(className$6, "__next2-button"),
-    disabled: next2ButtonDisabled,
-    onClick: onClickNext2,
-    type: "button"
-  }, next2Label));
-}
-Navigation.propTypes = {
-  activeStartDate: PropTypes.instanceOf(Date).isRequired,
-  drillUp: PropTypes.func.isRequired,
-  formatMonthYear: PropTypes.func,
-  formatYear: PropTypes.func,
-  locale: PropTypes.string,
-  maxDate: PropTypes.instanceOf(Date),
-  minDate: PropTypes.instanceOf(Date),
-  navigationAriaLabel: PropTypes.string,
-  navigationAriaLive: PropTypes.string,
-  navigationLabel: PropTypes.func,
-  next2AriaLabel: PropTypes.string,
-  next2Label: PropTypes.node,
-  nextAriaLabel: PropTypes.string,
-  nextLabel: PropTypes.node,
-  prev2AriaLabel: PropTypes.string,
-  prev2Label: PropTypes.node,
-  prevAriaLabel: PropTypes.string,
-  prevLabel: PropTypes.node,
-  setActiveStartDate: PropTypes.func.isRequired,
-  showDoubleView: PropTypes.bool,
-  view: isView.isRequired,
-  views: isViews.isRequired
-};
-
-var _excluded$d = ["children", "className", "direction", "count", "offset", "style", "wrap"];
-
-function _extends$d() { _extends$d = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$d.apply(this, arguments); }
-
-function ownKeys$d(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$d(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$d(Object(source), !0).forEach(function (key) { _defineProperty$J(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$d(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty$J(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _objectWithoutProperties$a(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$b(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose$b(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function toPercent(num) {
-  return "".concat(num, "%");
-}
-
-function Flex(_ref) {
-  var children = _ref.children,
-      className = _ref.className,
-      direction = _ref.direction,
-      count = _ref.count,
-      offset = _ref.offset,
-      style = _ref.style,
-      wrap = _ref.wrap,
-      otherProps = _objectWithoutProperties$a(_ref, _excluded$d);
-
-  return /*#__PURE__*/React__default["default"].createElement("div", _extends$d({
-    className: className,
-    style: _objectSpread$d({
-      display: 'flex',
-      flexDirection: direction,
-      flexWrap: wrap ? 'wrap' : 'no-wrap'
-    }, style)
-  }, otherProps), React__default["default"].Children.map(children, function (child, index) {
-    return /*#__PURE__*/React__default["default"].cloneElement(child, _objectSpread$d(_objectSpread$d({}, child.props), {}, {
-      style: {
-        flexBasis: toPercent(100 / count),
-        flexShrink: 0,
-        flexGrow: 0,
-        overflow: 'hidden',
-        marginLeft: offset && index === 0 ? toPercent(100 * offset / count) : null
-      }
-    }));
-  }));
-}
-Flex.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  count: PropTypes.number.isRequired,
-  direction: PropTypes.string,
-  offset: PropTypes.number,
-  style: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
-  wrap: PropTypes.bool
-};
-
-function _toConsumableArray$3(arr) { return _arrayWithoutHoles$3(arr) || _iterableToArray$3(arr) || _unsupportedIterableToArray$4(arr) || _nonIterableSpread$3(); }
-
-function _nonIterableSpread$3() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray$4(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$4(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$4(o, minLen); }
-
-function _iterableToArray$3(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles$3(arr) { if (Array.isArray(arr)) return _arrayLikeToArray$4(arr); }
-
-function _arrayLikeToArray$4(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-/**
- * Returns a value no smaller than min and no larger than max.
- *
- * @param {*} value Value to return.
- * @param {*} min Minimum return value.
- * @param {*} max Maximum return value.
- */
-
-function between$1(value, min, max) {
-  if (min && min > value) {
-    return min;
-  }
-
-  if (max && max < value) {
-    return max;
-  }
-
-  return value;
-}
-function isValueWithinRange(value, range) {
-  return range[0] <= value && range[1] >= value;
-}
-function isRangeWithinRange(greaterRange, smallerRange) {
-  return greaterRange[0] <= smallerRange[0] && greaterRange[1] >= smallerRange[1];
-}
-function doRangesOverlap(range1, range2) {
-  return isValueWithinRange(range1[0], range2) || isValueWithinRange(range1[1], range2);
-}
-
-function getRangeClassNames(valueRange, dateRange, baseClassName) {
-  var isRange = doRangesOverlap(dateRange, valueRange);
-  var classes = [];
-
-  if (isRange) {
-    classes.push(baseClassName);
-    var isRangeStart = isValueWithinRange(valueRange[0], dateRange);
-    var isRangeEnd = isValueWithinRange(valueRange[1], dateRange);
-
-    if (isRangeStart) {
-      classes.push("".concat(baseClassName, "Start"));
-    }
-
-    if (isRangeEnd) {
-      classes.push("".concat(baseClassName, "End"));
-    }
-
-    if (isRangeStart && isRangeEnd) {
-      classes.push("".concat(baseClassName, "BothEnds"));
-    }
-  }
-
-  return classes;
-}
-
-function getTileClasses() {
-  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-      value = _ref.value,
-      valueType = _ref.valueType,
-      date = _ref.date,
-      dateType = _ref.dateType,
-      hover = _ref.hover;
-
-  var className = 'react-calendar__tile';
-  var classes = [className];
-
-  if (!date) {
-    return classes;
-  }
-
-  if (!Array.isArray(date) && !dateType) {
-    throw new Error('getTileClasses(): Unable to get tile activity classes because one or more required arguments were not passed.');
-  }
-
-  var now = new Date();
-  var dateRange = Array.isArray(date) ? date : getRange(dateType, date);
-
-  if (isValueWithinRange(now, dateRange)) {
-    classes.push("".concat(className, "--now"));
-  }
-
-  if (!value) {
-    return classes;
-  }
-
-  if (!Array.isArray(value) && !valueType) {
-    throw new Error('getTileClasses(): Unable to get tile activity classes because one or more required arguments were not passed.');
-  }
-
-  var valueRange = Array.isArray(value) ? value : getRange(valueType, value);
-
-  if (isRangeWithinRange(valueRange, dateRange)) {
-    classes.push("".concat(className, "--active"));
-  } else if (doRangesOverlap(valueRange, dateRange)) {
-    classes.push("".concat(className, "--hasActive"));
-  }
-
-  var valueRangeClassNames = getRangeClassNames(valueRange, dateRange, "".concat(className, "--range"));
-  classes.push.apply(classes, _toConsumableArray$3(valueRangeClassNames));
-  var valueArray = [].concat(value);
-
-  if (hover && valueArray.length === 1) {
-    var hoverRange = hover > valueRange[0] ? [valueRange[0], hover] : [hover, valueRange[0]];
-    var hoverRangeClassNames = getRangeClassNames(hoverRange, dateRange, "".concat(className, "--hover"));
-    classes.push.apply(classes, _toConsumableArray$3(hoverRangeClassNames));
-  }
-
-  return classes;
-}
-
-var _excluded$c = ["className", "count", "dateTransform", "dateType", "end", "hover", "offset", "start", "step", "tile", "value", "valueType"];
-
-function ownKeys$c(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$c(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$c(Object(source), !0).forEach(function (key) { _defineProperty$I(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$c(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty$I(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _extends$c() { _extends$c = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$c.apply(this, arguments); }
-
-function _objectWithoutProperties$9(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$a(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose$a(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-function TileGroup(_ref) {
-  var className = _ref.className,
-      _ref$count = _ref.count,
-      count = _ref$count === void 0 ? 3 : _ref$count,
-      dateTransform = _ref.dateTransform,
-      dateType = _ref.dateType,
-      end = _ref.end,
-      hover = _ref.hover,
-      offset = _ref.offset,
-      start = _ref.start,
-      _ref$step = _ref.step,
-      step = _ref$step === void 0 ? 1 : _ref$step,
-      Tile = _ref.tile,
-      value = _ref.value,
-      valueType = _ref.valueType,
-      tileProps = _objectWithoutProperties$9(_ref, _excluded$c);
-
-  var tiles = [];
-
-  for (var point = start; point <= end; point += step) {
-    var date = dateTransform(point);
-    tiles.push( /*#__PURE__*/React__default["default"].createElement(Tile, _extends$c({
-      key: date.getTime(),
-      classes: getTileClasses({
-        value: value,
-        valueType: valueType,
-        date: date,
-        dateType: dateType,
-        hover: hover
-      }),
-      date: date,
-      point: point
-    }, tileProps)));
-  }
-
-  return /*#__PURE__*/React__default["default"].createElement(Flex, {
-    className: className,
-    count: count,
-    offset: offset,
-    wrap: true
-  }, tiles);
-}
-TileGroup.propTypes = _objectSpread$c(_objectSpread$c({}, tileGroupProps), {}, {
-  activeStartDate: PropTypes.instanceOf(Date),
-  count: PropTypes.number,
-  dateTransform: PropTypes.func.isRequired,
-  dateType: PropTypes.string,
-  offset: PropTypes.number,
-  step: PropTypes.number,
-  tile: PropTypes.func.isRequired
-});
-
-function _typeof$C(obj) { "@babel/helpers - typeof"; return _typeof$C = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof$C(obj); }
-
-function ownKeys$b(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$b(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$b(Object(source), !0).forEach(function (key) { _defineProperty$H(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$b(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _classCallCheck$z(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties$z(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass$z(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$z(Constructor.prototype, protoProps); if (staticProps) _defineProperties$z(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-function _inherits$y(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf$y(subClass, superClass); }
-
-function _setPrototypeOf$y(o, p) { _setPrototypeOf$y = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$y(o, p); }
-
-function _createSuper$y(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$y(); return function _createSuperInternal() { var Super = _getPrototypeOf$y(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$y(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$y(this, result); }; }
-
-function _possibleConstructorReturn$y(self, call) { if (call && (_typeof$C(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized$z(self); }
-
-function _assertThisInitialized$z(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct$y() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf$y(o) { _getPrototypeOf$y = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$y(o); }
-
-function _defineProperty$H(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function datesAreDifferent(date1, date2) {
-  return date1 && !date2 || !date1 && date2 || date1 && date2 && date1.getTime() !== date2.getTime();
-}
-
-function getValue$2(nextProps, prop) {
-  var activeStartDate = nextProps.activeStartDate,
-      date = nextProps.date,
-      view = nextProps.view;
-  return typeof prop === 'function' ? prop({
-    activeStartDate: activeStartDate,
-    date: date,
-    view: view
-  }) : prop;
-}
-
-var Tile = /*#__PURE__*/function (_Component) {
-  _inherits$y(Tile, _Component);
-
-  var _super = _createSuper$y(Tile);
-
-  function Tile() {
-    var _this;
-
-    _classCallCheck$z(this, Tile);
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _super.call.apply(_super, [this].concat(args));
-
-    _defineProperty$H(_assertThisInitialized$z(_this), "state", {});
-
-    return _this;
-  }
-
-  _createClass$z(Tile, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          activeStartDate = _this$props.activeStartDate,
-          children = _this$props.children,
-          classes = _this$props.classes,
-          date = _this$props.date,
-          formatAbbr = _this$props.formatAbbr,
-          locale = _this$props.locale,
-          maxDate = _this$props.maxDate,
-          maxDateTransform = _this$props.maxDateTransform,
-          minDate = _this$props.minDate,
-          minDateTransform = _this$props.minDateTransform,
-          onClick = _this$props.onClick,
-          onMouseOver = _this$props.onMouseOver,
-          style = _this$props.style,
-          tileDisabled = _this$props.tileDisabled,
-          view = _this$props.view;
-      var _this$state = this.state,
-          tileClassName = _this$state.tileClassName,
-          tileContent = _this$state.tileContent;
-      return /*#__PURE__*/React__default["default"].createElement("button", {
-        className: mergeClassNames(classes, tileClassName),
-        disabled: minDate && minDateTransform(minDate) > date || maxDate && maxDateTransform(maxDate) < date || tileDisabled && tileDisabled({
-          activeStartDate: activeStartDate,
-          date: date,
-          view: view
-        }),
-        onClick: onClick && function (event) {
-          return onClick(date, event);
-        },
-        onFocus: onMouseOver && function () {
-          return onMouseOver(date);
-        },
-        onMouseOver: onMouseOver && function () {
-          return onMouseOver(date);
-        },
-        style: style,
-        type: "button"
-      }, formatAbbr ? /*#__PURE__*/React__default["default"].createElement("abbr", {
-        "aria-label": formatAbbr(locale, date)
-      }, children) : children, tileContent);
-    }
-  }], [{
-    key: "getDerivedStateFromProps",
-    value: function getDerivedStateFromProps(nextProps, prevState) {
-      var activeStartDate = nextProps.activeStartDate,
-          tileClassName = nextProps.tileClassName,
-          tileContent = nextProps.tileContent;
-      var nextState = {};
-
-      if (tileClassName !== prevState.tileClassNameProps || datesAreDifferent(activeStartDate, prevState.activeStartDateProps)) {
-        nextState.tileClassName = getValue$2(nextProps, tileClassName);
-        nextState.tileClassNameProps = tileClassName;
-      }
-
-      if (tileContent !== prevState.tileContentProps || datesAreDifferent(activeStartDate, prevState.activeStartDateProps)) {
-        nextState.tileContent = getValue$2(nextProps, tileContent);
-        nextState.tileContentProps = tileContent;
-      }
-
-      nextState.activeStartDateProps = activeStartDate;
-      return nextState;
-    }
-  }]);
-
-  return Tile;
-}(React.Component);
-Tile.propTypes = _objectSpread$b(_objectSpread$b({}, tileProps), {}, {
-  children: PropTypes.node.isRequired,
-  formatAbbr: PropTypes.func,
-  maxDateTransform: PropTypes.func.isRequired,
-  minDateTransform: PropTypes.func.isRequired
-});
-
-var _excluded$b = ["classes", "formatYear"];
-
-function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$a(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$a(Object(source), !0).forEach(function (key) { _defineProperty$G(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$a(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty$G(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _extends$b() { _extends$b = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$b.apply(this, arguments); }
-
-function _objectWithoutProperties$8(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$9(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose$9(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-var className$5 = 'react-calendar__century-view__decades__decade';
-function Decade(_ref) {
-  var classes = _ref.classes,
-      _ref$formatYear = _ref.formatYear,
-      formatYear$1 = _ref$formatYear === void 0 ? formatYear : _ref$formatYear,
-      otherProps = _objectWithoutProperties$8(_ref, _excluded$b);
-
-  var date = otherProps.date,
-      locale = otherProps.locale;
-  return /*#__PURE__*/React__default["default"].createElement(Tile, _extends$b({}, otherProps, {
-    classes: [].concat(classes, className$5),
-    maxDateTransform: getDecadeEnd,
-    minDateTransform: getDecadeStart,
-    view: "century"
-  }), getDecadeLabel(locale, formatYear$1, date));
-}
-Decade.propTypes = _objectSpread$a(_objectSpread$a({}, tileProps), {}, {
-  formatYear: PropTypes.func
-});
-
-function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$9(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$9(Object(source), !0).forEach(function (key) { _defineProperty$F(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$9(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty$F(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _extends$a() { _extends$a = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$a.apply(this, arguments); }
-function Decades(props) {
-  var activeStartDate = props.activeStartDate;
-  var start = getBeginOfCenturyYear(activeStartDate);
-  var end = start + 99;
-  return /*#__PURE__*/React__default["default"].createElement(TileGroup, _extends$a({}, props, {
-    className: "react-calendar__century-view__decades",
-    dateTransform: getDecadeStart,
-    dateType: "decade",
-    end: end,
-    start: start,
-    step: 10,
-    tile: Decade
-  }));
-}
-Decades.propTypes = _objectSpread$9({}, tileGroupProps);
-
-function CenturyView(props) {
-  function renderDecades() {
-    return /*#__PURE__*/React__default["default"].createElement(Decades, props);
-  }
-
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "react-calendar__century-view"
-  }, renderDecades());
-}
-
-var _excluded$a = ["classes", "formatYear"];
-
-function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$8(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$8(Object(source), !0).forEach(function (key) { _defineProperty$E(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$8(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty$E(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _extends$9() { _extends$9 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$9.apply(this, arguments); }
-
-function _objectWithoutProperties$7(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$8(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose$8(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-var className$4 = 'react-calendar__decade-view__years__year';
-function Year(_ref) {
-  var classes = _ref.classes,
-      _ref$formatYear = _ref.formatYear,
-      formatYear$1 = _ref$formatYear === void 0 ? formatYear : _ref$formatYear,
-      otherProps = _objectWithoutProperties$7(_ref, _excluded$a);
-
-  var date = otherProps.date,
-      locale = otherProps.locale;
-  return /*#__PURE__*/React__default["default"].createElement(Tile, _extends$9({}, otherProps, {
-    classes: [].concat(classes, className$4),
-    maxDateTransform: getYearEnd,
-    minDateTransform: getYearStart,
-    view: "decade"
-  }), formatYear$1(locale, date));
-}
-Year.propTypes = _objectSpread$8(_objectSpread$8({}, tileProps), {}, {
-  formatYear: PropTypes.func
-});
-
-function ownKeys$7(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$7(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$7(Object(source), !0).forEach(function (key) { _defineProperty$D(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$7(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty$D(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _extends$8() { _extends$8 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$8.apply(this, arguments); }
-function Years(props) {
-  var activeStartDate = props.activeStartDate;
-  var start = getBeginOfDecadeYear(activeStartDate);
-  var end = start + 9;
-  return /*#__PURE__*/React__default["default"].createElement(TileGroup, _extends$8({}, props, {
-    className: "react-calendar__decade-view__years",
-    dateTransform: function dateTransform(year) {
-      var date = new Date();
-      date.setFullYear(year, 0, 1);
-      date.setHours(0, 0, 0, 0);
-      return date;
-    },
-    dateType: "year",
-    end: end,
-    start: start,
-    tile: Year
-  }));
-}
-Years.propTypes = _objectSpread$7({}, tileGroupProps);
-
-function DecadeView(props) {
-  function renderYears() {
-    return /*#__PURE__*/React__default["default"].createElement(Years, props);
-  }
-
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "react-calendar__decade-view"
-  }, renderYears());
-}
-
-var _excluded$9 = ["classes", "formatMonth", "formatMonthYear"];
-
-function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$6(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$6(Object(source), !0).forEach(function (key) { _defineProperty$C(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$6(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty$C(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _extends$7() { _extends$7 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$7.apply(this, arguments); }
-
-function _objectWithoutProperties$6(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$7(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose$7(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-var className$3 = 'react-calendar__year-view__months__month';
-function Month(_ref) {
-  var classes = _ref.classes,
-      _ref$formatMonth = _ref.formatMonth,
-      formatMonth = _ref$formatMonth === void 0 ? formatMonth$1 : _ref$formatMonth,
-      _ref$formatMonthYear = _ref.formatMonthYear,
-      formatMonthYear$1 = _ref$formatMonthYear === void 0 ? formatMonthYear : _ref$formatMonthYear,
-      otherProps = _objectWithoutProperties$6(_ref, _excluded$9);
-
-  var date = otherProps.date,
-      locale = otherProps.locale;
-  return /*#__PURE__*/React__default["default"].createElement(Tile, _extends$7({}, otherProps, {
-    classes: [].concat(classes, className$3),
-    formatAbbr: formatMonthYear$1,
-    maxDateTransform: getMonthEnd,
-    minDateTransform: getMonthStart,
-    view: "year"
-  }), formatMonth(locale, date));
-}
-Month.propTypes = _objectSpread$6(_objectSpread$6({}, tileProps), {}, {
-  formatMonth: PropTypes.func,
-  formatMonthYear: PropTypes.func
-});
-
-function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$5(Object(source), !0).forEach(function (key) { _defineProperty$B(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty$B(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _extends$6() { _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$6.apply(this, arguments); }
-function Months(props) {
-  var activeStartDate = props.activeStartDate;
-  var start = 0;
-  var end = 11;
-  var year = getYear(activeStartDate);
-  return /*#__PURE__*/React__default["default"].createElement(TileGroup, _extends$6({}, props, {
-    className: "react-calendar__year-view__months",
-    dateTransform: function dateTransform(monthIndex) {
-      var date = new Date();
-      date.setFullYear(year, monthIndex, 1);
-      date.setHours(0, 0, 0, 0);
-      return date;
-    },
-    dateType: "month",
-    end: end,
-    start: start,
-    tile: Month
-  }));
-}
-Months.propTypes = _objectSpread$5(_objectSpread$5({}, tileGroupProps), {}, {
-  locale: PropTypes.string
-});
-
-function YearView(props) {
-  function renderMonths() {
-    return /*#__PURE__*/React__default["default"].createElement(Months, props);
-  }
-
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "react-calendar__year-view"
-  }, renderMonths());
-}
-
-var _excluded$8 = ["formatDay", "formatLongDate", "calendarType", "classes", "currentMonthIndex"];
-
-function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$4(Object(source), !0).forEach(function (key) { _defineProperty$A(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty$A(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _extends$5() { _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$5.apply(this, arguments); }
-
-function _objectWithoutProperties$5(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$6(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose$6(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-var className$2 = 'react-calendar__month-view__days__day';
-function Day(_ref) {
-  var _ref$formatDay = _ref.formatDay,
-      formatDay$1 = _ref$formatDay === void 0 ? formatDay : _ref$formatDay,
-      _ref$formatLongDate = _ref.formatLongDate,
-      formatLongDate$1 = _ref$formatLongDate === void 0 ? formatLongDate : _ref$formatLongDate,
-      calendarType = _ref.calendarType,
-      classes = _ref.classes,
-      currentMonthIndex = _ref.currentMonthIndex,
-      otherProps = _objectWithoutProperties$5(_ref, _excluded$8);
-
-  var date = otherProps.date,
-      locale = otherProps.locale;
-  return /*#__PURE__*/React__default["default"].createElement(Tile, _extends$5({}, otherProps, {
-    classes: [].concat(classes, className$2, isWeekend(date, calendarType) ? "".concat(className$2, "--weekend") : null, date.getMonth() !== currentMonthIndex ? "".concat(className$2, "--neighboringMonth") : null),
-    formatAbbr: formatLongDate$1,
-    maxDateTransform: getDayEnd,
-    minDateTransform: getDayStart,
-    view: "month"
-  }), formatDay$1(locale, date));
-}
-Day.propTypes = _objectSpread$4(_objectSpread$4({}, tileProps), {}, {
-  currentMonthIndex: PropTypes.number.isRequired,
-  formatDay: PropTypes.func,
-  formatLongDate: PropTypes.func
-});
-
-var _excluded$7 = ["showFixedNumberOfWeeks", "showNeighboringMonth"];
-
-function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$3(Object(source), !0).forEach(function (key) { _defineProperty$z(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$3(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty$z(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _extends$4() { _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$4.apply(this, arguments); }
-
-function _objectWithoutProperties$4(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$5(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose$5(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-function Days(props) {
-  var activeStartDate = props.activeStartDate,
-      calendarType = props.calendarType;
-
-  var showFixedNumberOfWeeks = props.showFixedNumberOfWeeks,
-      showNeighboringMonth = props.showNeighboringMonth,
-      otherProps = _objectWithoutProperties$4(props, _excluded$7);
-
-  var year = getYear(activeStartDate);
-  var monthIndex = getMonth(activeStartDate);
-  var hasFixedNumberOfWeeks = showFixedNumberOfWeeks || showNeighboringMonth;
-  var dayOfWeek = getDayOfWeek(activeStartDate, calendarType);
-  var offset = hasFixedNumberOfWeeks ? 0 : dayOfWeek;
-  /**
-   * Defines on which day of the month the grid shall start. If we simply show current
-   * month, we obviously start on day one, but if showNeighboringMonth is set to
-   * true, we need to find the beginning of the week the first day of the month is in.
-   */
-
-  var start = (hasFixedNumberOfWeeks ? -dayOfWeek : 0) + 1;
-  /**
-   * Defines on which day of the month the grid shall end. If we simply show current
-   * month, we need to stop on the last day of the month, but if showNeighboringMonth
-   * is set to true, we need to find the end of the week the last day of the month is in.
-   */
-
-  var end = function () {
-    if (showFixedNumberOfWeeks) {
-      // Always show 6 weeks
-      return start + 6 * 7 - 1;
-    }
-
-    var daysInMonth = getDaysInMonth(activeStartDate);
-
-    if (showNeighboringMonth) {
-      var activeEndDate = new Date();
-      activeEndDate.setFullYear(year, monthIndex, daysInMonth);
-      activeEndDate.setHours(0, 0, 0, 0);
-      var daysUntilEndOfTheWeek = 7 - getDayOfWeek(activeEndDate, calendarType) - 1;
-      return daysInMonth + daysUntilEndOfTheWeek;
-    }
-
-    return daysInMonth;
-  }();
-
-  return /*#__PURE__*/React__default["default"].createElement(TileGroup, _extends$4({}, otherProps, {
-    className: "react-calendar__month-view__days",
-    count: 7,
-    currentMonthIndex: monthIndex,
-    dateTransform: function dateTransform(day) {
-      var date = new Date();
-      date.setFullYear(year, monthIndex, day);
-      date.setHours(0, 0, 0, 0);
-      return date;
-    },
-    dateType: "day",
-    end: end,
-    offset: offset,
-    start: start,
-    tile: Day
-  }));
-}
-Days.propTypes = _objectSpread$3({
-  calendarType: isCalendarType.isRequired,
-  showFixedNumberOfWeeks: PropTypes.bool,
-  showNeighboringMonth: PropTypes.bool
-}, tileGroupProps);
-
-var className$1 = 'react-calendar__month-view__weekdays';
-function Weekdays(props) {
-  var calendarType = props.calendarType,
-      _props$formatShortWee = props.formatShortWeekday,
-      formatShortWeekday$1 = _props$formatShortWee === void 0 ? formatShortWeekday : _props$formatShortWee,
-      locale = props.locale,
-      onMouseLeave = props.onMouseLeave;
-  var anyDate = new Date();
-  var beginOfMonth = getMonthStart(anyDate);
-  var year = getYear(beginOfMonth);
-  var monthIndex = getMonth(beginOfMonth);
-  var weekdays = [];
-
-  for (var weekday = 1; weekday <= 7; weekday += 1) {
-    var weekdayDate = new Date(year, monthIndex, weekday - getDayOfWeek(beginOfMonth, calendarType));
-    var abbr = formatWeekday(locale, weekdayDate);
-    weekdays.push( /*#__PURE__*/React__default["default"].createElement("div", {
-      key: weekday,
-      className: "".concat(className$1, "__weekday")
-    }, /*#__PURE__*/React__default["default"].createElement("abbr", {
-      "aria-label": abbr,
-      title: abbr
-    }, formatShortWeekday$1(locale, weekdayDate).replace('.', ''))));
-  }
-
-  return /*#__PURE__*/React__default["default"].createElement(Flex, {
-    className: className$1,
-    count: 7,
-    onFocus: onMouseLeave,
-    onMouseOver: onMouseLeave
-  }, weekdays);
-}
-Weekdays.propTypes = {
-  calendarType: isCalendarType.isRequired,
-  formatShortWeekday: PropTypes.func,
-  locale: PropTypes.string,
-  onMouseLeave: PropTypes.func
-};
-
-var _excluded$6 = ["date", "onClickWeekNumber", "weekNumber"];
-
-function _extends$3() { _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3.apply(this, arguments); }
-
-function ownKeys$2(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$2(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$2(Object(source), !0).forEach(function (key) { _defineProperty$y(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$2(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty$y(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _objectWithoutProperties$3(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$4(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose$4(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-var className = 'react-calendar__tile';
-function WeekNumber(_ref) {
-  var date = _ref.date,
-      onClickWeekNumber = _ref.onClickWeekNumber,
-      weekNumber = _ref.weekNumber,
-      otherProps = _objectWithoutProperties$3(_ref, _excluded$6);
-
-  var props = _objectSpread$2({
-    className: className
-  }, otherProps);
-
-  var children = /*#__PURE__*/React__default["default"].createElement("span", null, weekNumber);
-  return onClickWeekNumber ? /*#__PURE__*/React__default["default"].createElement("button", _extends$3({}, props, {
-    onClick: function onClick(event) {
-      return onClickWeekNumber(weekNumber, date, event);
-    },
-    type: "button"
-  }), children) : /*#__PURE__*/React__default["default"].createElement("div", props, children);
-}
-WeekNumber.propTypes = {
-  date: PropTypes.instanceOf(Date).isRequired,
-  onClickWeekNumber: PropTypes.func,
-  weekNumber: PropTypes.node.isRequired
-};
-
-function WeekNumbers(props) {
-  var activeStartDate = props.activeStartDate,
-      calendarType = props.calendarType,
-      onClickWeekNumber = props.onClickWeekNumber,
-      onMouseLeave = props.onMouseLeave,
-      showFixedNumberOfWeeks = props.showFixedNumberOfWeeks;
-
-  var numberOfWeeks = function () {
-    if (showFixedNumberOfWeeks) {
-      return 6;
-    }
-
-    var numberOfDays = getDaysInMonth(activeStartDate);
-    var startWeekday = getDayOfWeek(activeStartDate, calendarType);
-    var days = numberOfDays - (7 - startWeekday);
-    return 1 + Math.ceil(days / 7);
-  }();
-
-  var dates = function () {
-    var year = getYear(activeStartDate);
-    var monthIndex = getMonth(activeStartDate);
-    var day = getDate(activeStartDate);
-    var result = [];
-
-    for (var index = 0; index < numberOfWeeks; index += 1) {
-      result.push(getBeginOfWeek(new Date(year, monthIndex, day + index * 7), calendarType));
-    }
-
-    return result;
-  }();
-
-  var weekNumbers = dates.map(function (date) {
-    return getWeekNumber(date, calendarType);
-  });
-  return /*#__PURE__*/React__default["default"].createElement(Flex, {
-    className: "react-calendar__month-view__weekNumbers",
-    count: numberOfWeeks,
-    direction: "column",
-    onFocus: onMouseLeave,
-    onMouseOver: onMouseLeave,
-    style: {
-      flexBasis: 'calc(100% * (1 / 8)',
-      flexShrink: 0
-    }
-  }, weekNumbers.map(function (weekNumber, weekIndex) {
-    return /*#__PURE__*/React__default["default"].createElement(WeekNumber, {
-      key: weekNumber,
-      date: dates[weekIndex],
-      onClickWeekNumber: onClickWeekNumber,
-      weekNumber: weekNumber
-    });
-  }));
-}
-WeekNumbers.propTypes = {
-  activeStartDate: PropTypes.instanceOf(Date).isRequired,
-  calendarType: isCalendarType.isRequired,
-  onClickWeekNumber: PropTypes.func,
-  onMouseLeave: PropTypes.func,
-  showFixedNumberOfWeeks: PropTypes.bool
-};
-
-var _excluded$5 = ["calendarType", "formatShortWeekday", "onClickWeekNumber", "showWeekNumbers"];
-
-function _extends$2() { _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$2.apply(this, arguments); }
-
-function _objectWithoutProperties$2(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$3(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose$3(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function getCalendarTypeFromLocale(locale) {
-  return Object.keys(CALENDAR_TYPE_LOCALES).find(function (calendarType) {
-    return CALENDAR_TYPE_LOCALES[calendarType].includes(locale);
-  }) || CALENDAR_TYPES.ISO_8601;
-}
-
-function MonthView(props) {
-  var activeStartDate = props.activeStartDate,
-      locale = props.locale,
-      onMouseLeave = props.onMouseLeave,
-      showFixedNumberOfWeeks = props.showFixedNumberOfWeeks;
-
-  var _props$calendarType = props.calendarType,
-      calendarType = _props$calendarType === void 0 ? getCalendarTypeFromLocale(locale) : _props$calendarType,
-      formatShortWeekday = props.formatShortWeekday,
-      onClickWeekNumber = props.onClickWeekNumber,
-      showWeekNumbers = props.showWeekNumbers,
-      childProps = _objectWithoutProperties$2(props, _excluded$5);
-
-  function renderWeekdays() {
-    return /*#__PURE__*/React__default["default"].createElement(Weekdays, {
-      calendarType: calendarType,
-      formatShortWeekday: formatShortWeekday,
-      locale: locale,
-      onMouseLeave: onMouseLeave
-    });
-  }
-
-  function renderWeekNumbers() {
-    if (!showWeekNumbers) {
-      return null;
-    }
-
-    return /*#__PURE__*/React__default["default"].createElement(WeekNumbers, {
-      activeStartDate: activeStartDate,
-      calendarType: calendarType,
-      onClickWeekNumber: onClickWeekNumber,
-      onMouseLeave: onMouseLeave,
-      showFixedNumberOfWeeks: showFixedNumberOfWeeks
-    });
-  }
-
-  function renderDays() {
-    return /*#__PURE__*/React__default["default"].createElement(Days, _extends$2({
-      calendarType: calendarType
-    }, childProps));
-  }
-
-  var className = 'react-calendar__month-view';
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: mergeClassNames(className, showWeekNumbers ? "".concat(className, "--weekNumbers") : '')
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'flex-end'
-    }
-  }, renderWeekNumbers(), /*#__PURE__*/React__default["default"].createElement("div", {
-    style: {
-      flexGrow: 1,
-      width: '100%'
-    }
-  }, renderWeekdays(), renderDays())));
-}
-MonthView.propTypes = {
-  activeStartDate: PropTypes.instanceOf(Date).isRequired,
-  calendarType: isCalendarType,
-  formatShortWeekday: PropTypes.func,
-  locale: PropTypes.string,
-  onClickWeekNumber: PropTypes.func,
-  onMouseLeave: PropTypes.func,
-  showFixedNumberOfWeeks: PropTypes.bool,
-  showWeekNumbers: PropTypes.bool
-};
-
-var _excluded$4 = ["activeStartDate", "defaultActiveStartDate", "defaultValue", "defaultView", "maxDetail", "minDetail", "value", "view"];
-
-function _extends$1() { _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$1.apply(this, arguments); }
-
-function _typeof$B(obj) { "@babel/helpers - typeof"; return _typeof$B = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof$B(obj); }
-
-function _classCallCheck$y(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties$y(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass$y(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$y(Constructor.prototype, protoProps); if (staticProps) _defineProperties$y(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-function _inherits$x(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf$x(subClass, superClass); }
-
-function _setPrototypeOf$x(o, p) { _setPrototypeOf$x = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$x(o, p); }
-
-function _createSuper$x(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$x(); return function _createSuperInternal() { var Super = _getPrototypeOf$x(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$x(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$x(this, result); }; }
-
-function _possibleConstructorReturn$x(self, call) { if (call && (_typeof$B(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized$y(self); }
-
-function _assertThisInitialized$y(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct$x() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf$x(o) { _getPrototypeOf$x = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$x(o); }
-
-function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$1(Object(source), !0).forEach(function (key) { _defineProperty$x(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty$x(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _objectWithoutProperties$1(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$2(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose$2(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function _toConsumableArray$2(arr) { return _arrayWithoutHoles$2(arr) || _iterableToArray$2(arr) || _unsupportedIterableToArray$3(arr) || _nonIterableSpread$2(); }
-
-function _nonIterableSpread$2() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray$3(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$3(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$3(o, minLen); }
-
-function _iterableToArray$2(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles$2(arr) { if (Array.isArray(arr)) return _arrayLikeToArray$3(arr); }
-
-function _arrayLikeToArray$3(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-var defaultMinDate = new Date();
-defaultMinDate.setFullYear(1, 0, 1);
-defaultMinDate.setHours(0, 0, 0, 0);
-var defaultMaxDate = new Date(8.64e15);
-var baseClassName = 'react-calendar';
-var allViews$1 = ['century', 'decade', 'year', 'month'];
-var allValueTypes$1 = [].concat(_toConsumableArray$2(allViews$1.slice(1)), ['day']);
-
-function toDate$1(value) {
-  if (value instanceof Date) {
-    return value;
-  }
-
-  return new Date(value);
-}
-/**
- * Returns views array with disallowed values cut off.
- */
-
-
-function getLimitedViews(minDetail, maxDetail) {
-  return allViews$1.slice(allViews$1.indexOf(minDetail), allViews$1.indexOf(maxDetail) + 1);
-}
-/**
- * Determines whether a given view is allowed with currently applied settings.
- */
-
-
-function isViewAllowed(view, minDetail, maxDetail) {
-  var views = getLimitedViews(minDetail, maxDetail);
-  return views.indexOf(view) !== -1;
-}
-/**
- * Gets either provided view if allowed by minDetail and maxDetail, or gets
- * the default view if not allowed.
- */
-
-
-function getView(view, minDetail, maxDetail) {
-  if (isViewAllowed(view, minDetail, maxDetail)) {
-    return view;
-  }
-
-  return maxDetail;
-}
-/**
- * Returns value type that can be returned with currently applied settings.
- */
-
-
-function getValueType(maxDetail) {
-  return allValueTypes$1[allViews$1.indexOf(maxDetail)];
-}
-
-function getValue$1(value, index) {
-  if (!value) {
-    return null;
-  }
-
-  var rawValue = Array.isArray(value) && value.length === 2 ? value[index] : value;
-
-  if (!rawValue) {
-    return null;
-  }
-
-  var valueDate = toDate$1(rawValue);
-
-  if (isNaN(valueDate.getTime())) {
-    throw new Error("Invalid date: ".concat(value));
-  }
-
-  return valueDate;
-}
-
-function getDetailValue(_ref, index) {
-  var value = _ref.value,
-      minDate = _ref.minDate,
-      maxDate = _ref.maxDate,
-      maxDetail = _ref.maxDetail;
-  var valuePiece = getValue$1(value, index);
-
-  if (!valuePiece) {
-    return null;
-  }
-
-  var valueType = getValueType(maxDetail);
-  var detailValueFrom = [getBegin$1, getEnd$1][index](valueType, valuePiece);
-  return between$1(detailValueFrom, minDate, maxDate);
-}
-
-var getDetailValueFrom = function getDetailValueFrom(args) {
-  return getDetailValue(args, 0);
-};
-
-var getDetailValueTo = function getDetailValueTo(args) {
-  return getDetailValue(args, 1);
-};
-
-var getDetailValueArray = function getDetailValueArray(args) {
-  var value = args.value;
-
-  if (Array.isArray(value)) {
-    return value;
-  }
-
-  return [getDetailValueFrom, getDetailValueTo].map(function (fn) {
-    return fn(args);
-  });
-};
-
-function getActiveStartDate(props) {
-  var maxDate = props.maxDate,
-      maxDetail = props.maxDetail,
-      minDate = props.minDate,
-      minDetail = props.minDetail,
-      value = props.value,
-      view = props.view;
-  var rangeType = getView(view, minDetail, maxDetail);
-  var valueFrom = getDetailValueFrom({
-    value: value,
-    minDate: minDate,
-    maxDate: maxDate,
-    maxDetail: maxDetail
-  }) || new Date();
-  return getBegin$1(rangeType, valueFrom);
-}
-
-function getInitialActiveStartDate(props) {
-  var activeStartDate = props.activeStartDate,
-      defaultActiveStartDate = props.defaultActiveStartDate,
-      defaultValue = props.defaultValue,
-      defaultView = props.defaultView,
-      maxDetail = props.maxDetail,
-      minDetail = props.minDetail,
-      value = props.value,
-      view = props.view,
-      otherProps = _objectWithoutProperties$1(props, _excluded$4);
-
-  var rangeType = getView(view, minDetail, maxDetail);
-  var valueFrom = activeStartDate || defaultActiveStartDate;
-
-  if (valueFrom) {
-    return getBegin$1(rangeType, valueFrom);
-  }
-
-  return getActiveStartDate(_objectSpread$1({
-    maxDetail: maxDetail,
-    minDetail: minDetail,
-    value: value || defaultValue,
-    view: view || defaultView
-  }, otherProps));
-}
-
-var getIsSingleValue = function getIsSingleValue(value) {
-  return value && [].concat(value).length === 1;
-};
-
-var Calendar$1 = /*#__PURE__*/function (_Component) {
-  _inherits$x(Calendar, _Component);
-
-  var _super = _createSuper$x(Calendar);
-
-  function Calendar() {
-    var _this;
-
-    _classCallCheck$y(this, Calendar);
-
-    for (var _len = arguments.length, _args = new Array(_len), _key = 0; _key < _len; _key++) {
-      _args[_key] = arguments[_key];
-    }
-
-    _this = _super.call.apply(_super, [this].concat(_args));
-
-    _defineProperty$x(_assertThisInitialized$y(_this), "state", {
-      activeStartDate: _this.props.defaultActiveStartDate,
-      value: _this.props.defaultValue,
-      view: _this.props.defaultView
-    });
-
-    _defineProperty$x(_assertThisInitialized$y(_this), "setStateAndCallCallbacks", function (nextState, event, callback) {
-      var _assertThisInitialize = _assertThisInitialized$y(_this),
-          previousActiveStartDate = _assertThisInitialize.activeStartDate,
-          previousView = _assertThisInitialize.view;
-
-      var _this$props = _this.props,
-          allowPartialRange = _this$props.allowPartialRange,
-          onActiveStartDateChange = _this$props.onActiveStartDateChange,
-          onChange = _this$props.onChange,
-          onViewChange = _this$props.onViewChange,
-          selectRange = _this$props.selectRange;
-      var prevArgs = {
-        activeStartDate: previousActiveStartDate,
-        view: previousView
-      };
-
-      _this.setState(nextState, function () {
-        var args = {
-          action: nextState.action,
-          activeStartDate: nextState.activeStartDate || _this.activeStartDate,
-          value: nextState.value || _this.value,
-          view: nextState.view || _this.view
-        };
-
-        function shouldUpdate(key) {
-          return (// Key must exist, and…
-            key in nextState && ( // …key changed from undefined to defined or the other way around, or…
-            _typeof$B(nextState[key]) !== _typeof$B(prevArgs[key]) || ( // …value changed.
-            nextState[key] instanceof Date ? nextState[key].getTime() !== prevArgs[key].getTime() : nextState[key] !== prevArgs[key]))
-          );
+function List({ filters, field, options, onChange, value }) {
+    const countries = filters.countries;
+    const updateList = (e) => {
+        if (value === e.target.value) {
+            handleChange(null);
         }
-
-        if (shouldUpdate('activeStartDate')) {
-          if (onActiveStartDateChange) onActiveStartDateChange(args);
-        }
-
-        if (shouldUpdate('view')) {
-          if (onViewChange) onViewChange(args);
-        }
-
-        if (shouldUpdate('value')) {
-          if (onChange) {
-            if (selectRange) {
-              var isSingleValue = getIsSingleValue(nextState.value);
-
-              if (!isSingleValue) {
-                onChange(nextState.value, event);
-              } else if (allowPartialRange) {
-                onChange([nextState.value], event);
-              }
-            } else {
-              onChange(nextState.value, event);
-            }
-          }
-        }
-
-        if (callback) callback(args);
-      });
-    });
-
-    _defineProperty$x(_assertThisInitialized$y(_this), "setActiveStartDate", function (nextActiveStartDate, action) {
-      _this.setStateAndCallCallbacks({
-        action: action,
-        activeStartDate: nextActiveStartDate
-      });
-    });
-
-    _defineProperty$x(_assertThisInitialized$y(_this), "drillDown", function (nextActiveStartDate, event) {
-      if (!_this.drillDownAvailable) {
-        return;
-      }
-
-      _this.onClickTile(nextActiveStartDate, event);
-
-      var _assertThisInitialize2 = _assertThisInitialized$y(_this),
-          view = _assertThisInitialize2.view,
-          views = _assertThisInitialize2.views;
-
-      var onDrillDown = _this.props.onDrillDown;
-      var nextView = views[views.indexOf(view) + 1];
-
-      _this.setStateAndCallCallbacks({
-        action: 'drillDown',
-        activeStartDate: nextActiveStartDate,
-        view: nextView
-      }, undefined, onDrillDown);
-    });
-
-    _defineProperty$x(_assertThisInitialized$y(_this), "drillUp", function () {
-      if (!_this.drillUpAvailable) {
-        return;
-      }
-
-      var _assertThisInitialize3 = _assertThisInitialized$y(_this),
-          activeStartDate = _assertThisInitialize3.activeStartDate,
-          view = _assertThisInitialize3.view,
-          views = _assertThisInitialize3.views;
-
-      var onDrillUp = _this.props.onDrillUp;
-      var nextView = views[views.indexOf(view) - 1];
-      var nextActiveStartDate = getBegin$1(nextView, activeStartDate);
-
-      _this.setStateAndCallCallbacks({
-        action: 'drillUp',
-        activeStartDate: nextActiveStartDate,
-        view: nextView
-      }, undefined, onDrillUp);
-    });
-
-    _defineProperty$x(_assertThisInitialized$y(_this), "onChange", function (value, event) {
-      var selectRange = _this.props.selectRange;
-
-      _this.onClickTile(value, event);
-
-      var nextValue;
-
-      if (selectRange) {
-        // Range selection turned on
-        var _assertThisInitialize4 = _assertThisInitialized$y(_this),
-            previousValue = _assertThisInitialize4.value,
-            valueType = _assertThisInitialize4.valueType;
-
-        if (!getIsSingleValue(previousValue)) {
-          // Value has 0 or 2 elements - either way we're starting a new array
-          // First value
-          nextValue = getBegin$1(valueType, value);
-        } else {
-          // Second value
-          nextValue = getValueRange(valueType, previousValue, value);
-        }
-      } else {
-        // Range selection turned off
-        nextValue = _this.getProcessedValue(value);
-      }
-
-      var nextActiveStartDate = getActiveStartDate(_objectSpread$1(_objectSpread$1({}, _this.props), {}, {
-        value: nextValue
-      }));
-      event.persist();
-
-      _this.setStateAndCallCallbacks({
-        action: 'onChange',
-        activeStartDate: nextActiveStartDate,
-        value: nextValue
-      }, event);
-    });
-
-    _defineProperty$x(_assertThisInitialized$y(_this), "onClickTile", function (value, event) {
-      var _assertThisInitialize5 = _assertThisInitialized$y(_this),
-          view = _assertThisInitialize5.view;
-
-      var _this$props2 = _this.props,
-          onClickDay = _this$props2.onClickDay,
-          onClickDecade = _this$props2.onClickDecade,
-          onClickMonth = _this$props2.onClickMonth,
-          onClickYear = _this$props2.onClickYear;
-
-      var callback = function () {
-        switch (view) {
-          case 'century':
-            return onClickDecade;
-
-          case 'decade':
-            return onClickYear;
-
-          case 'year':
-            return onClickMonth;
-
-          case 'month':
-            return onClickDay;
-
-          default:
-            throw new Error("Invalid view: ".concat(view, "."));
-        }
-      }();
-
-      if (callback) callback(value, event);
-    });
-
-    _defineProperty$x(_assertThisInitialized$y(_this), "onMouseOver", function (value) {
-      _this.setState(function (prevState) {
-        if (prevState.hover && prevState.hover.getTime() === value.getTime()) {
-          return null;
-        }
-
-        return {
-          hover: value
-        };
-      });
-    });
-
-    _defineProperty$x(_assertThisInitialized$y(_this), "onMouseLeave", function () {
-      _this.setState({
-        hover: null
-      });
-    });
-
-    return _this;
-  }
-
-  _createClass$y(Calendar, [{
-    key: "activeStartDate",
-    get: function get() {
-      var activeStartDateProps = this.props.activeStartDate;
-      var activeStartDateState = this.state.activeStartDate;
-      return activeStartDateProps || activeStartDateState || getInitialActiveStartDate(this.props);
-    }
-  }, {
-    key: "value",
-    get: function get() {
-      var _this$props3 = this.props,
-          selectRange = _this$props3.selectRange,
-          valueProps = _this$props3.value;
-      var valueState = this.state.value; // In the middle of range selection, use value from state
-
-      if (selectRange && getIsSingleValue(valueState)) {
-        return valueState;
-      }
-
-      return valueProps !== undefined ? valueProps : valueState;
-    }
-  }, {
-    key: "valueType",
-    get: function get() {
-      var maxDetail = this.props.maxDetail;
-      return getValueType(maxDetail);
-    }
-  }, {
-    key: "view",
-    get: function get() {
-      var _this$props4 = this.props,
-          minDetail = _this$props4.minDetail,
-          maxDetail = _this$props4.maxDetail,
-          viewProps = _this$props4.view;
-      var viewState = this.state.view;
-      return getView(viewProps || viewState, minDetail, maxDetail);
-    }
-  }, {
-    key: "views",
-    get: function get() {
-      var _this$props5 = this.props,
-          minDetail = _this$props5.minDetail,
-          maxDetail = _this$props5.maxDetail;
-      return getLimitedViews(minDetail, maxDetail);
-    }
-  }, {
-    key: "hover",
-    get: function get() {
-      var selectRange = this.props.selectRange;
-      var hover = this.state.hover;
-      return selectRange ? hover : null;
-    }
-  }, {
-    key: "drillDownAvailable",
-    get: function get() {
-      var view = this.view,
-          views = this.views;
-      return views.indexOf(view) < views.length - 1;
-    }
-  }, {
-    key: "drillUpAvailable",
-    get: function get() {
-      var view = this.view,
-          views = this.views;
-      return views.indexOf(view) > 0;
-    }
-    /**
-     * Gets current value in a desired format.
-     */
-
-  }, {
-    key: "getProcessedValue",
-    value: function getProcessedValue(value) {
-      var _this$props6 = this.props,
-          minDate = _this$props6.minDate,
-          maxDate = _this$props6.maxDate,
-          maxDetail = _this$props6.maxDetail,
-          returnValue = _this$props6.returnValue;
-
-      var processFunction = function () {
-        switch (returnValue) {
-          case 'start':
-            return getDetailValueFrom;
-
-          case 'end':
-            return getDetailValueTo;
-
-          case 'range':
-            return getDetailValueArray;
-
-          default:
-            throw new Error('Invalid returnValue.');
-        }
-      }();
-
-      return processFunction({
-        value: value,
-        minDate: minDate,
-        maxDate: maxDate,
-        maxDetail: maxDetail
-      });
-    }
-  }, {
-    key: "renderContent",
-    value: function renderContent(next) {
-      var currentActiveStartDate = this.activeStartDate,
-          onMouseOver = this.onMouseOver,
-          valueType = this.valueType,
-          value = this.value,
-          view = this.view;
-      var _this$props7 = this.props,
-          calendarType = _this$props7.calendarType,
-          locale = _this$props7.locale,
-          maxDate = _this$props7.maxDate,
-          minDate = _this$props7.minDate,
-          selectRange = _this$props7.selectRange,
-          tileClassName = _this$props7.tileClassName,
-          tileContent = _this$props7.tileContent,
-          tileDisabled = _this$props7.tileDisabled;
-      var hover = this.hover;
-      var activeStartDate = next ? getBeginNext(view, currentActiveStartDate) : getBegin$1(view, currentActiveStartDate);
-      var onClick = this.drillDownAvailable ? this.drillDown : this.onChange;
-      var commonProps = {
-        activeStartDate: activeStartDate,
-        hover: hover,
-        locale: locale,
-        maxDate: maxDate,
-        minDate: minDate,
-        onClick: onClick,
-        onMouseOver: selectRange ? onMouseOver : null,
-        tileClassName: tileClassName,
-        tileContent: tileContent,
-        tileDisabled: tileDisabled,
-        value: value,
-        valueType: valueType
-      };
-
-      switch (view) {
-        case 'century':
-          {
-            var formatYear = this.props.formatYear;
-            return /*#__PURE__*/React__default["default"].createElement(CenturyView, _extends$1({
-              formatYear: formatYear
-            }, commonProps));
-          }
-
-        case 'decade':
-          {
-            var _formatYear = this.props.formatYear;
-            return /*#__PURE__*/React__default["default"].createElement(DecadeView, _extends$1({
-              formatYear: _formatYear
-            }, commonProps));
-          }
-
-        case 'year':
-          {
-            var _this$props8 = this.props,
-                formatMonth = _this$props8.formatMonth,
-                formatMonthYear = _this$props8.formatMonthYear;
-            return /*#__PURE__*/React__default["default"].createElement(YearView, _extends$1({
-              formatMonth: formatMonth,
-              formatMonthYear: formatMonthYear
-            }, commonProps));
-          }
-
-        case 'month':
-          {
-            var _this$props9 = this.props,
-                formatDay = _this$props9.formatDay,
-                formatLongDate = _this$props9.formatLongDate,
-                formatShortWeekday = _this$props9.formatShortWeekday,
-                onClickWeekNumber = _this$props9.onClickWeekNumber,
-                showDoubleView = _this$props9.showDoubleView,
-                showFixedNumberOfWeeks = _this$props9.showFixedNumberOfWeeks,
-                showNeighboringMonth = _this$props9.showNeighboringMonth,
-                showWeekNumbers = _this$props9.showWeekNumbers;
-            var onMouseLeave = this.onMouseLeave;
-            return /*#__PURE__*/React__default["default"].createElement(MonthView, _extends$1({
-              calendarType: calendarType,
-              formatDay: formatDay,
-              formatLongDate: formatLongDate,
-              formatShortWeekday: formatShortWeekday,
-              onClickWeekNumber: onClickWeekNumber,
-              onMouseLeave: selectRange ? onMouseLeave : null,
-              showFixedNumberOfWeeks: typeof showFixedNumberOfWeeks !== 'undefined' ? showFixedNumberOfWeeks : showDoubleView,
-              showNeighboringMonth: showNeighboringMonth,
-              showWeekNumbers: showWeekNumbers
-            }, commonProps));
-          }
-
-        default:
-          throw new Error("Invalid view: ".concat(view, "."));
-      }
-    }
-  }, {
-    key: "renderNavigation",
-    value: function renderNavigation() {
-      var showNavigation = this.props.showNavigation;
-
-      if (!showNavigation) {
-        return null;
-      }
-
-      var activeStartDate = this.activeStartDate,
-          view = this.view,
-          views = this.views;
-      var _this$props10 = this.props,
-          formatMonthYear = _this$props10.formatMonthYear,
-          formatYear = _this$props10.formatYear,
-          locale = _this$props10.locale,
-          maxDate = _this$props10.maxDate,
-          minDate = _this$props10.minDate,
-          navigationAriaLabel = _this$props10.navigationAriaLabel,
-          navigationAriaLive = _this$props10.navigationAriaLive,
-          navigationLabel = _this$props10.navigationLabel,
-          next2AriaLabel = _this$props10.next2AriaLabel,
-          next2Label = _this$props10.next2Label,
-          nextAriaLabel = _this$props10.nextAriaLabel,
-          nextLabel = _this$props10.nextLabel,
-          prev2AriaLabel = _this$props10.prev2AriaLabel,
-          prev2Label = _this$props10.prev2Label,
-          prevAriaLabel = _this$props10.prevAriaLabel,
-          prevLabel = _this$props10.prevLabel,
-          showDoubleView = _this$props10.showDoubleView;
-      return /*#__PURE__*/React__default["default"].createElement(Navigation, {
-        activeStartDate: activeStartDate,
-        drillUp: this.drillUp,
-        formatMonthYear: formatMonthYear,
-        formatYear: formatYear,
-        locale: locale,
-        maxDate: maxDate,
-        minDate: minDate,
-        navigationAriaLabel: navigationAriaLabel,
-        navigationAriaLive: navigationAriaLive,
-        navigationLabel: navigationLabel,
-        next2AriaLabel: next2AriaLabel,
-        next2Label: next2Label,
-        nextAriaLabel: nextAriaLabel,
-        nextLabel: nextLabel,
-        prev2AriaLabel: prev2AriaLabel,
-        prev2Label: prev2Label,
-        prevAriaLabel: prevAriaLabel,
-        prevLabel: prevLabel,
-        setActiveStartDate: this.setActiveStartDate,
-        showDoubleView: showDoubleView,
-        view: view,
-        views: views
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props11 = this.props,
-          className = _this$props11.className,
-          inputRef = _this$props11.inputRef,
-          selectRange = _this$props11.selectRange,
-          showDoubleView = _this$props11.showDoubleView;
-      var onMouseLeave = this.onMouseLeave,
-          value = this.value;
-      var valueArray = [].concat(value);
-      return /*#__PURE__*/React__default["default"].createElement("div", {
-        className: mergeClassNames(baseClassName, selectRange && valueArray.length === 1 && "".concat(baseClassName, "--selectRange"), showDoubleView && "".concat(baseClassName, "--doubleView"), className),
-        ref: inputRef
-      }, this.renderNavigation(), /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "".concat(baseClassName, "__viewContainer"),
-        onBlur: selectRange ? onMouseLeave : null,
-        onMouseLeave: selectRange ? onMouseLeave : null
-      }, this.renderContent(), showDoubleView && this.renderContent(true)));
-    }
-  }]);
-
-  return Calendar;
-}(React.Component);
-Calendar$1.defaultProps = {
-  maxDate: defaultMaxDate,
-  maxDetail: 'month',
-  minDate: defaultMinDate,
-  minDetail: 'century',
-  returnValue: 'start',
-  showNavigation: true,
-  showNeighboringMonth: true
-};
-var isActiveStartDate = PropTypes.instanceOf(Date);
-var isLooseValue = PropTypes.oneOfType([PropTypes.string, isValue]);
-Calendar$1.propTypes = {
-  activeStartDate: isActiveStartDate,
-  allowPartialRange: PropTypes.bool,
-  calendarType: isCalendarType,
-  className: isClassName,
-  defaultActiveStartDate: isActiveStartDate,
-  defaultValue: isLooseValue,
-  defaultView: isView,
-  formatDay: PropTypes.func,
-  formatLongDate: PropTypes.func,
-  formatMonth: PropTypes.func,
-  formatMonthYear: PropTypes.func,
-  formatShortWeekday: PropTypes.func,
-  formatYear: PropTypes.func,
-  inputRef: isRef$1,
-  locale: PropTypes.string,
-  maxDate: isMaxDate$1,
-  maxDetail: PropTypes.oneOf(allViews$1),
-  minDate: isMinDate$1,
-  minDetail: PropTypes.oneOf(allViews$1),
-  navigationAriaLabel: PropTypes.string,
-  navigationAriaLive: PropTypes.oneOf(['off', 'polite', 'assertive']),
-  navigationLabel: PropTypes.func,
-  next2AriaLabel: PropTypes.string,
-  next2Label: PropTypes.node,
-  nextAriaLabel: PropTypes.string,
-  nextLabel: PropTypes.node,
-  onActiveStartDateChange: PropTypes.func,
-  onChange: PropTypes.func,
-  onClickDay: PropTypes.func,
-  onClickDecade: PropTypes.func,
-  onClickMonth: PropTypes.func,
-  onClickWeekNumber: PropTypes.func,
-  onClickYear: PropTypes.func,
-  onDrillDown: PropTypes.func,
-  onDrillUp: PropTypes.func,
-  onViewChange: PropTypes.func,
-  prev2AriaLabel: PropTypes.string,
-  prev2Label: PropTypes.node,
-  prevAriaLabel: PropTypes.string,
-  prevLabel: PropTypes.node,
-  returnValue: PropTypes.oneOf(['start', 'end', 'range']),
-  selectRange: PropTypes.bool,
-  showDoubleView: PropTypes.bool,
-  showFixedNumberOfWeeks: PropTypes.bool,
-  showNavigation: PropTypes.bool,
-  showNeighboringMonth: PropTypes.bool,
-  showWeekNumbers: PropTypes.bool,
-  tileClassName: PropTypes.oneOfType([PropTypes.func, isClassName]),
-  tileContent: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
-  tileDisabled: PropTypes.func,
-  value: isLooseValue,
-  view: isView
-};
-
-var esm$2 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': Calendar$1,
-  Calendar: Calendar$1,
-  CenturyView: CenturyView,
-  DecadeView: DecadeView,
-  YearView: YearView,
-  MonthView: MonthView
-});
-
-var require$$4$1 = /*@__PURE__*/getAugmentedNamespace(esm$2);
-
-var getRect = function getRect(element) {
-  return element.getBoundingClientRect();
-};
-
-var detectElementOverflow = function detectElementOverflow(element, container) {
-  return {
-    get collidedTop() {
-      return getRect(element).top < getRect(container).top;
-    },
-
-    get collidedBottom() {
-      return getRect(element).bottom > getRect(container).bottom;
-    },
-
-    get collidedLeft() {
-      return getRect(element).left < getRect(container).left;
-    },
-
-    get collidedRight() {
-      return getRect(element).right > getRect(container).right;
-    },
-
-    get overflowTop() {
-      return getRect(container).top - getRect(element).top;
-    },
-
-    get overflowBottom() {
-      return getRect(element).bottom - getRect(container).bottom;
-    },
-
-    get overflowLeft() {
-      return getRect(container).left - getRect(element).left;
-    },
-
-    get overflowRight() {
-      return getRect(element).right - getRect(container).right;
-    }
-
-  };
-};
-
-var detectElementOverflow$1 = detectElementOverflow;
-
-var isProduction = process.env.NODE_ENV === 'production';
-function warning(condition, message) {
-  if (!isProduction) {
-    if (condition) {
-      return;
-    }
-
-    var text = "Warning: " + message;
-
-    if (typeof console !== 'undefined') {
-      console.warn(text);
-    }
-
-    try {
-      throw Error(text);
-    } catch (x) {}
-  }
-}
-
-var _excluded$3 = ["invertAxis", "invertSecondaryAxis"];
-
-function _classCallCheck$x(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties$x(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass$x(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$x(Constructor.prototype, protoProps); if (staticProps) _defineProperties$x(Constructor, staticProps); return Constructor; }
-
-function _inherits$w(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$w(subClass, superClass); }
-
-function _setPrototypeOf$w(o, p) { _setPrototypeOf$w = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$w(o, p); }
-
-function _createSuper$w(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$w(); return function _createSuperInternal() { var Super = _getPrototypeOf$w(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$w(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$w(this, result); }; }
-
-function _possibleConstructorReturn$w(self, call) { if (call && (_typeof$A(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized$x(self); }
-
-function _assertThisInitialized$x(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct$w() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf$w(o) { _getPrototypeOf$w = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$w(o); }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$1(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose$1(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty$w(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty$w(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _typeof$A(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$A = function _typeof(obj) { return typeof obj; }; } else { _typeof$A = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$A(obj); }
-var isBrowser = typeof window !== 'undefined';
-var isDisplayContentsSupported = isBrowser && 'CSS' in window && 'supports' in window.CSS && CSS.supports('display', 'contents');
-var isMutationObserverSupported = isBrowser && 'MutationObserver' in window;
-
-function capitalize(a) {
-  return a[0].toUpperCase() + a.slice(1);
-}
-
-function findScrollContainer(element) {
-  if (!element) {
-    return undefined;
-  }
-
-  var parent = element.parentElement;
-
-  while (parent) {
-    var _window$getComputedSt = window.getComputedStyle(parent),
-        overflow = _window$getComputedSt.overflow;
-
-    if (overflow.split(' ').every(function (o) {
-      return o === 'auto' || o === 'scroll';
-    })) {
-      return parent;
-    }
-
-    parent = parent.parentElement;
-  }
-
-  return document.documentElement;
-}
-
-function alignAxis(_ref) {
-  var axis = _ref.axis,
-      container = _ref.container,
-      element = _ref.element,
-      invertAxis = _ref.invertAxis,
-      secondary = _ref.secondary,
-      scrollContainer = _ref.scrollContainer,
-      spacing = _ref.spacing;
-  var style = window.getComputedStyle(element);
-  var parent = container.parentElement;
-  var scrollContainerCollisions = detectElementOverflow$1(parent, scrollContainer);
-  var documentCollisions = detectElementOverflow$1(parent, document.documentElement);
-  var isX = axis === 'x';
-  var startProperty = isX ? 'left' : 'top';
-  var endProperty = isX ? 'right' : 'bottom';
-  var sizeProperty = isX ? 'width' : 'height';
-  var overflowStartProperty = "overflow".concat(capitalize(startProperty));
-  var overflowEndProperty = "overflow".concat(capitalize(endProperty));
-  var scrollProperty = "scroll".concat(capitalize(startProperty));
-  var uppercasedSizeProperty = capitalize(sizeProperty);
-  var offsetSizeProperty = "offset".concat(uppercasedSizeProperty);
-  var clientSizeProperty = "client".concat(uppercasedSizeProperty);
-  var minSizeProperty = "min-".concat(sizeProperty);
-  var scrollbarWidth = scrollContainer[offsetSizeProperty] - scrollContainer[clientSizeProperty];
-  var startSpacing = _typeof$A(spacing) === 'object' ? spacing[startProperty] : spacing;
-  var availableStartSpace = -Math.max(scrollContainerCollisions[overflowStartProperty], documentCollisions[overflowStartProperty] + document.documentElement[scrollProperty]) - startSpacing;
-  var endSpacing = _typeof$A(spacing) === 'object' ? spacing[endProperty] : spacing;
-  var availableEndSpace = -Math.max(scrollContainerCollisions[overflowEndProperty], documentCollisions[overflowEndProperty] - document.documentElement[scrollProperty]) - endSpacing - scrollbarWidth;
-
-  if (secondary) {
-    availableStartSpace += parent[clientSizeProperty];
-    availableEndSpace += parent[clientSizeProperty];
-  }
-
-  var offsetSize = element[offsetSizeProperty];
-
-  function displayStart() {
-    element.style[startProperty] = 'auto';
-    element.style[endProperty] = secondary ? '0' : '100%';
-  }
-
-  function displayEnd() {
-    element.style[startProperty] = secondary ? '0' : '100%';
-    element.style[endProperty] = 'auto';
-  }
-
-  function displayIfFits(availableSpace, display) {
-    var fits = offsetSize <= availableSpace;
-
-    if (fits) {
-      display();
-    }
-
-    return fits;
-  }
-
-  function displayStartIfFits() {
-    return displayIfFits(availableStartSpace, displayStart);
-  }
-
-  function displayEndIfFits() {
-    return displayIfFits(availableEndSpace, displayEnd);
-  }
-
-  function displayWhereverShrinkedFits() {
-    var moreSpaceStart = availableStartSpace > availableEndSpace;
-    var minSize = style[minSizeProperty] && parseInt(style[minSizeProperty], 10);
-
-    function shrinkToSize(size) {
-      warning(!minSize || size >= minSize, "<Fit />'s child will not fit anywhere with its current ".concat(minSizeProperty, " of ").concat(minSize, "px."));
-      var newSize = Math.max(size, minSize || 0);
-      warning(false, "<Fit />'s child needed to have its ".concat(sizeProperty, " decreased to ").concat(newSize, "px."));
-      element.style[sizeProperty] = "".concat(newSize, "px");
-    }
-
-    if (moreSpaceStart) {
-      shrinkToSize(availableStartSpace);
-      displayStart();
-    } else {
-      shrinkToSize(availableEndSpace);
-      displayEnd();
-    }
-  }
-
-  var fits;
-
-  if (invertAxis) {
-    fits = displayStartIfFits() || displayEndIfFits();
-  } else {
-    fits = displayEndIfFits() || displayStartIfFits();
-  }
-
-  if (!fits) {
-    displayWhereverShrinkedFits();
-  }
-}
-
-function alignMainAxis(args) {
-  alignAxis(args);
-}
-
-function alignSecondaryAxis(args) {
-  alignAxis(_objectSpread(_objectSpread({}, args), {}, {
-    axis: args.axis === 'x' ? 'y' : 'x',
-    secondary: true
-  }));
-}
-
-function alignBothAxis(args) {
-  var invertAxis = args.invertAxis,
-      invertSecondaryAxis = args.invertSecondaryAxis,
-      commonArgs = _objectWithoutProperties(args, _excluded$3);
-
-  alignMainAxis(_objectSpread(_objectSpread({}, commonArgs), {}, {
-    invertAxis: invertAxis
-  }));
-  alignSecondaryAxis(_objectSpread(_objectSpread({}, commonArgs), {}, {
-    invertAxis: invertSecondaryAxis
-  }));
-}
-
-var Fit = /*#__PURE__*/function (_Component) {
-  _inherits$w(Fit, _Component);
-
-  var _super = _createSuper$w(Fit);
-
-  function Fit() {
-    var _this;
-
-    _classCallCheck$x(this, Fit);
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _super.call.apply(_super, [this].concat(args));
-
-    _defineProperty$w(_assertThisInitialized$x(_this), "onMutation", function () {
-      _this.fit();
-    });
-
-    _defineProperty$w(_assertThisInitialized$x(_this), "mutationObserver", isMutationObserverSupported && new MutationObserver(_this.onMutation));
-
-    _defineProperty$w(_assertThisInitialized$x(_this), "fit", function () {
-      var _assertThisInitialize = _assertThisInitialized$x(_this),
-          scrollContainer = _assertThisInitialize.scrollContainer,
-          container = _assertThisInitialize.container,
-          element = _assertThisInitialize.element;
-
-      if (!element) {
-        return;
-      }
-
-      var elementWidth = element.clientWidth;
-      var elementHeight = element.clientHeight; // No need to recalculate - already did that for current dimensions
-
-      if (_this.elementWidth === elementWidth && _this.elementHeight === elementHeight) {
-        return;
-      } // Save the dimensions so that we know we don't need to repeat the function if unchanged
-
-
-      _this.elementWidth = elementWidth;
-      _this.elementHeight = elementHeight;
-      var parent = container.parentElement; // Container was unmounted
-
-      if (!parent) {
-        return;
-      }
-      /**
-       * We need to ensure that <Fit />'s child has a absolute position. Otherwise,
-       * we wouldn't be able to place the child in the correct position.
-       */
-
-
-      var style = window.getComputedStyle(element);
-      var position = style.position;
-
-      if (position !== 'absolute') {
-        warning(false, '<Fit />\'s child does not have absolute position. You should apply `position: absolute` to it.');
-        element.style.position = 'absolute';
-      }
-      /**
-       * We need to ensure that <Fit />'s parent has a relative position. Otherwise,
-       * we wouldn't be able to place the child in the correct position.
-       */
-
-
-      var parentStyle = window.getComputedStyle(parent);
-      var parentPosition = parentStyle.position;
-
-      if (parentPosition !== 'relative' && parentPosition !== 'absolute') {
-        warning(false, '<Fit />\'s parent does not have relative position. You should apply `position: relative` to it.');
-        parent.style.position = 'relative';
-      }
-
-      var _this$props = _this.props,
-          invertAxis = _this$props.invertAxis,
-          invertSecondaryAxis = _this$props.invertSecondaryAxis,
-          mainAxis = _this$props.mainAxis,
-          spacing = _this$props.spacing;
-      alignBothAxis({
-        container: container,
-        element: element,
-        invertAxis: invertAxis,
-        invertSecondaryAxis: invertSecondaryAxis,
-        axis: mainAxis,
-        scrollContainer: scrollContainer,
-        spacing: spacing
-      });
-    });
-
-    return _this;
-  }
-
-  _createClass$x(Fit, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      if (!isDisplayContentsSupported) {
-        // eslint-disable-next-line react/no-find-dom-node
-        var element = reactDom.findDOMNode(this);
-        this.container = element;
-        this.element = element;
-        this.scrollContainer = findScrollContainer(element);
-      }
-
-      this.fit();
-
-      if (isMutationObserverSupported) {
-        this.mutationObserver.observe(this.element, {
-          attributes: true,
-          attributeFilter: ['class', 'style']
-        });
-      }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var children = this.props.children;
-      var child = React__default["default"].Children.only(children);
-
-      if (isDisplayContentsSupported) {
-        return /*#__PURE__*/React__default["default"].createElement("span", {
-          ref: function ref(container) {
-            _this2.container = container;
-            var element = container && container.firstChild;
-            _this2.element = element;
-            _this2.scrollContainer = findScrollContainer(element);
-          },
-          style: {
-            display: 'contents'
-          }
-        }, child);
-      }
-
-      return child;
-    }
-  }]);
-
-  return Fit;
-}(React.Component);
-Fit.propTypes = {
-  children: PropTypes.node,
-  invertAxis: PropTypes.bool,
-  invertSecondaryAxis: PropTypes.bool,
-  mainAxis: PropTypes.oneOf(['x', 'y']),
-  spacing: PropTypes.oneOfType([PropTypes.number, PropTypes.shape({
-    bottom: PropTypes.number.isRequired,
-    left: PropTypes.number.isRequired,
-    right: PropTypes.number.isRequired,
-    top: PropTypes.number.isRequired
-  })])
-};
-Fit.defaultProps = {
-  mainAxis: 'y',
-  spacing: 8
-};
-
-var Fit$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': Fit
-});
-
-var require$$5 = /*@__PURE__*/getAugmentedNamespace(Fit$1);
-
-var DateInput = {};
-
-var require$$2 = /*@__PURE__*/getAugmentedNamespace(esm$3);
-
-var Divider = {};
-
-(function (exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = Divider;
-
-var _react = _interopRequireDefault(React__default["default"]);
-
-var _propTypes = _interopRequireDefault(propTypes$1.exports);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function Divider(_ref) {
-  var children = _ref.children;
-  return /*#__PURE__*/_react["default"].createElement("span", {
-    className: "react-date-picker__inputGroup__divider"
-  }, children);
-}
-
-Divider.propTypes = {
-  children: _propTypes["default"].node
-};
-}(Divider));
-
-var DayInput = {};
-
-var Input = {};
-
-/**
- * A function that merges React refs into one.
- * Supports both functions and ref objects created using createRef() and useRef().
- *
- * Usage:
- * ```jsx
- * <div ref={mergeRefs(ref1, ref2, ref3)} />
- * ```
- *
- * @param {...Array<Function|object>} inputRefs Array of refs
- * @returns {Function} Merged refs
- */
-function mergeRefs() {
-  for (var _len = arguments.length, inputRefs = new Array(_len), _key = 0; _key < _len; _key++) {
-    inputRefs[_key] = arguments[_key];
-  }
-
-  var filteredInputRefs = inputRefs.filter(Boolean);
-
-  if (filteredInputRefs.length <= 1) {
-    return filteredInputRefs[0];
-  }
-
-  return function mergedRefs(ref) {
-    filteredInputRefs.forEach(function (inputRef) {
-      if (typeof inputRef === 'function') {
-        inputRef(ref);
-      } else {
-        // eslint-disable-next-line no-param-reassign
-        inputRef.current = ref;
-      }
-    });
-  };
-}
-
-var esm$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': mergeRefs
-});
-
-var require$$3 = /*@__PURE__*/getAugmentedNamespace(esm$1);
-
-var allowedVariants = ['normal', 'small-caps'];
-/**
- * Gets font CSS shorthand property given element.
- *
- * @param {HTMLElement} element Element to get font CSS shorthand property from
- */
-
-function getFontShorthand(element) {
-  if (!element) {
-    return '';
-  }
-
-  var style = window.getComputedStyle(element);
-
-  if (style.font) {
-    return style.font;
-  }
-
-  var isFontDefined = style['font-family'] !== '';
-
-  if (!isFontDefined) {
-    return '';
-  }
-
-  var fontVariant = allowedVariants.includes(style['font-variant']) ? style['font-variant'] : 'normal';
-  return "".concat(style['font-style'], " ").concat(fontVariant, " ").concat(style['font-weight'], " ").concat(style['font-size'], " / ").concat(style['line-height'], " ").concat(style['font-family']);
-}
-/**
- * Measures text width given text and font CSS shorthand.
- *
- * @param {string} text Text to measure
- * @param {string} font Font to use when measuring the text
- */
-
-function measureText(text, font) {
-  var canvas = measureText.canvas || (measureText.canvas = document.createElement('canvas'));
-  var context = canvas.getContext('2d'); // Context type not supported
-
-  if (!context) {
-    return null;
-  }
-
-  context.font = font;
-
-  var _context$measureText = context.measureText(text),
-      width = _context$measureText.width;
-
-  return Math.ceil(width);
-}
-/**
- * Updates input element width to fit its content given input element
- * @param {HTMLInputElement} element
- */
-
-function updateInputWidth(element) {
-  if (typeof window === 'undefined' || !element) {
-    return null;
-  }
-
-  var font = getFontShorthand(element);
-  var text = element.value || element.placeholder;
-  var width = measureText(text, font);
-
-  if (width === null) {
-    return null;
-  }
-
-  element.style.width = "".concat(width, "px");
-  return width;
-}
-
-var esm = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  getFontShorthand: getFontShorthand,
-  measureText: measureText,
-  updateInputWidth: updateInputWidth,
-  'default': updateInputWidth
-});
-
-var require$$4 = /*@__PURE__*/getAugmentedNamespace(esm);
-
-var propTypes = {};
-
-Object.defineProperty(propTypes, "__esModule", {
-  value: true
-});
-propTypes.isValueType = propTypes.isRef = propTypes.isMinDate = propTypes.isMaxDate = void 0;
-
-var _propTypes = _interopRequireDefault$1(propTypes$1.exports);
-
-function _interopRequireDefault$1(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _typeof$z(obj) { "@babel/helpers - typeof"; return _typeof$z = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof$z(obj); }
-
-function _toConsumableArray$1(arr) { return _arrayWithoutHoles$1(arr) || _iterableToArray$1(arr) || _unsupportedIterableToArray$2(arr) || _nonIterableSpread$1(); }
-
-function _nonIterableSpread$1() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray$2(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$2(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$2(o, minLen); }
-
-function _iterableToArray$1(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles$1(arr) { if (Array.isArray(arr)) return _arrayLikeToArray$2(arr); }
-
-function _arrayLikeToArray$2(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-var allViews = ['century', 'decade', 'year', 'month'];
-var allValueTypes = [].concat(_toConsumableArray$1(allViews.slice(1)), ['day']);
-
-var isValueType = _propTypes["default"].oneOf(allValueTypes);
-
-propTypes.isValueType = isValueType;
-
-var isMinDate = function isMinDate(props, propName, componentName) {
-  var minDate = props[propName];
-
-  if (!minDate) {
-    return null;
-  }
-
-  if (!(minDate instanceof Date)) {
-    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$z(minDate), "` supplied to `").concat(componentName, "`, expected instance of `Date`."));
-  }
-
-  var maxDate = props.maxDate;
-
-  if (maxDate && minDate > maxDate) {
-    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$z(minDate), "` supplied to `").concat(componentName, "`, minDate cannot be larger than maxDate."));
-  }
-
-  return null;
-};
-
-propTypes.isMinDate = isMinDate;
-
-var isMaxDate = function isMaxDate(props, propName, componentName) {
-  var maxDate = props[propName];
-
-  if (!maxDate) {
-    return null;
-  }
-
-  if (!(maxDate instanceof Date)) {
-    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$z(maxDate), "` supplied to `").concat(componentName, "`, expected instance of `Date`."));
-  }
-
-  var minDate = props.minDate;
-
-  if (minDate && maxDate < minDate) {
-    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$z(maxDate), "` supplied to `").concat(componentName, "`, maxDate cannot be smaller than minDate."));
-  }
-
-  return null;
-};
-
-propTypes.isMaxDate = isMaxDate;
-
-var isRef = _propTypes["default"].oneOfType([_propTypes["default"].func, _propTypes["default"].shape({
-  current: _propTypes["default"].any
-})]);
-
-propTypes.isRef = isRef;
-
-(function (exports) {
-
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = Input;
-
-var _react = _interopRequireDefault(React__default["default"]);
-
-var _propTypes = _interopRequireDefault(propTypes$1.exports);
-
-var _mergeClassNames = _interopRequireDefault(require$$3$1);
-
-var _mergeRefs = _interopRequireDefault(require$$3);
-
-var _updateInputWidth = _interopRequireWildcard(require$$4);
-
-var _propTypes2 = propTypes;
-
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-/* eslint-disable jsx-a11y/no-autofocus */
-var isIEOrEdgeLegacy = typeof window !== 'undefined' && /(MSIE|Trident\/|Edge\/)/.test(window.navigator.userAgent);
-var isFirefox = typeof window !== 'undefined' && /Firefox/.test(window.navigator.userAgent);
-
-function onFocus(event) {
-  var target = event.target;
-
-  if (isIEOrEdgeLegacy) {
-    requestAnimationFrame(function () {
-      return target.select();
-    });
-  } else {
-    target.select();
-  }
-}
-
-function updateInputWidthOnFontLoad(element) {
-  if (!document.fonts) {
-    return;
-  }
-
-  var font = (0, _updateInputWidth.getFontShorthand)(element);
-
-  if (!font) {
-    return;
-  }
-
-  var isFontLoaded = document.fonts.check(font);
-
-  if (isFontLoaded) {
-    return;
-  }
-
-  function onLoadingDone() {
-    (0, _updateInputWidth["default"])(element);
-  }
-
-  document.fonts.addEventListener('loadingdone', onLoadingDone);
-}
-
-function getSelectionString(input) {
-  /**
-   * window.getSelection().toString() returns empty string in IE11 and Firefox,
-   * so alternatives come first.
-   */
-  if (input && 'selectionStart' in input && input.selectionStart !== null) {
-    return input.value.slice(input.selectionStart, input.selectionEnd);
-  }
-
-  if ('getSelection' in window) {
-    return window.getSelection().toString();
-  }
-
-  return null;
-}
-
-function makeOnKeyPress(maxLength) {
-  /**
-   * Prevents keystrokes that would not produce a number or when value after keystroke would
-   * exceed maxLength.
-   */
-  return function onKeyPress(event) {
-    if (isFirefox) {
-      // See https://github.com/wojtekmaj/react-time-picker/issues/92
-      return;
-    }
-
-    var key = event.key,
-        input = event.target;
-    var value = input.value;
-    var isNumberKey = key.length === 1 && /\d/.test(key);
-    var selection = getSelectionString(input);
-
-    if (!isNumberKey || !(selection || value.length < maxLength)) {
-      event.preventDefault();
-    }
-  };
-}
-
-function Input(_ref) {
-  var ariaLabel = _ref.ariaLabel,
-      autoFocus = _ref.autoFocus,
-      className = _ref.className,
-      disabled = _ref.disabled,
-      inputRef = _ref.inputRef,
-      max = _ref.max,
-      min = _ref.min,
-      name = _ref.name,
-      nameForClass = _ref.nameForClass,
-      onChange = _ref.onChange,
-      onKeyDown = _ref.onKeyDown,
-      _onKeyUp = _ref.onKeyUp,
-      _ref$placeholder = _ref.placeholder,
-      placeholder = _ref$placeholder === void 0 ? '--' : _ref$placeholder,
-      required = _ref.required,
-      showLeadingZeros = _ref.showLeadingZeros,
-      step = _ref.step,
-      value = _ref.value;
-  var hasLeadingZero = showLeadingZeros && value && value < 10 && (value === '0' || !value.toString().startsWith('0'));
-  var maxLength = max ? max.toString().length : null;
-  return [hasLeadingZero && /*#__PURE__*/_react["default"].createElement("span", {
-    key: "leadingZero",
-    className: "".concat(className, "__leadingZero")
-  }, "0"), /*#__PURE__*/_react["default"].createElement("input", {
-    key: "input",
-    "aria-label": ariaLabel,
-    autoComplete: "off",
-    autoFocus: autoFocus,
-    className: (0, _mergeClassNames["default"])("".concat(className, "__input"), "".concat(className, "__").concat(nameForClass || name), hasLeadingZero && "".concat(className, "__input--hasLeadingZero")),
-    "data-input": "true",
-    disabled: disabled,
-    inputMode: "numeric",
-    max: max,
-    min: min,
-    name: name,
-    onChange: onChange,
-    onFocus: onFocus,
-    onKeyDown: onKeyDown,
-    onKeyPress: makeOnKeyPress(maxLength),
-    onKeyUp: function onKeyUp(event) {
-      (0, _updateInputWidth["default"])(event.target);
-
-      if (_onKeyUp) {
-        _onKeyUp(event);
-      }
-    },
-    placeholder: placeholder,
-    ref: (0, _mergeRefs["default"])(_updateInputWidth["default"], updateInputWidthOnFontLoad, inputRef),
-    required: required,
-    step: step,
-    type: "number",
-    value: value !== null ? value : ''
-  })];
-}
-
-Input.propTypes = {
-  ariaLabel: _propTypes["default"].string,
-  autoFocus: _propTypes["default"].bool,
-  className: _propTypes["default"].string.isRequired,
-  disabled: _propTypes["default"].bool,
-  inputRef: _propTypes2.isRef,
-  max: _propTypes["default"].number,
-  min: _propTypes["default"].number,
-  name: _propTypes["default"].string,
-  nameForClass: _propTypes["default"].string,
-  onChange: _propTypes["default"].func,
-  onKeyDown: _propTypes["default"].func,
-  onKeyUp: _propTypes["default"].func,
-  placeholder: _propTypes["default"].string,
-  required: _propTypes["default"].bool,
-  showLeadingZeros: _propTypes["default"].bool,
-  step: _propTypes["default"].number,
-  value: _propTypes["default"].string
-};
-}(Input));
-
-var utils = {};
-
-Object.defineProperty(utils, "__esModule", {
-  value: true
-});
-utils.between = between;
-utils.safeMax = safeMax;
-utils.safeMin = safeMin;
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray$1(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray$1(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$1(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$1(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray$1(arr); }
-
-function _arrayLikeToArray$1(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-/**
- * Returns a value no smaller than min and no larger than max.
- *
- * @param {*} value Value to return.
- * @param {*} min Minimum return value.
- * @param {*} max Maximum return value.
- */
-function between(value, min, max) {
-  if (min && min > value) {
-    return min;
-  }
-
-  if (max && max < value) {
-    return max;
-  }
-
-  return value;
-}
-
-function isValidNumber(num) {
-  return num !== null && num !== false && !Number.isNaN(Number(num));
-}
-
-function safeMin() {
-  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-    args[_key] = arguments[_key];
-  }
-
-  return Math.min.apply(Math, _toConsumableArray(args.filter(isValidNumber)));
-}
-
-function safeMax() {
-  for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-    args[_key2] = arguments[_key2];
-  }
-
-  return Math.max.apply(Math, _toConsumableArray(args.filter(isValidNumber)));
-}
-
-(function (exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = DayInput;
-
-var _react = _interopRequireDefault(React__default["default"]);
-
-var _propTypes = _interopRequireDefault(propTypes$1.exports);
-
-var _dateUtils = require$$2;
-
-var _Input = _interopRequireDefault(Input);
-
-var _propTypes2 = propTypes;
-
-var _utils = utils;
-
-var _excluded = ["maxDate", "minDate", "month", "year"];
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function DayInput(_ref) {
-  var maxDate = _ref.maxDate,
-      minDate = _ref.minDate,
-      month = _ref.month,
-      year = _ref.year,
-      otherProps = _objectWithoutProperties(_ref, _excluded);
-
-  var currentMonthMaxDays = function () {
-    if (!month) {
-      return 31;
-    }
-
-    return (0, _dateUtils.getDaysInMonth)(new Date(year, month - 1, 1));
-  }();
-
-  function isSameMonth(date) {
-    return date && year === (0, _dateUtils.getYear)(date).toString() && month === (0, _dateUtils.getMonthHuman)(date).toString();
-  }
-
-  var maxDay = (0, _utils.safeMin)(currentMonthMaxDays, isSameMonth(maxDate) && (0, _dateUtils.getDate)(maxDate));
-  var minDay = (0, _utils.safeMax)(1, isSameMonth(minDate) && (0, _dateUtils.getDate)(minDate));
-  return /*#__PURE__*/_react["default"].createElement(_Input["default"], _extends({
-    max: maxDay,
-    min: minDay,
-    name: "day"
-  }, otherProps));
-}
-
-DayInput.propTypes = {
-  ariaLabel: _propTypes["default"].string,
-  className: _propTypes["default"].string.isRequired,
-  disabled: _propTypes["default"].bool,
-  inputRef: _propTypes2.isRef,
-  maxDate: _propTypes2.isMaxDate,
-  minDate: _propTypes2.isMinDate,
-  month: _propTypes["default"].string,
-  onChange: _propTypes["default"].func,
-  onKeyDown: _propTypes["default"].func,
-  onKeyUp: _propTypes["default"].func,
-  placeholder: _propTypes["default"].string,
-  required: _propTypes["default"].bool,
-  showLeadingZeros: _propTypes["default"].bool,
-  value: _propTypes["default"].string,
-  year: _propTypes["default"].string
-};
-}(DayInput));
-
-var MonthInput = {};
-
-(function (exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = MonthInput;
-
-var _react = _interopRequireDefault(React__default["default"]);
-
-var _propTypes = _interopRequireDefault(propTypes$1.exports);
-
-var _dateUtils = require$$2;
-
-var _Input = _interopRequireDefault(Input);
-
-var _propTypes2 = propTypes;
-
-var _utils = utils;
-
-var _excluded = ["maxDate", "minDate", "year"];
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function MonthInput(_ref) {
-  var maxDate = _ref.maxDate,
-      minDate = _ref.minDate,
-      year = _ref.year,
-      otherProps = _objectWithoutProperties(_ref, _excluded);
-
-  function isSameYear(date) {
-    return date && year === (0, _dateUtils.getYear)(date).toString();
-  }
-
-  var maxMonth = (0, _utils.safeMin)(12, isSameYear(maxDate) && (0, _dateUtils.getMonthHuman)(maxDate));
-  var minMonth = (0, _utils.safeMax)(1, isSameYear(minDate) && (0, _dateUtils.getMonthHuman)(minDate));
-  return /*#__PURE__*/_react["default"].createElement(_Input["default"], _extends({
-    max: maxMonth,
-    min: minMonth,
-    name: "month"
-  }, otherProps));
-}
-
-MonthInput.propTypes = {
-  ariaLabel: _propTypes["default"].string,
-  className: _propTypes["default"].string.isRequired,
-  disabled: _propTypes["default"].bool,
-  inputRef: _propTypes2.isRef,
-  maxDate: _propTypes2.isMaxDate,
-  minDate: _propTypes2.isMinDate,
-  onChange: _propTypes["default"].func,
-  onKeyDown: _propTypes["default"].func,
-  onKeyUp: _propTypes["default"].func,
-  placeholder: _propTypes["default"].string,
-  required: _propTypes["default"].bool,
-  showLeadingZeros: _propTypes["default"].bool,
-  value: _propTypes["default"].string,
-  year: _propTypes["default"].string
-};
-}(MonthInput));
-
-var MonthSelect = {};
-
-var dateFormatter = {};
-
-var require$$0 = /*@__PURE__*/getAugmentedNamespace(esm$4);
-
-Object.defineProperty(dateFormatter, "__esModule", {
-  value: true
-});
-dateFormatter.formatShortMonth = dateFormatter.formatMonth = void 0;
-dateFormatter.getFormatter = getFormatter$3;
-
-var _getUserLocale = _interopRequireDefault(require$$0);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-var formatterCache = new Map();
-
-function getFormatter$3(options) {
-  return function (locale, date) {
-    var localeWithDefault = locale || (0, _getUserLocale["default"])();
-
-    if (!formatterCache.has(localeWithDefault)) {
-      formatterCache.set(localeWithDefault, new Map());
-    }
-
-    var formatterCacheLocale = formatterCache.get(localeWithDefault);
-
-    if (!formatterCacheLocale.has(options)) {
-      formatterCacheLocale.set(options, new Intl.DateTimeFormat(localeWithDefault, options).format);
-    }
-
-    return formatterCacheLocale.get(options)(date);
-  };
-}
-/**
- * Changes the hour in a Date to ensure right date formatting even if DST is messed up.
- * Workaround for bug in WebKit and Firefox with historical dates.
- * For more details, see:
- * https://bugs.chromium.org/p/chromium/issues/detail?id=750465
- * https://bugzilla.mozilla.org/show_bug.cgi?id=1385643
- *
- * @param {Date} date Date.
- */
-
-
-function toSafeHour(date) {
-  var safeDate = new Date(date);
-  return new Date(safeDate.setHours(12));
-}
-
-function getSafeFormatter(options) {
-  return function (locale, date) {
-    return getFormatter$3(options)(locale, toSafeHour(date));
-  };
-}
-
-var formatMonthOptions = {
-  month: 'long'
-};
-var formatShortMonthOptions = {
-  month: 'short'
-};
-var formatMonth = getSafeFormatter(formatMonthOptions);
-dateFormatter.formatMonth = formatMonth;
-var formatShortMonth = getSafeFormatter(formatShortMonthOptions);
-dateFormatter.formatShortMonth = formatShortMonth;
-
-(function (exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = MonthSelect;
-
-var _react = _interopRequireDefault(React__default["default"]);
-
-var _propTypes = _interopRequireDefault(propTypes$1.exports);
-
-var _mergeClassNames = _interopRequireDefault(require$$3$1);
-
-var _dateUtils = require$$2;
-
-var _dateFormatter = dateFormatter;
-
-var _propTypes2 = propTypes;
-
-var _utils = utils;
-
-var _excluded = ["ariaLabel", "className", "inputRef", "locale", "maxDate", "minDate", "placeholder", "short", "value", "year"];
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function MonthSelect(_ref) {
-  var ariaLabel = _ref.ariaLabel,
-      className = _ref.className,
-      inputRef = _ref.inputRef,
-      locale = _ref.locale,
-      maxDate = _ref.maxDate,
-      minDate = _ref.minDate,
-      _ref$placeholder = _ref.placeholder,
-      placeholder = _ref$placeholder === void 0 ? '--' : _ref$placeholder,
-      _short = _ref["short"],
-      value = _ref.value,
-      year = _ref.year,
-      otherProps = _objectWithoutProperties(_ref, _excluded);
-
-  function isSameYear(date) {
-    return date && year === (0, _dateUtils.getYear)(date).toString();
-  }
-
-  var maxMonth = (0, _utils.safeMin)(12, isSameYear(maxDate) && (0, _dateUtils.getMonthHuman)(maxDate));
-  var minMonth = (0, _utils.safeMax)(1, isSameYear(minDate) && (0, _dateUtils.getMonthHuman)(minDate));
-
-  var dates = _toConsumableArray(Array(12)).map(function (el, index) {
-    return new Date(2019, index, 1);
-  });
-
-  var name = 'month';
-  var formatter = _short ? _dateFormatter.formatShortMonth : _dateFormatter.formatMonth;
-  return /*#__PURE__*/_react["default"].createElement("select", _extends({
-    "aria-label": ariaLabel,
-    className: (0, _mergeClassNames["default"])("".concat(className, "__input"), "".concat(className, "__").concat(name)),
-    "data-input": "true",
-    "data-select": "true",
-    name: name,
-    ref: inputRef,
-    value: value !== null ? value : ''
-  }, otherProps), !value && /*#__PURE__*/_react["default"].createElement("option", {
-    value: ""
-  }, placeholder), dates.map(function (date) {
-    var month = (0, _dateUtils.getMonthHuman)(date);
-    var disabled = month < minMonth || month > maxMonth;
-    return /*#__PURE__*/_react["default"].createElement("option", {
-      key: month,
-      disabled: disabled,
-      value: month
-    }, formatter(locale, date));
-  }));
-}
-
-MonthSelect.propTypes = {
-  ariaLabel: _propTypes["default"].string,
-  className: _propTypes["default"].string.isRequired,
-  disabled: _propTypes["default"].bool,
-  inputRef: _propTypes2.isRef,
-  locale: _propTypes["default"].string,
-  maxDate: _propTypes2.isMaxDate,
-  minDate: _propTypes2.isMinDate,
-  onChange: _propTypes["default"].func,
-  onKeyDown: _propTypes["default"].func,
-  onKeyUp: _propTypes["default"].func,
-  placeholder: _propTypes["default"].string,
-  required: _propTypes["default"].bool,
-  "short": _propTypes["default"].bool,
-  value: _propTypes["default"].string,
-  year: _propTypes["default"].string
-};
-}(MonthSelect));
-
-var YearInput = {};
-
-(function (exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = YearInput;
-
-var _react = _interopRequireDefault(React__default["default"]);
-
-var _propTypes = _interopRequireDefault(propTypes$1.exports);
-
-var _dateUtils = require$$2;
-
-var _Input = _interopRequireDefault(Input);
-
-var _propTypes2 = propTypes;
-
-var _utils = utils;
-
-var _excluded = ["maxDate", "minDate", "placeholder", "valueType"];
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function YearInput(_ref) {
-  var maxDate = _ref.maxDate,
-      minDate = _ref.minDate,
-      _ref$placeholder = _ref.placeholder,
-      placeholder = _ref$placeholder === void 0 ? '----' : _ref$placeholder,
-      valueType = _ref.valueType,
-      otherProps = _objectWithoutProperties(_ref, _excluded);
-
-  var maxYear = (0, _utils.safeMin)(275760, maxDate && (0, _dateUtils.getYear)(maxDate));
-  var minYear = (0, _utils.safeMax)(1, minDate && (0, _dateUtils.getYear)(minDate));
-
-  var yearStep = function () {
-    if (valueType === 'century') {
-      return 10;
-    }
-
-    return 1;
-  }();
-
-  return /*#__PURE__*/_react["default"].createElement(_Input["default"], _extends({
-    max: maxYear,
-    min: minYear,
-    name: "year",
-    placeholder: placeholder,
-    step: yearStep
-  }, otherProps));
-}
-
-YearInput.propTypes = {
-  ariaLabel: _propTypes["default"].string,
-  className: _propTypes["default"].string.isRequired,
-  disabled: _propTypes["default"].bool,
-  inputRef: _propTypes2.isRef,
-  maxDate: _propTypes2.isMaxDate,
-  minDate: _propTypes2.isMinDate,
-  onChange: _propTypes["default"].func,
-  onKeyDown: _propTypes["default"].func,
-  onKeyUp: _propTypes["default"].func,
-  placeholder: _propTypes["default"].string,
-  required: _propTypes["default"].bool,
-  value: _propTypes["default"].string,
-  valueType: _propTypes2.isValueType
-};
-}(YearInput));
-
-var NativeInput = {};
-
-(function (exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = NativeInput;
-
-var _react = _interopRequireDefault(React__default["default"]);
-
-var _propTypes = _interopRequireDefault(propTypes$1.exports);
-
-var _dateUtils = require$$2;
-
-var _propTypes2 = propTypes;
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function NativeInput(_ref) {
-  var ariaLabel = _ref.ariaLabel,
-      disabled = _ref.disabled,
-      maxDate = _ref.maxDate,
-      minDate = _ref.minDate,
-      name = _ref.name,
-      onChange = _ref.onChange,
-      required = _ref.required,
-      value = _ref.value,
-      valueType = _ref.valueType;
-
-  var nativeInputType = function () {
-    switch (valueType) {
-      case 'decade':
-      case 'year':
-        return 'number';
-
-      case 'month':
-        return 'month';
-
-      case 'day':
-        return 'date';
-
-      default:
-        throw new Error('Invalid valueType.');
-    }
-  }();
-
-  var nativeValueParser = function () {
-    switch (valueType) {
-      case 'century':
-      case 'decade':
-      case 'year':
-        return _dateUtils.getYear;
-
-      case 'month':
-        return _dateUtils.getISOLocalMonth;
-
-      case 'day':
-        return _dateUtils.getISOLocalDate;
-
-      default:
-        throw new Error('Invalid valueType.');
-    }
-  }();
-
-  function stopPropagation(event) {
-    event.stopPropagation();
-  }
-
-  return /*#__PURE__*/_react["default"].createElement("input", {
-    "aria-label": ariaLabel,
-    disabled: disabled,
-    max: maxDate ? nativeValueParser(maxDate) : null,
-    min: minDate ? nativeValueParser(minDate) : null,
-    name: name,
-    onChange: onChange,
-    onFocus: stopPropagation,
-    required: required,
-    style: {
-      visibility: 'hidden',
-      position: 'absolute',
-      zIndex: '-999'
-    },
-    type: nativeInputType,
-    value: value ? nativeValueParser(value) : ''
-  });
-}
-
-NativeInput.propTypes = {
-  ariaLabel: _propTypes["default"].string,
-  disabled: _propTypes["default"].bool,
-  maxDate: _propTypes2.isMaxDate,
-  minDate: _propTypes2.isMinDate,
-  name: _propTypes["default"].string,
-  onChange: _propTypes["default"].func,
-  required: _propTypes["default"].bool,
-  value: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].instanceOf(Date)]),
-  valueType: _propTypes2.isValueType
-};
-}(NativeInput));
-
-var dates = {};
-
-Object.defineProperty(dates, "__esModule", {
-  value: true
-});
-dates.getBegin = getBegin;
-dates.getEnd = getEnd;
-
-var _dateUtils = require$$2;
-
-/**
- * Returns the beginning of a given range.
- *
- * @param {string} rangeType Range type (e.g. 'day')
- * @param {Date} date Date.
- */
-function getBegin(rangeType, date) {
-  switch (rangeType) {
-    case 'century':
-      return (0, _dateUtils.getCenturyStart)(date);
-
-    case 'decade':
-      return (0, _dateUtils.getDecadeStart)(date);
-
-    case 'year':
-      return (0, _dateUtils.getYearStart)(date);
-
-    case 'month':
-      return (0, _dateUtils.getMonthStart)(date);
-
-    case 'day':
-      return (0, _dateUtils.getDayStart)(date);
-
-    default:
-      throw new Error("Invalid rangeType: ".concat(rangeType));
-  }
-}
-/**
- * Returns the end of a given range.
- *
- * @param {string} rangeType Range type (e.g. 'day')
- * @param {Date} date Date.
- */
-
-
-function getEnd(rangeType, date) {
-  switch (rangeType) {
-    case 'century':
-      return (0, _dateUtils.getCenturyEnd)(date);
-
-    case 'decade':
-      return (0, _dateUtils.getDecadeEnd)(date);
-
-    case 'year':
-      return (0, _dateUtils.getYearEnd)(date);
-
-    case 'month':
-      return (0, _dateUtils.getMonthEnd)(date);
-
-    case 'day':
-      return (0, _dateUtils.getDayEnd)(date);
-
-    default:
-      throw new Error("Invalid rangeType: ".concat(rangeType));
-  }
-}
-
-(function (exports) {
-
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
-var _react = _interopRequireWildcard(React__default["default"]);
-
-var _propTypes = _interopRequireDefault(propTypes$1.exports);
-
-var _dateUtils = require$$2;
-
-var _Divider = _interopRequireDefault(Divider);
-
-var _DayInput = _interopRequireDefault(DayInput);
-
-var _MonthInput = _interopRequireDefault(MonthInput);
-
-var _MonthSelect = _interopRequireDefault(MonthSelect);
-
-var _YearInput = _interopRequireDefault(YearInput);
-
-var _NativeInput = _interopRequireDefault(NativeInput);
-
-var _dateFormatter = dateFormatter;
-
-var _dates = dates;
-
-var _propTypes2 = propTypes;
-
-var _utils = utils;
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-var defaultMinDate = new Date();
-defaultMinDate.setFullYear(1, 0, 1);
-defaultMinDate.setHours(0, 0, 0, 0);
-var defaultMaxDate = new Date(8.64e15);
-var allViews = ['century', 'decade', 'year', 'month'];
-var allValueTypes = [].concat(_toConsumableArray(allViews.slice(1)), ['day']);
-
-function toDate(value) {
-  if (value instanceof Date) {
-    return value;
-  }
-
-  return new Date(value);
-}
-
-function datesAreDifferent(date1, date2) {
-  return date1 && !date2 || !date1 && date2 || date1 && date2 && date1.getTime() !== date2.getTime();
-}
-/**
- * Returns value type that can be returned with currently applied settings.
- */
-
-
-function getValueType(maxDetail) {
-  return allValueTypes[allViews.indexOf(maxDetail)];
-}
-
-function getValue(value, index) {
-  if (!value) {
-    return null;
-  }
-
-  var rawValue = Array.isArray(value) && value.length === 2 ? value[index] : value;
-
-  if (!rawValue) {
-    return null;
-  }
-
-  var valueDate = toDate(rawValue);
-
-  if (isNaN(valueDate.getTime())) {
-    throw new Error("Invalid date: ".concat(value));
-  }
-
-  return valueDate;
-}
-
-function getDetailValue(_ref, index) {
-  var value = _ref.value,
-      minDate = _ref.minDate,
-      maxDate = _ref.maxDate,
-      maxDetail = _ref.maxDetail;
-  var valuePiece = getValue(value, index);
-
-  if (!valuePiece) {
-    return null;
-  }
-
-  var valueType = getValueType(maxDetail);
-  var detailValueFrom = [_dates.getBegin, _dates.getEnd][index](valueType, valuePiece);
-  return (0, _utils.between)(detailValueFrom, minDate, maxDate);
-}
-
-var getDetailValueFrom = function getDetailValueFrom(args) {
-  return getDetailValue(args, 0);
-};
-
-var getDetailValueTo = function getDetailValueTo(args) {
-  return getDetailValue(args, 1);
-};
-
-var getDetailValueArray = function getDetailValueArray(args) {
-  var value = args.value;
-
-  if (Array.isArray(value)) {
-    return value;
-  }
-
-  return [getDetailValueFrom, getDetailValueTo].map(function (fn) {
-    return fn(args);
-  });
-};
-
-function isInternalInput(element) {
-  return element.getAttribute('data-input') === 'true';
-}
-
-function findInput(element, property) {
-  var nextElement = element;
-
-  do {
-    nextElement = nextElement[property];
-  } while (nextElement && !isInternalInput(nextElement));
-
-  return nextElement;
-}
-
-function focus(element) {
-  if (element) {
-    element.focus();
-  }
-}
-
-function _renderCustomInputs(placeholder, elementFunctions, allowMultipleInstances) {
-  var usedFunctions = [];
-  var pattern = new RegExp(Object.keys(elementFunctions).map(function (el) {
-    return "".concat(el, "+");
-  }).join('|'), 'g');
-  var matches = placeholder.match(pattern);
-  return placeholder.split(pattern).reduce(function (arr, element, index) {
-    var divider = element &&
-    /*#__PURE__*/
-    // eslint-disable-next-line react/no-array-index-key
-    _react["default"].createElement(_Divider["default"], {
-      key: "separator_".concat(index)
-    }, element);
-
-    var res = [].concat(_toConsumableArray(arr), [divider]);
-    var currentMatch = matches && matches[index];
-
-    if (currentMatch) {
-      var renderFunction = elementFunctions[currentMatch] || elementFunctions[Object.keys(elementFunctions).find(function (elementFunction) {
-        return currentMatch.match(elementFunction);
-      })];
-
-      if (!allowMultipleInstances && usedFunctions.includes(renderFunction)) {
-        res.push(currentMatch);
-      } else {
-        res.push(renderFunction(currentMatch, index));
-        usedFunctions.push(renderFunction);
-      }
-    }
-
-    return res;
-  }, []);
-}
-
-var DateInput = /*#__PURE__*/function (_PureComponent) {
-  _inherits(DateInput, _PureComponent);
-
-  var _super = _createSuper(DateInput);
-
-  function DateInput() {
-    var _this;
-
-    _classCallCheck(this, DateInput);
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _super.call.apply(_super, [this].concat(args));
-
-    _defineProperty(_assertThisInitialized(_this), "state", {
-      year: null,
-      month: null,
-      day: null
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "dayInput", /*#__PURE__*/(0, _react.createRef)());
-
-    _defineProperty(_assertThisInitialized(_this), "monthInput", /*#__PURE__*/(0, _react.createRef)());
-
-    _defineProperty(_assertThisInitialized(_this), "yearInput", /*#__PURE__*/(0, _react.createRef)());
-
-    _defineProperty(_assertThisInitialized(_this), "onClick", function (event) {
-      if (event.target === event.currentTarget) {
-        // Wrapper was directly clicked
-        var firstInput = event.target.children[1];
-        focus(firstInput);
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onKeyDown", function (event) {
-      switch (event.key) {
-        case 'ArrowLeft':
-        case 'ArrowRight':
-        case _this.divider:
-          {
-            event.preventDefault();
-            var input = event.target;
-            var property = event.key === 'ArrowLeft' ? 'previousElementSibling' : 'nextElementSibling';
-            var nextInput = findInput(input, property);
-            focus(nextInput);
-            break;
-          }
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onKeyUp", function (event) {
-      var key = event.key,
-          input = event.target;
-      var isNumberKey = !isNaN(parseInt(key, 10));
-
-      if (!isNumberKey) {
-        return;
-      }
-
-      var value = input.value;
-      var max = input.getAttribute('max');
-      /**
-       * Given 1, the smallest possible number the user could type by adding another digit is 10.
-       * 10 would be a valid value given max = 12, so we won't jump to the next input.
-       * However, given 2, smallers possible number would be 20, and thus keeping the focus in
-       * this field doesn't make sense.
-       */
-
-      if (value * 10 > max || value.length >= max.length) {
-        var property = 'nextElementSibling';
-        var nextInput = findInput(input, property);
-        focus(nextInput);
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onChange", function (event) {
-      var _event$target = event.target,
-          name = _event$target.name,
-          value = _event$target.value;
-
-      _this.setState(_defineProperty({}, name, value), _this.onChangeExternal);
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onChangeNative", function (event) {
-      var onChange = _this.props.onChange;
-      var value = event.target.value;
-
-      if (!onChange) {
-        return;
-      }
-
-      var processedValue = function () {
-        if (!value) {
-          return null;
-        }
-
-        var _value$split = value.split('-'),
-            _value$split2 = _slicedToArray(_value$split, 3),
-            yearString = _value$split2[0],
-            monthString = _value$split2[1],
-            dayString = _value$split2[2];
-
-        var year = parseInt(yearString, 10);
-        var monthIndex = parseInt(monthString, 10) - 1 || 0;
-        var day = parseInt(dayString, 10) || 1;
-        var proposedValue = new Date();
-        proposedValue.setFullYear(year, monthIndex, day);
-        proposedValue.setHours(0, 0, 0, 0);
-        return proposedValue;
-      }();
-
-      onChange(processedValue, false);
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onChangeExternal", function () {
-      var onChange = _this.props.onChange;
-
-      if (!onChange) {
-        return;
-      }
-
-      var formElements = [_this.dayInput.current, _this.monthInput.current, _this.yearInput.current].filter(Boolean);
-      var values = {};
-      formElements.forEach(function (formElement) {
-        values[formElement.name] = formElement.value;
-      });
-
-      if (formElements.every(function (formElement) {
-        return !formElement.value;
-      })) {
-        onChange(null, false);
-      } else if (formElements.every(function (formElement) {
-        return formElement.value && formElement.validity.valid;
-      })) {
-        var year = parseInt(values.year, 10) || new Date().getFullYear();
-        var monthIndex = parseInt(values.month || 1, 10) - 1;
-        var day = parseInt(values.day || 1, 10);
-        var proposedValue = new Date();
-        proposedValue.setFullYear(year, monthIndex, day);
-        proposedValue.setHours(0, 0, 0, 0);
-
-        var processedValue = _this.getProcessedValue(proposedValue);
-
-        onChange(processedValue, false);
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "renderDay", function (currentMatch, index) {
-      var _this$props = _this.props,
-          autoFocus = _this$props.autoFocus,
-          dayAriaLabel = _this$props.dayAriaLabel,
-          dayPlaceholder = _this$props.dayPlaceholder,
-          showLeadingZeros = _this$props.showLeadingZeros;
-      var _this$state = _this.state,
-          day = _this$state.day,
-          month = _this$state.month,
-          year = _this$state.year;
-
-      if (currentMatch && currentMatch.length > 2) {
-        throw new Error("Unsupported token: ".concat(currentMatch));
-      }
-
-      var showLeadingZerosFromFormat = currentMatch && currentMatch.length === 2;
-      return /*#__PURE__*/_react["default"].createElement(_DayInput["default"], _extends({
-        key: "day"
-      }, _this.commonInputProps, {
-        ariaLabel: dayAriaLabel // eslint-disable-next-line jsx-a11y/no-autofocus
-        ,
-        autoFocus: index === 0 && autoFocus,
-        inputRef: _this.dayInput,
-        month: month,
-        placeholder: dayPlaceholder,
-        showLeadingZeros: showLeadingZerosFromFormat || showLeadingZeros,
-        value: day,
-        year: year
-      }));
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "renderMonth", function (currentMatch, index) {
-      var _this$props2 = _this.props,
-          autoFocus = _this$props2.autoFocus,
-          locale = _this$props2.locale,
-          monthAriaLabel = _this$props2.monthAriaLabel,
-          monthPlaceholder = _this$props2.monthPlaceholder,
-          showLeadingZeros = _this$props2.showLeadingZeros;
-      var _this$state2 = _this.state,
-          month = _this$state2.month,
-          year = _this$state2.year;
-
-      if (currentMatch && currentMatch.length > 4) {
-        throw new Error("Unsupported token: ".concat(currentMatch));
-      }
-
-      if (currentMatch.length > 2) {
-        return /*#__PURE__*/_react["default"].createElement(_MonthSelect["default"], _extends({
-          key: "month"
-        }, _this.commonInputProps, {
-          ariaLabel: monthAriaLabel // eslint-disable-next-line jsx-a11y/no-autofocus
-          ,
-          autoFocus: index === 0 && autoFocus,
-          inputRef: _this.monthInput,
-          locale: locale,
-          placeholder: monthPlaceholder,
-          "short": currentMatch.length === 3,
-          value: month,
-          year: year
-        }));
-      }
-
-      var showLeadingZerosFromFormat = currentMatch && currentMatch.length === 2;
-      return /*#__PURE__*/_react["default"].createElement(_MonthInput["default"], _extends({
-        key: "month"
-      }, _this.commonInputProps, {
-        ariaLabel: monthAriaLabel // eslint-disable-next-line jsx-a11y/no-autofocus
-        ,
-        autoFocus: index === 0 && autoFocus,
-        inputRef: _this.monthInput,
-        placeholder: monthPlaceholder,
-        showLeadingZeros: showLeadingZerosFromFormat || showLeadingZeros,
-        value: month,
-        year: year
-      }));
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "renderYear", function (currentMatch, index) {
-      var _this$props3 = _this.props,
-          autoFocus = _this$props3.autoFocus,
-          yearAriaLabel = _this$props3.yearAriaLabel,
-          yearPlaceholder = _this$props3.yearPlaceholder;
-      var year = _this.state.year;
-      return /*#__PURE__*/_react["default"].createElement(_YearInput["default"], _extends({
-        key: "year"
-      }, _this.commonInputProps, {
-        ariaLabel: yearAriaLabel // eslint-disable-next-line jsx-a11y/no-autofocus
-        ,
-        autoFocus: index === 0 && autoFocus,
-        inputRef: _this.yearInput,
-        placeholder: yearPlaceholder,
-        value: year,
-        valueType: _this.valueType
-      }));
-    });
-
-    return _this;
-  }
-
-  _createClass(DateInput, [{
-    key: "formatDate",
-    get: function get() {
-      var maxDetail = this.props.maxDetail;
-      var options = {
-        year: 'numeric'
-      };
-      var level = allViews.indexOf(maxDetail);
-
-      if (level >= 2) {
-        options.month = 'numeric';
-      }
-
-      if (level >= 3) {
-        options.day = 'numeric';
-      }
-
-      return (0, _dateFormatter.getFormatter)(options);
-    }
-    /**
-     * Gets current value in a desired format.
-     */
-
-  }, {
-    key: "getProcessedValue",
-    value: function getProcessedValue(value) {
-      var _this$props4 = this.props,
-          minDate = _this$props4.minDate,
-          maxDate = _this$props4.maxDate,
-          maxDetail = _this$props4.maxDetail,
-          returnValue = _this$props4.returnValue;
-
-      var processFunction = function () {
-        switch (returnValue) {
-          case 'start':
-            return getDetailValueFrom;
-
-          case 'end':
-            return getDetailValueTo;
-
-          case 'range':
-            return getDetailValueArray;
-
-          default:
-            throw new Error('Invalid returnValue.');
-        }
-      }();
-
-      return processFunction({
-        value: value,
-        minDate: minDate,
-        maxDate: maxDate,
-        maxDetail: maxDetail
-      });
-    }
-  }, {
-    key: "divider",
-    get: function get() {
-      var dividers = this.placeholder.match(/[^0-9a-z]/i);
-      return dividers ? dividers[0] : null;
-    }
-  }, {
-    key: "placeholder",
-    get: function get() {
-      var _this$props5 = this.props,
-          format = _this$props5.format,
-          locale = _this$props5.locale;
-
-      if (format) {
-        return format;
-      }
-
-      var year = 2017;
-      var monthIndex = 11;
-      var day = 11;
-      var date = new Date(year, monthIndex, day);
-      var formattedDate = this.formatDate(locale, date);
-      var datePieces = ['year', 'month', 'day'];
-      var datePieceReplacements = ['y', 'M', 'd'];
-
-      function formatDatePiece(name, dateToFormat) {
-        return (0, _dateFormatter.getFormatter)(_defineProperty({
-          useGrouping: false
-        }, name, 'numeric'))(locale, dateToFormat).match(/\d{1,}/);
-      }
-
-      var placeholder = formattedDate;
-      datePieces.forEach(function (datePiece, index) {
-        var formattedDatePiece = formatDatePiece(datePiece, date);
-        var datePieceReplacement = datePieceReplacements[index];
-        placeholder = placeholder.replace(formattedDatePiece, datePieceReplacement);
-      }); // See: https://github.com/wojtekmaj/react-date-picker/issues/396
-
-      placeholder = placeholder.replace('17', 'y');
-      return placeholder;
-    }
-  }, {
-    key: "commonInputProps",
-    get: function get() {
-      var _this$props6 = this.props,
-          className = _this$props6.className,
-          disabled = _this$props6.disabled,
-          isCalendarOpen = _this$props6.isCalendarOpen,
-          maxDate = _this$props6.maxDate,
-          minDate = _this$props6.minDate,
-          required = _this$props6.required;
-      return {
-        className: className,
-        disabled: disabled,
-        maxDate: maxDate || defaultMaxDate,
-        minDate: minDate || defaultMinDate,
-        onChange: this.onChange,
-        onKeyDown: this.onKeyDown,
-        onKeyUp: this.onKeyUp,
-        // This is only for showing validity when editing
-        required: required || isCalendarOpen
-      };
-    }
-  }, {
-    key: "valueType",
-    get: function get() {
-      var maxDetail = this.props.maxDetail;
-      return getValueType(maxDetail);
-    }
-  }, {
-    key: "renderCustomInputs",
-    value: function renderCustomInputs() {
-      var placeholder = this.placeholder;
-      var format = this.props.format;
-      var elementFunctions = {
-        d: this.renderDay,
-        M: this.renderMonth,
-        y: this.renderYear
-      };
-      var allowMultipleInstances = typeof format !== 'undefined';
-      return _renderCustomInputs(placeholder, elementFunctions, allowMultipleInstances);
-    }
-  }, {
-    key: "renderNativeInput",
-    value: function renderNativeInput() {
-      var _this$props7 = this.props,
-          disabled = _this$props7.disabled,
-          maxDate = _this$props7.maxDate,
-          minDate = _this$props7.minDate,
-          name = _this$props7.name,
-          nativeInputAriaLabel = _this$props7.nativeInputAriaLabel,
-          required = _this$props7.required;
-      var value = this.state.value;
-      return /*#__PURE__*/_react["default"].createElement(_NativeInput["default"], {
-        key: "date",
-        ariaLabel: nativeInputAriaLabel,
-        disabled: disabled,
-        maxDate: maxDate || defaultMaxDate,
-        minDate: minDate || defaultMinDate,
-        name: name,
-        onChange: this.onChangeNative,
-        required: required,
-        value: value,
-        valueType: this.valueType
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var className = this.props.className;
-      return (
-        /*#__PURE__*/
-        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-        _react["default"].createElement("div", {
-          className: className,
-          onClick: this.onClick
-        }, this.renderNativeInput(), this.renderCustomInputs())
-      );
-    }
-  }], [{
-    key: "getDerivedStateFromProps",
-    value: function getDerivedStateFromProps(nextProps, prevState) {
-      var minDate = nextProps.minDate,
-          maxDate = nextProps.maxDate,
-          maxDetail = nextProps.maxDetail;
-      var nextState = {};
-      /**
-       * If isCalendarOpen flag has changed, we have to update it.
-       * It's saved in state purely for use in getDerivedStateFromProps.
-       */
-
-      if (nextProps.isCalendarOpen !== prevState.isCalendarOpen) {
-        nextState.isCalendarOpen = nextProps.isCalendarOpen;
-      }
-      /**
-       * If the next value is different from the current one  (with an exception of situation in
-       * which values provided are limited by minDate and maxDate so that the dates are the same),
-       * get a new one.
-       */
-
-
-      var nextValue = getDetailValueFrom({
-        value: nextProps.value,
-        minDate: minDate,
-        maxDate: maxDate,
-        maxDetail: maxDetail
-      });
-      var values = [nextValue, prevState.value];
-
-      if ( // Toggling calendar visibility resets values
-      nextState.isCalendarOpen || // Flag was toggled
-      datesAreDifferent.apply(void 0, _toConsumableArray(values.map(function (value) {
-        return getDetailValueFrom({
-          value: value,
-          minDate: minDate,
-          maxDate: maxDate,
-          maxDetail: maxDetail
-        });
-      }))) || datesAreDifferent.apply(void 0, _toConsumableArray(values.map(function (value) {
-        return getDetailValueTo({
-          value: value,
-          minDate: minDate,
-          maxDate: maxDate,
-          maxDetail: maxDetail
-        });
-      })))) {
-        if (nextValue) {
-          nextState.year = (0, _dateUtils.getYear)(nextValue).toString();
-          nextState.month = (0, _dateUtils.getMonthHuman)(nextValue).toString();
-          nextState.day = (0, _dateUtils.getDate)(nextValue).toString();
-        } else {
-          nextState.year = null;
-          nextState.month = null;
-          nextState.day = null;
-        }
-
-        nextState.value = nextValue;
-      }
-
-      return nextState;
-    }
-  }]);
-
-  return DateInput;
-}(_react.PureComponent);
-
-exports["default"] = DateInput;
-DateInput.defaultProps = {
-  maxDetail: 'month',
-  name: 'date',
-  returnValue: 'start'
-};
-
-var isValue = _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].instanceOf(Date)]);
-
-DateInput.propTypes = {
-  autoFocus: _propTypes["default"].bool,
-  className: _propTypes["default"].string.isRequired,
-  dayAriaLabel: _propTypes["default"].string,
-  dayPlaceholder: _propTypes["default"].string,
-  disabled: _propTypes["default"].bool,
-  format: _propTypes["default"].string,
-  isCalendarOpen: _propTypes["default"].bool,
-  locale: _propTypes["default"].string,
-  maxDate: _propTypes2.isMaxDate,
-  maxDetail: _propTypes["default"].oneOf(allViews),
-  minDate: _propTypes2.isMinDate,
-  monthAriaLabel: _propTypes["default"].string,
-  monthPlaceholder: _propTypes["default"].string,
-  name: _propTypes["default"].string,
-  nativeInputAriaLabel: _propTypes["default"].string,
-  onChange: _propTypes["default"].func,
-  required: _propTypes["default"].bool,
-  returnValue: _propTypes["default"].oneOf(['start', 'end', 'range']),
-  showLeadingZeros: _propTypes["default"].bool,
-  value: _propTypes["default"].oneOfType([isValue, _propTypes["default"].arrayOf(isValue)]),
-  yearAriaLabel: _propTypes["default"].string,
-  yearPlaceholder: _propTypes["default"].string
-};
-}(DateInput));
-
-(function (exports) {
-
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
-var _react = _interopRequireWildcard(React__default["default"]);
-
-var _propTypes = _interopRequireDefault(propTypes$1.exports);
-
-var _makeEventProps = _interopRequireDefault(require$$2$1);
-
-var _mergeClassNames = _interopRequireDefault(require$$3$1);
-
-var _reactCalendar = _interopRequireDefault(require$$4$1);
-
-var _reactFit = _interopRequireDefault(require$$5);
-
-var _DateInput = _interopRequireDefault(DateInput);
-
-var _propTypes2 = propTypes;
-
-var _excluded = ["calendarClassName", "className", "onChange", "value"],
-    _excluded2 = ["onChange"];
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var baseClassName = 'react-date-picker';
-var outsideActionEvents = ['mousedown', 'focusin', 'touchstart'];
-var allViews = ['century', 'decade', 'year', 'month'];
-
-var DatePicker = /*#__PURE__*/function (_PureComponent) {
-  _inherits(DatePicker, _PureComponent);
-
-  var _super = _createSuper(DatePicker);
-
-  function DatePicker() {
-    var _this;
-
-    _classCallCheck(this, DatePicker);
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _super.call.apply(_super, [this].concat(args));
-
-    _defineProperty(_assertThisInitialized(_this), "state", {});
-
-    _defineProperty(_assertThisInitialized(_this), "onOutsideAction", function (event) {
-      // Try event.composedPath first to handle clicks inside a Shadow DOM.
-      var target = 'composedPath' in event ? event.composedPath()[0] : event.target;
-
-      if (_this.wrapper && !_this.wrapper.contains(target)) {
-        _this.closeCalendar();
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onChange", function (value) {
-      var closeCalendar = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _this.props.closeCalendar;
-      var onChange = _this.props.onChange;
-
-      if (closeCalendar) {
-        _this.closeCalendar();
-      }
-
-      if (onChange) {
-        onChange(value);
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onFocus", function (event) {
-      var _this$props = _this.props,
-          disabled = _this$props.disabled,
-          onFocus = _this$props.onFocus,
-          openCalendarOnFocus = _this$props.openCalendarOnFocus;
-
-      if (onFocus) {
-        onFocus(event);
-      } // Internet Explorer still fires onFocus on disabled elements
-
-
-      if (disabled) {
-        return;
-      }
-
-      if (openCalendarOnFocus) {
-        if (event.target.getAttribute('data-select') === 'true') {
-          return;
-        }
-
-        _this.openCalendar();
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onKeyDown", function (event) {
-      if (event.key === 'Escape') {
-        _this.closeCalendar();
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "openCalendar", function () {
-      _this.setState({
-        isOpen: true
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "closeCalendar", function () {
-      _this.setState(function (prevState) {
-        if (!prevState.isOpen) {
-          return null;
-        }
-
-        return {
-          isOpen: false
-        };
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "toggleCalendar", function () {
-      _this.setState(function (prevState) {
-        return {
-          isOpen: !prevState.isOpen
-        };
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "stopPropagation", function (event) {
-      return event.stopPropagation();
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "clear", function () {
-      return _this.onChange(null);
-    });
-
-    return _this;
-  }
-
-  _createClass(DatePicker, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.handleOutsideActionListeners();
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps, prevState) {
-      var isOpen = this.state.isOpen;
-      var _this$props2 = this.props,
-          onCalendarClose = _this$props2.onCalendarClose,
-          onCalendarOpen = _this$props2.onCalendarOpen;
-
-      if (isOpen !== prevState.isOpen) {
-        this.handleOutsideActionListeners();
-        var callback = isOpen ? onCalendarOpen : onCalendarClose;
-        if (callback) callback();
-      }
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      this.handleOutsideActionListeners(false);
-    }
-  }, {
-    key: "eventProps",
-    get: function get() {
-      return (0, _makeEventProps["default"])(this.props);
-    }
-  }, {
-    key: "handleOutsideActionListeners",
-    value: function handleOutsideActionListeners(shouldListen) {
-      var _this2 = this;
-
-      var isOpen = this.state.isOpen;
-      var shouldListenWithFallback = typeof shouldListen !== 'undefined' ? shouldListen : isOpen;
-      var fnName = shouldListenWithFallback ? 'addEventListener' : 'removeEventListener';
-      outsideActionEvents.forEach(function (eventName) {
-        return document[fnName](eventName, _this2.onOutsideAction);
-      });
-      document[fnName]('keydown', this.onKeyDown);
-    }
-  }, {
-    key: "renderInputs",
-    value: function renderInputs() {
-      var _this$props3 = this.props,
-          autoFocus = _this$props3.autoFocus,
-          calendarAriaLabel = _this$props3.calendarAriaLabel,
-          calendarIcon = _this$props3.calendarIcon,
-          clearAriaLabel = _this$props3.clearAriaLabel,
-          clearIcon = _this$props3.clearIcon,
-          dayAriaLabel = _this$props3.dayAriaLabel,
-          dayPlaceholder = _this$props3.dayPlaceholder,
-          disableCalendar = _this$props3.disableCalendar,
-          disabled = _this$props3.disabled,
-          format = _this$props3.format,
-          locale = _this$props3.locale,
-          maxDate = _this$props3.maxDate,
-          maxDetail = _this$props3.maxDetail,
-          minDate = _this$props3.minDate,
-          monthAriaLabel = _this$props3.monthAriaLabel,
-          monthPlaceholder = _this$props3.monthPlaceholder,
-          name = _this$props3.name,
-          nativeInputAriaLabel = _this$props3.nativeInputAriaLabel,
-          required = _this$props3.required,
-          returnValue = _this$props3.returnValue,
-          showLeadingZeros = _this$props3.showLeadingZeros,
-          value = _this$props3.value,
-          yearAriaLabel = _this$props3.yearAriaLabel,
-          yearPlaceholder = _this$props3.yearPlaceholder;
-      var isOpen = this.state.isOpen;
-
-      var _concat = [].concat(value),
-          _concat2 = _slicedToArray(_concat, 1),
-          valueFrom = _concat2[0];
-
-      var ariaLabelProps = {
-        dayAriaLabel: dayAriaLabel,
-        monthAriaLabel: monthAriaLabel,
-        nativeInputAriaLabel: nativeInputAriaLabel,
-        yearAriaLabel: yearAriaLabel
-      };
-      var placeholderProps = {
-        dayPlaceholder: dayPlaceholder,
-        monthPlaceholder: monthPlaceholder,
-        yearPlaceholder: yearPlaceholder
-      };
-      return /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(baseClassName, "__wrapper")
-      }, /*#__PURE__*/_react["default"].createElement(_DateInput["default"], _extends({}, ariaLabelProps, placeholderProps, {
-        // eslint-disable-next-line jsx-a11y/no-autofocus
-        autoFocus: autoFocus,
-        className: "".concat(baseClassName, "__inputGroup"),
-        disabled: disabled,
-        format: format,
-        isCalendarOpen: isOpen,
-        locale: locale,
-        maxDate: maxDate,
-        maxDetail: maxDetail,
-        minDate: minDate,
-        name: name,
-        onChange: this.onChange,
-        required: required,
-        returnValue: returnValue,
-        showLeadingZeros: showLeadingZeros,
-        value: valueFrom
-      })), clearIcon !== null && /*#__PURE__*/_react["default"].createElement("button", {
-        "aria-label": clearAriaLabel,
-        className: "".concat(baseClassName, "__clear-button ").concat(baseClassName, "__button"),
-        disabled: disabled,
-        onClick: this.clear,
-        onFocus: this.stopPropagation,
-        type: "button"
-      }, clearIcon), calendarIcon !== null && !disableCalendar && /*#__PURE__*/_react["default"].createElement("button", {
-        "aria-label": calendarAriaLabel,
-        className: "".concat(baseClassName, "__calendar-button ").concat(baseClassName, "__button"),
-        disabled: disabled,
-        onBlur: this.resetValue,
-        onClick: this.toggleCalendar,
-        onFocus: this.stopPropagation,
-        type: "button"
-      }, calendarIcon));
-    }
-  }, {
-    key: "renderCalendar",
-    value: function renderCalendar() {
-      var disableCalendar = this.props.disableCalendar;
-      var isOpen = this.state.isOpen;
-
-      if (isOpen === null || disableCalendar) {
-        return null;
-      }
-
-      var _this$props4 = this.props,
-          calendarClassName = _this$props4.calendarClassName;
-          _this$props4.className;
-          _this$props4.onChange;
-          var value = _this$props4.value,
-          calendarProps = _objectWithoutProperties(_this$props4, _excluded);
-
-      var className = "".concat(baseClassName, "__calendar");
-      return /*#__PURE__*/_react["default"].createElement(_reactFit["default"], null, /*#__PURE__*/_react["default"].createElement("div", {
-        ref: function ref(_ref) {
-          if (_ref && !isOpen) {
-            _ref.removeAttribute('style');
-          }
-        },
-        className: (0, _mergeClassNames["default"])(className, "".concat(className, "--").concat(isOpen ? 'open' : 'closed')),
-        style: isOpen ? undefined : {}
-      }, /*#__PURE__*/_react["default"].createElement(_reactCalendar["default"], _extends({
-        className: calendarClassName,
-        onChange: this.onChange,
-        value: value || null
-      }, calendarProps))));
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
-
-      var eventProps = this.eventProps;
-      var _this$props5 = this.props,
-          className = _this$props5.className,
-          disabled = _this$props5.disabled;
-      var isOpen = this.state.isOpen;
-
-      eventProps.onChange;
-          var eventPropsWithoutOnChange = _objectWithoutProperties(eventProps, _excluded2);
-
-      return /*#__PURE__*/_react["default"].createElement("div", _extends({
-        className: (0, _mergeClassNames["default"])(baseClassName, "".concat(baseClassName, "--").concat(isOpen ? 'open' : 'closed'), "".concat(baseClassName, "--").concat(disabled ? 'disabled' : 'enabled'), className)
-      }, eventPropsWithoutOnChange, {
-        onFocus: this.onFocus,
-        ref: function ref(_ref2) {
-          if (!_ref2) {
-            return;
-          }
-
-          _this3.wrapper = _ref2;
-        }
-      }), this.renderInputs(), this.renderCalendar());
-    }
-  }], [{
-    key: "getDerivedStateFromProps",
-    value: function getDerivedStateFromProps(nextProps, prevState) {
-      if (nextProps.isOpen !== prevState.isOpenProps) {
-        return {
-          isOpen: nextProps.isOpen,
-          isOpenProps: nextProps.isOpen
-        };
-      }
-
-      return null;
-    }
-  }]);
-
-  return DatePicker;
-}(_react.PureComponent);
-
-exports["default"] = DatePicker;
-var iconProps = {
-  xmlns: 'http://www.w3.org/2000/svg',
-  width: 19,
-  height: 19,
-  viewBox: '0 0 19 19',
-  stroke: 'black',
-  strokeWidth: 2
-};
-
-var CalendarIcon = /*#__PURE__*/_react["default"].createElement("svg", _extends({}, iconProps, {
-  className: "".concat(baseClassName, "__calendar-button__icon ").concat(baseClassName, "__button__icon")
-}), /*#__PURE__*/_react["default"].createElement("rect", {
-  fill: "none",
-  height: "15",
-  width: "15",
-  x: "2",
-  y: "2"
-}), /*#__PURE__*/_react["default"].createElement("line", {
-  x1: "6",
-  x2: "6",
-  y1: "0",
-  y2: "4"
-}), /*#__PURE__*/_react["default"].createElement("line", {
-  x1: "13",
-  x2: "13",
-  y1: "0",
-  y2: "4"
-}));
-
-var ClearIcon = /*#__PURE__*/_react["default"].createElement("svg", _extends({}, iconProps, {
-  className: "".concat(baseClassName, "__clear-button__icon ").concat(baseClassName, "__button__icon")
-}), /*#__PURE__*/_react["default"].createElement("line", {
-  x1: "4",
-  x2: "15",
-  y1: "4",
-  y2: "15"
-}), /*#__PURE__*/_react["default"].createElement("line", {
-  x1: "15",
-  x2: "4",
-  y1: "4",
-  y2: "15"
-}));
-
-DatePicker.defaultProps = {
-  calendarIcon: CalendarIcon,
-  clearIcon: ClearIcon,
-  closeCalendar: true,
-  isOpen: null,
-  openCalendarOnFocus: true,
-  returnValue: 'start'
-};
-
-var isValue = _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].instanceOf(Date)]);
-
-DatePicker.propTypes = {
-  autoFocus: _propTypes["default"].bool,
-  calendarAriaLabel: _propTypes["default"].string,
-  calendarClassName: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].arrayOf(_propTypes["default"].string)]),
-  calendarIcon: _propTypes["default"].node,
-  className: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].arrayOf(_propTypes["default"].string)]),
-  clearAriaLabel: _propTypes["default"].string,
-  clearIcon: _propTypes["default"].node,
-  closeCalendar: _propTypes["default"].bool,
-  dayAriaLabel: _propTypes["default"].string,
-  dayPlaceholder: _propTypes["default"].string,
-  disableCalendar: _propTypes["default"].bool,
-  disabled: _propTypes["default"].bool,
-  format: _propTypes["default"].string,
-  isOpen: _propTypes["default"].bool,
-  locale: _propTypes["default"].string,
-  maxDate: _propTypes2.isMaxDate,
-  maxDetail: _propTypes["default"].oneOf(allViews),
-  minDate: _propTypes2.isMinDate,
-  monthAriaLabel: _propTypes["default"].string,
-  monthPlaceholder: _propTypes["default"].string,
-  name: _propTypes["default"].string,
-  nativeInputAriaLabel: _propTypes["default"].string,
-  onCalendarClose: _propTypes["default"].func,
-  onCalendarOpen: _propTypes["default"].func,
-  onChange: _propTypes["default"].func,
-  onFocus: _propTypes["default"].func,
-  openCalendarOnFocus: _propTypes["default"].bool,
-  required: _propTypes["default"].bool,
-  returnValue: _propTypes["default"].oneOf(['start', 'end', 'range']),
-  showLeadingZeros: _propTypes["default"].bool,
-  value: _propTypes["default"].oneOfType([isValue, _propTypes["default"].arrayOf(isValue)]),
-  yearAriaLabel: _propTypes["default"].string,
-  yearPlaceholder: _propTypes["default"].string
-};
-}(DatePicker$1));
-
-(function (exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
-
-
-var _DatePicker = _interopRequireDefault(DatePicker$1);
-
-
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-// File is created during build phase and placed in dist directory
-// eslint-disable-next-line import/no-unresolved
-var _default = _DatePicker["default"];
-exports["default"] = _default;
-}(entry));
-
-var DatePicker = /*@__PURE__*/getDefaultExportFromCjs(entry);
-
-var toStr$7 = Object.prototype.toString;
-
-var isArguments$2 = function isArguments(value) {
-	var str = toStr$7.call(value);
-	var isArgs = str === '[object Arguments]';
-	if (!isArgs) {
-		isArgs = str !== '[object Array]' &&
-			value !== null &&
-			typeof value === 'object' &&
-			typeof value.length === 'number' &&
-			value.length >= 0 &&
-			toStr$7.call(value.callee) === '[object Function]';
-	}
-	return isArgs;
-};
-
-var keysShim$1;
-if (!Object.keys) {
-	// modified from https://github.com/es-shims/es5-shim
-	var has = Object.prototype.hasOwnProperty;
-	var toStr$6 = Object.prototype.toString;
-	var isArgs$1 = isArguments$2; // eslint-disable-line global-require
-	var isEnumerable = Object.prototype.propertyIsEnumerable;
-	var hasDontEnumBug = !isEnumerable.call({ toString: null }, 'toString');
-	var hasProtoEnumBug = isEnumerable.call(function () {}, 'prototype');
-	var dontEnums = [
-		'toString',
-		'toLocaleString',
-		'valueOf',
-		'hasOwnProperty',
-		'isPrototypeOf',
-		'propertyIsEnumerable',
-		'constructor'
-	];
-	var equalsConstructorPrototype = function (o) {
-		var ctor = o.constructor;
-		return ctor && ctor.prototype === o;
-	};
-	var excludedKeys = {
-		$applicationCache: true,
-		$console: true,
-		$external: true,
-		$frame: true,
-		$frameElement: true,
-		$frames: true,
-		$innerHeight: true,
-		$innerWidth: true,
-		$onmozfullscreenchange: true,
-		$onmozfullscreenerror: true,
-		$outerHeight: true,
-		$outerWidth: true,
-		$pageXOffset: true,
-		$pageYOffset: true,
-		$parent: true,
-		$scrollLeft: true,
-		$scrollTop: true,
-		$scrollX: true,
-		$scrollY: true,
-		$self: true,
-		$webkitIndexedDB: true,
-		$webkitStorageInfo: true,
-		$window: true
-	};
-	var hasAutomationEqualityBug = (function () {
-		/* global window */
-		if (typeof window === 'undefined') { return false; }
-		for (var k in window) {
-			try {
-				if (!excludedKeys['$' + k] && has.call(window, k) && window[k] !== null && typeof window[k] === 'object') {
-					try {
-						equalsConstructorPrototype(window[k]);
-					} catch (e) {
-						return true;
-					}
-				}
-			} catch (e) {
-				return true;
-			}
-		}
-		return false;
-	}());
-	var equalsConstructorPrototypeIfNotBuggy = function (o) {
-		/* global window */
-		if (typeof window === 'undefined' || !hasAutomationEqualityBug) {
-			return equalsConstructorPrototype(o);
-		}
-		try {
-			return equalsConstructorPrototype(o);
-		} catch (e) {
-			return false;
-		}
-	};
-
-	keysShim$1 = function keys(object) {
-		var isObject = object !== null && typeof object === 'object';
-		var isFunction = toStr$6.call(object) === '[object Function]';
-		var isArguments = isArgs$1(object);
-		var isString = isObject && toStr$6.call(object) === '[object String]';
-		var theKeys = [];
-
-		if (!isObject && !isFunction && !isArguments) {
-			throw new TypeError('Object.keys called on a non-object');
-		}
-
-		var skipProto = hasProtoEnumBug && isFunction;
-		if (isString && object.length > 0 && !has.call(object, 0)) {
-			for (var i = 0; i < object.length; ++i) {
-				theKeys.push(String(i));
-			}
-		}
-
-		if (isArguments && object.length > 0) {
-			for (var j = 0; j < object.length; ++j) {
-				theKeys.push(String(j));
-			}
-		} else {
-			for (var name in object) {
-				if (!(skipProto && name === 'prototype') && has.call(object, name)) {
-					theKeys.push(String(name));
-				}
-			}
-		}
-
-		if (hasDontEnumBug) {
-			var skipConstructor = equalsConstructorPrototypeIfNotBuggy(object);
-
-			for (var k = 0; k < dontEnums.length; ++k) {
-				if (!(skipConstructor && dontEnums[k] === 'constructor') && has.call(object, dontEnums[k])) {
-					theKeys.push(dontEnums[k]);
-				}
-			}
-		}
-		return theKeys;
-	};
-}
-var implementation$5 = keysShim$1;
-
-var slice$1 = Array.prototype.slice;
-var isArgs = isArguments$2;
-
-var origKeys = Object.keys;
-var keysShim = origKeys ? function keys(o) { return origKeys(o); } : implementation$5;
-
-var originalKeys = Object.keys;
-
-keysShim.shim = function shimObjectKeys() {
-	if (Object.keys) {
-		var keysWorksWithArguments = (function () {
-			// Safari 5.0 bug
-			var args = Object.keys(arguments);
-			return args && args.length === arguments.length;
-		}(1, 2));
-		if (!keysWorksWithArguments) {
-			Object.keys = function keys(object) { // eslint-disable-line func-name-matching
-				if (isArgs(object)) {
-					return originalKeys(slice$1.call(object));
-				}
-				return originalKeys(object);
-			};
-		}
-	} else {
-		Object.keys = keysShim;
-	}
-	return Object.keys || keysShim;
-};
-
-var objectKeys = keysShim;
-
-/* eslint complexity: [2, 18], max-statements: [2, 33] */
-var shams$1 = function hasSymbols() {
-	if (typeof Symbol !== 'function' || typeof Object.getOwnPropertySymbols !== 'function') { return false; }
-	if (typeof Symbol.iterator === 'symbol') { return true; }
-
-	var obj = {};
-	var sym = Symbol('test');
-	var symObj = Object(sym);
-	if (typeof sym === 'string') { return false; }
-
-	if (Object.prototype.toString.call(sym) !== '[object Symbol]') { return false; }
-	if (Object.prototype.toString.call(symObj) !== '[object Symbol]') { return false; }
-
-	// temp disabled per https://github.com/ljharb/object.assign/issues/17
-	// if (sym instanceof Symbol) { return false; }
-	// temp disabled per https://github.com/WebReflection/get-own-property-symbols/issues/4
-	// if (!(symObj instanceof Symbol)) { return false; }
-
-	// if (typeof Symbol.prototype.toString !== 'function') { return false; }
-	// if (String(sym) !== Symbol.prototype.toString.call(sym)) { return false; }
-
-	var symVal = 42;
-	obj[sym] = symVal;
-	for (sym in obj) { return false; } // eslint-disable-line no-restricted-syntax, no-unreachable-loop
-	if (typeof Object.keys === 'function' && Object.keys(obj).length !== 0) { return false; }
-
-	if (typeof Object.getOwnPropertyNames === 'function' && Object.getOwnPropertyNames(obj).length !== 0) { return false; }
-
-	var syms = Object.getOwnPropertySymbols(obj);
-	if (syms.length !== 1 || syms[0] !== sym) { return false; }
-
-	if (!Object.prototype.propertyIsEnumerable.call(obj, sym)) { return false; }
-
-	if (typeof Object.getOwnPropertyDescriptor === 'function') {
-		var descriptor = Object.getOwnPropertyDescriptor(obj, sym);
-		if (descriptor.value !== symVal || descriptor.enumerable !== true) { return false; }
-	}
-
-	return true;
-};
-
-var origSymbol = typeof Symbol !== 'undefined' && Symbol;
-var hasSymbolSham = shams$1;
-
-var hasSymbols$5 = function hasNativeSymbols() {
-	if (typeof origSymbol !== 'function') { return false; }
-	if (typeof Symbol !== 'function') { return false; }
-	if (typeof origSymbol('foo') !== 'symbol') { return false; }
-	if (typeof Symbol('bar') !== 'symbol') { return false; }
-
-	return hasSymbolSham();
-};
-
-/* eslint no-invalid-this: 1 */
-
-var ERROR_MESSAGE = 'Function.prototype.bind called on incompatible ';
-var slice = Array.prototype.slice;
-var toStr$5 = Object.prototype.toString;
-var funcType = '[object Function]';
-
-var implementation$4 = function bind(that) {
-    var target = this;
-    if (typeof target !== 'function' || toStr$5.call(target) !== funcType) {
-        throw new TypeError(ERROR_MESSAGE + target);
-    }
-    var args = slice.call(arguments, 1);
-
-    var bound;
-    var binder = function () {
-        if (this instanceof bound) {
-            var result = target.apply(
-                this,
-                args.concat(slice.call(arguments))
-            );
-            if (Object(result) === result) {
-                return result;
-            }
-            return this;
-        } else {
-            return target.apply(
-                that,
-                args.concat(slice.call(arguments))
-            );
+        else {
+            handleChange(e.target.value);
         }
     };
-
-    var boundLength = Math.max(0, target.length - args.length);
-    var boundArgs = [];
-    for (var i = 0; i < boundLength; i++) {
-        boundArgs.push('$' + i);
+    const handleChange = (value) => {
+        onChange(field.id, value);
+    };
+    if (['cities', 'regions'].includes(field.id)) {
+        return (React__default["default"].createElement("ul", { className: "radioList" }, options.map((opt) => (React__default["default"].createElement("li", { key: opt.id, className: `bu-list-item ${countries && !countries.includes(opt.country_id)
+                ? 'bu-disabled'
+                : 'bu-open'}` },
+            React__default["default"].createElement("input", { name: field.id, type: "checkbox", id: opt.id, value: opt.id, disabled: countries ? !countries.includes(opt.country_id) : false, checked: value === opt.id, onBlur: handleChange, onChange: handleChange }),
+            React__default["default"].createElement("label", { htmlFor: opt.id }, opt.name))))));
     }
-
-    bound = Function('binder', 'return function (' + boundArgs.join(',') + '){ return binder.apply(this,arguments); }')(binder);
-
-    if (target.prototype) {
-        var Empty = function Empty() {};
-        Empty.prototype = target.prototype;
-        bound.prototype = new Empty();
-        Empty.prototype = null;
+    else {
+        return (React__default["default"].createElement("ul", { className: "radioList" }, options.map((opt) => (React__default["default"].createElement("li", { key: opt.id, className: `bu-list-item bu-open` },
+            React__default["default"].createElement("input", { name: field.id, type: "checkbox", id: opt.id, value: opt.id, checked: value === opt.id, onBlur: handleChange, onChange: updateList }),
+            React__default["default"].createElement("label", { htmlFor: opt.id }, opt.name))))));
     }
-
-    return bound;
-};
-
-var implementation$3 = implementation$4;
-
-var functionBind = Function.prototype.bind || implementation$3;
-
-var bind$1 = functionBind;
-
-var src = bind$1.call(Function.call, Object.prototype.hasOwnProperty);
-
-var undefined$1;
-
-var $SyntaxError = SyntaxError;
-var $Function = Function;
-var $TypeError$2 = TypeError;
-
-// eslint-disable-next-line consistent-return
-var getEvalledConstructor = function (expressionSyntax) {
-	try {
-		return $Function('"use strict"; return (' + expressionSyntax + ').constructor;')();
-	} catch (e) {}
-};
-
-var $gOPD = Object.getOwnPropertyDescriptor;
-if ($gOPD) {
-	try {
-		$gOPD({}, '');
-	} catch (e) {
-		$gOPD = null; // this is IE 8, which has a broken gOPD
-	}
 }
 
-var throwTypeError = function () {
-	throw new $TypeError$2();
-};
-var ThrowTypeError = $gOPD
-	? (function () {
-		try {
-			// eslint-disable-next-line no-unused-expressions, no-caller, no-restricted-properties
-			arguments.callee; // IE 8 does not throw here
-			return throwTypeError;
-		} catch (calleeThrows) {
-			try {
-				// IE 8 throws on Object.getOwnPropertyDescriptor(arguments, '')
-				return $gOPD(arguments, 'callee').get;
-			} catch (gOPDthrows) {
-				return throwTypeError;
-			}
-		}
-	}())
-	: throwTypeError;
-
-var hasSymbols$4 = hasSymbols$5();
-
-var getProto = Object.getPrototypeOf || function (x) { return x.__proto__; }; // eslint-disable-line no-proto
-
-var needsEval = {};
-
-var TypedArray = typeof Uint8Array === 'undefined' ? undefined$1 : getProto(Uint8Array);
-
-var INTRINSICS = {
-	'%AggregateError%': typeof AggregateError === 'undefined' ? undefined$1 : AggregateError,
-	'%Array%': Array,
-	'%ArrayBuffer%': typeof ArrayBuffer === 'undefined' ? undefined$1 : ArrayBuffer,
-	'%ArrayIteratorPrototype%': hasSymbols$4 ? getProto([][Symbol.iterator]()) : undefined$1,
-	'%AsyncFromSyncIteratorPrototype%': undefined$1,
-	'%AsyncFunction%': needsEval,
-	'%AsyncGenerator%': needsEval,
-	'%AsyncGeneratorFunction%': needsEval,
-	'%AsyncIteratorPrototype%': needsEval,
-	'%Atomics%': typeof Atomics === 'undefined' ? undefined$1 : Atomics,
-	'%BigInt%': typeof BigInt === 'undefined' ? undefined$1 : BigInt,
-	'%Boolean%': Boolean,
-	'%DataView%': typeof DataView === 'undefined' ? undefined$1 : DataView,
-	'%Date%': Date,
-	'%decodeURI%': decodeURI,
-	'%decodeURIComponent%': decodeURIComponent,
-	'%encodeURI%': encodeURI,
-	'%encodeURIComponent%': encodeURIComponent,
-	'%Error%': Error,
-	'%eval%': eval, // eslint-disable-line no-eval
-	'%EvalError%': EvalError,
-	'%Float32Array%': typeof Float32Array === 'undefined' ? undefined$1 : Float32Array,
-	'%Float64Array%': typeof Float64Array === 'undefined' ? undefined$1 : Float64Array,
-	'%FinalizationRegistry%': typeof FinalizationRegistry === 'undefined' ? undefined$1 : FinalizationRegistry,
-	'%Function%': $Function,
-	'%GeneratorFunction%': needsEval,
-	'%Int8Array%': typeof Int8Array === 'undefined' ? undefined$1 : Int8Array,
-	'%Int16Array%': typeof Int16Array === 'undefined' ? undefined$1 : Int16Array,
-	'%Int32Array%': typeof Int32Array === 'undefined' ? undefined$1 : Int32Array,
-	'%isFinite%': isFinite,
-	'%isNaN%': isNaN,
-	'%IteratorPrototype%': hasSymbols$4 ? getProto(getProto([][Symbol.iterator]())) : undefined$1,
-	'%JSON%': typeof JSON === 'object' ? JSON : undefined$1,
-	'%Map%': typeof Map === 'undefined' ? undefined$1 : Map,
-	'%MapIteratorPrototype%': typeof Map === 'undefined' || !hasSymbols$4 ? undefined$1 : getProto(new Map()[Symbol.iterator]()),
-	'%Math%': Math,
-	'%Number%': Number,
-	'%Object%': Object,
-	'%parseFloat%': parseFloat,
-	'%parseInt%': parseInt,
-	'%Promise%': typeof Promise === 'undefined' ? undefined$1 : Promise,
-	'%Proxy%': typeof Proxy === 'undefined' ? undefined$1 : Proxy,
-	'%RangeError%': RangeError,
-	'%ReferenceError%': ReferenceError,
-	'%Reflect%': typeof Reflect === 'undefined' ? undefined$1 : Reflect,
-	'%RegExp%': RegExp,
-	'%Set%': typeof Set === 'undefined' ? undefined$1 : Set,
-	'%SetIteratorPrototype%': typeof Set === 'undefined' || !hasSymbols$4 ? undefined$1 : getProto(new Set()[Symbol.iterator]()),
-	'%SharedArrayBuffer%': typeof SharedArrayBuffer === 'undefined' ? undefined$1 : SharedArrayBuffer,
-	'%String%': String,
-	'%StringIteratorPrototype%': hasSymbols$4 ? getProto(''[Symbol.iterator]()) : undefined$1,
-	'%Symbol%': hasSymbols$4 ? Symbol : undefined$1,
-	'%SyntaxError%': $SyntaxError,
-	'%ThrowTypeError%': ThrowTypeError,
-	'%TypedArray%': TypedArray,
-	'%TypeError%': $TypeError$2,
-	'%Uint8Array%': typeof Uint8Array === 'undefined' ? undefined$1 : Uint8Array,
-	'%Uint8ClampedArray%': typeof Uint8ClampedArray === 'undefined' ? undefined$1 : Uint8ClampedArray,
-	'%Uint16Array%': typeof Uint16Array === 'undefined' ? undefined$1 : Uint16Array,
-	'%Uint32Array%': typeof Uint32Array === 'undefined' ? undefined$1 : Uint32Array,
-	'%URIError%': URIError,
-	'%WeakMap%': typeof WeakMap === 'undefined' ? undefined$1 : WeakMap,
-	'%WeakRef%': typeof WeakRef === 'undefined' ? undefined$1 : WeakRef,
-	'%WeakSet%': typeof WeakSet === 'undefined' ? undefined$1 : WeakSet
-};
-
-var doEval = function doEval(name) {
-	var value;
-	if (name === '%AsyncFunction%') {
-		value = getEvalledConstructor('async function () {}');
-	} else if (name === '%GeneratorFunction%') {
-		value = getEvalledConstructor('function* () {}');
-	} else if (name === '%AsyncGeneratorFunction%') {
-		value = getEvalledConstructor('async function* () {}');
-	} else if (name === '%AsyncGenerator%') {
-		var fn = doEval('%AsyncGeneratorFunction%');
-		if (fn) {
-			value = fn.prototype;
-		}
-	} else if (name === '%AsyncIteratorPrototype%') {
-		var gen = doEval('%AsyncGenerator%');
-		if (gen) {
-			value = getProto(gen.prototype);
-		}
-	}
-
-	INTRINSICS[name] = value;
-
-	return value;
-};
-
-var LEGACY_ALIASES = {
-	'%ArrayBufferPrototype%': ['ArrayBuffer', 'prototype'],
-	'%ArrayPrototype%': ['Array', 'prototype'],
-	'%ArrayProto_entries%': ['Array', 'prototype', 'entries'],
-	'%ArrayProto_forEach%': ['Array', 'prototype', 'forEach'],
-	'%ArrayProto_keys%': ['Array', 'prototype', 'keys'],
-	'%ArrayProto_values%': ['Array', 'prototype', 'values'],
-	'%AsyncFunctionPrototype%': ['AsyncFunction', 'prototype'],
-	'%AsyncGenerator%': ['AsyncGeneratorFunction', 'prototype'],
-	'%AsyncGeneratorPrototype%': ['AsyncGeneratorFunction', 'prototype', 'prototype'],
-	'%BooleanPrototype%': ['Boolean', 'prototype'],
-	'%DataViewPrototype%': ['DataView', 'prototype'],
-	'%DatePrototype%': ['Date', 'prototype'],
-	'%ErrorPrototype%': ['Error', 'prototype'],
-	'%EvalErrorPrototype%': ['EvalError', 'prototype'],
-	'%Float32ArrayPrototype%': ['Float32Array', 'prototype'],
-	'%Float64ArrayPrototype%': ['Float64Array', 'prototype'],
-	'%FunctionPrototype%': ['Function', 'prototype'],
-	'%Generator%': ['GeneratorFunction', 'prototype'],
-	'%GeneratorPrototype%': ['GeneratorFunction', 'prototype', 'prototype'],
-	'%Int8ArrayPrototype%': ['Int8Array', 'prototype'],
-	'%Int16ArrayPrototype%': ['Int16Array', 'prototype'],
-	'%Int32ArrayPrototype%': ['Int32Array', 'prototype'],
-	'%JSONParse%': ['JSON', 'parse'],
-	'%JSONStringify%': ['JSON', 'stringify'],
-	'%MapPrototype%': ['Map', 'prototype'],
-	'%NumberPrototype%': ['Number', 'prototype'],
-	'%ObjectPrototype%': ['Object', 'prototype'],
-	'%ObjProto_toString%': ['Object', 'prototype', 'toString'],
-	'%ObjProto_valueOf%': ['Object', 'prototype', 'valueOf'],
-	'%PromisePrototype%': ['Promise', 'prototype'],
-	'%PromiseProto_then%': ['Promise', 'prototype', 'then'],
-	'%Promise_all%': ['Promise', 'all'],
-	'%Promise_reject%': ['Promise', 'reject'],
-	'%Promise_resolve%': ['Promise', 'resolve'],
-	'%RangeErrorPrototype%': ['RangeError', 'prototype'],
-	'%ReferenceErrorPrototype%': ['ReferenceError', 'prototype'],
-	'%RegExpPrototype%': ['RegExp', 'prototype'],
-	'%SetPrototype%': ['Set', 'prototype'],
-	'%SharedArrayBufferPrototype%': ['SharedArrayBuffer', 'prototype'],
-	'%StringPrototype%': ['String', 'prototype'],
-	'%SymbolPrototype%': ['Symbol', 'prototype'],
-	'%SyntaxErrorPrototype%': ['SyntaxError', 'prototype'],
-	'%TypedArrayPrototype%': ['TypedArray', 'prototype'],
-	'%TypeErrorPrototype%': ['TypeError', 'prototype'],
-	'%Uint8ArrayPrototype%': ['Uint8Array', 'prototype'],
-	'%Uint8ClampedArrayPrototype%': ['Uint8ClampedArray', 'prototype'],
-	'%Uint16ArrayPrototype%': ['Uint16Array', 'prototype'],
-	'%Uint32ArrayPrototype%': ['Uint32Array', 'prototype'],
-	'%URIErrorPrototype%': ['URIError', 'prototype'],
-	'%WeakMapPrototype%': ['WeakMap', 'prototype'],
-	'%WeakSetPrototype%': ['WeakSet', 'prototype']
-};
-
-var bind = functionBind;
-var hasOwn = src;
-var $concat = bind.call(Function.call, Array.prototype.concat);
-var $spliceApply = bind.call(Function.apply, Array.prototype.splice);
-var $replace$1 = bind.call(Function.call, String.prototype.replace);
-var $strSlice$1 = bind.call(Function.call, String.prototype.slice);
-var $exec$1 = bind.call(Function.call, RegExp.prototype.exec);
-
-/* adapted from https://github.com/lodash/lodash/blob/4.17.15/dist/lodash.js#L6735-L6744 */
-var rePropName$1 = /[^%.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|%$))/g;
-var reEscapeChar$1 = /\\(\\)?/g; /** Used to match backslashes in property paths. */
-var stringToPath$2 = function stringToPath(string) {
-	var first = $strSlice$1(string, 0, 1);
-	var last = $strSlice$1(string, -1);
-	if (first === '%' && last !== '%') {
-		throw new $SyntaxError('invalid intrinsic syntax, expected closing `%`');
-	} else if (last === '%' && first !== '%') {
-		throw new $SyntaxError('invalid intrinsic syntax, expected opening `%`');
-	}
-	var result = [];
-	$replace$1(string, rePropName$1, function (match, number, quote, subString) {
-		result[result.length] = quote ? $replace$1(subString, reEscapeChar$1, '$1') : number || match;
-	});
-	return result;
-};
-/* end adaptation */
-
-var getBaseIntrinsic = function getBaseIntrinsic(name, allowMissing) {
-	var intrinsicName = name;
-	var alias;
-	if (hasOwn(LEGACY_ALIASES, intrinsicName)) {
-		alias = LEGACY_ALIASES[intrinsicName];
-		intrinsicName = '%' + alias[0] + '%';
-	}
-
-	if (hasOwn(INTRINSICS, intrinsicName)) {
-		var value = INTRINSICS[intrinsicName];
-		if (value === needsEval) {
-			value = doEval(intrinsicName);
-		}
-		if (typeof value === 'undefined' && !allowMissing) {
-			throw new $TypeError$2('intrinsic ' + name + ' exists, but is not available. Please file an issue!');
-		}
-
-		return {
-			alias: alias,
-			name: intrinsicName,
-			value: value
-		};
-	}
-
-	throw new $SyntaxError('intrinsic ' + name + ' does not exist!');
-};
-
-var getIntrinsic = function GetIntrinsic(name, allowMissing) {
-	if (typeof name !== 'string' || name.length === 0) {
-		throw new $TypeError$2('intrinsic name must be a non-empty string');
-	}
-	if (arguments.length > 1 && typeof allowMissing !== 'boolean') {
-		throw new $TypeError$2('"allowMissing" argument must be a boolean');
-	}
-
-	if ($exec$1(/^%?[^%]*%?$/g, name) === null) {
-		throw new $SyntaxError('`%` may not be present anywhere but at the beginning and end of the intrinsic name');
-	}
-	var parts = stringToPath$2(name);
-	var intrinsicBaseName = parts.length > 0 ? parts[0] : '';
-
-	var intrinsic = getBaseIntrinsic('%' + intrinsicBaseName + '%', allowMissing);
-	var intrinsicRealName = intrinsic.name;
-	var value = intrinsic.value;
-	var skipFurtherCaching = false;
-
-	var alias = intrinsic.alias;
-	if (alias) {
-		intrinsicBaseName = alias[0];
-		$spliceApply(parts, $concat([0, 1], alias));
-	}
-
-	for (var i = 1, isOwn = true; i < parts.length; i += 1) {
-		var part = parts[i];
-		var first = $strSlice$1(part, 0, 1);
-		var last = $strSlice$1(part, -1);
-		if (
-			(
-				(first === '"' || first === "'" || first === '`')
-				|| (last === '"' || last === "'" || last === '`')
-			)
-			&& first !== last
-		) {
-			throw new $SyntaxError('property names with quotes must have matching quotes');
-		}
-		if (part === 'constructor' || !isOwn) {
-			skipFurtherCaching = true;
-		}
-
-		intrinsicBaseName += '.' + part;
-		intrinsicRealName = '%' + intrinsicBaseName + '%';
-
-		if (hasOwn(INTRINSICS, intrinsicRealName)) {
-			value = INTRINSICS[intrinsicRealName];
-		} else if (value != null) {
-			if (!(part in value)) {
-				if (!allowMissing) {
-					throw new $TypeError$2('base intrinsic for ' + name + ' exists, but the property is not available.');
-				}
-				return void undefined$1;
-			}
-			if ($gOPD && (i + 1) >= parts.length) {
-				var desc = $gOPD(value, part);
-				isOwn = !!desc;
-
-				// By convention, when a data property is converted to an accessor
-				// property to emulate a data property that does not suffer from
-				// the override mistake, that accessor's getter is marked with
-				// an `originalValue` property. Here, when we detect this, we
-				// uphold the illusion by pretending to see that original data
-				// property, i.e., returning the value rather than the getter
-				// itself.
-				if (isOwn && 'get' in desc && !('originalValue' in desc.get)) {
-					value = desc.get;
-				} else {
-					value = value[part];
-				}
-			} else {
-				isOwn = hasOwn(value, part);
-				value = value[part];
-			}
-
-			if (isOwn && !skipFurtherCaching) {
-				INTRINSICS[intrinsicRealName] = value;
-			}
-		}
-	}
-	return value;
-};
-
-var GetIntrinsic$7 = getIntrinsic;
-
-var $defineProperty = GetIntrinsic$7('%Object.defineProperty%', true);
-
-var hasPropertyDescriptors$1 = function hasPropertyDescriptors() {
-	if ($defineProperty) {
-		try {
-			$defineProperty({}, 'a', { value: 1 });
-			return true;
-		} catch (e) {
-			// IE 8 has a broken defineProperty
-			return false;
-		}
-	}
-	return false;
-};
-
-hasPropertyDescriptors$1.hasArrayLengthDefineBug = function hasArrayLengthDefineBug() {
-	// node v0.6 has a bug where array lengths can be Set but not Defined
-	if (!hasPropertyDescriptors$1()) {
-		return null;
-	}
-	try {
-		return $defineProperty([], 'length', { value: 1 }).length !== 1;
-	} catch (e) {
-		// In Firefox 4-22, defining length on an array throws an exception.
-		return true;
-	}
-};
-
-var hasPropertyDescriptors_1 = hasPropertyDescriptors$1;
-
-var keys$1 = objectKeys;
-var hasSymbols$3 = typeof Symbol === 'function' && typeof Symbol('foo') === 'symbol';
-
-var toStr$4 = Object.prototype.toString;
-var concat = Array.prototype.concat;
-var origDefineProperty = Object.defineProperty;
-
-var isFunction$2 = function (fn) {
-	return typeof fn === 'function' && toStr$4.call(fn) === '[object Function]';
-};
-
-var hasPropertyDescriptors = hasPropertyDescriptors_1();
-
-var supportsDescriptors = origDefineProperty && hasPropertyDescriptors;
-
-var defineProperty$2 = function (object, name, value, predicate) {
-	if (name in object && (!isFunction$2(predicate) || !predicate())) {
-		return;
-	}
-	if (supportsDescriptors) {
-		origDefineProperty(object, name, {
-			configurable: true,
-			enumerable: false,
-			value: value,
-			writable: true
-		});
-	} else {
-		object[name] = value; // eslint-disable-line no-param-reassign
-	}
-};
-
-var defineProperties = function (object, map) {
-	var predicates = arguments.length > 2 ? arguments[2] : {};
-	var props = keys$1(map);
-	if (hasSymbols$3) {
-		props = concat.call(props, Object.getOwnPropertySymbols(map));
-	}
-	for (var i = 0; i < props.length; i += 1) {
-		defineProperty$2(object, props[i], map[props[i]], predicates[props[i]]);
-	}
-};
-
-defineProperties.supportsDescriptors = !!supportsDescriptors;
-
-var defineProperties_1 = defineProperties;
-
-var GetIntrinsic$6 = getIntrinsic;
-
-var $TypeError$1 = GetIntrinsic$6('%TypeError%');
-
-// http://262.ecma-international.org/5.1/#sec-9.10
-
-var CheckObjectCoercible = function CheckObjectCoercible(value, optMessage) {
-	if (value == null) {
-		throw new $TypeError$1(optMessage || ('Cannot call method on ' + value));
-	}
-	return value;
-};
-
-var RequireObjectCoercible$2 = CheckObjectCoercible;
-
-var callBind$2 = {exports: {}};
-
-(function (module) {
-
-var bind = functionBind;
-var GetIntrinsic = getIntrinsic;
-
-var $apply = GetIntrinsic('%Function.prototype.apply%');
-var $call = GetIntrinsic('%Function.prototype.call%');
-var $reflectApply = GetIntrinsic('%Reflect.apply%', true) || bind.call($call, $apply);
-
-var $gOPD = GetIntrinsic('%Object.getOwnPropertyDescriptor%', true);
-var $defineProperty = GetIntrinsic('%Object.defineProperty%', true);
-var $max = GetIntrinsic('%Math.max%');
-
-if ($defineProperty) {
-	try {
-		$defineProperty({}, 'a', { value: 1 });
-	} catch (e) {
-		// IE 8 has a broken defineProperty
-		$defineProperty = null;
-	}
+function createNumberArray(max_number) {
+    return Array.apply(null, { length: max_number + 1 }).map(Number.call, Number);
 }
-
-module.exports = function callBind(originalFunction) {
-	var func = $reflectApply(bind, $call, arguments);
-	if ($gOPD && $defineProperty) {
-		var desc = $gOPD(func, 'length');
-		if (desc.configurable) {
-			// original length, plus the receiver, minus any additional arguments (after the receiver)
-			$defineProperty(
-				func,
-				'length',
-				{ value: 1 + $max(0, originalFunction.length - (arguments.length - 1)) }
-			);
-		}
-	}
-	return func;
-};
-
-var applyBind = function applyBind() {
-	return $reflectApply(bind, $apply, arguments);
-};
-
-if ($defineProperty) {
-	$defineProperty(module.exports, 'apply', { value: applyBind });
-} else {
-	module.exports.apply = applyBind;
+function createPriceArray(max_price) {
+    let rounded = Math.ceil(max_price / 100);
+    return Array.from({ length: rounded }, (v, k) => k * 100);
 }
-}(callBind$2));
-
-var GetIntrinsic$5 = getIntrinsic;
-
-var callBind$1 = callBind$2.exports;
-
-var $indexOf$1 = callBind$1(GetIntrinsic$5('String.prototype.indexOf'));
-
-var callBound$4 = function callBoundIntrinsic(name, allowMissing) {
-	var intrinsic = GetIntrinsic$5(name, !!allowMissing);
-	if (typeof intrinsic === 'function' && $indexOf$1(name, '.prototype.') > -1) {
-		return callBind$1(intrinsic);
-	}
-	return intrinsic;
-};
-
-var GetIntrinsic$4 = getIntrinsic;
-
-var $abs = GetIntrinsic$4('%Math.abs%');
-
-// http://262.ecma-international.org/5.1/#sec-5.2
-
-var abs$1 = function abs(x) {
-	return $abs(x);
-};
-
-// var modulo = require('./modulo');
-var $floor = Math.floor;
-
-// http://262.ecma-international.org/5.1/#sec-5.2
-
-var floor$1 = function floor(x) {
-	// return x - modulo(x, 1);
-	return $floor(x);
-};
-
-var callBound$3 = callBound$4;
-
-var $exec = callBound$3('RegExp.prototype.exec');
-
-var regexTester$1 = function regexTester(regex) {
-	return function test(s) { return $exec(regex, s) !== null; };
-};
-
-var isPrimitive$4 = function isPrimitive(value) {
-	return value === null || (typeof value !== 'function' && typeof value !== 'object');
-};
-
-var isPrimitive$3 = function isPrimitive(value) {
-	return value === null || (typeof value !== 'function' && typeof value !== 'object');
-};
-
-var fnToStr = Function.prototype.toString;
-var reflectApply = typeof Reflect === 'object' && Reflect !== null && Reflect.apply;
-var badArrayLike;
-var isCallableMarker;
-if (typeof reflectApply === 'function' && typeof Object.defineProperty === 'function') {
-	try {
-		badArrayLike = Object.defineProperty({}, 'length', {
-			get: function () {
-				throw isCallableMarker;
-			}
-		});
-		isCallableMarker = {};
-		// eslint-disable-next-line no-throw-literal
-		reflectApply(function () { throw 42; }, null, badArrayLike);
-	} catch (_) {
-		if (_ !== isCallableMarker) {
-			reflectApply = null;
-		}
-	}
-} else {
-	reflectApply = null;
-}
-
-var constructorRegex = /^\s*class\b/;
-var isES6ClassFn = function isES6ClassFunction(value) {
-	try {
-		var fnStr = fnToStr.call(value);
-		return constructorRegex.test(fnStr);
-	} catch (e) {
-		return false; // not a function
-	}
-};
-
-var tryFunctionObject = function tryFunctionToStr(value) {
-	try {
-		if (isES6ClassFn(value)) { return false; }
-		fnToStr.call(value);
-		return true;
-	} catch (e) {
-		return false;
-	}
-};
-var toStr$3 = Object.prototype.toString;
-var fnClass = '[object Function]';
-var genClass = '[object GeneratorFunction]';
-var hasToStringTag$2 = typeof Symbol === 'function' && !!Symbol.toStringTag; // better: use `has-tostringtag`
-/* globals document: false */
-var documentDotAll = typeof document === 'object' && typeof document.all === 'undefined' && document.all !== undefined ? document.all : {};
-
-var isCallable$1 = reflectApply
-	? function isCallable(value) {
-		if (value === documentDotAll) { return true; }
-		if (!value) { return false; }
-		if (typeof value !== 'function' && typeof value !== 'object') { return false; }
-		if (typeof value === 'function' && !value.prototype) { return true; }
-		try {
-			reflectApply(value, null, badArrayLike);
-		} catch (e) {
-			if (e !== isCallableMarker) { return false; }
-		}
-		return !isES6ClassFn(value);
-	}
-	: function isCallable(value) {
-		if (value === documentDotAll) { return true; }
-		if (!value) { return false; }
-		if (typeof value !== 'function' && typeof value !== 'object') { return false; }
-		if (typeof value === 'function' && !value.prototype) { return true; }
-		if (hasToStringTag$2) { return tryFunctionObject(value); }
-		if (isES6ClassFn(value)) { return false; }
-		var strClass = toStr$3.call(value);
-		return strClass === fnClass || strClass === genClass;
-	};
-
-var hasSymbols$2 = shams$1;
-
-var shams = function hasToStringTagShams() {
-	return hasSymbols$2() && !!Symbol.toStringTag;
-};
-
-var getDay = Date.prototype.getDay;
-var tryDateObject = function tryDateGetDayCall(value) {
-	try {
-		getDay.call(value);
-		return true;
-	} catch (e) {
-		return false;
-	}
-};
-
-var toStr$2 = Object.prototype.toString;
-var dateClass = '[object Date]';
-var hasToStringTag$1 = shams();
-
-var isDateObject = function isDateObject(value) {
-	if (typeof value !== 'object' || value === null) {
-		return false;
-	}
-	return hasToStringTag$1 ? tryDateObject(value) : toStr$2.call(value) === dateClass;
-};
-
-var isSymbol$2 = {exports: {}};
-
-var toStr$1 = Object.prototype.toString;
-var hasSymbols$1 = hasSymbols$5();
-
-if (hasSymbols$1) {
-	var symToStr = Symbol.prototype.toString;
-	var symStringRegex = /^Symbol\(.*\)$/;
-	var isSymbolObject = function isRealSymbolObject(value) {
-		if (typeof value.valueOf() !== 'symbol') {
-			return false;
-		}
-		return symStringRegex.test(symToStr.call(value));
-	};
-
-	isSymbol$2.exports = function isSymbol(value) {
-		if (typeof value === 'symbol') {
-			return true;
-		}
-		if (toStr$1.call(value) !== '[object Symbol]') {
-			return false;
-		}
-		try {
-			return isSymbolObject(value);
-		} catch (e) {
-			return false;
-		}
-	};
-} else {
-
-	isSymbol$2.exports = function isSymbol(value) {
-		// this environment does not support Symbols.
-		return false ;
-	};
-}
-
-var hasSymbols = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol';
-
-var isPrimitive$2 = isPrimitive$3;
-var isCallable = isCallable$1;
-var isDate$1 = isDateObject;
-var isSymbol$1 = isSymbol$2.exports;
-
-var ordinaryToPrimitive = function OrdinaryToPrimitive(O, hint) {
-	if (typeof O === 'undefined' || O === null) {
-		throw new TypeError('Cannot call method on ' + O);
-	}
-	if (typeof hint !== 'string' || (hint !== 'number' && hint !== 'string')) {
-		throw new TypeError('hint must be "string" or "number"');
-	}
-	var methodNames = hint === 'string' ? ['toString', 'valueOf'] : ['valueOf', 'toString'];
-	var method, result, i;
-	for (i = 0; i < methodNames.length; ++i) {
-		method = O[methodNames[i]];
-		if (isCallable(method)) {
-			result = method.call(O);
-			if (isPrimitive$2(result)) {
-				return result;
-			}
-		}
-	}
-	throw new TypeError('No default value');
-};
-
-var GetMethod = function GetMethod(O, P) {
-	var func = O[P];
-	if (func !== null && typeof func !== 'undefined') {
-		if (!isCallable(func)) {
-			throw new TypeError(func + ' returned for property ' + P + ' of object ' + O + ' is not a function');
-		}
-		return func;
-	}
-	return void 0;
-};
-
-// http://www.ecma-international.org/ecma-262/6.0/#sec-toprimitive
-var es2015 = function ToPrimitive(input) {
-	if (isPrimitive$2(input)) {
-		return input;
-	}
-	var hint = 'default';
-	if (arguments.length > 1) {
-		if (arguments[1] === String) {
-			hint = 'string';
-		} else if (arguments[1] === Number) {
-			hint = 'number';
-		}
-	}
-
-	var exoticToPrim;
-	if (hasSymbols) {
-		if (Symbol.toPrimitive) {
-			exoticToPrim = GetMethod(input, Symbol.toPrimitive);
-		} else if (isSymbol$1(input)) {
-			exoticToPrim = Symbol.prototype.valueOf;
-		}
-	}
-	if (typeof exoticToPrim !== 'undefined') {
-		var result = exoticToPrim.call(input, hint);
-		if (isPrimitive$2(result)) {
-			return result;
-		}
-		throw new TypeError('unable to convert exotic object to primitive');
-	}
-	if (hint === 'default' && (isDate$1(input) || isSymbol$1(input))) {
-		hint = 'string';
-	}
-	return ordinaryToPrimitive(input, hint === 'default' ? 'number' : hint);
-};
-
-var toPrimitive = es2015;
-
-// https://ecma-international.org/ecma-262/6.0/#sec-toprimitive
-
-var ToPrimitive$1 = function ToPrimitive(input) {
-	if (arguments.length > 1) {
-		return toPrimitive(input, arguments[1]);
-	}
-	return toPrimitive(input);
-};
-
-var GetIntrinsic$3 = getIntrinsic;
-
-var $TypeError = GetIntrinsic$3('%TypeError%');
-var $Number$1 = GetIntrinsic$3('%Number%');
-var $RegExp = GetIntrinsic$3('%RegExp%');
-var $parseInteger = GetIntrinsic$3('%parseInt%');
-
-var callBound$2 = callBound$4;
-var regexTester = regexTester$1;
-var isPrimitive$1 = isPrimitive$4;
-
-var $strSlice = callBound$2('String.prototype.slice');
-var isBinary = regexTester(/^0b[01]+$/i);
-var isOctal = regexTester(/^0o[0-7]+$/i);
-var isInvalidHexLiteral = regexTester(/^[-+]0x[0-9a-f]+$/i);
-var nonWS = ['\u0085', '\u200b', '\ufffe'].join('');
-var nonWSregex = new $RegExp('[' + nonWS + ']', 'g');
-var hasNonWS = regexTester(nonWSregex);
-
-// whitespace from: https://es5.github.io/#x15.5.4.20
-// implementation from https://github.com/es-shims/es5-shim/blob/v3.4.0/es5-shim.js#L1304-L1324
-var ws = [
-	'\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003',
-	'\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028',
-	'\u2029\uFEFF'
-].join('');
-var trimRegex = new RegExp('(^[' + ws + ']+)|([' + ws + ']+$)', 'g');
-var $replace = callBound$2('String.prototype.replace');
-var $trim = function (value) {
-	return $replace(value, trimRegex, '');
-};
-
-var ToPrimitive = ToPrimitive$1;
-
-// https://ecma-international.org/ecma-262/6.0/#sec-tonumber
-
-var ToNumber$1 = function ToNumber(argument) {
-	var value = isPrimitive$1(argument) ? argument : ToPrimitive(argument, $Number$1);
-	if (typeof value === 'symbol') {
-		throw new $TypeError('Cannot convert a Symbol value to a number');
-	}
-	if (typeof value === 'bigint') {
-		throw new $TypeError('Conversion from \'BigInt\' to \'number\' is not allowed.');
-	}
-	if (typeof value === 'string') {
-		if (isBinary(value)) {
-			return ToNumber($parseInteger($strSlice(value, 2), 2));
-		} else if (isOctal(value)) {
-			return ToNumber($parseInteger($strSlice(value, 2), 8));
-		} else if (hasNonWS(value) || isInvalidHexLiteral(value)) {
-			return NaN;
-		}
-		var trimmed = $trim(value);
-		if (trimmed !== value) {
-			return ToNumber(trimmed);
-		}
-
-	}
-	return $Number$1(value);
-};
-
-var _isNaN = Number.isNaN || function isNaN(a) {
-	return a !== a;
-};
-
-var $isNaN$3 = Number.isNaN || function (a) { return a !== a; };
-
-var _isFinite = Number.isFinite || function (x) { return typeof x === 'number' && !$isNaN$3(x) && x !== Infinity && x !== -Infinity; };
-
-var sign = function sign(number) {
-	return number >= 0 ? 1 : -1;
-};
-
-var abs = abs$1;
-var floor = floor$1;
-var ToNumber = ToNumber$1;
-
-var $isNaN$2 = _isNaN;
-var $isFinite$1 = _isFinite;
-var $sign = sign;
-
-// https://262.ecma-international.org/12.0/#sec-tointegerorinfinity
-
-var ToIntegerOrInfinity$2 = function ToIntegerOrInfinity(value) {
-	var number = ToNumber(value);
-	if ($isNaN$2(number) || number === 0) { return 0; }
-	if (!$isFinite$1(number)) { return number; }
-	return $sign(number) * floor(abs(number));
-};
-
-var GetIntrinsic$2 = getIntrinsic;
-
-var $Math = GetIntrinsic$2('%Math%');
-var $Number = GetIntrinsic$2('%Number%');
-
-var maxSafeInteger = $Number.MAX_SAFE_INTEGER || $Math.pow(2, 53) - 1;
-
-var MAX_SAFE_INTEGER$2 = maxSafeInteger;
-
-var ToIntegerOrInfinity$1 = ToIntegerOrInfinity$2;
-
-var ToLength$1 = function ToLength(argument) {
-	var len = ToIntegerOrInfinity$1(argument);
-	if (len <= 0) { return 0; } // includes converting -0 to +0
-	if (len > MAX_SAFE_INTEGER$2) { return MAX_SAFE_INTEGER$2; }
-	return len;
-};
-
-var GetIntrinsic$1 = getIntrinsic;
-
-var $Object = GetIntrinsic$1('%Object%');
-
-var RequireObjectCoercible$1 = RequireObjectCoercible$2;
-
-// https://ecma-international.org/ecma-262/6.0/#sec-toobject
-
-var ToObject$1 = function ToObject(value) {
-	RequireObjectCoercible$1(value);
-	return $Object(value);
-};
-
-var $isNaN$1 = _isNaN;
-
-// https://ecma-international.org/ecma-262/6.0/#sec-samevaluezero
-
-var SameValueZero$1 = function SameValueZero(x, y) {
-	return (x === y) || ($isNaN$1(x) && $isNaN$1(y));
-};
-
-var strValue = String.prototype.valueOf;
-var tryStringObject = function tryStringObject(value) {
-	try {
-		strValue.call(value);
-		return true;
-	} catch (e) {
-		return false;
-	}
-};
-var toStr = Object.prototype.toString;
-var strClass = '[object String]';
-var hasToStringTag = shams();
-
-var isString$2 = function isString(value) {
-	if (typeof value === 'string') {
-		return true;
-	}
-	if (typeof value !== 'object') {
-		return false;
-	}
-	return hasToStringTag ? tryStringObject(value) : toStr.call(value) === strClass;
-};
-
-var ToIntegerOrInfinity = ToIntegerOrInfinity$2;
-var ToLength = ToLength$1;
-var ToObject = ToObject$1;
-var SameValueZero = SameValueZero$1;
-var $isNaN = _isNaN;
-var $isFinite = _isFinite;
-var GetIntrinsic = getIntrinsic;
-var callBound$1 = callBound$4;
-var isString$1 = isString$2;
-
-var $charAt = callBound$1('String.prototype.charAt');
-var $indexOf = GetIntrinsic('%Array.prototype.indexOf%'); // TODO: use callBind.apply without breaking IE 8
-var $max = GetIntrinsic('%Math.max%');
-
-var implementation$2 = function includes(searchElement) {
-	var fromIndex = arguments.length > 1 ? ToIntegerOrInfinity(arguments[1]) : 0;
-	if ($indexOf && !$isNaN(searchElement) && $isFinite(fromIndex) && typeof searchElement !== 'undefined') {
-		return $indexOf.apply(this, arguments) > -1;
-	}
-
-	var O = ToObject(this);
-	var length = ToLength(O.length);
-	if (length === 0) {
-		return false;
-	}
-	var k = fromIndex >= 0 ? fromIndex : $max(0, length + fromIndex);
-	while (k < length) {
-		if (SameValueZero(searchElement, isString$1(O) ? $charAt(O, k) : O[k])) {
-			return true;
-		}
-		k += 1;
-	}
-	return false;
-};
-
-var implementation$1 = implementation$2;
-
-var polyfill$1 = function getPolyfill() {
-	if (
-		Array.prototype.includes
-		&& Array(1).includes(undefined) // https://bugzilla.mozilla.org/show_bug.cgi?id=1767541
-	) {
-		return Array.prototype.includes;
-	}
-	return implementation$1;
-};
-
-var define$1 = defineProperties_1;
-var getPolyfill$1 = polyfill$1;
-
-var shim$1 = function shimArrayPrototypeIncludes() {
-	var polyfill = getPolyfill$1();
-	define$1(
-		Array.prototype,
-		{ includes: polyfill },
-		{ includes: function () { return Array.prototype.includes !== polyfill; } }
-	);
-	return polyfill;
-};
-
-var define = defineProperties_1;
-var RequireObjectCoercible = RequireObjectCoercible$2;
-var callBind = callBind$2.exports;
-var callBound = callBound$4;
-
-var implementation = implementation$2;
-var getPolyfill = polyfill$1;
-var polyfill = callBind.apply(getPolyfill());
-var shim = shim$1;
-
-var $slice = callBound('Array.prototype.slice');
-
-/* eslint-disable no-unused-vars */
-var boundShim = function includes(array, searchElement) {
-/* eslint-enable no-unused-vars */
-	RequireObjectCoercible(array);
-	return polyfill(array, $slice(arguments, 1));
-};
-define(boundShim, {
-	getPolyfill: getPolyfill,
-	implementation: implementation,
-	shim: shim
-});
-
-var arrayIncludes = boundShim;
-
-function List(_ref) {
-  var countries = _ref.countries,
-      field = _ref.field,
-      options = _ref.options,
-      handleCheckboxChange = _ref.handleCheckboxChange,
-      value = _ref.value;
-
-  var updateList = function updateList(e) {
-    if (value === e.target.value) {
-      handleCheckboxChange(null);
-    } else {
-      handleCheckboxChange(e.target.value);
+const defaultFilter = [
+    {
+        label: 'Land',
+        id: 'countries',
+        type: 'select',
+        required: false,
+        mandatory: true,
+        options: ['select', 'list', 'radio', 'text']
     }
-  };
+];
 
-  if (arrayIncludes(['cities', 'regions'], field.id)) {
-    return /*#__PURE__*/React__default["default"].createElement("ul", {
-      className: "radioList"
-    }, options.map(function (opt) {
-      return /*#__PURE__*/React__default["default"].createElement("li", {
-        key: opt.id,
-        className: "bu-list-item ".concat(countries && !arrayIncludes(countries, opt.country_id) ? 'bu-disabled' : 'bu-open')
-      }, /*#__PURE__*/React__default["default"].createElement("input", {
-        name: field.id,
-        type: "checkbox",
-        id: opt.id,
-        value: opt.id,
-        disabled: countries ? !arrayIncludes(countries, opt.country_id) : false,
-        checked: value === opt.id,
-        onBlur: handleCheckboxChange,
-        onChange: handleCheckboxChange
-      }), /*#__PURE__*/React__default["default"].createElement("label", {
-        htmlFor: opt.id
-      }, opt.name));
-    }));
-  } else {
-    return /*#__PURE__*/React__default["default"].createElement("ul", {
-      className: "radioList"
-    }, options.map(function (opt) {
-      return /*#__PURE__*/React__default["default"].createElement("li", {
-        key: opt.id,
-        className: "bu-list-item bu-open"
-      }, /*#__PURE__*/React__default["default"].createElement("input", {
-        name: field.id,
-        type: "checkbox",
-        id: opt.id,
-        value: opt.id,
-        checked: value === opt.id,
-        onBlur: handleCheckboxChange,
-        onChange: updateList
-      }), /*#__PURE__*/React__default["default"].createElement("label", {
-        htmlFor: opt.id
-      }, opt.name));
-    }));
-  }
+function Select({ options, field, filters, value, onChange }) {
+    const handleChange = (event) => {
+        onChange(field.id, event.currentTarget.value);
+    };
+    const countries = filters.countries;
+    const regions = Array.isArray(filters.regions)
+        ? filters.regions
+        : [filters.regions].filter((e) => String(e).trim());
+    if (options && ['countries', 'cities', 'regions'].includes(field.id)) {
+        return (React__default["default"].createElement("select", { name: field.id, onBlur: handleChange, onChange: handleChange, value: value },
+            React__default["default"].createElement("option", { value: "" }),
+            options.map((opt) => {
+                let hidden = false;
+                if (['cities', 'regions'].includes(field.id)) {
+                    if (countries && !countries.includes(opt.country_id)) {
+                        hidden = true;
+                    }
+                    if (field.id === 'cities') {
+                        if (!regions.length === false && !regions.includes(opt.region)) {
+                            hidden = true;
+                        }
+                    }
+                }
+                return (React__default["default"].createElement("option", { key: opt.id, value: opt.id, id: opt.region, disabled: hidden, hidden: hidden }, opt.name));
+            })));
+    }
+    else {
+        return (React__default["default"].createElement("select", { name: field.id, onBlur: handleChange, onChange: handleChange, value: value },
+            React__default["default"].createElement("option", { value: "" }),
+            options.map((opt) => {
+                let hidden = false;
+                return (React__default["default"].createElement("option", { key: opt, value: opt, disabled: hidden, hidden: hidden }, opt));
+            })));
+    }
+}
+
+function Categories({ PortalSite, filters, onChange }) {
+    const properties = filters.properties || [];
+    let requiredCategories = PortalSite.options.filtersForm.categories;
+    let input = [];
+    const handleChange = (event) => {
+        const value = Number(event.currentTarget.value);
+        if (properties.includes(value)) {
+            let index = properties.indexOf(value);
+            properties.splice(index, 1);
+        }
+        else {
+            properties.push(value);
+        }
+        onChange('properties', properties);
+    };
+    PortalSite.categories.map((category) => {
+        if (requiredCategories.includes(category.id)) {
+            input.push(React__default["default"].createElement("div", { className: "bu-properties", key: category.id },
+                React__default["default"].createElement("strong", null, category.name),
+                React__default["default"].createElement("ul", null, category.properties.map((property) => (React__default["default"].createElement("li", { key: property.id },
+                    React__default["default"].createElement("label", { htmlFor: property.id.toString() },
+                        React__default["default"].createElement("input", { type: "checkbox", id: property.id.toString(), value: property.id, checked: properties.includes(property.id), onChange: handleChange }),
+                        property.name)))))));
+        }
+    });
+    return input;
+}
+
+function Radio({ options, filters, onChange, field }) {
+    const countries = filters.countries;
+    const handleChange = (event) => {
+        onChange(field.id, event.currentTarget.value);
+    };
+    return (React__default["default"].createElement("ul", { className: "radioList" }, options.map((opt) => (React__default["default"].createElement("li", { key: opt.id || opt, className: `bu-list-item ${countries && !countries.includes(opt.country_id)
+            ? 'bu-disabled'
+            : ''}` },
+        React__default["default"].createElement("input", { name: field.id, type: "radio", id: opt.id || opt, value: opt.id || opt, disabled: countries ? !countries.includes(opt.country_id) : false, 
+            // checked={value === opt.id || opt}
+            onBlur: handleChange, onChange: handleChange }),
+        React__default["default"].createElement("label", { htmlFor: opt.id || opt }, opt.name || opt))))));
 }
 
 function toInteger(dirtyNumber) {
@@ -21413,7 +13841,7 @@ function requiredArgs(required, args) {
   }
 }
 
-function _typeof$y(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$y = function _typeof(obj) { return typeof obj; }; } else { _typeof$y = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$y(obj); }
+function _typeof$D(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$D = function _typeof(obj) { return typeof obj; }; } else { _typeof$D = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$D(obj); }
 /**
  * @name toDate
  * @category Common Helpers
@@ -21445,11 +13873,11 @@ function _typeof$y(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "func
  * //=> Tue Feb 11 2014 11:30:30
  */
 
-function toDate(argument) {
+function toDate$1(argument) {
   requiredArgs(1, arguments);
   var argStr = Object.prototype.toString.call(argument); // Clone the date
 
-  if (argument instanceof Date || _typeof$y(argument) === 'object' && argStr === '[object Date]') {
+  if (argument instanceof Date || _typeof$D(argument) === 'object' && argStr === '[object Date]') {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
     return new Date(argument.getTime());
   } else if (typeof argument === 'number' || argStr === '[object Number]') {
@@ -21487,7 +13915,7 @@ function toDate(argument) {
 
 function addDays(dirtyDate, dirtyAmount) {
   requiredArgs(2, arguments);
-  var date = toDate(dirtyDate);
+  var date = toDate$1(dirtyDate);
   var amount = toInteger(dirtyAmount);
 
   if (isNaN(amount)) {
@@ -21524,7 +13952,7 @@ function addDays(dirtyDate, dirtyAmount) {
 
 function addMonths(dirtyDate, dirtyAmount) {
   requiredArgs(2, arguments);
-  var date = toDate(dirtyDate);
+  var date = toDate$1(dirtyDate);
   var amount = toInteger(dirtyAmount);
 
   if (isNaN(amount)) {
@@ -21587,7 +14015,7 @@ function addMonths(dirtyDate, dirtyAmount) {
 
 function addMilliseconds(dirtyDate, dirtyAmount) {
   requiredArgs(2, arguments);
-  var timestamp = toDate(dirtyDate).getTime();
+  var timestamp = toDate$1(dirtyDate).getTime();
   var amount = toInteger(dirtyAmount);
   return new Date(timestamp + amount);
 }
@@ -21636,7 +14064,7 @@ function startOfWeek(dirtyDate, options) {
     throw new RangeError('weekStartsOn must be between 0 and 6 inclusively');
   }
 
-  var date = toDate(dirtyDate);
+  var date = toDate$1(dirtyDate);
   var day = date.getDay();
   var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn;
   date.setDate(date.getDate() - diff);
@@ -21682,7 +14110,7 @@ function getTimezoneOffsetInMilliseconds(date) {
 
 function startOfDay(dirtyDate) {
   requiredArgs(1, arguments);
-  var date = toDate(dirtyDate);
+  var date = toDate$1(dirtyDate);
   date.setHours(0, 0, 0, 0);
   return date;
 }
@@ -21831,7 +14259,7 @@ function isSameDay(dirtyDateLeft, dirtyDateRight) {
   return dateLeftStartOfDay.getTime() === dateRightStartOfDay.getTime();
 }
 
-function _typeof$x(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$x = function _typeof(obj) { return typeof obj; }; } else { _typeof$x = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$x(obj); }
+function _typeof$C(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$C = function _typeof(obj) { return typeof obj; }; } else { _typeof$C = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$C(obj); }
 /**
  * @name isDate
  * @category Common Helpers
@@ -21865,9 +14293,9 @@ function _typeof$x(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "func
  * //=> false
  */
 
-function isDate(value) {
+function isDate$1(value) {
   requiredArgs(1, arguments);
-  return value instanceof Date || _typeof$x(value) === 'object' && Object.prototype.toString.call(value) === '[object Date]';
+  return value instanceof Date || _typeof$C(value) === 'object' && Object.prototype.toString.call(value) === '[object Date]';
 }
 
 /**
@@ -21905,11 +14333,11 @@ function isDate(value) {
 function isValid(dirtyDate) {
   requiredArgs(1, arguments);
 
-  if (!isDate(dirtyDate) && typeof dirtyDate !== 'number') {
+  if (!isDate$1(dirtyDate) && typeof dirtyDate !== 'number') {
     return false;
   }
 
-  var date = toDate(dirtyDate);
+  var date = toDate$1(dirtyDate);
   return !isNaN(Number(date));
 }
 
@@ -21934,7 +14362,7 @@ function isValid(dirtyDate) {
 
 function endOfMonth(dirtyDate) {
   requiredArgs(1, arguments);
-  var date = toDate(dirtyDate);
+  var date = toDate$1(dirtyDate);
   var month = date.getMonth();
   date.setFullYear(date.getFullYear(), month + 1, 0);
   date.setHours(23, 59, 59, 999);
@@ -21962,7 +14390,7 @@ function endOfMonth(dirtyDate) {
 
 function startOfMonth(dirtyDate) {
   requiredArgs(1, arguments);
-  var date = toDate(dirtyDate);
+  var date = toDate$1(dirtyDate);
   date.setDate(1);
   date.setHours(0, 0, 0, 0);
   return date;
@@ -22006,7 +14434,7 @@ function endOfWeek(dirtyDate, options) {
     throw new RangeError('weekStartsOn must be between 0 and 6 inclusively');
   }
 
-  var date = toDate(dirtyDate);
+  var date = toDate$1(dirtyDate);
   var day = date.getDay();
   var diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn);
   date.setDate(date.getDate() + diff);
@@ -22042,7 +14470,7 @@ function subMilliseconds(dirtyDate, dirtyAmount) {
 var MILLISECONDS_IN_DAY = 86400000;
 function getUTCDayOfYear(dirtyDate) {
   requiredArgs(1, arguments);
-  var date = toDate(dirtyDate);
+  var date = toDate$1(dirtyDate);
   var timestamp = date.getTime();
   date.setUTCMonth(0, 1);
   date.setUTCHours(0, 0, 0, 0);
@@ -22054,7 +14482,7 @@ function getUTCDayOfYear(dirtyDate) {
 function startOfUTCISOWeek(dirtyDate) {
   requiredArgs(1, arguments);
   var weekStartsOn = 1;
-  var date = toDate(dirtyDate);
+  var date = toDate$1(dirtyDate);
   var day = date.getUTCDay();
   var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn;
   date.setUTCDate(date.getUTCDate() - diff);
@@ -22064,7 +14492,7 @@ function startOfUTCISOWeek(dirtyDate) {
 
 function getUTCISOWeekYear(dirtyDate) {
   requiredArgs(1, arguments);
-  var date = toDate(dirtyDate);
+  var date = toDate$1(dirtyDate);
   var year = date.getUTCFullYear();
   var fourthOfJanuaryOfNextYear = new Date(0);
   fourthOfJanuaryOfNextYear.setUTCFullYear(year + 1, 0, 4);
@@ -22097,7 +14525,7 @@ function startOfUTCISOWeekYear(dirtyDate) {
 var MILLISECONDS_IN_WEEK$1 = 604800000;
 function getUTCISOWeek(dirtyDate) {
   requiredArgs(1, arguments);
-  var date = toDate(dirtyDate);
+  var date = toDate$1(dirtyDate);
   var diff = startOfUTCISOWeek(date).getTime() - startOfUTCISOWeekYear(date).getTime(); // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant
   // (e.g. it's different in the week of the daylight saving time clock shift)
@@ -22116,7 +14544,7 @@ function startOfUTCWeek(dirtyDate, options) {
     throw new RangeError('weekStartsOn must be between 0 and 6 inclusively');
   }
 
-  var date = toDate(dirtyDate);
+  var date = toDate$1(dirtyDate);
   var day = date.getUTCDay();
   var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn;
   date.setUTCDate(date.getUTCDate() - diff);
@@ -22128,7 +14556,7 @@ function getUTCWeekYear(dirtyDate, options) {
   var _ref, _ref2, _ref3, _options$firstWeekCon, _options$locale, _options$locale$optio, _defaultOptions$local, _defaultOptions$local2;
 
   requiredArgs(1, arguments);
-  var date = toDate(dirtyDate);
+  var date = toDate$1(dirtyDate);
   var year = date.getUTCFullYear();
   var defaultOptions = getDefaultOptions();
   var firstWeekContainsDate = toInteger((_ref = (_ref2 = (_ref3 = (_options$firstWeekCon = options === null || options === void 0 ? void 0 : options.firstWeekContainsDate) !== null && _options$firstWeekCon !== void 0 ? _options$firstWeekCon : options === null || options === void 0 ? void 0 : (_options$locale = options.locale) === null || _options$locale === void 0 ? void 0 : (_options$locale$optio = _options$locale.options) === null || _options$locale$optio === void 0 ? void 0 : _options$locale$optio.firstWeekContainsDate) !== null && _ref3 !== void 0 ? _ref3 : defaultOptions.firstWeekContainsDate) !== null && _ref2 !== void 0 ? _ref2 : (_defaultOptions$local = defaultOptions.locale) === null || _defaultOptions$local === void 0 ? void 0 : (_defaultOptions$local2 = _defaultOptions$local.options) === null || _defaultOptions$local2 === void 0 ? void 0 : _defaultOptions$local2.firstWeekContainsDate) !== null && _ref !== void 0 ? _ref : 1); // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
@@ -22172,7 +14600,7 @@ function startOfUTCWeekYear(dirtyDate, options) {
 var MILLISECONDS_IN_WEEK = 604800000;
 function getUTCWeek(dirtyDate, options) {
   requiredArgs(1, arguments);
-  var date = toDate(dirtyDate);
+  var date = toDate$1(dirtyDate);
   var diff = startOfUTCWeek(date, options).getTime() - startOfUTCWeekYear(date, options).getTime(); // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant
   // (e.g. it's different in the week of the daylight saving time clock shift)
@@ -24095,7 +16523,7 @@ function format(dirtyDate, dirtyFormatStr, options) {
     throw new RangeError('locale must contain formatLong property');
   }
 
-  var originalDate = toDate(dirtyDate);
+  var originalDate = toDate$1(dirtyDate);
 
   if (!isValid(originalDate)) {
     throw new RangeError('Invalid time value');
@@ -24201,8 +16629,8 @@ function assign(target, object) {
 
 function isAfter(dirtyDate, dirtyDateToCompare) {
   requiredArgs(2, arguments);
-  var date = toDate(dirtyDate);
-  var dateToCompare = toDate(dirtyDateToCompare);
+  var date = toDate$1(dirtyDate);
+  var dateToCompare = toDate$1(dirtyDateToCompare);
   return date.getTime() > dateToCompare.getTime();
 }
 
@@ -24227,44 +16655,44 @@ function isAfter(dirtyDate, dirtyDateToCompare) {
 
 function isBefore(dirtyDate, dirtyDateToCompare) {
   requiredArgs(2, arguments);
-  var date = toDate(dirtyDate);
-  var dateToCompare = toDate(dirtyDateToCompare);
+  var date = toDate$1(dirtyDate);
+  var dateToCompare = toDate$1(dirtyDateToCompare);
   return date.getTime() < dateToCompare.getTime();
 }
 
-function _typeof$w(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$w = function _typeof(obj) { return typeof obj; }; } else { _typeof$w = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$w(obj); }
+function _typeof$B(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$B = function _typeof(obj) { return typeof obj; }; } else { _typeof$B = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$B(obj); }
 
-function _inherits$v(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$v(subClass, superClass); }
+function _inherits$y(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$y(subClass, superClass); }
 
-function _setPrototypeOf$v(o, p) { _setPrototypeOf$v = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$v(o, p); }
+function _setPrototypeOf$y(o, p) { _setPrototypeOf$y = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$y(o, p); }
 
-function _createSuper$v(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$v(); return function _createSuperInternal() { var Super = _getPrototypeOf$v(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$v(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$v(this, result); }; }
+function _createSuper$y(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$y(); return function _createSuperInternal() { var Super = _getPrototypeOf$y(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$y(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$y(this, result); }; }
 
-function _possibleConstructorReturn$v(self, call) { if (call && (_typeof$w(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$w(self); }
+function _possibleConstructorReturn$y(self, call) { if (call && (_typeof$B(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$z(self); }
 
-function _assertThisInitialized$w(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$z(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$v() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$y() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$v(o) { _getPrototypeOf$v = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$v(o); }
+function _getPrototypeOf$y(o) { _getPrototypeOf$y = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$y(o); }
 
-function _classCallCheck$w(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$z(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$w(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$z(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$w(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$w(Constructor.prototype, protoProps); if (staticProps) _defineProperties$w(Constructor, staticProps); return Constructor; }
+function _createClass$z(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$z(Constructor.prototype, protoProps); if (staticProps) _defineProperties$z(Constructor, staticProps); return Constructor; }
 
-function _defineProperty$v(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$K(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var TIMEZONE_UNIT_PRIORITY = 10;
 var Setter = /*#__PURE__*/function () {
   function Setter() {
-    _classCallCheck$w(this, Setter);
+    _classCallCheck$z(this, Setter);
 
-    _defineProperty$v(this, "subPriority", 0);
+    _defineProperty$K(this, "subPriority", 0);
   }
 
-  _createClass$w(Setter, [{
+  _createClass$z(Setter, [{
     key: "validate",
     value: function validate(_utcDate, _options) {
       return true;
@@ -24274,14 +16702,14 @@ var Setter = /*#__PURE__*/function () {
   return Setter;
 }();
 var ValueSetter = /*#__PURE__*/function (_Setter) {
-  _inherits$v(ValueSetter, _Setter);
+  _inherits$y(ValueSetter, _Setter);
 
-  var _super = _createSuper$v(ValueSetter);
+  var _super = _createSuper$y(ValueSetter);
 
   function ValueSetter(value, validateValue, setValue, priority, subPriority) {
     var _this;
 
-    _classCallCheck$w(this, ValueSetter);
+    _classCallCheck$z(this, ValueSetter);
 
     _this = _super.call(this);
     _this.value = value;
@@ -24296,7 +16724,7 @@ var ValueSetter = /*#__PURE__*/function (_Setter) {
     return _this;
   }
 
-  _createClass$w(ValueSetter, [{
+  _createClass$z(ValueSetter, [{
     key: "validate",
     value: function validate(utcDate, options) {
       return this.validateValue(utcDate, this.value, options);
@@ -24311,14 +16739,14 @@ var ValueSetter = /*#__PURE__*/function (_Setter) {
   return ValueSetter;
 }(Setter);
 var DateToSystemTimezoneSetter = /*#__PURE__*/function (_Setter2) {
-  _inherits$v(DateToSystemTimezoneSetter, _Setter2);
+  _inherits$y(DateToSystemTimezoneSetter, _Setter2);
 
-  var _super2 = _createSuper$v(DateToSystemTimezoneSetter);
+  var _super2 = _createSuper$y(DateToSystemTimezoneSetter);
 
   function DateToSystemTimezoneSetter() {
     var _this2;
 
-    _classCallCheck$w(this, DateToSystemTimezoneSetter);
+    _classCallCheck$z(this, DateToSystemTimezoneSetter);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -24326,14 +16754,14 @@ var DateToSystemTimezoneSetter = /*#__PURE__*/function (_Setter2) {
 
     _this2 = _super2.call.apply(_super2, [this].concat(args));
 
-    _defineProperty$v(_assertThisInitialized$w(_this2), "priority", TIMEZONE_UNIT_PRIORITY);
+    _defineProperty$K(_assertThisInitialized$z(_this2), "priority", TIMEZONE_UNIT_PRIORITY);
 
-    _defineProperty$v(_assertThisInitialized$w(_this2), "subPriority", -1);
+    _defineProperty$K(_assertThisInitialized$z(_this2), "subPriority", -1);
 
     return _this2;
   }
 
-  _createClass$w(DateToSystemTimezoneSetter, [{
+  _createClass$z(DateToSystemTimezoneSetter, [{
     key: "set",
     value: function set(date, flags) {
       if (flags.timestampIsSet) {
@@ -24350,17 +16778,17 @@ var DateToSystemTimezoneSetter = /*#__PURE__*/function (_Setter2) {
   return DateToSystemTimezoneSetter;
 }(Setter);
 
-function _classCallCheck$v(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$y(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$v(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$y(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$v(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$v(Constructor.prototype, protoProps); if (staticProps) _defineProperties$v(Constructor, staticProps); return Constructor; }
+function _createClass$y(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$y(Constructor.prototype, protoProps); if (staticProps) _defineProperties$y(Constructor, staticProps); return Constructor; }
 var Parser$1 = /*#__PURE__*/function () {
   function Parser() {
-    _classCallCheck$v(this, Parser);
+    _classCallCheck$y(this, Parser);
   }
 
-  _createClass$v(Parser, [{
+  _createClass$y(Parser, [{
     key: "run",
     value: function run(dateString, token, match, options) {
       var result = this.parse(dateString, token, match, options);
@@ -24384,38 +16812,38 @@ var Parser$1 = /*#__PURE__*/function () {
   return Parser;
 }();
 
-function _typeof$v(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$v = function _typeof(obj) { return typeof obj; }; } else { _typeof$v = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$v(obj); }
+function _typeof$A(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$A = function _typeof(obj) { return typeof obj; }; } else { _typeof$A = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$A(obj); }
 
-function _classCallCheck$u(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$x(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$u(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$x(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$u(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$u(Constructor.prototype, protoProps); if (staticProps) _defineProperties$u(Constructor, staticProps); return Constructor; }
+function _createClass$x(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$x(Constructor.prototype, protoProps); if (staticProps) _defineProperties$x(Constructor, staticProps); return Constructor; }
 
-function _inherits$u(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$u(subClass, superClass); }
+function _inherits$x(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$x(subClass, superClass); }
 
-function _setPrototypeOf$u(o, p) { _setPrototypeOf$u = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$u(o, p); }
+function _setPrototypeOf$x(o, p) { _setPrototypeOf$x = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$x(o, p); }
 
-function _createSuper$u(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$u(); return function _createSuperInternal() { var Super = _getPrototypeOf$u(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$u(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$u(this, result); }; }
+function _createSuper$x(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$x(); return function _createSuperInternal() { var Super = _getPrototypeOf$x(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$x(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$x(this, result); }; }
 
-function _possibleConstructorReturn$u(self, call) { if (call && (_typeof$v(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$v(self); }
+function _possibleConstructorReturn$x(self, call) { if (call && (_typeof$A(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$y(self); }
 
-function _assertThisInitialized$v(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$y(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$u() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$x() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$u(o) { _getPrototypeOf$u = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$u(o); }
+function _getPrototypeOf$x(o) { _getPrototypeOf$x = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$x(o); }
 
-function _defineProperty$u(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$J(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var EraParser = /*#__PURE__*/function (_Parser) {
-  _inherits$u(EraParser, _Parser);
+  _inherits$x(EraParser, _Parser);
 
-  var _super = _createSuper$u(EraParser);
+  var _super = _createSuper$x(EraParser);
 
   function EraParser() {
     var _this;
 
-    _classCallCheck$u(this, EraParser);
+    _classCallCheck$x(this, EraParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -24423,14 +16851,14 @@ var EraParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$u(_assertThisInitialized$v(_this), "priority", 140);
+    _defineProperty$J(_assertThisInitialized$y(_this), "priority", 140);
 
-    _defineProperty$u(_assertThisInitialized$v(_this), "incompatibleTokens", ['R', 'u', 't', 'T']);
+    _defineProperty$J(_assertThisInitialized$y(_this), "incompatibleTokens", ['R', 'u', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$u(EraParser, [{
+  _createClass$x(EraParser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       switch (token) {
@@ -24651,29 +17079,29 @@ function isLeapYearIndex(year) {
   return year % 400 === 0 || year % 4 === 0 && year % 100 !== 0;
 }
 
-function _typeof$u(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$u = function _typeof(obj) { return typeof obj; }; } else { _typeof$u = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$u(obj); }
+function _typeof$z(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$z = function _typeof(obj) { return typeof obj; }; } else { _typeof$z = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$z(obj); }
 
-function _classCallCheck$t(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$w(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$t(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$w(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$t(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$t(Constructor.prototype, protoProps); if (staticProps) _defineProperties$t(Constructor, staticProps); return Constructor; }
+function _createClass$w(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$w(Constructor.prototype, protoProps); if (staticProps) _defineProperties$w(Constructor, staticProps); return Constructor; }
 
-function _inherits$t(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$t(subClass, superClass); }
+function _inherits$w(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$w(subClass, superClass); }
 
-function _setPrototypeOf$t(o, p) { _setPrototypeOf$t = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$t(o, p); }
+function _setPrototypeOf$w(o, p) { _setPrototypeOf$w = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$w(o, p); }
 
-function _createSuper$t(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$t(); return function _createSuperInternal() { var Super = _getPrototypeOf$t(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$t(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$t(this, result); }; }
+function _createSuper$w(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$w(); return function _createSuperInternal() { var Super = _getPrototypeOf$w(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$w(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$w(this, result); }; }
 
-function _possibleConstructorReturn$t(self, call) { if (call && (_typeof$u(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$u(self); }
+function _possibleConstructorReturn$w(self, call) { if (call && (_typeof$z(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$x(self); }
 
-function _assertThisInitialized$u(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$x(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$t() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$w() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$t(o) { _getPrototypeOf$t = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$t(o); }
+function _getPrototypeOf$w(o) { _getPrototypeOf$w = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$w(o); }
 
-function _defineProperty$t(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$I(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 // From http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
 // | Year     |     y | yy |   yyy |  yyyy | yyyyy |
 // |----------|-------|----|-------|-------|-------|
@@ -24683,14 +17111,14 @@ function _defineProperty$t(obj, key, value) { if (key in obj) { Object.definePro
 // | AD 1234  |  1234 | 34 |  1234 |  1234 | 01234 |
 // | AD 12345 | 12345 | 45 | 12345 | 12345 | 12345 |
 var YearParser = /*#__PURE__*/function (_Parser) {
-  _inherits$t(YearParser, _Parser);
+  _inherits$w(YearParser, _Parser);
 
-  var _super = _createSuper$t(YearParser);
+  var _super = _createSuper$w(YearParser);
 
   function YearParser() {
     var _this;
 
-    _classCallCheck$t(this, YearParser);
+    _classCallCheck$w(this, YearParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -24698,14 +17126,14 @@ var YearParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$t(_assertThisInitialized$u(_this), "priority", 130);
+    _defineProperty$I(_assertThisInitialized$x(_this), "priority", 130);
 
-    _defineProperty$t(_assertThisInitialized$u(_this), "incompatibleTokens", ['Y', 'R', 'u', 'w', 'I', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$I(_assertThisInitialized$x(_this), "incompatibleTokens", ['Y', 'R', 'u', 'w', 'I', 'i', 'e', 'c', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$t(YearParser, [{
+  _createClass$w(YearParser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       var valueCallback = function valueCallback(year) {
@@ -24755,39 +17183,39 @@ var YearParser = /*#__PURE__*/function (_Parser) {
   return YearParser;
 }(Parser$1);
 
-function _typeof$t(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$t = function _typeof(obj) { return typeof obj; }; } else { _typeof$t = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$t(obj); }
+function _typeof$y(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$y = function _typeof(obj) { return typeof obj; }; } else { _typeof$y = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$y(obj); }
 
-function _classCallCheck$s(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$v(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$s(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$v(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$s(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$s(Constructor.prototype, protoProps); if (staticProps) _defineProperties$s(Constructor, staticProps); return Constructor; }
+function _createClass$v(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$v(Constructor.prototype, protoProps); if (staticProps) _defineProperties$v(Constructor, staticProps); return Constructor; }
 
-function _inherits$s(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$s(subClass, superClass); }
+function _inherits$v(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$v(subClass, superClass); }
 
-function _setPrototypeOf$s(o, p) { _setPrototypeOf$s = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$s(o, p); }
+function _setPrototypeOf$v(o, p) { _setPrototypeOf$v = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$v(o, p); }
 
-function _createSuper$s(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$s(); return function _createSuperInternal() { var Super = _getPrototypeOf$s(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$s(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$s(this, result); }; }
+function _createSuper$v(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$v(); return function _createSuperInternal() { var Super = _getPrototypeOf$v(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$v(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$v(this, result); }; }
 
-function _possibleConstructorReturn$s(self, call) { if (call && (_typeof$t(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$t(self); }
+function _possibleConstructorReturn$v(self, call) { if (call && (_typeof$y(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$w(self); }
 
-function _assertThisInitialized$t(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$w(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$s() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$v() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$s(o) { _getPrototypeOf$s = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$s(o); }
+function _getPrototypeOf$v(o) { _getPrototypeOf$v = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$v(o); }
 
-function _defineProperty$s(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$H(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 // Local week-numbering year
 var LocalWeekYearParser = /*#__PURE__*/function (_Parser) {
-  _inherits$s(LocalWeekYearParser, _Parser);
+  _inherits$v(LocalWeekYearParser, _Parser);
 
-  var _super = _createSuper$s(LocalWeekYearParser);
+  var _super = _createSuper$v(LocalWeekYearParser);
 
   function LocalWeekYearParser() {
     var _this;
 
-    _classCallCheck$s(this, LocalWeekYearParser);
+    _classCallCheck$v(this, LocalWeekYearParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -24795,14 +17223,14 @@ var LocalWeekYearParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$s(_assertThisInitialized$t(_this), "priority", 130);
+    _defineProperty$H(_assertThisInitialized$w(_this), "priority", 130);
 
-    _defineProperty$s(_assertThisInitialized$t(_this), "incompatibleTokens", ['y', 'R', 'u', 'Q', 'q', 'M', 'L', 'I', 'd', 'D', 'i', 't', 'T']);
+    _defineProperty$H(_assertThisInitialized$w(_this), "incompatibleTokens", ['y', 'R', 'u', 'Q', 'q', 'M', 'L', 'I', 'd', 'D', 'i', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$s(LocalWeekYearParser, [{
+  _createClass$v(LocalWeekYearParser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       var valueCallback = function valueCallback(year) {
@@ -24852,39 +17280,39 @@ var LocalWeekYearParser = /*#__PURE__*/function (_Parser) {
   return LocalWeekYearParser;
 }(Parser$1);
 
-function _typeof$s(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$s = function _typeof(obj) { return typeof obj; }; } else { _typeof$s = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$s(obj); }
+function _typeof$x(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$x = function _typeof(obj) { return typeof obj; }; } else { _typeof$x = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$x(obj); }
 
-function _classCallCheck$r(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$u(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$r(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$u(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$r(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$r(Constructor.prototype, protoProps); if (staticProps) _defineProperties$r(Constructor, staticProps); return Constructor; }
+function _createClass$u(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$u(Constructor.prototype, protoProps); if (staticProps) _defineProperties$u(Constructor, staticProps); return Constructor; }
 
-function _inherits$r(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$r(subClass, superClass); }
+function _inherits$u(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$u(subClass, superClass); }
 
-function _setPrototypeOf$r(o, p) { _setPrototypeOf$r = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$r(o, p); }
+function _setPrototypeOf$u(o, p) { _setPrototypeOf$u = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$u(o, p); }
 
-function _createSuper$r(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$r(); return function _createSuperInternal() { var Super = _getPrototypeOf$r(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$r(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$r(this, result); }; }
+function _createSuper$u(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$u(); return function _createSuperInternal() { var Super = _getPrototypeOf$u(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$u(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$u(this, result); }; }
 
-function _possibleConstructorReturn$r(self, call) { if (call && (_typeof$s(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$s(self); }
+function _possibleConstructorReturn$u(self, call) { if (call && (_typeof$x(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$v(self); }
 
-function _assertThisInitialized$s(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$v(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$r() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$u() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$r(o) { _getPrototypeOf$r = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$r(o); }
+function _getPrototypeOf$u(o) { _getPrototypeOf$u = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$u(o); }
 
-function _defineProperty$r(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$G(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var ISOWeekYearParser = /*#__PURE__*/function (_Parser) {
-  _inherits$r(ISOWeekYearParser, _Parser);
+  _inherits$u(ISOWeekYearParser, _Parser);
 
-  var _super = _createSuper$r(ISOWeekYearParser);
+  var _super = _createSuper$u(ISOWeekYearParser);
 
   function ISOWeekYearParser() {
     var _this;
 
-    _classCallCheck$r(this, ISOWeekYearParser);
+    _classCallCheck$u(this, ISOWeekYearParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -24892,14 +17320,14 @@ var ISOWeekYearParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$r(_assertThisInitialized$s(_this), "priority", 130);
+    _defineProperty$G(_assertThisInitialized$v(_this), "priority", 130);
 
-    _defineProperty$r(_assertThisInitialized$s(_this), "incompatibleTokens", ['G', 'y', 'Y', 'u', 'Q', 'q', 'M', 'L', 'w', 'd', 'D', 'e', 'c', 't', 'T']);
+    _defineProperty$G(_assertThisInitialized$v(_this), "incompatibleTokens", ['G', 'y', 'Y', 'u', 'Q', 'q', 'M', 'L', 'w', 'd', 'D', 'e', 'c', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$r(ISOWeekYearParser, [{
+  _createClass$u(ISOWeekYearParser, [{
     key: "parse",
     value: function parse(dateString, token) {
       if (token === 'R') {
@@ -24921,38 +17349,38 @@ var ISOWeekYearParser = /*#__PURE__*/function (_Parser) {
   return ISOWeekYearParser;
 }(Parser$1);
 
-function _typeof$r(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$r = function _typeof(obj) { return typeof obj; }; } else { _typeof$r = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$r(obj); }
+function _typeof$w(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$w = function _typeof(obj) { return typeof obj; }; } else { _typeof$w = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$w(obj); }
 
-function _classCallCheck$q(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$t(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$q(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$t(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$q(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$q(Constructor.prototype, protoProps); if (staticProps) _defineProperties$q(Constructor, staticProps); return Constructor; }
+function _createClass$t(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$t(Constructor.prototype, protoProps); if (staticProps) _defineProperties$t(Constructor, staticProps); return Constructor; }
 
-function _inherits$q(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$q(subClass, superClass); }
+function _inherits$t(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$t(subClass, superClass); }
 
-function _setPrototypeOf$q(o, p) { _setPrototypeOf$q = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$q(o, p); }
+function _setPrototypeOf$t(o, p) { _setPrototypeOf$t = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$t(o, p); }
 
-function _createSuper$q(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$q(); return function _createSuperInternal() { var Super = _getPrototypeOf$q(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$q(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$q(this, result); }; }
+function _createSuper$t(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$t(); return function _createSuperInternal() { var Super = _getPrototypeOf$t(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$t(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$t(this, result); }; }
 
-function _possibleConstructorReturn$q(self, call) { if (call && (_typeof$r(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$r(self); }
+function _possibleConstructorReturn$t(self, call) { if (call && (_typeof$w(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$u(self); }
 
-function _assertThisInitialized$r(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$u(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$q() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$t() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$q(o) { _getPrototypeOf$q = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$q(o); }
+function _getPrototypeOf$t(o) { _getPrototypeOf$t = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$t(o); }
 
-function _defineProperty$q(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$F(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var ExtendedYearParser = /*#__PURE__*/function (_Parser) {
-  _inherits$q(ExtendedYearParser, _Parser);
+  _inherits$t(ExtendedYearParser, _Parser);
 
-  var _super = _createSuper$q(ExtendedYearParser);
+  var _super = _createSuper$t(ExtendedYearParser);
 
   function ExtendedYearParser() {
     var _this;
 
-    _classCallCheck$q(this, ExtendedYearParser);
+    _classCallCheck$t(this, ExtendedYearParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -24960,14 +17388,14 @@ var ExtendedYearParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$q(_assertThisInitialized$r(_this), "priority", 130);
+    _defineProperty$F(_assertThisInitialized$u(_this), "priority", 130);
 
-    _defineProperty$q(_assertThisInitialized$r(_this), "incompatibleTokens", ['G', 'y', 'Y', 'R', 'w', 'I', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$F(_assertThisInitialized$u(_this), "incompatibleTokens", ['G', 'y', 'Y', 'R', 'w', 'I', 'i', 'e', 'c', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$q(ExtendedYearParser, [{
+  _createClass$t(ExtendedYearParser, [{
     key: "parse",
     value: function parse(dateString, token) {
       if (token === 'u') {
@@ -24988,38 +17416,38 @@ var ExtendedYearParser = /*#__PURE__*/function (_Parser) {
   return ExtendedYearParser;
 }(Parser$1);
 
-function _typeof$q(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$q = function _typeof(obj) { return typeof obj; }; } else { _typeof$q = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$q(obj); }
+function _typeof$v(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$v = function _typeof(obj) { return typeof obj; }; } else { _typeof$v = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$v(obj); }
 
-function _classCallCheck$p(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$s(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$p(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$s(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$p(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$p(Constructor.prototype, protoProps); if (staticProps) _defineProperties$p(Constructor, staticProps); return Constructor; }
+function _createClass$s(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$s(Constructor.prototype, protoProps); if (staticProps) _defineProperties$s(Constructor, staticProps); return Constructor; }
 
-function _inherits$p(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$p(subClass, superClass); }
+function _inherits$s(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$s(subClass, superClass); }
 
-function _setPrototypeOf$p(o, p) { _setPrototypeOf$p = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$p(o, p); }
+function _setPrototypeOf$s(o, p) { _setPrototypeOf$s = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$s(o, p); }
 
-function _createSuper$p(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$p(); return function _createSuperInternal() { var Super = _getPrototypeOf$p(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$p(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$p(this, result); }; }
+function _createSuper$s(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$s(); return function _createSuperInternal() { var Super = _getPrototypeOf$s(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$s(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$s(this, result); }; }
 
-function _possibleConstructorReturn$p(self, call) { if (call && (_typeof$q(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$q(self); }
+function _possibleConstructorReturn$s(self, call) { if (call && (_typeof$v(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$t(self); }
 
-function _assertThisInitialized$q(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$t(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$p() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$s() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$p(o) { _getPrototypeOf$p = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$p(o); }
+function _getPrototypeOf$s(o) { _getPrototypeOf$s = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$s(o); }
 
-function _defineProperty$p(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$E(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var QuarterParser = /*#__PURE__*/function (_Parser) {
-  _inherits$p(QuarterParser, _Parser);
+  _inherits$s(QuarterParser, _Parser);
 
-  var _super = _createSuper$p(QuarterParser);
+  var _super = _createSuper$s(QuarterParser);
 
   function QuarterParser() {
     var _this;
 
-    _classCallCheck$p(this, QuarterParser);
+    _classCallCheck$s(this, QuarterParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -25027,14 +17455,14 @@ var QuarterParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$p(_assertThisInitialized$q(_this), "priority", 120);
+    _defineProperty$E(_assertThisInitialized$t(_this), "priority", 120);
 
-    _defineProperty$p(_assertThisInitialized$q(_this), "incompatibleTokens", ['Y', 'R', 'q', 'M', 'L', 'w', 'I', 'd', 'D', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$E(_assertThisInitialized$t(_this), "incompatibleTokens", ['Y', 'R', 'q', 'M', 'L', 'w', 'I', 'd', 'D', 'i', 'e', 'c', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$p(QuarterParser, [{
+  _createClass$s(QuarterParser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       switch (token) {
@@ -25099,38 +17527,38 @@ var QuarterParser = /*#__PURE__*/function (_Parser) {
   return QuarterParser;
 }(Parser$1);
 
-function _typeof$p(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$p = function _typeof(obj) { return typeof obj; }; } else { _typeof$p = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$p(obj); }
+function _typeof$u(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$u = function _typeof(obj) { return typeof obj; }; } else { _typeof$u = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$u(obj); }
 
-function _classCallCheck$o(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$r(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$o(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$r(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$o(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$o(Constructor.prototype, protoProps); if (staticProps) _defineProperties$o(Constructor, staticProps); return Constructor; }
+function _createClass$r(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$r(Constructor.prototype, protoProps); if (staticProps) _defineProperties$r(Constructor, staticProps); return Constructor; }
 
-function _inherits$o(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$o(subClass, superClass); }
+function _inherits$r(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$r(subClass, superClass); }
 
-function _setPrototypeOf$o(o, p) { _setPrototypeOf$o = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$o(o, p); }
+function _setPrototypeOf$r(o, p) { _setPrototypeOf$r = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$r(o, p); }
 
-function _createSuper$o(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$o(); return function _createSuperInternal() { var Super = _getPrototypeOf$o(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$o(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$o(this, result); }; }
+function _createSuper$r(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$r(); return function _createSuperInternal() { var Super = _getPrototypeOf$r(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$r(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$r(this, result); }; }
 
-function _possibleConstructorReturn$o(self, call) { if (call && (_typeof$p(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$p(self); }
+function _possibleConstructorReturn$r(self, call) { if (call && (_typeof$u(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$s(self); }
 
-function _assertThisInitialized$p(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$s(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$o() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$r() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$o(o) { _getPrototypeOf$o = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$o(o); }
+function _getPrototypeOf$r(o) { _getPrototypeOf$r = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$r(o); }
 
-function _defineProperty$o(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$D(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var StandAloneQuarterParser = /*#__PURE__*/function (_Parser) {
-  _inherits$o(StandAloneQuarterParser, _Parser);
+  _inherits$r(StandAloneQuarterParser, _Parser);
 
-  var _super = _createSuper$o(StandAloneQuarterParser);
+  var _super = _createSuper$r(StandAloneQuarterParser);
 
   function StandAloneQuarterParser() {
     var _this;
 
-    _classCallCheck$o(this, StandAloneQuarterParser);
+    _classCallCheck$r(this, StandAloneQuarterParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -25138,14 +17566,14 @@ var StandAloneQuarterParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$o(_assertThisInitialized$p(_this), "priority", 120);
+    _defineProperty$D(_assertThisInitialized$s(_this), "priority", 120);
 
-    _defineProperty$o(_assertThisInitialized$p(_this), "incompatibleTokens", ['Y', 'R', 'Q', 'M', 'L', 'w', 'I', 'd', 'D', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$D(_assertThisInitialized$s(_this), "incompatibleTokens", ['Y', 'R', 'Q', 'M', 'L', 'w', 'I', 'd', 'D', 'i', 'e', 'c', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$o(StandAloneQuarterParser, [{
+  _createClass$r(StandAloneQuarterParser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       switch (token) {
@@ -25210,38 +17638,38 @@ var StandAloneQuarterParser = /*#__PURE__*/function (_Parser) {
   return StandAloneQuarterParser;
 }(Parser$1);
 
-function _typeof$o(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$o = function _typeof(obj) { return typeof obj; }; } else { _typeof$o = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$o(obj); }
+function _typeof$t(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$t = function _typeof(obj) { return typeof obj; }; } else { _typeof$t = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$t(obj); }
 
-function _classCallCheck$n(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$q(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$n(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$q(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$n(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$n(Constructor.prototype, protoProps); if (staticProps) _defineProperties$n(Constructor, staticProps); return Constructor; }
+function _createClass$q(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$q(Constructor.prototype, protoProps); if (staticProps) _defineProperties$q(Constructor, staticProps); return Constructor; }
 
-function _inherits$n(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$n(subClass, superClass); }
+function _inherits$q(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$q(subClass, superClass); }
 
-function _setPrototypeOf$n(o, p) { _setPrototypeOf$n = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$n(o, p); }
+function _setPrototypeOf$q(o, p) { _setPrototypeOf$q = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$q(o, p); }
 
-function _createSuper$n(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$n(); return function _createSuperInternal() { var Super = _getPrototypeOf$n(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$n(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$n(this, result); }; }
+function _createSuper$q(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$q(); return function _createSuperInternal() { var Super = _getPrototypeOf$q(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$q(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$q(this, result); }; }
 
-function _possibleConstructorReturn$n(self, call) { if (call && (_typeof$o(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$o(self); }
+function _possibleConstructorReturn$q(self, call) { if (call && (_typeof$t(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$r(self); }
 
-function _assertThisInitialized$o(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$r(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$n() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$q() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$n(o) { _getPrototypeOf$n = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$n(o); }
+function _getPrototypeOf$q(o) { _getPrototypeOf$q = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$q(o); }
 
-function _defineProperty$n(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$C(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var MonthParser = /*#__PURE__*/function (_Parser) {
-  _inherits$n(MonthParser, _Parser);
+  _inherits$q(MonthParser, _Parser);
 
-  var _super = _createSuper$n(MonthParser);
+  var _super = _createSuper$q(MonthParser);
 
   function MonthParser() {
     var _this;
 
-    _classCallCheck$n(this, MonthParser);
+    _classCallCheck$q(this, MonthParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -25249,14 +17677,14 @@ var MonthParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$n(_assertThisInitialized$o(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'L', 'w', 'I', 'D', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$C(_assertThisInitialized$r(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'L', 'w', 'I', 'D', 'i', 'e', 'c', 't', 'T']);
 
-    _defineProperty$n(_assertThisInitialized$o(_this), "priority", 110);
+    _defineProperty$C(_assertThisInitialized$r(_this), "priority", 110);
 
     return _this;
   }
 
-  _createClass$n(MonthParser, [{
+  _createClass$q(MonthParser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       var valueCallback = function valueCallback(value) {
@@ -25327,38 +17755,38 @@ var MonthParser = /*#__PURE__*/function (_Parser) {
   return MonthParser;
 }(Parser$1);
 
-function _typeof$n(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$n = function _typeof(obj) { return typeof obj; }; } else { _typeof$n = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$n(obj); }
+function _typeof$s(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$s = function _typeof(obj) { return typeof obj; }; } else { _typeof$s = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$s(obj); }
 
-function _classCallCheck$m(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$p(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$m(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$p(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$m(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$m(Constructor.prototype, protoProps); if (staticProps) _defineProperties$m(Constructor, staticProps); return Constructor; }
+function _createClass$p(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$p(Constructor.prototype, protoProps); if (staticProps) _defineProperties$p(Constructor, staticProps); return Constructor; }
 
-function _inherits$m(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$m(subClass, superClass); }
+function _inherits$p(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$p(subClass, superClass); }
 
-function _setPrototypeOf$m(o, p) { _setPrototypeOf$m = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$m(o, p); }
+function _setPrototypeOf$p(o, p) { _setPrototypeOf$p = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$p(o, p); }
 
-function _createSuper$m(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$m(); return function _createSuperInternal() { var Super = _getPrototypeOf$m(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$m(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$m(this, result); }; }
+function _createSuper$p(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$p(); return function _createSuperInternal() { var Super = _getPrototypeOf$p(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$p(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$p(this, result); }; }
 
-function _possibleConstructorReturn$m(self, call) { if (call && (_typeof$n(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$n(self); }
+function _possibleConstructorReturn$p(self, call) { if (call && (_typeof$s(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$q(self); }
 
-function _assertThisInitialized$n(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$q(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$m() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$p() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$m(o) { _getPrototypeOf$m = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$m(o); }
+function _getPrototypeOf$p(o) { _getPrototypeOf$p = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$p(o); }
 
-function _defineProperty$m(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$B(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var StandAloneMonthParser = /*#__PURE__*/function (_Parser) {
-  _inherits$m(StandAloneMonthParser, _Parser);
+  _inherits$p(StandAloneMonthParser, _Parser);
 
-  var _super = _createSuper$m(StandAloneMonthParser);
+  var _super = _createSuper$p(StandAloneMonthParser);
 
   function StandAloneMonthParser() {
     var _this;
 
-    _classCallCheck$m(this, StandAloneMonthParser);
+    _classCallCheck$p(this, StandAloneMonthParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -25366,14 +17794,14 @@ var StandAloneMonthParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$m(_assertThisInitialized$n(_this), "priority", 110);
+    _defineProperty$B(_assertThisInitialized$q(_this), "priority", 110);
 
-    _defineProperty$m(_assertThisInitialized$n(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'M', 'w', 'I', 'D', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$B(_assertThisInitialized$q(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'M', 'w', 'I', 'D', 'i', 'e', 'c', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$m(StandAloneMonthParser, [{
+  _createClass$p(StandAloneMonthParser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       var valueCallback = function valueCallback(value) {
@@ -25446,46 +17874,46 @@ var StandAloneMonthParser = /*#__PURE__*/function (_Parser) {
 
 function setUTCWeek(dirtyDate, dirtyWeek, options) {
   requiredArgs(2, arguments);
-  var date = toDate(dirtyDate);
+  var date = toDate$1(dirtyDate);
   var week = toInteger(dirtyWeek);
   var diff = getUTCWeek(date, options) - week;
   date.setUTCDate(date.getUTCDate() - diff * 7);
   return date;
 }
 
-function _typeof$m(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$m = function _typeof(obj) { return typeof obj; }; } else { _typeof$m = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$m(obj); }
+function _typeof$r(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$r = function _typeof(obj) { return typeof obj; }; } else { _typeof$r = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$r(obj); }
 
-function _classCallCheck$l(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$o(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$l(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$o(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$l(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$l(Constructor.prototype, protoProps); if (staticProps) _defineProperties$l(Constructor, staticProps); return Constructor; }
+function _createClass$o(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$o(Constructor.prototype, protoProps); if (staticProps) _defineProperties$o(Constructor, staticProps); return Constructor; }
 
-function _inherits$l(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$l(subClass, superClass); }
+function _inherits$o(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$o(subClass, superClass); }
 
-function _setPrototypeOf$l(o, p) { _setPrototypeOf$l = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$l(o, p); }
+function _setPrototypeOf$o(o, p) { _setPrototypeOf$o = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$o(o, p); }
 
-function _createSuper$l(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$l(); return function _createSuperInternal() { var Super = _getPrototypeOf$l(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$l(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$l(this, result); }; }
+function _createSuper$o(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$o(); return function _createSuperInternal() { var Super = _getPrototypeOf$o(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$o(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$o(this, result); }; }
 
-function _possibleConstructorReturn$l(self, call) { if (call && (_typeof$m(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$m(self); }
+function _possibleConstructorReturn$o(self, call) { if (call && (_typeof$r(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$p(self); }
 
-function _assertThisInitialized$m(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$p(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$l() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$o() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$l(o) { _getPrototypeOf$l = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$l(o); }
+function _getPrototypeOf$o(o) { _getPrototypeOf$o = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$o(o); }
 
-function _defineProperty$l(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$A(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var LocalWeekParser = /*#__PURE__*/function (_Parser) {
-  _inherits$l(LocalWeekParser, _Parser);
+  _inherits$o(LocalWeekParser, _Parser);
 
-  var _super = _createSuper$l(LocalWeekParser);
+  var _super = _createSuper$o(LocalWeekParser);
 
   function LocalWeekParser() {
     var _this;
 
-    _classCallCheck$l(this, LocalWeekParser);
+    _classCallCheck$o(this, LocalWeekParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -25493,14 +17921,14 @@ var LocalWeekParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$l(_assertThisInitialized$m(_this), "priority", 100);
+    _defineProperty$A(_assertThisInitialized$p(_this), "priority", 100);
 
-    _defineProperty$l(_assertThisInitialized$m(_this), "incompatibleTokens", ['y', 'R', 'u', 'q', 'Q', 'M', 'L', 'I', 'd', 'D', 'i', 't', 'T']);
+    _defineProperty$A(_assertThisInitialized$p(_this), "incompatibleTokens", ['y', 'R', 'u', 'q', 'Q', 'M', 'L', 'I', 'd', 'D', 'i', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$l(LocalWeekParser, [{
+  _createClass$o(LocalWeekParser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       switch (token) {
@@ -25533,46 +17961,46 @@ var LocalWeekParser = /*#__PURE__*/function (_Parser) {
 
 function setUTCISOWeek(dirtyDate, dirtyISOWeek) {
   requiredArgs(2, arguments);
-  var date = toDate(dirtyDate);
+  var date = toDate$1(dirtyDate);
   var isoWeek = toInteger(dirtyISOWeek);
   var diff = getUTCISOWeek(date) - isoWeek;
   date.setUTCDate(date.getUTCDate() - diff * 7);
   return date;
 }
 
-function _typeof$l(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$l = function _typeof(obj) { return typeof obj; }; } else { _typeof$l = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$l(obj); }
+function _typeof$q(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$q = function _typeof(obj) { return typeof obj; }; } else { _typeof$q = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$q(obj); }
 
-function _classCallCheck$k(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$n(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$k(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$n(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$k(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$k(Constructor.prototype, protoProps); if (staticProps) _defineProperties$k(Constructor, staticProps); return Constructor; }
+function _createClass$n(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$n(Constructor.prototype, protoProps); if (staticProps) _defineProperties$n(Constructor, staticProps); return Constructor; }
 
-function _inherits$k(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$k(subClass, superClass); }
+function _inherits$n(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$n(subClass, superClass); }
 
-function _setPrototypeOf$k(o, p) { _setPrototypeOf$k = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$k(o, p); }
+function _setPrototypeOf$n(o, p) { _setPrototypeOf$n = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$n(o, p); }
 
-function _createSuper$k(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$k(); return function _createSuperInternal() { var Super = _getPrototypeOf$k(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$k(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$k(this, result); }; }
+function _createSuper$n(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$n(); return function _createSuperInternal() { var Super = _getPrototypeOf$n(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$n(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$n(this, result); }; }
 
-function _possibleConstructorReturn$k(self, call) { if (call && (_typeof$l(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$l(self); }
+function _possibleConstructorReturn$n(self, call) { if (call && (_typeof$q(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$o(self); }
 
-function _assertThisInitialized$l(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$o(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$k() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$n() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$k(o) { _getPrototypeOf$k = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$k(o); }
+function _getPrototypeOf$n(o) { _getPrototypeOf$n = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$n(o); }
 
-function _defineProperty$k(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$z(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var ISOWeekParser = /*#__PURE__*/function (_Parser) {
-  _inherits$k(ISOWeekParser, _Parser);
+  _inherits$n(ISOWeekParser, _Parser);
 
-  var _super = _createSuper$k(ISOWeekParser);
+  var _super = _createSuper$n(ISOWeekParser);
 
   function ISOWeekParser() {
     var _this;
 
-    _classCallCheck$k(this, ISOWeekParser);
+    _classCallCheck$n(this, ISOWeekParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -25580,14 +18008,14 @@ var ISOWeekParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$k(_assertThisInitialized$l(_this), "priority", 100);
+    _defineProperty$z(_assertThisInitialized$o(_this), "priority", 100);
 
-    _defineProperty$k(_assertThisInitialized$l(_this), "incompatibleTokens", ['y', 'Y', 'u', 'q', 'Q', 'M', 'L', 'w', 'd', 'D', 'e', 'c', 't', 'T']);
+    _defineProperty$z(_assertThisInitialized$o(_this), "incompatibleTokens", ['y', 'Y', 'u', 'q', 'Q', 'M', 'L', 'w', 'd', 'D', 'e', 'c', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$k(ISOWeekParser, [{
+  _createClass$n(ISOWeekParser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       switch (token) {
@@ -25618,41 +18046,41 @@ var ISOWeekParser = /*#__PURE__*/function (_Parser) {
   return ISOWeekParser;
 }(Parser$1);
 
-function _typeof$k(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$k = function _typeof(obj) { return typeof obj; }; } else { _typeof$k = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$k(obj); }
+function _typeof$p(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$p = function _typeof(obj) { return typeof obj; }; } else { _typeof$p = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$p(obj); }
 
-function _classCallCheck$j(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$m(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$j(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$m(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$j(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$j(Constructor.prototype, protoProps); if (staticProps) _defineProperties$j(Constructor, staticProps); return Constructor; }
+function _createClass$m(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$m(Constructor.prototype, protoProps); if (staticProps) _defineProperties$m(Constructor, staticProps); return Constructor; }
 
-function _inherits$j(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$j(subClass, superClass); }
+function _inherits$m(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$m(subClass, superClass); }
 
-function _setPrototypeOf$j(o, p) { _setPrototypeOf$j = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$j(o, p); }
+function _setPrototypeOf$m(o, p) { _setPrototypeOf$m = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$m(o, p); }
 
-function _createSuper$j(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$j(); return function _createSuperInternal() { var Super = _getPrototypeOf$j(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$j(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$j(this, result); }; }
+function _createSuper$m(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$m(); return function _createSuperInternal() { var Super = _getPrototypeOf$m(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$m(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$m(this, result); }; }
 
-function _possibleConstructorReturn$j(self, call) { if (call && (_typeof$k(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$k(self); }
+function _possibleConstructorReturn$m(self, call) { if (call && (_typeof$p(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$n(self); }
 
-function _assertThisInitialized$k(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$n(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$j() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$m() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$j(o) { _getPrototypeOf$j = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$j(o); }
+function _getPrototypeOf$m(o) { _getPrototypeOf$m = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$m(o); }
 
-function _defineProperty$j(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$y(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 var DAYS_IN_MONTH_LEAP_YEAR = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; // Day of the month
 
 var DateParser = /*#__PURE__*/function (_Parser) {
-  _inherits$j(DateParser, _Parser);
+  _inherits$m(DateParser, _Parser);
 
-  var _super = _createSuper$j(DateParser);
+  var _super = _createSuper$m(DateParser);
 
   function DateParser() {
     var _this;
 
-    _classCallCheck$j(this, DateParser);
+    _classCallCheck$m(this, DateParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -25660,16 +18088,16 @@ var DateParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$j(_assertThisInitialized$k(_this), "priority", 90);
+    _defineProperty$y(_assertThisInitialized$n(_this), "priority", 90);
 
-    _defineProperty$j(_assertThisInitialized$k(_this), "subPriority", 1);
+    _defineProperty$y(_assertThisInitialized$n(_this), "subPriority", 1);
 
-    _defineProperty$j(_assertThisInitialized$k(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'w', 'I', 'D', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$y(_assertThisInitialized$n(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'w', 'I', 'D', 'i', 'e', 'c', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$j(DateParser, [{
+  _createClass$m(DateParser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       switch (token) {
@@ -25710,38 +18138,38 @@ var DateParser = /*#__PURE__*/function (_Parser) {
   return DateParser;
 }(Parser$1);
 
-function _typeof$j(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$j = function _typeof(obj) { return typeof obj; }; } else { _typeof$j = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$j(obj); }
+function _typeof$o(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$o = function _typeof(obj) { return typeof obj; }; } else { _typeof$o = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$o(obj); }
 
-function _classCallCheck$i(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$l(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$i(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$l(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$i(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$i(Constructor.prototype, protoProps); if (staticProps) _defineProperties$i(Constructor, staticProps); return Constructor; }
+function _createClass$l(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$l(Constructor.prototype, protoProps); if (staticProps) _defineProperties$l(Constructor, staticProps); return Constructor; }
 
-function _inherits$i(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$i(subClass, superClass); }
+function _inherits$l(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$l(subClass, superClass); }
 
-function _setPrototypeOf$i(o, p) { _setPrototypeOf$i = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$i(o, p); }
+function _setPrototypeOf$l(o, p) { _setPrototypeOf$l = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$l(o, p); }
 
-function _createSuper$i(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$i(); return function _createSuperInternal() { var Super = _getPrototypeOf$i(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$i(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$i(this, result); }; }
+function _createSuper$l(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$l(); return function _createSuperInternal() { var Super = _getPrototypeOf$l(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$l(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$l(this, result); }; }
 
-function _possibleConstructorReturn$i(self, call) { if (call && (_typeof$j(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$j(self); }
+function _possibleConstructorReturn$l(self, call) { if (call && (_typeof$o(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$m(self); }
 
-function _assertThisInitialized$j(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$m(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$i() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$l() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$i(o) { _getPrototypeOf$i = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$i(o); }
+function _getPrototypeOf$l(o) { _getPrototypeOf$l = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$l(o); }
 
-function _defineProperty$i(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$x(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var DayOfYearParser = /*#__PURE__*/function (_Parser) {
-  _inherits$i(DayOfYearParser, _Parser);
+  _inherits$l(DayOfYearParser, _Parser);
 
-  var _super = _createSuper$i(DayOfYearParser);
+  var _super = _createSuper$l(DayOfYearParser);
 
   function DayOfYearParser() {
     var _this;
 
-    _classCallCheck$i(this, DayOfYearParser);
+    _classCallCheck$l(this, DayOfYearParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -25749,16 +18177,16 @@ var DayOfYearParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$i(_assertThisInitialized$j(_this), "priority", 90);
+    _defineProperty$x(_assertThisInitialized$m(_this), "priority", 90);
 
-    _defineProperty$i(_assertThisInitialized$j(_this), "subpriority", 1);
+    _defineProperty$x(_assertThisInitialized$m(_this), "subpriority", 1);
 
-    _defineProperty$i(_assertThisInitialized$j(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'M', 'L', 'w', 'I', 'd', 'E', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$x(_assertThisInitialized$m(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'M', 'L', 'w', 'I', 'd', 'E', 'i', 'e', 'c', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$i(DayOfYearParser, [{
+  _createClass$l(DayOfYearParser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       switch (token) {
@@ -25810,7 +18238,7 @@ function setUTCDay(dirtyDate, dirtyDay, options) {
     throw new RangeError('weekStartsOn must be between 0 and 6 inclusively');
   }
 
-  var date = toDate(dirtyDate);
+  var date = toDate$1(dirtyDate);
   var day = toInteger(dirtyDay);
   var currentDay = date.getUTCDay();
   var remainder = day % 7;
@@ -25820,39 +18248,39 @@ function setUTCDay(dirtyDate, dirtyDay, options) {
   return date;
 }
 
-function _typeof$i(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$i = function _typeof(obj) { return typeof obj; }; } else { _typeof$i = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$i(obj); }
+function _typeof$n(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$n = function _typeof(obj) { return typeof obj; }; } else { _typeof$n = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$n(obj); }
 
-function _classCallCheck$h(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$k(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$h(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$k(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$h(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$h(Constructor.prototype, protoProps); if (staticProps) _defineProperties$h(Constructor, staticProps); return Constructor; }
+function _createClass$k(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$k(Constructor.prototype, protoProps); if (staticProps) _defineProperties$k(Constructor, staticProps); return Constructor; }
 
-function _inherits$h(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$h(subClass, superClass); }
+function _inherits$k(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$k(subClass, superClass); }
 
-function _setPrototypeOf$h(o, p) { _setPrototypeOf$h = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$h(o, p); }
+function _setPrototypeOf$k(o, p) { _setPrototypeOf$k = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$k(o, p); }
 
-function _createSuper$h(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$h(); return function _createSuperInternal() { var Super = _getPrototypeOf$h(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$h(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$h(this, result); }; }
+function _createSuper$k(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$k(); return function _createSuperInternal() { var Super = _getPrototypeOf$k(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$k(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$k(this, result); }; }
 
-function _possibleConstructorReturn$h(self, call) { if (call && (_typeof$i(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$i(self); }
+function _possibleConstructorReturn$k(self, call) { if (call && (_typeof$n(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$l(self); }
 
-function _assertThisInitialized$i(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$l(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$h() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$k() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$h(o) { _getPrototypeOf$h = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$h(o); }
+function _getPrototypeOf$k(o) { _getPrototypeOf$k = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$k(o); }
 
-function _defineProperty$h(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$w(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var DayParser = /*#__PURE__*/function (_Parser) {
-  _inherits$h(DayParser, _Parser);
+  _inherits$k(DayParser, _Parser);
 
-  var _super = _createSuper$h(DayParser);
+  var _super = _createSuper$k(DayParser);
 
   function DayParser() {
     var _this;
 
-    _classCallCheck$h(this, DayParser);
+    _classCallCheck$k(this, DayParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -25860,14 +18288,14 @@ var DayParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$h(_assertThisInitialized$i(_this), "priority", 90);
+    _defineProperty$w(_assertThisInitialized$l(_this), "priority", 90);
 
-    _defineProperty$h(_assertThisInitialized$i(_this), "incompatibleTokens", ['D', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$w(_assertThisInitialized$l(_this), "incompatibleTokens", ['D', 'i', 'e', 'c', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$h(DayParser, [{
+  _createClass$k(DayParser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       switch (token) {
@@ -25938,39 +18366,39 @@ var DayParser = /*#__PURE__*/function (_Parser) {
   return DayParser;
 }(Parser$1);
 
-function _typeof$h(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$h = function _typeof(obj) { return typeof obj; }; } else { _typeof$h = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$h(obj); }
+function _typeof$m(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$m = function _typeof(obj) { return typeof obj; }; } else { _typeof$m = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$m(obj); }
 
-function _classCallCheck$g(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$j(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$g(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$j(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$g(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$g(Constructor.prototype, protoProps); if (staticProps) _defineProperties$g(Constructor, staticProps); return Constructor; }
+function _createClass$j(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$j(Constructor.prototype, protoProps); if (staticProps) _defineProperties$j(Constructor, staticProps); return Constructor; }
 
-function _inherits$g(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$g(subClass, superClass); }
+function _inherits$j(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$j(subClass, superClass); }
 
-function _setPrototypeOf$g(o, p) { _setPrototypeOf$g = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$g(o, p); }
+function _setPrototypeOf$j(o, p) { _setPrototypeOf$j = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$j(o, p); }
 
-function _createSuper$g(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$g(); return function _createSuperInternal() { var Super = _getPrototypeOf$g(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$g(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$g(this, result); }; }
+function _createSuper$j(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$j(); return function _createSuperInternal() { var Super = _getPrototypeOf$j(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$j(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$j(this, result); }; }
 
-function _possibleConstructorReturn$g(self, call) { if (call && (_typeof$h(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$h(self); }
+function _possibleConstructorReturn$j(self, call) { if (call && (_typeof$m(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$k(self); }
 
-function _assertThisInitialized$h(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$k(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$g() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$j() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$g(o) { _getPrototypeOf$g = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$g(o); }
+function _getPrototypeOf$j(o) { _getPrototypeOf$j = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$j(o); }
 
-function _defineProperty$g(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$v(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var LocalDayParser = /*#__PURE__*/function (_Parser) {
-  _inherits$g(LocalDayParser, _Parser);
+  _inherits$j(LocalDayParser, _Parser);
 
-  var _super = _createSuper$g(LocalDayParser);
+  var _super = _createSuper$j(LocalDayParser);
 
   function LocalDayParser() {
     var _this;
 
-    _classCallCheck$g(this, LocalDayParser);
+    _classCallCheck$j(this, LocalDayParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -25978,14 +18406,14 @@ var LocalDayParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$g(_assertThisInitialized$h(_this), "priority", 90);
+    _defineProperty$v(_assertThisInitialized$k(_this), "priority", 90);
 
-    _defineProperty$g(_assertThisInitialized$h(_this), "incompatibleTokens", ['y', 'R', 'u', 'q', 'Q', 'M', 'L', 'I', 'd', 'D', 'E', 'i', 'c', 't', 'T']);
+    _defineProperty$v(_assertThisInitialized$k(_this), "incompatibleTokens", ['y', 'R', 'u', 'q', 'Q', 'M', 'L', 'I', 'd', 'D', 'E', 'i', 'c', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$g(LocalDayParser, [{
+  _createClass$j(LocalDayParser, [{
     key: "parse",
     value: function parse(dateString, token, match, options) {
       var valueCallback = function valueCallback(value) {
@@ -26071,39 +18499,39 @@ var LocalDayParser = /*#__PURE__*/function (_Parser) {
   return LocalDayParser;
 }(Parser$1);
 
-function _typeof$g(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$g = function _typeof(obj) { return typeof obj; }; } else { _typeof$g = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$g(obj); }
+function _typeof$l(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$l = function _typeof(obj) { return typeof obj; }; } else { _typeof$l = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$l(obj); }
 
-function _classCallCheck$f(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$i(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$f(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$i(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$f(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$f(Constructor.prototype, protoProps); if (staticProps) _defineProperties$f(Constructor, staticProps); return Constructor; }
+function _createClass$i(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$i(Constructor.prototype, protoProps); if (staticProps) _defineProperties$i(Constructor, staticProps); return Constructor; }
 
-function _inherits$f(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$f(subClass, superClass); }
+function _inherits$i(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$i(subClass, superClass); }
 
-function _setPrototypeOf$f(o, p) { _setPrototypeOf$f = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$f(o, p); }
+function _setPrototypeOf$i(o, p) { _setPrototypeOf$i = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$i(o, p); }
 
-function _createSuper$f(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$f(); return function _createSuperInternal() { var Super = _getPrototypeOf$f(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$f(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$f(this, result); }; }
+function _createSuper$i(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$i(); return function _createSuperInternal() { var Super = _getPrototypeOf$i(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$i(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$i(this, result); }; }
 
-function _possibleConstructorReturn$f(self, call) { if (call && (_typeof$g(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$g(self); }
+function _possibleConstructorReturn$i(self, call) { if (call && (_typeof$l(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$j(self); }
 
-function _assertThisInitialized$g(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$j(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$f() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$i() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$f(o) { _getPrototypeOf$f = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$f(o); }
+function _getPrototypeOf$i(o) { _getPrototypeOf$i = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$i(o); }
 
-function _defineProperty$f(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$u(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var StandAloneLocalDayParser = /*#__PURE__*/function (_Parser) {
-  _inherits$f(StandAloneLocalDayParser, _Parser);
+  _inherits$i(StandAloneLocalDayParser, _Parser);
 
-  var _super = _createSuper$f(StandAloneLocalDayParser);
+  var _super = _createSuper$i(StandAloneLocalDayParser);
 
   function StandAloneLocalDayParser() {
     var _this;
 
-    _classCallCheck$f(this, StandAloneLocalDayParser);
+    _classCallCheck$i(this, StandAloneLocalDayParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -26111,14 +18539,14 @@ var StandAloneLocalDayParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$f(_assertThisInitialized$g(_this), "priority", 90);
+    _defineProperty$u(_assertThisInitialized$j(_this), "priority", 90);
 
-    _defineProperty$f(_assertThisInitialized$g(_this), "incompatibleTokens", ['y', 'R', 'u', 'q', 'Q', 'M', 'L', 'I', 'd', 'D', 'E', 'i', 'e', 't', 'T']);
+    _defineProperty$u(_assertThisInitialized$j(_this), "incompatibleTokens", ['y', 'R', 'u', 'q', 'Q', 'M', 'L', 'I', 'd', 'D', 'E', 'i', 'e', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$f(StandAloneLocalDayParser, [{
+  _createClass$i(StandAloneLocalDayParser, [{
     key: "parse",
     value: function parse(dateString, token, match, options) {
       var valueCallback = function valueCallback(value) {
@@ -26213,7 +18641,7 @@ function setUTCISODay(dirtyDate, dirtyDay) {
   }
 
   var weekStartsOn = 1;
-  var date = toDate(dirtyDate);
+  var date = toDate$1(dirtyDate);
   var currentDay = date.getUTCDay();
   var remainder = day % 7;
   var dayIndex = (remainder + 7) % 7;
@@ -26222,39 +18650,39 @@ function setUTCISODay(dirtyDate, dirtyDay) {
   return date;
 }
 
-function _typeof$f(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$f = function _typeof(obj) { return typeof obj; }; } else { _typeof$f = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$f(obj); }
+function _typeof$k(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$k = function _typeof(obj) { return typeof obj; }; } else { _typeof$k = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$k(obj); }
 
-function _classCallCheck$e(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$h(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$e(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$h(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$e(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$e(Constructor.prototype, protoProps); if (staticProps) _defineProperties$e(Constructor, staticProps); return Constructor; }
+function _createClass$h(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$h(Constructor.prototype, protoProps); if (staticProps) _defineProperties$h(Constructor, staticProps); return Constructor; }
 
-function _inherits$e(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$e(subClass, superClass); }
+function _inherits$h(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$h(subClass, superClass); }
 
-function _setPrototypeOf$e(o, p) { _setPrototypeOf$e = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$e(o, p); }
+function _setPrototypeOf$h(o, p) { _setPrototypeOf$h = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$h(o, p); }
 
-function _createSuper$e(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$e(); return function _createSuperInternal() { var Super = _getPrototypeOf$e(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$e(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$e(this, result); }; }
+function _createSuper$h(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$h(); return function _createSuperInternal() { var Super = _getPrototypeOf$h(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$h(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$h(this, result); }; }
 
-function _possibleConstructorReturn$e(self, call) { if (call && (_typeof$f(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$f(self); }
+function _possibleConstructorReturn$h(self, call) { if (call && (_typeof$k(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$i(self); }
 
-function _assertThisInitialized$f(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$i(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$e() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$h() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$e(o) { _getPrototypeOf$e = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$e(o); }
+function _getPrototypeOf$h(o) { _getPrototypeOf$h = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$h(o); }
 
-function _defineProperty$e(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$t(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var ISODayParser = /*#__PURE__*/function (_Parser) {
-  _inherits$e(ISODayParser, _Parser);
+  _inherits$h(ISODayParser, _Parser);
 
-  var _super = _createSuper$e(ISODayParser);
+  var _super = _createSuper$h(ISODayParser);
 
   function ISODayParser() {
     var _this;
 
-    _classCallCheck$e(this, ISODayParser);
+    _classCallCheck$h(this, ISODayParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -26262,14 +18690,14 @@ var ISODayParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$e(_assertThisInitialized$f(_this), "priority", 90);
+    _defineProperty$t(_assertThisInitialized$i(_this), "priority", 90);
 
-    _defineProperty$e(_assertThisInitialized$f(_this), "incompatibleTokens", ['y', 'Y', 'u', 'q', 'Q', 'M', 'L', 'w', 'd', 'D', 'E', 'e', 'c', 't', 'T']);
+    _defineProperty$t(_assertThisInitialized$i(_this), "incompatibleTokens", ['y', 'Y', 'u', 'q', 'Q', 'M', 'L', 'w', 'd', 'D', 'E', 'e', 'c', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$e(ISODayParser, [{
+  _createClass$h(ISODayParser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       var valueCallback = function valueCallback(value) {
@@ -26358,38 +18786,38 @@ var ISODayParser = /*#__PURE__*/function (_Parser) {
   return ISODayParser;
 }(Parser$1);
 
-function _typeof$e(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$e = function _typeof(obj) { return typeof obj; }; } else { _typeof$e = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$e(obj); }
+function _typeof$j(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$j = function _typeof(obj) { return typeof obj; }; } else { _typeof$j = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$j(obj); }
 
-function _classCallCheck$d(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$g(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$d(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$g(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$d(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$d(Constructor.prototype, protoProps); if (staticProps) _defineProperties$d(Constructor, staticProps); return Constructor; }
+function _createClass$g(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$g(Constructor.prototype, protoProps); if (staticProps) _defineProperties$g(Constructor, staticProps); return Constructor; }
 
-function _inherits$d(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$d(subClass, superClass); }
+function _inherits$g(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$g(subClass, superClass); }
 
-function _setPrototypeOf$d(o, p) { _setPrototypeOf$d = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$d(o, p); }
+function _setPrototypeOf$g(o, p) { _setPrototypeOf$g = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$g(o, p); }
 
-function _createSuper$d(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$d(); return function _createSuperInternal() { var Super = _getPrototypeOf$d(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$d(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$d(this, result); }; }
+function _createSuper$g(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$g(); return function _createSuperInternal() { var Super = _getPrototypeOf$g(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$g(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$g(this, result); }; }
 
-function _possibleConstructorReturn$d(self, call) { if (call && (_typeof$e(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$e(self); }
+function _possibleConstructorReturn$g(self, call) { if (call && (_typeof$j(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$h(self); }
 
-function _assertThisInitialized$e(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$h(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$d() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$g() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$d(o) { _getPrototypeOf$d = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$d(o); }
+function _getPrototypeOf$g(o) { _getPrototypeOf$g = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$g(o); }
 
-function _defineProperty$d(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$s(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var AMPMParser = /*#__PURE__*/function (_Parser) {
-  _inherits$d(AMPMParser, _Parser);
+  _inherits$g(AMPMParser, _Parser);
 
-  var _super = _createSuper$d(AMPMParser);
+  var _super = _createSuper$g(AMPMParser);
 
   function AMPMParser() {
     var _this;
 
-    _classCallCheck$d(this, AMPMParser);
+    _classCallCheck$g(this, AMPMParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -26397,14 +18825,14 @@ var AMPMParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$d(_assertThisInitialized$e(_this), "priority", 80);
+    _defineProperty$s(_assertThisInitialized$h(_this), "priority", 80);
 
-    _defineProperty$d(_assertThisInitialized$e(_this), "incompatibleTokens", ['b', 'B', 'H', 'k', 't', 'T']);
+    _defineProperty$s(_assertThisInitialized$h(_this), "incompatibleTokens", ['b', 'B', 'H', 'k', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$d(AMPMParser, [{
+  _createClass$g(AMPMParser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       switch (token) {
@@ -26450,38 +18878,38 @@ var AMPMParser = /*#__PURE__*/function (_Parser) {
   return AMPMParser;
 }(Parser$1);
 
-function _typeof$d(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$d = function _typeof(obj) { return typeof obj; }; } else { _typeof$d = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$d(obj); }
+function _typeof$i(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$i = function _typeof(obj) { return typeof obj; }; } else { _typeof$i = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$i(obj); }
 
-function _classCallCheck$c(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$f(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$c(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$f(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$c(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$c(Constructor.prototype, protoProps); if (staticProps) _defineProperties$c(Constructor, staticProps); return Constructor; }
+function _createClass$f(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$f(Constructor.prototype, protoProps); if (staticProps) _defineProperties$f(Constructor, staticProps); return Constructor; }
 
-function _inherits$c(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$c(subClass, superClass); }
+function _inherits$f(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$f(subClass, superClass); }
 
-function _setPrototypeOf$c(o, p) { _setPrototypeOf$c = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$c(o, p); }
+function _setPrototypeOf$f(o, p) { _setPrototypeOf$f = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$f(o, p); }
 
-function _createSuper$c(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$c(); return function _createSuperInternal() { var Super = _getPrototypeOf$c(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$c(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$c(this, result); }; }
+function _createSuper$f(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$f(); return function _createSuperInternal() { var Super = _getPrototypeOf$f(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$f(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$f(this, result); }; }
 
-function _possibleConstructorReturn$c(self, call) { if (call && (_typeof$d(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$d(self); }
+function _possibleConstructorReturn$f(self, call) { if (call && (_typeof$i(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$g(self); }
 
-function _assertThisInitialized$d(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$g(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$c() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$f() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$c(o) { _getPrototypeOf$c = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$c(o); }
+function _getPrototypeOf$f(o) { _getPrototypeOf$f = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$f(o); }
 
-function _defineProperty$c(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$r(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var AMPMMidnightParser = /*#__PURE__*/function (_Parser) {
-  _inherits$c(AMPMMidnightParser, _Parser);
+  _inherits$f(AMPMMidnightParser, _Parser);
 
-  var _super = _createSuper$c(AMPMMidnightParser);
+  var _super = _createSuper$f(AMPMMidnightParser);
 
   function AMPMMidnightParser() {
     var _this;
 
-    _classCallCheck$c(this, AMPMMidnightParser);
+    _classCallCheck$f(this, AMPMMidnightParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -26489,14 +18917,14 @@ var AMPMMidnightParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$c(_assertThisInitialized$d(_this), "priority", 80);
+    _defineProperty$r(_assertThisInitialized$g(_this), "priority", 80);
 
-    _defineProperty$c(_assertThisInitialized$d(_this), "incompatibleTokens", ['a', 'B', 'H', 'k', 't', 'T']);
+    _defineProperty$r(_assertThisInitialized$g(_this), "incompatibleTokens", ['a', 'B', 'H', 'k', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$c(AMPMMidnightParser, [{
+  _createClass$f(AMPMMidnightParser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       switch (token) {
@@ -26542,39 +18970,39 @@ var AMPMMidnightParser = /*#__PURE__*/function (_Parser) {
   return AMPMMidnightParser;
 }(Parser$1);
 
-function _typeof$c(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$c = function _typeof(obj) { return typeof obj; }; } else { _typeof$c = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$c(obj); }
+function _typeof$h(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$h = function _typeof(obj) { return typeof obj; }; } else { _typeof$h = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$h(obj); }
 
-function _classCallCheck$b(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$e(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$b(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$e(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$b(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$b(Constructor.prototype, protoProps); if (staticProps) _defineProperties$b(Constructor, staticProps); return Constructor; }
+function _createClass$e(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$e(Constructor.prototype, protoProps); if (staticProps) _defineProperties$e(Constructor, staticProps); return Constructor; }
 
-function _inherits$b(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$b(subClass, superClass); }
+function _inherits$e(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$e(subClass, superClass); }
 
-function _setPrototypeOf$b(o, p) { _setPrototypeOf$b = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$b(o, p); }
+function _setPrototypeOf$e(o, p) { _setPrototypeOf$e = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$e(o, p); }
 
-function _createSuper$b(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$b(); return function _createSuperInternal() { var Super = _getPrototypeOf$b(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$b(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$b(this, result); }; }
+function _createSuper$e(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$e(); return function _createSuperInternal() { var Super = _getPrototypeOf$e(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$e(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$e(this, result); }; }
 
-function _possibleConstructorReturn$b(self, call) { if (call && (_typeof$c(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$c(self); }
+function _possibleConstructorReturn$e(self, call) { if (call && (_typeof$h(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$f(self); }
 
-function _assertThisInitialized$c(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$f(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$b() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$e() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$b(o) { _getPrototypeOf$b = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$b(o); }
+function _getPrototypeOf$e(o) { _getPrototypeOf$e = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$e(o); }
 
-function _defineProperty$b(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$q(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var DayPeriodParser = /*#__PURE__*/function (_Parser) {
-  _inherits$b(DayPeriodParser, _Parser);
+  _inherits$e(DayPeriodParser, _Parser);
 
-  var _super = _createSuper$b(DayPeriodParser);
+  var _super = _createSuper$e(DayPeriodParser);
 
   function DayPeriodParser() {
     var _this;
 
-    _classCallCheck$b(this, DayPeriodParser);
+    _classCallCheck$e(this, DayPeriodParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -26582,14 +19010,14 @@ var DayPeriodParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$b(_assertThisInitialized$c(_this), "priority", 80);
+    _defineProperty$q(_assertThisInitialized$f(_this), "priority", 80);
 
-    _defineProperty$b(_assertThisInitialized$c(_this), "incompatibleTokens", ['a', 'b', 't', 'T']);
+    _defineProperty$q(_assertThisInitialized$f(_this), "incompatibleTokens", ['a', 'b', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$b(DayPeriodParser, [{
+  _createClass$e(DayPeriodParser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       switch (token) {
@@ -26635,38 +19063,38 @@ var DayPeriodParser = /*#__PURE__*/function (_Parser) {
   return DayPeriodParser;
 }(Parser$1);
 
-function _typeof$b(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$b = function _typeof(obj) { return typeof obj; }; } else { _typeof$b = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$b(obj); }
+function _typeof$g(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$g = function _typeof(obj) { return typeof obj; }; } else { _typeof$g = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$g(obj); }
 
-function _classCallCheck$a(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$d(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$a(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$d(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$a(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$a(Constructor.prototype, protoProps); if (staticProps) _defineProperties$a(Constructor, staticProps); return Constructor; }
+function _createClass$d(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$d(Constructor.prototype, protoProps); if (staticProps) _defineProperties$d(Constructor, staticProps); return Constructor; }
 
-function _inherits$a(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$a(subClass, superClass); }
+function _inherits$d(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$d(subClass, superClass); }
 
-function _setPrototypeOf$a(o, p) { _setPrototypeOf$a = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$a(o, p); }
+function _setPrototypeOf$d(o, p) { _setPrototypeOf$d = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$d(o, p); }
 
-function _createSuper$a(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$a(); return function _createSuperInternal() { var Super = _getPrototypeOf$a(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$a(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$a(this, result); }; }
+function _createSuper$d(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$d(); return function _createSuperInternal() { var Super = _getPrototypeOf$d(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$d(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$d(this, result); }; }
 
-function _possibleConstructorReturn$a(self, call) { if (call && (_typeof$b(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$b(self); }
+function _possibleConstructorReturn$d(self, call) { if (call && (_typeof$g(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$e(self); }
 
-function _assertThisInitialized$b(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$e(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$a() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$d() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$a(o) { _getPrototypeOf$a = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$a(o); }
+function _getPrototypeOf$d(o) { _getPrototypeOf$d = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$d(o); }
 
-function _defineProperty$a(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$p(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var Hour1to12Parser = /*#__PURE__*/function (_Parser) {
-  _inherits$a(Hour1to12Parser, _Parser);
+  _inherits$d(Hour1to12Parser, _Parser);
 
-  var _super = _createSuper$a(Hour1to12Parser);
+  var _super = _createSuper$d(Hour1to12Parser);
 
   function Hour1to12Parser() {
     var _this;
 
-    _classCallCheck$a(this, Hour1to12Parser);
+    _classCallCheck$d(this, Hour1to12Parser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -26674,14 +19102,14 @@ var Hour1to12Parser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$a(_assertThisInitialized$b(_this), "priority", 70);
+    _defineProperty$p(_assertThisInitialized$e(_this), "priority", 70);
 
-    _defineProperty$a(_assertThisInitialized$b(_this), "incompatibleTokens", ['H', 'K', 'k', 't', 'T']);
+    _defineProperty$p(_assertThisInitialized$e(_this), "incompatibleTokens", ['H', 'K', 'k', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$a(Hour1to12Parser, [{
+  _createClass$d(Hour1to12Parser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       switch (token) {
@@ -26722,38 +19150,38 @@ var Hour1to12Parser = /*#__PURE__*/function (_Parser) {
   return Hour1to12Parser;
 }(Parser$1);
 
-function _typeof$a(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$a = function _typeof(obj) { return typeof obj; }; } else { _typeof$a = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$a(obj); }
+function _typeof$f(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$f = function _typeof(obj) { return typeof obj; }; } else { _typeof$f = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$f(obj); }
 
-function _classCallCheck$9(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$c(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$9(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$c(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$9(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$9(Constructor.prototype, protoProps); if (staticProps) _defineProperties$9(Constructor, staticProps); return Constructor; }
+function _createClass$c(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$c(Constructor.prototype, protoProps); if (staticProps) _defineProperties$c(Constructor, staticProps); return Constructor; }
 
-function _inherits$9(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$9(subClass, superClass); }
+function _inherits$c(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$c(subClass, superClass); }
 
-function _setPrototypeOf$9(o, p) { _setPrototypeOf$9 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$9(o, p); }
+function _setPrototypeOf$c(o, p) { _setPrototypeOf$c = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$c(o, p); }
 
-function _createSuper$9(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$9(); return function _createSuperInternal() { var Super = _getPrototypeOf$9(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$9(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$9(this, result); }; }
+function _createSuper$c(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$c(); return function _createSuperInternal() { var Super = _getPrototypeOf$c(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$c(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$c(this, result); }; }
 
-function _possibleConstructorReturn$9(self, call) { if (call && (_typeof$a(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$a(self); }
+function _possibleConstructorReturn$c(self, call) { if (call && (_typeof$f(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$d(self); }
 
-function _assertThisInitialized$a(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$d(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$9() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$c() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$9(o) { _getPrototypeOf$9 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$9(o); }
+function _getPrototypeOf$c(o) { _getPrototypeOf$c = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$c(o); }
 
-function _defineProperty$9(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$o(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var Hour0to23Parser = /*#__PURE__*/function (_Parser) {
-  _inherits$9(Hour0to23Parser, _Parser);
+  _inherits$c(Hour0to23Parser, _Parser);
 
-  var _super = _createSuper$9(Hour0to23Parser);
+  var _super = _createSuper$c(Hour0to23Parser);
 
   function Hour0to23Parser() {
     var _this;
 
-    _classCallCheck$9(this, Hour0to23Parser);
+    _classCallCheck$c(this, Hour0to23Parser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -26761,14 +19189,14 @@ var Hour0to23Parser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$9(_assertThisInitialized$a(_this), "priority", 70);
+    _defineProperty$o(_assertThisInitialized$d(_this), "priority", 70);
 
-    _defineProperty$9(_assertThisInitialized$a(_this), "incompatibleTokens", ['a', 'b', 'h', 'K', 'k', 't', 'T']);
+    _defineProperty$o(_assertThisInitialized$d(_this), "incompatibleTokens", ['a', 'b', 'h', 'K', 'k', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$9(Hour0to23Parser, [{
+  _createClass$c(Hour0to23Parser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       switch (token) {
@@ -26800,38 +19228,38 @@ var Hour0to23Parser = /*#__PURE__*/function (_Parser) {
   return Hour0to23Parser;
 }(Parser$1);
 
-function _typeof$9(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$9 = function _typeof(obj) { return typeof obj; }; } else { _typeof$9 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$9(obj); }
+function _typeof$e(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$e = function _typeof(obj) { return typeof obj; }; } else { _typeof$e = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$e(obj); }
 
-function _classCallCheck$8(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$b(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$8(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$b(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$8(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$8(Constructor.prototype, protoProps); if (staticProps) _defineProperties$8(Constructor, staticProps); return Constructor; }
+function _createClass$b(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$b(Constructor.prototype, protoProps); if (staticProps) _defineProperties$b(Constructor, staticProps); return Constructor; }
 
-function _inherits$8(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$8(subClass, superClass); }
+function _inherits$b(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$b(subClass, superClass); }
 
-function _setPrototypeOf$8(o, p) { _setPrototypeOf$8 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$8(o, p); }
+function _setPrototypeOf$b(o, p) { _setPrototypeOf$b = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$b(o, p); }
 
-function _createSuper$8(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$8(); return function _createSuperInternal() { var Super = _getPrototypeOf$8(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$8(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$8(this, result); }; }
+function _createSuper$b(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$b(); return function _createSuperInternal() { var Super = _getPrototypeOf$b(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$b(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$b(this, result); }; }
 
-function _possibleConstructorReturn$8(self, call) { if (call && (_typeof$9(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$9(self); }
+function _possibleConstructorReturn$b(self, call) { if (call && (_typeof$e(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$c(self); }
 
-function _assertThisInitialized$9(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$c(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$8() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$b() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$8(o) { _getPrototypeOf$8 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$8(o); }
+function _getPrototypeOf$b(o) { _getPrototypeOf$b = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$b(o); }
 
-function _defineProperty$8(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$n(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var Hour0To11Parser = /*#__PURE__*/function (_Parser) {
-  _inherits$8(Hour0To11Parser, _Parser);
+  _inherits$b(Hour0To11Parser, _Parser);
 
-  var _super = _createSuper$8(Hour0To11Parser);
+  var _super = _createSuper$b(Hour0To11Parser);
 
   function Hour0To11Parser() {
     var _this;
 
-    _classCallCheck$8(this, Hour0To11Parser);
+    _classCallCheck$b(this, Hour0To11Parser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -26839,14 +19267,14 @@ var Hour0To11Parser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$8(_assertThisInitialized$9(_this), "priority", 70);
+    _defineProperty$n(_assertThisInitialized$c(_this), "priority", 70);
 
-    _defineProperty$8(_assertThisInitialized$9(_this), "incompatibleTokens", ['h', 'H', 'k', 't', 'T']);
+    _defineProperty$n(_assertThisInitialized$c(_this), "incompatibleTokens", ['h', 'H', 'k', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$8(Hour0To11Parser, [{
+  _createClass$b(Hour0To11Parser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       switch (token) {
@@ -26885,38 +19313,38 @@ var Hour0To11Parser = /*#__PURE__*/function (_Parser) {
   return Hour0To11Parser;
 }(Parser$1);
 
-function _typeof$8(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$8 = function _typeof(obj) { return typeof obj; }; } else { _typeof$8 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$8(obj); }
+function _typeof$d(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$d = function _typeof(obj) { return typeof obj; }; } else { _typeof$d = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$d(obj); }
 
-function _classCallCheck$7(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$a(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$7(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$a(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$7(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$7(Constructor.prototype, protoProps); if (staticProps) _defineProperties$7(Constructor, staticProps); return Constructor; }
+function _createClass$a(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$a(Constructor.prototype, protoProps); if (staticProps) _defineProperties$a(Constructor, staticProps); return Constructor; }
 
-function _inherits$7(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$7(subClass, superClass); }
+function _inherits$a(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$a(subClass, superClass); }
 
-function _setPrototypeOf$7(o, p) { _setPrototypeOf$7 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$7(o, p); }
+function _setPrototypeOf$a(o, p) { _setPrototypeOf$a = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$a(o, p); }
 
-function _createSuper$7(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$7(); return function _createSuperInternal() { var Super = _getPrototypeOf$7(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$7(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$7(this, result); }; }
+function _createSuper$a(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$a(); return function _createSuperInternal() { var Super = _getPrototypeOf$a(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$a(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$a(this, result); }; }
 
-function _possibleConstructorReturn$7(self, call) { if (call && (_typeof$8(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$8(self); }
+function _possibleConstructorReturn$a(self, call) { if (call && (_typeof$d(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$b(self); }
 
-function _assertThisInitialized$8(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$b(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$7() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$a() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$7(o) { _getPrototypeOf$7 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$7(o); }
+function _getPrototypeOf$a(o) { _getPrototypeOf$a = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$a(o); }
 
-function _defineProperty$7(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$m(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var Hour1To24Parser = /*#__PURE__*/function (_Parser) {
-  _inherits$7(Hour1To24Parser, _Parser);
+  _inherits$a(Hour1To24Parser, _Parser);
 
-  var _super = _createSuper$7(Hour1To24Parser);
+  var _super = _createSuper$a(Hour1To24Parser);
 
   function Hour1To24Parser() {
     var _this;
 
-    _classCallCheck$7(this, Hour1To24Parser);
+    _classCallCheck$a(this, Hour1To24Parser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -26924,14 +19352,14 @@ var Hour1To24Parser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$7(_assertThisInitialized$8(_this), "priority", 70);
+    _defineProperty$m(_assertThisInitialized$b(_this), "priority", 70);
 
-    _defineProperty$7(_assertThisInitialized$8(_this), "incompatibleTokens", ['a', 'b', 'h', 'H', 'K', 't', 'T']);
+    _defineProperty$m(_assertThisInitialized$b(_this), "incompatibleTokens", ['a', 'b', 'h', 'H', 'K', 't', 'T']);
 
     return _this;
   }
 
-  _createClass$7(Hour1To24Parser, [{
+  _createClass$a(Hour1To24Parser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       switch (token) {
@@ -26964,38 +19392,38 @@ var Hour1To24Parser = /*#__PURE__*/function (_Parser) {
   return Hour1To24Parser;
 }(Parser$1);
 
-function _typeof$7(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$7 = function _typeof(obj) { return typeof obj; }; } else { _typeof$7 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$7(obj); }
+function _typeof$c(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$c = function _typeof(obj) { return typeof obj; }; } else { _typeof$c = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$c(obj); }
 
-function _classCallCheck$6(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$9(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$6(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$9(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$6(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$6(Constructor.prototype, protoProps); if (staticProps) _defineProperties$6(Constructor, staticProps); return Constructor; }
+function _createClass$9(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$9(Constructor.prototype, protoProps); if (staticProps) _defineProperties$9(Constructor, staticProps); return Constructor; }
 
-function _inherits$6(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$6(subClass, superClass); }
+function _inherits$9(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$9(subClass, superClass); }
 
-function _setPrototypeOf$6(o, p) { _setPrototypeOf$6 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$6(o, p); }
+function _setPrototypeOf$9(o, p) { _setPrototypeOf$9 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$9(o, p); }
 
-function _createSuper$6(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$6(); return function _createSuperInternal() { var Super = _getPrototypeOf$6(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$6(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$6(this, result); }; }
+function _createSuper$9(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$9(); return function _createSuperInternal() { var Super = _getPrototypeOf$9(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$9(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$9(this, result); }; }
 
-function _possibleConstructorReturn$6(self, call) { if (call && (_typeof$7(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$7(self); }
+function _possibleConstructorReturn$9(self, call) { if (call && (_typeof$c(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$a(self); }
 
-function _assertThisInitialized$7(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$a(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$6() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$9() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$6(o) { _getPrototypeOf$6 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$6(o); }
+function _getPrototypeOf$9(o) { _getPrototypeOf$9 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$9(o); }
 
-function _defineProperty$6(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$l(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var MinuteParser = /*#__PURE__*/function (_Parser) {
-  _inherits$6(MinuteParser, _Parser);
+  _inherits$9(MinuteParser, _Parser);
 
-  var _super = _createSuper$6(MinuteParser);
+  var _super = _createSuper$9(MinuteParser);
 
   function MinuteParser() {
     var _this;
 
-    _classCallCheck$6(this, MinuteParser);
+    _classCallCheck$9(this, MinuteParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -27003,14 +19431,14 @@ var MinuteParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$6(_assertThisInitialized$7(_this), "priority", 60);
+    _defineProperty$l(_assertThisInitialized$a(_this), "priority", 60);
 
-    _defineProperty$6(_assertThisInitialized$7(_this), "incompatibleTokens", ['t', 'T']);
+    _defineProperty$l(_assertThisInitialized$a(_this), "incompatibleTokens", ['t', 'T']);
 
     return _this;
   }
 
-  _createClass$6(MinuteParser, [{
+  _createClass$9(MinuteParser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       switch (token) {
@@ -27042,38 +19470,38 @@ var MinuteParser = /*#__PURE__*/function (_Parser) {
   return MinuteParser;
 }(Parser$1);
 
-function _typeof$6(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$6 = function _typeof(obj) { return typeof obj; }; } else { _typeof$6 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$6(obj); }
+function _typeof$b(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$b = function _typeof(obj) { return typeof obj; }; } else { _typeof$b = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$b(obj); }
 
-function _classCallCheck$5(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$8(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$5(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$8(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$5(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$5(Constructor.prototype, protoProps); if (staticProps) _defineProperties$5(Constructor, staticProps); return Constructor; }
+function _createClass$8(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$8(Constructor.prototype, protoProps); if (staticProps) _defineProperties$8(Constructor, staticProps); return Constructor; }
 
-function _inherits$5(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$5(subClass, superClass); }
+function _inherits$8(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$8(subClass, superClass); }
 
-function _setPrototypeOf$5(o, p) { _setPrototypeOf$5 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$5(o, p); }
+function _setPrototypeOf$8(o, p) { _setPrototypeOf$8 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$8(o, p); }
 
-function _createSuper$5(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$5(); return function _createSuperInternal() { var Super = _getPrototypeOf$5(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$5(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$5(this, result); }; }
+function _createSuper$8(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$8(); return function _createSuperInternal() { var Super = _getPrototypeOf$8(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$8(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$8(this, result); }; }
 
-function _possibleConstructorReturn$5(self, call) { if (call && (_typeof$6(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$6(self); }
+function _possibleConstructorReturn$8(self, call) { if (call && (_typeof$b(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$9(self); }
 
-function _assertThisInitialized$6(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$9(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$5() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$8() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$5(o) { _getPrototypeOf$5 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$5(o); }
+function _getPrototypeOf$8(o) { _getPrototypeOf$8 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$8(o); }
 
-function _defineProperty$5(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$k(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var SecondParser = /*#__PURE__*/function (_Parser) {
-  _inherits$5(SecondParser, _Parser);
+  _inherits$8(SecondParser, _Parser);
 
-  var _super = _createSuper$5(SecondParser);
+  var _super = _createSuper$8(SecondParser);
 
   function SecondParser() {
     var _this;
 
-    _classCallCheck$5(this, SecondParser);
+    _classCallCheck$8(this, SecondParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -27081,14 +19509,14 @@ var SecondParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$5(_assertThisInitialized$6(_this), "priority", 50);
+    _defineProperty$k(_assertThisInitialized$9(_this), "priority", 50);
 
-    _defineProperty$5(_assertThisInitialized$6(_this), "incompatibleTokens", ['t', 'T']);
+    _defineProperty$k(_assertThisInitialized$9(_this), "incompatibleTokens", ['t', 'T']);
 
     return _this;
   }
 
-  _createClass$5(SecondParser, [{
+  _createClass$8(SecondParser, [{
     key: "parse",
     value: function parse(dateString, token, match) {
       switch (token) {
@@ -27120,38 +19548,38 @@ var SecondParser = /*#__PURE__*/function (_Parser) {
   return SecondParser;
 }(Parser$1);
 
-function _typeof$5(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$5 = function _typeof(obj) { return typeof obj; }; } else { _typeof$5 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$5(obj); }
+function _typeof$a(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$a = function _typeof(obj) { return typeof obj; }; } else { _typeof$a = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$a(obj); }
 
-function _classCallCheck$4(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$7(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$4(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$7(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$4(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$4(Constructor.prototype, protoProps); if (staticProps) _defineProperties$4(Constructor, staticProps); return Constructor; }
+function _createClass$7(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$7(Constructor.prototype, protoProps); if (staticProps) _defineProperties$7(Constructor, staticProps); return Constructor; }
 
-function _inherits$4(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$4(subClass, superClass); }
+function _inherits$7(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$7(subClass, superClass); }
 
-function _setPrototypeOf$4(o, p) { _setPrototypeOf$4 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$4(o, p); }
+function _setPrototypeOf$7(o, p) { _setPrototypeOf$7 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$7(o, p); }
 
-function _createSuper$4(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$4(); return function _createSuperInternal() { var Super = _getPrototypeOf$4(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$4(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$4(this, result); }; }
+function _createSuper$7(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$7(); return function _createSuperInternal() { var Super = _getPrototypeOf$7(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$7(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$7(this, result); }; }
 
-function _possibleConstructorReturn$4(self, call) { if (call && (_typeof$5(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$5(self); }
+function _possibleConstructorReturn$7(self, call) { if (call && (_typeof$a(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$8(self); }
 
-function _assertThisInitialized$5(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$8(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$4() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$7() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$4(o) { _getPrototypeOf$4 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$4(o); }
+function _getPrototypeOf$7(o) { _getPrototypeOf$7 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$7(o); }
 
-function _defineProperty$4(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$j(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var FractionOfSecondParser = /*#__PURE__*/function (_Parser) {
-  _inherits$4(FractionOfSecondParser, _Parser);
+  _inherits$7(FractionOfSecondParser, _Parser);
 
-  var _super = _createSuper$4(FractionOfSecondParser);
+  var _super = _createSuper$7(FractionOfSecondParser);
 
   function FractionOfSecondParser() {
     var _this;
 
-    _classCallCheck$4(this, FractionOfSecondParser);
+    _classCallCheck$7(this, FractionOfSecondParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -27159,14 +19587,14 @@ var FractionOfSecondParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$4(_assertThisInitialized$5(_this), "priority", 30);
+    _defineProperty$j(_assertThisInitialized$8(_this), "priority", 30);
 
-    _defineProperty$4(_assertThisInitialized$5(_this), "incompatibleTokens", ['t', 'T']);
+    _defineProperty$j(_assertThisInitialized$8(_this), "incompatibleTokens", ['t', 'T']);
 
     return _this;
   }
 
-  _createClass$4(FractionOfSecondParser, [{
+  _createClass$7(FractionOfSecondParser, [{
     key: "parse",
     value: function parse(dateString, token) {
       var valueCallback = function valueCallback(value) {
@@ -27186,39 +19614,39 @@ var FractionOfSecondParser = /*#__PURE__*/function (_Parser) {
   return FractionOfSecondParser;
 }(Parser$1);
 
-function _typeof$4(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$4 = function _typeof(obj) { return typeof obj; }; } else { _typeof$4 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$4(obj); }
+function _typeof$9(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$9 = function _typeof(obj) { return typeof obj; }; } else { _typeof$9 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$9(obj); }
 
-function _classCallCheck$3(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$6(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$3(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$6(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$3(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$3(Constructor.prototype, protoProps); if (staticProps) _defineProperties$3(Constructor, staticProps); return Constructor; }
+function _createClass$6(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$6(Constructor.prototype, protoProps); if (staticProps) _defineProperties$6(Constructor, staticProps); return Constructor; }
 
-function _inherits$3(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$3(subClass, superClass); }
+function _inherits$6(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$6(subClass, superClass); }
 
-function _setPrototypeOf$3(o, p) { _setPrototypeOf$3 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$3(o, p); }
+function _setPrototypeOf$6(o, p) { _setPrototypeOf$6 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$6(o, p); }
 
-function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf$3(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$3(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$3(this, result); }; }
+function _createSuper$6(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$6(); return function _createSuperInternal() { var Super = _getPrototypeOf$6(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$6(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$6(this, result); }; }
 
-function _possibleConstructorReturn$3(self, call) { if (call && (_typeof$4(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$4(self); }
+function _possibleConstructorReturn$6(self, call) { if (call && (_typeof$9(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$7(self); }
 
-function _assertThisInitialized$4(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$7(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$3() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$6() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$3(o) { _getPrototypeOf$3 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$3(o); }
+function _getPrototypeOf$6(o) { _getPrototypeOf$6 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$6(o); }
 
-function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$i(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var ISOTimezoneWithZParser = /*#__PURE__*/function (_Parser) {
-  _inherits$3(ISOTimezoneWithZParser, _Parser);
+  _inherits$6(ISOTimezoneWithZParser, _Parser);
 
-  var _super = _createSuper$3(ISOTimezoneWithZParser);
+  var _super = _createSuper$6(ISOTimezoneWithZParser);
 
   function ISOTimezoneWithZParser() {
     var _this;
 
-    _classCallCheck$3(this, ISOTimezoneWithZParser);
+    _classCallCheck$6(this, ISOTimezoneWithZParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -27226,14 +19654,14 @@ var ISOTimezoneWithZParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$3(_assertThisInitialized$4(_this), "priority", 10);
+    _defineProperty$i(_assertThisInitialized$7(_this), "priority", 10);
 
-    _defineProperty$3(_assertThisInitialized$4(_this), "incompatibleTokens", ['t', 'T', 'x']);
+    _defineProperty$i(_assertThisInitialized$7(_this), "incompatibleTokens", ['t', 'T', 'x']);
 
     return _this;
   }
 
-  _createClass$3(ISOTimezoneWithZParser, [{
+  _createClass$6(ISOTimezoneWithZParser, [{
     key: "parse",
     value: function parse(dateString, token) {
       switch (token) {
@@ -27268,39 +19696,39 @@ var ISOTimezoneWithZParser = /*#__PURE__*/function (_Parser) {
   return ISOTimezoneWithZParser;
 }(Parser$1);
 
-function _typeof$3(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$3 = function _typeof(obj) { return typeof obj; }; } else { _typeof$3 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$3(obj); }
+function _typeof$8(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$8 = function _typeof(obj) { return typeof obj; }; } else { _typeof$8 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$8(obj); }
 
-function _classCallCheck$2(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$5(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$2(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$5(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$2(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$2(Constructor.prototype, protoProps); if (staticProps) _defineProperties$2(Constructor, staticProps); return Constructor; }
+function _createClass$5(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$5(Constructor.prototype, protoProps); if (staticProps) _defineProperties$5(Constructor, staticProps); return Constructor; }
 
-function _inherits$2(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$2(subClass, superClass); }
+function _inherits$5(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$5(subClass, superClass); }
 
-function _setPrototypeOf$2(o, p) { _setPrototypeOf$2 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$2(o, p); }
+function _setPrototypeOf$5(o, p) { _setPrototypeOf$5 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$5(o, p); }
 
-function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf$2(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$2(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$2(this, result); }; }
+function _createSuper$5(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$5(); return function _createSuperInternal() { var Super = _getPrototypeOf$5(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$5(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$5(this, result); }; }
 
-function _possibleConstructorReturn$2(self, call) { if (call && (_typeof$3(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$3(self); }
+function _possibleConstructorReturn$5(self, call) { if (call && (_typeof$8(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$6(self); }
 
-function _assertThisInitialized$3(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$6(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$5() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$2(o) { _getPrototypeOf$2 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$2(o); }
+function _getPrototypeOf$5(o) { _getPrototypeOf$5 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$5(o); }
 
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$h(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var ISOTimezoneParser = /*#__PURE__*/function (_Parser) {
-  _inherits$2(ISOTimezoneParser, _Parser);
+  _inherits$5(ISOTimezoneParser, _Parser);
 
-  var _super = _createSuper$2(ISOTimezoneParser);
+  var _super = _createSuper$5(ISOTimezoneParser);
 
   function ISOTimezoneParser() {
     var _this;
 
-    _classCallCheck$2(this, ISOTimezoneParser);
+    _classCallCheck$5(this, ISOTimezoneParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -27308,14 +19736,14 @@ var ISOTimezoneParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$2(_assertThisInitialized$3(_this), "priority", 10);
+    _defineProperty$h(_assertThisInitialized$6(_this), "priority", 10);
 
-    _defineProperty$2(_assertThisInitialized$3(_this), "incompatibleTokens", ['t', 'T', 'X']);
+    _defineProperty$h(_assertThisInitialized$6(_this), "incompatibleTokens", ['t', 'T', 'X']);
 
     return _this;
   }
 
-  _createClass$2(ISOTimezoneParser, [{
+  _createClass$5(ISOTimezoneParser, [{
     key: "parse",
     value: function parse(dateString, token) {
       switch (token) {
@@ -27350,38 +19778,38 @@ var ISOTimezoneParser = /*#__PURE__*/function (_Parser) {
   return ISOTimezoneParser;
 }(Parser$1);
 
-function _typeof$2(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$2 = function _typeof(obj) { return typeof obj; }; } else { _typeof$2 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$2(obj); }
+function _typeof$7(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$7 = function _typeof(obj) { return typeof obj; }; } else { _typeof$7 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$7(obj); }
 
-function _classCallCheck$1(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$4(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$1(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$4(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$1(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$1(Constructor.prototype, protoProps); if (staticProps) _defineProperties$1(Constructor, staticProps); return Constructor; }
+function _createClass$4(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$4(Constructor.prototype, protoProps); if (staticProps) _defineProperties$4(Constructor, staticProps); return Constructor; }
 
-function _inherits$1(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$1(subClass, superClass); }
+function _inherits$4(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$4(subClass, superClass); }
 
-function _setPrototypeOf$1(o, p) { _setPrototypeOf$1 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$1(o, p); }
+function _setPrototypeOf$4(o, p) { _setPrototypeOf$4 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$4(o, p); }
 
-function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf$1(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$1(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$1(this, result); }; }
+function _createSuper$4(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$4(); return function _createSuperInternal() { var Super = _getPrototypeOf$4(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$4(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$4(this, result); }; }
 
-function _possibleConstructorReturn$1(self, call) { if (call && (_typeof$2(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$2(self); }
+function _possibleConstructorReturn$4(self, call) { if (call && (_typeof$7(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$5(self); }
 
-function _assertThisInitialized$2(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$5(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$4() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf$1(o) { _getPrototypeOf$1 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$1(o); }
+function _getPrototypeOf$4(o) { _getPrototypeOf$4 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$4(o); }
 
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$g(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var TimestampSecondsParser = /*#__PURE__*/function (_Parser) {
-  _inherits$1(TimestampSecondsParser, _Parser);
+  _inherits$4(TimestampSecondsParser, _Parser);
 
-  var _super = _createSuper$1(TimestampSecondsParser);
+  var _super = _createSuper$4(TimestampSecondsParser);
 
   function TimestampSecondsParser() {
     var _this;
 
-    _classCallCheck$1(this, TimestampSecondsParser);
+    _classCallCheck$4(this, TimestampSecondsParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -27389,14 +19817,14 @@ var TimestampSecondsParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty$1(_assertThisInitialized$2(_this), "priority", 40);
+    _defineProperty$g(_assertThisInitialized$5(_this), "priority", 40);
 
-    _defineProperty$1(_assertThisInitialized$2(_this), "incompatibleTokens", '*');
+    _defineProperty$g(_assertThisInitialized$5(_this), "incompatibleTokens", '*');
 
     return _this;
   }
 
-  _createClass$1(TimestampSecondsParser, [{
+  _createClass$4(TimestampSecondsParser, [{
     key: "parse",
     value: function parse(dateString) {
       return parseAnyDigitsSigned(dateString);
@@ -27413,38 +19841,38 @@ var TimestampSecondsParser = /*#__PURE__*/function (_Parser) {
   return TimestampSecondsParser;
 }(Parser$1);
 
-function _typeof$1(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$1 = function _typeof(obj) { return typeof obj; }; } else { _typeof$1 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$1(obj); }
+function _typeof$6(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$6 = function _typeof(obj) { return typeof obj; }; } else { _typeof$6 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$6(obj); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$3(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$3(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _createClass$3(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$3(Constructor.prototype, protoProps); if (staticProps) _defineProperties$3(Constructor, staticProps); return Constructor; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _inherits$3(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$3(subClass, superClass); }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _setPrototypeOf$3(o, p) { _setPrototypeOf$3 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$3(o, p); }
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf$3(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$3(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$3(this, result); }; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof$1(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$1(self); }
+function _possibleConstructorReturn$3(self, call) { if (call && (_typeof$6(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$4(self); }
 
-function _assertThisInitialized$1(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$4(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$3() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _getPrototypeOf$3(o) { _getPrototypeOf$3 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$3(o); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$f(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var TimestampMillisecondsParser = /*#__PURE__*/function (_Parser) {
-  _inherits(TimestampMillisecondsParser, _Parser);
+  _inherits$3(TimestampMillisecondsParser, _Parser);
 
-  var _super = _createSuper(TimestampMillisecondsParser);
+  var _super = _createSuper$3(TimestampMillisecondsParser);
 
   function TimestampMillisecondsParser() {
     var _this;
 
-    _classCallCheck(this, TimestampMillisecondsParser);
+    _classCallCheck$3(this, TimestampMillisecondsParser);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -27452,14 +19880,14 @@ var TimestampMillisecondsParser = /*#__PURE__*/function (_Parser) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty(_assertThisInitialized$1(_this), "priority", 20);
+    _defineProperty$f(_assertThisInitialized$4(_this), "priority", 20);
 
-    _defineProperty(_assertThisInitialized$1(_this), "incompatibleTokens", '*');
+    _defineProperty$f(_assertThisInitialized$4(_this), "incompatibleTokens", '*');
 
     return _this;
   }
 
-  _createClass(TimestampMillisecondsParser, [{
+  _createClass$3(TimestampMillisecondsParser, [{
     key: "parse",
     value: function parse(dateString) {
       return parseAnyDigitsSigned(dateString);
@@ -27554,13 +19982,13 @@ var parsers = {
   T: new TimestampMillisecondsParser()
 };
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof$5(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$5 = function _typeof(obj) { return typeof obj; }; } else { _typeof$5 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$5(obj); }
 
-function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray$5(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _unsupportedIterableToArray$5(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$5(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$5(o, minLen); }
 
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _arrayLikeToArray$5(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
 //   (one of the certain letters followed by `o`)
 // - (\w)\1* matches any sequences of the same letter
@@ -27909,7 +20337,7 @@ function parse$1(dirtyDateString, dirtyFormatString, dirtyReferenceDate, options
 
   if (formatString === '') {
     if (dateString === '') {
-      return toDate(dirtyReferenceDate);
+      return toDate$1(dirtyReferenceDate);
     } else {
       return new Date(NaN);
     }
@@ -28007,7 +20435,7 @@ function parse$1(dirtyDateString, dirtyFormatString, dirtyReferenceDate, options
     for (_iterator.s(); !(_step = _iterator.n()).done;) {
       var _ret = _loop();
 
-      if (_typeof(_ret) === "object") return _ret.v;
+      if (_typeof$5(_ret) === "object") return _ret.v;
     } // Check if the remaining input contains something other than whitespace
 
   } catch (err) {
@@ -28035,7 +20463,7 @@ function parse$1(dirtyDateString, dirtyFormatString, dirtyReferenceDate, options
   }).map(function (setterArray) {
     return setterArray[0];
   });
-  var date = toDate(dirtyReferenceDate);
+  var date = toDate$1(dirtyReferenceDate);
 
   if (isNaN(date.getTime())) {
     return new Date(NaN);
@@ -28104,8 +20532,8 @@ function cleanEscapedString(input) {
 
 function isSameMonth(dirtyDateLeft, dirtyDateRight) {
   requiredArgs(2, arguments);
-  var dateLeft = toDate(dirtyDateLeft);
-  var dateRight = toDate(dirtyDateRight);
+  var dateLeft = toDate$1(dirtyDateLeft);
+  var dateRight = toDate$1(dirtyDateRight);
   return dateLeft.getFullYear() === dateRight.getFullYear() && dateLeft.getMonth() === dateRight.getMonth();
 }
 
@@ -28184,251 +20612,6455 @@ function subYears(dirtyDate, dirtyAmount) {
   return addYears(dirtyDate, -amount);
 }
 
-var Field$1 = /*#__PURE__*/function (_Component) {
-  _inherits$A(Field, _Component);
+var entry = {};
 
-  var _super = _createSuper$A(Field);
+var DatePicker$1 = {};
 
-  function Field(props) {
+// As defined on the list of supported events: https://reactjs.org/docs/events.html
+var clipboardEvents = ['onCopy', 'onCut', 'onPaste'];
+var compositionEvents = ['onCompositionEnd', 'onCompositionStart', 'onCompositionUpdate'];
+var keyboardEvents = ['onKeyDown', 'onKeyPress', 'onKeyUp'];
+var focusEvents = ['onFocus', 'onBlur'];
+var formEvents = ['onChange', 'onInput', 'onInvalid', 'onReset', 'onSubmit'];
+var genericEvents = ['onError', 'onLoad'];
+var mouseEvents = ['onClick', 'onContextMenu', 'onDoubleClick', 'onDrag', 'onDragEnd', 'onDragEnter', 'onDragExit', 'onDragLeave', 'onDragOver', 'onDragStart', 'onDrop', 'onMouseDown', 'onMouseEnter', 'onMouseLeave', 'onMouseMove', 'onMouseOut', 'onMouseOver', 'onMouseUp'];
+var pointerEvents = ['onPointerDown', 'onPointerMove', 'onPointerUp', 'onPointerCancel', 'onGotPointerCapture', 'onLostPointerCapture', 'onPointerEnter', 'onPointerLeave', 'onPointerOver', 'onPointerOut'];
+var selectionEvents = ['onSelect'];
+var touchEvents = ['onTouchCancel', 'onTouchEnd', 'onTouchMove', 'onTouchStart'];
+var uiEvents = ['onScroll'];
+var wheelEvents = ['onWheel'];
+var mediaEvents = ['onAbort', 'onCanPlay', 'onCanPlayThrough', 'onDurationChange', 'onEmptied', 'onEncrypted', 'onEnded', 'onError', 'onLoadedData', 'onLoadedMetadata', 'onLoadStart', 'onPause', 'onPlay', 'onPlaying', 'onProgress', 'onRateChange', 'onSeeked', 'onSeeking', 'onStalled', 'onSuspend', 'onTimeUpdate', 'onVolumeChange', 'onWaiting'];
+var imageEvents = ['onLoad', 'onError'];
+var animationEvents = ['onAnimationStart', 'onAnimationEnd', 'onAnimationIteration'];
+var transitionEvents = ['onTransitionEnd'];
+var otherEvents = ['onToggle'];
+var allEvents = [].concat(clipboardEvents, compositionEvents, keyboardEvents, focusEvents, formEvents, genericEvents, mouseEvents, pointerEvents, selectionEvents, touchEvents, uiEvents, wheelEvents, mediaEvents, imageEvents, animationEvents, transitionEvents, otherEvents);
+/**
+ * Returns an object with on-event callback props curried with provided args.
+ * @param {Object} props Props passed to a component.
+ * @param {Function=} getArgs A function that returns argument(s) on-event callbacks
+ *   shall be curried with.
+ */
+
+var makeEventProps = function makeEventProps(props, getArgs) {
+  var eventProps = {};
+  allEvents.forEach(function (eventName) {
+    if (!(eventName in props)) {
+      return;
+    }
+
+    if (!getArgs) {
+      eventProps[eventName] = props[eventName];
+      return;
+    }
+
+    eventProps[eventName] = function (event) {
+      return props[eventName](event, getArgs(eventName));
+    };
+  });
+  return eventProps;
+};
+
+var esm$6 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  clipboardEvents: clipboardEvents,
+  compositionEvents: compositionEvents,
+  keyboardEvents: keyboardEvents,
+  focusEvents: focusEvents,
+  formEvents: formEvents,
+  genericEvents: genericEvents,
+  mouseEvents: mouseEvents,
+  pointerEvents: pointerEvents,
+  selectionEvents: selectionEvents,
+  touchEvents: touchEvents,
+  uiEvents: uiEvents,
+  wheelEvents: wheelEvents,
+  mediaEvents: mediaEvents,
+  imageEvents: imageEvents,
+  animationEvents: animationEvents,
+  transitionEvents: transitionEvents,
+  otherEvents: otherEvents,
+  allEvents: allEvents,
+  'default': makeEventProps
+});
+
+var require$$2$1 = /*@__PURE__*/getAugmentedNamespace(esm$6);
+
+function mergeClassNames() {
+  return Array.prototype.slice.call(arguments).reduce(function (classList, arg) {
+    return classList.concat(arg);
+  }, []).filter(function (arg) {
+    return typeof arg === 'string';
+  }).join(' ');
+}
+
+var esm$5 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': mergeClassNames
+});
+
+var require$$3$1 = /*@__PURE__*/getAugmentedNamespace(esm$5);
+
+/**
+ * lodash (Custom Build) <https://lodash.com/>
+ * Build: `lodash modularize exports="npm" -o ./`
+ * Copyright jQuery Foundation and other contributors <https://jquery.org/>
+ * Released under MIT license <https://lodash.com/license>
+ * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+ * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ */
+
+/** Used as the `TypeError` message for "Functions" methods. */
+var FUNC_ERROR_TEXT$1 = 'Expected a function';
+
+/** Used to stand-in for `undefined` hash values. */
+var HASH_UNDEFINED$2 = '__lodash_hash_undefined__';
+
+/** `Object#toString` result references. */
+var funcTag$3 = '[object Function]',
+    genTag$2 = '[object GeneratorFunction]';
+
+/**
+ * Used to match `RegExp`
+ * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
+ */
+var reRegExpChar$1 = /[\\^$.*+?()[\]{}|]/g;
+
+/** Used to detect host constructors (Safari). */
+var reIsHostCtor$1 = /^\[object .+?Constructor\]$/;
+
+/** Detect free variable `global` from Node.js. */
+var freeGlobal$2 = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
+
+/** Detect free variable `self`. */
+var freeSelf$1 = typeof self == 'object' && self && self.Object === Object && self;
+
+/** Used as a reference to the global object. */
+var root$2 = freeGlobal$2 || freeSelf$1 || Function('return this')();
+
+/**
+ * Gets the value at `key` of `object`.
+ *
+ * @private
+ * @param {Object} [object] The object to query.
+ * @param {string} key The key of the property to get.
+ * @returns {*} Returns the property value.
+ */
+function getValue$3(object, key) {
+  return object == null ? undefined : object[key];
+}
+
+/**
+ * Checks if `value` is a host object in IE < 9.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
+ */
+function isHostObject(value) {
+  // Many host objects are `Object` objects that can coerce to strings
+  // despite having improperly defined `toString` methods.
+  var result = false;
+  if (value != null && typeof value.toString != 'function') {
+    try {
+      result = !!(value + '');
+    } catch (e) {}
+  }
+  return result;
+}
+
+/** Used for built-in method references. */
+var arrayProto$1 = Array.prototype,
+    funcProto$3 = Function.prototype,
+    objectProto$e = Object.prototype;
+
+/** Used to detect overreaching core-js shims. */
+var coreJsData$2 = root$2['__core-js_shared__'];
+
+/** Used to detect methods masquerading as native. */
+var maskSrcKey$1 = (function() {
+  var uid = /[^.]+$/.exec(coreJsData$2 && coreJsData$2.keys && coreJsData$2.keys.IE_PROTO || '');
+  return uid ? ('Symbol(src)_1.' + uid) : '';
+}());
+
+/** Used to resolve the decompiled source of functions. */
+var funcToString$3 = funcProto$3.toString;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty$b = objectProto$e.hasOwnProperty;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var objectToString$1 = objectProto$e.toString;
+
+/** Used to detect if a method is native. */
+var reIsNative$1 = RegExp('^' +
+  funcToString$3.call(hasOwnProperty$b).replace(reRegExpChar$1, '\\$&')
+  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
+);
+
+/** Built-in value references. */
+var splice$1 = arrayProto$1.splice;
+
+/* Built-in method references that are verified to be native. */
+var Map$3 = getNative$1(root$2, 'Map'),
+    nativeCreate$2 = getNative$1(Object, 'create');
+
+/**
+ * Creates a hash object.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function Hash$1(entries) {
+  var index = -1,
+      length = entries ? entries.length : 0;
+
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
+}
+
+/**
+ * Removes all key-value entries from the hash.
+ *
+ * @private
+ * @name clear
+ * @memberOf Hash
+ */
+function hashClear$1() {
+  this.__data__ = nativeCreate$2 ? nativeCreate$2(null) : {};
+}
+
+/**
+ * Removes `key` and its value from the hash.
+ *
+ * @private
+ * @name delete
+ * @memberOf Hash
+ * @param {Object} hash The hash to modify.
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function hashDelete$1(key) {
+  return this.has(key) && delete this.__data__[key];
+}
+
+/**
+ * Gets the hash value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf Hash
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function hashGet$1(key) {
+  var data = this.__data__;
+  if (nativeCreate$2) {
+    var result = data[key];
+    return result === HASH_UNDEFINED$2 ? undefined : result;
+  }
+  return hasOwnProperty$b.call(data, key) ? data[key] : undefined;
+}
+
+/**
+ * Checks if a hash value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf Hash
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function hashHas$1(key) {
+  var data = this.__data__;
+  return nativeCreate$2 ? data[key] !== undefined : hasOwnProperty$b.call(data, key);
+}
+
+/**
+ * Sets the hash `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf Hash
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the hash instance.
+ */
+function hashSet$1(key, value) {
+  var data = this.__data__;
+  data[key] = (nativeCreate$2 && value === undefined) ? HASH_UNDEFINED$2 : value;
+  return this;
+}
+
+// Add methods to `Hash`.
+Hash$1.prototype.clear = hashClear$1;
+Hash$1.prototype['delete'] = hashDelete$1;
+Hash$1.prototype.get = hashGet$1;
+Hash$1.prototype.has = hashHas$1;
+Hash$1.prototype.set = hashSet$1;
+
+/**
+ * Creates an list cache object.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function ListCache$1(entries) {
+  var index = -1,
+      length = entries ? entries.length : 0;
+
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
+}
+
+/**
+ * Removes all key-value entries from the list cache.
+ *
+ * @private
+ * @name clear
+ * @memberOf ListCache
+ */
+function listCacheClear$1() {
+  this.__data__ = [];
+}
+
+/**
+ * Removes `key` and its value from the list cache.
+ *
+ * @private
+ * @name delete
+ * @memberOf ListCache
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function listCacheDelete$1(key) {
+  var data = this.__data__,
+      index = assocIndexOf$1(data, key);
+
+  if (index < 0) {
+    return false;
+  }
+  var lastIndex = data.length - 1;
+  if (index == lastIndex) {
+    data.pop();
+  } else {
+    splice$1.call(data, index, 1);
+  }
+  return true;
+}
+
+/**
+ * Gets the list cache value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf ListCache
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function listCacheGet$1(key) {
+  var data = this.__data__,
+      index = assocIndexOf$1(data, key);
+
+  return index < 0 ? undefined : data[index][1];
+}
+
+/**
+ * Checks if a list cache value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf ListCache
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function listCacheHas$1(key) {
+  return assocIndexOf$1(this.__data__, key) > -1;
+}
+
+/**
+ * Sets the list cache `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf ListCache
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the list cache instance.
+ */
+function listCacheSet$1(key, value) {
+  var data = this.__data__,
+      index = assocIndexOf$1(data, key);
+
+  if (index < 0) {
+    data.push([key, value]);
+  } else {
+    data[index][1] = value;
+  }
+  return this;
+}
+
+// Add methods to `ListCache`.
+ListCache$1.prototype.clear = listCacheClear$1;
+ListCache$1.prototype['delete'] = listCacheDelete$1;
+ListCache$1.prototype.get = listCacheGet$1;
+ListCache$1.prototype.has = listCacheHas$1;
+ListCache$1.prototype.set = listCacheSet$1;
+
+/**
+ * Creates a map cache object to store key-value pairs.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function MapCache$1(entries) {
+  var index = -1,
+      length = entries ? entries.length : 0;
+
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
+}
+
+/**
+ * Removes all key-value entries from the map.
+ *
+ * @private
+ * @name clear
+ * @memberOf MapCache
+ */
+function mapCacheClear$1() {
+  this.__data__ = {
+    'hash': new Hash$1,
+    'map': new (Map$3 || ListCache$1),
+    'string': new Hash$1
+  };
+}
+
+/**
+ * Removes `key` and its value from the map.
+ *
+ * @private
+ * @name delete
+ * @memberOf MapCache
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function mapCacheDelete$1(key) {
+  return getMapData$1(this, key)['delete'](key);
+}
+
+/**
+ * Gets the map value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf MapCache
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function mapCacheGet$1(key) {
+  return getMapData$1(this, key).get(key);
+}
+
+/**
+ * Checks if a map value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf MapCache
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function mapCacheHas$1(key) {
+  return getMapData$1(this, key).has(key);
+}
+
+/**
+ * Sets the map `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf MapCache
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the map cache instance.
+ */
+function mapCacheSet$1(key, value) {
+  getMapData$1(this, key).set(key, value);
+  return this;
+}
+
+// Add methods to `MapCache`.
+MapCache$1.prototype.clear = mapCacheClear$1;
+MapCache$1.prototype['delete'] = mapCacheDelete$1;
+MapCache$1.prototype.get = mapCacheGet$1;
+MapCache$1.prototype.has = mapCacheHas$1;
+MapCache$1.prototype.set = mapCacheSet$1;
+
+/**
+ * Gets the index at which the `key` is found in `array` of key-value pairs.
+ *
+ * @private
+ * @param {Array} array The array to inspect.
+ * @param {*} key The key to search for.
+ * @returns {number} Returns the index of the matched value, else `-1`.
+ */
+function assocIndexOf$1(array, key) {
+  var length = array.length;
+  while (length--) {
+    if (eq$1(array[length][0], key)) {
+      return length;
+    }
+  }
+  return -1;
+}
+
+/**
+ * The base implementation of `_.isNative` without bad shim checks.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a native function,
+ *  else `false`.
+ */
+function baseIsNative$1(value) {
+  if (!isObject$3(value) || isMasked$1(value)) {
+    return false;
+  }
+  var pattern = (isFunction$3(value) || isHostObject(value)) ? reIsNative$1 : reIsHostCtor$1;
+  return pattern.test(toSource$1(value));
+}
+
+/**
+ * Gets the data for `map`.
+ *
+ * @private
+ * @param {Object} map The map to query.
+ * @param {string} key The reference key.
+ * @returns {*} Returns the map data.
+ */
+function getMapData$1(map, key) {
+  var data = map.__data__;
+  return isKeyable$1(key)
+    ? data[typeof key == 'string' ? 'string' : 'hash']
+    : data.map;
+}
+
+/**
+ * Gets the native function at `key` of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {string} key The key of the method to get.
+ * @returns {*} Returns the function if it's native, else `undefined`.
+ */
+function getNative$1(object, key) {
+  var value = getValue$3(object, key);
+  return baseIsNative$1(value) ? value : undefined;
+}
+
+/**
+ * Checks if `value` is suitable for use as unique object key.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
+ */
+function isKeyable$1(value) {
+  var type = typeof value;
+  return (type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean')
+    ? (value !== '__proto__')
+    : (value === null);
+}
+
+/**
+ * Checks if `func` has its source masked.
+ *
+ * @private
+ * @param {Function} func The function to check.
+ * @returns {boolean} Returns `true` if `func` is masked, else `false`.
+ */
+function isMasked$1(func) {
+  return !!maskSrcKey$1 && (maskSrcKey$1 in func);
+}
+
+/**
+ * Converts `func` to its source code.
+ *
+ * @private
+ * @param {Function} func The function to process.
+ * @returns {string} Returns the source code.
+ */
+function toSource$1(func) {
+  if (func != null) {
+    try {
+      return funcToString$3.call(func);
+    } catch (e) {}
+    try {
+      return (func + '');
+    } catch (e) {}
+  }
+  return '';
+}
+
+/**
+ * Creates a function that memoizes the result of `func`. If `resolver` is
+ * provided, it determines the cache key for storing the result based on the
+ * arguments provided to the memoized function. By default, the first argument
+ * provided to the memoized function is used as the map cache key. The `func`
+ * is invoked with the `this` binding of the memoized function.
+ *
+ * **Note:** The cache is exposed as the `cache` property on the memoized
+ * function. Its creation may be customized by replacing the `_.memoize.Cache`
+ * constructor with one whose instances implement the
+ * [`Map`](http://ecma-international.org/ecma-262/7.0/#sec-properties-of-the-map-prototype-object)
+ * method interface of `delete`, `get`, `has`, and `set`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to have its output memoized.
+ * @param {Function} [resolver] The function to resolve the cache key.
+ * @returns {Function} Returns the new memoized function.
+ * @example
+ *
+ * var object = { 'a': 1, 'b': 2 };
+ * var other = { 'c': 3, 'd': 4 };
+ *
+ * var values = _.memoize(_.values);
+ * values(object);
+ * // => [1, 2]
+ *
+ * values(other);
+ * // => [3, 4]
+ *
+ * object.a = 2;
+ * values(object);
+ * // => [1, 2]
+ *
+ * // Modify the result cache.
+ * values.cache.set(object, ['a', 'b']);
+ * values(object);
+ * // => ['a', 'b']
+ *
+ * // Replace `_.memoize.Cache`.
+ * _.memoize.Cache = WeakMap;
+ */
+function memoize$2(func, resolver) {
+  if (typeof func != 'function' || (resolver && typeof resolver != 'function')) {
+    throw new TypeError(FUNC_ERROR_TEXT$1);
+  }
+  var memoized = function() {
+    var args = arguments,
+        key = resolver ? resolver.apply(this, args) : args[0],
+        cache = memoized.cache;
+
+    if (cache.has(key)) {
+      return cache.get(key);
+    }
+    var result = func.apply(this, args);
+    memoized.cache = cache.set(key, result);
+    return result;
+  };
+  memoized.cache = new (memoize$2.Cache || MapCache$1);
+  return memoized;
+}
+
+// Assign cache to `_.memoize`.
+memoize$2.Cache = MapCache$1;
+
+/**
+ * Performs a
+ * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+ * comparison between two values to determine if they are equivalent.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to compare.
+ * @param {*} other The other value to compare.
+ * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+ * @example
+ *
+ * var object = { 'a': 1 };
+ * var other = { 'a': 1 };
+ *
+ * _.eq(object, object);
+ * // => true
+ *
+ * _.eq(object, other);
+ * // => false
+ *
+ * _.eq('a', 'a');
+ * // => true
+ *
+ * _.eq('a', Object('a'));
+ * // => false
+ *
+ * _.eq(NaN, NaN);
+ * // => true
+ */
+function eq$1(value, other) {
+  return value === other || (value !== value && other !== other);
+}
+
+/**
+ * Checks if `value` is classified as a `Function` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a function, else `false`.
+ * @example
+ *
+ * _.isFunction(_);
+ * // => true
+ *
+ * _.isFunction(/abc/);
+ * // => false
+ */
+function isFunction$3(value) {
+  // The use of `Object#toString` avoids issues with the `typeof` operator
+  // in Safari 8-9 which returns 'object' for typed array and other constructors.
+  var tag = isObject$3(value) ? objectToString$1.call(value) : '';
+  return tag == funcTag$3 || tag == genTag$2;
+}
+
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject$3(value) {
+  var type = typeof value;
+  return !!value && (type == 'object' || type == 'function');
+}
+
+var lodash_memoize = memoize$2;
+
+var memoize$3 = lodash_memoize;
+
+function resolver(options) {
+  return JSON.stringify(options);
+}
+
+function uniqDefined(arr) {
+  return arr.filter(function (el, index) {
+    return el && arr.indexOf(el) === index;
+  });
+}
+
+function normalizeLocales(arr) {
+  return arr.map(function (el) {
+    if (!el || el.indexOf('-') === -1 || el.toLowerCase() !== el) {
+      return el;
+    }
+
+    var splitEl = el.split('-');
+    return splitEl[0] + "-" + splitEl[1].toUpperCase();
+  });
+}
+
+function getUserLocalesInternal(_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$useFallbackLocal = _ref.useFallbackLocale,
+      useFallbackLocale = _ref$useFallbackLocal === void 0 ? true : _ref$useFallbackLocal,
+      _ref$fallbackLocale = _ref.fallbackLocale,
+      fallbackLocale = _ref$fallbackLocale === void 0 ? 'en-US' : _ref$fallbackLocale;
+
+  var languageList = [];
+
+  if (typeof window !== 'undefined') {
+    var _window = window,
+        navigator = _window.navigator;
+    languageList = languageList.concat(navigator.languages, navigator.language, navigator.userLanguage, navigator.browserLanguage, navigator.systemLanguage);
+  }
+
+  if (useFallbackLocale) {
+    languageList.push(fallbackLocale);
+  }
+
+  return normalizeLocales(uniqDefined(languageList));
+}
+
+var getUserLocales = memoize$3(getUserLocalesInternal, resolver);
+
+function getUserLocaleInternal(options) {
+  return getUserLocales(options)[0] || null;
+}
+
+var getUserLocale = memoize$3(getUserLocaleInternal, resolver);
+
+var esm$4 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  getUserLocales: getUserLocales,
+  getUserLocale: getUserLocale,
+  'default': getUserLocale
+});
+
+/**
+ * Utils
+ */
+function makeGetEdgeOfNeighbor(getPeriod, getEdgeOfPeriod, defaultOffset) {
+  return function makeGetEdgeOfNeighborInternal(date) {
+    var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultOffset;
+    var previousPeriod = getPeriod(date) + offset;
+    return getEdgeOfPeriod(previousPeriod);
+  };
+}
+
+function makeGetEnd(getBeginOfNextPeriod) {
+  return function makeGetEndInternal(date) {
+    return new Date(getBeginOfNextPeriod(date).getTime() - 1);
+  };
+}
+
+function makeGetRange(functions) {
+  return function makeGetRangeInternal(date) {
+    return functions.map(function (fn) {
+      return fn(date);
+    });
+  };
+}
+/**
+ * Simple getters - getting a property of a given point in time
+ */
+
+/**
+ * Gets year from date.
+ *
+ * @param {Date|number|string} date Date to get year from.
+ */
+
+
+function getYear(date) {
+  if (date instanceof Date) {
+    return date.getFullYear();
+  }
+
+  if (typeof date === 'number') {
+    return date;
+  }
+
+  var year = parseInt(date, 10);
+
+  if (typeof date === 'string' && !isNaN(year)) {
+    return year;
+  }
+
+  throw new Error("Failed to get year from date: ".concat(date, "."));
+}
+/**
+ * Gets month from date.
+ *
+ * @param {Date} date Date to get month from.
+ */
+
+function getMonth(date) {
+  if (date instanceof Date) {
+    return date.getMonth();
+  }
+
+  throw new Error("Failed to get month from date: ".concat(date, "."));
+}
+/**
+ * Gets human-readable month from date.
+ *
+ * @param {Date} date Date to get human-readable month from.
+ */
+
+function getMonthHuman(date) {
+  if (date instanceof Date) {
+    return date.getMonth() + 1;
+  }
+
+  throw new Error("Failed to get human-readable month from date: ".concat(date, "."));
+}
+/**
+ * Gets human-readable day of the month from date.
+ *
+ * @param {Date} date Date to get day of the month from.
+ */
+
+function getDate(date) {
+  if (date instanceof Date) {
+    return date.getDate();
+  }
+
+  throw new Error("Failed to get year from date: ".concat(date, "."));
+}
+/**
+ * Gets hours from date.
+ *
+ * @param {Date|string} date Date to get hours from.
+ */
+
+function getHours(date) {
+  if (date instanceof Date) {
+    return date.getHours();
+  }
+
+  if (typeof date === 'string') {
+    var datePieces = date.split(':');
+
+    if (datePieces.length >= 2) {
+      var hoursString = datePieces[0];
+      var hours = parseInt(hoursString, 10);
+
+      if (!isNaN(hours)) {
+        return hours;
+      }
+    }
+  }
+
+  throw new Error("Failed to get hours from date: ".concat(date, "."));
+}
+/**
+ * Gets minutes from date.
+ *
+ * @param {Date|string} date Date to get minutes from.
+ */
+
+function getMinutes(date) {
+  if (date instanceof Date) {
+    return date.getMinutes();
+  }
+
+  if (typeof date === 'string') {
+    var datePieces = date.split(':');
+
+    if (datePieces.length >= 2) {
+      var minutesString = datePieces[1] || 0;
+      var minutes = parseInt(minutesString, 10);
+
+      if (!isNaN(minutes)) {
+        return minutes;
+      }
+    }
+  }
+
+  throw new Error("Failed to get minutes from date: ".concat(date, "."));
+}
+/**
+ * Gets seconds from date.
+ *
+ * @param {Date|string} date Date to get seconds from.
+ */
+
+function getSeconds(date) {
+  if (date instanceof Date) {
+    return date.getSeconds();
+  }
+
+  if (typeof date === 'string') {
+    var datePieces = date.split(':');
+
+    if (datePieces.length >= 2) {
+      var secondsString = datePieces[2] || 0;
+      var seconds = parseInt(secondsString, 10);
+
+      if (!isNaN(seconds)) {
+        return seconds;
+      }
+    }
+  }
+
+  throw new Error("Failed to get seconds from date: ".concat(date, "."));
+}
+/**
+ * Century
+ */
+
+function getCenturyStart(date) {
+  var year = getYear(date);
+  var centuryStartYear = year + (-year + 1) % 100;
+  var centuryStartDate = new Date();
+  centuryStartDate.setFullYear(centuryStartYear, 0, 1);
+  centuryStartDate.setHours(0, 0, 0, 0);
+  return centuryStartDate;
+}
+var getPreviousCenturyStart = makeGetEdgeOfNeighbor(getYear, getCenturyStart, -100);
+var getNextCenturyStart = makeGetEdgeOfNeighbor(getYear, getCenturyStart, 100);
+var getCenturyEnd = makeGetEnd(getNextCenturyStart);
+var getPreviousCenturyEnd = makeGetEdgeOfNeighbor(getYear, getCenturyEnd, -100);
+var getNextCenturyEnd = makeGetEdgeOfNeighbor(getYear, getCenturyEnd, 100);
+var getCenturyRange = makeGetRange([getCenturyStart, getCenturyEnd]);
+/**
+ * Decade
+ */
+
+function getDecadeStart(date) {
+  var year = getYear(date);
+  var decadeStartYear = year + (-year + 1) % 10;
+  var decadeStartDate = new Date();
+  decadeStartDate.setFullYear(decadeStartYear, 0, 1);
+  decadeStartDate.setHours(0, 0, 0, 0);
+  return decadeStartDate;
+}
+var getPreviousDecadeStart = makeGetEdgeOfNeighbor(getYear, getDecadeStart, -10);
+var getNextDecadeStart = makeGetEdgeOfNeighbor(getYear, getDecadeStart, 10);
+var getDecadeEnd = makeGetEnd(getNextDecadeStart);
+var getPreviousDecadeEnd = makeGetEdgeOfNeighbor(getYear, getDecadeEnd, -10);
+var getNextDecadeEnd = makeGetEdgeOfNeighbor(getYear, getDecadeEnd, 10);
+var getDecadeRange = makeGetRange([getDecadeStart, getDecadeEnd]);
+/**
+ * Year
+ */
+
+function getYearStart(date) {
+  var year = getYear(date);
+  var yearStartDate = new Date();
+  yearStartDate.setFullYear(year, 0, 1);
+  yearStartDate.setHours(0, 0, 0, 0);
+  return yearStartDate;
+}
+var getPreviousYearStart = makeGetEdgeOfNeighbor(getYear, getYearStart, -1);
+var getNextYearStart = makeGetEdgeOfNeighbor(getYear, getYearStart, 1);
+var getYearEnd = makeGetEnd(getNextYearStart);
+var getPreviousYearEnd = makeGetEdgeOfNeighbor(getYear, getYearEnd, -1);
+var getNextYearEnd = makeGetEdgeOfNeighbor(getYear, getYearEnd, 1);
+var getYearRange = makeGetRange([getYearStart, getYearEnd]);
+/**
+ * Month
+ */
+
+function makeGetEdgeOfNeighborMonth(getEdgeOfPeriod, defaultOffset) {
+  return function makeGetEdgeOfNeighborMonthInternal(date) {
+    var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultOffset;
+    var year = getYear(date);
+    var month = getMonth(date) + offset;
+    var previousPeriod = new Date();
+    previousPeriod.setFullYear(year, month, 1);
+    previousPeriod.setHours(0, 0, 0, 0);
+    return getEdgeOfPeriod(previousPeriod);
+  };
+}
+
+function getMonthStart(date) {
+  var year = getYear(date);
+  var month = getMonth(date);
+  var monthStartDate = new Date();
+  monthStartDate.setFullYear(year, month, 1);
+  monthStartDate.setHours(0, 0, 0, 0);
+  return monthStartDate;
+}
+var getPreviousMonthStart = makeGetEdgeOfNeighborMonth(getMonthStart, -1);
+var getNextMonthStart = makeGetEdgeOfNeighborMonth(getMonthStart, 1);
+var getMonthEnd = makeGetEnd(getNextMonthStart);
+var getPreviousMonthEnd = makeGetEdgeOfNeighborMonth(getMonthEnd, -1);
+var getNextMonthEnd = makeGetEdgeOfNeighborMonth(getMonthEnd, 1);
+var getMonthRange = makeGetRange([getMonthStart, getMonthEnd]);
+/**
+ * Day
+ */
+
+function makeGetEdgeOfNeighborDay(getEdgeOfPeriod, defaultOffset) {
+  return function makeGetEdgeOfNeighborDayInternal(date) {
+    var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultOffset;
+    var year = getYear(date);
+    var month = getMonth(date);
+    var day = getDate(date) + offset;
+    var previousPeriod = new Date();
+    previousPeriod.setFullYear(year, month, day);
+    previousPeriod.setHours(0, 0, 0, 0);
+    return getEdgeOfPeriod(previousPeriod);
+  };
+}
+
+function getDayStart(date) {
+  var year = getYear(date);
+  var month = getMonth(date);
+  var day = getDate(date);
+  var dayStartDate = new Date();
+  dayStartDate.setFullYear(year, month, day);
+  dayStartDate.setHours(0, 0, 0, 0);
+  return dayStartDate;
+}
+var getPreviousDayStart = makeGetEdgeOfNeighborDay(getDayStart, -1);
+var getNextDayStart = makeGetEdgeOfNeighborDay(getDayStart, 1);
+var getDayEnd = makeGetEnd(getNextDayStart);
+var getPreviousDayEnd = makeGetEdgeOfNeighborDay(getDayEnd, -1);
+var getNextDayEnd = makeGetEdgeOfNeighborDay(getDayEnd, 1);
+var getDayRange = makeGetRange([getDayStart, getDayEnd]);
+/**
+ * Other
+ */
+
+/**
+ * Returns a number of days in a month of a given date.
+ *
+ * @param {Date} date Date.
+ */
+
+function getDaysInMonth(date) {
+  return getDate(getMonthEnd(date));
+}
+
+function padStart(num) {
+  var val = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
+  var numStr = "".concat(num);
+
+  if (numStr.length >= val) {
+    return num;
+  }
+
+  return "0000".concat(numStr).slice(-val);
+}
+/**
+ * Returns local hours and minutes (hh:mm).
+ */
+
+
+function getHoursMinutes(date) {
+  var hours = padStart(getHours(date));
+  var minutes = padStart(getMinutes(date));
+  return "".concat(hours, ":").concat(minutes);
+}
+/**
+ * Returns local hours, minutes and seconds (hh:mm:ss).
+ */
+
+function getHoursMinutesSeconds(date) {
+  var hours = padStart(getHours(date));
+  var minutes = padStart(getMinutes(date));
+  var seconds = padStart(getSeconds(date));
+  return "".concat(hours, ":").concat(minutes, ":").concat(seconds);
+}
+/**
+ * Returns local month in ISO-like format (YYYY-MM).
+ */
+
+function getISOLocalMonth(date) {
+  var year = padStart(getYear(date), 4);
+  var month = padStart(getMonthHuman(date));
+  return "".concat(year, "-").concat(month);
+}
+/**
+ * Returns local date in ISO-like format (YYYY-MM-DD).
+ */
+
+function getISOLocalDate(date) {
+  var year = padStart(getYear(date), 4);
+  var month = padStart(getMonthHuman(date));
+  var day = padStart(getDate(date));
+  return "".concat(year, "-").concat(month, "-").concat(day);
+}
+/**
+ * Returns local date & time in ISO-like format (YYYY-MM-DDThh:mm:ss).
+ */
+
+function getISOLocalDateTime(date) {
+  return "".concat(getISOLocalDate(date), "T").concat(getHoursMinutesSeconds(date));
+}
+
+var esm$3 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  getYear: getYear,
+  getMonth: getMonth,
+  getMonthHuman: getMonthHuman,
+  getDate: getDate,
+  getHours: getHours,
+  getMinutes: getMinutes,
+  getSeconds: getSeconds,
+  getCenturyStart: getCenturyStart,
+  getPreviousCenturyStart: getPreviousCenturyStart,
+  getNextCenturyStart: getNextCenturyStart,
+  getCenturyEnd: getCenturyEnd,
+  getPreviousCenturyEnd: getPreviousCenturyEnd,
+  getNextCenturyEnd: getNextCenturyEnd,
+  getCenturyRange: getCenturyRange,
+  getDecadeStart: getDecadeStart,
+  getPreviousDecadeStart: getPreviousDecadeStart,
+  getNextDecadeStart: getNextDecadeStart,
+  getDecadeEnd: getDecadeEnd,
+  getPreviousDecadeEnd: getPreviousDecadeEnd,
+  getNextDecadeEnd: getNextDecadeEnd,
+  getDecadeRange: getDecadeRange,
+  getYearStart: getYearStart,
+  getPreviousYearStart: getPreviousYearStart,
+  getNextYearStart: getNextYearStart,
+  getYearEnd: getYearEnd,
+  getPreviousYearEnd: getPreviousYearEnd,
+  getNextYearEnd: getNextYearEnd,
+  getYearRange: getYearRange,
+  getMonthStart: getMonthStart,
+  getPreviousMonthStart: getPreviousMonthStart,
+  getNextMonthStart: getNextMonthStart,
+  getMonthEnd: getMonthEnd,
+  getPreviousMonthEnd: getPreviousMonthEnd,
+  getNextMonthEnd: getNextMonthEnd,
+  getMonthRange: getMonthRange,
+  getDayStart: getDayStart,
+  getPreviousDayStart: getPreviousDayStart,
+  getNextDayStart: getNextDayStart,
+  getDayEnd: getDayEnd,
+  getPreviousDayEnd: getPreviousDayEnd,
+  getNextDayEnd: getNextDayEnd,
+  getDayRange: getDayRange,
+  getDaysInMonth: getDaysInMonth,
+  getHoursMinutes: getHoursMinutes,
+  getHoursMinutesSeconds: getHoursMinutesSeconds,
+  getISOLocalMonth: getISOLocalMonth,
+  getISOLocalDate: getISOLocalDate,
+  getISOLocalDateTime: getISOLocalDateTime
+});
+
+var _CALENDAR_TYPE_LOCALE;
+
+function _toConsumableArray$4(arr) { return _arrayWithoutHoles$4(arr) || _iterableToArray$4(arr) || _unsupportedIterableToArray$4(arr) || _nonIterableSpread$4(); }
+
+function _nonIterableSpread$4() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray$4(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$4(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$4(o, minLen); }
+
+function _iterableToArray$4(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles$4(arr) { if (Array.isArray(arr)) return _arrayLikeToArray$4(arr); }
+
+function _arrayLikeToArray$4(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _defineProperty$e(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var CALENDAR_TYPES = {
+  ARABIC: 'Arabic',
+  HEBREW: 'Hebrew',
+  ISO_8601: 'ISO 8601',
+  US: 'US'
+};
+var CALENDAR_TYPE_LOCALES = (_CALENDAR_TYPE_LOCALE = {}, _defineProperty$e(_CALENDAR_TYPE_LOCALE, CALENDAR_TYPES.US, ['en-CA', 'en-US', 'es-AR', 'es-BO', 'es-CL', 'es-CO', 'es-CR', 'es-DO', 'es-EC', 'es-GT', 'es-HN', 'es-MX', 'es-NI', 'es-PA', 'es-PE', 'es-PR', 'es-SV', 'es-VE', 'pt-BR']), _defineProperty$e(_CALENDAR_TYPE_LOCALE, CALENDAR_TYPES.ARABIC, [// ar-LB, ar-MA intentionally missing
+'ar', 'ar-AE', 'ar-BH', 'ar-DZ', 'ar-EG', 'ar-IQ', 'ar-JO', 'ar-KW', 'ar-LY', 'ar-OM', 'ar-QA', 'ar-SA', 'ar-SD', 'ar-SY', 'ar-YE', 'dv', 'dv-MV', 'ps', 'ps-AR']), _defineProperty$e(_CALENDAR_TYPE_LOCALE, CALENDAR_TYPES.HEBREW, ['he', 'he-IL']), _CALENDAR_TYPE_LOCALE);
+var WEEKDAYS = _toConsumableArray$4(Array(7)).map(function (el, index) {
+  return index;
+});
+
+var formatterCache$1 = new Map();
+
+function getFormatter$4(options) {
+  return function (locale, date) {
+    var localeWithDefault = locale || getUserLocale();
+
+    if (!formatterCache$1.has(localeWithDefault)) {
+      formatterCache$1.set(localeWithDefault, new Map());
+    }
+
+    var formatterCacheLocale = formatterCache$1.get(localeWithDefault);
+
+    if (!formatterCacheLocale.has(options)) {
+      formatterCacheLocale.set(options, new Intl.DateTimeFormat(localeWithDefault, options).format);
+    }
+
+    return formatterCacheLocale.get(options)(date);
+  };
+}
+/**
+ * Changes the hour in a Date to ensure right date formatting even if DST is messed up.
+ * Workaround for bug in WebKit and Firefox with historical dates.
+ * For more details, see:
+ * https://bugs.chromium.org/p/chromium/issues/detail?id=750465
+ * https://bugzilla.mozilla.org/show_bug.cgi?id=1385643
+ *
+ * @param {Date} date Date.
+ */
+
+
+function toSafeHour$1(date) {
+  var safeDate = new Date(date);
+  return new Date(safeDate.setHours(12));
+}
+
+function getSafeFormatter$1(options) {
+  return function (locale, date) {
+    return getFormatter$4(options)(locale, toSafeHour$1(date));
+  };
+}
+var formatDayOptions = {
+  day: 'numeric'
+};
+var formatLongDateOptions = {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric'
+};
+var formatMonthOptions$1 = {
+  month: 'long'
+};
+var formatMonthYearOptions = {
+  month: 'long',
+  year: 'numeric'
+};
+var formatShortWeekdayOptions = {
+  weekday: 'short'
+};
+var formatWeekdayOptions = {
+  weekday: 'long'
+};
+var formatYearOptions = {
+  year: 'numeric'
+};
+var formatDay = getSafeFormatter$1(formatDayOptions);
+var formatLongDate = getSafeFormatter$1(formatLongDateOptions);
+var formatMonth$1 = getSafeFormatter$1(formatMonthOptions$1);
+var formatMonthYear = getSafeFormatter$1(formatMonthYearOptions);
+var formatShortWeekday = getSafeFormatter$1(formatShortWeekdayOptions);
+var formatWeekday = getSafeFormatter$1(formatWeekdayOptions);
+var formatYear = getSafeFormatter$1(formatYearOptions);
+
+var SUNDAY = WEEKDAYS[0];
+var FRIDAY = WEEKDAYS[5];
+var SATURDAY = WEEKDAYS[6];
+/* Simple getters - getting a property of a given point in time */
+
+function getDayOfWeek(date) {
+  var calendarType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : CALENDAR_TYPES.ISO_8601;
+  var weekday = date.getDay();
+
+  switch (calendarType) {
+    case CALENDAR_TYPES.ISO_8601:
+      // Shifts days of the week so that Monday is 0, Sunday is 6
+      return (weekday + 6) % 7;
+
+    case CALENDAR_TYPES.ARABIC:
+      return (weekday + 1) % 7;
+
+    case CALENDAR_TYPES.HEBREW:
+    case CALENDAR_TYPES.US:
+      return weekday;
+
+    default:
+      throw new Error('Unsupported calendar type.');
+  }
+}
+/**
+ * Century
+ */
+
+function getBeginOfCenturyYear(date) {
+  var beginOfCentury = getCenturyStart(date);
+  return getYear(beginOfCentury);
+}
+/**
+ * Decade
+ */
+
+function getBeginOfDecadeYear(date) {
+  var beginOfDecade = getDecadeStart(date);
+  return getYear(beginOfDecade);
+}
+/**
+ * Week
+ */
+
+/**
+ * Returns the beginning of a given week.
+ *
+ * @param {Date} date Date.
+ * @param {string} calendarType Calendar type. Can be ISO 8601 or US.
+ */
+
+function getBeginOfWeek(date) {
+  var calendarType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : CALENDAR_TYPES.ISO_8601;
+  var year = getYear(date);
+  var monthIndex = getMonth(date);
+  var day = date.getDate() - getDayOfWeek(date, calendarType);
+  return new Date(year, monthIndex, day);
+}
+/**
+ * Gets week number according to ISO 8601 or US standard.
+ * In ISO 8601, Arabic and Hebrew week 1 is the one with January 4.
+ * In US calendar week 1 is the one with January 1.
+ *
+ * @param {Date} date Date.
+ * @param {string} calendarType Calendar type. Can be ISO 8601 or US.
+ */
+
+function getWeekNumber(date) {
+  var calendarType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : CALENDAR_TYPES.ISO_8601;
+  var calendarTypeForWeekNumber = calendarType === CALENDAR_TYPES.US ? CALENDAR_TYPES.US : CALENDAR_TYPES.ISO_8601;
+  var beginOfWeek = getBeginOfWeek(date, calendarType);
+  var year = getYear(date) + 1;
+  var dayInWeekOne;
+  var beginOfFirstWeek; // Look for the first week one that does not come after a given date
+
+  do {
+    dayInWeekOne = new Date(year, 0, calendarTypeForWeekNumber === CALENDAR_TYPES.ISO_8601 ? 4 : 1);
+    beginOfFirstWeek = getBeginOfWeek(dayInWeekOne, calendarType);
+    year -= 1;
+  } while (date < beginOfFirstWeek);
+
+  return Math.round((beginOfWeek - beginOfFirstWeek) / (8.64e7 * 7)) + 1;
+}
+/**
+ * Others
+ */
+
+/**
+ * Returns the beginning of a given range.
+ *
+ * @param {string} rangeType Range type (e.g. 'day')
+ * @param {Date} date Date.
+ */
+
+function getBegin$1(rangeType, date) {
+  switch (rangeType) {
+    case 'century':
+      return getCenturyStart(date);
+
+    case 'decade':
+      return getDecadeStart(date);
+
+    case 'year':
+      return getYearStart(date);
+
+    case 'month':
+      return getMonthStart(date);
+
+    case 'day':
+      return getDayStart(date);
+
+    default:
+      throw new Error("Invalid rangeType: ".concat(rangeType));
+  }
+}
+function getBeginPrevious(rangeType, date) {
+  switch (rangeType) {
+    case 'century':
+      return getPreviousCenturyStart(date);
+
+    case 'decade':
+      return getPreviousDecadeStart(date);
+
+    case 'year':
+      return getPreviousYearStart(date);
+
+    case 'month':
+      return getPreviousMonthStart(date);
+
+    default:
+      throw new Error("Invalid rangeType: ".concat(rangeType));
+  }
+}
+function getBeginNext(rangeType, date) {
+  switch (rangeType) {
+    case 'century':
+      return getNextCenturyStart(date);
+
+    case 'decade':
+      return getNextDecadeStart(date);
+
+    case 'year':
+      return getNextYearStart(date);
+
+    case 'month':
+      return getNextMonthStart(date);
+
+    default:
+      throw new Error("Invalid rangeType: ".concat(rangeType));
+  }
+}
+var getBeginPrevious2 = function getBeginPrevious2(rangeType, date) {
+  switch (rangeType) {
+    case 'decade':
+      return getPreviousDecadeStart(date, -100);
+
+    case 'year':
+      return getPreviousYearStart(date, -10);
+
+    case 'month':
+      return getPreviousMonthStart(date, -12);
+
+    default:
+      throw new Error("Invalid rangeType: ".concat(rangeType));
+  }
+};
+var getBeginNext2 = function getBeginNext2(rangeType, date) {
+  switch (rangeType) {
+    case 'decade':
+      return getNextDecadeStart(date, 100);
+
+    case 'year':
+      return getNextYearStart(date, 10);
+
+    case 'month':
+      return getNextMonthStart(date, 12);
+
+    default:
+      throw new Error("Invalid rangeType: ".concat(rangeType));
+  }
+};
+/**
+ * Returns the end of a given range.
+ *
+ * @param {string} rangeType Range type (e.g. 'day')
+ * @param {Date} date Date.
+ */
+
+function getEnd$1(rangeType, date) {
+  switch (rangeType) {
+    case 'century':
+      return getCenturyEnd(date);
+
+    case 'decade':
+      return getDecadeEnd(date);
+
+    case 'year':
+      return getYearEnd(date);
+
+    case 'month':
+      return getMonthEnd(date);
+
+    case 'day':
+      return getDayEnd(date);
+
+    default:
+      throw new Error("Invalid rangeType: ".concat(rangeType));
+  }
+}
+function getEndPrevious(rangeType, date) {
+  switch (rangeType) {
+    case 'century':
+      return getPreviousCenturyEnd(date);
+
+    case 'decade':
+      return getPreviousDecadeEnd(date);
+
+    case 'year':
+      return getPreviousYearEnd(date);
+
+    case 'month':
+      return getPreviousMonthEnd(date);
+
+    default:
+      throw new Error("Invalid rangeType: ".concat(rangeType));
+  }
+}
+var getEndPrevious2 = function getEndPrevious2(rangeType, date) {
+  switch (rangeType) {
+    case 'decade':
+      return getPreviousDecadeEnd(date, -100);
+
+    case 'year':
+      return getPreviousYearEnd(date, -10);
+
+    case 'month':
+      return getPreviousMonthEnd(date, -12);
+
+    default:
+      throw new Error("Invalid rangeType: ".concat(rangeType));
+  }
+};
+/**
+ * Returns an array with the beginning and the end of a given range.
+ *
+ * @param {string} rangeType Range type (e.g. 'day')
+ * @param {Date} date Date.
+ */
+
+function getRange(rangeType, date) {
+  switch (rangeType) {
+    case 'century':
+      return getCenturyRange(date);
+
+    case 'decade':
+      return getDecadeRange(date);
+
+    case 'year':
+      return getYearRange(date);
+
+    case 'month':
+      return getMonthRange(date);
+
+    case 'day':
+      return getDayRange(date);
+
+    default:
+      throw new Error("Invalid rangeType: ".concat(rangeType));
+  }
+}
+/**
+ * Creates a range out of two values, ensuring they are in order and covering entire period ranges.
+ *
+ * @param {string} rangeType Range type (e.g. 'day')
+ * @param {Date} date1 First date.
+ * @param {Date} date2 Second date.
+ */
+
+function getValueRange(rangeType, date1, date2) {
+  var rawNextValue = [date1, date2].sort(function (a, b) {
+    return a - b;
+  });
+  return [getBegin$1(rangeType, rawNextValue[0]), getEnd$1(rangeType, rawNextValue[1])];
+}
+
+function toYearLabel(locale) {
+  var formatYear$1 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : formatYear;
+  var dates = arguments.length > 2 ? arguments[2] : undefined;
+  return dates.map(function (date) {
+    return formatYear$1(locale, date);
+  }).join(' – ');
+}
+/**
+ * Returns a string labelling a century of a given date.
+ * For example, for 2017 it will return 2001-2100.
+ *
+ * @param {Date|String|Number} date Date or a year as a string or as a number.
+ */
+
+
+function getCenturyLabel(locale, formatYear, date) {
+  return toYearLabel(locale, formatYear, getCenturyRange(date));
+}
+/**
+ * Returns a string labelling a century of a given date.
+ * For example, for 2017 it will return 2011-2020.
+ *
+ * @param {Date|String|Number} date Date or a year as a string or as a number.
+ */
+
+function getDecadeLabel(locale, formatYear, date) {
+  return toYearLabel(locale, formatYear, getDecadeRange(date));
+}
+/**
+ * Returns a boolean determining whether a given date is on Saturday or Sunday.
+ *
+ * @param {Date} date Date.
+ */
+
+function isWeekend(date) {
+  var calendarType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : CALENDAR_TYPES.ISO_8601;
+  var weekday = date.getDay();
+
+  switch (calendarType) {
+    case CALENDAR_TYPES.ARABIC:
+    case CALENDAR_TYPES.HEBREW:
+      return weekday === FRIDAY || weekday === SATURDAY;
+
+    case CALENDAR_TYPES.ISO_8601:
+    case CALENDAR_TYPES.US:
+      return weekday === SATURDAY || weekday === SUNDAY;
+
+    default:
+      throw new Error('Unsupported calendar type.');
+  }
+}
+
+function _typeof$4(obj) { "@babel/helpers - typeof"; return _typeof$4 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof$4(obj); }
+var calendarTypes = Object.values(CALENDAR_TYPES);
+var allViews$2 = ['century', 'decade', 'year', 'month'];
+var isCalendarType = PropTypes.oneOf(calendarTypes);
+var isClassName = PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]);
+var isMinDate$1 = function isMinDate(props, propName, componentName) {
+  var minDate = props[propName];
+
+  if (!minDate) {
+    return null;
+  }
+
+  if (!(minDate instanceof Date)) {
+    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$4(minDate), "` supplied to `").concat(componentName, "`, expected instance of `Date`."));
+  }
+
+  var maxDate = props.maxDate;
+
+  if (maxDate && minDate > maxDate) {
+    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$4(minDate), "` supplied to `").concat(componentName, "`, minDate cannot be larger than maxDate."));
+  }
+
+  return null;
+};
+var isMaxDate$1 = function isMaxDate(props, propName, componentName) {
+  var maxDate = props[propName];
+
+  if (!maxDate) {
+    return null;
+  }
+
+  if (!(maxDate instanceof Date)) {
+    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$4(maxDate), "` supplied to `").concat(componentName, "`, expected instance of `Date`."));
+  }
+
+  var minDate = props.minDate;
+
+  if (minDate && maxDate < minDate) {
+    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof$4(maxDate), "` supplied to `").concat(componentName, "`, maxDate cannot be smaller than minDate."));
+  }
+
+  return null;
+};
+var isRef$1 = PropTypes.oneOfType([PropTypes.func, PropTypes.shape({
+  current: PropTypes.any
+})]);
+var isValue = PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.arrayOf(PropTypes.instanceOf(Date))]);
+var isViews = PropTypes.arrayOf(PropTypes.oneOf(allViews$2));
+var isView = function isView(props, propName, componentName) {
+  var view = props[propName];
+  var views = props.views;
+  var allowedViews = views || allViews$2;
+
+  if (view !== undefined && allowedViews.indexOf(view) === -1) {
+    return new Error("Invalid prop `".concat(propName, "` of value `").concat(view, "` supplied to `").concat(componentName, "`, expected one of [").concat(allowedViews.map(function (a) {
+      return "\"".concat(a, "\"");
+    }).join(', '), "]."));
+  } // Everything is fine
+
+
+  return null;
+};
+
+isView.isRequired = function (props, propName, componentName) {
+  var view = props[propName];
+
+  if (!view) {
+    return new Error("The prop `".concat(propName, "` is marked as required in `").concat(componentName, "`, but its value is `").concat(view, "`."));
+  }
+
+  return isView(props, propName, componentName);
+};
+
+var tileGroupProps = {
+  activeStartDate: PropTypes.instanceOf(Date).isRequired,
+  hover: PropTypes.instanceOf(Date),
+  locale: PropTypes.string,
+  maxDate: isMaxDate$1,
+  minDate: isMinDate$1,
+  onClick: PropTypes.func,
+  onMouseOver: PropTypes.func,
+  tileClassName: PropTypes.oneOfType([PropTypes.func, isClassName]),
+  tileContent: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
+  value: isValue,
+  valueType: PropTypes.string
+};
+var tileProps = {
+  activeStartDate: PropTypes.instanceOf(Date).isRequired,
+  classes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  date: PropTypes.instanceOf(Date).isRequired,
+  locale: PropTypes.string,
+  maxDate: isMaxDate$1,
+  minDate: isMinDate$1,
+  onClick: PropTypes.func,
+  onMouseOver: PropTypes.func,
+  style: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+  tileClassName: PropTypes.oneOfType([PropTypes.func, isClassName]),
+  tileContent: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
+  tileDisabled: PropTypes.func
+};
+
+var className$6 = 'react-calendar__navigation';
+function Navigation(_ref) {
+  var activeStartDate = _ref.activeStartDate,
+      drillUp = _ref.drillUp,
+      _ref$formatMonthYear = _ref.formatMonthYear,
+      formatMonthYear$1 = _ref$formatMonthYear === void 0 ? formatMonthYear : _ref$formatMonthYear,
+      _ref$formatYear = _ref.formatYear,
+      formatYear$1 = _ref$formatYear === void 0 ? formatYear : _ref$formatYear,
+      locale = _ref.locale,
+      maxDate = _ref.maxDate,
+      minDate = _ref.minDate,
+      _ref$navigationAriaLa = _ref.navigationAriaLabel,
+      navigationAriaLabel = _ref$navigationAriaLa === void 0 ? '' : _ref$navigationAriaLa,
+      navigationAriaLive = _ref.navigationAriaLive,
+      navigationLabel = _ref.navigationLabel,
+      _ref$next2AriaLabel = _ref.next2AriaLabel,
+      next2AriaLabel = _ref$next2AriaLabel === void 0 ? '' : _ref$next2AriaLabel,
+      _ref$next2Label = _ref.next2Label,
+      next2Label = _ref$next2Label === void 0 ? '»' : _ref$next2Label,
+      _ref$nextAriaLabel = _ref.nextAriaLabel,
+      nextAriaLabel = _ref$nextAriaLabel === void 0 ? '' : _ref$nextAriaLabel,
+      _ref$nextLabel = _ref.nextLabel,
+      nextLabel = _ref$nextLabel === void 0 ? '›' : _ref$nextLabel,
+      _ref$prev2AriaLabel = _ref.prev2AriaLabel,
+      prev2AriaLabel = _ref$prev2AriaLabel === void 0 ? '' : _ref$prev2AriaLabel,
+      _ref$prev2Label = _ref.prev2Label,
+      prev2Label = _ref$prev2Label === void 0 ? '«' : _ref$prev2Label,
+      _ref$prevAriaLabel = _ref.prevAriaLabel,
+      prevAriaLabel = _ref$prevAriaLabel === void 0 ? '' : _ref$prevAriaLabel,
+      _ref$prevLabel = _ref.prevLabel,
+      prevLabel = _ref$prevLabel === void 0 ? '‹' : _ref$prevLabel,
+      setActiveStartDate = _ref.setActiveStartDate,
+      showDoubleView = _ref.showDoubleView,
+      view = _ref.view,
+      views = _ref.views;
+  var drillUpAvailable = views.indexOf(view) > 0;
+  var shouldShowPrevNext2Buttons = view !== 'century';
+  var previousActiveStartDate = getBeginPrevious(view, activeStartDate);
+  var previousActiveStartDate2 = shouldShowPrevNext2Buttons && getBeginPrevious2(view, activeStartDate);
+  var nextActiveStartDate = getBeginNext(view, activeStartDate);
+  var nextActiveStartDate2 = shouldShowPrevNext2Buttons && getBeginNext2(view, activeStartDate);
+
+  var prevButtonDisabled = function () {
+    if (previousActiveStartDate.getFullYear() < 0) {
+      return true;
+    }
+
+    var previousActiveEndDate = getEndPrevious(view, activeStartDate);
+    return minDate && minDate >= previousActiveEndDate;
+  }();
+
+  var prev2ButtonDisabled = shouldShowPrevNext2Buttons && function () {
+    if (previousActiveStartDate2.getFullYear() < 0) {
+      return true;
+    }
+
+    var previousActiveEndDate = getEndPrevious2(view, activeStartDate);
+    return minDate && minDate >= previousActiveEndDate;
+  }();
+
+  var nextButtonDisabled = maxDate && maxDate < nextActiveStartDate;
+  var next2ButtonDisabled = shouldShowPrevNext2Buttons && maxDate && maxDate < nextActiveStartDate2;
+
+  function onClickPrevious() {
+    setActiveStartDate(previousActiveStartDate, 'prev');
+  }
+
+  function onClickPrevious2() {
+    setActiveStartDate(previousActiveStartDate2, 'prev2');
+  }
+
+  function onClickNext() {
+    setActiveStartDate(nextActiveStartDate, 'next');
+  }
+
+  function onClickNext2() {
+    setActiveStartDate(nextActiveStartDate2, 'next2');
+  }
+
+  function renderLabel(date) {
+    var label = function () {
+      switch (view) {
+        case 'century':
+          return getCenturyLabel(locale, formatYear$1, date);
+
+        case 'decade':
+          return getDecadeLabel(locale, formatYear$1, date);
+
+        case 'year':
+          return formatYear$1(locale, date);
+
+        case 'month':
+          return formatMonthYear$1(locale, date);
+
+        default:
+          throw new Error("Invalid view: ".concat(view, "."));
+      }
+    }();
+
+    return navigationLabel ? navigationLabel({
+      date: date,
+      label: label,
+      locale: locale || getUserLocale(),
+      view: view
+    }) : label;
+  }
+
+  function renderButton() {
+    var labelClassName = "".concat(className$6, "__label");
+    return /*#__PURE__*/React__default["default"].createElement("button", {
+      "aria-label": navigationAriaLabel,
+      "aria-live": navigationAriaLive,
+      className: labelClassName,
+      disabled: !drillUpAvailable,
+      onClick: drillUp,
+      style: {
+        flexGrow: 1
+      },
+      type: "button"
+    }, /*#__PURE__*/React__default["default"].createElement("span", {
+      className: "".concat(labelClassName, "__labelText ").concat(labelClassName, "__labelText--from")
+    }, renderLabel(activeStartDate)), showDoubleView && /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("span", {
+      className: "".concat(labelClassName, "__divider")
+    }, " \u2013 "), /*#__PURE__*/React__default["default"].createElement("span", {
+      className: "".concat(labelClassName, "__labelText ").concat(labelClassName, "__labelText--to")
+    }, renderLabel(nextActiveStartDate))));
+  }
+
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: className$6
+  }, prev2Label !== null && shouldShowPrevNext2Buttons && /*#__PURE__*/React__default["default"].createElement("button", {
+    "aria-label": prev2AriaLabel,
+    className: "".concat(className$6, "__arrow ").concat(className$6, "__prev2-button"),
+    disabled: prev2ButtonDisabled,
+    onClick: onClickPrevious2,
+    type: "button"
+  }, prev2Label), prevLabel !== null && /*#__PURE__*/React__default["default"].createElement("button", {
+    "aria-label": prevAriaLabel,
+    className: "".concat(className$6, "__arrow ").concat(className$6, "__prev-button"),
+    disabled: prevButtonDisabled,
+    onClick: onClickPrevious,
+    type: "button"
+  }, prevLabel), renderButton(), nextLabel !== null && /*#__PURE__*/React__default["default"].createElement("button", {
+    "aria-label": nextAriaLabel,
+    className: "".concat(className$6, "__arrow ").concat(className$6, "__next-button"),
+    disabled: nextButtonDisabled,
+    onClick: onClickNext,
+    type: "button"
+  }, nextLabel), next2Label !== null && shouldShowPrevNext2Buttons && /*#__PURE__*/React__default["default"].createElement("button", {
+    "aria-label": next2AriaLabel,
+    className: "".concat(className$6, "__arrow ").concat(className$6, "__next2-button"),
+    disabled: next2ButtonDisabled,
+    onClick: onClickNext2,
+    type: "button"
+  }, next2Label));
+}
+Navigation.propTypes = {
+  activeStartDate: PropTypes.instanceOf(Date).isRequired,
+  drillUp: PropTypes.func.isRequired,
+  formatMonthYear: PropTypes.func,
+  formatYear: PropTypes.func,
+  locale: PropTypes.string,
+  maxDate: PropTypes.instanceOf(Date),
+  minDate: PropTypes.instanceOf(Date),
+  navigationAriaLabel: PropTypes.string,
+  navigationAriaLive: PropTypes.string,
+  navigationLabel: PropTypes.func,
+  next2AriaLabel: PropTypes.string,
+  next2Label: PropTypes.node,
+  nextAriaLabel: PropTypes.string,
+  nextLabel: PropTypes.node,
+  prev2AriaLabel: PropTypes.string,
+  prev2Label: PropTypes.node,
+  prevAriaLabel: PropTypes.string,
+  prevLabel: PropTypes.node,
+  setActiveStartDate: PropTypes.func.isRequired,
+  showDoubleView: PropTypes.bool,
+  view: isView.isRequired,
+  views: isViews.isRequired
+};
+
+var _excluded$d = ["children", "className", "direction", "count", "offset", "style", "wrap"];
+
+function _extends$d() { _extends$d = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$d.apply(this, arguments); }
+
+function ownKeys$d(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$d(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$d(Object(source), !0).forEach(function (key) { _defineProperty$d(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$d(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty$d(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties$a(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$b(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose$b(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function toPercent(num) {
+  return "".concat(num, "%");
+}
+
+function Flex(_ref) {
+  var children = _ref.children,
+      className = _ref.className,
+      direction = _ref.direction,
+      count = _ref.count,
+      offset = _ref.offset,
+      style = _ref.style,
+      wrap = _ref.wrap,
+      otherProps = _objectWithoutProperties$a(_ref, _excluded$d);
+
+  return /*#__PURE__*/React__default["default"].createElement("div", _extends$d({
+    className: className,
+    style: _objectSpread$d({
+      display: 'flex',
+      flexDirection: direction,
+      flexWrap: wrap ? 'wrap' : 'no-wrap'
+    }, style)
+  }, otherProps), React__default["default"].Children.map(children, function (child, index) {
+    return /*#__PURE__*/React__default["default"].cloneElement(child, _objectSpread$d(_objectSpread$d({}, child.props), {}, {
+      style: {
+        flexBasis: toPercent(100 / count),
+        flexShrink: 0,
+        flexGrow: 0,
+        overflow: 'hidden',
+        marginLeft: offset && index === 0 ? toPercent(100 * offset / count) : null
+      }
+    }));
+  }));
+}
+Flex.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  count: PropTypes.number.isRequired,
+  direction: PropTypes.string,
+  offset: PropTypes.number,
+  style: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+  wrap: PropTypes.bool
+};
+
+function _toConsumableArray$3(arr) { return _arrayWithoutHoles$3(arr) || _iterableToArray$3(arr) || _unsupportedIterableToArray$3(arr) || _nonIterableSpread$3(); }
+
+function _nonIterableSpread$3() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray$3(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$3(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$3(o, minLen); }
+
+function _iterableToArray$3(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles$3(arr) { if (Array.isArray(arr)) return _arrayLikeToArray$3(arr); }
+
+function _arrayLikeToArray$3(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+/**
+ * Returns a value no smaller than min and no larger than max.
+ *
+ * @param {*} value Value to return.
+ * @param {*} min Minimum return value.
+ * @param {*} max Maximum return value.
+ */
+
+function between$1(value, min, max) {
+  if (min && min > value) {
+    return min;
+  }
+
+  if (max && max < value) {
+    return max;
+  }
+
+  return value;
+}
+function isValueWithinRange(value, range) {
+  return range[0] <= value && range[1] >= value;
+}
+function isRangeWithinRange(greaterRange, smallerRange) {
+  return greaterRange[0] <= smallerRange[0] && greaterRange[1] >= smallerRange[1];
+}
+function doRangesOverlap(range1, range2) {
+  return isValueWithinRange(range1[0], range2) || isValueWithinRange(range1[1], range2);
+}
+
+function getRangeClassNames(valueRange, dateRange, baseClassName) {
+  var isRange = doRangesOverlap(dateRange, valueRange);
+  var classes = [];
+
+  if (isRange) {
+    classes.push(baseClassName);
+    var isRangeStart = isValueWithinRange(valueRange[0], dateRange);
+    var isRangeEnd = isValueWithinRange(valueRange[1], dateRange);
+
+    if (isRangeStart) {
+      classes.push("".concat(baseClassName, "Start"));
+    }
+
+    if (isRangeEnd) {
+      classes.push("".concat(baseClassName, "End"));
+    }
+
+    if (isRangeStart && isRangeEnd) {
+      classes.push("".concat(baseClassName, "BothEnds"));
+    }
+  }
+
+  return classes;
+}
+
+function getTileClasses() {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      value = _ref.value,
+      valueType = _ref.valueType,
+      date = _ref.date,
+      dateType = _ref.dateType,
+      hover = _ref.hover;
+
+  var className = 'react-calendar__tile';
+  var classes = [className];
+
+  if (!date) {
+    return classes;
+  }
+
+  if (!Array.isArray(date) && !dateType) {
+    throw new Error('getTileClasses(): Unable to get tile activity classes because one or more required arguments were not passed.');
+  }
+
+  var now = new Date();
+  var dateRange = Array.isArray(date) ? date : getRange(dateType, date);
+
+  if (isValueWithinRange(now, dateRange)) {
+    classes.push("".concat(className, "--now"));
+  }
+
+  if (!value) {
+    return classes;
+  }
+
+  if (!Array.isArray(value) && !valueType) {
+    throw new Error('getTileClasses(): Unable to get tile activity classes because one or more required arguments were not passed.');
+  }
+
+  var valueRange = Array.isArray(value) ? value : getRange(valueType, value);
+
+  if (isRangeWithinRange(valueRange, dateRange)) {
+    classes.push("".concat(className, "--active"));
+  } else if (doRangesOverlap(valueRange, dateRange)) {
+    classes.push("".concat(className, "--hasActive"));
+  }
+
+  var valueRangeClassNames = getRangeClassNames(valueRange, dateRange, "".concat(className, "--range"));
+  classes.push.apply(classes, _toConsumableArray$3(valueRangeClassNames));
+  var valueArray = [].concat(value);
+
+  if (hover && valueArray.length === 1) {
+    var hoverRange = hover > valueRange[0] ? [valueRange[0], hover] : [hover, valueRange[0]];
+    var hoverRangeClassNames = getRangeClassNames(hoverRange, dateRange, "".concat(className, "--hover"));
+    classes.push.apply(classes, _toConsumableArray$3(hoverRangeClassNames));
+  }
+
+  return classes;
+}
+
+var _excluded$c = ["className", "count", "dateTransform", "dateType", "end", "hover", "offset", "start", "step", "tile", "value", "valueType"];
+
+function ownKeys$c(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$c(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$c(Object(source), !0).forEach(function (key) { _defineProperty$c(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$c(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty$c(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _extends$c() { _extends$c = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$c.apply(this, arguments); }
+
+function _objectWithoutProperties$9(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$a(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose$a(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+function TileGroup(_ref) {
+  var className = _ref.className,
+      _ref$count = _ref.count,
+      count = _ref$count === void 0 ? 3 : _ref$count,
+      dateTransform = _ref.dateTransform,
+      dateType = _ref.dateType,
+      end = _ref.end,
+      hover = _ref.hover,
+      offset = _ref.offset,
+      start = _ref.start,
+      _ref$step = _ref.step,
+      step = _ref$step === void 0 ? 1 : _ref$step,
+      Tile = _ref.tile,
+      value = _ref.value,
+      valueType = _ref.valueType,
+      tileProps = _objectWithoutProperties$9(_ref, _excluded$c);
+
+  var tiles = [];
+
+  for (var point = start; point <= end; point += step) {
+    var date = dateTransform(point);
+    tiles.push( /*#__PURE__*/React__default["default"].createElement(Tile, _extends$c({
+      key: date.getTime(),
+      classes: getTileClasses({
+        value: value,
+        valueType: valueType,
+        date: date,
+        dateType: dateType,
+        hover: hover
+      }),
+      date: date,
+      point: point
+    }, tileProps)));
+  }
+
+  return /*#__PURE__*/React__default["default"].createElement(Flex, {
+    className: className,
+    count: count,
+    offset: offset,
+    wrap: true
+  }, tiles);
+}
+TileGroup.propTypes = _objectSpread$c(_objectSpread$c({}, tileGroupProps), {}, {
+  activeStartDate: PropTypes.instanceOf(Date),
+  count: PropTypes.number,
+  dateTransform: PropTypes.func.isRequired,
+  dateType: PropTypes.string,
+  offset: PropTypes.number,
+  step: PropTypes.number,
+  tile: PropTypes.func.isRequired
+});
+
+function _typeof$3(obj) { "@babel/helpers - typeof"; return _typeof$3 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof$3(obj); }
+
+function ownKeys$b(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$b(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$b(Object(source), !0).forEach(function (key) { _defineProperty$b(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$b(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _classCallCheck$2(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$2(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$2(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$2(Constructor.prototype, protoProps); if (staticProps) _defineProperties$2(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _inherits$2(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf$2(subClass, superClass); }
+
+function _setPrototypeOf$2(o, p) { _setPrototypeOf$2 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$2(o, p); }
+
+function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf$2(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$2(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$2(this, result); }; }
+
+function _possibleConstructorReturn$2(self, call) { if (call && (_typeof$3(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized$3(self); }
+
+function _assertThisInitialized$3(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$2(o) { _getPrototypeOf$2 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$2(o); }
+
+function _defineProperty$b(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function datesAreDifferent(date1, date2) {
+  return date1 && !date2 || !date1 && date2 || date1 && date2 && date1.getTime() !== date2.getTime();
+}
+
+function getValue$2(nextProps, prop) {
+  var activeStartDate = nextProps.activeStartDate,
+      date = nextProps.date,
+      view = nextProps.view;
+  return typeof prop === 'function' ? prop({
+    activeStartDate: activeStartDate,
+    date: date,
+    view: view
+  }) : prop;
+}
+
+var Tile = /*#__PURE__*/function (_Component) {
+  _inherits$2(Tile, _Component);
+
+  var _super = _createSuper$2(Tile);
+
+  function Tile() {
     var _this;
 
-    _classCallCheck$B(this, Field);
+    _classCallCheck$2(this, Tile);
 
-    _this = _super.call(this, props);
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized$B(_this));
-    _this.handleCheckboxChange = _this.handleCheckboxChange.bind(_assertThisInitialized$B(_this));
-    _this.handlePropertyChange = _this.handlePropertyChange.bind(_assertThisInitialized$B(_this));
-    _this.handleDateChange = _this.handleDateChange.bind(_assertThisInitialized$B(_this));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty$b(_assertThisInitialized$3(_this), "state", {});
+
     return _this;
   }
 
-  _createClass$D(Field, [{
-    key: "handleChange",
-    value: function handleChange(event) {
-      this.props.onFilterChange(this.props.field.id, event.target.value);
+  _createClass$2(Tile, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          activeStartDate = _this$props.activeStartDate,
+          children = _this$props.children,
+          classes = _this$props.classes,
+          date = _this$props.date,
+          formatAbbr = _this$props.formatAbbr,
+          locale = _this$props.locale,
+          maxDate = _this$props.maxDate,
+          maxDateTransform = _this$props.maxDateTransform,
+          minDate = _this$props.minDate,
+          minDateTransform = _this$props.minDateTransform,
+          onClick = _this$props.onClick,
+          onMouseOver = _this$props.onMouseOver,
+          style = _this$props.style,
+          tileDisabled = _this$props.tileDisabled,
+          view = _this$props.view;
+      var _this$state = this.state,
+          tileClassName = _this$state.tileClassName,
+          tileContent = _this$state.tileContent;
+      return /*#__PURE__*/React__default["default"].createElement("button", {
+        className: mergeClassNames(classes, tileClassName),
+        disabled: minDate && minDateTransform(minDate) > date || maxDate && maxDateTransform(maxDate) < date || tileDisabled && tileDisabled({
+          activeStartDate: activeStartDate,
+          date: date,
+          view: view
+        }),
+        onClick: onClick && function (event) {
+          return onClick(date, event);
+        },
+        onFocus: onMouseOver && function () {
+          return onMouseOver(date);
+        },
+        onMouseOver: onMouseOver && function () {
+          return onMouseOver(date);
+        },
+        style: style,
+        type: "button"
+      }, formatAbbr ? /*#__PURE__*/React__default["default"].createElement("abbr", {
+        "aria-label": formatAbbr(locale, date)
+      }, children) : children, tileContent);
+    }
+  }], [{
+    key: "getDerivedStateFromProps",
+    value: function getDerivedStateFromProps(nextProps, prevState) {
+      var activeStartDate = nextProps.activeStartDate,
+          tileClassName = nextProps.tileClassName,
+          tileContent = nextProps.tileContent;
+      var nextState = {};
+
+      if (tileClassName !== prevState.tileClassNameProps || datesAreDifferent(activeStartDate, prevState.activeStartDateProps)) {
+        nextState.tileClassName = getValue$2(nextProps, tileClassName);
+        nextState.tileClassNameProps = tileClassName;
+      }
+
+      if (tileContent !== prevState.tileContentProps || datesAreDifferent(activeStartDate, prevState.activeStartDateProps)) {
+        nextState.tileContent = getValue$2(nextProps, tileContent);
+        nextState.tileContentProps = tileContent;
+      }
+
+      nextState.activeStartDateProps = activeStartDate;
+      return nextState;
+    }
+  }]);
+
+  return Tile;
+}(React.Component);
+Tile.propTypes = _objectSpread$b(_objectSpread$b({}, tileProps), {}, {
+  children: PropTypes.node.isRequired,
+  formatAbbr: PropTypes.func,
+  maxDateTransform: PropTypes.func.isRequired,
+  minDateTransform: PropTypes.func.isRequired
+});
+
+var _excluded$b = ["classes", "formatYear"];
+
+function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$a(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$a(Object(source), !0).forEach(function (key) { _defineProperty$a(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$a(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty$a(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _extends$b() { _extends$b = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$b.apply(this, arguments); }
+
+function _objectWithoutProperties$8(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$9(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose$9(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+var className$5 = 'react-calendar__century-view__decades__decade';
+function Decade(_ref) {
+  var classes = _ref.classes,
+      _ref$formatYear = _ref.formatYear,
+      formatYear$1 = _ref$formatYear === void 0 ? formatYear : _ref$formatYear,
+      otherProps = _objectWithoutProperties$8(_ref, _excluded$b);
+
+  var date = otherProps.date,
+      locale = otherProps.locale;
+  return /*#__PURE__*/React__default["default"].createElement(Tile, _extends$b({}, otherProps, {
+    classes: [].concat(classes, className$5),
+    maxDateTransform: getDecadeEnd,
+    minDateTransform: getDecadeStart,
+    view: "century"
+  }), getDecadeLabel(locale, formatYear$1, date));
+}
+Decade.propTypes = _objectSpread$a(_objectSpread$a({}, tileProps), {}, {
+  formatYear: PropTypes.func
+});
+
+function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$9(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$9(Object(source), !0).forEach(function (key) { _defineProperty$9(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$9(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty$9(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _extends$a() { _extends$a = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$a.apply(this, arguments); }
+function Decades(props) {
+  var activeStartDate = props.activeStartDate;
+  var start = getBeginOfCenturyYear(activeStartDate);
+  var end = start + 99;
+  return /*#__PURE__*/React__default["default"].createElement(TileGroup, _extends$a({}, props, {
+    className: "react-calendar__century-view__decades",
+    dateTransform: getDecadeStart,
+    dateType: "decade",
+    end: end,
+    start: start,
+    step: 10,
+    tile: Decade
+  }));
+}
+Decades.propTypes = _objectSpread$9({}, tileGroupProps);
+
+function CenturyView(props) {
+  function renderDecades() {
+    return /*#__PURE__*/React__default["default"].createElement(Decades, props);
+  }
+
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "react-calendar__century-view"
+  }, renderDecades());
+}
+
+var _excluded$a = ["classes", "formatYear"];
+
+function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$8(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$8(Object(source), !0).forEach(function (key) { _defineProperty$8(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$8(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty$8(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _extends$9() { _extends$9 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$9.apply(this, arguments); }
+
+function _objectWithoutProperties$7(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$8(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose$8(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+var className$4 = 'react-calendar__decade-view__years__year';
+function Year(_ref) {
+  var classes = _ref.classes,
+      _ref$formatYear = _ref.formatYear,
+      formatYear$1 = _ref$formatYear === void 0 ? formatYear : _ref$formatYear,
+      otherProps = _objectWithoutProperties$7(_ref, _excluded$a);
+
+  var date = otherProps.date,
+      locale = otherProps.locale;
+  return /*#__PURE__*/React__default["default"].createElement(Tile, _extends$9({}, otherProps, {
+    classes: [].concat(classes, className$4),
+    maxDateTransform: getYearEnd,
+    minDateTransform: getYearStart,
+    view: "decade"
+  }), formatYear$1(locale, date));
+}
+Year.propTypes = _objectSpread$8(_objectSpread$8({}, tileProps), {}, {
+  formatYear: PropTypes.func
+});
+
+function ownKeys$7(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$7(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$7(Object(source), !0).forEach(function (key) { _defineProperty$7(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$7(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty$7(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _extends$8() { _extends$8 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$8.apply(this, arguments); }
+function Years(props) {
+  var activeStartDate = props.activeStartDate;
+  var start = getBeginOfDecadeYear(activeStartDate);
+  var end = start + 9;
+  return /*#__PURE__*/React__default["default"].createElement(TileGroup, _extends$8({}, props, {
+    className: "react-calendar__decade-view__years",
+    dateTransform: function dateTransform(year) {
+      var date = new Date();
+      date.setFullYear(year, 0, 1);
+      date.setHours(0, 0, 0, 0);
+      return date;
+    },
+    dateType: "year",
+    end: end,
+    start: start,
+    tile: Year
+  }));
+}
+Years.propTypes = _objectSpread$7({}, tileGroupProps);
+
+function DecadeView(props) {
+  function renderYears() {
+    return /*#__PURE__*/React__default["default"].createElement(Years, props);
+  }
+
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "react-calendar__decade-view"
+  }, renderYears());
+}
+
+var _excluded$9 = ["classes", "formatMonth", "formatMonthYear"];
+
+function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$6(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$6(Object(source), !0).forEach(function (key) { _defineProperty$6(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$6(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty$6(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _extends$7() { _extends$7 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$7.apply(this, arguments); }
+
+function _objectWithoutProperties$6(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$7(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose$7(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+var className$3 = 'react-calendar__year-view__months__month';
+function Month(_ref) {
+  var classes = _ref.classes,
+      _ref$formatMonth = _ref.formatMonth,
+      formatMonth = _ref$formatMonth === void 0 ? formatMonth$1 : _ref$formatMonth,
+      _ref$formatMonthYear = _ref.formatMonthYear,
+      formatMonthYear$1 = _ref$formatMonthYear === void 0 ? formatMonthYear : _ref$formatMonthYear,
+      otherProps = _objectWithoutProperties$6(_ref, _excluded$9);
+
+  var date = otherProps.date,
+      locale = otherProps.locale;
+  return /*#__PURE__*/React__default["default"].createElement(Tile, _extends$7({}, otherProps, {
+    classes: [].concat(classes, className$3),
+    formatAbbr: formatMonthYear$1,
+    maxDateTransform: getMonthEnd,
+    minDateTransform: getMonthStart,
+    view: "year"
+  }), formatMonth(locale, date));
+}
+Month.propTypes = _objectSpread$6(_objectSpread$6({}, tileProps), {}, {
+  formatMonth: PropTypes.func,
+  formatMonthYear: PropTypes.func
+});
+
+function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$5(Object(source), !0).forEach(function (key) { _defineProperty$5(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty$5(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _extends$6() { _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$6.apply(this, arguments); }
+function Months(props) {
+  var activeStartDate = props.activeStartDate;
+  var start = 0;
+  var end = 11;
+  var year = getYear(activeStartDate);
+  return /*#__PURE__*/React__default["default"].createElement(TileGroup, _extends$6({}, props, {
+    className: "react-calendar__year-view__months",
+    dateTransform: function dateTransform(monthIndex) {
+      var date = new Date();
+      date.setFullYear(year, monthIndex, 1);
+      date.setHours(0, 0, 0, 0);
+      return date;
+    },
+    dateType: "month",
+    end: end,
+    start: start,
+    tile: Month
+  }));
+}
+Months.propTypes = _objectSpread$5(_objectSpread$5({}, tileGroupProps), {}, {
+  locale: PropTypes.string
+});
+
+function YearView(props) {
+  function renderMonths() {
+    return /*#__PURE__*/React__default["default"].createElement(Months, props);
+  }
+
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "react-calendar__year-view"
+  }, renderMonths());
+}
+
+var _excluded$8 = ["formatDay", "formatLongDate", "calendarType", "classes", "currentMonthIndex"];
+
+function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$4(Object(source), !0).forEach(function (key) { _defineProperty$4(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty$4(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _extends$5() { _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$5.apply(this, arguments); }
+
+function _objectWithoutProperties$5(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$6(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose$6(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+var className$2 = 'react-calendar__month-view__days__day';
+function Day(_ref) {
+  var _ref$formatDay = _ref.formatDay,
+      formatDay$1 = _ref$formatDay === void 0 ? formatDay : _ref$formatDay,
+      _ref$formatLongDate = _ref.formatLongDate,
+      formatLongDate$1 = _ref$formatLongDate === void 0 ? formatLongDate : _ref$formatLongDate,
+      calendarType = _ref.calendarType,
+      classes = _ref.classes,
+      currentMonthIndex = _ref.currentMonthIndex,
+      otherProps = _objectWithoutProperties$5(_ref, _excluded$8);
+
+  var date = otherProps.date,
+      locale = otherProps.locale;
+  return /*#__PURE__*/React__default["default"].createElement(Tile, _extends$5({}, otherProps, {
+    classes: [].concat(classes, className$2, isWeekend(date, calendarType) ? "".concat(className$2, "--weekend") : null, date.getMonth() !== currentMonthIndex ? "".concat(className$2, "--neighboringMonth") : null),
+    formatAbbr: formatLongDate$1,
+    maxDateTransform: getDayEnd,
+    minDateTransform: getDayStart,
+    view: "month"
+  }), formatDay$1(locale, date));
+}
+Day.propTypes = _objectSpread$4(_objectSpread$4({}, tileProps), {}, {
+  currentMonthIndex: PropTypes.number.isRequired,
+  formatDay: PropTypes.func,
+  formatLongDate: PropTypes.func
+});
+
+var _excluded$7 = ["showFixedNumberOfWeeks", "showNeighboringMonth"];
+
+function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$3(Object(source), !0).forEach(function (key) { _defineProperty$3(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$3(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _extends$4() { _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$4.apply(this, arguments); }
+
+function _objectWithoutProperties$4(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$5(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose$5(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+function Days(props) {
+  var activeStartDate = props.activeStartDate,
+      calendarType = props.calendarType;
+
+  var showFixedNumberOfWeeks = props.showFixedNumberOfWeeks,
+      showNeighboringMonth = props.showNeighboringMonth,
+      otherProps = _objectWithoutProperties$4(props, _excluded$7);
+
+  var year = getYear(activeStartDate);
+  var monthIndex = getMonth(activeStartDate);
+  var hasFixedNumberOfWeeks = showFixedNumberOfWeeks || showNeighboringMonth;
+  var dayOfWeek = getDayOfWeek(activeStartDate, calendarType);
+  var offset = hasFixedNumberOfWeeks ? 0 : dayOfWeek;
+  /**
+   * Defines on which day of the month the grid shall start. If we simply show current
+   * month, we obviously start on day one, but if showNeighboringMonth is set to
+   * true, we need to find the beginning of the week the first day of the month is in.
+   */
+
+  var start = (hasFixedNumberOfWeeks ? -dayOfWeek : 0) + 1;
+  /**
+   * Defines on which day of the month the grid shall end. If we simply show current
+   * month, we need to stop on the last day of the month, but if showNeighboringMonth
+   * is set to true, we need to find the end of the week the last day of the month is in.
+   */
+
+  var end = function () {
+    if (showFixedNumberOfWeeks) {
+      // Always show 6 weeks
+      return start + 6 * 7 - 1;
+    }
+
+    var daysInMonth = getDaysInMonth(activeStartDate);
+
+    if (showNeighboringMonth) {
+      var activeEndDate = new Date();
+      activeEndDate.setFullYear(year, monthIndex, daysInMonth);
+      activeEndDate.setHours(0, 0, 0, 0);
+      var daysUntilEndOfTheWeek = 7 - getDayOfWeek(activeEndDate, calendarType) - 1;
+      return daysInMonth + daysUntilEndOfTheWeek;
+    }
+
+    return daysInMonth;
+  }();
+
+  return /*#__PURE__*/React__default["default"].createElement(TileGroup, _extends$4({}, otherProps, {
+    className: "react-calendar__month-view__days",
+    count: 7,
+    currentMonthIndex: monthIndex,
+    dateTransform: function dateTransform(day) {
+      var date = new Date();
+      date.setFullYear(year, monthIndex, day);
+      date.setHours(0, 0, 0, 0);
+      return date;
+    },
+    dateType: "day",
+    end: end,
+    offset: offset,
+    start: start,
+    tile: Day
+  }));
+}
+Days.propTypes = _objectSpread$3({
+  calendarType: isCalendarType.isRequired,
+  showFixedNumberOfWeeks: PropTypes.bool,
+  showNeighboringMonth: PropTypes.bool
+}, tileGroupProps);
+
+var className$1 = 'react-calendar__month-view__weekdays';
+function Weekdays(props) {
+  var calendarType = props.calendarType,
+      _props$formatShortWee = props.formatShortWeekday,
+      formatShortWeekday$1 = _props$formatShortWee === void 0 ? formatShortWeekday : _props$formatShortWee,
+      locale = props.locale,
+      onMouseLeave = props.onMouseLeave;
+  var anyDate = new Date();
+  var beginOfMonth = getMonthStart(anyDate);
+  var year = getYear(beginOfMonth);
+  var monthIndex = getMonth(beginOfMonth);
+  var weekdays = [];
+
+  for (var weekday = 1; weekday <= 7; weekday += 1) {
+    var weekdayDate = new Date(year, monthIndex, weekday - getDayOfWeek(beginOfMonth, calendarType));
+    var abbr = formatWeekday(locale, weekdayDate);
+    weekdays.push( /*#__PURE__*/React__default["default"].createElement("div", {
+      key: weekday,
+      className: "".concat(className$1, "__weekday")
+    }, /*#__PURE__*/React__default["default"].createElement("abbr", {
+      "aria-label": abbr,
+      title: abbr
+    }, formatShortWeekday$1(locale, weekdayDate).replace('.', ''))));
+  }
+
+  return /*#__PURE__*/React__default["default"].createElement(Flex, {
+    className: className$1,
+    count: 7,
+    onFocus: onMouseLeave,
+    onMouseOver: onMouseLeave
+  }, weekdays);
+}
+Weekdays.propTypes = {
+  calendarType: isCalendarType.isRequired,
+  formatShortWeekday: PropTypes.func,
+  locale: PropTypes.string,
+  onMouseLeave: PropTypes.func
+};
+
+var _excluded$6 = ["date", "onClickWeekNumber", "weekNumber"];
+
+function _extends$3() { _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3.apply(this, arguments); }
+
+function ownKeys$2(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$2(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$2(Object(source), !0).forEach(function (key) { _defineProperty$2(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$2(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties$3(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$4(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose$4(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+var className = 'react-calendar__tile';
+function WeekNumber(_ref) {
+  var date = _ref.date,
+      onClickWeekNumber = _ref.onClickWeekNumber,
+      weekNumber = _ref.weekNumber,
+      otherProps = _objectWithoutProperties$3(_ref, _excluded$6);
+
+  var props = _objectSpread$2({
+    className: className
+  }, otherProps);
+
+  var children = /*#__PURE__*/React__default["default"].createElement("span", null, weekNumber);
+  return onClickWeekNumber ? /*#__PURE__*/React__default["default"].createElement("button", _extends$3({}, props, {
+    onClick: function onClick(event) {
+      return onClickWeekNumber(weekNumber, date, event);
+    },
+    type: "button"
+  }), children) : /*#__PURE__*/React__default["default"].createElement("div", props, children);
+}
+WeekNumber.propTypes = {
+  date: PropTypes.instanceOf(Date).isRequired,
+  onClickWeekNumber: PropTypes.func,
+  weekNumber: PropTypes.node.isRequired
+};
+
+function WeekNumbers(props) {
+  var activeStartDate = props.activeStartDate,
+      calendarType = props.calendarType,
+      onClickWeekNumber = props.onClickWeekNumber,
+      onMouseLeave = props.onMouseLeave,
+      showFixedNumberOfWeeks = props.showFixedNumberOfWeeks;
+
+  var numberOfWeeks = function () {
+    if (showFixedNumberOfWeeks) {
+      return 6;
+    }
+
+    var numberOfDays = getDaysInMonth(activeStartDate);
+    var startWeekday = getDayOfWeek(activeStartDate, calendarType);
+    var days = numberOfDays - (7 - startWeekday);
+    return 1 + Math.ceil(days / 7);
+  }();
+
+  var dates = function () {
+    var year = getYear(activeStartDate);
+    var monthIndex = getMonth(activeStartDate);
+    var day = getDate(activeStartDate);
+    var result = [];
+
+    for (var index = 0; index < numberOfWeeks; index += 1) {
+      result.push(getBeginOfWeek(new Date(year, monthIndex, day + index * 7), calendarType));
+    }
+
+    return result;
+  }();
+
+  var weekNumbers = dates.map(function (date) {
+    return getWeekNumber(date, calendarType);
+  });
+  return /*#__PURE__*/React__default["default"].createElement(Flex, {
+    className: "react-calendar__month-view__weekNumbers",
+    count: numberOfWeeks,
+    direction: "column",
+    onFocus: onMouseLeave,
+    onMouseOver: onMouseLeave,
+    style: {
+      flexBasis: 'calc(100% * (1 / 8)',
+      flexShrink: 0
+    }
+  }, weekNumbers.map(function (weekNumber, weekIndex) {
+    return /*#__PURE__*/React__default["default"].createElement(WeekNumber, {
+      key: weekNumber,
+      date: dates[weekIndex],
+      onClickWeekNumber: onClickWeekNumber,
+      weekNumber: weekNumber
+    });
+  }));
+}
+WeekNumbers.propTypes = {
+  activeStartDate: PropTypes.instanceOf(Date).isRequired,
+  calendarType: isCalendarType.isRequired,
+  onClickWeekNumber: PropTypes.func,
+  onMouseLeave: PropTypes.func,
+  showFixedNumberOfWeeks: PropTypes.bool
+};
+
+var _excluded$5 = ["calendarType", "formatShortWeekday", "onClickWeekNumber", "showWeekNumbers"];
+
+function _extends$2() { _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$2.apply(this, arguments); }
+
+function _objectWithoutProperties$2(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$3(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose$3(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function getCalendarTypeFromLocale(locale) {
+  return Object.keys(CALENDAR_TYPE_LOCALES).find(function (calendarType) {
+    return CALENDAR_TYPE_LOCALES[calendarType].includes(locale);
+  }) || CALENDAR_TYPES.ISO_8601;
+}
+
+function MonthView(props) {
+  var activeStartDate = props.activeStartDate,
+      locale = props.locale,
+      onMouseLeave = props.onMouseLeave,
+      showFixedNumberOfWeeks = props.showFixedNumberOfWeeks;
+
+  var _props$calendarType = props.calendarType,
+      calendarType = _props$calendarType === void 0 ? getCalendarTypeFromLocale(locale) : _props$calendarType,
+      formatShortWeekday = props.formatShortWeekday,
+      onClickWeekNumber = props.onClickWeekNumber,
+      showWeekNumbers = props.showWeekNumbers,
+      childProps = _objectWithoutProperties$2(props, _excluded$5);
+
+  function renderWeekdays() {
+    return /*#__PURE__*/React__default["default"].createElement(Weekdays, {
+      calendarType: calendarType,
+      formatShortWeekday: formatShortWeekday,
+      locale: locale,
+      onMouseLeave: onMouseLeave
+    });
+  }
+
+  function renderWeekNumbers() {
+    if (!showWeekNumbers) {
+      return null;
+    }
+
+    return /*#__PURE__*/React__default["default"].createElement(WeekNumbers, {
+      activeStartDate: activeStartDate,
+      calendarType: calendarType,
+      onClickWeekNumber: onClickWeekNumber,
+      onMouseLeave: onMouseLeave,
+      showFixedNumberOfWeeks: showFixedNumberOfWeeks
+    });
+  }
+
+  function renderDays() {
+    return /*#__PURE__*/React__default["default"].createElement(Days, _extends$2({
+      calendarType: calendarType
+    }, childProps));
+  }
+
+  var className = 'react-calendar__month-view';
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: mergeClassNames(className, showWeekNumbers ? "".concat(className, "--weekNumbers") : '')
+  }, /*#__PURE__*/React__default["default"].createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'flex-end'
+    }
+  }, renderWeekNumbers(), /*#__PURE__*/React__default["default"].createElement("div", {
+    style: {
+      flexGrow: 1,
+      width: '100%'
+    }
+  }, renderWeekdays(), renderDays())));
+}
+MonthView.propTypes = {
+  activeStartDate: PropTypes.instanceOf(Date).isRequired,
+  calendarType: isCalendarType,
+  formatShortWeekday: PropTypes.func,
+  locale: PropTypes.string,
+  onClickWeekNumber: PropTypes.func,
+  onMouseLeave: PropTypes.func,
+  showFixedNumberOfWeeks: PropTypes.bool,
+  showWeekNumbers: PropTypes.bool
+};
+
+var _excluded$4 = ["activeStartDate", "defaultActiveStartDate", "defaultValue", "defaultView", "maxDetail", "minDetail", "value", "view"];
+
+function _extends$1() { _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$1.apply(this, arguments); }
+
+function _typeof$2(obj) { "@babel/helpers - typeof"; return _typeof$2 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof$2(obj); }
+
+function _classCallCheck$1(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$1(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$1(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$1(Constructor.prototype, protoProps); if (staticProps) _defineProperties$1(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _inherits$1(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf$1(subClass, superClass); }
+
+function _setPrototypeOf$1(o, p) { _setPrototypeOf$1 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$1(o, p); }
+
+function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf$1(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$1(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$1(this, result); }; }
+
+function _possibleConstructorReturn$1(self, call) { if (call && (_typeof$2(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized$2(self); }
+
+function _assertThisInitialized$2(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf$1(o) { _getPrototypeOf$1 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$1(o); }
+
+function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$1(Object(source), !0).forEach(function (key) { _defineProperty$1(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties$1(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$2(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose$2(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _toConsumableArray$2(arr) { return _arrayWithoutHoles$2(arr) || _iterableToArray$2(arr) || _unsupportedIterableToArray$2(arr) || _nonIterableSpread$2(); }
+
+function _nonIterableSpread$2() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray$2(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$2(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$2(o, minLen); }
+
+function _iterableToArray$2(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles$2(arr) { if (Array.isArray(arr)) return _arrayLikeToArray$2(arr); }
+
+function _arrayLikeToArray$2(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+var defaultMinDate = new Date();
+defaultMinDate.setFullYear(1, 0, 1);
+defaultMinDate.setHours(0, 0, 0, 0);
+var defaultMaxDate = new Date(8.64e15);
+var baseClassName = 'react-calendar';
+var allViews$1 = ['century', 'decade', 'year', 'month'];
+var allValueTypes$1 = [].concat(_toConsumableArray$2(allViews$1.slice(1)), ['day']);
+
+function toDate(value) {
+  if (value instanceof Date) {
+    return value;
+  }
+
+  return new Date(value);
+}
+/**
+ * Returns views array with disallowed values cut off.
+ */
+
+
+function getLimitedViews(minDetail, maxDetail) {
+  return allViews$1.slice(allViews$1.indexOf(minDetail), allViews$1.indexOf(maxDetail) + 1);
+}
+/**
+ * Determines whether a given view is allowed with currently applied settings.
+ */
+
+
+function isViewAllowed(view, minDetail, maxDetail) {
+  var views = getLimitedViews(minDetail, maxDetail);
+  return views.indexOf(view) !== -1;
+}
+/**
+ * Gets either provided view if allowed by minDetail and maxDetail, or gets
+ * the default view if not allowed.
+ */
+
+
+function getView(view, minDetail, maxDetail) {
+  if (isViewAllowed(view, minDetail, maxDetail)) {
+    return view;
+  }
+
+  return maxDetail;
+}
+/**
+ * Returns value type that can be returned with currently applied settings.
+ */
+
+
+function getValueType(maxDetail) {
+  return allValueTypes$1[allViews$1.indexOf(maxDetail)];
+}
+
+function getValue$1(value, index) {
+  if (!value) {
+    return null;
+  }
+
+  var rawValue = Array.isArray(value) && value.length === 2 ? value[index] : value;
+
+  if (!rawValue) {
+    return null;
+  }
+
+  var valueDate = toDate(rawValue);
+
+  if (isNaN(valueDate.getTime())) {
+    throw new Error("Invalid date: ".concat(value));
+  }
+
+  return valueDate;
+}
+
+function getDetailValue(_ref, index) {
+  var value = _ref.value,
+      minDate = _ref.minDate,
+      maxDate = _ref.maxDate,
+      maxDetail = _ref.maxDetail;
+  var valuePiece = getValue$1(value, index);
+
+  if (!valuePiece) {
+    return null;
+  }
+
+  var valueType = getValueType(maxDetail);
+  var detailValueFrom = [getBegin$1, getEnd$1][index](valueType, valuePiece);
+  return between$1(detailValueFrom, minDate, maxDate);
+}
+
+var getDetailValueFrom = function getDetailValueFrom(args) {
+  return getDetailValue(args, 0);
+};
+
+var getDetailValueTo = function getDetailValueTo(args) {
+  return getDetailValue(args, 1);
+};
+
+var getDetailValueArray = function getDetailValueArray(args) {
+  var value = args.value;
+
+  if (Array.isArray(value)) {
+    return value;
+  }
+
+  return [getDetailValueFrom, getDetailValueTo].map(function (fn) {
+    return fn(args);
+  });
+};
+
+function getActiveStartDate(props) {
+  var maxDate = props.maxDate,
+      maxDetail = props.maxDetail,
+      minDate = props.minDate,
+      minDetail = props.minDetail,
+      value = props.value,
+      view = props.view;
+  var rangeType = getView(view, minDetail, maxDetail);
+  var valueFrom = getDetailValueFrom({
+    value: value,
+    minDate: minDate,
+    maxDate: maxDate,
+    maxDetail: maxDetail
+  }) || new Date();
+  return getBegin$1(rangeType, valueFrom);
+}
+
+function getInitialActiveStartDate(props) {
+  var activeStartDate = props.activeStartDate,
+      defaultActiveStartDate = props.defaultActiveStartDate,
+      defaultValue = props.defaultValue,
+      defaultView = props.defaultView,
+      maxDetail = props.maxDetail,
+      minDetail = props.minDetail,
+      value = props.value,
+      view = props.view,
+      otherProps = _objectWithoutProperties$1(props, _excluded$4);
+
+  var rangeType = getView(view, minDetail, maxDetail);
+  var valueFrom = activeStartDate || defaultActiveStartDate;
+
+  if (valueFrom) {
+    return getBegin$1(rangeType, valueFrom);
+  }
+
+  return getActiveStartDate(_objectSpread$1({
+    maxDetail: maxDetail,
+    minDetail: minDetail,
+    value: value || defaultValue,
+    view: view || defaultView
+  }, otherProps));
+}
+
+var getIsSingleValue = function getIsSingleValue(value) {
+  return value && [].concat(value).length === 1;
+};
+
+var Calendar$1 = /*#__PURE__*/function (_Component) {
+  _inherits$1(Calendar, _Component);
+
+  var _super = _createSuper$1(Calendar);
+
+  function Calendar() {
+    var _this;
+
+    _classCallCheck$1(this, Calendar);
+
+    for (var _len = arguments.length, _args = new Array(_len), _key = 0; _key < _len; _key++) {
+      _args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(_args));
+
+    _defineProperty$1(_assertThisInitialized$2(_this), "state", {
+      activeStartDate: _this.props.defaultActiveStartDate,
+      value: _this.props.defaultValue,
+      view: _this.props.defaultView
+    });
+
+    _defineProperty$1(_assertThisInitialized$2(_this), "setStateAndCallCallbacks", function (nextState, event, callback) {
+      var _assertThisInitialize = _assertThisInitialized$2(_this),
+          previousActiveStartDate = _assertThisInitialize.activeStartDate,
+          previousView = _assertThisInitialize.view;
+
+      var _this$props = _this.props,
+          allowPartialRange = _this$props.allowPartialRange,
+          onActiveStartDateChange = _this$props.onActiveStartDateChange,
+          onChange = _this$props.onChange,
+          onViewChange = _this$props.onViewChange,
+          selectRange = _this$props.selectRange;
+      var prevArgs = {
+        activeStartDate: previousActiveStartDate,
+        view: previousView
+      };
+
+      _this.setState(nextState, function () {
+        var args = {
+          action: nextState.action,
+          activeStartDate: nextState.activeStartDate || _this.activeStartDate,
+          value: nextState.value || _this.value,
+          view: nextState.view || _this.view
+        };
+
+        function shouldUpdate(key) {
+          return (// Key must exist, and…
+            key in nextState && ( // …key changed from undefined to defined or the other way around, or…
+            _typeof$2(nextState[key]) !== _typeof$2(prevArgs[key]) || ( // …value changed.
+            nextState[key] instanceof Date ? nextState[key].getTime() !== prevArgs[key].getTime() : nextState[key] !== prevArgs[key]))
+          );
+        }
+
+        if (shouldUpdate('activeStartDate')) {
+          if (onActiveStartDateChange) onActiveStartDateChange(args);
+        }
+
+        if (shouldUpdate('view')) {
+          if (onViewChange) onViewChange(args);
+        }
+
+        if (shouldUpdate('value')) {
+          if (onChange) {
+            if (selectRange) {
+              var isSingleValue = getIsSingleValue(nextState.value);
+
+              if (!isSingleValue) {
+                onChange(nextState.value, event);
+              } else if (allowPartialRange) {
+                onChange([nextState.value], event);
+              }
+            } else {
+              onChange(nextState.value, event);
+            }
+          }
+        }
+
+        if (callback) callback(args);
+      });
+    });
+
+    _defineProperty$1(_assertThisInitialized$2(_this), "setActiveStartDate", function (nextActiveStartDate, action) {
+      _this.setStateAndCallCallbacks({
+        action: action,
+        activeStartDate: nextActiveStartDate
+      });
+    });
+
+    _defineProperty$1(_assertThisInitialized$2(_this), "drillDown", function (nextActiveStartDate, event) {
+      if (!_this.drillDownAvailable) {
+        return;
+      }
+
+      _this.onClickTile(nextActiveStartDate, event);
+
+      var _assertThisInitialize2 = _assertThisInitialized$2(_this),
+          view = _assertThisInitialize2.view,
+          views = _assertThisInitialize2.views;
+
+      var onDrillDown = _this.props.onDrillDown;
+      var nextView = views[views.indexOf(view) + 1];
+
+      _this.setStateAndCallCallbacks({
+        action: 'drillDown',
+        activeStartDate: nextActiveStartDate,
+        view: nextView
+      }, undefined, onDrillDown);
+    });
+
+    _defineProperty$1(_assertThisInitialized$2(_this), "drillUp", function () {
+      if (!_this.drillUpAvailable) {
+        return;
+      }
+
+      var _assertThisInitialize3 = _assertThisInitialized$2(_this),
+          activeStartDate = _assertThisInitialize3.activeStartDate,
+          view = _assertThisInitialize3.view,
+          views = _assertThisInitialize3.views;
+
+      var onDrillUp = _this.props.onDrillUp;
+      var nextView = views[views.indexOf(view) - 1];
+      var nextActiveStartDate = getBegin$1(nextView, activeStartDate);
+
+      _this.setStateAndCallCallbacks({
+        action: 'drillUp',
+        activeStartDate: nextActiveStartDate,
+        view: nextView
+      }, undefined, onDrillUp);
+    });
+
+    _defineProperty$1(_assertThisInitialized$2(_this), "onChange", function (value, event) {
+      var selectRange = _this.props.selectRange;
+
+      _this.onClickTile(value, event);
+
+      var nextValue;
+
+      if (selectRange) {
+        // Range selection turned on
+        var _assertThisInitialize4 = _assertThisInitialized$2(_this),
+            previousValue = _assertThisInitialize4.value,
+            valueType = _assertThisInitialize4.valueType;
+
+        if (!getIsSingleValue(previousValue)) {
+          // Value has 0 or 2 elements - either way we're starting a new array
+          // First value
+          nextValue = getBegin$1(valueType, value);
+        } else {
+          // Second value
+          nextValue = getValueRange(valueType, previousValue, value);
+        }
+      } else {
+        // Range selection turned off
+        nextValue = _this.getProcessedValue(value);
+      }
+
+      var nextActiveStartDate = getActiveStartDate(_objectSpread$1(_objectSpread$1({}, _this.props), {}, {
+        value: nextValue
+      }));
+      event.persist();
+
+      _this.setStateAndCallCallbacks({
+        action: 'onChange',
+        activeStartDate: nextActiveStartDate,
+        value: nextValue
+      }, event);
+    });
+
+    _defineProperty$1(_assertThisInitialized$2(_this), "onClickTile", function (value, event) {
+      var _assertThisInitialize5 = _assertThisInitialized$2(_this),
+          view = _assertThisInitialize5.view;
+
+      var _this$props2 = _this.props,
+          onClickDay = _this$props2.onClickDay,
+          onClickDecade = _this$props2.onClickDecade,
+          onClickMonth = _this$props2.onClickMonth,
+          onClickYear = _this$props2.onClickYear;
+
+      var callback = function () {
+        switch (view) {
+          case 'century':
+            return onClickDecade;
+
+          case 'decade':
+            return onClickYear;
+
+          case 'year':
+            return onClickMonth;
+
+          case 'month':
+            return onClickDay;
+
+          default:
+            throw new Error("Invalid view: ".concat(view, "."));
+        }
+      }();
+
+      if (callback) callback(value, event);
+    });
+
+    _defineProperty$1(_assertThisInitialized$2(_this), "onMouseOver", function (value) {
+      _this.setState(function (prevState) {
+        if (prevState.hover && prevState.hover.getTime() === value.getTime()) {
+          return null;
+        }
+
+        return {
+          hover: value
+        };
+      });
+    });
+
+    _defineProperty$1(_assertThisInitialized$2(_this), "onMouseLeave", function () {
+      _this.setState({
+        hover: null
+      });
+    });
+
+    return _this;
+  }
+
+  _createClass$1(Calendar, [{
+    key: "activeStartDate",
+    get: function get() {
+      var activeStartDateProps = this.props.activeStartDate;
+      var activeStartDateState = this.state.activeStartDate;
+      return activeStartDateProps || activeStartDateState || getInitialActiveStartDate(this.props);
     }
   }, {
-    key: "handleCheckboxChange",
-    value: function handleCheckboxChange(event) {
-      this.props.onFilterChange(this.props.field.id, event);
+    key: "value",
+    get: function get() {
+      var _this$props3 = this.props,
+          selectRange = _this$props3.selectRange,
+          valueProps = _this$props3.value;
+      var valueState = this.state.value; // In the middle of range selection, use value from state
+
+      if (selectRange && getIsSingleValue(valueState)) {
+        return valueState;
+      }
+
+      return valueProps !== undefined ? valueProps : valueState;
     }
   }, {
-    key: "createNumberArray",
-    value: function createNumberArray(max_number) {
-      return Array.apply(null, {
-        length: max_number + 1
-      }).map(Number.call, Number);
+    key: "valueType",
+    get: function get() {
+      var maxDetail = this.props.maxDetail;
+      return getValueType(maxDetail);
     }
   }, {
-    key: "createPriceArray",
-    value: function createPriceArray(max_price) {
-      var rounded = Math.ceil(max_price / 100);
-      return Array.from({
-        length: rounded
-      }, function (v, k) {
-        return k * 100;
+    key: "view",
+    get: function get() {
+      var _this$props4 = this.props,
+          minDetail = _this$props4.minDetail,
+          maxDetail = _this$props4.maxDetail,
+          viewProps = _this$props4.view;
+      var viewState = this.state.view;
+      return getView(viewProps || viewState, minDetail, maxDetail);
+    }
+  }, {
+    key: "views",
+    get: function get() {
+      var _this$props5 = this.props,
+          minDetail = _this$props5.minDetail,
+          maxDetail = _this$props5.maxDetail;
+      return getLimitedViews(minDetail, maxDetail);
+    }
+  }, {
+    key: "hover",
+    get: function get() {
+      var selectRange = this.props.selectRange;
+      var hover = this.state.hover;
+      return selectRange ? hover : null;
+    }
+  }, {
+    key: "drillDownAvailable",
+    get: function get() {
+      var view = this.view,
+          views = this.views;
+      return views.indexOf(view) < views.length - 1;
+    }
+  }, {
+    key: "drillUpAvailable",
+    get: function get() {
+      var view = this.view,
+          views = this.views;
+      return views.indexOf(view) > 0;
+    }
+    /**
+     * Gets current value in a desired format.
+     */
+
+  }, {
+    key: "getProcessedValue",
+    value: function getProcessedValue(value) {
+      var _this$props6 = this.props,
+          minDate = _this$props6.minDate,
+          maxDate = _this$props6.maxDate,
+          maxDetail = _this$props6.maxDetail,
+          returnValue = _this$props6.returnValue;
+
+      var processFunction = function () {
+        switch (returnValue) {
+          case 'start':
+            return getDetailValueFrom;
+
+          case 'end':
+            return getDetailValueTo;
+
+          case 'range':
+            return getDetailValueArray;
+
+          default:
+            throw new Error('Invalid returnValue.');
+        }
+      }();
+
+      return processFunction({
+        value: value,
+        minDate: minDate,
+        maxDate: maxDate,
+        maxDetail: maxDetail
       });
     }
   }, {
-    key: "handleDateChange",
-    value: function handleDateChange(date) {
-      if (date) {
-        this.props.onFilterChange(this.props.field.id, format(date, 'yyyy-MM-dd'));
-      } else {
-        this.props.onFilterChange(this.props.field.id, '');
+    key: "renderContent",
+    value: function renderContent(next) {
+      var currentActiveStartDate = this.activeStartDate,
+          onMouseOver = this.onMouseOver,
+          valueType = this.valueType,
+          value = this.value,
+          view = this.view;
+      var _this$props7 = this.props,
+          calendarType = _this$props7.calendarType,
+          locale = _this$props7.locale,
+          maxDate = _this$props7.maxDate,
+          minDate = _this$props7.minDate,
+          selectRange = _this$props7.selectRange,
+          tileClassName = _this$props7.tileClassName,
+          tileContent = _this$props7.tileContent,
+          tileDisabled = _this$props7.tileDisabled;
+      var hover = this.hover;
+      var activeStartDate = next ? getBeginNext(view, currentActiveStartDate) : getBegin$1(view, currentActiveStartDate);
+      var onClick = this.drillDownAvailable ? this.drillDown : this.onChange;
+      var commonProps = {
+        activeStartDate: activeStartDate,
+        hover: hover,
+        locale: locale,
+        maxDate: maxDate,
+        minDate: minDate,
+        onClick: onClick,
+        onMouseOver: selectRange ? onMouseOver : null,
+        tileClassName: tileClassName,
+        tileContent: tileContent,
+        tileDisabled: tileDisabled,
+        value: value,
+        valueType: valueType
+      };
+
+      switch (view) {
+        case 'century':
+          {
+            var formatYear = this.props.formatYear;
+            return /*#__PURE__*/React__default["default"].createElement(CenturyView, _extends$1({
+              formatYear: formatYear
+            }, commonProps));
+          }
+
+        case 'decade':
+          {
+            var _formatYear = this.props.formatYear;
+            return /*#__PURE__*/React__default["default"].createElement(DecadeView, _extends$1({
+              formatYear: _formatYear
+            }, commonProps));
+          }
+
+        case 'year':
+          {
+            var _this$props8 = this.props,
+                formatMonth = _this$props8.formatMonth,
+                formatMonthYear = _this$props8.formatMonthYear;
+            return /*#__PURE__*/React__default["default"].createElement(YearView, _extends$1({
+              formatMonth: formatMonth,
+              formatMonthYear: formatMonthYear
+            }, commonProps));
+          }
+
+        case 'month':
+          {
+            var _this$props9 = this.props,
+                formatDay = _this$props9.formatDay,
+                formatLongDate = _this$props9.formatLongDate,
+                formatShortWeekday = _this$props9.formatShortWeekday,
+                onClickWeekNumber = _this$props9.onClickWeekNumber,
+                showDoubleView = _this$props9.showDoubleView,
+                showFixedNumberOfWeeks = _this$props9.showFixedNumberOfWeeks,
+                showNeighboringMonth = _this$props9.showNeighboringMonth,
+                showWeekNumbers = _this$props9.showWeekNumbers;
+            var onMouseLeave = this.onMouseLeave;
+            return /*#__PURE__*/React__default["default"].createElement(MonthView, _extends$1({
+              calendarType: calendarType,
+              formatDay: formatDay,
+              formatLongDate: formatLongDate,
+              formatShortWeekday: formatShortWeekday,
+              onClickWeekNumber: onClickWeekNumber,
+              onMouseLeave: selectRange ? onMouseLeave : null,
+              showFixedNumberOfWeeks: typeof showFixedNumberOfWeeks !== 'undefined' ? showFixedNumberOfWeeks : showDoubleView,
+              showNeighboringMonth: showNeighboringMonth,
+              showWeekNumbers: showWeekNumbers
+            }, commonProps));
+          }
+
+        default:
+          throw new Error("Invalid view: ".concat(view, "."));
       }
     }
   }, {
-    key: "handlePropertyChange",
-    value: function handlePropertyChange(event) {
-      var value = Number(event.target.value);
-      var properties = this.props.filters.properties || [];
+    key: "renderNavigation",
+    value: function renderNavigation() {
+      var showNavigation = this.props.showNavigation;
 
-      if (arrayIncludes(properties, value)) {
-        var index = properties.indexOf(value);
-        properties.splice(index, 1);
-      } else {
-        properties.push(value);
+      if (!showNavigation) {
+        return null;
       }
 
-      this.props.onFilterChange('properties', properties);
+      var activeStartDate = this.activeStartDate,
+          view = this.view,
+          views = this.views;
+      var _this$props10 = this.props,
+          formatMonthYear = _this$props10.formatMonthYear,
+          formatYear = _this$props10.formatYear,
+          locale = _this$props10.locale,
+          maxDate = _this$props10.maxDate,
+          minDate = _this$props10.minDate,
+          navigationAriaLabel = _this$props10.navigationAriaLabel,
+          navigationAriaLive = _this$props10.navigationAriaLive,
+          navigationLabel = _this$props10.navigationLabel,
+          next2AriaLabel = _this$props10.next2AriaLabel,
+          next2Label = _this$props10.next2Label,
+          nextAriaLabel = _this$props10.nextAriaLabel,
+          nextLabel = _this$props10.nextLabel,
+          prev2AriaLabel = _this$props10.prev2AriaLabel,
+          prev2Label = _this$props10.prev2Label,
+          prevAriaLabel = _this$props10.prevAriaLabel,
+          prevLabel = _this$props10.prevLabel,
+          showDoubleView = _this$props10.showDoubleView;
+      return /*#__PURE__*/React__default["default"].createElement(Navigation, {
+        activeStartDate: activeStartDate,
+        drillUp: this.drillUp,
+        formatMonthYear: formatMonthYear,
+        formatYear: formatYear,
+        locale: locale,
+        maxDate: maxDate,
+        minDate: minDate,
+        navigationAriaLabel: navigationAriaLabel,
+        navigationAriaLive: navigationAriaLive,
+        navigationLabel: navigationLabel,
+        next2AriaLabel: next2AriaLabel,
+        next2Label: next2Label,
+        nextAriaLabel: nextAriaLabel,
+        nextLabel: nextLabel,
+        prev2AriaLabel: prev2AriaLabel,
+        prev2Label: prev2Label,
+        prevAriaLabel: prevAriaLabel,
+        prevLabel: prevLabel,
+        setActiveStartDate: this.setActiveStartDate,
+        showDoubleView: showDoubleView,
+        view: view,
+        views: views
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props11 = this.props,
+          className = _this$props11.className,
+          inputRef = _this$props11.inputRef,
+          selectRange = _this$props11.selectRange,
+          showDoubleView = _this$props11.showDoubleView;
+      var onMouseLeave = this.onMouseLeave,
+          value = this.value;
+      var valueArray = [].concat(value);
+      return /*#__PURE__*/React__default["default"].createElement("div", {
+        className: mergeClassNames(baseClassName, selectRange && valueArray.length === 1 && "".concat(baseClassName, "--selectRange"), showDoubleView && "".concat(baseClassName, "--doubleView"), className),
+        ref: inputRef
+      }, this.renderNavigation(), /*#__PURE__*/React__default["default"].createElement("div", {
+        className: "".concat(baseClassName, "__viewContainer"),
+        onBlur: selectRange ? onMouseLeave : null,
+        onMouseLeave: selectRange ? onMouseLeave : null
+      }, this.renderContent(), showDoubleView && this.renderContent(true)));
+    }
+  }]);
+
+  return Calendar;
+}(React.Component);
+Calendar$1.defaultProps = {
+  maxDate: defaultMaxDate,
+  maxDetail: 'month',
+  minDate: defaultMinDate,
+  minDetail: 'century',
+  returnValue: 'start',
+  showNavigation: true,
+  showNeighboringMonth: true
+};
+var isActiveStartDate = PropTypes.instanceOf(Date);
+var isLooseValue = PropTypes.oneOfType([PropTypes.string, isValue]);
+Calendar$1.propTypes = {
+  activeStartDate: isActiveStartDate,
+  allowPartialRange: PropTypes.bool,
+  calendarType: isCalendarType,
+  className: isClassName,
+  defaultActiveStartDate: isActiveStartDate,
+  defaultValue: isLooseValue,
+  defaultView: isView,
+  formatDay: PropTypes.func,
+  formatLongDate: PropTypes.func,
+  formatMonth: PropTypes.func,
+  formatMonthYear: PropTypes.func,
+  formatShortWeekday: PropTypes.func,
+  formatYear: PropTypes.func,
+  inputRef: isRef$1,
+  locale: PropTypes.string,
+  maxDate: isMaxDate$1,
+  maxDetail: PropTypes.oneOf(allViews$1),
+  minDate: isMinDate$1,
+  minDetail: PropTypes.oneOf(allViews$1),
+  navigationAriaLabel: PropTypes.string,
+  navigationAriaLive: PropTypes.oneOf(['off', 'polite', 'assertive']),
+  navigationLabel: PropTypes.func,
+  next2AriaLabel: PropTypes.string,
+  next2Label: PropTypes.node,
+  nextAriaLabel: PropTypes.string,
+  nextLabel: PropTypes.node,
+  onActiveStartDateChange: PropTypes.func,
+  onChange: PropTypes.func,
+  onClickDay: PropTypes.func,
+  onClickDecade: PropTypes.func,
+  onClickMonth: PropTypes.func,
+  onClickWeekNumber: PropTypes.func,
+  onClickYear: PropTypes.func,
+  onDrillDown: PropTypes.func,
+  onDrillUp: PropTypes.func,
+  onViewChange: PropTypes.func,
+  prev2AriaLabel: PropTypes.string,
+  prev2Label: PropTypes.node,
+  prevAriaLabel: PropTypes.string,
+  prevLabel: PropTypes.node,
+  returnValue: PropTypes.oneOf(['start', 'end', 'range']),
+  selectRange: PropTypes.bool,
+  showDoubleView: PropTypes.bool,
+  showFixedNumberOfWeeks: PropTypes.bool,
+  showNavigation: PropTypes.bool,
+  showNeighboringMonth: PropTypes.bool,
+  showWeekNumbers: PropTypes.bool,
+  tileClassName: PropTypes.oneOfType([PropTypes.func, isClassName]),
+  tileContent: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
+  tileDisabled: PropTypes.func,
+  value: isLooseValue,
+  view: isView
+};
+
+var esm$2 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': Calendar$1,
+  Calendar: Calendar$1,
+  CenturyView: CenturyView,
+  DecadeView: DecadeView,
+  YearView: YearView,
+  MonthView: MonthView
+});
+
+var require$$4$1 = /*@__PURE__*/getAugmentedNamespace(esm$2);
+
+var getRect = function getRect(element) {
+  return element.getBoundingClientRect();
+};
+
+var detectElementOverflow = function detectElementOverflow(element, container) {
+  return {
+    get collidedTop() {
+      return getRect(element).top < getRect(container).top;
+    },
+
+    get collidedBottom() {
+      return getRect(element).bottom > getRect(container).bottom;
+    },
+
+    get collidedLeft() {
+      return getRect(element).left < getRect(container).left;
+    },
+
+    get collidedRight() {
+      return getRect(element).right > getRect(container).right;
+    },
+
+    get overflowTop() {
+      return getRect(container).top - getRect(element).top;
+    },
+
+    get overflowBottom() {
+      return getRect(element).bottom - getRect(container).bottom;
+    },
+
+    get overflowLeft() {
+      return getRect(container).left - getRect(element).left;
+    },
+
+    get overflowRight() {
+      return getRect(element).right - getRect(container).right;
+    }
+
+  };
+};
+
+var detectElementOverflow$1 = detectElementOverflow;
+
+var isProduction = process.env.NODE_ENV === 'production';
+function warning(condition, message) {
+  if (!isProduction) {
+    if (condition) {
+      return;
+    }
+
+    var text = "Warning: " + message;
+
+    if (typeof console !== 'undefined') {
+      console.warn(text);
+    }
+
+    try {
+      throw Error(text);
+    } catch (x) {}
+  }
+}
+
+var _excluded$3 = ["invertAxis", "invertSecondaryAxis"];
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof$1(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized$1(self); }
+
+function _assertThisInitialized$1(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose$1(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose$1(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _typeof$1(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$1 = function _typeof(obj) { return typeof obj; }; } else { _typeof$1 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$1(obj); }
+var isBrowser = typeof window !== 'undefined';
+var isDisplayContentsSupported = isBrowser && 'CSS' in window && 'supports' in window.CSS && CSS.supports('display', 'contents');
+var isMutationObserverSupported = isBrowser && 'MutationObserver' in window;
+
+function capitalize(a) {
+  return a[0].toUpperCase() + a.slice(1);
+}
+
+function findScrollContainer(element) {
+  if (!element) {
+    return undefined;
+  }
+
+  var parent = element.parentElement;
+
+  while (parent) {
+    var _window$getComputedSt = window.getComputedStyle(parent),
+        overflow = _window$getComputedSt.overflow;
+
+    if (overflow.split(' ').every(function (o) {
+      return o === 'auto' || o === 'scroll';
+    })) {
+      return parent;
+    }
+
+    parent = parent.parentElement;
+  }
+
+  return document.documentElement;
+}
+
+function alignAxis(_ref) {
+  var axis = _ref.axis,
+      container = _ref.container,
+      element = _ref.element,
+      invertAxis = _ref.invertAxis,
+      secondary = _ref.secondary,
+      scrollContainer = _ref.scrollContainer,
+      spacing = _ref.spacing;
+  var style = window.getComputedStyle(element);
+  var parent = container.parentElement;
+  var scrollContainerCollisions = detectElementOverflow$1(parent, scrollContainer);
+  var documentCollisions = detectElementOverflow$1(parent, document.documentElement);
+  var isX = axis === 'x';
+  var startProperty = isX ? 'left' : 'top';
+  var endProperty = isX ? 'right' : 'bottom';
+  var sizeProperty = isX ? 'width' : 'height';
+  var overflowStartProperty = "overflow".concat(capitalize(startProperty));
+  var overflowEndProperty = "overflow".concat(capitalize(endProperty));
+  var scrollProperty = "scroll".concat(capitalize(startProperty));
+  var uppercasedSizeProperty = capitalize(sizeProperty);
+  var offsetSizeProperty = "offset".concat(uppercasedSizeProperty);
+  var clientSizeProperty = "client".concat(uppercasedSizeProperty);
+  var minSizeProperty = "min-".concat(sizeProperty);
+  var scrollbarWidth = scrollContainer[offsetSizeProperty] - scrollContainer[clientSizeProperty];
+  var startSpacing = _typeof$1(spacing) === 'object' ? spacing[startProperty] : spacing;
+  var availableStartSpace = -Math.max(scrollContainerCollisions[overflowStartProperty], documentCollisions[overflowStartProperty] + document.documentElement[scrollProperty]) - startSpacing;
+  var endSpacing = _typeof$1(spacing) === 'object' ? spacing[endProperty] : spacing;
+  var availableEndSpace = -Math.max(scrollContainerCollisions[overflowEndProperty], documentCollisions[overflowEndProperty] - document.documentElement[scrollProperty]) - endSpacing - scrollbarWidth;
+
+  if (secondary) {
+    availableStartSpace += parent[clientSizeProperty];
+    availableEndSpace += parent[clientSizeProperty];
+  }
+
+  var offsetSize = element[offsetSizeProperty];
+
+  function displayStart() {
+    element.style[startProperty] = 'auto';
+    element.style[endProperty] = secondary ? '0' : '100%';
+  }
+
+  function displayEnd() {
+    element.style[startProperty] = secondary ? '0' : '100%';
+    element.style[endProperty] = 'auto';
+  }
+
+  function displayIfFits(availableSpace, display) {
+    var fits = offsetSize <= availableSpace;
+
+    if (fits) {
+      display();
+    }
+
+    return fits;
+  }
+
+  function displayStartIfFits() {
+    return displayIfFits(availableStartSpace, displayStart);
+  }
+
+  function displayEndIfFits() {
+    return displayIfFits(availableEndSpace, displayEnd);
+  }
+
+  function displayWhereverShrinkedFits() {
+    var moreSpaceStart = availableStartSpace > availableEndSpace;
+    var minSize = style[minSizeProperty] && parseInt(style[minSizeProperty], 10);
+
+    function shrinkToSize(size) {
+      warning(!minSize || size >= minSize, "<Fit />'s child will not fit anywhere with its current ".concat(minSizeProperty, " of ").concat(minSize, "px."));
+      var newSize = Math.max(size, minSize || 0);
+      warning(false, "<Fit />'s child needed to have its ".concat(sizeProperty, " decreased to ").concat(newSize, "px."));
+      element.style[sizeProperty] = "".concat(newSize, "px");
+    }
+
+    if (moreSpaceStart) {
+      shrinkToSize(availableStartSpace);
+      displayStart();
+    } else {
+      shrinkToSize(availableEndSpace);
+      displayEnd();
+    }
+  }
+
+  var fits;
+
+  if (invertAxis) {
+    fits = displayStartIfFits() || displayEndIfFits();
+  } else {
+    fits = displayEndIfFits() || displayStartIfFits();
+  }
+
+  if (!fits) {
+    displayWhereverShrinkedFits();
+  }
+}
+
+function alignMainAxis(args) {
+  alignAxis(args);
+}
+
+function alignSecondaryAxis(args) {
+  alignAxis(_objectSpread(_objectSpread({}, args), {}, {
+    axis: args.axis === 'x' ? 'y' : 'x',
+    secondary: true
+  }));
+}
+
+function alignBothAxis(args) {
+  var invertAxis = args.invertAxis,
+      invertSecondaryAxis = args.invertSecondaryAxis,
+      commonArgs = _objectWithoutProperties(args, _excluded$3);
+
+  alignMainAxis(_objectSpread(_objectSpread({}, commonArgs), {}, {
+    invertAxis: invertAxis
+  }));
+  alignSecondaryAxis(_objectSpread(_objectSpread({}, commonArgs), {}, {
+    invertAxis: invertSecondaryAxis
+  }));
+}
+
+var Fit = /*#__PURE__*/function (_Component) {
+  _inherits(Fit, _Component);
+
+  var _super = _createSuper(Fit);
+
+  function Fit() {
+    var _this;
+
+    _classCallCheck(this, Fit);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized$1(_this), "onMutation", function () {
+      _this.fit();
+    });
+
+    _defineProperty(_assertThisInitialized$1(_this), "mutationObserver", isMutationObserverSupported && new MutationObserver(_this.onMutation));
+
+    _defineProperty(_assertThisInitialized$1(_this), "fit", function () {
+      var _assertThisInitialize = _assertThisInitialized$1(_this),
+          scrollContainer = _assertThisInitialize.scrollContainer,
+          container = _assertThisInitialize.container,
+          element = _assertThisInitialize.element;
+
+      if (!element) {
+        return;
+      }
+
+      var elementWidth = element.clientWidth;
+      var elementHeight = element.clientHeight; // No need to recalculate - already did that for current dimensions
+
+      if (_this.elementWidth === elementWidth && _this.elementHeight === elementHeight) {
+        return;
+      } // Save the dimensions so that we know we don't need to repeat the function if unchanged
+
+
+      _this.elementWidth = elementWidth;
+      _this.elementHeight = elementHeight;
+      var parent = container.parentElement; // Container was unmounted
+
+      if (!parent) {
+        return;
+      }
+      /**
+       * We need to ensure that <Fit />'s child has a absolute position. Otherwise,
+       * we wouldn't be able to place the child in the correct position.
+       */
+
+
+      var style = window.getComputedStyle(element);
+      var position = style.position;
+
+      if (position !== 'absolute') {
+        warning(false, '<Fit />\'s child does not have absolute position. You should apply `position: absolute` to it.');
+        element.style.position = 'absolute';
+      }
+      /**
+       * We need to ensure that <Fit />'s parent has a relative position. Otherwise,
+       * we wouldn't be able to place the child in the correct position.
+       */
+
+
+      var parentStyle = window.getComputedStyle(parent);
+      var parentPosition = parentStyle.position;
+
+      if (parentPosition !== 'relative' && parentPosition !== 'absolute') {
+        warning(false, '<Fit />\'s parent does not have relative position. You should apply `position: relative` to it.');
+        parent.style.position = 'relative';
+      }
+
+      var _this$props = _this.props,
+          invertAxis = _this$props.invertAxis,
+          invertSecondaryAxis = _this$props.invertSecondaryAxis,
+          mainAxis = _this$props.mainAxis,
+          spacing = _this$props.spacing;
+      alignBothAxis({
+        container: container,
+        element: element,
+        invertAxis: invertAxis,
+        invertSecondaryAxis: invertSecondaryAxis,
+        axis: mainAxis,
+        scrollContainer: scrollContainer,
+        spacing: spacing
+      });
+    });
+
+    return _this;
+  }
+
+  _createClass(Fit, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (!isDisplayContentsSupported) {
+        // eslint-disable-next-line react/no-find-dom-node
+        var element = reactDom.findDOMNode(this);
+        this.container = element;
+        this.element = element;
+        this.scrollContainer = findScrollContainer(element);
+      }
+
+      this.fit();
+
+      if (isMutationObserverSupported) {
+        this.mutationObserver.observe(this.element, {
+          attributes: true,
+          attributeFilter: ['class', 'style']
+        });
+      }
     }
   }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      var _this$props = this.props,
-          PortalSite = _this$props.PortalSite,
-          field = _this$props.field,
-          filters = _this$props.filters,
-          value = _this$props.value;
-      var options = [];
+      var children = this.props.children;
+      var child = React__default["default"].Children.only(children);
 
-      if (arrayIncludes(['countries', 'cities', 'regions'], field.id)) {
-        options = PortalSite[field.id];
-      } else if (field.id === 'persons_min' || field.id === 'persons_max') {
-        options = this.createNumberArray(PortalSite.max_persons);
-      } else if (field.id === 'bedrooms_min') {
-        options = this.createNumberArray(PortalSite.max_bedrooms);
-      } else if (field.id === 'bathrooms_min') {
-        options = this.createNumberArray(PortalSite.max_bathrooms);
-      } else if (field.id === 'weekprice_max') {
-        options = this.createPriceArray(PortalSite.max_weekprice);
-      } else {
-        options = this.createNumberArray(PortalSite[field.id]);
-      }
-
-      var input;
-      var countries = filters.countries;
-      var regions = Array.isArray(filters.regions) ? filters.regions : [filters.regions];
-      var properties = this.props.filters.properties || [];
-
-      if (field.id === 'properties') {
-        var requiredCategories = PortalSite.options.filtersForm.categories;
-        input = [];
-        PortalSite.categories.map(function (category) {
-          if (arrayIncludes(requiredCategories, category.id)) {
-            input.push( /*#__PURE__*/React__default["default"].createElement("div", {
-              className: "bu-properties",
-              key: category.id
-            }, /*#__PURE__*/React__default["default"].createElement("strong", null, category.name), /*#__PURE__*/React__default["default"].createElement("ul", null, category.properties.map(function (property) {
-              return /*#__PURE__*/React__default["default"].createElement("li", {
-                key: property.id
-              }, /*#__PURE__*/React__default["default"].createElement("label", {
-                htmlFor: property.id
-              }, /*#__PURE__*/React__default["default"].createElement("input", {
-                type: "checkbox",
-                id: property.id,
-                value: property.id,
-                checked: arrayIncludes(properties, property.id),
-                onChange: _this2.handlePropertyChange
-              }), property.name));
-            }))));
+      if (isDisplayContentsSupported) {
+        return /*#__PURE__*/React__default["default"].createElement("span", {
+          ref: function ref(container) {
+            _this2.container = container;
+            var element = container && container.firstChild;
+            _this2.element = element;
+            _this2.scrollContainer = findScrollContainer(element);
+          },
+          style: {
+            display: 'contents'
           }
-        });
-      } else if (field.type === 'select') {
-        if (options && arrayIncludes(['countries', 'cities', 'regions'], field.id)) {
-          input = /*#__PURE__*/React__default["default"].createElement("select", {
-            name: field.id,
-            onBlur: this.handleChange,
-            onChange: this.handleChange,
-            value: value
-          }, /*#__PURE__*/React__default["default"].createElement("option", {
-            value: ""
-          }), options.map(function (opt) {
-            var hidden = false;
-
-            if (arrayIncludes(['cities', 'regions'], field.id)) {
-              if (countries && !arrayIncludes(countries, opt.country_id)) {
-                hidden = true;
-              }
-
-              if (field.id === 'cities') {
-                if (regions && !arrayIncludes(regions, opt.region)) {
-                  hidden = true;
-                }
-              }
-            }
-
-            return /*#__PURE__*/React__default["default"].createElement("option", {
-              key: opt.id,
-              value: opt.id,
-              id: opt.region,
-              disabled: hidden,
-              hidden: hidden
-            }, opt.name);
-          }));
-        } else {
-          input = /*#__PURE__*/React__default["default"].createElement("select", {
-            name: field.id,
-            onBlur: this.handleChange,
-            onChange: this.handleChange,
-            value: value
-          }, /*#__PURE__*/React__default["default"].createElement("option", {
-            value: ""
-          }), options.map(function (opt) {
-            var hidden = false;
-            return /*#__PURE__*/React__default["default"].createElement("option", {
-              key: opt,
-              value: opt,
-              disabled: hidden,
-              hidden: hidden
-            }, opt);
-          }));
-        }
-      } else if (field.type === 'list') {
-        input = /*#__PURE__*/React__default["default"].createElement(List, {
-          countries: countries,
-          field: field,
-          options: options,
-          handleCheckboxChange: this.handleCheckboxChange,
-          value: value
-        });
-      } else if (field.type === 'radio') {
-        input = /*#__PURE__*/React__default["default"].createElement("ul", {
-          className: "radioList"
-        }, options.map(function (opt) {
-          return /*#__PURE__*/React__default["default"].createElement("li", {
-            key: opt.id || opt,
-            className: "bu-list-item ".concat(countries && !arrayIncludes(countries, opt.country_id) ? 'bu-disabled' : '')
-          }, /*#__PURE__*/React__default["default"].createElement("input", {
-            name: field.id,
-            type: "radio",
-            id: opt.id || opt,
-            value: opt.id || opt,
-            disabled: countries ? !arrayIncludes(countries, opt.country_id) : false // checked={value === opt.id || opt}
-            ,
-            onBlur: _this2.handleChange,
-            onChange: _this2.handleChange
-          }), /*#__PURE__*/React__default["default"].createElement("label", {
-            htmlFor: opt.id || opt
-          }, opt.name || opt));
-        }));
-      } else if (field.type === 'number') {
-        input = /*#__PURE__*/React__default["default"].createElement("input", {
-          value: value,
-          type: "number",
-          min: "0",
-          max: field.id === 'persons_min' ? PortalSite.max_persons : PortalSite[field.id],
-          onBlur: this.handleChange
-        });
-      } else if (field.type === 'date') {
-        var tempval;
-
-        if (value === '' || !value) {
-          tempval = null;
-        } else {
-          tempval = new Date(value);
-        }
-
-        input = /*#__PURE__*/React__default["default"].createElement(DatePicker, {
-          id: field.id,
-          onChange: this.handleDateChange,
-          value: tempval,
-          format: "dd-MM-y"
-        });
-      } else {
-        input = /*#__PURE__*/React__default["default"].createElement("input", {
-          value: value,
-          onBlur: this.handleChange
-        });
+        }, child);
       }
 
-      return input;
+      return child;
     }
   }]);
 
-  return Field;
+  return Fit;
 }(React.Component);
-
-Field$1.propTypes = {
-  field: PropTypes.object.isRequired,
-  PortalSite: PropTypes.object.isRequired,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-  filters: PropTypes.object.isRequired,
-  onFilterChange: PropTypes.func.isRequired
+Fit.propTypes = {
+  children: PropTypes.node,
+  invertAxis: PropTypes.bool,
+  invertSecondaryAxis: PropTypes.bool,
+  mainAxis: PropTypes.oneOf(['x', 'y']),
+  spacing: PropTypes.oneOfType([PropTypes.number, PropTypes.shape({
+    bottom: PropTypes.number.isRequired,
+    left: PropTypes.number.isRequired,
+    right: PropTypes.number.isRequired,
+    top: PropTypes.number.isRequired
+  })])
 };
+Fit.defaultProps = {
+  mainAxis: 'y',
+  spacing: 8
+};
+
+var Fit$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': Fit
+});
+
+var require$$5 = /*@__PURE__*/getAugmentedNamespace(Fit$1);
+
+var DateInput = {};
+
+var require$$2 = /*@__PURE__*/getAugmentedNamespace(esm$3);
+
+var Divider = {};
+
+(function (exports) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = Divider;
+
+var _react = _interopRequireDefault(React__default["default"]);
+
+var _propTypes = _interopRequireDefault(propTypes$1.exports);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function Divider(_ref) {
+  var children = _ref.children;
+  return /*#__PURE__*/_react["default"].createElement("span", {
+    className: "react-date-picker__inputGroup__divider"
+  }, children);
+}
+
+Divider.propTypes = {
+  children: _propTypes["default"].node
+};
+}(Divider));
+
+var DayInput = {};
+
+var Input = {};
+
+/**
+ * A function that merges React refs into one.
+ * Supports both functions and ref objects created using createRef() and useRef().
+ *
+ * Usage:
+ * ```jsx
+ * <div ref={mergeRefs(ref1, ref2, ref3)} />
+ * ```
+ *
+ * @param {...Array<Function|object>} inputRefs Array of refs
+ * @returns {Function} Merged refs
+ */
+function mergeRefs() {
+  for (var _len = arguments.length, inputRefs = new Array(_len), _key = 0; _key < _len; _key++) {
+    inputRefs[_key] = arguments[_key];
+  }
+
+  var filteredInputRefs = inputRefs.filter(Boolean);
+
+  if (filteredInputRefs.length <= 1) {
+    return filteredInputRefs[0];
+  }
+
+  return function mergedRefs(ref) {
+    filteredInputRefs.forEach(function (inputRef) {
+      if (typeof inputRef === 'function') {
+        inputRef(ref);
+      } else {
+        // eslint-disable-next-line no-param-reassign
+        inputRef.current = ref;
+      }
+    });
+  };
+}
+
+var esm$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': mergeRefs
+});
+
+var require$$3 = /*@__PURE__*/getAugmentedNamespace(esm$1);
+
+var allowedVariants = ['normal', 'small-caps'];
+/**
+ * Gets font CSS shorthand property given element.
+ *
+ * @param {HTMLElement} element Element to get font CSS shorthand property from
+ */
+
+function getFontShorthand(element) {
+  if (!element) {
+    return '';
+  }
+
+  var style = window.getComputedStyle(element);
+
+  if (style.font) {
+    return style.font;
+  }
+
+  var isFontDefined = style['font-family'] !== '';
+
+  if (!isFontDefined) {
+    return '';
+  }
+
+  var fontVariant = allowedVariants.includes(style['font-variant']) ? style['font-variant'] : 'normal';
+  return "".concat(style['font-style'], " ").concat(fontVariant, " ").concat(style['font-weight'], " ").concat(style['font-size'], " / ").concat(style['line-height'], " ").concat(style['font-family']);
+}
+/**
+ * Measures text width given text and font CSS shorthand.
+ *
+ * @param {string} text Text to measure
+ * @param {string} font Font to use when measuring the text
+ */
+
+function measureText(text, font) {
+  var canvas = measureText.canvas || (measureText.canvas = document.createElement('canvas'));
+  var context = canvas.getContext('2d'); // Context type not supported
+
+  if (!context) {
+    return null;
+  }
+
+  context.font = font;
+
+  var _context$measureText = context.measureText(text),
+      width = _context$measureText.width;
+
+  return Math.ceil(width);
+}
+/**
+ * Updates input element width to fit its content given input element
+ * @param {HTMLInputElement} element
+ */
+
+function updateInputWidth(element) {
+  if (typeof window === 'undefined' || !element) {
+    return null;
+  }
+
+  var font = getFontShorthand(element);
+  var text = element.value || element.placeholder;
+  var width = measureText(text, font);
+
+  if (width === null) {
+    return null;
+  }
+
+  element.style.width = "".concat(width, "px");
+  return width;
+}
+
+var esm = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  getFontShorthand: getFontShorthand,
+  measureText: measureText,
+  updateInputWidth: updateInputWidth,
+  'default': updateInputWidth
+});
+
+var require$$4 = /*@__PURE__*/getAugmentedNamespace(esm);
+
+var propTypes = {};
+
+Object.defineProperty(propTypes, "__esModule", {
+  value: true
+});
+propTypes.isValueType = propTypes.isRef = propTypes.isMinDate = propTypes.isMaxDate = void 0;
+
+var _propTypes = _interopRequireDefault$1(propTypes$1.exports);
+
+function _interopRequireDefault$1(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _toConsumableArray$1(arr) { return _arrayWithoutHoles$1(arr) || _iterableToArray$1(arr) || _unsupportedIterableToArray$1(arr) || _nonIterableSpread$1(); }
+
+function _nonIterableSpread$1() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray$1(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$1(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$1(o, minLen); }
+
+function _iterableToArray$1(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles$1(arr) { if (Array.isArray(arr)) return _arrayLikeToArray$1(arr); }
+
+function _arrayLikeToArray$1(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+var allViews = ['century', 'decade', 'year', 'month'];
+var allValueTypes = [].concat(_toConsumableArray$1(allViews.slice(1)), ['day']);
+
+var isValueType = _propTypes["default"].oneOf(allValueTypes);
+
+propTypes.isValueType = isValueType;
+
+var isMinDate = function isMinDate(props, propName, componentName) {
+  var minDate = props[propName];
+
+  if (!minDate) {
+    return null;
+  }
+
+  if (!(minDate instanceof Date)) {
+    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof(minDate), "` supplied to `").concat(componentName, "`, expected instance of `Date`."));
+  }
+
+  var maxDate = props.maxDate;
+
+  if (maxDate && minDate > maxDate) {
+    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof(minDate), "` supplied to `").concat(componentName, "`, minDate cannot be larger than maxDate."));
+  }
+
+  return null;
+};
+
+propTypes.isMinDate = isMinDate;
+
+var isMaxDate = function isMaxDate(props, propName, componentName) {
+  var maxDate = props[propName];
+
+  if (!maxDate) {
+    return null;
+  }
+
+  if (!(maxDate instanceof Date)) {
+    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof(maxDate), "` supplied to `").concat(componentName, "`, expected instance of `Date`."));
+  }
+
+  var minDate = props.minDate;
+
+  if (minDate && maxDate < minDate) {
+    return new Error("Invalid prop `".concat(propName, "` of type `").concat(_typeof(maxDate), "` supplied to `").concat(componentName, "`, maxDate cannot be smaller than minDate."));
+  }
+
+  return null;
+};
+
+propTypes.isMaxDate = isMaxDate;
+
+var isRef = _propTypes["default"].oneOfType([_propTypes["default"].func, _propTypes["default"].shape({
+  current: _propTypes["default"].any
+})]);
+
+propTypes.isRef = isRef;
+
+(function (exports) {
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = Input;
+
+var _react = _interopRequireDefault(React__default["default"]);
+
+var _propTypes = _interopRequireDefault(propTypes$1.exports);
+
+var _mergeClassNames = _interopRequireDefault(require$$3$1);
+
+var _mergeRefs = _interopRequireDefault(require$$3);
+
+var _updateInputWidth = _interopRequireWildcard(require$$4);
+
+var _propTypes2 = propTypes;
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+/* eslint-disable jsx-a11y/no-autofocus */
+var isIEOrEdgeLegacy = typeof window !== 'undefined' && /(MSIE|Trident\/|Edge\/)/.test(window.navigator.userAgent);
+var isFirefox = typeof window !== 'undefined' && /Firefox/.test(window.navigator.userAgent);
+
+function onFocus(event) {
+  var target = event.target;
+
+  if (isIEOrEdgeLegacy) {
+    requestAnimationFrame(function () {
+      return target.select();
+    });
+  } else {
+    target.select();
+  }
+}
+
+function updateInputWidthOnFontLoad(element) {
+  if (!document.fonts) {
+    return;
+  }
+
+  var font = (0, _updateInputWidth.getFontShorthand)(element);
+
+  if (!font) {
+    return;
+  }
+
+  var isFontLoaded = document.fonts.check(font);
+
+  if (isFontLoaded) {
+    return;
+  }
+
+  function onLoadingDone() {
+    (0, _updateInputWidth["default"])(element);
+  }
+
+  document.fonts.addEventListener('loadingdone', onLoadingDone);
+}
+
+function getSelectionString(input) {
+  /**
+   * window.getSelection().toString() returns empty string in IE11 and Firefox,
+   * so alternatives come first.
+   */
+  if (input && 'selectionStart' in input && input.selectionStart !== null) {
+    return input.value.slice(input.selectionStart, input.selectionEnd);
+  }
+
+  if ('getSelection' in window) {
+    return window.getSelection().toString();
+  }
+
+  return null;
+}
+
+function makeOnKeyPress(maxLength) {
+  /**
+   * Prevents keystrokes that would not produce a number or when value after keystroke would
+   * exceed maxLength.
+   */
+  return function onKeyPress(event) {
+    if (isFirefox) {
+      // See https://github.com/wojtekmaj/react-time-picker/issues/92
+      return;
+    }
+
+    var key = event.key,
+        input = event.target;
+    var value = input.value;
+    var isNumberKey = key.length === 1 && /\d/.test(key);
+    var selection = getSelectionString(input);
+
+    if (!isNumberKey || !(selection || value.length < maxLength)) {
+      event.preventDefault();
+    }
+  };
+}
+
+function Input(_ref) {
+  var ariaLabel = _ref.ariaLabel,
+      autoFocus = _ref.autoFocus,
+      className = _ref.className,
+      disabled = _ref.disabled,
+      inputRef = _ref.inputRef,
+      max = _ref.max,
+      min = _ref.min,
+      name = _ref.name,
+      nameForClass = _ref.nameForClass,
+      onChange = _ref.onChange,
+      onKeyDown = _ref.onKeyDown,
+      _onKeyUp = _ref.onKeyUp,
+      _ref$placeholder = _ref.placeholder,
+      placeholder = _ref$placeholder === void 0 ? '--' : _ref$placeholder,
+      required = _ref.required,
+      showLeadingZeros = _ref.showLeadingZeros,
+      step = _ref.step,
+      value = _ref.value;
+  var hasLeadingZero = showLeadingZeros && value && value < 10 && (value === '0' || !value.toString().startsWith('0'));
+  var maxLength = max ? max.toString().length : null;
+  return [hasLeadingZero && /*#__PURE__*/_react["default"].createElement("span", {
+    key: "leadingZero",
+    className: "".concat(className, "__leadingZero")
+  }, "0"), /*#__PURE__*/_react["default"].createElement("input", {
+    key: "input",
+    "aria-label": ariaLabel,
+    autoComplete: "off",
+    autoFocus: autoFocus,
+    className: (0, _mergeClassNames["default"])("".concat(className, "__input"), "".concat(className, "__").concat(nameForClass || name), hasLeadingZero && "".concat(className, "__input--hasLeadingZero")),
+    "data-input": "true",
+    disabled: disabled,
+    inputMode: "numeric",
+    max: max,
+    min: min,
+    name: name,
+    onChange: onChange,
+    onFocus: onFocus,
+    onKeyDown: onKeyDown,
+    onKeyPress: makeOnKeyPress(maxLength),
+    onKeyUp: function onKeyUp(event) {
+      (0, _updateInputWidth["default"])(event.target);
+
+      if (_onKeyUp) {
+        _onKeyUp(event);
+      }
+    },
+    placeholder: placeholder,
+    ref: (0, _mergeRefs["default"])(_updateInputWidth["default"], updateInputWidthOnFontLoad, inputRef),
+    required: required,
+    step: step,
+    type: "number",
+    value: value !== null ? value : ''
+  })];
+}
+
+Input.propTypes = {
+  ariaLabel: _propTypes["default"].string,
+  autoFocus: _propTypes["default"].bool,
+  className: _propTypes["default"].string.isRequired,
+  disabled: _propTypes["default"].bool,
+  inputRef: _propTypes2.isRef,
+  max: _propTypes["default"].number,
+  min: _propTypes["default"].number,
+  name: _propTypes["default"].string,
+  nameForClass: _propTypes["default"].string,
+  onChange: _propTypes["default"].func,
+  onKeyDown: _propTypes["default"].func,
+  onKeyUp: _propTypes["default"].func,
+  placeholder: _propTypes["default"].string,
+  required: _propTypes["default"].bool,
+  showLeadingZeros: _propTypes["default"].bool,
+  step: _propTypes["default"].number,
+  value: _propTypes["default"].string
+};
+}(Input));
+
+var utils = {};
+
+Object.defineProperty(utils, "__esModule", {
+  value: true
+});
+utils.between = between;
+utils.safeMax = safeMax;
+utils.safeMin = safeMin;
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+/**
+ * Returns a value no smaller than min and no larger than max.
+ *
+ * @param {*} value Value to return.
+ * @param {*} min Minimum return value.
+ * @param {*} max Maximum return value.
+ */
+function between(value, min, max) {
+  if (min && min > value) {
+    return min;
+  }
+
+  if (max && max < value) {
+    return max;
+  }
+
+  return value;
+}
+
+function isValidNumber(num) {
+  return num !== null && num !== false && !Number.isNaN(Number(num));
+}
+
+function safeMin() {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  return Math.min.apply(Math, _toConsumableArray(args.filter(isValidNumber)));
+}
+
+function safeMax() {
+  for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+    args[_key2] = arguments[_key2];
+  }
+
+  return Math.max.apply(Math, _toConsumableArray(args.filter(isValidNumber)));
+}
+
+(function (exports) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = DayInput;
+
+var _react = _interopRequireDefault(React__default["default"]);
+
+var _propTypes = _interopRequireDefault(propTypes$1.exports);
+
+var _dateUtils = require$$2;
+
+var _Input = _interopRequireDefault(Input);
+
+var _propTypes2 = propTypes;
+
+var _utils = utils;
+
+var _excluded = ["maxDate", "minDate", "month", "year"];
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function DayInput(_ref) {
+  var maxDate = _ref.maxDate,
+      minDate = _ref.minDate,
+      month = _ref.month,
+      year = _ref.year,
+      otherProps = _objectWithoutProperties(_ref, _excluded);
+
+  var currentMonthMaxDays = function () {
+    if (!month) {
+      return 31;
+    }
+
+    return (0, _dateUtils.getDaysInMonth)(new Date(year, month - 1, 1));
+  }();
+
+  function isSameMonth(date) {
+    return date && year === (0, _dateUtils.getYear)(date).toString() && month === (0, _dateUtils.getMonthHuman)(date).toString();
+  }
+
+  var maxDay = (0, _utils.safeMin)(currentMonthMaxDays, isSameMonth(maxDate) && (0, _dateUtils.getDate)(maxDate));
+  var minDay = (0, _utils.safeMax)(1, isSameMonth(minDate) && (0, _dateUtils.getDate)(minDate));
+  return /*#__PURE__*/_react["default"].createElement(_Input["default"], _extends({
+    max: maxDay,
+    min: minDay,
+    name: "day"
+  }, otherProps));
+}
+
+DayInput.propTypes = {
+  ariaLabel: _propTypes["default"].string,
+  className: _propTypes["default"].string.isRequired,
+  disabled: _propTypes["default"].bool,
+  inputRef: _propTypes2.isRef,
+  maxDate: _propTypes2.isMaxDate,
+  minDate: _propTypes2.isMinDate,
+  month: _propTypes["default"].string,
+  onChange: _propTypes["default"].func,
+  onKeyDown: _propTypes["default"].func,
+  onKeyUp: _propTypes["default"].func,
+  placeholder: _propTypes["default"].string,
+  required: _propTypes["default"].bool,
+  showLeadingZeros: _propTypes["default"].bool,
+  value: _propTypes["default"].string,
+  year: _propTypes["default"].string
+};
+}(DayInput));
+
+var MonthInput = {};
+
+(function (exports) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = MonthInput;
+
+var _react = _interopRequireDefault(React__default["default"]);
+
+var _propTypes = _interopRequireDefault(propTypes$1.exports);
+
+var _dateUtils = require$$2;
+
+var _Input = _interopRequireDefault(Input);
+
+var _propTypes2 = propTypes;
+
+var _utils = utils;
+
+var _excluded = ["maxDate", "minDate", "year"];
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function MonthInput(_ref) {
+  var maxDate = _ref.maxDate,
+      minDate = _ref.minDate,
+      year = _ref.year,
+      otherProps = _objectWithoutProperties(_ref, _excluded);
+
+  function isSameYear(date) {
+    return date && year === (0, _dateUtils.getYear)(date).toString();
+  }
+
+  var maxMonth = (0, _utils.safeMin)(12, isSameYear(maxDate) && (0, _dateUtils.getMonthHuman)(maxDate));
+  var minMonth = (0, _utils.safeMax)(1, isSameYear(minDate) && (0, _dateUtils.getMonthHuman)(minDate));
+  return /*#__PURE__*/_react["default"].createElement(_Input["default"], _extends({
+    max: maxMonth,
+    min: minMonth,
+    name: "month"
+  }, otherProps));
+}
+
+MonthInput.propTypes = {
+  ariaLabel: _propTypes["default"].string,
+  className: _propTypes["default"].string.isRequired,
+  disabled: _propTypes["default"].bool,
+  inputRef: _propTypes2.isRef,
+  maxDate: _propTypes2.isMaxDate,
+  minDate: _propTypes2.isMinDate,
+  onChange: _propTypes["default"].func,
+  onKeyDown: _propTypes["default"].func,
+  onKeyUp: _propTypes["default"].func,
+  placeholder: _propTypes["default"].string,
+  required: _propTypes["default"].bool,
+  showLeadingZeros: _propTypes["default"].bool,
+  value: _propTypes["default"].string,
+  year: _propTypes["default"].string
+};
+}(MonthInput));
+
+var MonthSelect = {};
+
+var dateFormatter = {};
+
+var require$$0 = /*@__PURE__*/getAugmentedNamespace(esm$4);
+
+Object.defineProperty(dateFormatter, "__esModule", {
+  value: true
+});
+dateFormatter.formatShortMonth = dateFormatter.formatMonth = void 0;
+dateFormatter.getFormatter = getFormatter$3;
+
+var _getUserLocale = _interopRequireDefault(require$$0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+var formatterCache = new Map();
+
+function getFormatter$3(options) {
+  return function (locale, date) {
+    var localeWithDefault = locale || (0, _getUserLocale["default"])();
+
+    if (!formatterCache.has(localeWithDefault)) {
+      formatterCache.set(localeWithDefault, new Map());
+    }
+
+    var formatterCacheLocale = formatterCache.get(localeWithDefault);
+
+    if (!formatterCacheLocale.has(options)) {
+      formatterCacheLocale.set(options, new Intl.DateTimeFormat(localeWithDefault, options).format);
+    }
+
+    return formatterCacheLocale.get(options)(date);
+  };
+}
+/**
+ * Changes the hour in a Date to ensure right date formatting even if DST is messed up.
+ * Workaround for bug in WebKit and Firefox with historical dates.
+ * For more details, see:
+ * https://bugs.chromium.org/p/chromium/issues/detail?id=750465
+ * https://bugzilla.mozilla.org/show_bug.cgi?id=1385643
+ *
+ * @param {Date} date Date.
+ */
+
+
+function toSafeHour(date) {
+  var safeDate = new Date(date);
+  return new Date(safeDate.setHours(12));
+}
+
+function getSafeFormatter(options) {
+  return function (locale, date) {
+    return getFormatter$3(options)(locale, toSafeHour(date));
+  };
+}
+
+var formatMonthOptions = {
+  month: 'long'
+};
+var formatShortMonthOptions = {
+  month: 'short'
+};
+var formatMonth = getSafeFormatter(formatMonthOptions);
+dateFormatter.formatMonth = formatMonth;
+var formatShortMonth = getSafeFormatter(formatShortMonthOptions);
+dateFormatter.formatShortMonth = formatShortMonth;
+
+(function (exports) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = MonthSelect;
+
+var _react = _interopRequireDefault(React__default["default"]);
+
+var _propTypes = _interopRequireDefault(propTypes$1.exports);
+
+var _mergeClassNames = _interopRequireDefault(require$$3$1);
+
+var _dateUtils = require$$2;
+
+var _dateFormatter = dateFormatter;
+
+var _propTypes2 = propTypes;
+
+var _utils = utils;
+
+var _excluded = ["ariaLabel", "className", "inputRef", "locale", "maxDate", "minDate", "placeholder", "short", "value", "year"];
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function MonthSelect(_ref) {
+  var ariaLabel = _ref.ariaLabel,
+      className = _ref.className,
+      inputRef = _ref.inputRef,
+      locale = _ref.locale,
+      maxDate = _ref.maxDate,
+      minDate = _ref.minDate,
+      _ref$placeholder = _ref.placeholder,
+      placeholder = _ref$placeholder === void 0 ? '--' : _ref$placeholder,
+      _short = _ref["short"],
+      value = _ref.value,
+      year = _ref.year,
+      otherProps = _objectWithoutProperties(_ref, _excluded);
+
+  function isSameYear(date) {
+    return date && year === (0, _dateUtils.getYear)(date).toString();
+  }
+
+  var maxMonth = (0, _utils.safeMin)(12, isSameYear(maxDate) && (0, _dateUtils.getMonthHuman)(maxDate));
+  var minMonth = (0, _utils.safeMax)(1, isSameYear(minDate) && (0, _dateUtils.getMonthHuman)(minDate));
+
+  var dates = _toConsumableArray(Array(12)).map(function (el, index) {
+    return new Date(2019, index, 1);
+  });
+
+  var name = 'month';
+  var formatter = _short ? _dateFormatter.formatShortMonth : _dateFormatter.formatMonth;
+  return /*#__PURE__*/_react["default"].createElement("select", _extends({
+    "aria-label": ariaLabel,
+    className: (0, _mergeClassNames["default"])("".concat(className, "__input"), "".concat(className, "__").concat(name)),
+    "data-input": "true",
+    "data-select": "true",
+    name: name,
+    ref: inputRef,
+    value: value !== null ? value : ''
+  }, otherProps), !value && /*#__PURE__*/_react["default"].createElement("option", {
+    value: ""
+  }, placeholder), dates.map(function (date) {
+    var month = (0, _dateUtils.getMonthHuman)(date);
+    var disabled = month < minMonth || month > maxMonth;
+    return /*#__PURE__*/_react["default"].createElement("option", {
+      key: month,
+      disabled: disabled,
+      value: month
+    }, formatter(locale, date));
+  }));
+}
+
+MonthSelect.propTypes = {
+  ariaLabel: _propTypes["default"].string,
+  className: _propTypes["default"].string.isRequired,
+  disabled: _propTypes["default"].bool,
+  inputRef: _propTypes2.isRef,
+  locale: _propTypes["default"].string,
+  maxDate: _propTypes2.isMaxDate,
+  minDate: _propTypes2.isMinDate,
+  onChange: _propTypes["default"].func,
+  onKeyDown: _propTypes["default"].func,
+  onKeyUp: _propTypes["default"].func,
+  placeholder: _propTypes["default"].string,
+  required: _propTypes["default"].bool,
+  "short": _propTypes["default"].bool,
+  value: _propTypes["default"].string,
+  year: _propTypes["default"].string
+};
+}(MonthSelect));
+
+var YearInput = {};
+
+(function (exports) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = YearInput;
+
+var _react = _interopRequireDefault(React__default["default"]);
+
+var _propTypes = _interopRequireDefault(propTypes$1.exports);
+
+var _dateUtils = require$$2;
+
+var _Input = _interopRequireDefault(Input);
+
+var _propTypes2 = propTypes;
+
+var _utils = utils;
+
+var _excluded = ["maxDate", "minDate", "placeholder", "valueType"];
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function YearInput(_ref) {
+  var maxDate = _ref.maxDate,
+      minDate = _ref.minDate,
+      _ref$placeholder = _ref.placeholder,
+      placeholder = _ref$placeholder === void 0 ? '----' : _ref$placeholder,
+      valueType = _ref.valueType,
+      otherProps = _objectWithoutProperties(_ref, _excluded);
+
+  var maxYear = (0, _utils.safeMin)(275760, maxDate && (0, _dateUtils.getYear)(maxDate));
+  var minYear = (0, _utils.safeMax)(1, minDate && (0, _dateUtils.getYear)(minDate));
+
+  var yearStep = function () {
+    if (valueType === 'century') {
+      return 10;
+    }
+
+    return 1;
+  }();
+
+  return /*#__PURE__*/_react["default"].createElement(_Input["default"], _extends({
+    max: maxYear,
+    min: minYear,
+    name: "year",
+    placeholder: placeholder,
+    step: yearStep
+  }, otherProps));
+}
+
+YearInput.propTypes = {
+  ariaLabel: _propTypes["default"].string,
+  className: _propTypes["default"].string.isRequired,
+  disabled: _propTypes["default"].bool,
+  inputRef: _propTypes2.isRef,
+  maxDate: _propTypes2.isMaxDate,
+  minDate: _propTypes2.isMinDate,
+  onChange: _propTypes["default"].func,
+  onKeyDown: _propTypes["default"].func,
+  onKeyUp: _propTypes["default"].func,
+  placeholder: _propTypes["default"].string,
+  required: _propTypes["default"].bool,
+  value: _propTypes["default"].string,
+  valueType: _propTypes2.isValueType
+};
+}(YearInput));
+
+var NativeInput = {};
+
+(function (exports) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = NativeInput;
+
+var _react = _interopRequireDefault(React__default["default"]);
+
+var _propTypes = _interopRequireDefault(propTypes$1.exports);
+
+var _dateUtils = require$$2;
+
+var _propTypes2 = propTypes;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function NativeInput(_ref) {
+  var ariaLabel = _ref.ariaLabel,
+      disabled = _ref.disabled,
+      maxDate = _ref.maxDate,
+      minDate = _ref.minDate,
+      name = _ref.name,
+      onChange = _ref.onChange,
+      required = _ref.required,
+      value = _ref.value,
+      valueType = _ref.valueType;
+
+  var nativeInputType = function () {
+    switch (valueType) {
+      case 'decade':
+      case 'year':
+        return 'number';
+
+      case 'month':
+        return 'month';
+
+      case 'day':
+        return 'date';
+
+      default:
+        throw new Error('Invalid valueType.');
+    }
+  }();
+
+  var nativeValueParser = function () {
+    switch (valueType) {
+      case 'century':
+      case 'decade':
+      case 'year':
+        return _dateUtils.getYear;
+
+      case 'month':
+        return _dateUtils.getISOLocalMonth;
+
+      case 'day':
+        return _dateUtils.getISOLocalDate;
+
+      default:
+        throw new Error('Invalid valueType.');
+    }
+  }();
+
+  function stopPropagation(event) {
+    event.stopPropagation();
+  }
+
+  return /*#__PURE__*/_react["default"].createElement("input", {
+    "aria-label": ariaLabel,
+    disabled: disabled,
+    max: maxDate ? nativeValueParser(maxDate) : null,
+    min: minDate ? nativeValueParser(minDate) : null,
+    name: name,
+    onChange: onChange,
+    onFocus: stopPropagation,
+    required: required,
+    style: {
+      visibility: 'hidden',
+      position: 'absolute',
+      zIndex: '-999'
+    },
+    type: nativeInputType,
+    value: value ? nativeValueParser(value) : ''
+  });
+}
+
+NativeInput.propTypes = {
+  ariaLabel: _propTypes["default"].string,
+  disabled: _propTypes["default"].bool,
+  maxDate: _propTypes2.isMaxDate,
+  minDate: _propTypes2.isMinDate,
+  name: _propTypes["default"].string,
+  onChange: _propTypes["default"].func,
+  required: _propTypes["default"].bool,
+  value: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].instanceOf(Date)]),
+  valueType: _propTypes2.isValueType
+};
+}(NativeInput));
+
+var dates = {};
+
+Object.defineProperty(dates, "__esModule", {
+  value: true
+});
+dates.getBegin = getBegin;
+dates.getEnd = getEnd;
+
+var _dateUtils = require$$2;
+
+/**
+ * Returns the beginning of a given range.
+ *
+ * @param {string} rangeType Range type (e.g. 'day')
+ * @param {Date} date Date.
+ */
+function getBegin(rangeType, date) {
+  switch (rangeType) {
+    case 'century':
+      return (0, _dateUtils.getCenturyStart)(date);
+
+    case 'decade':
+      return (0, _dateUtils.getDecadeStart)(date);
+
+    case 'year':
+      return (0, _dateUtils.getYearStart)(date);
+
+    case 'month':
+      return (0, _dateUtils.getMonthStart)(date);
+
+    case 'day':
+      return (0, _dateUtils.getDayStart)(date);
+
+    default:
+      throw new Error("Invalid rangeType: ".concat(rangeType));
+  }
+}
+/**
+ * Returns the end of a given range.
+ *
+ * @param {string} rangeType Range type (e.g. 'day')
+ * @param {Date} date Date.
+ */
+
+
+function getEnd(rangeType, date) {
+  switch (rangeType) {
+    case 'century':
+      return (0, _dateUtils.getCenturyEnd)(date);
+
+    case 'decade':
+      return (0, _dateUtils.getDecadeEnd)(date);
+
+    case 'year':
+      return (0, _dateUtils.getYearEnd)(date);
+
+    case 'month':
+      return (0, _dateUtils.getMonthEnd)(date);
+
+    case 'day':
+      return (0, _dateUtils.getDayEnd)(date);
+
+    default:
+      throw new Error("Invalid rangeType: ".concat(rangeType));
+  }
+}
+
+(function (exports) {
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _react = _interopRequireWildcard(React__default["default"]);
+
+var _propTypes = _interopRequireDefault(propTypes$1.exports);
+
+var _dateUtils = require$$2;
+
+var _Divider = _interopRequireDefault(Divider);
+
+var _DayInput = _interopRequireDefault(DayInput);
+
+var _MonthInput = _interopRequireDefault(MonthInput);
+
+var _MonthSelect = _interopRequireDefault(MonthSelect);
+
+var _YearInput = _interopRequireDefault(YearInput);
+
+var _NativeInput = _interopRequireDefault(NativeInput);
+
+var _dateFormatter = dateFormatter;
+
+var _dates = dates;
+
+var _propTypes2 = propTypes;
+
+var _utils = utils;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+var defaultMinDate = new Date();
+defaultMinDate.setFullYear(1, 0, 1);
+defaultMinDate.setHours(0, 0, 0, 0);
+var defaultMaxDate = new Date(8.64e15);
+var allViews = ['century', 'decade', 'year', 'month'];
+var allValueTypes = [].concat(_toConsumableArray(allViews.slice(1)), ['day']);
+
+function toDate(value) {
+  if (value instanceof Date) {
+    return value;
+  }
+
+  return new Date(value);
+}
+
+function datesAreDifferent(date1, date2) {
+  return date1 && !date2 || !date1 && date2 || date1 && date2 && date1.getTime() !== date2.getTime();
+}
+/**
+ * Returns value type that can be returned with currently applied settings.
+ */
+
+
+function getValueType(maxDetail) {
+  return allValueTypes[allViews.indexOf(maxDetail)];
+}
+
+function getValue(value, index) {
+  if (!value) {
+    return null;
+  }
+
+  var rawValue = Array.isArray(value) && value.length === 2 ? value[index] : value;
+
+  if (!rawValue) {
+    return null;
+  }
+
+  var valueDate = toDate(rawValue);
+
+  if (isNaN(valueDate.getTime())) {
+    throw new Error("Invalid date: ".concat(value));
+  }
+
+  return valueDate;
+}
+
+function getDetailValue(_ref, index) {
+  var value = _ref.value,
+      minDate = _ref.minDate,
+      maxDate = _ref.maxDate,
+      maxDetail = _ref.maxDetail;
+  var valuePiece = getValue(value, index);
+
+  if (!valuePiece) {
+    return null;
+  }
+
+  var valueType = getValueType(maxDetail);
+  var detailValueFrom = [_dates.getBegin, _dates.getEnd][index](valueType, valuePiece);
+  return (0, _utils.between)(detailValueFrom, minDate, maxDate);
+}
+
+var getDetailValueFrom = function getDetailValueFrom(args) {
+  return getDetailValue(args, 0);
+};
+
+var getDetailValueTo = function getDetailValueTo(args) {
+  return getDetailValue(args, 1);
+};
+
+var getDetailValueArray = function getDetailValueArray(args) {
+  var value = args.value;
+
+  if (Array.isArray(value)) {
+    return value;
+  }
+
+  return [getDetailValueFrom, getDetailValueTo].map(function (fn) {
+    return fn(args);
+  });
+};
+
+function isInternalInput(element) {
+  return element.getAttribute('data-input') === 'true';
+}
+
+function findInput(element, property) {
+  var nextElement = element;
+
+  do {
+    nextElement = nextElement[property];
+  } while (nextElement && !isInternalInput(nextElement));
+
+  return nextElement;
+}
+
+function focus(element) {
+  if (element) {
+    element.focus();
+  }
+}
+
+function _renderCustomInputs(placeholder, elementFunctions, allowMultipleInstances) {
+  var usedFunctions = [];
+  var pattern = new RegExp(Object.keys(elementFunctions).map(function (el) {
+    return "".concat(el, "+");
+  }).join('|'), 'g');
+  var matches = placeholder.match(pattern);
+  return placeholder.split(pattern).reduce(function (arr, element, index) {
+    var divider = element &&
+    /*#__PURE__*/
+    // eslint-disable-next-line react/no-array-index-key
+    _react["default"].createElement(_Divider["default"], {
+      key: "separator_".concat(index)
+    }, element);
+
+    var res = [].concat(_toConsumableArray(arr), [divider]);
+    var currentMatch = matches && matches[index];
+
+    if (currentMatch) {
+      var renderFunction = elementFunctions[currentMatch] || elementFunctions[Object.keys(elementFunctions).find(function (elementFunction) {
+        return currentMatch.match(elementFunction);
+      })];
+
+      if (!allowMultipleInstances && usedFunctions.includes(renderFunction)) {
+        res.push(currentMatch);
+      } else {
+        res.push(renderFunction(currentMatch, index));
+        usedFunctions.push(renderFunction);
+      }
+    }
+
+    return res;
+  }, []);
+}
+
+var DateInput = /*#__PURE__*/function (_PureComponent) {
+  _inherits(DateInput, _PureComponent);
+
+  var _super = _createSuper(DateInput);
+
+  function DateInput() {
+    var _this;
+
+    _classCallCheck(this, DateInput);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      year: null,
+      month: null,
+      day: null
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "dayInput", /*#__PURE__*/(0, _react.createRef)());
+
+    _defineProperty(_assertThisInitialized(_this), "monthInput", /*#__PURE__*/(0, _react.createRef)());
+
+    _defineProperty(_assertThisInitialized(_this), "yearInput", /*#__PURE__*/(0, _react.createRef)());
+
+    _defineProperty(_assertThisInitialized(_this), "onClick", function (event) {
+      if (event.target === event.currentTarget) {
+        // Wrapper was directly clicked
+        var firstInput = event.target.children[1];
+        focus(firstInput);
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onKeyDown", function (event) {
+      switch (event.key) {
+        case 'ArrowLeft':
+        case 'ArrowRight':
+        case _this.divider:
+          {
+            event.preventDefault();
+            var input = event.target;
+            var property = event.key === 'ArrowLeft' ? 'previousElementSibling' : 'nextElementSibling';
+            var nextInput = findInput(input, property);
+            focus(nextInput);
+            break;
+          }
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onKeyUp", function (event) {
+      var key = event.key,
+          input = event.target;
+      var isNumberKey = !isNaN(parseInt(key, 10));
+
+      if (!isNumberKey) {
+        return;
+      }
+
+      var value = input.value;
+      var max = input.getAttribute('max');
+      /**
+       * Given 1, the smallest possible number the user could type by adding another digit is 10.
+       * 10 would be a valid value given max = 12, so we won't jump to the next input.
+       * However, given 2, smallers possible number would be 20, and thus keeping the focus in
+       * this field doesn't make sense.
+       */
+
+      if (value * 10 > max || value.length >= max.length) {
+        var property = 'nextElementSibling';
+        var nextInput = findInput(input, property);
+        focus(nextInput);
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onChange", function (event) {
+      var _event$target = event.target,
+          name = _event$target.name,
+          value = _event$target.value;
+
+      _this.setState(_defineProperty({}, name, value), _this.onChangeExternal);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onChangeNative", function (event) {
+      var onChange = _this.props.onChange;
+      var value = event.target.value;
+
+      if (!onChange) {
+        return;
+      }
+
+      var processedValue = function () {
+        if (!value) {
+          return null;
+        }
+
+        var _value$split = value.split('-'),
+            _value$split2 = _slicedToArray(_value$split, 3),
+            yearString = _value$split2[0],
+            monthString = _value$split2[1],
+            dayString = _value$split2[2];
+
+        var year = parseInt(yearString, 10);
+        var monthIndex = parseInt(monthString, 10) - 1 || 0;
+        var day = parseInt(dayString, 10) || 1;
+        var proposedValue = new Date();
+        proposedValue.setFullYear(year, monthIndex, day);
+        proposedValue.setHours(0, 0, 0, 0);
+        return proposedValue;
+      }();
+
+      onChange(processedValue, false);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onChangeExternal", function () {
+      var onChange = _this.props.onChange;
+
+      if (!onChange) {
+        return;
+      }
+
+      var formElements = [_this.dayInput.current, _this.monthInput.current, _this.yearInput.current].filter(Boolean);
+      var values = {};
+      formElements.forEach(function (formElement) {
+        values[formElement.name] = formElement.value;
+      });
+
+      if (formElements.every(function (formElement) {
+        return !formElement.value;
+      })) {
+        onChange(null, false);
+      } else if (formElements.every(function (formElement) {
+        return formElement.value && formElement.validity.valid;
+      })) {
+        var year = parseInt(values.year, 10) || new Date().getFullYear();
+        var monthIndex = parseInt(values.month || 1, 10) - 1;
+        var day = parseInt(values.day || 1, 10);
+        var proposedValue = new Date();
+        proposedValue.setFullYear(year, monthIndex, day);
+        proposedValue.setHours(0, 0, 0, 0);
+
+        var processedValue = _this.getProcessedValue(proposedValue);
+
+        onChange(processedValue, false);
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "renderDay", function (currentMatch, index) {
+      var _this$props = _this.props,
+          autoFocus = _this$props.autoFocus,
+          dayAriaLabel = _this$props.dayAriaLabel,
+          dayPlaceholder = _this$props.dayPlaceholder,
+          showLeadingZeros = _this$props.showLeadingZeros;
+      var _this$state = _this.state,
+          day = _this$state.day,
+          month = _this$state.month,
+          year = _this$state.year;
+
+      if (currentMatch && currentMatch.length > 2) {
+        throw new Error("Unsupported token: ".concat(currentMatch));
+      }
+
+      var showLeadingZerosFromFormat = currentMatch && currentMatch.length === 2;
+      return /*#__PURE__*/_react["default"].createElement(_DayInput["default"], _extends({
+        key: "day"
+      }, _this.commonInputProps, {
+        ariaLabel: dayAriaLabel // eslint-disable-next-line jsx-a11y/no-autofocus
+        ,
+        autoFocus: index === 0 && autoFocus,
+        inputRef: _this.dayInput,
+        month: month,
+        placeholder: dayPlaceholder,
+        showLeadingZeros: showLeadingZerosFromFormat || showLeadingZeros,
+        value: day,
+        year: year
+      }));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "renderMonth", function (currentMatch, index) {
+      var _this$props2 = _this.props,
+          autoFocus = _this$props2.autoFocus,
+          locale = _this$props2.locale,
+          monthAriaLabel = _this$props2.monthAriaLabel,
+          monthPlaceholder = _this$props2.monthPlaceholder,
+          showLeadingZeros = _this$props2.showLeadingZeros;
+      var _this$state2 = _this.state,
+          month = _this$state2.month,
+          year = _this$state2.year;
+
+      if (currentMatch && currentMatch.length > 4) {
+        throw new Error("Unsupported token: ".concat(currentMatch));
+      }
+
+      if (currentMatch.length > 2) {
+        return /*#__PURE__*/_react["default"].createElement(_MonthSelect["default"], _extends({
+          key: "month"
+        }, _this.commonInputProps, {
+          ariaLabel: monthAriaLabel // eslint-disable-next-line jsx-a11y/no-autofocus
+          ,
+          autoFocus: index === 0 && autoFocus,
+          inputRef: _this.monthInput,
+          locale: locale,
+          placeholder: monthPlaceholder,
+          "short": currentMatch.length === 3,
+          value: month,
+          year: year
+        }));
+      }
+
+      var showLeadingZerosFromFormat = currentMatch && currentMatch.length === 2;
+      return /*#__PURE__*/_react["default"].createElement(_MonthInput["default"], _extends({
+        key: "month"
+      }, _this.commonInputProps, {
+        ariaLabel: monthAriaLabel // eslint-disable-next-line jsx-a11y/no-autofocus
+        ,
+        autoFocus: index === 0 && autoFocus,
+        inputRef: _this.monthInput,
+        placeholder: monthPlaceholder,
+        showLeadingZeros: showLeadingZerosFromFormat || showLeadingZeros,
+        value: month,
+        year: year
+      }));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "renderYear", function (currentMatch, index) {
+      var _this$props3 = _this.props,
+          autoFocus = _this$props3.autoFocus,
+          yearAriaLabel = _this$props3.yearAriaLabel,
+          yearPlaceholder = _this$props3.yearPlaceholder;
+      var year = _this.state.year;
+      return /*#__PURE__*/_react["default"].createElement(_YearInput["default"], _extends({
+        key: "year"
+      }, _this.commonInputProps, {
+        ariaLabel: yearAriaLabel // eslint-disable-next-line jsx-a11y/no-autofocus
+        ,
+        autoFocus: index === 0 && autoFocus,
+        inputRef: _this.yearInput,
+        placeholder: yearPlaceholder,
+        value: year,
+        valueType: _this.valueType
+      }));
+    });
+
+    return _this;
+  }
+
+  _createClass(DateInput, [{
+    key: "formatDate",
+    get: function get() {
+      var maxDetail = this.props.maxDetail;
+      var options = {
+        year: 'numeric'
+      };
+      var level = allViews.indexOf(maxDetail);
+
+      if (level >= 2) {
+        options.month = 'numeric';
+      }
+
+      if (level >= 3) {
+        options.day = 'numeric';
+      }
+
+      return (0, _dateFormatter.getFormatter)(options);
+    }
+    /**
+     * Gets current value in a desired format.
+     */
+
+  }, {
+    key: "getProcessedValue",
+    value: function getProcessedValue(value) {
+      var _this$props4 = this.props,
+          minDate = _this$props4.minDate,
+          maxDate = _this$props4.maxDate,
+          maxDetail = _this$props4.maxDetail,
+          returnValue = _this$props4.returnValue;
+
+      var processFunction = function () {
+        switch (returnValue) {
+          case 'start':
+            return getDetailValueFrom;
+
+          case 'end':
+            return getDetailValueTo;
+
+          case 'range':
+            return getDetailValueArray;
+
+          default:
+            throw new Error('Invalid returnValue.');
+        }
+      }();
+
+      return processFunction({
+        value: value,
+        minDate: minDate,
+        maxDate: maxDate,
+        maxDetail: maxDetail
+      });
+    }
+  }, {
+    key: "divider",
+    get: function get() {
+      var dividers = this.placeholder.match(/[^0-9a-z]/i);
+      return dividers ? dividers[0] : null;
+    }
+  }, {
+    key: "placeholder",
+    get: function get() {
+      var _this$props5 = this.props,
+          format = _this$props5.format,
+          locale = _this$props5.locale;
+
+      if (format) {
+        return format;
+      }
+
+      var year = 2017;
+      var monthIndex = 11;
+      var day = 11;
+      var date = new Date(year, monthIndex, day);
+      var formattedDate = this.formatDate(locale, date);
+      var datePieces = ['year', 'month', 'day'];
+      var datePieceReplacements = ['y', 'M', 'd'];
+
+      function formatDatePiece(name, dateToFormat) {
+        return (0, _dateFormatter.getFormatter)(_defineProperty({
+          useGrouping: false
+        }, name, 'numeric'))(locale, dateToFormat).match(/\d{1,}/);
+      }
+
+      var placeholder = formattedDate;
+      datePieces.forEach(function (datePiece, index) {
+        var formattedDatePiece = formatDatePiece(datePiece, date);
+        var datePieceReplacement = datePieceReplacements[index];
+        placeholder = placeholder.replace(formattedDatePiece, datePieceReplacement);
+      }); // See: https://github.com/wojtekmaj/react-date-picker/issues/396
+
+      placeholder = placeholder.replace('17', 'y');
+      return placeholder;
+    }
+  }, {
+    key: "commonInputProps",
+    get: function get() {
+      var _this$props6 = this.props,
+          className = _this$props6.className,
+          disabled = _this$props6.disabled,
+          isCalendarOpen = _this$props6.isCalendarOpen,
+          maxDate = _this$props6.maxDate,
+          minDate = _this$props6.minDate,
+          required = _this$props6.required;
+      return {
+        className: className,
+        disabled: disabled,
+        maxDate: maxDate || defaultMaxDate,
+        minDate: minDate || defaultMinDate,
+        onChange: this.onChange,
+        onKeyDown: this.onKeyDown,
+        onKeyUp: this.onKeyUp,
+        // This is only for showing validity when editing
+        required: required || isCalendarOpen
+      };
+    }
+  }, {
+    key: "valueType",
+    get: function get() {
+      var maxDetail = this.props.maxDetail;
+      return getValueType(maxDetail);
+    }
+  }, {
+    key: "renderCustomInputs",
+    value: function renderCustomInputs() {
+      var placeholder = this.placeholder;
+      var format = this.props.format;
+      var elementFunctions = {
+        d: this.renderDay,
+        M: this.renderMonth,
+        y: this.renderYear
+      };
+      var allowMultipleInstances = typeof format !== 'undefined';
+      return _renderCustomInputs(placeholder, elementFunctions, allowMultipleInstances);
+    }
+  }, {
+    key: "renderNativeInput",
+    value: function renderNativeInput() {
+      var _this$props7 = this.props,
+          disabled = _this$props7.disabled,
+          maxDate = _this$props7.maxDate,
+          minDate = _this$props7.minDate,
+          name = _this$props7.name,
+          nativeInputAriaLabel = _this$props7.nativeInputAriaLabel,
+          required = _this$props7.required;
+      var value = this.state.value;
+      return /*#__PURE__*/_react["default"].createElement(_NativeInput["default"], {
+        key: "date",
+        ariaLabel: nativeInputAriaLabel,
+        disabled: disabled,
+        maxDate: maxDate || defaultMaxDate,
+        minDate: minDate || defaultMinDate,
+        name: name,
+        onChange: this.onChangeNative,
+        required: required,
+        value: value,
+        valueType: this.valueType
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var className = this.props.className;
+      return (
+        /*#__PURE__*/
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+        _react["default"].createElement("div", {
+          className: className,
+          onClick: this.onClick
+        }, this.renderNativeInput(), this.renderCustomInputs())
+      );
+    }
+  }], [{
+    key: "getDerivedStateFromProps",
+    value: function getDerivedStateFromProps(nextProps, prevState) {
+      var minDate = nextProps.minDate,
+          maxDate = nextProps.maxDate,
+          maxDetail = nextProps.maxDetail;
+      var nextState = {};
+      /**
+       * If isCalendarOpen flag has changed, we have to update it.
+       * It's saved in state purely for use in getDerivedStateFromProps.
+       */
+
+      if (nextProps.isCalendarOpen !== prevState.isCalendarOpen) {
+        nextState.isCalendarOpen = nextProps.isCalendarOpen;
+      }
+      /**
+       * If the next value is different from the current one  (with an exception of situation in
+       * which values provided are limited by minDate and maxDate so that the dates are the same),
+       * get a new one.
+       */
+
+
+      var nextValue = getDetailValueFrom({
+        value: nextProps.value,
+        minDate: minDate,
+        maxDate: maxDate,
+        maxDetail: maxDetail
+      });
+      var values = [nextValue, prevState.value];
+
+      if ( // Toggling calendar visibility resets values
+      nextState.isCalendarOpen || // Flag was toggled
+      datesAreDifferent.apply(void 0, _toConsumableArray(values.map(function (value) {
+        return getDetailValueFrom({
+          value: value,
+          minDate: minDate,
+          maxDate: maxDate,
+          maxDetail: maxDetail
+        });
+      }))) || datesAreDifferent.apply(void 0, _toConsumableArray(values.map(function (value) {
+        return getDetailValueTo({
+          value: value,
+          minDate: minDate,
+          maxDate: maxDate,
+          maxDetail: maxDetail
+        });
+      })))) {
+        if (nextValue) {
+          nextState.year = (0, _dateUtils.getYear)(nextValue).toString();
+          nextState.month = (0, _dateUtils.getMonthHuman)(nextValue).toString();
+          nextState.day = (0, _dateUtils.getDate)(nextValue).toString();
+        } else {
+          nextState.year = null;
+          nextState.month = null;
+          nextState.day = null;
+        }
+
+        nextState.value = nextValue;
+      }
+
+      return nextState;
+    }
+  }]);
+
+  return DateInput;
+}(_react.PureComponent);
+
+exports["default"] = DateInput;
+DateInput.defaultProps = {
+  maxDetail: 'month',
+  name: 'date',
+  returnValue: 'start'
+};
+
+var isValue = _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].instanceOf(Date)]);
+
+DateInput.propTypes = {
+  autoFocus: _propTypes["default"].bool,
+  className: _propTypes["default"].string.isRequired,
+  dayAriaLabel: _propTypes["default"].string,
+  dayPlaceholder: _propTypes["default"].string,
+  disabled: _propTypes["default"].bool,
+  format: _propTypes["default"].string,
+  isCalendarOpen: _propTypes["default"].bool,
+  locale: _propTypes["default"].string,
+  maxDate: _propTypes2.isMaxDate,
+  maxDetail: _propTypes["default"].oneOf(allViews),
+  minDate: _propTypes2.isMinDate,
+  monthAriaLabel: _propTypes["default"].string,
+  monthPlaceholder: _propTypes["default"].string,
+  name: _propTypes["default"].string,
+  nativeInputAriaLabel: _propTypes["default"].string,
+  onChange: _propTypes["default"].func,
+  required: _propTypes["default"].bool,
+  returnValue: _propTypes["default"].oneOf(['start', 'end', 'range']),
+  showLeadingZeros: _propTypes["default"].bool,
+  value: _propTypes["default"].oneOfType([isValue, _propTypes["default"].arrayOf(isValue)]),
+  yearAriaLabel: _propTypes["default"].string,
+  yearPlaceholder: _propTypes["default"].string
+};
+}(DateInput));
+
+(function (exports) {
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _react = _interopRequireWildcard(React__default["default"]);
+
+var _propTypes = _interopRequireDefault(propTypes$1.exports);
+
+var _makeEventProps = _interopRequireDefault(require$$2$1);
+
+var _mergeClassNames = _interopRequireDefault(require$$3$1);
+
+var _reactCalendar = _interopRequireDefault(require$$4$1);
+
+var _reactFit = _interopRequireDefault(require$$5);
+
+var _DateInput = _interopRequireDefault(DateInput);
+
+var _propTypes2 = propTypes;
+
+var _excluded = ["calendarClassName", "className", "onChange", "value"],
+    _excluded2 = ["onChange"];
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var baseClassName = 'react-date-picker';
+var outsideActionEvents = ['mousedown', 'focusin', 'touchstart'];
+var allViews = ['century', 'decade', 'year', 'month'];
+
+var DatePicker = /*#__PURE__*/function (_PureComponent) {
+  _inherits(DatePicker, _PureComponent);
+
+  var _super = _createSuper(DatePicker);
+
+  function DatePicker() {
+    var _this;
+
+    _classCallCheck(this, DatePicker);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {});
+
+    _defineProperty(_assertThisInitialized(_this), "onOutsideAction", function (event) {
+      // Try event.composedPath first to handle clicks inside a Shadow DOM.
+      var target = 'composedPath' in event ? event.composedPath()[0] : event.target;
+
+      if (_this.wrapper && !_this.wrapper.contains(target)) {
+        _this.closeCalendar();
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onChange", function (value) {
+      var closeCalendar = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _this.props.closeCalendar;
+      var onChange = _this.props.onChange;
+
+      if (closeCalendar) {
+        _this.closeCalendar();
+      }
+
+      if (onChange) {
+        onChange(value);
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onFocus", function (event) {
+      var _this$props = _this.props,
+          disabled = _this$props.disabled,
+          onFocus = _this$props.onFocus,
+          openCalendarOnFocus = _this$props.openCalendarOnFocus;
+
+      if (onFocus) {
+        onFocus(event);
+      } // Internet Explorer still fires onFocus on disabled elements
+
+
+      if (disabled) {
+        return;
+      }
+
+      if (openCalendarOnFocus) {
+        if (event.target.getAttribute('data-select') === 'true') {
+          return;
+        }
+
+        _this.openCalendar();
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onKeyDown", function (event) {
+      if (event.key === 'Escape') {
+        _this.closeCalendar();
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "openCalendar", function () {
+      _this.setState({
+        isOpen: true
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "closeCalendar", function () {
+      _this.setState(function (prevState) {
+        if (!prevState.isOpen) {
+          return null;
+        }
+
+        return {
+          isOpen: false
+        };
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "toggleCalendar", function () {
+      _this.setState(function (prevState) {
+        return {
+          isOpen: !prevState.isOpen
+        };
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "stopPropagation", function (event) {
+      return event.stopPropagation();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "clear", function () {
+      return _this.onChange(null);
+    });
+
+    return _this;
+  }
+
+  _createClass(DatePicker, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.handleOutsideActionListeners();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      var isOpen = this.state.isOpen;
+      var _this$props2 = this.props,
+          onCalendarClose = _this$props2.onCalendarClose,
+          onCalendarOpen = _this$props2.onCalendarOpen;
+
+      if (isOpen !== prevState.isOpen) {
+        this.handleOutsideActionListeners();
+        var callback = isOpen ? onCalendarOpen : onCalendarClose;
+        if (callback) callback();
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.handleOutsideActionListeners(false);
+    }
+  }, {
+    key: "eventProps",
+    get: function get() {
+      return (0, _makeEventProps["default"])(this.props);
+    }
+  }, {
+    key: "handleOutsideActionListeners",
+    value: function handleOutsideActionListeners(shouldListen) {
+      var _this2 = this;
+
+      var isOpen = this.state.isOpen;
+      var shouldListenWithFallback = typeof shouldListen !== 'undefined' ? shouldListen : isOpen;
+      var fnName = shouldListenWithFallback ? 'addEventListener' : 'removeEventListener';
+      outsideActionEvents.forEach(function (eventName) {
+        return document[fnName](eventName, _this2.onOutsideAction);
+      });
+      document[fnName]('keydown', this.onKeyDown);
+    }
+  }, {
+    key: "renderInputs",
+    value: function renderInputs() {
+      var _this$props3 = this.props,
+          autoFocus = _this$props3.autoFocus,
+          calendarAriaLabel = _this$props3.calendarAriaLabel,
+          calendarIcon = _this$props3.calendarIcon,
+          clearAriaLabel = _this$props3.clearAriaLabel,
+          clearIcon = _this$props3.clearIcon,
+          dayAriaLabel = _this$props3.dayAriaLabel,
+          dayPlaceholder = _this$props3.dayPlaceholder,
+          disableCalendar = _this$props3.disableCalendar,
+          disabled = _this$props3.disabled,
+          format = _this$props3.format,
+          locale = _this$props3.locale,
+          maxDate = _this$props3.maxDate,
+          maxDetail = _this$props3.maxDetail,
+          minDate = _this$props3.minDate,
+          monthAriaLabel = _this$props3.monthAriaLabel,
+          monthPlaceholder = _this$props3.monthPlaceholder,
+          name = _this$props3.name,
+          nativeInputAriaLabel = _this$props3.nativeInputAriaLabel,
+          required = _this$props3.required,
+          returnValue = _this$props3.returnValue,
+          showLeadingZeros = _this$props3.showLeadingZeros,
+          value = _this$props3.value,
+          yearAriaLabel = _this$props3.yearAriaLabel,
+          yearPlaceholder = _this$props3.yearPlaceholder;
+      var isOpen = this.state.isOpen;
+
+      var _concat = [].concat(value),
+          _concat2 = _slicedToArray(_concat, 1),
+          valueFrom = _concat2[0];
+
+      var ariaLabelProps = {
+        dayAriaLabel: dayAriaLabel,
+        monthAriaLabel: monthAriaLabel,
+        nativeInputAriaLabel: nativeInputAriaLabel,
+        yearAriaLabel: yearAriaLabel
+      };
+      var placeholderProps = {
+        dayPlaceholder: dayPlaceholder,
+        monthPlaceholder: monthPlaceholder,
+        yearPlaceholder: yearPlaceholder
+      };
+      return /*#__PURE__*/_react["default"].createElement("div", {
+        className: "".concat(baseClassName, "__wrapper")
+      }, /*#__PURE__*/_react["default"].createElement(_DateInput["default"], _extends({}, ariaLabelProps, placeholderProps, {
+        // eslint-disable-next-line jsx-a11y/no-autofocus
+        autoFocus: autoFocus,
+        className: "".concat(baseClassName, "__inputGroup"),
+        disabled: disabled,
+        format: format,
+        isCalendarOpen: isOpen,
+        locale: locale,
+        maxDate: maxDate,
+        maxDetail: maxDetail,
+        minDate: minDate,
+        name: name,
+        onChange: this.onChange,
+        required: required,
+        returnValue: returnValue,
+        showLeadingZeros: showLeadingZeros,
+        value: valueFrom
+      })), clearIcon !== null && /*#__PURE__*/_react["default"].createElement("button", {
+        "aria-label": clearAriaLabel,
+        className: "".concat(baseClassName, "__clear-button ").concat(baseClassName, "__button"),
+        disabled: disabled,
+        onClick: this.clear,
+        onFocus: this.stopPropagation,
+        type: "button"
+      }, clearIcon), calendarIcon !== null && !disableCalendar && /*#__PURE__*/_react["default"].createElement("button", {
+        "aria-label": calendarAriaLabel,
+        className: "".concat(baseClassName, "__calendar-button ").concat(baseClassName, "__button"),
+        disabled: disabled,
+        onBlur: this.resetValue,
+        onClick: this.toggleCalendar,
+        onFocus: this.stopPropagation,
+        type: "button"
+      }, calendarIcon));
+    }
+  }, {
+    key: "renderCalendar",
+    value: function renderCalendar() {
+      var disableCalendar = this.props.disableCalendar;
+      var isOpen = this.state.isOpen;
+
+      if (isOpen === null || disableCalendar) {
+        return null;
+      }
+
+      var _this$props4 = this.props,
+          calendarClassName = _this$props4.calendarClassName;
+          _this$props4.className;
+          _this$props4.onChange;
+          var value = _this$props4.value,
+          calendarProps = _objectWithoutProperties(_this$props4, _excluded);
+
+      var className = "".concat(baseClassName, "__calendar");
+      return /*#__PURE__*/_react["default"].createElement(_reactFit["default"], null, /*#__PURE__*/_react["default"].createElement("div", {
+        ref: function ref(_ref) {
+          if (_ref && !isOpen) {
+            _ref.removeAttribute('style');
+          }
+        },
+        className: (0, _mergeClassNames["default"])(className, "".concat(className, "--").concat(isOpen ? 'open' : 'closed')),
+        style: isOpen ? undefined : {}
+      }, /*#__PURE__*/_react["default"].createElement(_reactCalendar["default"], _extends({
+        className: calendarClassName,
+        onChange: this.onChange,
+        value: value || null
+      }, calendarProps))));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      var eventProps = this.eventProps;
+      var _this$props5 = this.props,
+          className = _this$props5.className,
+          disabled = _this$props5.disabled;
+      var isOpen = this.state.isOpen;
+
+      eventProps.onChange;
+          var eventPropsWithoutOnChange = _objectWithoutProperties(eventProps, _excluded2);
+
+      return /*#__PURE__*/_react["default"].createElement("div", _extends({
+        className: (0, _mergeClassNames["default"])(baseClassName, "".concat(baseClassName, "--").concat(isOpen ? 'open' : 'closed'), "".concat(baseClassName, "--").concat(disabled ? 'disabled' : 'enabled'), className)
+      }, eventPropsWithoutOnChange, {
+        onFocus: this.onFocus,
+        ref: function ref(_ref2) {
+          if (!_ref2) {
+            return;
+          }
+
+          _this3.wrapper = _ref2;
+        }
+      }), this.renderInputs(), this.renderCalendar());
+    }
+  }], [{
+    key: "getDerivedStateFromProps",
+    value: function getDerivedStateFromProps(nextProps, prevState) {
+      if (nextProps.isOpen !== prevState.isOpenProps) {
+        return {
+          isOpen: nextProps.isOpen,
+          isOpenProps: nextProps.isOpen
+        };
+      }
+
+      return null;
+    }
+  }]);
+
+  return DatePicker;
+}(_react.PureComponent);
+
+exports["default"] = DatePicker;
+var iconProps = {
+  xmlns: 'http://www.w3.org/2000/svg',
+  width: 19,
+  height: 19,
+  viewBox: '0 0 19 19',
+  stroke: 'black',
+  strokeWidth: 2
+};
+
+var CalendarIcon = /*#__PURE__*/_react["default"].createElement("svg", _extends({}, iconProps, {
+  className: "".concat(baseClassName, "__calendar-button__icon ").concat(baseClassName, "__button__icon")
+}), /*#__PURE__*/_react["default"].createElement("rect", {
+  fill: "none",
+  height: "15",
+  width: "15",
+  x: "2",
+  y: "2"
+}), /*#__PURE__*/_react["default"].createElement("line", {
+  x1: "6",
+  x2: "6",
+  y1: "0",
+  y2: "4"
+}), /*#__PURE__*/_react["default"].createElement("line", {
+  x1: "13",
+  x2: "13",
+  y1: "0",
+  y2: "4"
+}));
+
+var ClearIcon = /*#__PURE__*/_react["default"].createElement("svg", _extends({}, iconProps, {
+  className: "".concat(baseClassName, "__clear-button__icon ").concat(baseClassName, "__button__icon")
+}), /*#__PURE__*/_react["default"].createElement("line", {
+  x1: "4",
+  x2: "15",
+  y1: "4",
+  y2: "15"
+}), /*#__PURE__*/_react["default"].createElement("line", {
+  x1: "15",
+  x2: "4",
+  y1: "4",
+  y2: "15"
+}));
+
+DatePicker.defaultProps = {
+  calendarIcon: CalendarIcon,
+  clearIcon: ClearIcon,
+  closeCalendar: true,
+  isOpen: null,
+  openCalendarOnFocus: true,
+  returnValue: 'start'
+};
+
+var isValue = _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].instanceOf(Date)]);
+
+DatePicker.propTypes = {
+  autoFocus: _propTypes["default"].bool,
+  calendarAriaLabel: _propTypes["default"].string,
+  calendarClassName: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].arrayOf(_propTypes["default"].string)]),
+  calendarIcon: _propTypes["default"].node,
+  className: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].arrayOf(_propTypes["default"].string)]),
+  clearAriaLabel: _propTypes["default"].string,
+  clearIcon: _propTypes["default"].node,
+  closeCalendar: _propTypes["default"].bool,
+  dayAriaLabel: _propTypes["default"].string,
+  dayPlaceholder: _propTypes["default"].string,
+  disableCalendar: _propTypes["default"].bool,
+  disabled: _propTypes["default"].bool,
+  format: _propTypes["default"].string,
+  isOpen: _propTypes["default"].bool,
+  locale: _propTypes["default"].string,
+  maxDate: _propTypes2.isMaxDate,
+  maxDetail: _propTypes["default"].oneOf(allViews),
+  minDate: _propTypes2.isMinDate,
+  monthAriaLabel: _propTypes["default"].string,
+  monthPlaceholder: _propTypes["default"].string,
+  name: _propTypes["default"].string,
+  nativeInputAriaLabel: _propTypes["default"].string,
+  onCalendarClose: _propTypes["default"].func,
+  onCalendarOpen: _propTypes["default"].func,
+  onChange: _propTypes["default"].func,
+  onFocus: _propTypes["default"].func,
+  openCalendarOnFocus: _propTypes["default"].bool,
+  required: _propTypes["default"].bool,
+  returnValue: _propTypes["default"].oneOf(['start', 'end', 'range']),
+  showLeadingZeros: _propTypes["default"].bool,
+  value: _propTypes["default"].oneOfType([isValue, _propTypes["default"].arrayOf(isValue)]),
+  yearAriaLabel: _propTypes["default"].string,
+  yearPlaceholder: _propTypes["default"].string
+};
+}(DatePicker$1));
+
+(function (exports) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+
+
+var _DatePicker = _interopRequireDefault(DatePicker$1);
+
+
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+// File is created during build phase and placed in dist directory
+// eslint-disable-next-line import/no-unresolved
+var _default = _DatePicker["default"];
+exports["default"] = _default;
+}(entry));
+
+var DatePicker = /*@__PURE__*/getDefaultExportFromCjs(entry);
+
+function DateFilter({ value, onChange, field }) {
+    let tempval;
+    if (value === '' || !value) {
+        tempval = null;
+    }
+    else {
+        tempval = new Date(value);
+    }
+    return (React__default["default"].createElement(DatePicker, { onChange: (date) => {
+            if (date) {
+                onChange(field.id, format(date, 'yyyy-MM-dd'));
+            }
+            else {
+                onChange(field.id, '');
+            }
+        }, value: tempval, format: "dd-MM-y" }));
+}
+
+function NumberFilter({ PortalSite, field, value, onChange }) {
+    const handleChange = (event) => {
+        onChange(field.id, event.currentTarget.value);
+    };
+    return (React__default["default"].createElement("input", { value: value, type: "number", min: "0", max: field.id === 'persons_min'
+            ? PortalSite.max_persons
+            : PortalSite[field.id], onBlur: handleChange }));
+}
+
+function Field$1({ PortalSite, field, filters, value, onFilterChange }) {
+    let options = [];
+    if (['countries', 'cities', 'regions'].includes(field.id)) {
+        options = PortalSite[field.id];
+    }
+    else if (field.id === 'persons_min' || field.id === 'persons_max') {
+        options = createNumberArray(PortalSite.max_persons);
+    }
+    else if (field.id === 'bedrooms_min') {
+        options = createNumberArray(PortalSite.max_bedrooms);
+    }
+    else if (field.id === 'bathrooms_min') {
+        options = createNumberArray(PortalSite.max_bathrooms);
+    }
+    else if (field.id === 'weekprice_max') {
+        options = createPriceArray(PortalSite.max_weekprice);
+    }
+    else {
+        options = createNumberArray(PortalSite[field.id]);
+    }
+    let default_settings = {
+        options,
+        field,
+        filters,
+        value
+    };
+    if (field.id === 'properties') {
+        return (React__default["default"].createElement(Categories, { PortalSite: PortalSite, filters: filters, onChange: onFilterChange }));
+    }
+    else if (field.type === 'select') {
+        return React__default["default"].createElement(Select, Object.assign({}, default_settings, { onChange: onFilterChange }));
+    }
+    else if (field.type === 'list') {
+        return React__default["default"].createElement(List, Object.assign({}, default_settings, { onChange: onFilterChange }));
+    }
+    else if (field.type === 'radio') {
+        return React__default["default"].createElement(Radio, Object.assign({}, default_settings, { onChange: onFilterChange }));
+    }
+    else if (field.type === 'number') {
+        return (React__default["default"].createElement(NumberFilter, { PortalSite: PortalSite, field: field, value: value, onChange: onFilterChange }));
+    }
+    else if (field.type === 'date') {
+        return React__default["default"].createElement(DateFilter, { field: field, value: value, onChange: onFilterChange });
+    }
+    else {
+        return (React__default["default"].createElement("input", { value: value, onBlur: (event) => {
+                onFilterChange(field.id, event.target.value);
+            } }));
+    }
+}
 
 var Reload = function Reload() {
   return /*#__PURE__*/React__default["default"].createElement("svg", {
@@ -31793,11 +30425,11 @@ function memoize$1(fn, options) {
 //
 // Strategy
 //
-function isPrimitive(value) {
+function isPrimitive$4(value) {
     return (value == null || typeof value === 'number' || typeof value === 'boolean'); // || typeof value === "string" 'unsafe' primitive for our needs
 }
 function monadic(fn, cache, serializer, arg) {
-    var cacheKey = isPrimitive(arg) ? arg : serializer(arg);
+    var cacheKey = isPrimitive$4(arg) ? arg : serializer(arg);
     var computedValue = cache.get(cacheKey);
     if (typeof computedValue === 'undefined') {
         computedValue = fn.call(this, arg);
@@ -33237,110 +31869,44 @@ createFormattedComponent('formatDisplayName');
 createFormattedDateTimePartsComponent('formatDate');
 createFormattedDateTimePartsComponent('formatTime');
 
-var Filters = /*#__PURE__*/function (_Component) {
-  _inherits$A(Filters, _Component);
-
-  var _super = _createSuper$A(Filters);
-
-  function Filters(props) {
-    var _this;
-
-    _classCallCheck$B(this, Filters);
-
-    _this = _super.call(this, props);
-    _this.saveFilters = _this.saveFilters.bind(_assertThisInitialized$B(_this));
-    _this.toggle = _this.toggle.bind(_assertThisInitialized$B(_this));
-    _this.state = {
-      show: false
-    };
-    return _this;
-  }
-
-  _createClass$D(Filters, [{
-    key: "saveFilters",
-    value: function saveFilters(field, input) {
-      var newFilters = this.props.filters;
-      newFilters[field] = input;
-      this.props.onFilterChange(newFilters);
+function Filters({ filters, onFilterChange, PortalSite, options }) {
+    function saveFilters(field, input) {
+        let newFilters = filters;
+        newFilters[field] = input;
+        onFilterChange(newFilters);
     }
-  }, {
-    key: "toggle",
-    value: function toggle() {
-      var show = this.state.show;
-      var newShow = !show;
-      this.setState({
-        show: newShow
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var _this$props = this.props,
-          PortalSite = _this$props.PortalSite,
-          filters = _this$props.filters,
-          options = _this$props.options;
-      var searchFields = PortalSite.options.searchFields || [{
-        label: 'Land',
-        id: 'countries',
-        type: 'select',
-        required: false,
-        mandatory: true,
-        options: ['select', 'list', 'radio', 'text']
-      }];
-      var fixed = options.filtersForm ? options.filtersForm.fixedMobile ? 'fixed-mobile' : null : null;
-      var filterClass = options.filtersForm ? options.filtersForm.show ? "filters filters-".concat(options.filtersForm.location) : 'filters-hidden' : 'filters';
-      var show = this.state.show && 'showOnMobile';
-      return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("button", {
-        className: "filters-button ".concat(fixed),
-        onClick: this.toggle
-      }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-        id: "filters"
-      })), /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "".concat(filterClass, " ").concat(fixed, " ").concat(show)
-      }, /*#__PURE__*/React__default["default"].createElement("button", {
-        onClick: function onClick() {
-          var filters = {};
-
-          for (var property in _this2.props.filters) {
-            filters[property] = '';
-          }
-
-          _this2.props.onFilterChange(filters);
-        },
-        className: "filters-reload"
-      }, /*#__PURE__*/React__default["default"].createElement(Reload, null)), searchFields.map(function (field) {
-        return /*#__PURE__*/React__default["default"].createElement("div", {
-          key: field.id,
-          className: "bu-field",
-          id: field.id
-        }, /*#__PURE__*/React__default["default"].createElement("label", {
-          style: {
-            width: '100%',
-            display: 'block'
-          },
-          htmlFor: field.id
-        }, PortalSite["".concat(field.id, "_label")]), /*#__PURE__*/React__default["default"].createElement(Field$1, {
-          field: field,
-          PortalSite: PortalSite,
-          filters: filters,
-          value: filters[field.id],
-          onFilterChange: _this2.saveFilters
-        }));
-      })));
-    }
-  }]);
-
-  return Filters;
-}(React.Component);
-
-Filters.propTypes = {
-  PortalSite: PropTypes.object.isRequired,
-  filters: PropTypes.object.isRequired,
-  options: PropTypes.object.isRequired,
-  onFilterChange: PropTypes.func.isRequired
-};
+    const [show, setShow] = React.useState(false);
+    const searchFields = options.searchFields || defaultFilter;
+    let fixed = options.filtersForm
+        ? options.filtersForm.fixedMobile
+            ? 'fixed-mobile'
+            : null
+        : null;
+    let filterClass = options.filtersForm
+        ? options.filtersForm.show
+            ? `filters filters-${options.filtersForm.location}`
+            : 'filters-hidden'
+        : 'filters';
+    let showOn = show && 'showOnMobile';
+    return (React__default["default"].createElement(React__default["default"].Fragment, null,
+        React__default["default"].createElement("button", { className: `filters-button ${fixed}`, onClick: () => setShow(!show) },
+            React__default["default"].createElement(FormattedMessage$2, { id: "filters" })),
+        React__default["default"].createElement("div", { className: `${filterClass} ${fixed} ${showOn}` },
+            React__default["default"].createElement("button", { onClick: () => {
+                    let filters = {};
+                    for (var property in filters) {
+                        filters[property] = '';
+                    }
+                    onFilterChange(filters);
+                }, className: "filters-reload" },
+                React__default["default"].createElement(Reload, null)),
+            searchFields.map((field) => (React__default["default"].createElement("div", { key: field.id, className: "bu-field", id: field.id },
+                React__default["default"].createElement("label", { style: {
+                        width: '100%',
+                        display: 'block'
+                    }, htmlFor: field.id }, PortalSite[`${field.id}_label`]),
+                React__default["default"].createElement(Field$1, { field: field, PortalSite: PortalSite, filters: filters, value: filters[field.id], onFilterChange: saveFilters })))))));
+}
 
 var ArrowRight$1 = function ArrowRight() {
   return /*#__PURE__*/React__default["default"].createElement("svg", {
@@ -33354,71 +31920,55 @@ var ArrowRight$1 = function ArrowRight() {
   }));
 };
 
-function SingleResult(_ref) {
-  var result = _ref.result,
-      options = _ref.options;
-  var thisOptions = options || {};
-  return /*#__PURE__*/React__default["default"].createElement("a", {
-    className: "bukazu-result",
-    href: result.house_url
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "bukazu-result-inner"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "image-holder"
-  }, /*#__PURE__*/React__default["default"].createElement("img", {
-    src: result.image_url,
-    alt: result.name
-  })), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "result"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "result-title"
-  }, result.name), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "result-place"
-  }, thisOptions.showCity && /*#__PURE__*/React__default["default"].createElement("span", null, result.city, ", "), thisOptions.showRegion && /*#__PURE__*/React__default["default"].createElement("span", null, result.province, ", "), thisOptions.showCountry && /*#__PURE__*/React__default["default"].createElement("span", null, result.country_name)), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "result-description",
-    dangerouslySetInnerHTML: {
-      __html: result.description
-    }
-  }), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "result-details"
-  }, thisOptions.showPersons && /*#__PURE__*/React__default["default"].createElement("div", null, result.persons, " ", /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "persons"
-  })), thisOptions.showBedrooms && /*#__PURE__*/React__default["default"].createElement("div", null, result.bedrooms, " ", /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "bedrooms"
-  })), thisOptions.showBathrooms && /*#__PURE__*/React__default["default"].createElement("div", null, result.bathrooms, " ", /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "bathrooms"
-  }))), thisOptions.showPrice && /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "result-price"
-  }, result.booking_price ? /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "price_from"
-  }), /*#__PURE__*/React__default["default"].createElement("span", {
-    className: "price"
-  }, "\u20AC", ' ', /*#__PURE__*/React__default["default"].createElement(FormattedNumber, {
-    value: result.booking_price.total_price,
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0
-  }))) : /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "minimum_week_price"
-  }), /*#__PURE__*/React__default["default"].createElement("span", {
-    className: "price"
-  }, "\u20AC", ' ', /*#__PURE__*/React__default["default"].createElement(FormattedNumber, {
-    value: result.minimum_week_price,
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0
-  })))), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "result-button"
-  }, /*#__PURE__*/React__default["default"].createElement(ArrowRight$1, null)))));
+function SingleResult({ result, options }) {
+    let thisOptions = options || {};
+    return (React__default["default"].createElement("a", { className: "bukazu-result", href: result.house_url },
+        React__default["default"].createElement("div", { className: "bukazu-result-inner" },
+            React__default["default"].createElement("div", { className: "image-holder" },
+                React__default["default"].createElement("img", { src: result.image_url, alt: result.name })),
+            React__default["default"].createElement("div", { className: "result" },
+                React__default["default"].createElement("div", { className: "result-title" }, result.name),
+                React__default["default"].createElement("div", { className: "result-place" },
+                    thisOptions.showCity && React__default["default"].createElement("span", null,
+                        result.city,
+                        ", "),
+                    thisOptions.showRegion && React__default["default"].createElement("span", null,
+                        result.province,
+                        ", "),
+                    thisOptions.showCountry && React__default["default"].createElement("span", null, result.country_name)),
+                React__default["default"].createElement("div", { className: "result-description", dangerouslySetInnerHTML: { __html: result.description } }),
+                React__default["default"].createElement("div", { className: "result-details" },
+                    thisOptions.showPersons && (React__default["default"].createElement("div", null,
+                        result.persons,
+                        " ",
+                        React__default["default"].createElement(FormattedMessage$2, { id: "persons" }))),
+                    thisOptions.showBedrooms && (React__default["default"].createElement("div", null,
+                        result.bedrooms,
+                        " ",
+                        React__default["default"].createElement(FormattedMessage$2, { id: "bedrooms" }))),
+                    thisOptions.showBathrooms && (React__default["default"].createElement("div", null,
+                        result.bathrooms,
+                        " ",
+                        React__default["default"].createElement(FormattedMessage$2, { id: "bathrooms" })))),
+                thisOptions.showPrice && (React__default["default"].createElement("div", { className: "result-price" }, result.booking_price ? (React__default["default"].createElement(React__default["default"].Fragment, null,
+                    React__default["default"].createElement(FormattedMessage$2, { id: "price_from" }),
+                    React__default["default"].createElement("span", { className: "price" },
+                        "\u20AC",
+                        ' ',
+                        React__default["default"].createElement(FormattedNumber, { value: result.booking_price.total_price, minimumFractionDigits: 0, maximumFractionDigits: 0 })))) : (React__default["default"].createElement(React__default["default"].Fragment, null,
+                    React__default["default"].createElement(FormattedMessage$2, { id: "minimum_week_price" }),
+                    React__default["default"].createElement("span", { className: "price" },
+                        "\u20AC",
+                        ' ',
+                        React__default["default"].createElement(FormattedNumber, { value: result.minimum_week_price, minimumFractionDigits: 0, maximumFractionDigits: 0 })))))),
+                React__default["default"].createElement("div", { className: "result-button" },
+                    React__default["default"].createElement(ArrowRight$1, null))))));
 }
 
-SingleResult.propTypes = {
-  result: PropTypes.object.isRequired,
-  options: PropTypes.object.isRequired
-};
-
-var _templateObject$4, _templateObject2, _templateObject3;
-var HOUSES_QUERY = gql(_templateObject$4 || (_templateObject$4 = _taggedTemplateLiteral(["\n  query PortalSiteHousesQuery(\n    $id: ID!\n    $country_id: ID\n    $region_id: String\n    $city_id: String\n    $persons_min: Int\n    $persons_max: Int\n    $bedrooms_min: Int\n    $bathrooms_min: Int\n    $arrival_date: String\n    $no_nights: Int\n    $properties: String\n    $weekprice_max: Int\n    $limit: Int\n    $skip: Int\n  ) {\n    PortalSite(id: $id) {\n      id\n      houses(\n        country_id: $country_id\n        region_id: $region_id\n        city_id: $city_id\n        persons_min: $persons_min\n        persons_max: $persons_max\n        bedrooms_min: $bedrooms_min\n        bathrooms_min: $bathrooms_min\n        arrival_date: $arrival_date\n        weekprice_max: $weekprice_max\n        no_nights_min: $no_nights\n        properties: $properties\n        limit: $limit\n        skip: $skip\n      ) {\n        id\n        name\n        persons\n        bathrooms\n        bedrooms\n        description\n        image_url\n        house_url\n        province\n        city\n        country_name\n        minimum_week_price\n      }\n    }\n  }\n"])));
+var _templateObject$3, _templateObject2, _templateObject3;
+var HOUSES_QUERY = gql(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteral(["\n  query PortalSiteHousesQuery(\n    $id: ID!\n    $country_id: ID\n    $region_id: String\n    $city_id: String\n    $persons_min: Int\n    $persons_max: Int\n    $bedrooms_min: Int\n    $bathrooms_min: Int\n    $arrival_date: String\n    $no_nights: Int\n    $properties: String\n    $weekprice_max: Int\n    $limit: Int\n    $skip: Int\n  ) {\n    PortalSite(id: $id) {\n      id\n      houses(\n        country_id: $country_id\n        region_id: $region_id\n        city_id: $city_id\n        persons_min: $persons_min\n        persons_max: $persons_max\n        bedrooms_min: $bedrooms_min\n        bathrooms_min: $bathrooms_min\n        arrival_date: $arrival_date\n        weekprice_max: $weekprice_max\n        no_nights_min: $no_nights\n        properties: $properties\n        limit: $limit\n        skip: $skip\n      ) {\n        id\n        name\n        persons\n        bathrooms\n        bedrooms\n        description\n        image_url\n        house_url\n        province\n        city\n        country_name\n        minimum_week_price\n      }\n    }\n  }\n"])));
 var HOUSES_PRICE_QUERY = gql(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  query PortalSiteHousesQuery(\n    $id: ID!\n    $country_id: ID\n    $region_id: String\n    $city_id: String\n    $persons_min: Int\n    $persons_max: Int\n    $bedrooms_min: Int\n    $bathrooms_min: Int\n    $arrival_date: String\n    $starts_at: Date!\n    $ends_at: Date!\n    $no_nights: Int\n    $properties: String\n    $weekprice_max: Int\n    $limit: Int\n    $skip: Int\n  ) {\n    PortalSite(id: $id) {\n      houses(\n        country_id: $country_id\n        region_id: $region_id\n        city_id: $city_id\n        persons_min: $persons_min\n        persons_max: $persons_max\n        bedrooms_min: $bedrooms_min\n        bathrooms_min: $bathrooms_min\n        arrival_date: $arrival_date\n        weekprice_max: $weekprice_max\n        no_nights_min: $no_nights\n        properties: $properties\n        limit: $limit\n        skip: $skip\n      ) {\n        id\n        name\n        persons\n        bathrooms\n        bedrooms\n        description\n        image_url\n        house_url\n        province\n        city\n        country_name\n        minimum_week_price\n        booking_price(starts_at: $starts_at, ends_at: $ends_at)\n      }\n    }\n  }\n"])));
-var HOUSE_COUNT_QUERY = gql(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  query PortalSiteHousesQuery(\n    $id: ID!\n    $country_id: ID\n    $region_id: String\n    $city_id: String\n    $persons_min: Int\n    $persons_max: Int\n    $bedrooms_min: Int\n    $bathrooms_min: Int\n    $arrival_date: String\n    $no_nights: Int\n    $properties: String\n    $weekprice_max: Int\n  ) {\n    PortalSite(id: $id) {\n      houses(\n        country_id: $country_id\n        region_id: $region_id\n        city_id: $city_id\n        persons_min: $persons_min\n        persons_max: $persons_max\n        bedrooms_min: $bedrooms_min\n        bathrooms_min: $bathrooms_min\n        arrival_date: $arrival_date\n        weekprice_max: $weekprice_max\n        no_nights_min: $no_nights\n        properties: $properties\n      ) {\n        id\n      }\n    }\n  }\n"])));
+var HOUSE_COUNT_QUERY = gql(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  query PortalSiteHouseCountQuery(\n    $id: ID!\n    $country_id: ID\n    $region_id: String\n    $city_id: String\n    $persons_min: Int\n    $persons_max: Int\n    $bedrooms_min: Int\n    $bathrooms_min: Int\n    $arrival_date: String\n    $no_nights: Int\n    $properties: String\n    $weekprice_max: Int\n  ) {\n    PortalSite(id: $id) {\n      id\n      houses(\n        country_id: $country_id\n        region_id: $region_id\n        city_id: $city_id\n        persons_min: $persons_min\n        persons_max: $persons_max\n        bedrooms_min: $bedrooms_min\n        bathrooms_min: $bathrooms_min\n        arrival_date: $arrival_date\n        weekprice_max: $weekprice_max\n        no_nights_min: $no_nights\n        properties: $properties\n      ) {\n        id\n      }\n    }\n  }\n"])));
 
 var reactPaginate = {exports: {}};
 
@@ -33429,410 +31979,207 @@ var reactPaginate = {exports: {}};
 
 var ReactPaginate = /*@__PURE__*/getDefaultExportFromCjs(reactPaginate.exports);
 
-function Paginator(_ref) {
-  var _onPageChange = _ref.onPageChange,
-      variables = _ref.variables,
-      activePage = _ref.activePage,
-      limit = _ref.limit;
-  return /*#__PURE__*/React__default["default"].createElement(Query, {
-    query: HOUSE_COUNT_QUERY,
-    variables: variables
-  }, function (_ref2) {
-    var loading = _ref2.loading,
-        error = _ref2.error,
-        data = _ref2.data;
-    if (loading) return /*#__PURE__*/React__default["default"].createElement("div", {
-      style: {
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center'
-      }
-    }, /*#__PURE__*/React__default["default"].createElement(Loading, null));
-
+function Paginator({ onPageChange, variables, activePage, limit }) {
+    const { loading, error, data } = useQuery(HOUSE_COUNT_QUERY, { variables });
+    if (loading)
+        return (React__default["default"].createElement("div", { style: {
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center'
+            } },
+            React__default["default"].createElement(Loading, null)));
     if (error) {
-      return /*#__PURE__*/React__default["default"].createElement("div", null, "Error");
+        return React__default["default"].createElement("div", null, "Error");
     }
-    var results = data.PortalSite.houses;
-    var pageCount = Math.ceil(results.length / limit);
-    return /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "bu-paginator"
-    }, /*#__PURE__*/React__default["default"].createElement("div", null, results.length, " ", /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-      id: "results"
-    })), /*#__PURE__*/React__default["default"].createElement(ReactPaginate, {
-      pageCount: pageCount,
-      onPageChange: function onPageChange(_ref3) {
-        var selected = _ref3.selected;
-        console.log("clicked");
-
-        _onPageChange(selected);
-      },
-      forcePage: activePage,
-      pageRangeDisplayed: 5,
-      breakLabel: "...",
-      className: "bu-pagination",
-      renderOnZeroPageCount: null,
-      nextLabel: ">",
-      previousLabel: "<"
-    }));
-  });
+    const results = data.PortalSite.houses;
+    const pageCount = Math.ceil(results.length / limit);
+    return (React__default["default"].createElement("div", { className: "bu-paginator" },
+        React__default["default"].createElement("div", null,
+            results.length,
+            " ",
+            React__default["default"].createElement(FormattedMessage$2, { id: "results" })),
+        React__default["default"].createElement(ReactPaginate, { pageCount: pageCount, onPageChange: ({ selected }) => {
+                onPageChange(selected);
+            }, forcePage: activePage, pageRangeDisplayed: 5, breakLabel: "...", className: "bu-pagination", nextLabel: ">", previousLabel: "<" })));
 }
 
-Paginator.propTypes = {
-  activePage: PropTypes.number.isRequired,
-  limit: PropTypes.number.isRequired,
-  onPageChange: PropTypes.func.isRequired,
-  variables: PropTypes.object.isRequired
-};
-
-var Modal = /*#__PURE__*/function (_Component) {
-  _inherits$A(Modal, _Component);
-
-  var _super = _createSuper$A(Modal);
-
-  function Modal() {
-    var _this;
-
-    _classCallCheck$B(this, Modal);
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
+function Modal({ children, buttonText }) {
+    const [visible, setVisible] = React.useState(false);
+    if (!visible) {
+        return (React__default["default"].createElement("a", { className: "info-button", onClick: () => setVisible(true) }, buttonText));
     }
-
-    _this = _super.call.apply(_super, [this].concat(args));
-
-    _defineProperty$M(_assertThisInitialized$B(_this), "state", {
-      visible: _this.props.show
-    });
-
-    return _this;
-  }
-
-  _createClass$D(Modal, [{
-    key: "setVisible",
-    value: function setVisible(visible) {
-      this.setState({
-        visible: visible
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var _this$props = this.props,
-          children = _this$props.children,
-          buttonText = _this$props.buttonText;
-      var visible = this.state.visible;
-
-      if (!visible) {
-        return /*#__PURE__*/React__default["default"].createElement("a", {
-          className: "info-button",
-          onClick: function onClick() {
-            return _this2.setVisible(true);
-          }
-        }, buttonText);
-      }
-
-      return /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "bukazu-modal-container"
-      }, /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "bukazu-modal-container-inner"
-      }, /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "bukazu-modal-escape",
-        onClick: function onClick() {
-          return _this2.setVisible(false);
-        }
-      }), /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "bukazu-modal"
-      }, /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "bukazu-modal-content"
-      }, children), /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "bukazu-modal-footer"
-      }, /*#__PURE__*/React__default["default"].createElement("a", {
-        onClick: function onClick() {
-          return _this2.setVisible(false);
-        }
-      }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-        id: "close"
-      }))))));
-    }
-  }]);
-
-  return Modal;
-}(React.Component);
-
+    return (React__default["default"].createElement("div", { className: "bukazu-modal-container" },
+        React__default["default"].createElement("div", { className: "bukazu-modal-container-inner" },
+            React__default["default"].createElement("div", { className: "bukazu-modal-escape", onClick: () => setVisible(false) }),
+            React__default["default"].createElement("div", { className: "bukazu-modal" },
+                React__default["default"].createElement("div", { className: "bukazu-modal-content" }, children),
+                React__default["default"].createElement("div", { className: "bukazu-modal-footer" },
+                    React__default["default"].createElement("a", { onClick: () => setVisible(false) },
+                        React__default["default"].createElement(FormattedMessage$2, { id: "close" })))))));
+}
 Modal.defaultProps = {
-  show: false
-};
-Modal.propTypes = {
-  show: PropTypes.bool,
-  children: PropTypes.node,
-  buttonText: PropTypes.node
+    show: false
 };
 
 function ApiError(errors, modal) {
-  console.error({
-    errors: errors
-  });
-  var errorMessage = /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "bukazu-error-message"
-  }, /*#__PURE__*/React__default["default"].createElement("h2", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "something_went_wrong_please_try_again"
-  })), /*#__PURE__*/React__default["default"].createElement("ul", null, errors.errors.graphQLErrors.map(function (err) {
-    return /*#__PURE__*/React__default["default"].createElement("li", {
-      key: err.message
-    }, err.message);
-  })));
-
-  if (modal == true) {
-    return /*#__PURE__*/React__default["default"].createElement(Modal, {
-      show: true
-    }, errorMessage);
-  }
-
-  return errorMessage;
+    console.error({ errors });
+    const errorMessage = (React__default["default"].createElement("div", { className: "bukazu-error-message" },
+        React__default["default"].createElement("h2", null,
+            React__default["default"].createElement(FormattedMessage$2, { id: "something_went_wrong_please_try_again" })),
+        React__default["default"].createElement("ul", null, errors.errors.graphQLErrors.map((err) => (React__default["default"].createElement("li", { key: err.message }, err.message))))));
+    if (modal == true) {
+        return React__default["default"].createElement(Modal, { show: true }, errorMessage);
+    }
+    return errorMessage;
 }
-
 ApiError.defaultProps = {
-  modal: false
+    modal: false
 };
 
-function IntegrationError(_ref) {
-  var portalCode = _ref.portalCode,
-      pageType = _ref.pageType,
-      locale = _ref.locale,
-      filters = _ref.filters;
-  var errors = [];
-
-  if (!portalCode) {
-    var message = 'No portal code is specified, so portal is not working';
-    console.error(message);
-    errors.push(message);
-  }
-
-  if (pageType && pageType !== 'reviews') {
-    var _message = "'".concat(pageType, "' is not a valid page");
-
-    console.error(_message);
-    errors.push(_message);
-  }
-
-  if (!locale) {
-    console.warn('No locale is set default to English');
-  } else {
-    if (!['nl', 'de', 'en', 'fr', 'it', 'es'].includes(locale)) {
-      errors.push('Invalid locale');
+function IntegrationError({ portalCode, pageType, locale, filters }) {
+    let errors = [];
+    if (!portalCode) {
+        let message = 'No portal code is specified, so portal is not working';
+        console.error(message);
+        errors.push(message);
     }
-  }
-
-  if (filters && !isObject$2(filters)) {
-    var _message2 = 'Filters variable is not an object';
-    console.error(_message2, filters);
-  }
-
-  if (errors.length == 0) {
-    return false;
-  }
-
-  return /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement("h2", null, "Something went wrong please try again      "), /*#__PURE__*/React__default["default"].createElement("ul", null, errors.map(function (err) {
-    return /*#__PURE__*/React__default["default"].createElement("li", null, err);
-  })));
-}
-
-var isObject$2 = function isObject(obj) {
-  return Object.prototype.toString.call(obj) === '[object Object]';
-};
-
-function Results(_ref) {
-  var filters = _ref.filters,
-      PortalSite = _ref.PortalSite,
-      limit = _ref.limit,
-      skip = _ref.skip,
-      locale = _ref.locale,
-      onPageChange = _ref.onPageChange,
-      activePage = _ref.activePage;
-  var min_nights = null;
-  var requestPrices = false;
-
-  if (filters.departure_date && filters.arrival_date) {
-    min_nights = differenceInCalendarDays(filters.departure_date, filters.arrival_date);
-    requestPrices = true;
-  } else if (filters.arrival_date) {
-    min_nights = 1;
-  }
-
-  var filterProperties = filters.properties || [];
-  filterProperties = filterProperties.map(function (e) {
-    return JSON.stringify(e);
-  });
-  var properties = filterProperties.join(',');
-  var variables = {
-    id: PortalSite.portal_code,
-    country_id: filters.countries || null,
-    region_id: filters.regions || null,
-    city_id: filters.cities,
-    persons_min: Number(filters.persons_min) || null,
-    persons_max: Number(filters.persons_max) || null,
-    bedrooms_min: Number(filters.bedrooms_min),
-    bathrooms_min: Number(filters.bathrooms_min),
-    arrival_date: filters.arrival_date,
-    starts_at: filters.arrival_date,
-    ends_at: filters.departure_date,
-    no_nights: Number(min_nights) || null,
-    extra_search: filters.extra_search,
-    properties: properties,
-    weekprice_max: Number(filters.weekprice_max) || null,
-    limit: limit,
-    skip: skip,
-    locale: locale
-  };
-  return /*#__PURE__*/React__default["default"].createElement(Query, {
-    query: requestPrices ? HOUSES_PRICE_QUERY : HOUSES_QUERY,
-    variables: variables
-  }, function (_ref2) {
-    var loading = _ref2.loading,
-        error = _ref2.error,
-        data = _ref2.data;
-    if (loading) return /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(Loading, null));
-
-    if (error) {
-      return /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(ApiError, {
-        errors: error
-      }));
+    if (pageType && pageType !== 'reviews') {
+        let message = `'${pageType}' is not a valid page`;
+        console.error(message);
+        errors.push(message);
     }
-
-    var Results = data.PortalSite.houses;
-    return /*#__PURE__*/React__default["default"].createElement("div", {
-      id: "results",
-      className: PortalSite.options.filtersForm ? PortalSite.options.filtersForm.mode : null
-    }, /*#__PURE__*/React__default["default"].createElement(Paginator, {
-      variables: variables,
-      activePage: activePage,
-      limit: limit,
-      onPageChange: onPageChange
-    }), ' ', Results.length === 0 ? /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "bu-noresults"
-    }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-      id: "no_results"
-    })) : null, Results.map(function (result) {
-      return /*#__PURE__*/React__default["default"].createElement(SingleResult, {
-        key: result.id,
-        result: result,
-        options: PortalSite.options.filtersForm
-      });
-    }), /*#__PURE__*/React__default["default"].createElement(Paginator, {
-      variables: variables,
-      activePage: activePage,
-      limit: limit,
-      onPageChange: onPageChange
-    }));
-  });
+    if (!locale) {
+        console.warn('No locale is set default to English');
+    }
+    else {
+        if (!['nl', 'de', 'en', 'fr', 'it', 'es'].includes(locale)) {
+            errors.push('Invalid locale');
+        }
+    }
+    if (filters && !isObject$2(filters)) {
+        let message = 'Filters variable is not an object';
+        console.error(message, filters);
+    }
+    if (errors.length == 0) {
+        return false;
+    }
+    return (React__default["default"].createElement("div", null,
+        React__default["default"].createElement("h2", null, "Something went wrong please try again "),
+        React__default["default"].createElement("ul", null, errors.map((err) => (React__default["default"].createElement("li", null, err))))));
 }
-
-Results.propTypes = {
-  PortalSite: PropTypes.object.isRequired,
-  filters: PropTypes.object.isRequired,
-  activePage: PropTypes.number.isRequired,
-  locale: PropTypes.string.isRequired,
-  limit: PropTypes.number.isRequired,
-  skip: PropTypes.number.isRequired,
-  onPageChange: PropTypes.func.isRequired
+const isObject$2 = (obj) => {
+    return Object.prototype.toString.call(obj) === '[object Object]';
 };
 
-var SearchPage = /*#__PURE__*/function (_Component) {
-  _inherits$A(SearchPage, _Component);
-
-  var _super = _createSuper$A(SearchPage);
-
-  function SearchPage(props) {
-    var _this;
-
-    _classCallCheck$B(this, SearchPage);
-
-    _this = _super.call(this, props);
-    var limit = _this.props.options.filtersForm ? Number(_this.props.options.filtersForm.no_results) : 20;
-    _this.state = {
-      filters: _this.props.filters,
-      activePage: 1,
-      limit: limit,
-      skip: 0
+function Results({ filters, PortalSite, limit, skip, locale, onPageChange, activePage }) {
+    let min_nights = null;
+    let requestPrices = false;
+    if (filters.departure_date && filters.arrival_date) {
+        min_nights = differenceInCalendarDays(filters.departure_date, filters.arrival_date);
+        requestPrices = true;
+    }
+    else if (filters.arrival_date) {
+        min_nights = 1;
+    }
+    let filterProperties = filters.properties || [];
+    filterProperties = filterProperties.map((e) => {
+        return JSON.stringify(e);
+    });
+    let properties = filterProperties.join(',');
+    let variables = {
+        id: PortalSite.portal_code,
+        country_id: filters.countries || null,
+        region_id: filters.regions || null,
+        city_id: filters.cities,
+        persons_min: Number(filters.persons_min) || null,
+        persons_max: Number(filters.persons_max) || null,
+        bedrooms_min: Number(filters.bedrooms_min),
+        bathrooms_min: Number(filters.bathrooms_min),
+        arrival_date: filters.arrival_date,
+        starts_at: filters.arrival_date,
+        ends_at: filters.departure_date,
+        no_nights: Number(min_nights) || null,
+        extra_search: filters.extra_search,
+        properties,
+        weekprice_max: Number(filters.weekprice_max) || null,
+        limit,
+        skip,
+        locale
     };
-    _this.onFilterChange = _this.onFilterChange.bind(_assertThisInitialized$B(_this));
-    _this.pageChange = _this.pageChange.bind(_assertThisInitialized$B(_this));
-    return _this;
-  }
+    const { loading, error, data } = useQuery(requestPrices ? HOUSES_PRICE_QUERY : HOUSES_QUERY, { variables });
+    if (loading)
+        return (React__default["default"].createElement("div", null,
+            React__default["default"].createElement(Loading, null)));
+    if (error) {
+        return (React__default["default"].createElement("div", null,
+            React__default["default"].createElement(ApiError, { errors: error })));
+    }
+    const Pagination = (React__default["default"].createElement(Paginator, { variables: variables, activePage: activePage, limit: limit, onPageChange: onPageChange }));
+    const Results = data.PortalSite.houses;
+    return (React__default["default"].createElement("div", { id: "results", className: PortalSite.options.filtersForm
+            ? PortalSite.options.filtersForm.mode
+            : null },
+        Pagination,
+        Results.length === 0 ? (React__default["default"].createElement("div", { className: "bu-noresults" },
+            React__default["default"].createElement(FormattedMessage$2, { id: "no_results" }))) : null,
+        Results.map((result) => (React__default["default"].createElement(SingleResult, { key: result.id, result: result, options: PortalSite.options.filtersForm }))),
+        Pagination));
+}
 
-  _createClass$D(SearchPage, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var filters = localStorage.getItem('bukazuFilters');
-      var activePage = localStorage.getItem('bukazuActivePage');
-      this.setState({
-        filters: JSON.parse(filters) || this.props.filters
-      });
-      this.pageChange(activePage || 0);
+class SearchPage extends React.Component {
+    constructor(props) {
+        super(props);
+        let limit = this.props.options.filtersForm
+            ? Number(this.props.options.filtersForm.no_results)
+            : 20;
+        this.state = {
+            filters: this.props.filters,
+            activePage: 1,
+            limit,
+            skip: 0
+        };
+        this.onFilterChange = this.onFilterChange.bind(this);
+        this.pageChange = this.pageChange.bind(this);
     }
-  }, {
-    key: "onFilterChange",
-    value: function onFilterChange(data) {
-      var filters = data;
-      this.setState({
-        filters: filters
-      });
-      localStorage.setItem('bukazuFilters', JSON.stringify(filters));
-      this.pageChange(0);
+    componentDidMount() {
+        let filters = localStorage.getItem('bukazuFilters');
+        let activePage = localStorage.getItem('bukazuActivePage');
+        this.setState({
+            filters: JSON.parse(filters) || this.props.filters
+        });
+        this.pageChange(activePage || 0);
     }
-  }, {
-    key: "pageChange",
-    value: function pageChange(pageNumber) {
-      var limit = this.state.limit;
-      var newSkip = pageNumber * limit;
-      localStorage.setItem('bukazuActivePage', pageNumber);
-      this.setState({
-        activePage: pageNumber,
-        skip: newSkip
-      });
+    onFilterChange(data) {
+        let filters = data;
+        this.setState({
+            filters
+        });
+        localStorage.setItem('bukazuFilters', JSON.stringify(filters));
+        this.pageChange(0);
     }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$state = this.state,
-          filters = _this$state.filters,
-          activePage = _this$state.activePage,
-          limit = _this$state.limit,
-          skip = _this$state.skip;
-      var _this$props = this.props,
-          options = _this$props.options,
-          locale = _this$props.locale;
-      return /*#__PURE__*/React__default["default"].createElement("div", {
-        id: "search-page",
-        className: options.filtersForm ? options.filtersForm.location === 'right' ? 'bu-reverse' : options.filtersForm.location === 'top' ? 'bu-column' : null : null
-      }, /*#__PURE__*/React__default["default"].createElement(Filters, {
-        PortalSite: this.props.PortalSite,
-        filters: filters,
-        onFilterChange: this.onFilterChange,
-        options: options
-      }), /*#__PURE__*/React__default["default"].createElement(Results, {
-        PortalSite: this.props.PortalSite,
-        filters: filters,
-        activePage: activePage,
-        locale: locale,
-        onPageChange: this.pageChange,
-        skip: skip,
-        limit: limit
-      }));
+    pageChange(pageNumber) {
+        const { limit } = this.state;
+        let newSkip = pageNumber * limit;
+        localStorage.setItem('bukazuActivePage', pageNumber);
+        this.setState({
+            activePage: pageNumber,
+            skip: newSkip
+        });
     }
-  }]);
-
-  return SearchPage;
-}(React.Component);
-
-SearchPage.propTypes = {
-  PortalSite: PropTypes.object.isRequired,
-  options: PropTypes.object.isRequired,
-  locale: PropTypes.string.isRequired,
-  filters: PropTypes.object.isRequired
-};
+    render() {
+        const { filters, activePage, limit, skip } = this.state;
+        const { options, locale, PortalSite } = this.props;
+        return (React__default["default"].createElement("div", { id: "search-page", className: options.filtersForm
+                ? options.filtersForm.location === 'right'
+                    ? 'bu-reverse'
+                    : options.filtersForm.location === 'top'
+                        ? 'bu-column'
+                        : null
+                : null },
+            React__default["default"].createElement(Filters, { PortalSite: PortalSite, filters: filters, onFilterChange: this.onFilterChange, options: options }),
+            React__default["default"].createElement(Results, { PortalSite: PortalSite, filters: filters, activePage: activePage, locale: locale, onPageChange: this.pageChange, skip: skip, limit: limit })));
+    }
+}
 
 function isSameUTCWeek(dirtyDateLeft, dirtyDateRight, options) {
   requiredArgs(2, arguments);
@@ -36019,57 +34366,87 @@ CalendarHeader.propTypes = {
 };
 
 function createPeronsArray(persons) {
-  return Array.apply(null, {
-    length: persons + 1
-  }).map(Number.call, Number);
+    return Array.apply(null, { length: persons + 1 }).map(Number.call, Number);
 }
 function initializeBookingFields(bookingFields) {
-  var obj = {};
-  bookingFields.map(function (field) {
-    obj[field.id] = '';
-  });
-  return obj;
+    let obj = {};
+    bookingFields.map((field) => {
+        obj[field.id] = '';
+    });
+    return obj;
 }
 function byString(o, s) {
-  s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
-
-  s = s.replace(/^\./, ''); // strip a leading dot
-
-  var a = s.split('.');
-
-  for (var i = 0, n = a.length; i < n; ++i) {
-    var k = a[i];
-
-    if (k in o) {
-      o = o[k];
-    } else {
-      return;
+    s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+    s = s.replace(/^\./, ''); // strip a leading dot
+    var a = s.split('.');
+    for (var i = 0, n = a.length; i < n; ++i) {
+        var k = a[i];
+        if (k in o) {
+            o = o[k];
+        }
+        else {
+            return;
+        }
     }
-  }
-
-  return o;
+    return o;
 }
 function translatedOption(id, value) {
-  return /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: id
-  }, function (formattedMessage) {
-    return /*#__PURE__*/React__default["default"].createElement("option", {
-      value: value
-    }, formattedMessage);
-  });
+    return (React__default["default"].createElement(FormattedMessage$2, { id: id }, (formattedMessage) => React__default["default"].createElement("option", { value: value }, formattedMessage)));
 }
 function validateAge(string) {
-  var dob = new Date(string);
-  var minAge = subYears(new Date(), 18);
-
-  if (isAfter(dob, minAge)) {
-    return true;
-  } else return false;
+    const dob = new Date(string);
+    const minAge = subYears(new Date(), 18);
+    if (isAfter(dob, minAge)) {
+        return true;
+    }
+    else
+        return false;
 }
 
-var _templateObject$3;
+const BOOKING_PRICE_QUERY = gql `
+  query BookingPriceQuery(
+    $id: ID!
+    $house_id: String!
+    $starts_at: Date!
+    $ends_at: Date!
+    $persons: Int
+  ) {
+    PortalSite(id: $id) {
+      houses(house_code: $house_id) {
+        id
+        name
+        booking_price(
+          starts_at: $starts_at
+          ends_at: $ends_at
+          persons: $persons
+        )
+      }
+    }
+  }
+`;
+
+function Price({ persons, variables }) {
+    const { loading, error, data } = useQuery(BOOKING_PRICE_QUERY, { variables: Object.assign(Object.assign({}, variables), { persons }) });
+    if (loading)
+        return (React__default["default"].createElement("div", { className: "price-overview--build" },
+            React__default["default"].createElement(Loading, null)));
+    if (error) {
+        return (React__default["default"].createElement("div", { className: "price-overview--build" },
+            React__default["default"].createElement(ApiError, { errors: error })));
+    }
+    const result = data.PortalSite.houses[0].booking_price;
+    return (React__default["default"].createElement(React__default["default"].Fragment, null,
+        React__default["default"].createElement("div", { className: "price-overview--book" },
+            React__default["default"].createElement("div", { className: "price" },
+                "\u20AC",
+                ' ',
+                React__default["default"].createElement(FormattedNumber, { value: Math.round(result.total_price), minimumFractionDigits: 2, maximumFractionDigits: 2 })),
+            React__default["default"].createElement("div", null,
+                React__default["default"].createElement("i", null,
+                    React__default["default"].createElement(FormattedMessage$2, { id: "based_on_one_person", values: { persons } }))))));
+}
+
 var dateFormat = LONG_DATE_FORMAT;
-var BOOKING_PRICE_QUERY = gql(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteral(["\n  query BookingPriceQuery(\n    $id: ID!\n    $house_id: String!\n    $starts_at: Date!\n    $ends_at: Date!\n    $persons: Int\n  ) {\n    PortalSite(id: $id) {\n      houses(house_code: $house_id) {\n        id\n        name\n        booking_price(\n          starts_at: $starts_at\n          ends_at: $ends_at\n          persons: $persons\n        )\n      }\n    }\n  }\n"])));
 
 var PriceField = /*#__PURE__*/function (_Component) {
   _inherits$A(PriceField, _Component);
@@ -36168,46 +34545,14 @@ var PriceField = /*#__PURE__*/function (_Component) {
         });
       })))), /*#__PURE__*/React__default["default"].createElement("div", {
         className: "calendar--picker--date"
-      }, startsAt && endsAt && /*#__PURE__*/React__default["default"].createElement(Query, {
-        query: BOOKING_PRICE_QUERY,
+      }, startsAt && endsAt && /*#__PURE__*/React__default["default"].createElement(Price, {
+        persons: parseInt(persons),
         variables: {
           id: portalCode,
           house_id: objectCode,
           starts_at: startsAt,
-          ends_at: endsAt,
-          persons: parseInt(persons)
+          ends_at: endsAt
         }
-      }, function (_ref) {
-        var loading = _ref.loading,
-            data = _ref.data,
-            error = _ref.error;
-        if (loading) return /*#__PURE__*/React__default["default"].createElement("div", {
-          className: "price-overview--build"
-        }, /*#__PURE__*/React__default["default"].createElement(Loading, null));
-
-        if (error) {
-          return /*#__PURE__*/React__default["default"].createElement("div", {
-            className: "price-overview--build"
-          }, /*#__PURE__*/React__default["default"].createElement(ApiError, {
-            errors: error
-          }));
-        }
-
-        var result = data.PortalSite.houses[0].booking_price;
-        return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("div", {
-          className: "price-overview--book"
-        }, /*#__PURE__*/React__default["default"].createElement("div", {
-          className: "price"
-        }, "\u20AC", ' ', /*#__PURE__*/React__default["default"].createElement(FormattedNumber, {
-          value: Math.round(result.total_price),
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        })), /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement("i", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-          id: "based_on_one_person",
-          values: {
-            persons: persons
-          }
-        })))));
       })), /*#__PURE__*/React__default["default"].createElement("button", {
         className: "button",
         disabled: !disabled,
@@ -36231,7 +34576,6 @@ PriceField.propTypes = {
   startsAt: PropTypes.string,
   endsAt: PropTypes.string,
   onStartBooking: PropTypes.func.isRequired,
-  locale: PropTypes.string.isRequired,
   minNights: PropTypes.number
 };
 
@@ -37290,7 +35634,7 @@ var asyncTag = '[object AsyncFunction]',
  * _.isFunction(/abc/);
  * // => false
  */
-function isFunction$1(value) {
+function isFunction$2(value) {
   if (!isObject$1(value)) {
     return false;
   }
@@ -37384,7 +35728,7 @@ function baseIsNative(value) {
   if (!isObject$1(value) || isMasked(value)) {
     return false;
   }
-  var pattern = isFunction$1(value) ? reIsNative : reIsHostCtor;
+  var pattern = isFunction$2(value) ? reIsNative : reIsHostCtor;
   return pattern.test(toSource(value));
 }
 
@@ -37742,7 +36086,7 @@ function arrayEach(array, iteratee) {
   return array;
 }
 
-var defineProperty = (function() {
+var defineProperty$1 = (function() {
   try {
     var func = getNative(Object, 'defineProperty');
     func({}, '', {});
@@ -37750,7 +36094,7 @@ var defineProperty = (function() {
   } catch (e) {}
 }());
 
-var defineProperty$1 = defineProperty;
+var defineProperty$2 = defineProperty$1;
 
 /**
  * The base implementation of `assignValue` and `assignMergeValue` without
@@ -37762,8 +36106,8 @@ var defineProperty$1 = defineProperty;
  * @param {*} value The value to assign.
  */
 function baseAssignValue(object, key, value) {
-  if (key == '__proto__' && defineProperty$1) {
-    defineProperty$1(object, key, {
+  if (key == '__proto__' && defineProperty$2) {
+    defineProperty$2(object, key, {
       'configurable': true,
       'enumerable': true,
       'value': value,
@@ -37894,12 +36238,12 @@ var propertyIsEnumerable$1 = objectProto$6.propertyIsEnumerable;
  * _.isArguments([1, 2, 3]);
  * // => false
  */
-var isArguments = baseIsArguments(function() { return arguments; }()) ? baseIsArguments : function(value) {
+var isArguments$1 = baseIsArguments(function() { return arguments; }()) ? baseIsArguments : function(value) {
   return isObjectLike(value) && hasOwnProperty$4.call(value, 'callee') &&
     !propertyIsEnumerable$1.call(value, 'callee');
 };
 
-var isArguments$1 = isArguments;
+var isArguments$2 = isArguments$1;
 
 /**
  * Checks if `value` is classified as an `Array` object.
@@ -37982,7 +36326,7 @@ var isBuffer = nativeIsBuffer || stubFalse;
 var isBuffer$1 = isBuffer;
 
 /** Used as references for various `Number` constants. */
-var MAX_SAFE_INTEGER$1 = 9007199254740991;
+var MAX_SAFE_INTEGER$2 = 9007199254740991;
 
 /** Used to detect unsigned integer values. */
 var reIsUint = /^(?:0|[1-9]\d*)$/;
@@ -37997,7 +36341,7 @@ var reIsUint = /^(?:0|[1-9]\d*)$/;
  */
 function isIndex(value, length) {
   var type = typeof value;
-  length = length == null ? MAX_SAFE_INTEGER$1 : length;
+  length = length == null ? MAX_SAFE_INTEGER$2 : length;
 
   return !!length &&
     (type == 'number' ||
@@ -38006,7 +36350,7 @@ function isIndex(value, length) {
 }
 
 /** Used as references for various `Number` constants. */
-var MAX_SAFE_INTEGER = 9007199254740991;
+var MAX_SAFE_INTEGER$1 = 9007199254740991;
 
 /**
  * Checks if `value` is a valid array-like length.
@@ -38036,7 +36380,7 @@ var MAX_SAFE_INTEGER = 9007199254740991;
  */
 function isLength(value) {
   return typeof value == 'number' &&
-    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER$1;
 }
 
 /** `Object#toString` result references. */
@@ -38176,7 +36520,7 @@ var hasOwnProperty$3 = objectProto$5.hasOwnProperty;
  */
 function arrayLikeKeys(value, inherited) {
   var isArr = isArray$1(value),
-      isArg = !isArr && isArguments$1(value),
+      isArg = !isArr && isArguments$2(value),
       isBuff = !isArr && !isArg && isBuffer$1(value),
       isType = !isArr && !isArg && !isBuff && isTypedArray$1(value),
       skipIndexes = isArr || isArg || isBuff || isType,
@@ -38275,7 +36619,7 @@ function baseKeys(object) {
  * // => false
  */
 function isArrayLike(value) {
-  return value != null && isLength(value.length) && !isFunction$1(value);
+  return value != null && isLength(value.length) && !isFunction$2(value);
 }
 
 /**
@@ -38306,7 +36650,7 @@ function isArrayLike(value) {
  * _.keys('hi');
  * // => ['0', '1']
  */
-function keys(object) {
+function keys$1(object) {
   return isArrayLike(object) ? arrayLikeKeys(object) : baseKeys(object);
 }
 
@@ -38320,7 +36664,7 @@ function keys(object) {
  * @returns {Object} Returns `object`.
  */
 function baseAssign(object, source) {
-  return object && copyObject(source, keys(source), object);
+  return object && copyObject(source, keys$1(source), object);
 }
 
 /**
@@ -38623,7 +36967,7 @@ function baseGetAllKeys(object, keysFunc, symbolsFunc) {
  * @returns {Array} Returns the array of property names and symbols.
  */
 function getAllKeys(object) {
-  return baseGetAllKeys(object, keys, getSymbols$1);
+  return baseGetAllKeys(object, keys$1, getSymbols$1);
 }
 
 /**
@@ -39125,7 +37469,7 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
 
   var keysFunc = isFull
     ? (isFlat ? getAllKeysIn : getAllKeys)
-    : (isFlat ? keysIn : keys);
+    : (isFlat ? keysIn : keys$1);
 
   var props = isArr ? undefined : keysFunc(value);
   arrayEach(props || value, function(subValue, key) {
@@ -39212,7 +37556,7 @@ var symbolTag = '[object Symbol]';
  * _.isSymbol('abc');
  * // => false
  */
-function isSymbol(value) {
+function isSymbol$2(value) {
   return typeof value == 'symbol' ||
     (isObjectLike(value) && baseGetTag(value) == symbolTag);
 }
@@ -39311,10 +37655,10 @@ function memoizeCapped(func) {
 }
 
 /** Used to match property names within property paths. */
-var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
+var rePropName$1 = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
 
 /** Used to match backslashes in property paths. */
-var reEscapeChar = /\\(\\)?/g;
+var reEscapeChar$1 = /\\(\\)?/g;
 
 /**
  * Converts `string` to a property path array.
@@ -39323,18 +37667,18 @@ var reEscapeChar = /\\(\\)?/g;
  * @param {string} string The string to convert.
  * @returns {Array} Returns the property path array.
  */
-var stringToPath = memoizeCapped(function(string) {
+var stringToPath$1 = memoizeCapped(function(string) {
   var result = [];
   if (string.charCodeAt(0) === 46 /* . */) {
     result.push('');
   }
-  string.replace(rePropName, function(match, number, quote, subString) {
-    result.push(quote ? subString.replace(reEscapeChar, '$1') : (number || match));
+  string.replace(rePropName$1, function(match, number, quote, subString) {
+    result.push(quote ? subString.replace(reEscapeChar$1, '$1') : (number || match));
   });
   return result;
 });
 
-var stringToPath$1 = stringToPath;
+var stringToPath$2 = stringToPath$1;
 
 /** Used as references for various `Number` constants. */
 var INFINITY$1 = 1 / 0;
@@ -39347,7 +37691,7 @@ var INFINITY$1 = 1 / 0;
  * @returns {string|symbol} Returns the key.
  */
 function toKey(value) {
-  if (typeof value == 'string' || isSymbol(value)) {
+  if (typeof value == 'string' || isSymbol$2(value)) {
     return value;
   }
   var result = (value + '');
@@ -39378,7 +37722,7 @@ function baseToString(value) {
     // Recursively convert values (susceptible to call stack limits).
     return arrayMap(value, baseToString) + '';
   }
-  if (isSymbol(value)) {
+  if (isSymbol$2(value)) {
     return symbolToString ? symbolToString.call(value) : '';
   }
   var result = (value + '');
@@ -39431,7 +37775,7 @@ function toPath(value) {
   if (isArray$1(value)) {
     return arrayMap(value, toKey);
   }
-  return isSymbol(value) ? [value] : copyArray(stringToPath$1(toString(value)));
+  return isSymbol$2(value) ? [value] : copyArray(stringToPath$2(toString(value)));
 }
 
 /** Used to compose bitmasks for cloning. */
@@ -39514,7 +37858,7 @@ var isEmptyArray = function isEmptyArray(value) {
 };
 /** @private is the given object a Function? */
 
-var isFunction = function isFunction(obj) {
+var isFunction$1 = function isFunction(obj) {
   return typeof obj === 'function';
 };
 /** @private is the given object an Object? */
@@ -39529,7 +37873,7 @@ var isInteger = function isInteger(obj) {
 };
 /** @private is the given object a string? */
 
-var isString = function isString(obj) {
+var isString$2 = function isString(obj) {
   return Object.prototype.toString.call(obj) === '[object String]';
 };
 /** @private Does a React component have exactly 0 children? */
@@ -39540,7 +37884,7 @@ var isEmptyChildren = function isEmptyChildren(children) {
 /** @private is the given object/value a promise? */
 
 var isPromise = function isPromise(value) {
-  return isObject(value) && isFunction(value.then);
+  return isObject(value) && isFunction$1(value.then);
 };
 /**
  * Same as document.activeElement but wraps in a try-catch block. In IE it is
@@ -39858,7 +38202,7 @@ function useFormik(_ref) {
 
   var runValidationSchema = React.useCallback(function (values, field) {
     var validationSchema = props.validationSchema;
-    var schema = isFunction(validationSchema) ? validationSchema(field) : validationSchema;
+    var schema = isFunction$1(validationSchema) ? validationSchema(field) : validationSchema;
     var promise = field && schema.validateAt ? schema.validateAt(field, values) : validateYupSchema(values, schema);
     return new Promise(function (resolve, reject) {
       promise.then(function () {
@@ -39888,7 +38232,7 @@ function useFormik(_ref) {
   }, []);
   var runFieldLevelValidations = React.useCallback(function (values) {
     var fieldKeysWithValidation = Object.keys(fieldRegistry.current).filter(function (f) {
-      return isFunction(fieldRegistry.current[f].validate);
+      return isFunction$1(fieldRegistry.current[f].validate);
     }); // Construct an array with all of the field validation functions
 
     var fieldValidations = fieldKeysWithValidation.length > 0 ? fieldKeysWithValidation.map(function (f) {
@@ -40031,7 +38375,7 @@ function useFormik(_ref) {
     // This will efficiently validate a single field by avoiding state
     // changes if the validation function is synchronous. It's different from
     // what is called when using validateForm.
-    if (fieldRegistry.current[name] && isFunction(fieldRegistry.current[name].validate)) {
+    if (fieldRegistry.current[name] && isFunction$1(fieldRegistry.current[name].validate)) {
       var value = getIn(state.values, name);
       var maybePromise = fieldRegistry.current[name].validate(value);
 
@@ -40114,7 +38458,7 @@ function useFormik(_ref) {
     });
   }, []);
   var setValues = useEventCallback(function (values, shouldValidate) {
-    var resolvedValues = isFunction(values) ? values(state.values) : values;
+    var resolvedValues = isFunction$1(values) ? values(state.values) : values;
     dispatch({
       type: 'SET_VALUES',
       payload: resolvedValues
@@ -40151,7 +38495,7 @@ function useFormik(_ref) {
     var parsed; // If the first argument is not a string though, it has to be a synthetic React Event (or a fake one),
     // so we handle like we would a normal HTML change event.
 
-    if (!isString(eventOrTextValue)) {
+    if (!isString$2(eventOrTextValue)) {
       // If we can, persist the event
       // @see https://reactjs.org/docs/events.html#event-pooling
       if (eventOrTextValue.persist) {
@@ -40188,7 +38532,7 @@ function useFormik(_ref) {
     }
   }, [setFieldValue, state.values]);
   var handleChange = useEventCallback(function (eventOrPath) {
-    if (isString(eventOrPath)) {
+    if (isString$2(eventOrPath)) {
       return function (event) {
         return executeChange(event, eventOrPath);
       };
@@ -40233,7 +38577,7 @@ function useFormik(_ref) {
     setFieldTouched(field, true);
   }, [setFieldTouched]);
   var handleBlur = useEventCallback(function (eventOrString) {
-    if (isString(eventOrString)) {
+    if (isString$2(eventOrString)) {
       return function (event) {
         return executeBlur(event, eventOrString);
       };
@@ -40242,7 +38586,7 @@ function useFormik(_ref) {
     }
   });
   var setFormikState = React.useCallback(function (stateOrCb) {
-    if (isFunction(stateOrCb)) {
+    if (isFunction$1(stateOrCb)) {
       dispatch({
         type: 'SET_FORMIK_STATE',
         payload: stateOrCb
@@ -40339,11 +38683,11 @@ function useFormik(_ref) {
     });
   });
   var handleSubmit = useEventCallback(function (e) {
-    if (e && e.preventDefault && isFunction(e.preventDefault)) {
+    if (e && e.preventDefault && isFunction$1(e.preventDefault)) {
       e.preventDefault();
     }
 
-    if (e && e.stopPropagation && isFunction(e.stopPropagation)) {
+    if (e && e.stopPropagation && isFunction$1(e.stopPropagation)) {
       e.stopPropagation();
     } // Warn if form submission is triggered by a <button> without a
     // specified `type` attribute during development. This mitigates
@@ -40383,11 +38727,11 @@ function useFormik(_ref) {
     return onSubmit(state.values, imperativeMethods);
   });
   var handleReset = useEventCallback(function (e) {
-    if (e && e.preventDefault && isFunction(e.preventDefault)) {
+    if (e && e.preventDefault && isFunction$1(e.preventDefault)) {
       e.preventDefault();
     }
 
-    if (e && e.stopPropagation && isFunction(e.stopPropagation)) {
+    if (e && e.stopPropagation && isFunction$1(e.stopPropagation)) {
       e.stopPropagation();
     }
 
@@ -40455,7 +38799,7 @@ function useFormik(_ref) {
     return !reactFastCompare(initialValues.current, state.values);
   }, [initialValues.current, state.values]);
   var isValid = React.useMemo(function () {
-    return typeof isInitialValid !== 'undefined' ? dirty ? state.errors && Object.keys(state.errors).length === 0 : isInitialValid !== false && isFunction(isInitialValid) ? isInitialValid(props) : isInitialValid : state.errors && Object.keys(state.errors).length === 0;
+    return typeof isInitialValid !== 'undefined' ? dirty ? state.errors && Object.keys(state.errors).length === 0 : isInitialValid !== false && isFunction$1(isInitialValid) ? isInitialValid(props) : isInitialValid : state.errors && Object.keys(state.errors).length === 0;
   }, [isInitialValid, dirty, state.errors, props]);
 
   var ctx = _extends({}, state, {
@@ -40515,7 +38859,7 @@ function Formik(props) {
   return React.createElement(FormikProvider, {
     value: formikbag
   }, component ? React.createElement(component, formikbag) : render ? render(formikbag) : children // children come last, always called
-  ? isFunction(children) ? children(formikbag) : !isEmptyChildren(children) ? React.Children.only(children) : null : null);
+  ? isFunction$1(children) ? children(formikbag) : !isEmptyChildren(children) ? React.Children.only(children) : null : null);
 }
 
 function warnAboutMissingIdentifier(_ref4) {
@@ -40713,8 +39057,8 @@ function Field(_ref) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     React.useEffect(function () {
       !!render ? process.env.NODE_ENV !== "production" ? warning(false, "<Field render> has been deprecated and will be removed in future versions of Formik. Please use a child callback function instead. To get rid of this warning, replace <Field name=\"" + name + "\" render={({field, form}) => ...} /> with <Field name=\"" + name + "\">{({field, form, meta}) => ...}</Field>") : warning(false) : void 0;
-      !!(is && children && isFunction(children)) ? process.env.NODE_ENV !== "production" ? warning(false, 'You should not use <Field as> and <Field children> as a function in the same <Field> component; <Field as> will be ignored.') : warning(false) : void 0;
-      !!(component && children && isFunction(children)) ? process.env.NODE_ENV !== "production" ? warning(false, 'You should not use <Field component> and <Field children> as a function in the same <Field> component; <Field component> will be ignored.') : warning(false) : void 0;
+      !!(is && children && isFunction$1(children)) ? process.env.NODE_ENV !== "production" ? warning(false, 'You should not use <Field as> and <Field children> as a function in the same <Field> component; <Field as> will be ignored.') : warning(false) : void 0;
+      !!(component && children && isFunction$1(children)) ? process.env.NODE_ENV !== "production" ? warning(false, 'You should not use <Field component> and <Field children> as a function in the same <Field> component; <Field component> will be ignored.') : warning(false) : void 0;
       !!(render && children && !isEmptyChildren(children)) ? process.env.NODE_ENV !== "production" ? warning(false, 'You should not use <Field render> and <Field children> in the same <Field> component; <Field children> will be ignored') : warning(false) : void 0; // eslint-disable-next-line
     }, []);
   } // Register field and field-level validation with parent <Formik>
@@ -40745,7 +39089,7 @@ function Field(_ref) {
     }));
   }
 
-  if (isFunction(children)) {
+  if (isFunction$1(children)) {
     return children(_extends({}, legacyBag, {
       meta: meta
     }));
@@ -41028,7 +39372,7 @@ var FieldArrayInner = /*#__PURE__*/function (_React$Component) {
         result = copy[index];
       }
 
-      if (isFunction(copy.splice)) {
+      if (isFunction$1(copy.splice)) {
         copy.splice(index, 1);
       }
 
@@ -48125,6 +46469,1272 @@ OptionalBookingFields.propTypes = {
   PortalSite: PropTypes.object.isRequired
 };
 
+var toStr$7 = Object.prototype.toString;
+
+var isArguments = function isArguments(value) {
+	var str = toStr$7.call(value);
+	var isArgs = str === '[object Arguments]';
+	if (!isArgs) {
+		isArgs = str !== '[object Array]' &&
+			value !== null &&
+			typeof value === 'object' &&
+			typeof value.length === 'number' &&
+			value.length >= 0 &&
+			toStr$7.call(value.callee) === '[object Function]';
+	}
+	return isArgs;
+};
+
+var keysShim$1;
+if (!Object.keys) {
+	// modified from https://github.com/es-shims/es5-shim
+	var has = Object.prototype.hasOwnProperty;
+	var toStr$6 = Object.prototype.toString;
+	var isArgs$1 = isArguments; // eslint-disable-line global-require
+	var isEnumerable = Object.prototype.propertyIsEnumerable;
+	var hasDontEnumBug = !isEnumerable.call({ toString: null }, 'toString');
+	var hasProtoEnumBug = isEnumerable.call(function () {}, 'prototype');
+	var dontEnums = [
+		'toString',
+		'toLocaleString',
+		'valueOf',
+		'hasOwnProperty',
+		'isPrototypeOf',
+		'propertyIsEnumerable',
+		'constructor'
+	];
+	var equalsConstructorPrototype = function (o) {
+		var ctor = o.constructor;
+		return ctor && ctor.prototype === o;
+	};
+	var excludedKeys = {
+		$applicationCache: true,
+		$console: true,
+		$external: true,
+		$frame: true,
+		$frameElement: true,
+		$frames: true,
+		$innerHeight: true,
+		$innerWidth: true,
+		$onmozfullscreenchange: true,
+		$onmozfullscreenerror: true,
+		$outerHeight: true,
+		$outerWidth: true,
+		$pageXOffset: true,
+		$pageYOffset: true,
+		$parent: true,
+		$scrollLeft: true,
+		$scrollTop: true,
+		$scrollX: true,
+		$scrollY: true,
+		$self: true,
+		$webkitIndexedDB: true,
+		$webkitStorageInfo: true,
+		$window: true
+	};
+	var hasAutomationEqualityBug = (function () {
+		/* global window */
+		if (typeof window === 'undefined') { return false; }
+		for (var k in window) {
+			try {
+				if (!excludedKeys['$' + k] && has.call(window, k) && window[k] !== null && typeof window[k] === 'object') {
+					try {
+						equalsConstructorPrototype(window[k]);
+					} catch (e) {
+						return true;
+					}
+				}
+			} catch (e) {
+				return true;
+			}
+		}
+		return false;
+	}());
+	var equalsConstructorPrototypeIfNotBuggy = function (o) {
+		/* global window */
+		if (typeof window === 'undefined' || !hasAutomationEqualityBug) {
+			return equalsConstructorPrototype(o);
+		}
+		try {
+			return equalsConstructorPrototype(o);
+		} catch (e) {
+			return false;
+		}
+	};
+
+	keysShim$1 = function keys(object) {
+		var isObject = object !== null && typeof object === 'object';
+		var isFunction = toStr$6.call(object) === '[object Function]';
+		var isArguments = isArgs$1(object);
+		var isString = isObject && toStr$6.call(object) === '[object String]';
+		var theKeys = [];
+
+		if (!isObject && !isFunction && !isArguments) {
+			throw new TypeError('Object.keys called on a non-object');
+		}
+
+		var skipProto = hasProtoEnumBug && isFunction;
+		if (isString && object.length > 0 && !has.call(object, 0)) {
+			for (var i = 0; i < object.length; ++i) {
+				theKeys.push(String(i));
+			}
+		}
+
+		if (isArguments && object.length > 0) {
+			for (var j = 0; j < object.length; ++j) {
+				theKeys.push(String(j));
+			}
+		} else {
+			for (var name in object) {
+				if (!(skipProto && name === 'prototype') && has.call(object, name)) {
+					theKeys.push(String(name));
+				}
+			}
+		}
+
+		if (hasDontEnumBug) {
+			var skipConstructor = equalsConstructorPrototypeIfNotBuggy(object);
+
+			for (var k = 0; k < dontEnums.length; ++k) {
+				if (!(skipConstructor && dontEnums[k] === 'constructor') && has.call(object, dontEnums[k])) {
+					theKeys.push(dontEnums[k]);
+				}
+			}
+		}
+		return theKeys;
+	};
+}
+var implementation$5 = keysShim$1;
+
+var slice$1 = Array.prototype.slice;
+var isArgs = isArguments;
+
+var origKeys = Object.keys;
+var keysShim = origKeys ? function keys(o) { return origKeys(o); } : implementation$5;
+
+var originalKeys = Object.keys;
+
+keysShim.shim = function shimObjectKeys() {
+	if (Object.keys) {
+		var keysWorksWithArguments = (function () {
+			// Safari 5.0 bug
+			var args = Object.keys(arguments);
+			return args && args.length === arguments.length;
+		}(1, 2));
+		if (!keysWorksWithArguments) {
+			Object.keys = function keys(object) { // eslint-disable-line func-name-matching
+				if (isArgs(object)) {
+					return originalKeys(slice$1.call(object));
+				}
+				return originalKeys(object);
+			};
+		}
+	} else {
+		Object.keys = keysShim;
+	}
+	return Object.keys || keysShim;
+};
+
+var objectKeys = keysShim;
+
+/* eslint complexity: [2, 18], max-statements: [2, 33] */
+var shams$1 = function hasSymbols() {
+	if (typeof Symbol !== 'function' || typeof Object.getOwnPropertySymbols !== 'function') { return false; }
+	if (typeof Symbol.iterator === 'symbol') { return true; }
+
+	var obj = {};
+	var sym = Symbol('test');
+	var symObj = Object(sym);
+	if (typeof sym === 'string') { return false; }
+
+	if (Object.prototype.toString.call(sym) !== '[object Symbol]') { return false; }
+	if (Object.prototype.toString.call(symObj) !== '[object Symbol]') { return false; }
+
+	// temp disabled per https://github.com/ljharb/object.assign/issues/17
+	// if (sym instanceof Symbol) { return false; }
+	// temp disabled per https://github.com/WebReflection/get-own-property-symbols/issues/4
+	// if (!(symObj instanceof Symbol)) { return false; }
+
+	// if (typeof Symbol.prototype.toString !== 'function') { return false; }
+	// if (String(sym) !== Symbol.prototype.toString.call(sym)) { return false; }
+
+	var symVal = 42;
+	obj[sym] = symVal;
+	for (sym in obj) { return false; } // eslint-disable-line no-restricted-syntax, no-unreachable-loop
+	if (typeof Object.keys === 'function' && Object.keys(obj).length !== 0) { return false; }
+
+	if (typeof Object.getOwnPropertyNames === 'function' && Object.getOwnPropertyNames(obj).length !== 0) { return false; }
+
+	var syms = Object.getOwnPropertySymbols(obj);
+	if (syms.length !== 1 || syms[0] !== sym) { return false; }
+
+	if (!Object.prototype.propertyIsEnumerable.call(obj, sym)) { return false; }
+
+	if (typeof Object.getOwnPropertyDescriptor === 'function') {
+		var descriptor = Object.getOwnPropertyDescriptor(obj, sym);
+		if (descriptor.value !== symVal || descriptor.enumerable !== true) { return false; }
+	}
+
+	return true;
+};
+
+var origSymbol = typeof Symbol !== 'undefined' && Symbol;
+var hasSymbolSham = shams$1;
+
+var hasSymbols$5 = function hasNativeSymbols() {
+	if (typeof origSymbol !== 'function') { return false; }
+	if (typeof Symbol !== 'function') { return false; }
+	if (typeof origSymbol('foo') !== 'symbol') { return false; }
+	if (typeof Symbol('bar') !== 'symbol') { return false; }
+
+	return hasSymbolSham();
+};
+
+/* eslint no-invalid-this: 1 */
+
+var ERROR_MESSAGE = 'Function.prototype.bind called on incompatible ';
+var slice = Array.prototype.slice;
+var toStr$5 = Object.prototype.toString;
+var funcType = '[object Function]';
+
+var implementation$4 = function bind(that) {
+    var target = this;
+    if (typeof target !== 'function' || toStr$5.call(target) !== funcType) {
+        throw new TypeError(ERROR_MESSAGE + target);
+    }
+    var args = slice.call(arguments, 1);
+
+    var bound;
+    var binder = function () {
+        if (this instanceof bound) {
+            var result = target.apply(
+                this,
+                args.concat(slice.call(arguments))
+            );
+            if (Object(result) === result) {
+                return result;
+            }
+            return this;
+        } else {
+            return target.apply(
+                that,
+                args.concat(slice.call(arguments))
+            );
+        }
+    };
+
+    var boundLength = Math.max(0, target.length - args.length);
+    var boundArgs = [];
+    for (var i = 0; i < boundLength; i++) {
+        boundArgs.push('$' + i);
+    }
+
+    bound = Function('binder', 'return function (' + boundArgs.join(',') + '){ return binder.apply(this,arguments); }')(binder);
+
+    if (target.prototype) {
+        var Empty = function Empty() {};
+        Empty.prototype = target.prototype;
+        bound.prototype = new Empty();
+        Empty.prototype = null;
+    }
+
+    return bound;
+};
+
+var implementation$3 = implementation$4;
+
+var functionBind = Function.prototype.bind || implementation$3;
+
+var bind$1 = functionBind;
+
+var src = bind$1.call(Function.call, Object.prototype.hasOwnProperty);
+
+var undefined$1;
+
+var $SyntaxError = SyntaxError;
+var $Function = Function;
+var $TypeError$2 = TypeError;
+
+// eslint-disable-next-line consistent-return
+var getEvalledConstructor = function (expressionSyntax) {
+	try {
+		return $Function('"use strict"; return (' + expressionSyntax + ').constructor;')();
+	} catch (e) {}
+};
+
+var $gOPD = Object.getOwnPropertyDescriptor;
+if ($gOPD) {
+	try {
+		$gOPD({}, '');
+	} catch (e) {
+		$gOPD = null; // this is IE 8, which has a broken gOPD
+	}
+}
+
+var throwTypeError = function () {
+	throw new $TypeError$2();
+};
+var ThrowTypeError = $gOPD
+	? (function () {
+		try {
+			// eslint-disable-next-line no-unused-expressions, no-caller, no-restricted-properties
+			arguments.callee; // IE 8 does not throw here
+			return throwTypeError;
+		} catch (calleeThrows) {
+			try {
+				// IE 8 throws on Object.getOwnPropertyDescriptor(arguments, '')
+				return $gOPD(arguments, 'callee').get;
+			} catch (gOPDthrows) {
+				return throwTypeError;
+			}
+		}
+	}())
+	: throwTypeError;
+
+var hasSymbols$4 = hasSymbols$5();
+
+var getProto = Object.getPrototypeOf || function (x) { return x.__proto__; }; // eslint-disable-line no-proto
+
+var needsEval = {};
+
+var TypedArray = typeof Uint8Array === 'undefined' ? undefined$1 : getProto(Uint8Array);
+
+var INTRINSICS = {
+	'%AggregateError%': typeof AggregateError === 'undefined' ? undefined$1 : AggregateError,
+	'%Array%': Array,
+	'%ArrayBuffer%': typeof ArrayBuffer === 'undefined' ? undefined$1 : ArrayBuffer,
+	'%ArrayIteratorPrototype%': hasSymbols$4 ? getProto([][Symbol.iterator]()) : undefined$1,
+	'%AsyncFromSyncIteratorPrototype%': undefined$1,
+	'%AsyncFunction%': needsEval,
+	'%AsyncGenerator%': needsEval,
+	'%AsyncGeneratorFunction%': needsEval,
+	'%AsyncIteratorPrototype%': needsEval,
+	'%Atomics%': typeof Atomics === 'undefined' ? undefined$1 : Atomics,
+	'%BigInt%': typeof BigInt === 'undefined' ? undefined$1 : BigInt,
+	'%Boolean%': Boolean,
+	'%DataView%': typeof DataView === 'undefined' ? undefined$1 : DataView,
+	'%Date%': Date,
+	'%decodeURI%': decodeURI,
+	'%decodeURIComponent%': decodeURIComponent,
+	'%encodeURI%': encodeURI,
+	'%encodeURIComponent%': encodeURIComponent,
+	'%Error%': Error,
+	'%eval%': eval, // eslint-disable-line no-eval
+	'%EvalError%': EvalError,
+	'%Float32Array%': typeof Float32Array === 'undefined' ? undefined$1 : Float32Array,
+	'%Float64Array%': typeof Float64Array === 'undefined' ? undefined$1 : Float64Array,
+	'%FinalizationRegistry%': typeof FinalizationRegistry === 'undefined' ? undefined$1 : FinalizationRegistry,
+	'%Function%': $Function,
+	'%GeneratorFunction%': needsEval,
+	'%Int8Array%': typeof Int8Array === 'undefined' ? undefined$1 : Int8Array,
+	'%Int16Array%': typeof Int16Array === 'undefined' ? undefined$1 : Int16Array,
+	'%Int32Array%': typeof Int32Array === 'undefined' ? undefined$1 : Int32Array,
+	'%isFinite%': isFinite,
+	'%isNaN%': isNaN,
+	'%IteratorPrototype%': hasSymbols$4 ? getProto(getProto([][Symbol.iterator]())) : undefined$1,
+	'%JSON%': typeof JSON === 'object' ? JSON : undefined$1,
+	'%Map%': typeof Map === 'undefined' ? undefined$1 : Map,
+	'%MapIteratorPrototype%': typeof Map === 'undefined' || !hasSymbols$4 ? undefined$1 : getProto(new Map()[Symbol.iterator]()),
+	'%Math%': Math,
+	'%Number%': Number,
+	'%Object%': Object,
+	'%parseFloat%': parseFloat,
+	'%parseInt%': parseInt,
+	'%Promise%': typeof Promise === 'undefined' ? undefined$1 : Promise,
+	'%Proxy%': typeof Proxy === 'undefined' ? undefined$1 : Proxy,
+	'%RangeError%': RangeError,
+	'%ReferenceError%': ReferenceError,
+	'%Reflect%': typeof Reflect === 'undefined' ? undefined$1 : Reflect,
+	'%RegExp%': RegExp,
+	'%Set%': typeof Set === 'undefined' ? undefined$1 : Set,
+	'%SetIteratorPrototype%': typeof Set === 'undefined' || !hasSymbols$4 ? undefined$1 : getProto(new Set()[Symbol.iterator]()),
+	'%SharedArrayBuffer%': typeof SharedArrayBuffer === 'undefined' ? undefined$1 : SharedArrayBuffer,
+	'%String%': String,
+	'%StringIteratorPrototype%': hasSymbols$4 ? getProto(''[Symbol.iterator]()) : undefined$1,
+	'%Symbol%': hasSymbols$4 ? Symbol : undefined$1,
+	'%SyntaxError%': $SyntaxError,
+	'%ThrowTypeError%': ThrowTypeError,
+	'%TypedArray%': TypedArray,
+	'%TypeError%': $TypeError$2,
+	'%Uint8Array%': typeof Uint8Array === 'undefined' ? undefined$1 : Uint8Array,
+	'%Uint8ClampedArray%': typeof Uint8ClampedArray === 'undefined' ? undefined$1 : Uint8ClampedArray,
+	'%Uint16Array%': typeof Uint16Array === 'undefined' ? undefined$1 : Uint16Array,
+	'%Uint32Array%': typeof Uint32Array === 'undefined' ? undefined$1 : Uint32Array,
+	'%URIError%': URIError,
+	'%WeakMap%': typeof WeakMap === 'undefined' ? undefined$1 : WeakMap,
+	'%WeakRef%': typeof WeakRef === 'undefined' ? undefined$1 : WeakRef,
+	'%WeakSet%': typeof WeakSet === 'undefined' ? undefined$1 : WeakSet
+};
+
+var doEval = function doEval(name) {
+	var value;
+	if (name === '%AsyncFunction%') {
+		value = getEvalledConstructor('async function () {}');
+	} else if (name === '%GeneratorFunction%') {
+		value = getEvalledConstructor('function* () {}');
+	} else if (name === '%AsyncGeneratorFunction%') {
+		value = getEvalledConstructor('async function* () {}');
+	} else if (name === '%AsyncGenerator%') {
+		var fn = doEval('%AsyncGeneratorFunction%');
+		if (fn) {
+			value = fn.prototype;
+		}
+	} else if (name === '%AsyncIteratorPrototype%') {
+		var gen = doEval('%AsyncGenerator%');
+		if (gen) {
+			value = getProto(gen.prototype);
+		}
+	}
+
+	INTRINSICS[name] = value;
+
+	return value;
+};
+
+var LEGACY_ALIASES = {
+	'%ArrayBufferPrototype%': ['ArrayBuffer', 'prototype'],
+	'%ArrayPrototype%': ['Array', 'prototype'],
+	'%ArrayProto_entries%': ['Array', 'prototype', 'entries'],
+	'%ArrayProto_forEach%': ['Array', 'prototype', 'forEach'],
+	'%ArrayProto_keys%': ['Array', 'prototype', 'keys'],
+	'%ArrayProto_values%': ['Array', 'prototype', 'values'],
+	'%AsyncFunctionPrototype%': ['AsyncFunction', 'prototype'],
+	'%AsyncGenerator%': ['AsyncGeneratorFunction', 'prototype'],
+	'%AsyncGeneratorPrototype%': ['AsyncGeneratorFunction', 'prototype', 'prototype'],
+	'%BooleanPrototype%': ['Boolean', 'prototype'],
+	'%DataViewPrototype%': ['DataView', 'prototype'],
+	'%DatePrototype%': ['Date', 'prototype'],
+	'%ErrorPrototype%': ['Error', 'prototype'],
+	'%EvalErrorPrototype%': ['EvalError', 'prototype'],
+	'%Float32ArrayPrototype%': ['Float32Array', 'prototype'],
+	'%Float64ArrayPrototype%': ['Float64Array', 'prototype'],
+	'%FunctionPrototype%': ['Function', 'prototype'],
+	'%Generator%': ['GeneratorFunction', 'prototype'],
+	'%GeneratorPrototype%': ['GeneratorFunction', 'prototype', 'prototype'],
+	'%Int8ArrayPrototype%': ['Int8Array', 'prototype'],
+	'%Int16ArrayPrototype%': ['Int16Array', 'prototype'],
+	'%Int32ArrayPrototype%': ['Int32Array', 'prototype'],
+	'%JSONParse%': ['JSON', 'parse'],
+	'%JSONStringify%': ['JSON', 'stringify'],
+	'%MapPrototype%': ['Map', 'prototype'],
+	'%NumberPrototype%': ['Number', 'prototype'],
+	'%ObjectPrototype%': ['Object', 'prototype'],
+	'%ObjProto_toString%': ['Object', 'prototype', 'toString'],
+	'%ObjProto_valueOf%': ['Object', 'prototype', 'valueOf'],
+	'%PromisePrototype%': ['Promise', 'prototype'],
+	'%PromiseProto_then%': ['Promise', 'prototype', 'then'],
+	'%Promise_all%': ['Promise', 'all'],
+	'%Promise_reject%': ['Promise', 'reject'],
+	'%Promise_resolve%': ['Promise', 'resolve'],
+	'%RangeErrorPrototype%': ['RangeError', 'prototype'],
+	'%ReferenceErrorPrototype%': ['ReferenceError', 'prototype'],
+	'%RegExpPrototype%': ['RegExp', 'prototype'],
+	'%SetPrototype%': ['Set', 'prototype'],
+	'%SharedArrayBufferPrototype%': ['SharedArrayBuffer', 'prototype'],
+	'%StringPrototype%': ['String', 'prototype'],
+	'%SymbolPrototype%': ['Symbol', 'prototype'],
+	'%SyntaxErrorPrototype%': ['SyntaxError', 'prototype'],
+	'%TypedArrayPrototype%': ['TypedArray', 'prototype'],
+	'%TypeErrorPrototype%': ['TypeError', 'prototype'],
+	'%Uint8ArrayPrototype%': ['Uint8Array', 'prototype'],
+	'%Uint8ClampedArrayPrototype%': ['Uint8ClampedArray', 'prototype'],
+	'%Uint16ArrayPrototype%': ['Uint16Array', 'prototype'],
+	'%Uint32ArrayPrototype%': ['Uint32Array', 'prototype'],
+	'%URIErrorPrototype%': ['URIError', 'prototype'],
+	'%WeakMapPrototype%': ['WeakMap', 'prototype'],
+	'%WeakSetPrototype%': ['WeakSet', 'prototype']
+};
+
+var bind = functionBind;
+var hasOwn = src;
+var $concat = bind.call(Function.call, Array.prototype.concat);
+var $spliceApply = bind.call(Function.apply, Array.prototype.splice);
+var $replace$1 = bind.call(Function.call, String.prototype.replace);
+var $strSlice$1 = bind.call(Function.call, String.prototype.slice);
+var $exec$1 = bind.call(Function.call, RegExp.prototype.exec);
+
+/* adapted from https://github.com/lodash/lodash/blob/4.17.15/dist/lodash.js#L6735-L6744 */
+var rePropName = /[^%.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|%$))/g;
+var reEscapeChar = /\\(\\)?/g; /** Used to match backslashes in property paths. */
+var stringToPath = function stringToPath(string) {
+	var first = $strSlice$1(string, 0, 1);
+	var last = $strSlice$1(string, -1);
+	if (first === '%' && last !== '%') {
+		throw new $SyntaxError('invalid intrinsic syntax, expected closing `%`');
+	} else if (last === '%' && first !== '%') {
+		throw new $SyntaxError('invalid intrinsic syntax, expected opening `%`');
+	}
+	var result = [];
+	$replace$1(string, rePropName, function (match, number, quote, subString) {
+		result[result.length] = quote ? $replace$1(subString, reEscapeChar, '$1') : number || match;
+	});
+	return result;
+};
+/* end adaptation */
+
+var getBaseIntrinsic = function getBaseIntrinsic(name, allowMissing) {
+	var intrinsicName = name;
+	var alias;
+	if (hasOwn(LEGACY_ALIASES, intrinsicName)) {
+		alias = LEGACY_ALIASES[intrinsicName];
+		intrinsicName = '%' + alias[0] + '%';
+	}
+
+	if (hasOwn(INTRINSICS, intrinsicName)) {
+		var value = INTRINSICS[intrinsicName];
+		if (value === needsEval) {
+			value = doEval(intrinsicName);
+		}
+		if (typeof value === 'undefined' && !allowMissing) {
+			throw new $TypeError$2('intrinsic ' + name + ' exists, but is not available. Please file an issue!');
+		}
+
+		return {
+			alias: alias,
+			name: intrinsicName,
+			value: value
+		};
+	}
+
+	throw new $SyntaxError('intrinsic ' + name + ' does not exist!');
+};
+
+var getIntrinsic = function GetIntrinsic(name, allowMissing) {
+	if (typeof name !== 'string' || name.length === 0) {
+		throw new $TypeError$2('intrinsic name must be a non-empty string');
+	}
+	if (arguments.length > 1 && typeof allowMissing !== 'boolean') {
+		throw new $TypeError$2('"allowMissing" argument must be a boolean');
+	}
+
+	if ($exec$1(/^%?[^%]*%?$/g, name) === null) {
+		throw new $SyntaxError('`%` may not be present anywhere but at the beginning and end of the intrinsic name');
+	}
+	var parts = stringToPath(name);
+	var intrinsicBaseName = parts.length > 0 ? parts[0] : '';
+
+	var intrinsic = getBaseIntrinsic('%' + intrinsicBaseName + '%', allowMissing);
+	var intrinsicRealName = intrinsic.name;
+	var value = intrinsic.value;
+	var skipFurtherCaching = false;
+
+	var alias = intrinsic.alias;
+	if (alias) {
+		intrinsicBaseName = alias[0];
+		$spliceApply(parts, $concat([0, 1], alias));
+	}
+
+	for (var i = 1, isOwn = true; i < parts.length; i += 1) {
+		var part = parts[i];
+		var first = $strSlice$1(part, 0, 1);
+		var last = $strSlice$1(part, -1);
+		if (
+			(
+				(first === '"' || first === "'" || first === '`')
+				|| (last === '"' || last === "'" || last === '`')
+			)
+			&& first !== last
+		) {
+			throw new $SyntaxError('property names with quotes must have matching quotes');
+		}
+		if (part === 'constructor' || !isOwn) {
+			skipFurtherCaching = true;
+		}
+
+		intrinsicBaseName += '.' + part;
+		intrinsicRealName = '%' + intrinsicBaseName + '%';
+
+		if (hasOwn(INTRINSICS, intrinsicRealName)) {
+			value = INTRINSICS[intrinsicRealName];
+		} else if (value != null) {
+			if (!(part in value)) {
+				if (!allowMissing) {
+					throw new $TypeError$2('base intrinsic for ' + name + ' exists, but the property is not available.');
+				}
+				return void undefined$1;
+			}
+			if ($gOPD && (i + 1) >= parts.length) {
+				var desc = $gOPD(value, part);
+				isOwn = !!desc;
+
+				// By convention, when a data property is converted to an accessor
+				// property to emulate a data property that does not suffer from
+				// the override mistake, that accessor's getter is marked with
+				// an `originalValue` property. Here, when we detect this, we
+				// uphold the illusion by pretending to see that original data
+				// property, i.e., returning the value rather than the getter
+				// itself.
+				if (isOwn && 'get' in desc && !('originalValue' in desc.get)) {
+					value = desc.get;
+				} else {
+					value = value[part];
+				}
+			} else {
+				isOwn = hasOwn(value, part);
+				value = value[part];
+			}
+
+			if (isOwn && !skipFurtherCaching) {
+				INTRINSICS[intrinsicRealName] = value;
+			}
+		}
+	}
+	return value;
+};
+
+var GetIntrinsic$7 = getIntrinsic;
+
+var $defineProperty = GetIntrinsic$7('%Object.defineProperty%', true);
+
+var hasPropertyDescriptors$1 = function hasPropertyDescriptors() {
+	if ($defineProperty) {
+		try {
+			$defineProperty({}, 'a', { value: 1 });
+			return true;
+		} catch (e) {
+			// IE 8 has a broken defineProperty
+			return false;
+		}
+	}
+	return false;
+};
+
+hasPropertyDescriptors$1.hasArrayLengthDefineBug = function hasArrayLengthDefineBug() {
+	// node v0.6 has a bug where array lengths can be Set but not Defined
+	if (!hasPropertyDescriptors$1()) {
+		return null;
+	}
+	try {
+		return $defineProperty([], 'length', { value: 1 }).length !== 1;
+	} catch (e) {
+		// In Firefox 4-22, defining length on an array throws an exception.
+		return true;
+	}
+};
+
+var hasPropertyDescriptors_1 = hasPropertyDescriptors$1;
+
+var keys = objectKeys;
+var hasSymbols$3 = typeof Symbol === 'function' && typeof Symbol('foo') === 'symbol';
+
+var toStr$4 = Object.prototype.toString;
+var concat = Array.prototype.concat;
+var origDefineProperty = Object.defineProperty;
+
+var isFunction = function (fn) {
+	return typeof fn === 'function' && toStr$4.call(fn) === '[object Function]';
+};
+
+var hasPropertyDescriptors = hasPropertyDescriptors_1();
+
+var supportsDescriptors = origDefineProperty && hasPropertyDescriptors;
+
+var defineProperty = function (object, name, value, predicate) {
+	if (name in object && (!isFunction(predicate) || !predicate())) {
+		return;
+	}
+	if (supportsDescriptors) {
+		origDefineProperty(object, name, {
+			configurable: true,
+			enumerable: false,
+			value: value,
+			writable: true
+		});
+	} else {
+		object[name] = value; // eslint-disable-line no-param-reassign
+	}
+};
+
+var defineProperties = function (object, map) {
+	var predicates = arguments.length > 2 ? arguments[2] : {};
+	var props = keys(map);
+	if (hasSymbols$3) {
+		props = concat.call(props, Object.getOwnPropertySymbols(map));
+	}
+	for (var i = 0; i < props.length; i += 1) {
+		defineProperty(object, props[i], map[props[i]], predicates[props[i]]);
+	}
+};
+
+defineProperties.supportsDescriptors = !!supportsDescriptors;
+
+var defineProperties_1 = defineProperties;
+
+var GetIntrinsic$6 = getIntrinsic;
+
+var $TypeError$1 = GetIntrinsic$6('%TypeError%');
+
+// http://262.ecma-international.org/5.1/#sec-9.10
+
+var CheckObjectCoercible = function CheckObjectCoercible(value, optMessage) {
+	if (value == null) {
+		throw new $TypeError$1(optMessage || ('Cannot call method on ' + value));
+	}
+	return value;
+};
+
+var RequireObjectCoercible$2 = CheckObjectCoercible;
+
+var callBind$2 = {exports: {}};
+
+(function (module) {
+
+var bind = functionBind;
+var GetIntrinsic = getIntrinsic;
+
+var $apply = GetIntrinsic('%Function.prototype.apply%');
+var $call = GetIntrinsic('%Function.prototype.call%');
+var $reflectApply = GetIntrinsic('%Reflect.apply%', true) || bind.call($call, $apply);
+
+var $gOPD = GetIntrinsic('%Object.getOwnPropertyDescriptor%', true);
+var $defineProperty = GetIntrinsic('%Object.defineProperty%', true);
+var $max = GetIntrinsic('%Math.max%');
+
+if ($defineProperty) {
+	try {
+		$defineProperty({}, 'a', { value: 1 });
+	} catch (e) {
+		// IE 8 has a broken defineProperty
+		$defineProperty = null;
+	}
+}
+
+module.exports = function callBind(originalFunction) {
+	var func = $reflectApply(bind, $call, arguments);
+	if ($gOPD && $defineProperty) {
+		var desc = $gOPD(func, 'length');
+		if (desc.configurable) {
+			// original length, plus the receiver, minus any additional arguments (after the receiver)
+			$defineProperty(
+				func,
+				'length',
+				{ value: 1 + $max(0, originalFunction.length - (arguments.length - 1)) }
+			);
+		}
+	}
+	return func;
+};
+
+var applyBind = function applyBind() {
+	return $reflectApply(bind, $apply, arguments);
+};
+
+if ($defineProperty) {
+	$defineProperty(module.exports, 'apply', { value: applyBind });
+} else {
+	module.exports.apply = applyBind;
+}
+}(callBind$2));
+
+var GetIntrinsic$5 = getIntrinsic;
+
+var callBind$1 = callBind$2.exports;
+
+var $indexOf$1 = callBind$1(GetIntrinsic$5('String.prototype.indexOf'));
+
+var callBound$4 = function callBoundIntrinsic(name, allowMissing) {
+	var intrinsic = GetIntrinsic$5(name, !!allowMissing);
+	if (typeof intrinsic === 'function' && $indexOf$1(name, '.prototype.') > -1) {
+		return callBind$1(intrinsic);
+	}
+	return intrinsic;
+};
+
+var GetIntrinsic$4 = getIntrinsic;
+
+var $abs = GetIntrinsic$4('%Math.abs%');
+
+// http://262.ecma-international.org/5.1/#sec-5.2
+
+var abs$1 = function abs(x) {
+	return $abs(x);
+};
+
+// var modulo = require('./modulo');
+var $floor = Math.floor;
+
+// http://262.ecma-international.org/5.1/#sec-5.2
+
+var floor$1 = function floor(x) {
+	// return x - modulo(x, 1);
+	return $floor(x);
+};
+
+var callBound$3 = callBound$4;
+
+var $exec = callBound$3('RegExp.prototype.exec');
+
+var regexTester$1 = function regexTester(regex) {
+	return function test(s) { return $exec(regex, s) !== null; };
+};
+
+var isPrimitive$3 = function isPrimitive(value) {
+	return value === null || (typeof value !== 'function' && typeof value !== 'object');
+};
+
+var isPrimitive$2 = function isPrimitive(value) {
+	return value === null || (typeof value !== 'function' && typeof value !== 'object');
+};
+
+var fnToStr = Function.prototype.toString;
+var reflectApply = typeof Reflect === 'object' && Reflect !== null && Reflect.apply;
+var badArrayLike;
+var isCallableMarker;
+if (typeof reflectApply === 'function' && typeof Object.defineProperty === 'function') {
+	try {
+		badArrayLike = Object.defineProperty({}, 'length', {
+			get: function () {
+				throw isCallableMarker;
+			}
+		});
+		isCallableMarker = {};
+		// eslint-disable-next-line no-throw-literal
+		reflectApply(function () { throw 42; }, null, badArrayLike);
+	} catch (_) {
+		if (_ !== isCallableMarker) {
+			reflectApply = null;
+		}
+	}
+} else {
+	reflectApply = null;
+}
+
+var constructorRegex = /^\s*class\b/;
+var isES6ClassFn = function isES6ClassFunction(value) {
+	try {
+		var fnStr = fnToStr.call(value);
+		return constructorRegex.test(fnStr);
+	} catch (e) {
+		return false; // not a function
+	}
+};
+
+var tryFunctionObject = function tryFunctionToStr(value) {
+	try {
+		if (isES6ClassFn(value)) { return false; }
+		fnToStr.call(value);
+		return true;
+	} catch (e) {
+		return false;
+	}
+};
+var toStr$3 = Object.prototype.toString;
+var fnClass = '[object Function]';
+var genClass = '[object GeneratorFunction]';
+var hasToStringTag$2 = typeof Symbol === 'function' && !!Symbol.toStringTag; // better: use `has-tostringtag`
+/* globals document: false */
+var documentDotAll = typeof document === 'object' && typeof document.all === 'undefined' && document.all !== undefined ? document.all : {};
+
+var isCallable$1 = reflectApply
+	? function isCallable(value) {
+		if (value === documentDotAll) { return true; }
+		if (!value) { return false; }
+		if (typeof value !== 'function' && typeof value !== 'object') { return false; }
+		if (typeof value === 'function' && !value.prototype) { return true; }
+		try {
+			reflectApply(value, null, badArrayLike);
+		} catch (e) {
+			if (e !== isCallableMarker) { return false; }
+		}
+		return !isES6ClassFn(value);
+	}
+	: function isCallable(value) {
+		if (value === documentDotAll) { return true; }
+		if (!value) { return false; }
+		if (typeof value !== 'function' && typeof value !== 'object') { return false; }
+		if (typeof value === 'function' && !value.prototype) { return true; }
+		if (hasToStringTag$2) { return tryFunctionObject(value); }
+		if (isES6ClassFn(value)) { return false; }
+		var strClass = toStr$3.call(value);
+		return strClass === fnClass || strClass === genClass;
+	};
+
+var hasSymbols$2 = shams$1;
+
+var shams = function hasToStringTagShams() {
+	return hasSymbols$2() && !!Symbol.toStringTag;
+};
+
+var getDay = Date.prototype.getDay;
+var tryDateObject = function tryDateGetDayCall(value) {
+	try {
+		getDay.call(value);
+		return true;
+	} catch (e) {
+		return false;
+	}
+};
+
+var toStr$2 = Object.prototype.toString;
+var dateClass = '[object Date]';
+var hasToStringTag$1 = shams();
+
+var isDateObject = function isDateObject(value) {
+	if (typeof value !== 'object' || value === null) {
+		return false;
+	}
+	return hasToStringTag$1 ? tryDateObject(value) : toStr$2.call(value) === dateClass;
+};
+
+var isSymbol$1 = {exports: {}};
+
+var toStr$1 = Object.prototype.toString;
+var hasSymbols$1 = hasSymbols$5();
+
+if (hasSymbols$1) {
+	var symToStr = Symbol.prototype.toString;
+	var symStringRegex = /^Symbol\(.*\)$/;
+	var isSymbolObject = function isRealSymbolObject(value) {
+		if (typeof value.valueOf() !== 'symbol') {
+			return false;
+		}
+		return symStringRegex.test(symToStr.call(value));
+	};
+
+	isSymbol$1.exports = function isSymbol(value) {
+		if (typeof value === 'symbol') {
+			return true;
+		}
+		if (toStr$1.call(value) !== '[object Symbol]') {
+			return false;
+		}
+		try {
+			return isSymbolObject(value);
+		} catch (e) {
+			return false;
+		}
+	};
+} else {
+
+	isSymbol$1.exports = function isSymbol(value) {
+		// this environment does not support Symbols.
+		return false ;
+	};
+}
+
+var hasSymbols = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol';
+
+var isPrimitive$1 = isPrimitive$2;
+var isCallable = isCallable$1;
+var isDate = isDateObject;
+var isSymbol = isSymbol$1.exports;
+
+var ordinaryToPrimitive = function OrdinaryToPrimitive(O, hint) {
+	if (typeof O === 'undefined' || O === null) {
+		throw new TypeError('Cannot call method on ' + O);
+	}
+	if (typeof hint !== 'string' || (hint !== 'number' && hint !== 'string')) {
+		throw new TypeError('hint must be "string" or "number"');
+	}
+	var methodNames = hint === 'string' ? ['toString', 'valueOf'] : ['valueOf', 'toString'];
+	var method, result, i;
+	for (i = 0; i < methodNames.length; ++i) {
+		method = O[methodNames[i]];
+		if (isCallable(method)) {
+			result = method.call(O);
+			if (isPrimitive$1(result)) {
+				return result;
+			}
+		}
+	}
+	throw new TypeError('No default value');
+};
+
+var GetMethod = function GetMethod(O, P) {
+	var func = O[P];
+	if (func !== null && typeof func !== 'undefined') {
+		if (!isCallable(func)) {
+			throw new TypeError(func + ' returned for property ' + P + ' of object ' + O + ' is not a function');
+		}
+		return func;
+	}
+	return void 0;
+};
+
+// http://www.ecma-international.org/ecma-262/6.0/#sec-toprimitive
+var es2015 = function ToPrimitive(input) {
+	if (isPrimitive$1(input)) {
+		return input;
+	}
+	var hint = 'default';
+	if (arguments.length > 1) {
+		if (arguments[1] === String) {
+			hint = 'string';
+		} else if (arguments[1] === Number) {
+			hint = 'number';
+		}
+	}
+
+	var exoticToPrim;
+	if (hasSymbols) {
+		if (Symbol.toPrimitive) {
+			exoticToPrim = GetMethod(input, Symbol.toPrimitive);
+		} else if (isSymbol(input)) {
+			exoticToPrim = Symbol.prototype.valueOf;
+		}
+	}
+	if (typeof exoticToPrim !== 'undefined') {
+		var result = exoticToPrim.call(input, hint);
+		if (isPrimitive$1(result)) {
+			return result;
+		}
+		throw new TypeError('unable to convert exotic object to primitive');
+	}
+	if (hint === 'default' && (isDate(input) || isSymbol(input))) {
+		hint = 'string';
+	}
+	return ordinaryToPrimitive(input, hint === 'default' ? 'number' : hint);
+};
+
+var toPrimitive = es2015;
+
+// https://ecma-international.org/ecma-262/6.0/#sec-toprimitive
+
+var ToPrimitive$1 = function ToPrimitive(input) {
+	if (arguments.length > 1) {
+		return toPrimitive(input, arguments[1]);
+	}
+	return toPrimitive(input);
+};
+
+var GetIntrinsic$3 = getIntrinsic;
+
+var $TypeError = GetIntrinsic$3('%TypeError%');
+var $Number$1 = GetIntrinsic$3('%Number%');
+var $RegExp = GetIntrinsic$3('%RegExp%');
+var $parseInteger = GetIntrinsic$3('%parseInt%');
+
+var callBound$2 = callBound$4;
+var regexTester = regexTester$1;
+var isPrimitive = isPrimitive$3;
+
+var $strSlice = callBound$2('String.prototype.slice');
+var isBinary = regexTester(/^0b[01]+$/i);
+var isOctal = regexTester(/^0o[0-7]+$/i);
+var isInvalidHexLiteral = regexTester(/^[-+]0x[0-9a-f]+$/i);
+var nonWS = ['\u0085', '\u200b', '\ufffe'].join('');
+var nonWSregex = new $RegExp('[' + nonWS + ']', 'g');
+var hasNonWS = regexTester(nonWSregex);
+
+// whitespace from: https://es5.github.io/#x15.5.4.20
+// implementation from https://github.com/es-shims/es5-shim/blob/v3.4.0/es5-shim.js#L1304-L1324
+var ws = [
+	'\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003',
+	'\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028',
+	'\u2029\uFEFF'
+].join('');
+var trimRegex = new RegExp('(^[' + ws + ']+)|([' + ws + ']+$)', 'g');
+var $replace = callBound$2('String.prototype.replace');
+var $trim = function (value) {
+	return $replace(value, trimRegex, '');
+};
+
+var ToPrimitive = ToPrimitive$1;
+
+// https://ecma-international.org/ecma-262/6.0/#sec-tonumber
+
+var ToNumber$1 = function ToNumber(argument) {
+	var value = isPrimitive(argument) ? argument : ToPrimitive(argument, $Number$1);
+	if (typeof value === 'symbol') {
+		throw new $TypeError('Cannot convert a Symbol value to a number');
+	}
+	if (typeof value === 'bigint') {
+		throw new $TypeError('Conversion from \'BigInt\' to \'number\' is not allowed.');
+	}
+	if (typeof value === 'string') {
+		if (isBinary(value)) {
+			return ToNumber($parseInteger($strSlice(value, 2), 2));
+		} else if (isOctal(value)) {
+			return ToNumber($parseInteger($strSlice(value, 2), 8));
+		} else if (hasNonWS(value) || isInvalidHexLiteral(value)) {
+			return NaN;
+		}
+		var trimmed = $trim(value);
+		if (trimmed !== value) {
+			return ToNumber(trimmed);
+		}
+
+	}
+	return $Number$1(value);
+};
+
+var _isNaN = Number.isNaN || function isNaN(a) {
+	return a !== a;
+};
+
+var $isNaN$3 = Number.isNaN || function (a) { return a !== a; };
+
+var _isFinite = Number.isFinite || function (x) { return typeof x === 'number' && !$isNaN$3(x) && x !== Infinity && x !== -Infinity; };
+
+var sign = function sign(number) {
+	return number >= 0 ? 1 : -1;
+};
+
+var abs = abs$1;
+var floor = floor$1;
+var ToNumber = ToNumber$1;
+
+var $isNaN$2 = _isNaN;
+var $isFinite$1 = _isFinite;
+var $sign = sign;
+
+// https://262.ecma-international.org/12.0/#sec-tointegerorinfinity
+
+var ToIntegerOrInfinity$2 = function ToIntegerOrInfinity(value) {
+	var number = ToNumber(value);
+	if ($isNaN$2(number) || number === 0) { return 0; }
+	if (!$isFinite$1(number)) { return number; }
+	return $sign(number) * floor(abs(number));
+};
+
+var GetIntrinsic$2 = getIntrinsic;
+
+var $Math = GetIntrinsic$2('%Math%');
+var $Number = GetIntrinsic$2('%Number%');
+
+var maxSafeInteger = $Number.MAX_SAFE_INTEGER || $Math.pow(2, 53) - 1;
+
+var MAX_SAFE_INTEGER = maxSafeInteger;
+
+var ToIntegerOrInfinity$1 = ToIntegerOrInfinity$2;
+
+var ToLength$1 = function ToLength(argument) {
+	var len = ToIntegerOrInfinity$1(argument);
+	if (len <= 0) { return 0; } // includes converting -0 to +0
+	if (len > MAX_SAFE_INTEGER) { return MAX_SAFE_INTEGER; }
+	return len;
+};
+
+var GetIntrinsic$1 = getIntrinsic;
+
+var $Object = GetIntrinsic$1('%Object%');
+
+var RequireObjectCoercible$1 = RequireObjectCoercible$2;
+
+// https://ecma-international.org/ecma-262/6.0/#sec-toobject
+
+var ToObject$1 = function ToObject(value) {
+	RequireObjectCoercible$1(value);
+	return $Object(value);
+};
+
+var $isNaN$1 = _isNaN;
+
+// https://ecma-international.org/ecma-262/6.0/#sec-samevaluezero
+
+var SameValueZero$1 = function SameValueZero(x, y) {
+	return (x === y) || ($isNaN$1(x) && $isNaN$1(y));
+};
+
+var strValue = String.prototype.valueOf;
+var tryStringObject = function tryStringObject(value) {
+	try {
+		strValue.call(value);
+		return true;
+	} catch (e) {
+		return false;
+	}
+};
+var toStr = Object.prototype.toString;
+var strClass = '[object String]';
+var hasToStringTag = shams();
+
+var isString$1 = function isString(value) {
+	if (typeof value === 'string') {
+		return true;
+	}
+	if (typeof value !== 'object') {
+		return false;
+	}
+	return hasToStringTag ? tryStringObject(value) : toStr.call(value) === strClass;
+};
+
+var ToIntegerOrInfinity = ToIntegerOrInfinity$2;
+var ToLength = ToLength$1;
+var ToObject = ToObject$1;
+var SameValueZero = SameValueZero$1;
+var $isNaN = _isNaN;
+var $isFinite = _isFinite;
+var GetIntrinsic = getIntrinsic;
+var callBound$1 = callBound$4;
+var isString = isString$1;
+
+var $charAt = callBound$1('String.prototype.charAt');
+var $indexOf = GetIntrinsic('%Array.prototype.indexOf%'); // TODO: use callBind.apply without breaking IE 8
+var $max = GetIntrinsic('%Math.max%');
+
+var implementation$2 = function includes(searchElement) {
+	var fromIndex = arguments.length > 1 ? ToIntegerOrInfinity(arguments[1]) : 0;
+	if ($indexOf && !$isNaN(searchElement) && $isFinite(fromIndex) && typeof searchElement !== 'undefined') {
+		return $indexOf.apply(this, arguments) > -1;
+	}
+
+	var O = ToObject(this);
+	var length = ToLength(O.length);
+	if (length === 0) {
+		return false;
+	}
+	var k = fromIndex >= 0 ? fromIndex : $max(0, length + fromIndex);
+	while (k < length) {
+		if (SameValueZero(searchElement, isString(O) ? $charAt(O, k) : O[k])) {
+			return true;
+		}
+		k += 1;
+	}
+	return false;
+};
+
+var implementation$1 = implementation$2;
+
+var polyfill$1 = function getPolyfill() {
+	if (
+		Array.prototype.includes
+		&& Array(1).includes(undefined) // https://bugzilla.mozilla.org/show_bug.cgi?id=1767541
+	) {
+		return Array.prototype.includes;
+	}
+	return implementation$1;
+};
+
+var define$1 = defineProperties_1;
+var getPolyfill$1 = polyfill$1;
+
+var shim$1 = function shimArrayPrototypeIncludes() {
+	var polyfill = getPolyfill$1();
+	define$1(
+		Array.prototype,
+		{ includes: polyfill },
+		{ includes: function () { return Array.prototype.includes !== polyfill; } }
+	);
+	return polyfill;
+};
+
+var define = defineProperties_1;
+var RequireObjectCoercible = RequireObjectCoercible$2;
+var callBind = callBind$2.exports;
+var callBound = callBound$4;
+
+var implementation = implementation$2;
+var getPolyfill = polyfill$1;
+var polyfill = callBind.apply(getPolyfill());
+var shim = shim$1;
+
+var $slice = callBound('Array.prototype.slice');
+
+/* eslint-disable no-unused-vars */
+var boundShim = function includes(array, searchElement) {
+/* eslint-enable no-unused-vars */
+	RequireObjectCoercible(array);
+	return polyfill(array, $slice(arguments, 1));
+};
+define(boundShim, {
+	getPolyfill: getPolyfill,
+	implementation: implementation,
+	shim: shim
+});
+
+var arrayIncludes = boundShim;
+
 function OptionalCosts(_ref) {
   var costs = _ref.costs;
 
@@ -48729,30 +48339,9 @@ CalendarPage.propTypes = {
   locale: PropTypes.string.isRequired
 };
 
-var ReviewsPage = /*#__PURE__*/function (_Component) {
-  _inherits$A(ReviewsPage, _Component);
-
-  var _super = _createSuper$A(ReviewsPage);
-
-  function ReviewsPage(props) {
-    var _this;
-
-    _classCallCheck$B(this, ReviewsPage);
-
-    _this = _super.call(this, props);
-    _this.state = {};
-    return _this;
-  }
-
-  _createClass$D(ReviewsPage, [{
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/React__default["default"].createElement("div", null, "Display Reviews");
-    }
-  }]);
-
-  return ReviewsPage;
-}(React.Component);
+function ReviewsPage() {
+    return React__default["default"].createElement("div", null, "Display Reviews");
+}
 
 var pjson = {
 	name: "bukazu-portal-react",
@@ -48942,51 +48531,27 @@ function SafeBooking(_ref) {
   }, "v", pjson.version)));
 }
 
-var ErrorBoundary = /*#__PURE__*/function (_React$Component) {
-  _inherits$A(ErrorBoundary, _React$Component);
-
-  var _super = _createSuper$A(ErrorBoundary);
-
-  function ErrorBoundary(props) {
-    var _this;
-
-    _classCallCheck$B(this, ErrorBoundary);
-
-    _this = _super.call(this, props);
-    _this.state = {
-      hasError: false
-    };
-    return _this;
-  }
-
-  _createClass$D(ErrorBoundary, [{
-    key: "componentDidCatch",
-    value: function componentDidCatch(error, errorInfo) {
-      // You can also log the error to an error reporting service
-      console.log(error, errorInfo);
+class ErrorBoundary extends React__default["default"].Component {
+    constructor(props) {
+        super(props);
+        this.state = { hasError: false };
     }
-  }, {
-    key: "render",
-    value: function render() {
-      if (this.state.hasError) {
-        // You can render any custom fallback UI
-        return /*#__PURE__*/React__default["default"].createElement("h1", null, "Something went wrong.");
-      }
-
-      return this.props.children;
+    static getDerivedStateFromError(error) {
+        // Update state so the next render will show the fallback UI.
+        return { hasError: true };
     }
-  }], [{
-    key: "getDerivedStateFromError",
-    value: function getDerivedStateFromError(error) {
-      // Update state so the next render will show the fallback UI.
-      return {
-        hasError: true
-      };
+    componentDidCatch(error, errorInfo) {
+        // You can also log the error to an error reporting service
+        console.log(error, errorInfo);
     }
-  }]);
-
-  return ErrorBoundary;
-}(React__default["default"].Component);
+    render() {
+        if (this.state.hasError) {
+            // You can render any custom fallback UI
+            return React__default["default"].createElement("h1", null, "Something went wrong.");
+        }
+        return this.props.children;
+    }
+}
 
 var App = /*#__PURE__*/function (_Component) {
   _inherits$A(App, _Component);
