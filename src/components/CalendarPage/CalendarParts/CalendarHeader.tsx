@@ -1,21 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ArrowRight from '../../icons/ArrowRight.svg';
 import ArrowLeft from '../../icons/ArrowLeft.svg';
 import Reload from '../../icons/Reload.svg';
+import { CalendarContextDispatch } from './CalendarContext';
+import { addMonths, subMonths } from 'date-fns';
 
 interface Props {
-  onGoPrev: Function;
-  onReset: Function;
-  onGoNext: Function;
+  changeMonth: Function;
+  currentMonth: Date;
+  numberOfMonths: number;
 }
 
-function CalendarHeader({ onGoPrev, onReset, onGoNext }: Props): JSX.Element {
+function CalendarHeader({
+  changeMonth,
+  currentMonth,
+  numberOfMonths
+}: Props): JSX.Element {
+  const dispatch = useContext(CalendarContextDispatch);  
+  
+  function next() {
+    changeMonth(addMonths(currentMonth, numberOfMonths));
+  }
+  function prev() {
+    changeMonth(subMonths(currentMonth, numberOfMonths));
+  }
+
   return (
     <div className="calendars-header">
       <div
         className="col bu-prev"
         style={{ textAlign: 'center' }}
-        onClick={onGoPrev}
+        onClick={prev}
         tabIndex={0}
         role="button"
       >
@@ -26,7 +41,11 @@ function CalendarHeader({ onGoPrev, onReset, onGoNext }: Props): JSX.Element {
       </div>
       <div
         className="col bu-reset"
-        onClick={onReset}
+        onClick={() => {
+          dispatch({
+            type: 'reset'
+          });
+        }}
         style={{ textAlign: 'center' }}
         tabIndex={0}
         role="button"
@@ -37,7 +56,7 @@ function CalendarHeader({ onGoPrev, onReset, onGoNext }: Props): JSX.Element {
       </div>
       <div
         className="col bu-next"
-        onClick={onGoNext}
+        onClick={next}
         style={{ textAlign: 'center' }}
         tabIndex={0}
         role="button"

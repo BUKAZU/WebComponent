@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   FormatIntl,
   LONG_DATE_FORMAT,
@@ -8,27 +8,22 @@ import { FormattedMessage } from 'react-intl';
 import { createPeronsArray } from '../formParts/BookingHelpers';
 import Price from './Price';
 import { HouseType } from '../../../types';
+import {
+  CalendarContext,
+  CalendarContextDispatch
+} from '../CalendarParts/CalendarContext';
 
 const dateFormat = LONG_DATE_FORMAT;
 
 interface Props {
-  startsAt: string | null;
-  endsAt: string | null;
   house: HouseType;
-  disabled: boolean;
-  onStartBooking: Function;
-  minNights: number | null;
 }
 
-function PriceField({
-  startsAt,
-  endsAt,
-  house,
-  disabled,
-  onStartBooking,
-  minNights
-}: Props) {
+function PriceField({ house }: Props) {
   const [persons, setPersons] = useState(2);
+
+  const { arrivalDate, departureDate } = useContext(CalendarContext);
+  const dispatch = useContext(CalendarContextDispatch);
 
   let adults = createPeronsArray(house.persons);
 
@@ -39,8 +34,10 @@ function PriceField({
           <FormattedMessage id={`${house.house_type}.arrival`} />
         </span>
         <span className="detail">
-          {startsAt ? (
-            <span>{FormatIntl(Parse_EN_US(startsAt), dateFormat)}</span>
+          {arrivalDate?.date ? (
+            <span>
+              {FormatIntl(Parse_EN_US(arrivalDate?.date), dateFormat)}
+            </span>
           ) : (
             <FormattedMessage
               id={`${house.house_type}.pick_your_arrivaldate_in_the_calendar`}
@@ -53,8 +50,10 @@ function PriceField({
           <FormattedMessage id={`${house.house_type}.departure`} />
         </span>
         <span className="detail">
-          {endsAt ? (
-            <span>{FormatIntl(Parse_EN_US(endsAt), dateFormat)}</span>
+          {departureDate?.date ? (
+            <span>
+              {FormatIntl(Parse_EN_US(departureDate?.date), dateFormat)}
+            </span>
           ) : (
             <div>
               <div>
@@ -62,11 +61,11 @@ function PriceField({
                   id={`${house.house_type}.pick_your_departure_in_the_calendar`}
                 />
               </div>
-              {minNights && (
+              {arrivalDate && (
                 <FormattedMessage
                   id="minimum_nights"
                   defaultMessage="Minimum {minimum} nights"
-                  values={{ minimum: minNights }}
+                  values={{ minimum: arrivalDate?.min_nights }}
                 />
               )}
             </div>
@@ -97,22 +96,25 @@ function PriceField({
         </span>
       </div>
       <div className="calendar--picker--date">
-        {startsAt && endsAt && (
+        {arrivalDate && departureDate && (
           <Price
             persons={parseInt(persons)}
             variables={{
-              starts_at: startsAt,
-              ends_at: endsAt
+              starts_at: arrivalDate?.date,
+              ends_at: departureDate?.date
             }}
           />
         )}
       </div>
       <button
         className="button"
-        disabled={!disabled}
+        disabled={!arrivalDate || !departureDate}
         onClick={() => {
-          if (startsAt && endsAt) {
-            onStartBooking({ persons });
+          if (arrivalDate && departureDate) {
+            dispatch({
+              type: 'start',
+              persons
+            });
           }
         }}
       >

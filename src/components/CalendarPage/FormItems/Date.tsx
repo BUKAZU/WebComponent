@@ -4,7 +4,15 @@ import { FormattedMessage } from 'react-intl';
 import DatePicker from 'react-date-picker';
 import { format } from 'date-fns';
 
-function DateField({ label, description, options, name, inline }) {
+interface Props {
+  label: string
+  description: string | React.ReactNode
+  name: string
+  inline: boolean
+  required: boolean
+}
+
+function DateField({ label, description, name, inline }:Props) {
   return (
     <Field name={name}>
       {({ field, meta, form }) => {
@@ -47,7 +55,7 @@ function DateField({ label, description, options, name, inline }) {
 }
 
 DateField.defaultValues = {
-  inline: true,
+  inline: true
 };
 
 export default DateField;

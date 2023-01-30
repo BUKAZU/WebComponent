@@ -3,8 +3,17 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Field } from 'formik';
 import DiscountCode from './DiscountCode';
+import { HouseType, PortalOptions } from '../../../types';
+import { PossibleValues } from './form_types';
 
-const Discount = ({ errors, house, options, values }) => {
+interface Props {
+  errors: object;
+  house: HouseType;
+  options: PortalOptions;
+  values: PossibleValues;
+}
+
+const Discount = ({ errors, house, options, values }: Props) => {
   if (
     (house.discounts && house.discounts !== '0') ||
     options.bookingForm?.showDiscountCode
@@ -52,7 +61,7 @@ const Discount = ({ errors, house, options, values }) => {
 
 Discount.propTypes = {
   house: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
 };
 
 export default Discount;

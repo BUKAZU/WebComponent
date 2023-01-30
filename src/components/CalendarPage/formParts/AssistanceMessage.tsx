@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { FormatIntl, LONG_DATE_FORMAT, Parse_EN_US } from '../../../_lib/date_helper';
+import { HouseType } from '../../../types';
+import {
+  FormatIntl,
+  LONG_DATE_FORMAT,
+  Parse_EN_US
+} from '../../../_lib/date_helper';
+import { CalendarContext } from '../CalendarParts/CalendarContext';
 
-const AssistanceMessage = ({
-  arrivalDate,
-  departureDate,
-  house,
-  minNights,
-}) => {
-  if (departureDate.date) {
+interface Props {
+  house: HouseType;
+}
+
+function AssistanceMessage({ house }: Props): JSX.Element {
+  const { departureDate, arrivalDate } = useContext(CalendarContext);
+
+  if (departureDate?.date) {
     return (
       <div className="assistance">
         <FormattedMessage id={`${house.house_type}.you_picked_arrival_date`} />:{' '}
@@ -22,7 +29,7 @@ const AssistanceMessage = ({
     );
   }
 
-  if (arrivalDate.date) {
+  if (arrivalDate?.date) {
     return (
       <div className="assistance">
         <FormattedMessage id={`${house.house_type}.you_picked_arrival_date`} />:{' '}
@@ -34,7 +41,7 @@ const AssistanceMessage = ({
         <br />
         <FormattedMessage
           id="minimum_nights"
-          values={{ minimum: minNights }}
+          values={{ minimum: arrivalDate.min_nights }}
           defaultMessage="Minimum {minimum} nights"
         />
       </div>
@@ -48,6 +55,6 @@ const AssistanceMessage = ({
       />
     </div>
   );
-};
+}
 
 export default AssistanceMessage;

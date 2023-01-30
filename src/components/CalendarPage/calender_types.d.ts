@@ -1,4 +1,4 @@
-import { BuDate } from "../../types";
+import { BuDate } from '../../types';
 
 export type DatesType = {
   arrivalDate: BuDate;
@@ -7,7 +7,10 @@ export type DatesType = {
   startBooking: Boolean;
 };
 
-export type BookingType {
-  arrivalDate: BuDate;
-  departureDate: BuDate;
-}
+export type BookingType = {
+  arrivalDate: BuDate | null;
+  departureDate: BuDate | null;
+  selectedDate: Date | null;
+  bookingStarted: boolean;
+  persons: number;
+};

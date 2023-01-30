@@ -8,7 +8,7 @@ export default function NumberSelect({ label, description, count, ...props }) {
 
   return (
     <Field name={props.name}>
-      {({ field, meta, form }) => {
+      {({ field, meta }) => {
         return (
           <div className="form-row inline" id={`bukazu_form_${props.name}`}>
             <label htmlFor={props.name}>

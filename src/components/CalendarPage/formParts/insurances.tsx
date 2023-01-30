@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Field } from 'formik';
 import Modal from '../../Modal';
@@ -7,8 +6,15 @@ import Icon from '../../icons/info.svg';
 import CancelInsuranceText from './CancelInsuranceText';
 import { DateField } from '../FormItems';
 import { translatedOption } from './BookingHelpers'
+import { HouseType } from '../../../types';
+import { PossibleValues } from './form_types';
 
-function cancelInsurance(house) {
+type Props = {
+  house: HouseType
+  values: PossibleValues
+}
+
+function cancelInsurance(house: HouseType) {
   if (house.cancel_insurance) {
     return (
       <div className="form-row inline">
@@ -17,9 +23,9 @@ function cancelInsurance(house) {
         </label>
         <Field component="select" name="cancel_insurance" required={true}>
           {translatedOption('choose', '')}
-          {translatedOption('cancel_insurance_all_risk', 2)}
-          {translatedOption('cancel_insurance_normal', 1)}
-          {translatedOption('none', 0)}
+          {translatedOption('cancel_insurance_all_risk', '2')}
+          {translatedOption('cancel_insurance_normal', '1')}
+          {translatedOption('none', '0')}
         </Field>
         <Modal buttonText={<Icon />}>
           <CancelInsuranceText />
@@ -29,7 +35,7 @@ function cancelInsurance(house) {
   }
 }
 
-export const Insurances = ({ house, values }) => {
+export const Insurances = ({ house, values }: Props) => {
   if (house.cancel_insurance) {
     return (
       <div className="form-section" id="insurances">
@@ -41,7 +47,8 @@ export const Insurances = ({ house, values }) => {
           <DateField
             label="extra_fields.date_of_birth"
             name="extra_fields.date_of_birth"
-            required="true"
+            required
+            inline={false}
             description={
               <FormattedMessage id="insurance_company_needs_date_of_birth" />
             }
@@ -54,6 +61,3 @@ export const Insurances = ({ house, values }) => {
   }
 };
 
-Insurances.propTypes = {
-  house: PropTypes.object.isRequired,
-};

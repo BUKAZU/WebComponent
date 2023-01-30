@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 interface Props {
-  children: JSX.Element[];
-  buttonText: string;
+  children: React.ReactNode
+  show?: boolean
+  buttonText?: string | React.ReactNode;
 }
 
 function Modal({ children, buttonText }: Props) {

@@ -7,6 +7,7 @@ import {
   startOfWeek
 } from 'date-fns';
 import React, { useContext } from 'react';
+import { HouseType } from '../../../types';
 import { CALENDAR_QUERY } from '../../../_lib/queries';
 import { AppContext } from '../../AppContext';
 import Loading from '../../icons/loading.svg';
@@ -17,28 +18,17 @@ import WeekDays from './WeekDays';
 interface Props {
   count: number;
   currentMonth: Date;
-  house: {
-    code: string;
-  };
-  dates: {
-    arrivalDate: Object;
-    selectedDate: Object;
-    departureDate: Object;
-  };
+  house: HouseType;
   numberOfMonthsInARow: Number;
-  onDateClick: Function;
-  portalCode: string;
 }
 
 function SingleMonth({
   count,
   currentMonth,
   house,
-  numberOfMonthsInARow,
-  dates,  
-  onDateClick
+  numberOfMonthsInARow
 }: Props): JSX.Element {
-  const { portalCode, objectCode } = useContext(AppContext)
+  const { portalCode, objectCode } = useContext(AppContext);
 
   let month = addMonths(currentMonth, count);
   let monthStart = startOfMonth(month);
@@ -69,14 +59,11 @@ function SingleMonth({
     <div className={`calendar calendar-${numberOfMonthsInARow}`} key={month}>
       <MonthHeader month={month} />
       <WeekDays month={month} />
-
       <RenderCells
         availabilities={results}
         discounts={discounts}
         month={month}
         house={house}
-        dates={dates}
-        onDateClick={onDateClick}
       />
     </div>
   );

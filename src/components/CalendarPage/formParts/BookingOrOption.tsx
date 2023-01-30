@@ -2,8 +2,13 @@ import React from 'react';
 import { RadioButtonGroup, RadioButton } from './radioButtons';
 import { Field } from 'formik';
 import { FormattedMessage } from 'react-intl';
+import { HouseType } from '../../../types';
 
-export default function BookingOrOption({ house, ...props }) {
+interface Props {
+  house: HouseType;
+}
+
+export default function BookingOrOption({ house }: Props): JSX.Element {
   return (
     <>
       {house.allow_option && (

@@ -5,7 +5,6 @@ import { FormatIntl, LONG_DATE_FORMAT, Parse_EN_US } from '../../../_lib/date_he
 
 export const Object = ({ house, values }) => {
   const { arrivalDate, departureDate } = values
-  console.log({ values });
   return (
     <React.Fragment>
       <h2>

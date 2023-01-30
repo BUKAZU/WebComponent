@@ -1,24 +1,21 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import Loading from '../icons/loading.svg';
 import FormCreator from './FormCreator';
 import { BOOKING_PRICE_QUERY } from '../../_lib/queries';
 import { useQuery } from '@apollo/client';
 import { AppContext } from '../AppContext';
+import { CalendarContext } from './CalendarParts/CalendarContext';
 
-interface Props {
-  booking: object;
-  onReturn: Function;
-}
 
-function BookingForm({ booking, onReturn }: Props): JSX.Element {
+function BookingForm(): JSX.Element {
   const { portalCode, objectCode } = useContext(AppContext);
+  const { arrivalDate, departureDate } = useContext(CalendarContext)
   const { data, loading, error } = useQuery(BOOKING_PRICE_QUERY, {
     variables: {
       portalCode,
       objectCode,
-      starts_at: booking.arrivalDate.date,
-      ends_at: booking.departureDate.date
+      starts_at: arrivalDate.date,
+      ends_at: departureDate.date
     }
   });
 
@@ -37,18 +34,9 @@ function BookingForm({ booking, onReturn }: Props): JSX.Element {
   return (
     <FormCreator
       house={result}
-      booking={booking}
-      PortalSite={data.PortalSite}
-      onReturn={() => {
-        onReturn(booking);
-      }}
+      PortalSite={data.PortalSite}     
     />
   );
 }
-
-BookingForm.propTypes = {
-  booking: PropTypes.object.isRequired,
-  onReturn: PropTypes.func.isRequired
-};
 
 export default BookingForm;

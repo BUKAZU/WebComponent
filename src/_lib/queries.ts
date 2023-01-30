@@ -219,3 +219,22 @@ export const CREATE_BOOKING_MUTATION = gql`
     }
   }
 `;
+
+export const SINGLE_HOUSE_QUERY = gql`
+  query PortalSiteSingleHouseQuery($portalCode: ID!, $objectCode: String!) {
+    PortalSite(id: $portalCode) {
+      id
+      houses(house_code: $objectCode) {
+        id
+        code
+        name
+        max_nights
+        last_minute_days
+        discounts
+        discounts_info
+        house_type
+        persons
+      }
+    }
+  }
+`;

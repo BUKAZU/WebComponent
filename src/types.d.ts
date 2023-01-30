@@ -11,6 +11,16 @@ export type FiltersFormType = {
   location: string;
 };
 
+type BookingFormType = {
+  adults_from: number;
+  children: boolean;
+  children_from: number;
+  children_til: number;
+  babies: boolean;
+  babies_til: number;
+  showDiscountCode: boolean;
+};
+
 type name_id_type = {
   id: number;
   name: string;
@@ -19,6 +29,7 @@ type name_id_type = {
 type PortalOptions = {
   filtersForm: FiltersFormType;
   bookingFields: object[];
+  bookingForm: BookingFormType;
 };
 
 export type PortalSiteType = {
@@ -46,8 +57,15 @@ export type HouseType = {
   id: number;
   code: string;
   house_type: string;
-  persons: string;
-  booking_price: {
-    optional_house_costs: [];
+  persons: number;
+  max_nights: number
+  allow_option?: boolean;
+  cancel_insurance?: boolean;
+  discounts?: string;
+  discounts_info?: string;
+  booking_price?: {
+    optional_house_costs: {
+      id: number;
+    }[];
   };
 };

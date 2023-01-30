@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   addDays,
   endOfMonth,
@@ -17,28 +17,24 @@ import {
 import { FormatIntl, Parse_EN_US } from '../../../_lib/date_helper';
 import DayClasses from './DayClasses';
 import { HouseType } from '../../../types';
+import { CalendarContext, CalendarContextDispatch } from './CalendarContext';
 
 interface CellProps {
   availabilities: [];
   month: Date;
   discounts: [];
-  dates: {
-    selectedDate: string;
-    departureDate: object;
-    arrivalDate: string;
-  };
   house: HouseType;
-  onDateClick: Function;
 }
 
 function RenderCells({
   availabilities,
   month,
   discounts,
-  dates,
-  house,
-  onDateClick
+  house
 }: CellProps): JSX.Element {
+  const dispatch = useContext(CalendarContextDispatch);
+  const dates = useContext(CalendarContext);
+
   const monthStart = startOfMonth(month);
   const monthEnd = endOfMonth(monthStart);
   const startDate = startOfWeek(monthStart);
@@ -67,14 +63,18 @@ function RenderCells({
             buDate: daz,
             prevBooked,
             house,
-            dates,
+            dates
           })}
           key={daz.date}
-          date={daz.date}
           role="button"
           tabIndex={0}
-          onClick={() => onDateClick(cloneDay)}
-          onKeyPress={() => onDateClick(cloneDay)}
+          onClick={() => {
+            dispatch({
+              type: 'clicked',
+              day: cloneDay,
+              house
+            });
+          }}
         >
           <span>{FormatIntl(day, 'd')}</span>
         </div>

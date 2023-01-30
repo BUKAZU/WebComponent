@@ -1,8 +1,14 @@
 import React from 'react';
 import { NumberSelect } from '../FormItems';
 import { FormattedMessage } from 'react-intl';
+import { HouseType, PortalOptions } from '../../../types';
 
-export default function Guests({ options, house }) {
+interface Props {
+  options: PortalOptions;
+  house: HouseType;
+}
+
+export default function Guests({ options, house }: Props): React.ReactNode {
   return (
     <>
       <NumberSelect
@@ -17,7 +23,7 @@ export default function Guests({ options, house }) {
               values={{
                 age: options.bookingForm
                   ? options.bookingForm.adults_from || '18'
-                  : '18',
+                  : '18'
               }}
             />
           </div>
@@ -39,7 +45,7 @@ export default function Guests({ options, house }) {
                     : '3',
                   til: options.bookingForm
                     ? options.bookingForm.children_til || '17'
-                    : '17',
+                    : '17'
                 }}
               />
             </div>
@@ -59,7 +65,7 @@ export default function Guests({ options, house }) {
                 values={{
                   babies: options.bookingForm
                     ? options.bookingForm.babies_til || '2'
-                    : '2',
+                    : '2'
                 }}
               />
             </div>

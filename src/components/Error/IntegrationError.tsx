@@ -13,7 +13,7 @@ export default function IntegrationError({
   pageType,
   locale,
   filters
-}: Props): JSX.Element {
+}: Props): JSX.Element | false {
   let errors = [];
 
   if (!portalCode) {
@@ -57,6 +57,6 @@ export default function IntegrationError({
   );
 }
 
-const isObject = (obj) => {
+const isObject = (obj: any) => {
   return Object.prototype.toString.call(obj) === '[object Object]';
 };

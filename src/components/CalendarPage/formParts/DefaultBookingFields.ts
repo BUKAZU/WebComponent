@@ -1,4 +1,6 @@
-const DefaultBookingFields = [
+import { BookingFieldsType } from "./form_types";
+
+const DefaultBookingFields: BookingFieldsType = [
   {
     id: 'first_name',
     label: 'Voornaam',

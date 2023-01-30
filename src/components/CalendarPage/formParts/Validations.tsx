@@ -1,13 +1,13 @@
-import React from "react";
-import { FormattedMessage } from "react-intl";
-import { HouseType } from "../../../types";
-import { byString, validateAge } from "./BookingHelpers";
-import { isInt } from "./OptionalBookingFields";
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
+import { HouseType } from '../../../types';
+import { byString, validateAge } from './BookingHelpers';
+import { isInt } from './OptionalBookingFields';
 
 interface Props {
-    values: object,
-    house: HouseType
-    bookingFields: []
+  values: object;
+  house: HouseType;
+  bookingFields: [];
 }
 
 export function validateForm(values, house, bookingFields): [] {
@@ -64,7 +64,7 @@ export function validateForm(values, house, bookingFields): [] {
 
   if (
     values.cancel_insurance !== 0 &&
-    !includes(['nl', 'de', 'be'], values.country)
+    !['nl', 'de', 'be'].includes(values.country)
   ) {
     errors['insurances'] = (
       <FormattedMessage id="can_only_take_insurance_in_de_be_nl" />
@@ -75,4 +75,4 @@ export function validateForm(values, house, bookingFields): [] {
   }
 
   return errors;
-};
+}

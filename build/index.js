@@ -240,80 +240,6 @@ function _taggedTemplateLiteral(strings, raw) {
   }));
 }
 
-function _unsupportedIterableToArray$7(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray$7(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$7(o, minLen);
-}
-
-function _arrayLikeToArray$7(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-
-  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-
-  return arr2;
-}
-
-function _createForOfIteratorHelper$1(o, allowArrayLike) {
-  var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
-
-  if (!it) {
-    if (Array.isArray(o) || (it = _unsupportedIterableToArray$7(o)) || allowArrayLike && o && typeof o.length === "number") {
-      if (it) o = it;
-      var i = 0;
-
-      var F = function () {};
-
-      return {
-        s: F,
-        n: function () {
-          if (i >= o.length) return {
-            done: true
-          };
-          return {
-            done: false,
-            value: o[i++]
-          };
-        },
-        e: function (e) {
-          throw e;
-        },
-        f: F
-      };
-    }
-
-    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-  }
-
-  var normalCompletion = true,
-      didErr = false,
-      err;
-  return {
-    s: function () {
-      it = it.call(o);
-    },
-    n: function () {
-      var step = it.next();
-      normalCompletion = step.done;
-      return step;
-    },
-    e: function (e) {
-      didErr = true;
-      err = e;
-    },
-    f: function () {
-      try {
-        if (!normalCompletion && it.return != null) it.return();
-      } finally {
-        if (didErr) throw err;
-      }
-    }
-  };
-}
-
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 function getDefaultExportFromCjs (x) {
@@ -1585,17 +1511,17 @@ function wrapConsoleMethod(name) {
     invariant.error = wrapConsoleMethod("error");
 })(invariant$2 || (invariant$2 = {}));
 
-function maybe$1(thunk) {
+function maybe$2(thunk) {
     try {
         return thunk();
     }
     catch (_a) { }
 }
 
-var global$1 = (maybe$1(function () { return globalThis; }) ||
-    maybe$1(function () { return window; }) ||
-    maybe$1(function () { return self; }) ||
-    maybe$1(function () { return global; }) || maybe$1(function () { return maybe$1.constructor("return this")(); }));
+var global$1 = (maybe$2(function () { return globalThis; }) ||
+    maybe$2(function () { return window; }) ||
+    maybe$2(function () { return self; }) ||
+    maybe$2(function () { return global; }) || maybe$2(function () { return maybe$2.constructor("return this")(); }));
 
 var __ = "__";
 var GLOBAL_KEY = [__, __].join("DEV");
@@ -1605,7 +1531,7 @@ function getDEV() {
     }
     catch (_a) {
         Object.defineProperty(global$1, GLOBAL_KEY, {
-            value: maybe$1(function () { return process.env.NODE_ENV; }) !== "production",
+            value: maybe$2(function () { return process.env.NODE_ENV; }) !== "production",
             enumerable: false,
             configurable: true,
             writable: true,
@@ -1615,30 +1541,30 @@ function getDEV() {
 }
 var DEV = getDEV();
 
-function maybe(thunk) {
+function maybe$1(thunk) {
   try { return thunk() } catch (_) {}
 }
 
 var safeGlobal = (
-  maybe(function() { return globalThis }) ||
-  maybe(function() { return window }) ||
-  maybe(function() { return self }) ||
-  maybe(function() { return global }) ||
+  maybe$1(function() { return globalThis }) ||
+  maybe$1(function() { return window }) ||
+  maybe$1(function() { return self }) ||
+  maybe$1(function() { return global }) ||
   // We don't expect the Function constructor ever to be invoked at runtime, as
   // long as at least one of globalThis, window, self, or global is defined, so
   // we are under no obligation to make it easy for static analysis tools to
   // detect syntactic usage of the Function constructor. If you think you can
   // improve your static analysis to detect this obfuscation, think again. This
   // is an arms race you cannot win, at least not in JavaScript.
-  maybe(function() { return maybe.constructor("return this")() })
+  maybe$1(function() { return maybe$1.constructor("return this")() })
 );
 
 var needToRemove = false;
 
 function install() {
   if (safeGlobal &&
-      !maybe(function() { return process.env.NODE_ENV }) &&
-      !maybe(function() { return process })) {
+      !maybe$1(function() { return process.env.NODE_ENV }) &&
+      !maybe$1(function() { return process })) {
     Object.defineProperty(safeGlobal, "process", {
       value: {
         env: {
@@ -5442,7 +5368,7 @@ function removeTemporaryGlobals() {
 }
 
 function checkDEV() {
-    __DEV__ ? invariant$2("boolean" === typeof DEV, DEV) : invariant$2("boolean" === typeof DEV, 36);
+    __DEV__ ? invariant$2("boolean" === typeof DEV, DEV) : invariant$2("boolean" === typeof DEV, 38);
 }
 removeTemporaryGlobals();
 checkDEV();
@@ -5457,7 +5383,7 @@ function shouldInclude(_a, variables) {
         var evaledValue = false;
         if (ifArgument.value.kind === 'Variable') {
             evaledValue = variables && variables[ifArgument.value.name.value];
-            __DEV__ ? invariant$2(evaledValue !== void 0, "Invalid variable referenced in @".concat(directive.name.value, " directive.")) : invariant$2(evaledValue !== void 0, 37);
+            __DEV__ ? invariant$2(evaledValue !== void 0, "Invalid variable referenced in @".concat(directive.name.value, " directive.")) : invariant$2(evaledValue !== void 0, 39);
         }
         else {
             evaledValue = ifArgument.value.value;
@@ -5465,22 +5391,21 @@ function shouldInclude(_a, variables) {
         return directive.name.value === 'skip' ? !evaledValue : evaledValue;
     });
 }
-function getDirectiveNames(root) {
-    var names = [];
+function hasDirectives(names, root, all) {
+    var nameSet = new Set(names);
+    var uniqueCount = nameSet.size;
     visit(root, {
         Directive: function (node) {
-            names.push(node.name.value);
+            if (nameSet.delete(node.name.value) &&
+                (!all || !nameSet.size)) {
+                return BREAK;
+            }
         },
     });
-    return names;
-}
-function hasDirectives(names, root) {
-    return getDirectiveNames(root).some(function (name) { return names.indexOf(name) > -1; });
+    return all ? !nameSet.size : nameSet.size < uniqueCount;
 }
 function hasClientExports(document) {
-    return (document &&
-        hasDirectives(['client'], document) &&
-        hasDirectives(['export'], document));
+    return document && hasDirectives(['client', 'export'], document, true);
 }
 function isInclusionDirective(_a) {
     var value = _a.name.value;
@@ -5494,13 +5419,13 @@ function getInclusionDirectives(directives) {
                 return;
             var directiveArguments = directive.arguments;
             var directiveName = directive.name.value;
-            __DEV__ ? invariant$2(directiveArguments && directiveArguments.length === 1, "Incorrect number of arguments for the @".concat(directiveName, " directive.")) : invariant$2(directiveArguments && directiveArguments.length === 1, 38);
+            __DEV__ ? invariant$2(directiveArguments && directiveArguments.length === 1, "Incorrect number of arguments for the @".concat(directiveName, " directive.")) : invariant$2(directiveArguments && directiveArguments.length === 1, 40);
             var ifArgument = directiveArguments[0];
-            __DEV__ ? invariant$2(ifArgument.name && ifArgument.name.value === 'if', "Invalid argument for the @".concat(directiveName, " directive.")) : invariant$2(ifArgument.name && ifArgument.name.value === 'if', 39);
+            __DEV__ ? invariant$2(ifArgument.name && ifArgument.name.value === 'if', "Invalid argument for the @".concat(directiveName, " directive.")) : invariant$2(ifArgument.name && ifArgument.name.value === 'if', 41);
             var ifValue = ifArgument.value;
             __DEV__ ? invariant$2(ifValue &&
                 (ifValue.kind === 'Variable' || ifValue.kind === 'BooleanValue'), "Argument for the @".concat(directiveName, " directive must be a variable or a boolean value.")) : invariant$2(ifValue &&
-                (ifValue.kind === 'Variable' || ifValue.kind === 'BooleanValue'), 40);
+                (ifValue.kind === 'Variable' || ifValue.kind === 'BooleanValue'), 42);
             result.push({ directive: directive, ifArgument: ifArgument });
         });
     }
@@ -5513,14 +5438,14 @@ function getFragmentQueryDocument(document, fragmentName) {
     document.definitions.forEach(function (definition) {
         if (definition.kind === 'OperationDefinition') {
             throw __DEV__ ? new InvariantError("Found a ".concat(definition.operation, " operation").concat(definition.name ? " named '".concat(definition.name.value, "'") : '', ". ") +
-                'No operations are allowed when using a fragment as a query. Only fragments are allowed.') : new InvariantError(41);
+                'No operations are allowed when using a fragment as a query. Only fragments are allowed.') : new InvariantError(43);
         }
         if (definition.kind === 'FragmentDefinition') {
             fragments.push(definition);
         }
     });
     if (typeof actualFragmentName === 'undefined') {
-        __DEV__ ? invariant$2(fragments.length === 1, "Found ".concat(fragments.length, " fragments. `fragmentName` must be provided when there is not exactly 1 fragment.")) : invariant$2(fragments.length === 1, 42);
+        __DEV__ ? invariant$2(fragments.length === 1, "Found ".concat(fragments.length, " fragments. `fragmentName` must be provided when there is not exactly 1 fragment.")) : invariant$2(fragments.length === 1, 44);
         actualFragmentName = fragments[0].name.value;
     }
     var query = __assign(__assign({}, document), { definitions: __spreadArray([
@@ -5556,9 +5481,13 @@ function getFragmentFromSelection(selection, fragmentMap) {
         case 'InlineFragment':
             return selection;
         case 'FragmentSpread': {
-            var fragment = fragmentMap && fragmentMap[selection.name.value];
-            __DEV__ ? invariant$2(fragment, "No fragment named ".concat(selection.name.value, ".")) : invariant$2(fragment, 43);
-            return fragment;
+            var fragmentName = selection.name.value;
+            if (typeof fragmentMap === "function") {
+                return fragmentMap(fragmentName);
+            }
+            var fragment = fragmentMap && fragmentMap[fragmentName];
+            __DEV__ ? invariant$2(fragment, "No fragment named ".concat(fragmentName)) : invariant$2(fragment, 45);
+            return fragment || null;
         }
         default:
             return null;
@@ -5641,7 +5570,7 @@ function valueToObjectRepresentation(argObj, name, value, variables) {
     else {
         throw __DEV__ ? new InvariantError("The inline argument \"".concat(name.value, "\" of kind \"").concat(value.kind, "\"") +
             'is not supported. Use variables instead of inline arguments to ' +
-            'overcome this limitation.') : new InvariantError(52);
+            'overcome this limitation.') : new InvariantError(54);
     }
 }
 function storeKeyNameFromField(field, variables) {
@@ -5775,16 +5704,16 @@ function isInlineFragment(selection) {
 }
 
 function checkDocument(doc) {
-    __DEV__ ? invariant$2(doc && doc.kind === 'Document', "Expecting a parsed GraphQL document. Perhaps you need to wrap the query string in a \"gql\" tag? http://docs.apollostack.com/apollo-client/core.html#gql") : invariant$2(doc && doc.kind === 'Document', 44);
+    __DEV__ ? invariant$2(doc && doc.kind === 'Document', "Expecting a parsed GraphQL document. Perhaps you need to wrap the query string in a \"gql\" tag? http://docs.apollostack.com/apollo-client/core.html#gql") : invariant$2(doc && doc.kind === 'Document', 46);
     var operations = doc.definitions
         .filter(function (d) { return d.kind !== 'FragmentDefinition'; })
         .map(function (definition) {
         if (definition.kind !== 'OperationDefinition') {
-            throw __DEV__ ? new InvariantError("Schema type definitions not allowed in queries. Found: \"".concat(definition.kind, "\"")) : new InvariantError(45);
+            throw __DEV__ ? new InvariantError("Schema type definitions not allowed in queries. Found: \"".concat(definition.kind, "\"")) : new InvariantError(47);
         }
         return definition;
     });
-    __DEV__ ? invariant$2(operations.length <= 1, "Ambiguous GraphQL document: contains ".concat(operations.length, " operations")) : invariant$2(operations.length <= 1, 46);
+    __DEV__ ? invariant$2(operations.length <= 1, "Ambiguous GraphQL document: contains ".concat(operations.length, " operations")) : invariant$2(operations.length <= 1, 48);
     return doc;
 }
 function getOperationDefinition(doc) {
@@ -5803,14 +5732,14 @@ function getFragmentDefinitions(doc) {
 }
 function getQueryDefinition(doc) {
     var queryDef = getOperationDefinition(doc);
-    __DEV__ ? invariant$2(queryDef && queryDef.operation === 'query', 'Must contain a query definition.') : invariant$2(queryDef && queryDef.operation === 'query', 47);
+    __DEV__ ? invariant$2(queryDef && queryDef.operation === 'query', 'Must contain a query definition.') : invariant$2(queryDef && queryDef.operation === 'query', 49);
     return queryDef;
 }
 function getFragmentDefinition(doc) {
-    __DEV__ ? invariant$2(doc.kind === 'Document', "Expecting a parsed GraphQL document. Perhaps you need to wrap the query string in a \"gql\" tag? http://docs.apollostack.com/apollo-client/core.html#gql") : invariant$2(doc.kind === 'Document', 48);
-    __DEV__ ? invariant$2(doc.definitions.length <= 1, 'Fragment must have exactly one definition.') : invariant$2(doc.definitions.length <= 1, 49);
+    __DEV__ ? invariant$2(doc.kind === 'Document', "Expecting a parsed GraphQL document. Perhaps you need to wrap the query string in a \"gql\" tag? http://docs.apollostack.com/apollo-client/core.html#gql") : invariant$2(doc.kind === 'Document', 50);
+    __DEV__ ? invariant$2(doc.definitions.length <= 1, 'Fragment must have exactly one definition.') : invariant$2(doc.definitions.length <= 1, 51);
     var fragmentDef = doc.definitions[0];
-    __DEV__ ? invariant$2(fragmentDef.kind === 'FragmentDefinition', 'Must be a fragment definition.') : invariant$2(fragmentDef.kind === 'FragmentDefinition', 50);
+    __DEV__ ? invariant$2(fragmentDef.kind === 'FragmentDefinition', 'Must be a fragment definition.') : invariant$2(fragmentDef.kind === 'FragmentDefinition', 52);
     return fragmentDef;
 }
 function getMainDefinition(queryDoc) {
@@ -5833,7 +5762,7 @@ function getMainDefinition(queryDoc) {
     if (fragmentDefinition) {
         return fragmentDefinition;
     }
-    throw __DEV__ ? new InvariantError('Expected a parsed GraphQL query with a query, mutation, subscription, or a fragment.') : new InvariantError(51);
+    throw __DEV__ ? new InvariantError('Expected a parsed GraphQL query with a query, mutation, subscription, or a fragment.') : new InvariantError(53);
 }
 function getDefaultValues(definition) {
     var defaultValues = Object.create(null);
@@ -5866,11 +5795,9 @@ var TYPENAME_FIELD = {
         value: '__typename',
     },
 };
-function isEmpty(op, fragments) {
-    return op.selectionSet.selections.every(function (selection) {
-        return selection.kind === 'FragmentSpread' &&
-            isEmpty(fragments[selection.name.value], fragments);
-    });
+function isEmpty(op, fragmentMap) {
+    return !op || op.selectionSet.selections.every(function (selection) { return selection.kind === 'FragmentSpread' &&
+        isEmpty(fragmentMap[selection.name.value], fragmentMap); });
 }
 function nullIfDocIsEmpty(doc) {
     return isEmpty(getOperationDefinition(doc) || getFragmentDefinition(doc), createFragmentMap(getFragmentDefinitions(doc)))
@@ -6942,12 +6869,13 @@ function asyncMap(observable, mapFn, catchFn) {
 }
 
 var canUseWeakMap = typeof WeakMap === 'function' &&
-    maybe$1(function () { return navigator.product; }) !== 'ReactNative';
+    maybe$2(function () { return navigator.product; }) !== 'ReactNative';
 var canUseWeakSet = typeof WeakSet === 'function';
 var canUseSymbol$1 = typeof Symbol === 'function' &&
     typeof Symbol.for === 'function';
-var canUseDOM = typeof maybe$1(function () { return window.document.createElement; }) === "function";
-var usingJSDOM = maybe$1(function () { return navigator.userAgent.indexOf("jsdom") >= 0; }) || false;
+var canUseAsyncIteratorSymbol = canUseSymbol$1 && Symbol.asyncIterator;
+var canUseDOM = typeof maybe$2(function () { return window.document.createElement; }) === "function";
+var usingJSDOM = maybe$2(function () { return navigator.userAgent.indexOf("jsdom") >= 0; }) || false;
 var canUseLayoutEffect = canUseDOM && !usingJSDOM;
 
 function fixObservableSubclass(subclass) {
@@ -6972,7 +6900,6 @@ var Concast = (function (_super) {
             return function () { return _this.removeObserver(observer); };
         }) || this;
         _this.observers = new Set();
-        _this.addCount = 0;
         _this.promise = new Promise(function (resolve, reject) {
             _this.resolve = resolve;
             _this.reject = reject;
@@ -6981,6 +6908,7 @@ var Concast = (function (_super) {
             next: function (result) {
                 if (_this.sub !== null) {
                     _this.latest = ["next", result];
+                    _this.notify("next", result);
                     iterateObserversSafely(_this.observers, "next", result);
                 }
             },
@@ -6992,6 +6920,7 @@ var Concast = (function (_super) {
                     _this.sub = null;
                     _this.latest = ["error", error];
                     _this.reject(error);
+                    _this.notify("error", error);
                     iterateObserversSafely(_this.observers, "error", error);
                 }
             },
@@ -7010,6 +6939,7 @@ var Concast = (function (_super) {
                         else {
                             _this.resolve();
                         }
+                        _this.notify("complete");
                         iterateObserversSafely(_this.observers, "complete");
                     }
                     else if (isPromiseLike(value)) {
@@ -7021,6 +6951,7 @@ var Concast = (function (_super) {
                 }
             },
         };
+        _this.nextResultListeners = new Set();
         _this.cancel = function (reason) {
             _this.reject(reason);
             _this.sources = [];
@@ -7062,34 +6993,29 @@ var Concast = (function (_super) {
         if (!this.observers.has(observer)) {
             this.deliverLastMessage(observer);
             this.observers.add(observer);
-            ++this.addCount;
         }
     };
-    Concast.prototype.removeObserver = function (observer, quietly) {
+    Concast.prototype.removeObserver = function (observer) {
         if (this.observers.delete(observer) &&
-            --this.addCount < 1 &&
-            !quietly) {
+            this.observers.size < 1) {
             this.handlers.complete();
         }
     };
-    Concast.prototype.cleanup = function (callback) {
-        var _this = this;
+    Concast.prototype.notify = function (method, arg) {
+        var nextResultListeners = this.nextResultListeners;
+        if (nextResultListeners.size) {
+            this.nextResultListeners = new Set;
+            nextResultListeners.forEach(function (listener) { return listener(method, arg); });
+        }
+    };
+    Concast.prototype.beforeNext = function (callback) {
         var called = false;
-        var once = function () {
+        this.nextResultListeners.add(function (method, arg) {
             if (!called) {
                 called = true;
-                _this.observers.delete(observer);
-                callback();
+                callback(method, arg);
             }
-        };
-        var observer = {
-            next: once,
-            error: once,
-            complete: once,
-        };
-        var count = this.addCount;
-        this.addObserver(observer);
-        this.addCount = count;
+        });
     };
     return Concast;
 }(Observable));
@@ -7099,8 +7025,53 @@ function isNonEmptyArray(value) {
     return Array.isArray(value) && value.length > 0;
 }
 
+function isExecutionPatchIncrementalResult(value) {
+    return "incremental" in value;
+}
+function isExecutionPatchInitialResult(value) {
+    return "hasNext" in value && "data" in value;
+}
+function isExecutionPatchResult(value) {
+    return (isExecutionPatchIncrementalResult(value) ||
+        isExecutionPatchInitialResult(value));
+}
+function mergeIncrementalData(prevResult, result) {
+    var mergedData = prevResult;
+    var merger = new DeepMerger();
+    if (isExecutionPatchIncrementalResult(result) &&
+        isNonEmptyArray(result.incremental)) {
+        result.incremental.forEach(function (_a) {
+            var data = _a.data, path = _a.path;
+            for (var i = path.length - 1; i >= 0; --i) {
+                var key = path[i];
+                var isNumericKey = !isNaN(+key);
+                var parent_1 = isNumericKey ? [] : {};
+                parent_1[key] = data;
+                data = parent_1;
+            }
+            mergedData = merger.merge(mergedData, data);
+        });
+    }
+    return mergedData;
+}
+
 function graphQLResultHasError(result) {
-    return (result.errors && result.errors.length > 0) || false;
+    var errors = getGraphQLErrorsFromResult(result);
+    return isNonEmptyArray(errors);
+}
+function getGraphQLErrorsFromResult(result) {
+    var graphQLErrors = isNonEmptyArray(result.errors)
+        ? result.errors.slice(0)
+        : [];
+    if (isExecutionPatchIncrementalResult(result) &&
+        isNonEmptyArray(result.incremental)) {
+        result.incremental.forEach(function (incrementalResult) {
+            if (incrementalResult.errors) {
+                graphQLErrors.push.apply(graphQLErrors, incrementalResult.errors);
+            }
+        });
+    }
+    return graphQLErrors;
 }
 
 function compact() {
@@ -7168,7 +7139,7 @@ var ApolloProvider = function (_a) {
             context = Object.assign({}, context, { client: client });
         }
         __DEV__ ? invariant$2(context.client, 'ApolloProvider was not passed a client instance. Make ' +
-            'sure you pass in your client via the "client" prop.') : invariant$2(context.client, 26);
+            'sure you pass in your client via the "client" prop.') : invariant$2(context.client, 28);
         return (React__namespace.createElement(ApolloContext.Provider, { value: context }, children));
     }));
 };
@@ -7178,7 +7149,7 @@ function useApolloClient(override) {
     var client = override || context.client;
     __DEV__ ? invariant$2(!!client, 'Could not find "client" in the context or passed in as an option. ' +
         'Wrap the root component in an <ApolloProvider>, or pass an ApolloClient ' +
-        'instance in via options.') : invariant$2(!!client, 29);
+        'instance in via options.') : invariant$2(!!client, 31);
     return client;
 }
 
@@ -7448,7 +7419,7 @@ function validateOperation(operation) {
     for (var _i = 0, _a = Object.keys(operation); _i < _a.length; _i++) {
         var key = _a[_i];
         if (OPERATION_FIELDS.indexOf(key) < 0) {
-            throw __DEV__ ? new InvariantError("illegal argument: ".concat(key)) : new InvariantError(24);
+            throw __DEV__ ? new InvariantError("illegal argument: ".concat(key)) : new InvariantError(26);
         }
     }
     return operation;
@@ -7571,7 +7542,7 @@ var ApolloLink = (function () {
         return ApolloLink.concat(this, next);
     };
     ApolloLink.prototype.request = function (operation, forward) {
-        throw __DEV__ ? new InvariantError('request is not implemented') : new InvariantError(19);
+        throw __DEV__ ? new InvariantError('request is not implemented') : new InvariantError(21);
     };
     ApolloLink.prototype.onError = function (error, observer) {
         if (observer && observer.error) {
@@ -7589,38 +7560,314 @@ var ApolloLink = (function () {
 
 var execute = ApolloLink.execute;
 
-var version = '3.6.9';
+var version = '3.7.5';
+
+function isNodeResponse(value) {
+    return !!value.body;
+}
+function isReadableStream(value) {
+    return !!value.getReader;
+}
+function isAsyncIterableIterator(value) {
+    return !!(canUseAsyncIteratorSymbol &&
+        value[Symbol.asyncIterator]);
+}
+function isStreamableBlob(value) {
+    return !!value.stream;
+}
+function isBlob(value) {
+    return !!value.arrayBuffer;
+}
+function isNodeReadableStream(value) {
+    return !!value.pipe;
+}
+
+function asyncIterator(source) {
+    var _a;
+    var iterator = source[Symbol.asyncIterator]();
+    return _a = {
+            next: function () {
+                return iterator.next();
+            }
+        },
+        _a[Symbol.asyncIterator] = function () {
+            return this;
+        },
+        _a;
+}
+
+function nodeStreamIterator(stream) {
+    var cleanup = null;
+    var error = null;
+    var done = false;
+    var data = [];
+    var waiting = [];
+    function onData(chunk) {
+        if (error)
+            return;
+        if (waiting.length) {
+            var shiftedArr = waiting.shift();
+            if (Array.isArray(shiftedArr) && shiftedArr[0]) {
+                return shiftedArr[0]({ value: chunk, done: false });
+            }
+        }
+        data.push(chunk);
+    }
+    function onError(err) {
+        error = err;
+        var all = waiting.slice();
+        all.forEach(function (pair) {
+            pair[1](err);
+        });
+        !cleanup || cleanup();
+    }
+    function onEnd() {
+        done = true;
+        var all = waiting.slice();
+        all.forEach(function (pair) {
+            pair[0]({ value: undefined, done: true });
+        });
+        !cleanup || cleanup();
+    }
+    cleanup = function () {
+        cleanup = null;
+        stream.removeListener("data", onData);
+        stream.removeListener("error", onError);
+        stream.removeListener("end", onEnd);
+        stream.removeListener("finish", onEnd);
+        stream.removeListener("close", onEnd);
+    };
+    stream.on("data", onData);
+    stream.on("error", onError);
+    stream.on("end", onEnd);
+    stream.on("finish", onEnd);
+    stream.on("close", onEnd);
+    function getNext() {
+        return new Promise(function (resolve, reject) {
+            if (error)
+                return reject(error);
+            if (data.length)
+                return resolve({ value: data.shift(), done: false });
+            if (done)
+                return resolve({ value: undefined, done: true });
+            waiting.push([resolve, reject]);
+        });
+    }
+    var iterator = {
+        next: function () {
+            return getNext();
+        },
+    };
+    if (canUseAsyncIteratorSymbol) {
+        iterator[Symbol.asyncIterator] = function () {
+            return this;
+        };
+    }
+    return iterator;
+}
+
+function promiseIterator(promise) {
+    var resolved = false;
+    var iterator = {
+        next: function () {
+            if (resolved)
+                return Promise.resolve({
+                    value: undefined,
+                    done: true,
+                });
+            resolved = true;
+            return new Promise(function (resolve, reject) {
+                promise
+                    .then(function (value) {
+                    resolve({ value: value, done: false });
+                })
+                    .catch(reject);
+            });
+        },
+    };
+    if (canUseAsyncIteratorSymbol) {
+        iterator[Symbol.asyncIterator] = function () {
+            return this;
+        };
+    }
+    return iterator;
+}
+
+function readerIterator(reader) {
+    var iterator = {
+        next: function () {
+            return reader.read();
+        },
+    };
+    if (canUseAsyncIteratorSymbol) {
+        iterator[Symbol.asyncIterator] = function () {
+            return this;
+        };
+    }
+    return iterator;
+}
+
+function responseIterator(response) {
+    var body = response;
+    if (isNodeResponse(response))
+        body = response.body;
+    if (isAsyncIterableIterator(body))
+        return asyncIterator(body);
+    if (isReadableStream(body))
+        return readerIterator(body.getReader());
+    if (isStreamableBlob(body)) {
+        return readerIterator(body.stream().getReader());
+    }
+    if (isBlob(body))
+        return promiseIterator(body.arrayBuffer());
+    if (isNodeReadableStream(body))
+        return nodeStreamIterator(body);
+    throw new Error("Unknown body type for responseIterator. Please pass a streamable response.");
+}
 
 var hasOwnProperty$g = Object.prototype.hasOwnProperty;
-function parseAndCheckHttpResponse(operations) {
-    return function (response) { return response
-        .text()
-        .then(function (bodyText) {
-        try {
-            return JSON.parse(bodyText);
+function readMultipartBody(response, observer) {
+    var _a, _b, _c;
+    return __awaiter(this, void 0, void 0, function () {
+        var decoder, contentType, delimiter, boundaryVal, boundary, buffer, iterator, running, _d, value, done, chunk, bi, message, i, headers, contentType_1, body, result;
+        var _e;
+        return __generator(this, function (_f) {
+            switch (_f.label) {
+                case 0:
+                    if (TextDecoder === undefined) {
+                        throw new Error("TextDecoder must be defined in the environment: please import a polyfill.");
+                    }
+                    decoder = new TextDecoder("utf-8");
+                    contentType = (_a = response.headers) === null || _a === void 0 ? void 0 : _a.get('content-type');
+                    delimiter = "boundary=";
+                    boundaryVal = (contentType === null || contentType === void 0 ? void 0 : contentType.includes(delimiter))
+                        ? contentType === null || contentType === void 0 ? void 0 : contentType.substring((contentType === null || contentType === void 0 ? void 0 : contentType.indexOf(delimiter)) + delimiter.length).replace(/['"]/g, "").replace(/\;(.*)/gm, "").trim()
+                        : "-";
+                    boundary = "--".concat(boundaryVal);
+                    buffer = "";
+                    iterator = responseIterator(response);
+                    running = true;
+                    _f.label = 1;
+                case 1:
+                    if (!running) return [3, 3];
+                    return [4, iterator.next()];
+                case 2:
+                    _d = _f.sent(), value = _d.value, done = _d.done;
+                    chunk = typeof value === "string" ? value : decoder.decode(value);
+                    running = !done;
+                    buffer += chunk;
+                    bi = buffer.indexOf(boundary);
+                    while (bi > -1) {
+                        message = void 0;
+                        _e = [
+                            buffer.slice(0, bi),
+                            buffer.slice(bi + boundary.length),
+                        ], message = _e[0], buffer = _e[1];
+                        if (message.trim()) {
+                            i = message.indexOf("\r\n\r\n");
+                            headers = parseHeaders(message.slice(0, i));
+                            contentType_1 = headers["content-type"];
+                            if (contentType_1 &&
+                                contentType_1.toLowerCase().indexOf("application/json") === -1) {
+                                throw new Error("Unsupported patch content type: application/json is required.");
+                            }
+                            body = message.slice(i);
+                            try {
+                                result = parseJsonBody(response, body.replace("\r\n", ""));
+                                if (Object.keys(result).length > 1 ||
+                                    "data" in result ||
+                                    "incremental" in result ||
+                                    "errors" in result) {
+                                    (_b = observer.next) === null || _b === void 0 ? void 0 : _b.call(observer, result);
+                                }
+                            }
+                            catch (err) {
+                                handleError(err, observer);
+                            }
+                        }
+                        bi = buffer.indexOf(boundary);
+                    }
+                    return [3, 1];
+                case 3:
+                    (_c = observer.complete) === null || _c === void 0 ? void 0 : _c.call(observer);
+                    return [2];
+            }
+        });
+    });
+}
+function parseHeaders(headerText) {
+    var headersInit = {};
+    headerText.split("\n").forEach(function (line) {
+        var i = line.indexOf(":");
+        if (i > -1) {
+            var name_1 = line.slice(0, i).trim().toLowerCase();
+            var value = line.slice(i + 1).trim();
+            headersInit[name_1] = value;
         }
-        catch (err) {
-            var parseError = err;
-            parseError.name = 'ServerParseError';
-            parseError.response = response;
-            parseError.statusCode = response.status;
-            parseError.bodyText = bodyText;
-            throw parseError;
-        }
-    })
+    });
+    return headersInit;
+}
+function parseJsonBody(response, bodyText) {
+    if (response.status >= 300) {
+        var getResult = function () {
+            try {
+                return JSON.parse(bodyText);
+            }
+            catch (err) {
+                return bodyText;
+            }
+        };
+        throwServerError(response, getResult(), "Response not successful: Received status code ".concat(response.status));
+    }
+    try {
+        return JSON.parse(bodyText);
+    }
+    catch (err) {
+        var parseError = err;
+        parseError.name = "ServerParseError";
+        parseError.response = response;
+        parseError.statusCode = response.status;
+        parseError.bodyText = bodyText;
+        throw parseError;
+    }
+}
+function handleError(err, observer) {
+    var _a, _b;
+    if (err.name === "AbortError")
+        return;
+    if (err.result && err.result.errors && err.result.data) {
+        (_a = observer.next) === null || _a === void 0 ? void 0 : _a.call(observer, err.result);
+    }
+    (_b = observer.error) === null || _b === void 0 ? void 0 : _b.call(observer, err);
+}
+function readJsonBody(response, operation, observer) {
+    parseAndCheckHttpResponse(operation)(response)
         .then(function (result) {
-        if (response.status >= 300) {
-            throwServerError(response, result, "Response not successful: Received status code ".concat(response.status));
-        }
-        if (!Array.isArray(result) &&
-            !hasOwnProperty$g.call(result, 'data') &&
-            !hasOwnProperty$g.call(result, 'errors')) {
-            throwServerError(response, result, "Server response was missing for query '".concat(Array.isArray(operations)
-                ? operations.map(function (op) { return op.operationName; })
-                : operations.operationName, "'."));
-        }
-        return result;
-    }); };
+        var _a, _b;
+        (_a = observer.next) === null || _a === void 0 ? void 0 : _a.call(observer, result);
+        (_b = observer.complete) === null || _b === void 0 ? void 0 : _b.call(observer);
+    })
+        .catch(function (err) { return handleError(err, observer); });
+}
+function parseAndCheckHttpResponse(operations) {
+    return function (response) {
+        return response
+            .text()
+            .then(function (bodyText) { return parseJsonBody(response, bodyText); })
+            .then(function (result) {
+            if (response.status >= 300) {
+                throwServerError(response, result, "Response not successful: Received status code ".concat(response.status));
+            }
+            if (!Array.isArray(result) &&
+                !hasOwnProperty$g.call(result, "data") &&
+                !hasOwnProperty$g.call(result, "errors")) {
+                throwServerError(response, result, "Server response was missing for query '".concat(Array.isArray(operations)
+                    ? operations.map(function (op) { return op.operationName; })
+                    : operations.operationName, "'."));
+            }
+            return result;
+        });
+    };
 }
 
 var serializeFetchParameter = function (p, label) {
@@ -7629,7 +7876,7 @@ var serializeFetchParameter = function (p, label) {
         serialized = JSON.stringify(p);
     }
     catch (e) {
-        var parseError = __DEV__ ? new InvariantError("Network request failed. ".concat(label, " is not serializable: ").concat(e.message)) : new InvariantError(21);
+        var parseError = __DEV__ ? new InvariantError("Network request failed. ".concat(label, " is not serializable: ").concat(e.message)) : new InvariantError(23);
         parseError.parseError = e;
         throw parseError;
     }
@@ -7639,6 +7886,7 @@ var serializeFetchParameter = function (p, label) {
 var defaultHttpOptions = {
     includeQuery: true,
     includeExtensions: false,
+    preserveHeaderCase: false,
 };
 var defaultHeaders = {
     accept: '*/*',
@@ -7661,12 +7909,15 @@ function selectHttpOptionsAndBodyInternal(operation, printer) {
     var options = {};
     var http = {};
     configs.forEach(function (config) {
-        options = __assign(__assign(__assign({}, options), config.options), { headers: __assign(__assign({}, options.headers), headersToLowerCase(config.headers)) });
+        options = __assign(__assign(__assign({}, options), config.options), { headers: __assign(__assign({}, options.headers), config.headers) });
         if (config.credentials) {
             options.credentials = config.credentials;
         }
         http = __assign(__assign({}, http), config.http);
     });
+    if (options.headers) {
+        options.headers = removeDuplicateHeaders(options.headers, http.preserveHeaderCase);
+    }
     var operationName = operation.operationName, extensions = operation.extensions, variables = operation.variables, query = operation.query;
     var body = { operationName: operationName, variables: variables };
     if (http.includeExtensions)
@@ -7678,20 +7929,28 @@ function selectHttpOptionsAndBodyInternal(operation, printer) {
         body: body,
     };
 }
-function headersToLowerCase(headers) {
-    if (headers) {
-        var normalized_1 = Object.create(null);
+function removeDuplicateHeaders(headers, preserveHeaderCase) {
+    if (!preserveHeaderCase) {
+        var normalizedHeaders_1 = Object.create(null);
         Object.keys(Object(headers)).forEach(function (name) {
-            normalized_1[name.toLowerCase()] = headers[name];
+            normalizedHeaders_1[name.toLowerCase()] = headers[name];
         });
-        return normalized_1;
+        return normalizedHeaders_1;
     }
-    return headers;
+    var headerData = Object.create(null);
+    Object.keys(Object(headers)).forEach(function (name) {
+        headerData[name.toLowerCase()] = { originalName: name, value: headers[name] };
+    });
+    var normalizedHeaders = Object.create(null);
+    Object.keys(headerData).forEach(function (name) {
+        normalizedHeaders[headerData[name].originalName] = headerData[name].value;
+    });
+    return normalizedHeaders;
 }
 
 var checkFetcher = function (fetcher) {
     if (!fetcher && typeof fetch === 'undefined') {
-        throw __DEV__ ? new InvariantError("\n\"fetch\" has not been found globally and no fetcher has been configured. To fix this, install a fetch package (like https://www.npmjs.com/package/cross-fetch), instantiate the fetcher, and pass it into your HttpLink constructor. For example:\n\nimport fetch from 'cross-fetch';\nimport { ApolloClient, HttpLink } from '@apollo/client';\nconst client = new ApolloClient({\n  link: new HttpLink({ uri: '/graphql', fetch })\n});\n    ") : new InvariantError(20);
+        throw __DEV__ ? new InvariantError("\n\"fetch\" has not been found globally and no fetcher has been configured. To fix this, install a fetch package (like https://www.npmjs.com/package/cross-fetch), instantiate the fetcher, and pass it into your HttpLink constructor. For example:\n\nimport fetch from 'cross-fetch';\nimport { ApolloClient, HttpLink } from '@apollo/client';\nconst client = new ApolloClient({\n  link: new HttpLink({ uri: '/graphql', fetch })\n});\n    ") : new InvariantError(22);
     }
 };
 
@@ -7759,15 +8018,15 @@ function rewriteURIForGET(chosenURI, body) {
     return { newURI: newURI };
 }
 
-var backupFetch = maybe$1(function () { return fetch; });
+var backupFetch = maybe$2(function () { return fetch; });
 var createHttpLink = function (linkOptions) {
     if (linkOptions === void 0) { linkOptions = {}; }
-    var _a = linkOptions.uri, uri = _a === void 0 ? '/graphql' : _a, preferredFetch = linkOptions.fetch, _b = linkOptions.print, print = _b === void 0 ? defaultPrinter : _b, includeExtensions = linkOptions.includeExtensions, useGETForQueries = linkOptions.useGETForQueries, _c = linkOptions.includeUnusedVariables, includeUnusedVariables = _c === void 0 ? false : _c, requestOptions = __rest(linkOptions, ["uri", "fetch", "print", "includeExtensions", "useGETForQueries", "includeUnusedVariables"]);
+    var _a = linkOptions.uri, uri = _a === void 0 ? '/graphql' : _a, preferredFetch = linkOptions.fetch, _b = linkOptions.print, print = _b === void 0 ? defaultPrinter : _b, includeExtensions = linkOptions.includeExtensions, preserveHeaderCase = linkOptions.preserveHeaderCase, useGETForQueries = linkOptions.useGETForQueries, _c = linkOptions.includeUnusedVariables, includeUnusedVariables = _c === void 0 ? false : _c, requestOptions = __rest(linkOptions, ["uri", "fetch", "print", "includeExtensions", "preserveHeaderCase", "useGETForQueries", "includeUnusedVariables"]);
     if (__DEV__) {
         checkFetcher(preferredFetch || backupFetch);
     }
     var linkConfig = {
-        http: { includeExtensions: includeExtensions },
+        http: { includeExtensions: includeExtensions, preserveHeaderCase: preserveHeaderCase },
         options: requestOptions.fetchOptions,
         credentials: requestOptions.credentials,
         headers: requestOptions.headers,
@@ -7823,6 +8082,10 @@ var createHttpLink = function (linkOptions) {
             !operation.query.definitions.some(definitionIsMutation)) {
             options.method = 'GET';
         }
+        if (hasDirectives(['defer'], operation.query)) {
+            options.headers = options.headers || {};
+            options.headers.accept = "multipart/mixed; deferSpec=20220824, application/json";
+        }
         if (options.method === 'GET') {
             var _d = rewriteURIForGET(chosenURI, body), newURI = _d.newURI, parseError = _d.parseError;
             if (parseError) {
@@ -7839,26 +8102,20 @@ var createHttpLink = function (linkOptions) {
             }
         }
         return new Observable(function (observer) {
-            var currentFetch = preferredFetch || maybe$1(function () { return fetch; }) || backupFetch;
+            var currentFetch = preferredFetch || maybe$2(function () { return fetch; }) || backupFetch;
             currentFetch(chosenURI, options)
                 .then(function (response) {
+                var _a;
                 operation.setContext({ response: response });
-                return response;
-            })
-                .then(parseAndCheckHttpResponse(operation))
-                .then(function (result) {
-                observer.next(result);
-                observer.complete();
-                return result;
-            })
-                .catch(function (err) {
-                if (err.name === 'AbortError')
-                    return;
-                if (err.result && err.result.errors && err.result.data) {
-                    observer.next(err.result);
+                var ctype = (_a = response.headers) === null || _a === void 0 ? void 0 : _a.get('content-type');
+                if (ctype !== null && /^multipart\/mixed/i.test(ctype)) {
+                    return readMultipartBody(response, observer);
                 }
-                observer.error(err);
-            });
+                else {
+                    return readJsonBody(response, operation, observer);
+                }
+            })
+                .catch(function (err) { return handleError(err, observer); });
             return function () {
                 if (controller)
                     controller.abort();
@@ -7931,54 +8188,54 @@ function isObjRef(value) {
 // This currentContext variable will only be used if the makeSlotClass
 // function is called, which happens only if this is the first copy of the
 // @wry/context package to be imported.
-var currentContext = null;
+var currentContext$1 = null;
 // This unique internal object is used to denote the absence of a value
 // for a given Slot, and is never exposed to outside code.
-var MISSING_VALUE = {};
-var idCounter = 1;
+var MISSING_VALUE$1 = {};
+var idCounter$1 = 1;
 // Although we can't do anything about the cost of duplicated code from
 // accidentally bundling multiple copies of the @wry/context package, we can
 // avoid creating the Slot class more than once using makeSlotClass.
-var makeSlotClass = function () { return /** @class */ (function () {
+var makeSlotClass$1 = function () { return /** @class */ (function () {
     function Slot() {
         // If you have a Slot object, you can find out its slot.id, but you cannot
         // guess the slot.id of a Slot you don't have access to, thanks to the
         // randomized suffix.
         this.id = [
             "slot",
-            idCounter++,
+            idCounter$1++,
             Date.now(),
             Math.random().toString(36).slice(2),
         ].join(":");
     }
     Slot.prototype.hasValue = function () {
-        for (var context_1 = currentContext; context_1; context_1 = context_1.parent) {
+        for (var context_1 = currentContext$1; context_1; context_1 = context_1.parent) {
             // We use the Slot object iself as a key to its value, which means the
             // value cannot be obtained without a reference to the Slot object.
             if (this.id in context_1.slots) {
                 var value = context_1.slots[this.id];
-                if (value === MISSING_VALUE)
+                if (value === MISSING_VALUE$1)
                     break;
-                if (context_1 !== currentContext) {
+                if (context_1 !== currentContext$1) {
                     // Cache the value in currentContext.slots so the next lookup will
                     // be faster. This caching is safe because the tree of contexts and
                     // the values of the slots are logically immutable.
-                    currentContext.slots[this.id] = value;
+                    currentContext$1.slots[this.id] = value;
                 }
                 return true;
             }
         }
-        if (currentContext) {
+        if (currentContext$1) {
             // If a value was not found for this Slot, it's never going to be found
             // no matter how many times we look it up, so we might as well cache
             // the absence of the value, too.
-            currentContext.slots[this.id] = MISSING_VALUE;
+            currentContext$1.slots[this.id] = MISSING_VALUE$1;
         }
         return false;
     };
     Slot.prototype.getValue = function () {
         if (this.hasValue()) {
-            return currentContext.slots[this.id];
+            return currentContext$1.slots[this.id];
         }
     };
     Slot.prototype.withValue = function (value, callback, 
@@ -7991,29 +8248,29 @@ var makeSlotClass = function () { return /** @class */ (function () {
             },
             _a[this.id] = value,
             _a);
-        var parent = currentContext;
-        currentContext = { parent: parent, slots: slots };
+        var parent = currentContext$1;
+        currentContext$1 = { parent: parent, slots: slots };
         try {
             // Function.prototype.apply allows the arguments array argument to be
             // omitted or undefined, so args! is fine here.
             return callback.apply(thisArg, args);
         }
         finally {
-            currentContext = parent;
+            currentContext$1 = parent;
         }
     };
     // Capture the current context and wrap a callback function so that it
     // reestablishes the captured context when called.
     Slot.bind = function (callback) {
-        var context = currentContext;
+        var context = currentContext$1;
         return function () {
-            var saved = currentContext;
+            var saved = currentContext$1;
             try {
-                currentContext = context;
+                currentContext$1 = context;
                 return callback.apply(this, arguments);
             }
             finally {
-                currentContext = saved;
+                currentContext$1 = saved;
             }
         };
     };
@@ -8022,16 +8279,16 @@ var makeSlotClass = function () { return /** @class */ (function () {
     // Given the prevalence of arrow functions, specifying arguments is likely
     // to be much more common than specifying `this`, hence this ordering:
     args, thisArg) {
-        if (currentContext) {
-            var saved = currentContext;
+        if (currentContext$1) {
+            var saved = currentContext$1;
             try {
-                currentContext = null;
+                currentContext$1 = null;
                 // Function.prototype.apply allows the arguments array argument to be
                 // omitted or undefined, so args! is fine here.
                 return callback.apply(thisArg, args);
             }
             finally {
-                currentContext = saved;
+                currentContext$1 = saved;
             }
         }
         else {
@@ -8048,13 +8305,13 @@ var makeSlotClass = function () { return /** @class */ (function () {
 // same Slot implementation. Since the first copy of the @wry/context package
 // to be imported wins, this technique imposes a very high cost for any
 // future breaking changes to the Slot class.
-var globalKey = "@wry/context:Slot";
-var host = Array;
-var Slot = host[globalKey] || function () {
-    var Slot = makeSlotClass();
+var globalKey$1 = "@wry/context:Slot";
+var host$1 = Array;
+var Slot$1 = host$1[globalKey$1] || function () {
+    var Slot = makeSlotClass$1();
     try {
-        Object.defineProperty(host, globalKey, {
-            value: host[globalKey] = Slot,
+        Object.defineProperty(host$1, globalKey$1, {
+            value: host$1[globalKey$1] = Slot,
             enumerable: false,
             writable: false,
             configurable: false,
@@ -8065,7 +8322,7 @@ var Slot = host[globalKey] || function () {
     }
 }();
 
-Slot.bind; Slot.noContext;
+Slot$1.bind; Slot$1.noContext;
 
 function defaultDispose() { }
 var Cache = /** @class */ (function () {
@@ -8153,7 +8410,7 @@ var Cache = /** @class */ (function () {
     return Cache;
 }());
 
-var parentEntrySlot = new Slot();
+var parentEntrySlot = new Slot$1();
 
 var _a$1;
 var hasOwnProperty$f = Object.prototype.hasOwnProperty;
@@ -8606,6 +8863,9 @@ var ApolloCache = (function () {
     ApolloCache.prototype.transformDocument = function (document) {
         return document;
     };
+    ApolloCache.prototype.transformForLink = function (document) {
+        return document;
+    };
     ApolloCache.prototype.identify = function (object) {
         return;
     };
@@ -8614,9 +8874,6 @@ var ApolloCache = (function () {
     };
     ApolloCache.prototype.modify = function (options) {
         return false;
-    };
-    ApolloCache.prototype.transformForLink = function (document) {
-        return document;
     };
     ApolloCache.prototype.readQuery = function (options, optimistic) {
         if (optimistic === void 0) { optimistic = !!options.optimistic; }
@@ -8668,29 +8925,48 @@ var ApolloCache = (function () {
     return ApolloCache;
 }());
 
-var MissingFieldError = (function () {
+var MissingFieldError = (function (_super) {
+    __extends(MissingFieldError, _super);
     function MissingFieldError(message, path, query, variables) {
-        this.message = message;
-        this.path = path;
-        this.query = query;
-        this.variables = variables;
+        var _a;
+        var _this = _super.call(this, message) || this;
+        _this.message = message;
+        _this.path = path;
+        _this.query = query;
+        _this.variables = variables;
+        if (Array.isArray(_this.path)) {
+            _this.missing = _this.message;
+            for (var i = _this.path.length - 1; i >= 0; --i) {
+                _this.missing = (_a = {}, _a[_this.path[i]] = _this.missing, _a);
+            }
+        }
+        else {
+            _this.missing = _this.path;
+        }
+        _this.__proto__ = MissingFieldError.prototype;
+        return _this;
     }
     return MissingFieldError;
-}());
+}(Error));
 
 var hasOwn$1 = Object.prototype.hasOwnProperty;
+function isNullish(value) {
+    return value === null || value === void 0;
+}
+var isArray$3 = Array.isArray;
 function defaultDataIdFromObject(_a, context) {
     var __typename = _a.__typename, id = _a.id, _id = _a._id;
     if (typeof __typename === "string") {
         if (context) {
             context.keyObject =
-                id !== void 0 ? { id: id } :
-                    _id !== void 0 ? { _id: _id } :
+                !isNullish(id) ? { id: id } :
+                    !isNullish(_id) ? { _id: _id } :
                         void 0;
         }
-        if (id === void 0)
+        if (isNullish(id) && !isNullish(_id)) {
             id = _id;
-        if (id !== void 0) {
+        }
+        if (!isNullish(id)) {
             return "".concat(__typename, ":").concat((typeof id === "number" ||
                 typeof id === "string") ? id : JSON.stringify(id));
         }
@@ -8743,7 +9019,19 @@ function storeValueIsStoreObject(value) {
 function makeProcessedFieldsMerger() {
     return new DeepMerger;
 }
-var isArray$3 = function (a) { return Array.isArray(a); };
+function extractFragmentContext(document, fragments) {
+    var fragmentMap = createFragmentMap(getFragmentDefinitions(document));
+    return {
+        fragmentMap: fragmentMap,
+        lookupFragment: function (name) {
+            var def = fragmentMap[name];
+            if (!def && fragments) {
+                def = fragments.lookup(name);
+            }
+            return def || null;
+        },
+    };
+}
 
 var DELETE = Object.create(null);
 var delModifier = function () { return DELETE; };
@@ -9383,15 +9671,7 @@ var StoreReader = (function () {
             selectionSet: getMainDefinition(query).selectionSet,
             objectOrReference: rootRef,
             enclosingRef: rootRef,
-            context: {
-                store: store,
-                query: query,
-                policies: policies,
-                variables: variables,
-                varString: canonicalStringify(variables),
-                canonizeResults: canonizeResults,
-                fragmentMap: createFragmentMap(getFragmentDefinitions(query)),
-            },
+            context: __assign({ store: store, query: query, policies: policies, variables: variables, varString: canonicalStringify(variables), canonizeResults: canonizeResults }, extractFragmentContext(query, this.config.fragments)),
         });
         var missing;
         if (execResult.missing) {
@@ -9492,7 +9772,10 @@ var StoreReader = (function () {
                 }
             }
             else {
-                var fragment = getFragmentFromSelection(selection, context.fragmentMap);
+                var fragment = getFragmentFromSelection(selection, context.lookupFragment);
+                if (!fragment && selection.kind === Kind.FRAGMENT_SPREAD) {
+                    throw __DEV__ ? new InvariantError("No fragment named ".concat(selection.name.value)) : new InvariantError(5);
+                }
                 if (fragment && policies.fragmentMatches(fragment, typename)) {
                     fragment.selectionSet.selections.forEach(workSet.add, workSet);
                 }
@@ -9572,12 +9855,180 @@ function assertSelectionSetForIdValue(store, field, fieldValue) {
         var workSet_1 = new Set([fieldValue]);
         workSet_1.forEach(function (value) {
             if (isNonNullObject$1(value)) {
-                __DEV__ ? invariant$2(!isReference(value), "Missing selection set for object of type ".concat(getTypenameFromStoreObject(store, value), " returned for query field ").concat(field.name.value)) : invariant$2(!isReference(value), 5);
+                __DEV__ ? invariant$2(!isReference(value), "Missing selection set for object of type ".concat(getTypenameFromStoreObject(store, value), " returned for query field ").concat(field.name.value)) : invariant$2(!isReference(value), 6);
                 Object.values(value).forEach(workSet_1.add, workSet_1);
             }
         });
     }
 }
+
+// This currentContext variable will only be used if the makeSlotClass
+// function is called, which happens only if this is the first copy of the
+// @wry/context package to be imported.
+var currentContext = null;
+// This unique internal object is used to denote the absence of a value
+// for a given Slot, and is never exposed to outside code.
+var MISSING_VALUE = {};
+var idCounter = 1;
+// Although we can't do anything about the cost of duplicated code from
+// accidentally bundling multiple copies of the @wry/context package, we can
+// avoid creating the Slot class more than once using makeSlotClass.
+var makeSlotClass = function () { return /** @class */ (function () {
+    function Slot() {
+        // If you have a Slot object, you can find out its slot.id, but you cannot
+        // guess the slot.id of a Slot you don't have access to, thanks to the
+        // randomized suffix.
+        this.id = [
+            "slot",
+            idCounter++,
+            Date.now(),
+            Math.random().toString(36).slice(2),
+        ].join(":");
+    }
+    Slot.prototype.hasValue = function () {
+        for (var context_1 = currentContext; context_1; context_1 = context_1.parent) {
+            // We use the Slot object iself as a key to its value, which means the
+            // value cannot be obtained without a reference to the Slot object.
+            if (this.id in context_1.slots) {
+                var value = context_1.slots[this.id];
+                if (value === MISSING_VALUE)
+                    break;
+                if (context_1 !== currentContext) {
+                    // Cache the value in currentContext.slots so the next lookup will
+                    // be faster. This caching is safe because the tree of contexts and
+                    // the values of the slots are logically immutable.
+                    currentContext.slots[this.id] = value;
+                }
+                return true;
+            }
+        }
+        if (currentContext) {
+            // If a value was not found for this Slot, it's never going to be found
+            // no matter how many times we look it up, so we might as well cache
+            // the absence of the value, too.
+            currentContext.slots[this.id] = MISSING_VALUE;
+        }
+        return false;
+    };
+    Slot.prototype.getValue = function () {
+        if (this.hasValue()) {
+            return currentContext.slots[this.id];
+        }
+    };
+    Slot.prototype.withValue = function (value, callback, 
+    // Given the prevalence of arrow functions, specifying arguments is likely
+    // to be much more common than specifying `this`, hence this ordering:
+    args, thisArg) {
+        var _a;
+        var slots = (_a = {
+                __proto__: null
+            },
+            _a[this.id] = value,
+            _a);
+        var parent = currentContext;
+        currentContext = { parent: parent, slots: slots };
+        try {
+            // Function.prototype.apply allows the arguments array argument to be
+            // omitted or undefined, so args! is fine here.
+            return callback.apply(thisArg, args);
+        }
+        finally {
+            currentContext = parent;
+        }
+    };
+    // Capture the current context and wrap a callback function so that it
+    // reestablishes the captured context when called.
+    Slot.bind = function (callback) {
+        var context = currentContext;
+        return function () {
+            var saved = currentContext;
+            try {
+                currentContext = context;
+                return callback.apply(this, arguments);
+            }
+            finally {
+                currentContext = saved;
+            }
+        };
+    };
+    // Immediately run a callback function without any captured context.
+    Slot.noContext = function (callback, 
+    // Given the prevalence of arrow functions, specifying arguments is likely
+    // to be much more common than specifying `this`, hence this ordering:
+    args, thisArg) {
+        if (currentContext) {
+            var saved = currentContext;
+            try {
+                currentContext = null;
+                // Function.prototype.apply allows the arguments array argument to be
+                // omitted or undefined, so args! is fine here.
+                return callback.apply(thisArg, args);
+            }
+            finally {
+                currentContext = saved;
+            }
+        }
+        else {
+            return callback.apply(thisArg, args);
+        }
+    };
+    return Slot;
+}()); };
+function maybe(fn) {
+    try {
+        return fn();
+    }
+    catch (ignored) { }
+}
+// We store a single global implementation of the Slot class as a permanent
+// non-enumerable property of the globalThis object. This obfuscation does
+// nothing to prevent access to the Slot class, but at least it ensures the
+// implementation (i.e. currentContext) cannot be tampered with, and all copies
+// of the @wry/context package (hopefully just one) will share the same Slot
+// implementation. Since the first copy of the @wry/context package to be
+// imported wins, this technique imposes a steep cost for any future breaking
+// changes to the Slot class.
+var globalKey = "@wry/context:Slot";
+var host = 
+// Prefer globalThis when available.
+// https://github.com/benjamn/wryware/issues/347
+maybe(function () { return globalThis; }) ||
+    // Fall back to global, which works in Node.js and may be converted by some
+    // bundlers to the appropriate identifier (window, self, ...) depending on the
+    // bundling target. https://github.com/endojs/endo/issues/576#issuecomment-1178515224
+    maybe(function () { return global; }) ||
+    // Otherwise, use a dummy host that's local to this module. We used to fall
+    // back to using the Array constructor as a namespace, but that was flagged in
+    // https://github.com/benjamn/wryware/issues/347, and can be avoided.
+    Object.create(null);
+// Whichever globalHost we're using, make TypeScript happy about the additional
+// globalKey property.
+var globalHost = host;
+var Slot = globalHost[globalKey] ||
+    // Earlier versions of this package stored the globalKey property on the Array
+    // constructor, so we check there as well, to prevent Slot class duplication.
+    Array[globalKey] ||
+    (function (Slot) {
+        try {
+            Object.defineProperty(globalHost, globalKey, {
+                value: Slot,
+                enumerable: false,
+                writable: false,
+                // When it was possible for globalHost to be the Array constructor (a
+                // legacy Slot dedup strategy), it was important for the property to be
+                // configurable:true so it could be deleted. That does not seem to be as
+                // important when globalHost is the global object, but I don't want to
+                // cause similar problems again, and configurable:true seems safest.
+                // https://github.com/endojs/endo/issues/576#issuecomment-1178274008
+                configurable: true
+            });
+        }
+        finally {
+            return Slot;
+        }
+    })(makeSlotClass());
+
+Slot.bind; Slot.noContext;
 
 var cacheSlot = new Slot();
 var cacheInfoMap = new WeakMap();
@@ -10175,9 +10626,10 @@ function getContextFlavor(context, clientOnly, deferred) {
     return flavored;
 }
 var StoreWriter = (function () {
-    function StoreWriter(cache, reader) {
+    function StoreWriter(cache, reader, fragments) {
         this.cache = cache;
         this.reader = reader;
+        this.fragments = fragments;
     }
     StoreWriter.prototype.writeToStore = function (store, _a) {
         var _this = this;
@@ -10185,21 +10637,9 @@ var StoreWriter = (function () {
         var operationDefinition = getOperationDefinition(query);
         var merger = makeProcessedFieldsMerger();
         variables = __assign(__assign({}, getDefaultValues(operationDefinition)), variables);
-        var context = {
-            store: store,
-            written: Object.create(null),
-            merge: function (existing, incoming) {
+        var context = __assign(__assign({ store: store, written: Object.create(null), merge: function (existing, incoming) {
                 return merger.merge(existing, incoming);
-            },
-            variables: variables,
-            varString: canonicalStringify(variables),
-            fragmentMap: createFragmentMap(getFragmentDefinitions(query)),
-            overwrite: !!overwrite,
-            incomingById: new Map,
-            clientOnly: false,
-            deferred: false,
-            flavors: new Map,
-        };
+            }, variables: variables, varString: canonicalStringify(variables) }, extractFragmentContext(query, this.fragments)), { overwrite: !!overwrite, incomingById: new Map, clientOnly: false, deferred: false, flavors: new Map });
         var ref = this.processSelectionSet({
             result: result || Object.create(null),
             dataId: dataId,
@@ -10208,7 +10648,7 @@ var StoreWriter = (function () {
             context: context,
         });
         if (!isReference(ref)) {
-            throw __DEV__ ? new InvariantError("Could not identify object ".concat(JSON.stringify(result))) : new InvariantError(6);
+            throw __DEV__ ? new InvariantError("Could not identify object ".concat(JSON.stringify(result))) : new InvariantError(7);
         }
         context.incomingById.forEach(function (_a, dataId) {
             var storeObject = _a.storeObject, mergeTree = _a.mergeTree, fieldNodeSet = _a.fieldNodeSet;
@@ -10415,7 +10855,10 @@ var StoreWriter = (function () {
                     fieldMap.set(selection, getContextFlavor(context, clientOnly, deferred));
                 }
                 else {
-                    var fragment = getFragmentFromSelection(selection, context.fragmentMap);
+                    var fragment = getFragmentFromSelection(selection, context.lookupFragment);
+                    if (!fragment && selection.kind === Kind.FRAGMENT_SPREAD) {
+                        throw __DEV__ ? new InvariantError("No fragment named ".concat(selection.name.value)) : new InvariantError(8);
+                    }
                     if (fragment &&
                         policies.fragmentMatches(fragment, typename, result, context.variables)) {
                         flatten(fragment.selectionSet, getContextFlavor(context, clientOnly, deferred));
@@ -10587,6 +11030,7 @@ var InMemoryCache = (function (_super) {
     InMemoryCache.prototype.resetResultCache = function (resetResultIdentities) {
         var _this = this;
         var previousReader = this.storeReader;
+        var fragments = this.config.fragments;
         this.storeWriter = new StoreWriter(this, this.storeReader = new StoreReader({
             cache: this,
             addTypename: this.addTypename,
@@ -10595,7 +11039,8 @@ var InMemoryCache = (function (_super) {
             canon: resetResultIdentities
                 ? void 0
                 : previousReader && previousReader.canon,
-        }));
+            fragments: fragments,
+        }), fragments);
         this.maybeBroadcastWatch = wrap(function (c, options) {
             return _this.broadcastWatch(c, options);
         }, {
@@ -10603,8 +11048,8 @@ var InMemoryCache = (function (_super) {
             makeCacheKey: function (c) {
                 var store = c.optimistic ? _this.optimisticData : _this.data;
                 if (supportsResultCaching(store)) {
-                    var optimistic = c.optimistic, rootId = c.rootId, variables = c.variables;
-                    return store.makeCacheKey(c.query, c.callback, canonicalStringify({ optimistic: optimistic, rootId: rootId, variables: variables }));
+                    var optimistic = c.optimistic, id = c.id, variables = c.variables;
+                    return store.makeCacheKey(c.query, c.callback, canonicalStringify({ optimistic: optimistic, id: id, variables: variables }));
                 }
             }
         });
@@ -10822,6 +11267,12 @@ var InMemoryCache = (function (_super) {
         }
         return document;
     };
+    InMemoryCache.prototype.transformForLink = function (document) {
+        var fragments = this.config.fragments;
+        return fragments
+            ? fragments.transform(document)
+            : document;
+    };
     InMemoryCache.prototype.broadcastWatches = function (options) {
         var _this = this;
         if (!this.txCount) {
@@ -10874,6 +11325,7 @@ var ApolloError = (function (_super) {
     function ApolloError(_a) {
         var graphQLErrors = _a.graphQLErrors, clientErrors = _a.clientErrors, networkError = _a.networkError, errorMessage = _a.errorMessage, extraInfo = _a.extraInfo;
         var _this = _super.call(this, errorMessage) || this;
+        _this.name = 'ApolloError';
         _this.graphQLErrors = graphQLErrors || [];
         _this.clientErrors = clientErrors || [];
         _this.networkError = networkError || null;
@@ -11023,8 +11475,10 @@ var ObservableQuery = (function (_super) {
         }
         return result;
     };
-    ObservableQuery.prototype.isDifferentFromLastResult = function (newResult) {
-        return !this.last || !equal$1(this.last.result, newResult);
+    ObservableQuery.prototype.isDifferentFromLastResult = function (newResult, variables) {
+        return (!this.last ||
+            !equal$1(this.last.result, newResult) ||
+            (variables && !equal$1(this.last.variables, variables)));
     };
     ObservableQuery.prototype.getLast = function (key, variablesMustMatch) {
         var last = this.last;
@@ -11248,14 +11702,14 @@ var ObservableQuery = (function (_super) {
             pollingInfo.interval === pollInterval) {
             return;
         }
-        __DEV__ ? invariant$2(pollInterval, 'Attempted to start a polling query without a polling interval.') : invariant$2(pollInterval, 10);
+        __DEV__ ? invariant$2(pollInterval, 'Attempted to start a polling query without a polling interval.') : invariant$2(pollInterval, 12);
         var info = pollingInfo || (this.pollingInfo = {});
         info.interval = pollInterval;
         var maybeFetch = function () {
             if (_this.pollingInfo) {
                 if (!isNetworkRequestInFlight(_this.queryInfo.networkStatus)) {
                     _this.reobserve({
-                        fetchPolicy: "network-only",
+                        fetchPolicy: _this.options.initialFetchPolicy === 'no-cache' ? 'no-cache' : 'network-only',
                     }, NetworkStatus.poll).then(poll, poll);
                 }
                 else {
@@ -11332,7 +11786,7 @@ var ObservableQuery = (function (_super) {
     };
     ObservableQuery.prototype.reportResult = function (result, variables) {
         var lastError = this.getLastError();
-        if (lastError || this.isDifferentFromLastResult(result)) {
+        if (lastError || this.isDifferentFromLastResult(result, variables)) {
             if (lastError || !result.partial || this.options.returnPartialData) {
                 this.updateLastResult(result, variables);
             }
@@ -11560,7 +12014,7 @@ var LocalState = (function () {
                         }
                         else {
                             fragment = fragmentMap[selection.name.value];
-                            __DEV__ ? invariant$2(fragment, "No fragment named ".concat(selection.name.value)) : invariant$2(fragment, 9);
+                            __DEV__ ? invariant$2(fragment, "No fragment named ".concat(selection.name.value)) : invariant$2(fragment, 11);
                         }
                         if (fragment && fragment.typeCondition) {
                             typeCondition = fragment.typeCondition.name.value;
@@ -11714,7 +12168,6 @@ var QueryInfo = (function () {
     };
     QueryInfo.prototype.reset = function () {
         cancelNotifyTimeout(this);
-        this.lastDiff = void 0;
         this.dirty = false;
     };
     QueryInfo.prototype.getDiff = function (variables) {
@@ -11844,10 +12297,22 @@ var QueryInfo = (function () {
             equal$1(variables, lastWrite.variables) &&
             equal$1(result.data, lastWrite.result.data));
     };
-    QueryInfo.prototype.markResult = function (result, options, cacheWriteBehavior) {
+    QueryInfo.prototype.markResult = function (result, document, options, cacheWriteBehavior) {
         var _this = this;
-        this.graphQLErrors = isNonEmptyArray(result.errors) ? result.errors : [];
+        var merger = new DeepMerger();
+        var graphQLErrors = isNonEmptyArray(result.errors)
+            ? result.errors.slice(0)
+            : [];
         this.reset();
+        if ('incremental' in result && isNonEmptyArray(result.incremental)) {
+            var mergedData = mergeIncrementalData(this.getDiff().result, result);
+            result.data = mergedData;
+        }
+        else if ('hasNext' in result && result.hasNext) {
+            var diff = this.getDiff();
+            result.data = merger.merge(diff.result, result.data);
+        }
+        this.graphQLErrors = graphQLErrors;
         if (options.fetchPolicy === 'no-cache') {
             this.updateLastDiff({ result: result.data, complete: true }, this.getDiffOptions(options.variables));
         }
@@ -11856,7 +12321,7 @@ var QueryInfo = (function () {
                 this.cache.performTransaction(function (cache) {
                     if (_this.shouldWrite(result, options.variables)) {
                         cache.writeQuery({
-                            query: _this.document,
+                            query: document,
                             data: result.data,
                             variables: options.variables,
                             overwrite: cacheWriteBehavior === 1,
@@ -11948,7 +12413,7 @@ var QueryManager = (function () {
         this.queries.forEach(function (_info, queryId) {
             _this.stopQueryNoBroadcast(queryId);
         });
-        this.cancelPendingFetches(__DEV__ ? new InvariantError('QueryManager stopped while query was in flight') : new InvariantError(11));
+        this.cancelPendingFetches(__DEV__ ? new InvariantError('QueryManager stopped while query was in flight') : new InvariantError(13));
     };
     QueryManager.prototype.cancelPendingFetches = function (error) {
         this.fetchCancelFns.forEach(function (cancel) { return cancel(error); });
@@ -11958,22 +12423,23 @@ var QueryManager = (function () {
         var _b, _c;
         var mutation = _a.mutation, variables = _a.variables, optimisticResponse = _a.optimisticResponse, updateQueries = _a.updateQueries, _d = _a.refetchQueries, refetchQueries = _d === void 0 ? [] : _d, _e = _a.awaitRefetchQueries, awaitRefetchQueries = _e === void 0 ? false : _e, updateWithProxyFn = _a.update, onQueryUpdated = _a.onQueryUpdated, _f = _a.fetchPolicy, fetchPolicy = _f === void 0 ? ((_b = this.defaultOptions.mutate) === null || _b === void 0 ? void 0 : _b.fetchPolicy) || "network-only" : _f, _g = _a.errorPolicy, errorPolicy = _g === void 0 ? ((_c = this.defaultOptions.mutate) === null || _c === void 0 ? void 0 : _c.errorPolicy) || "none" : _g, keepRootFields = _a.keepRootFields, context = _a.context;
         return __awaiter(this, void 0, void 0, function () {
-            var mutationId, mutationStoreValue, self;
-            return __generator(this, function (_h) {
-                switch (_h.label) {
+            var mutationId, _h, document, hasClientExports, mutationStoreValue, self;
+            return __generator(this, function (_j) {
+                switch (_j.label) {
                     case 0:
-                        __DEV__ ? invariant$2(mutation, 'mutation option is required. You must specify your GraphQL document in the mutation option.') : invariant$2(mutation, 12);
+                        __DEV__ ? invariant$2(mutation, 'mutation option is required. You must specify your GraphQL document in the mutation option.') : invariant$2(mutation, 14);
                         __DEV__ ? invariant$2(fetchPolicy === 'network-only' ||
                             fetchPolicy === 'no-cache', "Mutations support only 'network-only' or 'no-cache' fetchPolicy strings. The default `network-only` behavior automatically writes mutation results to the cache. Passing `no-cache` skips the cache write.") : invariant$2(fetchPolicy === 'network-only' ||
-                            fetchPolicy === 'no-cache', 13);
+                            fetchPolicy === 'no-cache', 15);
                         mutationId = this.generateMutationId();
-                        mutation = this.transform(mutation).document;
+                        _h = this.transform(mutation), document = _h.document, hasClientExports = _h.hasClientExports;
+                        mutation = this.cache.transformForLink(document);
                         variables = this.getVariables(mutation, variables);
-                        if (!this.transform(mutation).hasClientExports) return [3, 2];
+                        if (!hasClientExports) return [3, 2];
                         return [4, this.localState.addExportedVariables(mutation, variables, context)];
                     case 1:
-                        variables = (_h.sent());
-                        _h.label = 2;
+                        variables = (_j.sent());
+                        _j.label = 2;
                     case 2:
                         mutationStoreValue = this.mutationStore &&
                             (this.mutationStore[mutationId] = {
@@ -12001,7 +12467,7 @@ var QueryManager = (function () {
                                 return asyncMap(self.getObservableFromLink(mutation, __assign(__assign({}, context), { optimisticResponse: optimisticResponse }), variables, false), function (result) {
                                     if (graphQLResultHasError(result) && errorPolicy === 'none') {
                                         throw new ApolloError({
-                                            graphQLErrors: result.errors,
+                                            graphQLErrors: getGraphQLErrorsFromResult(result),
                                         });
                                     }
                                     if (mutationStoreValue) {
@@ -12035,7 +12501,9 @@ var QueryManager = (function () {
                                 }).subscribe({
                                     next: function (storeResult) {
                                         self.broadcastQueries();
-                                        resolve(storeResult);
+                                        if (!('hasNext' in storeResult) || storeResult.hasNext === false) {
+                                            resolve(storeResult);
+                                        }
                                     },
                                     error: function (err) {
                                         if (mutationStoreValue) {
@@ -12063,12 +12531,33 @@ var QueryManager = (function () {
         var cacheWrites = [];
         var skipCache = mutation.fetchPolicy === "no-cache";
         if (!skipCache && shouldWriteResult(result, mutation.errorPolicy)) {
-            cacheWrites.push({
-                result: result.data,
-                dataId: 'ROOT_MUTATION',
-                query: mutation.document,
-                variables: mutation.variables,
-            });
+            if (!isExecutionPatchIncrementalResult(result)) {
+                cacheWrites.push({
+                    result: result.data,
+                    dataId: 'ROOT_MUTATION',
+                    query: mutation.document,
+                    variables: mutation.variables,
+                });
+            }
+            if (isExecutionPatchIncrementalResult(result) && isNonEmptyArray(result.incremental)) {
+                var diff = cache.diff({
+                    id: "ROOT_MUTATION",
+                    query: this.transform(mutation.document).asQuery,
+                    variables: mutation.variables,
+                    optimistic: false,
+                    returnPartialData: true,
+                });
+                var mergedData = mergeIncrementalData(diff.result, result);
+                if (typeof mergedData !== 'undefined') {
+                    result.data = mergedData;
+                    cacheWrites.push({
+                        result: mergedData,
+                        dataId: 'ROOT_MUTATION',
+                        query: mutation.document,
+                        variables: mutation.variables,
+                    });
+                }
+            }
             var updateQueries_1 = mutation.updateQueries;
             if (updateQueries_1) {
                 this.queries.forEach(function (_a, queryId) {
@@ -12115,6 +12604,8 @@ var QueryManager = (function () {
                         cacheWrites.forEach(function (write) { return cache.write(write); });
                     }
                     var update = mutation.update;
+                    var isFinalResult = !isExecutionPatchResult(result) ||
+                        (isExecutionPatchIncrementalResult(result) && !result.hasNext);
                     if (update) {
                         if (!skipCache) {
                             var diff = cache.diff({
@@ -12126,14 +12617,22 @@ var QueryManager = (function () {
                             });
                             if (diff.complete) {
                                 result = __assign(__assign({}, result), { data: diff.result });
+                                if ('incremental' in result) {
+                                    delete result.incremental;
+                                }
+                                if ('hasNext' in result) {
+                                    delete result.hasNext;
+                                }
                             }
                         }
-                        update(cache, result, {
-                            context: mutation.context,
-                            variables: mutation.variables,
-                        });
+                        if (isFinalResult) {
+                            update(cache, result, {
+                                context: mutation.context,
+                                variables: mutation.variables,
+                            });
+                        }
                     }
-                    if (!skipCache && !mutation.keepRootFields) {
+                    if (!skipCache && !mutation.keepRootFields && isFinalResult) {
                         cache.modify({
                             id: 'ROOT_MUTATION',
                             fields: function (value, _a) {
@@ -12194,9 +12693,9 @@ var QueryManager = (function () {
         var transformCache = this.transformCache;
         if (!transformCache.has(document)) {
             var transformed = this.cache.transformDocument(document);
-            var forLink = removeConnectionDirectiveFromDocument(this.cache.transformForLink(transformed));
+            var noConnection = removeConnectionDirectiveFromDocument(transformed);
             var clientQuery = this.localState.clientQuery(transformed);
-            var serverQuery = forLink && this.localState.serverQuery(forLink);
+            var serverQuery = noConnection && this.localState.serverQuery(noConnection);
             var cacheEntry_1 = {
                 document: transformed,
                 hasClientExports: hasClientExports(transformed),
@@ -12250,10 +12749,10 @@ var QueryManager = (function () {
         var _this = this;
         if (queryId === void 0) { queryId = this.generateQueryId(); }
         __DEV__ ? invariant$2(options.query, 'query option is required. You must specify your GraphQL document ' +
-            'in the query option.') : invariant$2(options.query, 14);
-        __DEV__ ? invariant$2(options.query.kind === 'Document', 'You must wrap the query string in a "gql" tag.') : invariant$2(options.query.kind === 'Document', 15);
-        __DEV__ ? invariant$2(!options.returnPartialData, 'returnPartialData option only supported on watchQuery.') : invariant$2(!options.returnPartialData, 16);
-        __DEV__ ? invariant$2(!options.pollInterval, 'pollInterval option only supported on watchQuery.') : invariant$2(!options.pollInterval, 17);
+            'in the query option.') : invariant$2(options.query, 16);
+        __DEV__ ? invariant$2(options.query.kind === 'Document', 'You must wrap the query string in a "gql" tag.') : invariant$2(options.query.kind === 'Document', 17);
+        __DEV__ ? invariant$2(!options.returnPartialData, 'returnPartialData option only supported on watchQuery.') : invariant$2(!options.returnPartialData, 18);
+        __DEV__ ? invariant$2(!options.pollInterval, 'pollInterval option only supported on watchQuery.') : invariant$2(!options.pollInterval, 19);
         return this.fetchQuery(queryId, options).finally(function () { return _this.stopQuery(queryId); });
     };
     QueryManager.prototype.generateQueryId = function () {
@@ -12278,7 +12777,7 @@ var QueryManager = (function () {
         if (options === void 0) { options = {
             discardWatches: true,
         }; }
-        this.cancelPendingFetches(__DEV__ ? new InvariantError('Store reset while query was in flight (not completed in link chain)') : new InvariantError(18));
+        this.cancelPendingFetches(__DEV__ ? new InvariantError('Store reset while query was in flight (not completed in link chain)') : new InvariantError(20));
         this.queries.forEach(function (queryInfo) {
             if (queryInfo.observableQuery) {
                 queryInfo.networkStatus = NetworkStatus.loading;
@@ -12464,7 +12963,7 @@ var QueryManager = (function () {
                         execute(link, operation)
                     ]);
                     byVariables_1.set(varJson_1, observable = concast);
-                    concast.cleanup(function () {
+                    concast.beforeNext(function () {
                         if (byVariables_1.delete(varJson_1) &&
                             byVariables_1.size < 1) {
                             inFlightLinkObservables_1.delete(serverQuery);
@@ -12499,15 +12998,17 @@ var QueryManager = (function () {
     };
     QueryManager.prototype.getResultsFromLink = function (queryInfo, cacheWriteBehavior, options) {
         var requestId = queryInfo.lastRequestId = this.generateRequestId();
-        return asyncMap(this.getObservableFromLink(queryInfo.document, options.context, options.variables), function (result) {
-            var hasErrors = isNonEmptyArray(result.errors);
+        var linkDocument = this.cache.transformForLink(this.transform(queryInfo.document).document);
+        return asyncMap(this.getObservableFromLink(linkDocument, options.context, options.variables), function (result) {
+            var graphQLErrors = getGraphQLErrorsFromResult(result);
+            var hasErrors = graphQLErrors.length > 0;
             if (requestId >= queryInfo.lastRequestId) {
                 if (hasErrors && options.errorPolicy === "none") {
                     throw queryInfo.markError(new ApolloError({
-                        graphQLErrors: result.errors,
+                        graphQLErrors: graphQLErrors,
                     }));
                 }
-                queryInfo.markResult(result, options, cacheWriteBehavior);
+                queryInfo.markResult(result, linkDocument, options, cacheWriteBehavior);
                 queryInfo.markReady();
             }
             var aqr = {
@@ -12516,7 +13017,7 @@ var QueryManager = (function () {
                 networkStatus: NetworkStatus.ready,
             };
             if (hasErrors && options.errorPolicy !== "ignore") {
-                aqr.errors = result.errors;
+                aqr.errors = graphQLErrors;
                 aqr.networkStatus = NetworkStatus.error;
             }
             return aqr;
@@ -12664,6 +13165,11 @@ var QueryManager = (function () {
                     onlyRunForcedResolvers: true,
                 }).then(function (resolved) { return fromData(resolved.data || void 0); });
             }
+            if (errorPolicy === 'none' &&
+                networkStatus === NetworkStatus.refetch &&
+                Array.isArray(diff.missing)) {
+                return fromData(void 0);
+            }
             return fromData(data);
         };
         var cacheWriteBehavior = fetchPolicy === "no-cache" ? 0 :
@@ -12767,7 +13273,7 @@ var ApolloClient = (function () {
         if (!cache) {
             throw __DEV__ ? new InvariantError("To initialize Apollo Client, you must specify a 'cache' property " +
                 "in the options object. \n" +
-                "For more information, please visit: https://go.apollo.dev/c/docs") : new InvariantError(7);
+                "For more information, please visit: https://go.apollo.dev/c/docs") : new InvariantError(9);
         }
         this.link = link;
         this.cache = cache;
@@ -12786,7 +13292,7 @@ var ApolloClient = (function () {
         if (connectToDevTools && typeof window === 'object') {
             window.__APOLLO_CLIENT__ = this;
         }
-        if (!hasSuggestedDevtools && __DEV__) {
+        if (!hasSuggestedDevtools && connectToDevTools && __DEV__) {
             hasSuggestedDevtools = true;
             if (typeof window !== 'undefined' &&
                 window.document &&
@@ -12864,7 +13370,7 @@ var ApolloClient = (function () {
         __DEV__ ? invariant$2(options.fetchPolicy !== 'cache-and-network', 'The cache-and-network fetchPolicy does not work with client.query, because ' +
             'client.query can only return a single result. Please use client.watchQuery ' +
             'to receive multiple results from the cache and the network, or consider ' +
-            'using a different fetchPolicy, such as cache-first or network-only.') : invariant$2(options.fetchPolicy !== 'cache-and-network', 8);
+            'using a different fetchPolicy, such as cache-first or network-only.') : invariant$2(options.fetchPolicy !== 'cache-and-network', 10);
         if (this.disableNetworkFetches && options.fetchPolicy === 'network-only') {
             options = __assign(__assign({}, options), { fetchPolicy: 'cache-first' });
         }
@@ -13126,7 +13632,7 @@ function parser(document) {
     var variables, type, name;
     __DEV__ ? invariant$2(!!document && !!document.kind, "Argument of ".concat(document, " passed to parser was not a valid GraphQL ") +
         "DocumentNode. You may need to use 'graphql-tag' or another method " +
-        "to convert your operation into a document") : invariant$2(!!document && !!document.kind, 30);
+        "to convert your operation into a document") : invariant$2(!!document && !!document.kind, 32);
     var fragments = [];
     var queries = [];
     var mutations = [];
@@ -13154,11 +13660,11 @@ function parser(document) {
     __DEV__ ? invariant$2(!fragments.length ||
         (queries.length || mutations.length || subscriptions.length), "Passing only a fragment to 'graphql' is not yet supported. " +
         "You must include a query, subscription or mutation as well") : invariant$2(!fragments.length ||
-        (queries.length || mutations.length || subscriptions.length), 31);
+        (queries.length || mutations.length || subscriptions.length), 33);
     __DEV__ ? invariant$2(queries.length + mutations.length + subscriptions.length <= 1, "react-apollo only supports a query, subscription, or a mutation per HOC. " +
         "".concat(document, " had ").concat(queries.length, " queries, ").concat(subscriptions.length, " ") +
         "subscriptions and ".concat(mutations.length, " mutations. ") +
-        "You can use 'compose' to join multiple operation types to a component") : invariant$2(queries.length + mutations.length + subscriptions.length <= 1, 32);
+        "You can use 'compose' to join multiple operation types to a component") : invariant$2(queries.length + mutations.length + subscriptions.length <= 1, 34);
     type = queries.length ? DocumentType.Query : DocumentType.Mutation;
     if (!queries.length && !mutations.length)
         type = DocumentType.Subscription;
@@ -13169,7 +13675,7 @@ function parser(document) {
             : subscriptions;
     __DEV__ ? invariant$2(definitions.length === 1, "react-apollo only supports one definition per HOC. ".concat(document, " had ") +
         "".concat(definitions.length, " definitions. ") +
-        "You can use 'compose' to join multiple operation types to a component") : invariant$2(definitions.length === 1, 33);
+        "You can use 'compose' to join multiple operation types to a component") : invariant$2(definitions.length === 1, 35);
     var definition = definitions[0];
     variables = definition.variableDefinitions || [];
     if (definition.name && definition.name.kind === 'Name') {
@@ -13187,7 +13693,7 @@ function verifyDocumentType(document, type) {
     var requiredOperationName = operationName(type);
     var usedOperationName = operationName(operation.type);
     __DEV__ ? invariant$2(operation.type === type, "Running a ".concat(requiredOperationName, " requires a graphql ") +
-        "".concat(requiredOperationName, ", but a ").concat(usedOperationName, " was used instead.")) : invariant$2(operation.type === type, 34);
+        "".concat(requiredOperationName, ", but a ").concat(usedOperationName, " was used instead.")) : invariant$2(operation.type === type, 36);
 }
 
 var hasOwnProperty$c = Object.prototype.hasOwnProperty;
@@ -13238,11 +13744,19 @@ var InternalState = (function () {
     InternalState.prototype.forceUpdate = function () {
         __DEV__ && invariant$2.warn("Calling default no-op implementation of InternalState#forceUpdate");
     };
-    InternalState.prototype.asyncUpdate = function () {
+    InternalState.prototype.asyncUpdate = function (signal) {
         var _this = this;
-        return new Promise(function (resolve) {
+        return new Promise(function (resolve, reject) {
+            var watchQueryOptions = _this.watchQueryOptions;
+            var handleAborted = function () {
+                _this.asyncResolveFns.delete(resolve);
+                _this.optionsToIgnoreOnce.delete(watchQueryOptions);
+                signal.removeEventListener('abort', handleAborted);
+                reject(signal.reason);
+            };
             _this.asyncResolveFns.add(resolve);
-            _this.optionsToIgnoreOnce.add(_this.watchQueryOptions);
+            _this.optionsToIgnoreOnce.add(watchQueryOptions);
+            signal.addEventListener('abort', handleAborted);
             _this.forceUpdate();
         });
     };
@@ -13350,7 +13864,7 @@ var InternalState = (function () {
     InternalState.prototype.createWatchQueryOptions = function (_a) {
         var _b;
         if (_a === void 0) { _a = {}; }
-        var skip = _a.skip; _a.ssr; _a.onCompleted; _a.onError; _a.displayName; _a.defaultOptions; var otherOptions = __rest(_a, ["skip", "ssr", "onCompleted", "onError", "displayName", "defaultOptions"]);
+        var skip = _a.skip; _a.ssr; _a.onCompleted; _a.onError; _a.defaultOptions; var otherOptions = __rest(_a, ["skip", "ssr", "onCompleted", "onError", "defaultOptions"]);
         var watchQueryOptions = Object.assign(otherOptions, { query: this.query });
         if (this.renderPromises &&
             (watchQueryOptions.fetchPolicy === 'network-only' ||
@@ -13417,14 +13931,25 @@ var InternalState = (function () {
         this.handleErrorOrCompleted(nextResult);
     };
     InternalState.prototype.handleErrorOrCompleted = function (result) {
+        var _this = this;
         if (!result.loading) {
-            if (result.error) {
-                this.onError(result.error);
-            }
-            else if (result.data) {
-                this.onCompleted(result.data);
-            }
+            var error_1 = this.toApolloError(result);
+            Promise.resolve().then(function () {
+                if (error_1) {
+                    _this.onError(error_1);
+                }
+                else if (result.data) {
+                    _this.onCompleted(result.data);
+                }
+            }).catch(function (error) {
+                __DEV__ && invariant$2.warn(error);
+            });
         }
+    };
+    InternalState.prototype.toApolloError = function (result) {
+        return isNonEmptyArray(result.errors)
+            ? new ApolloError({ graphQLErrors: result.errors })
+            : result.error;
     };
     InternalState.prototype.getCurrentResult = function () {
         if (!this.result) {
@@ -13482,7 +14007,7 @@ function useMutation(mutation, options) {
         if (executeOptions === void 0) { executeOptions = {}; }
         var _a = ref.current, client = _a.client, options = _a.options, mutation = _a.mutation;
         var baseOptions = __assign(__assign({}, options), { mutation: mutation });
-        if (!ref.current.result.loading && !baseOptions.ignoreResults) {
+        if (!ref.current.result.loading && !baseOptions.ignoreResults && ref.current.isMounted) {
             setResult(ref.current.result = {
                 loading: true,
                 error: void 0,
@@ -13494,7 +14019,7 @@ function useMutation(mutation, options) {
         var mutationId = ++ref.current.mutationId;
         var clientOptions = mergeOptions(baseOptions, executeOptions);
         return client.mutate(clientOptions).then(function (response) {
-            var _a, _b, _c;
+            var _a;
             var data = response.data, errors = response.errors;
             var error = errors && errors.length > 0
                 ? new ApolloError({ graphQLErrors: errors })
@@ -13512,11 +14037,11 @@ function useMutation(mutation, options) {
                     setResult(ref.current.result = result_1);
                 }
             }
-            (_b = (_a = ref.current.options) === null || _a === void 0 ? void 0 : _a.onCompleted) === null || _b === void 0 ? void 0 : _b.call(_a, response.data);
-            (_c = executeOptions.onCompleted) === null || _c === void 0 ? void 0 : _c.call(executeOptions, response.data);
+            var onCompleted = executeOptions.onCompleted || ((_a = ref.current.options) === null || _a === void 0 ? void 0 : _a.onCompleted);
+            onCompleted === null || onCompleted === void 0 ? void 0 : onCompleted(response.data, clientOptions);
             return response;
         }).catch(function (error) {
-            var _a, _b, _c, _d;
+            var _a;
             if (mutationId === ref.current.mutationId &&
                 ref.current.isMounted) {
                 var result_2 = {
@@ -13530,16 +14055,18 @@ function useMutation(mutation, options) {
                     setResult(ref.current.result = result_2);
                 }
             }
-            if (((_a = ref.current.options) === null || _a === void 0 ? void 0 : _a.onError) || clientOptions.onError) {
-                (_c = (_b = ref.current.options) === null || _b === void 0 ? void 0 : _b.onError) === null || _c === void 0 ? void 0 : _c.call(_b, error);
-                (_d = executeOptions.onError) === null || _d === void 0 ? void 0 : _d.call(executeOptions, error);
+            var onError = executeOptions.onError || ((_a = ref.current.options) === null || _a === void 0 ? void 0 : _a.onError);
+            if (onError) {
+                onError(error, clientOptions);
                 return { data: void 0, errors: error };
             }
             throw error;
         });
     }, []);
     var reset = React.useCallback(function () {
-        setResult({ called: false, loading: false, client: client });
+        if (ref.current.isMounted) {
+            setResult({ called: false, loading: false, client: client });
+        }
     }, []);
     React.useEffect(function () {
         ref.current.isMounted = true;
@@ -13568,26 +14095,6 @@ Query.propTypes = {
     ssr: propTypes$1.exports.bool,
     partialRefetch: propTypes$1.exports.bool,
     returnPartialData: propTypes$1.exports.bool
-};
-
-function Mutation(props) {
-    var _a = useMutation(props.mutation, props), runMutation = _a[0], result = _a[1];
-    return props.children ? props.children(runMutation, result) : null;
-}
-Mutation.propTypes = {
-    mutation: propTypes$1.exports.object.isRequired,
-    variables: propTypes$1.exports.object,
-    optimisticResponse: propTypes$1.exports.oneOfType([propTypes$1.exports.object, propTypes$1.exports.func]),
-    refetchQueries: propTypes$1.exports.oneOfType([
-        propTypes$1.exports.arrayOf(propTypes$1.exports.oneOfType([propTypes$1.exports.string, propTypes$1.exports.object])),
-        propTypes$1.exports.func
-    ]),
-    awaitRefetchQueries: propTypes$1.exports.bool,
-    update: propTypes$1.exports.func,
-    children: propTypes$1.exports.func.isRequired,
-    onCompleted: propTypes$1.exports.func,
-    onError: propTypes$1.exports.func,
-    fetchPolicy: propTypes$1.exports.string,
 };
 
 var Loading = function Loading() {
@@ -13692,11 +14199,240 @@ var Loading = function Loading() {
   })));
 };
 
-var _templateObject$4, _templateObject2$1, _templateObject3$1, _templateObject4;
-var PORTAL_QUERY = gql(_templateObject$4 || (_templateObject$4 = _taggedTemplateLiteral(["\n  query PortalSiteQuery($id: ID!) {\n    PortalSite(id: $id) {\n      id\n      portal_code\n      options\n      countries {\n        id\n        name\n      }\n      regions {\n        id\n        name\n        country_id\n      }\n      cities {\n        id\n        name\n        region\n        country_id\n      }\n      extra_search\n      max_bathrooms\n      max_bedrooms\n      max_nights\n      max_persons\n      max_weekprice\n      country_placeholder\n      categories\n      countries_label\n      country_placeholder\n      regions_label\n      cities_label\n      arrival_date_label\n      departure_date_label\n      max_weekprice_label\n      persons_min_label\n      persons_max_label\n      bedrooms_min_label\n      bathrooms_min_label\n      weekprice_max_label\n      no_nights_label\n      extra_search_label\n      properties_label\n    }\n  }\n"])));
-var CALENDAR_QUERY = gql(_templateObject2$1 || (_templateObject2$1 = _taggedTemplateLiteral(["\n  query PortalSiteHousesQuery(\n    $id: ID!\n    $house_id: String!\n    $starts_at: Date!\n    $ends_at: Date!\n  ) {\n    PortalSite(id: $id) {\n      id\n      houses(house_code: $house_id) {\n        id\n        name\n        last_minute_days\n        availabilities(starts_at: $starts_at, ends_at: $ends_at) {\n          arrival\n          arrival_time_from\n          arrival_time_to\n          date\n          departure\n          departure_time\n          max_nights\n          min_nights\n          special_offer\n        }\n      }\n    }\n    Discounts(\n      house_code: $house_id\n      discount_starts_at: $ends_at\n      discount_ends_at: $starts_at\n      active_today: true\n    ) {\n      name\n      discount_starts_at\n      discount_ends_at\n    }\n  }\n"])));
-var BOOKING_PRICE_QUERY$1 = gql(_templateObject3$1 || (_templateObject3$1 = _taggedTemplateLiteral(["\n  query BookingPriceQuery(\n    $id: ID!\n    $house_id: String!\n    $starts_at: Date!\n    $ends_at: Date!\n  ) {\n    PortalSite(id: $id) {\n      id\n      options\n      first_name_label\n      preposition_label\n      last_name_label\n      email_label\n      zipcode_label\n      city_label\n      address_label\n      house_number_label\n      phone_label\n      phone_mobile_label\n      country_label\n      iban_label\n      holder_label\n      bic_label\n      comment_label\n      company_name_label\n      extra_fields_drivers_license_label\n      extra_fields_destination_label\n      booking_fields {\n        id\n        label\n        field_type\n        options\n        placeholder\n      }\n      houses(house_code: $house_id) {\n        id\n        name\n        code\n        allow_option\n        persons\n        image_url\n        discounts\n        discounts_info\n        house_type\n        rental_terms\n        cancel_insurance\n        damage_insurance\n        damage_insurance_required\n        travel_insurance\n        babies_extra\n        booking_price(starts_at: $starts_at, ends_at: $ends_at)\n      }\n    }\n  }\n"])));
-var CREATE_BOOKING_MUTATION = gql(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  mutation CreateBooking(\n    $first_name: String!\n    $preposition: String\n    $last_name: String!\n    $company_name: String\n    $is_option: Boolean!\n    $address: String\n    $house_number: String\n    $zipcode: String\n    $city: String\n    $phone: String\n    $phone_mobile: String\n    $iban: String\n    $bic: String\n    $holder: String\n    $email: String!\n    $house_code: String!\n    $portal_code: String\n    $language: String\n    $country: String!\n    $adults: Int!\n    $children: Int\n    $babies: Int\n    $discount: Int\n    $damage_insurance: Int\n    $cancel_insurance: Int\n    $travel_insurance: Int\n    $discount_reason: String\n    $discount_code: String\n    $comment: String\n    $arrival_date: String!\n    $departure_date: String!\n    $costs: Json\n    $extra_fields: String\n  ) {\n    createBooking(\n      first_name: $first_name\n      preposition: $preposition\n      company_name: $company_name\n      last_name: $last_name\n      is_option: $is_option\n      address: $address\n      house_number: $house_number\n      zipcode: $zipcode\n      city: $city\n      phone: $phone\n      phone_mobile: $phone_mobile\n      iban: $iban\n      bic: $bic\n      holder: $holder\n      email: $email\n      house_code: $house_code\n      portal_code: $portal_code\n      language: $language\n      country: $country\n      adults: $adults\n      children: $children\n      babies: $babies\n      discount: $discount\n      discount_code: $discount_code\n      damage_insurance: $damage_insurance\n      cancel_insurance: $cancel_insurance\n      travel_insurance: $travel_insurance\n      discount_reason: $discount_reason\n      arrival_date: $arrival_date\n      departure_date: $departure_date\n      comment: $comment\n      costs: $costs\n      extra_fields: $extra_fields\n    ) {\n      booking_nr\n    }\n  }\n"])));
+const PORTAL_QUERY = gql `
+  query PortalSiteQuery($id: ID!) {
+    PortalSite(id: $id) {
+      id
+      portal_code
+      options
+      countries {
+        id
+        name
+      }
+      regions {
+        id
+        name
+        country_id
+      }
+      cities {
+        id
+        name
+        region
+        country_id
+      }
+      extra_search
+      max_bathrooms
+      max_bedrooms
+      max_nights
+      max_persons
+      max_weekprice
+      country_placeholder
+      categories
+      countries_label
+      country_placeholder
+      regions_label
+      cities_label
+      arrival_date_label
+      departure_date_label
+      max_weekprice_label
+      persons_min_label
+      persons_max_label
+      bedrooms_min_label
+      bathrooms_min_label
+      weekprice_max_label
+      no_nights_label
+      extra_search_label
+      properties_label
+    }
+  }
+`;
+const CALENDAR_QUERY = gql `
+  query PortalSiteHousesQuery(
+    $id: ID!
+    $house_id: String!
+    $starts_at: Date!
+    $ends_at: Date!
+  ) {
+    PortalSite(id: $id) {
+      id
+      houses(house_code: $house_id) {
+        id
+        name
+        last_minute_days
+        availabilities(starts_at: $starts_at, ends_at: $ends_at) {
+          arrival
+          arrival_time_from
+          arrival_time_to
+          date
+          departure
+          departure_time
+          max_nights
+          min_nights
+          special_offer
+        }
+      }
+    }
+    Discounts(
+      house_code: $house_id
+      discount_starts_at: $ends_at
+      discount_ends_at: $starts_at
+      active_today: true
+    ) {
+      name
+      discount_starts_at
+      discount_ends_at
+    }
+  }
+`;
+const BOOKING_PRICE_QUERY$1 = gql `
+  query BookingFormQuery(
+    $portalCode: ID!
+    $objectCode: String!
+    $starts_at: Date!
+    $ends_at: Date!
+  ) {
+    PortalSite(id: $portalCode) {
+      id
+      options
+      first_name_label
+      preposition_label
+      last_name_label
+      email_label
+      zipcode_label
+      city_label
+      address_label
+      house_number_label
+      phone_label
+      phone_mobile_label
+      country_label
+      iban_label
+      holder_label
+      bic_label
+      comment_label
+      company_name_label
+      extra_fields_drivers_license_label
+      extra_fields_destination_label
+      booking_fields {
+        id
+        label
+        field_type
+        options
+        placeholder
+      }
+      houses(house_code: $objectCode) {
+        id
+        name
+        code
+        allow_option
+        persons
+        image_url
+        discounts
+        discounts_info
+        house_type
+        rental_terms
+        cancel_insurance
+        damage_insurance
+        damage_insurance_required
+        travel_insurance
+        babies_extra
+        booking_price(starts_at: $starts_at, ends_at: $ends_at)
+      }
+    }
+  }
+`;
+const CREATE_BOOKING_MUTATION = gql `
+  mutation CreateBooking(
+    $first_name: String!
+    $preposition: String
+    $last_name: String!
+    $company_name: String
+    $is_option: Boolean!
+    $address: String
+    $house_number: String
+    $zipcode: String
+    $city: String
+    $phone: String
+    $phone_mobile: String
+    $iban: String
+    $bic: String
+    $holder: String
+    $email: String!
+    $house_code: String!
+    $portal_code: String
+    $language: String
+    $country: String!
+    $adults: Int!
+    $children: Int
+    $babies: Int
+    $discount: Int
+    $damage_insurance: Int
+    $cancel_insurance: Int
+    $travel_insurance: Int
+    $discount_reason: String
+    $discount_code: String
+    $comment: String
+    $arrival_date: String!
+    $departure_date: String!
+    $costs: Json
+    $extra_fields: String
+  ) {
+    createBooking(
+      first_name: $first_name
+      preposition: $preposition
+      company_name: $company_name
+      last_name: $last_name
+      is_option: $is_option
+      address: $address
+      house_number: $house_number
+      zipcode: $zipcode
+      city: $city
+      phone: $phone
+      phone_mobile: $phone_mobile
+      iban: $iban
+      bic: $bic
+      holder: $holder
+      email: $email
+      house_code: $house_code
+      portal_code: $portal_code
+      language: $language
+      country: $country
+      adults: $adults
+      children: $children
+      babies: $babies
+      discount: $discount
+      discount_code: $discount_code
+      damage_insurance: $damage_insurance
+      cancel_insurance: $cancel_insurance
+      travel_insurance: $travel_insurance
+      discount_reason: $discount_reason
+      arrival_date: $arrival_date
+      departure_date: $departure_date
+      comment: $comment
+      costs: $costs
+      extra_fields: $extra_fields
+    ) {
+      booking_nr
+    }
+  }
+`;
+const SINGLE_HOUSE_QUERY = gql `
+  query PortalSiteSingleHouseQuery($portalCode: ID!, $objectCode: String!) {
+    PortalSite(id: $portalCode) {
+      id
+      houses(house_code: $objectCode) {
+        id
+        code
+        name
+        max_nights
+        last_minute_days
+        discounts
+        discounts_info
+        house_type
+        persons
+      }
+    }
+  }
+`;
 
 function List({ filters, field, options, onChange, value }) {
     const countries = filters.countries;
@@ -22565,7 +23301,7 @@ Navigation.propTypes = {
   views: isViews.isRequired
 };
 
-var _excluded$d = ["children", "className", "direction", "count", "offset", "style", "wrap"];
+var _excluded$b = ["children", "className", "direction", "count", "offset", "style", "wrap"];
 
 function _extends$d() { _extends$d = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$d.apply(this, arguments); }
 
@@ -22591,7 +23327,7 @@ function Flex(_ref) {
       offset = _ref.offset,
       style = _ref.style,
       wrap = _ref.wrap,
-      otherProps = _objectWithoutProperties$a(_ref, _excluded$d);
+      otherProps = _objectWithoutProperties$a(_ref, _excluded$b);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends$d({
     className: className,
@@ -22742,7 +23478,7 @@ function getTileClasses() {
   return classes;
 }
 
-var _excluded$c = ["className", "count", "dateTransform", "dateType", "end", "hover", "offset", "start", "step", "tile", "value", "valueType"];
+var _excluded$a = ["className", "count", "dateTransform", "dateType", "end", "hover", "offset", "start", "step", "tile", "value", "valueType"];
 
 function ownKeys$c(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -22770,7 +23506,7 @@ function TileGroup(_ref) {
       Tile = _ref.tile,
       value = _ref.value,
       valueType = _ref.valueType,
-      tileProps = _objectWithoutProperties$9(_ref, _excluded$c);
+      tileProps = _objectWithoutProperties$9(_ref, _excluded$a);
 
   var tiles = [];
 
@@ -22947,7 +23683,7 @@ Tile.propTypes = _objectSpread$b(_objectSpread$b({}, tileProps), {}, {
   minDateTransform: PropTypes.func.isRequired
 });
 
-var _excluded$b = ["classes", "formatYear"];
+var _excluded$9 = ["classes", "formatYear"];
 
 function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -22965,7 +23701,7 @@ function Decade(_ref) {
   var classes = _ref.classes,
       _ref$formatYear = _ref.formatYear,
       formatYear$1 = _ref$formatYear === void 0 ? formatYear : _ref$formatYear,
-      otherProps = _objectWithoutProperties$8(_ref, _excluded$b);
+      otherProps = _objectWithoutProperties$8(_ref, _excluded$9);
 
   var date = otherProps.date,
       locale = otherProps.locale;
@@ -23013,7 +23749,7 @@ function CenturyView(props) {
   }, renderDecades());
 }
 
-var _excluded$a = ["classes", "formatYear"];
+var _excluded$8 = ["classes", "formatYear"];
 
 function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -23031,7 +23767,7 @@ function Year(_ref) {
   var classes = _ref.classes,
       _ref$formatYear = _ref.formatYear,
       formatYear$1 = _ref$formatYear === void 0 ? formatYear : _ref$formatYear,
-      otherProps = _objectWithoutProperties$7(_ref, _excluded$a);
+      otherProps = _objectWithoutProperties$7(_ref, _excluded$8);
 
   var date = otherProps.date,
       locale = otherProps.locale;
@@ -23083,7 +23819,7 @@ function DecadeView(props) {
   }, renderYears());
 }
 
-var _excluded$9 = ["classes", "formatMonth", "formatMonthYear"];
+var _excluded$7 = ["classes", "formatMonth", "formatMonthYear"];
 
 function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -23103,7 +23839,7 @@ function Month(_ref) {
       formatMonth = _ref$formatMonth === void 0 ? formatMonth$1 : _ref$formatMonth,
       _ref$formatMonthYear = _ref.formatMonthYear,
       formatMonthYear$1 = _ref$formatMonthYear === void 0 ? formatMonthYear : _ref$formatMonthYear,
-      otherProps = _objectWithoutProperties$6(_ref, _excluded$9);
+      otherProps = _objectWithoutProperties$6(_ref, _excluded$7);
 
   var date = otherProps.date,
       locale = otherProps.locale;
@@ -23127,7 +23863,7 @@ function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { 
 function _defineProperty$5(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _extends$6() { _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$6.apply(this, arguments); }
-function Months(props) {
+function Months$1(props) {
   var activeStartDate = props.activeStartDate;
   var start = 0;
   var end = 11;
@@ -23146,13 +23882,13 @@ function Months(props) {
     tile: Month
   }));
 }
-Months.propTypes = _objectSpread$5(_objectSpread$5({}, tileGroupProps), {}, {
+Months$1.propTypes = _objectSpread$5(_objectSpread$5({}, tileGroupProps), {}, {
   locale: PropTypes.string
 });
 
 function YearView(props) {
   function renderMonths() {
-    return /*#__PURE__*/React__default["default"].createElement(Months, props);
+    return /*#__PURE__*/React__default["default"].createElement(Months$1, props);
   }
 
   return /*#__PURE__*/React__default["default"].createElement("div", {
@@ -23160,7 +23896,7 @@ function YearView(props) {
   }, renderMonths());
 }
 
-var _excluded$8 = ["formatDay", "formatLongDate", "calendarType", "classes", "currentMonthIndex"];
+var _excluded$6 = ["formatDay", "formatLongDate", "calendarType", "classes", "currentMonthIndex"];
 
 function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -23182,7 +23918,7 @@ function Day(_ref) {
       calendarType = _ref.calendarType,
       classes = _ref.classes,
       currentMonthIndex = _ref.currentMonthIndex,
-      otherProps = _objectWithoutProperties$5(_ref, _excluded$8);
+      otherProps = _objectWithoutProperties$5(_ref, _excluded$6);
 
   var date = otherProps.date,
       locale = otherProps.locale;
@@ -23200,7 +23936,7 @@ Day.propTypes = _objectSpread$4(_objectSpread$4({}, tileProps), {}, {
   formatLongDate: PropTypes.func
 });
 
-var _excluded$7 = ["showFixedNumberOfWeeks", "showNeighboringMonth"];
+var _excluded$5 = ["showFixedNumberOfWeeks", "showNeighboringMonth"];
 
 function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -23219,7 +23955,7 @@ function Days(props) {
 
   var showFixedNumberOfWeeks = props.showFixedNumberOfWeeks,
       showNeighboringMonth = props.showNeighboringMonth,
-      otherProps = _objectWithoutProperties$4(props, _excluded$7);
+      otherProps = _objectWithoutProperties$4(props, _excluded$5);
 
   var year = getYear(activeStartDate);
   var monthIndex = getMonth(activeStartDate);
@@ -23320,7 +24056,7 @@ Weekdays.propTypes = {
   onMouseLeave: PropTypes.func
 };
 
-var _excluded$6 = ["date", "onClickWeekNumber", "weekNumber"];
+var _excluded$4 = ["date", "onClickWeekNumber", "weekNumber"];
 
 function _extends$3() { _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3.apply(this, arguments); }
 
@@ -23338,7 +24074,7 @@ function WeekNumber(_ref) {
   var date = _ref.date,
       onClickWeekNumber = _ref.onClickWeekNumber,
       weekNumber = _ref.weekNumber,
-      otherProps = _objectWithoutProperties$3(_ref, _excluded$6);
+      otherProps = _objectWithoutProperties$3(_ref, _excluded$4);
 
   var props = _objectSpread$2({
     className: className
@@ -23419,7 +24155,7 @@ WeekNumbers.propTypes = {
   showFixedNumberOfWeeks: PropTypes.bool
 };
 
-var _excluded$5 = ["calendarType", "formatShortWeekday", "onClickWeekNumber", "showWeekNumbers"];
+var _excluded$3 = ["calendarType", "formatShortWeekday", "onClickWeekNumber", "showWeekNumbers"];
 
 function _extends$2() { _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$2.apply(this, arguments); }
 
@@ -23444,7 +24180,7 @@ function MonthView(props) {
       formatShortWeekday = props.formatShortWeekday,
       onClickWeekNumber = props.onClickWeekNumber,
       showWeekNumbers = props.showWeekNumbers,
-      childProps = _objectWithoutProperties$2(props, _excluded$5);
+      childProps = _objectWithoutProperties$2(props, _excluded$3);
 
   function renderWeekdays() {
     return /*#__PURE__*/React__default["default"].createElement(Weekdays, {
@@ -23501,7 +24237,7 @@ MonthView.propTypes = {
   showWeekNumbers: PropTypes.bool
 };
 
-var _excluded$4 = ["activeStartDate", "defaultActiveStartDate", "defaultValue", "defaultView", "maxDetail", "minDetail", "value", "view"];
+var _excluded$2 = ["activeStartDate", "defaultActiveStartDate", "defaultValue", "defaultView", "maxDetail", "minDetail", "value", "view"];
 
 function _extends$1() { _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$1.apply(this, arguments); }
 
@@ -23684,7 +24420,7 @@ function getInitialActiveStartDate(props) {
       minDetail = props.minDetail,
       value = props.value,
       view = props.view,
-      otherProps = _objectWithoutProperties$1(props, _excluded$4);
+      otherProps = _objectWithoutProperties$1(props, _excluded$2);
 
   var rangeType = getView(view, minDetail, maxDetail);
   var valueFrom = activeStartDate || defaultActiveStartDate;
@@ -24340,7 +25076,7 @@ function warning(condition, message) {
   }
 }
 
-var _excluded$3 = ["invertAxis", "invertSecondaryAxis"];
+var _excluded$1 = ["invertAxis", "invertSecondaryAxis"];
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -24515,7 +25251,7 @@ function alignSecondaryAxis(args) {
 function alignBothAxis(args) {
   var invertAxis = args.invertAxis,
       invertSecondaryAxis = args.invertSecondaryAxis,
-      commonArgs = _objectWithoutProperties(args, _excluded$3);
+      commonArgs = _objectWithoutProperties(args, _excluded$1);
 
   alignMainAxis(_objectSpread(_objectSpread({}, commonArgs), {}, {
     invertAxis: invertAxis
@@ -31839,7 +32575,7 @@ function areEqual(prevProps, nextProps) {
     return (shallowEqual(nextValues, values) &&
         shallowEqual(otherProps, nextOtherProps));
 }
-function FormattedMessage$1(props) {
+function FormattedMessage(props) {
     var intl = useIntl();
     var formatMessage = intl.formatMessage, _a = intl.textComponent, Text = _a === void 0 ? React__namespace.Fragment : _a;
     var id = props.id, description = props.description, defaultMessage = props.defaultMessage, values = props.values, children = props.children, _b = props.tagName, Component = _b === void 0 ? Text : _b, ignoreTag = props.ignoreTag;
@@ -31855,10 +32591,10 @@ function FormattedMessage$1(props) {
     }
     return React__namespace.createElement(React__namespace.Fragment, null, nodes);
 }
-FormattedMessage$1.displayName = 'FormattedMessage';
-var MemoizedFormattedMessage = React__namespace.memo(FormattedMessage$1, areEqual);
+FormattedMessage.displayName = 'FormattedMessage';
+var MemoizedFormattedMessage = React__namespace.memo(FormattedMessage, areEqual);
 MemoizedFormattedMessage.displayName = 'MemoizedFormattedMessage';
-var FormattedMessage$2 = MemoizedFormattedMessage;
+var FormattedMessage$1 = MemoizedFormattedMessage;
 
 // IMPORTANT: Explicit here to prevent api-extractor from outputing `import('./src/types').CustomFormatConfig`
 createFormattedComponent('formatDate');
@@ -31890,7 +32626,7 @@ function Filters({ filters, onFilterChange, PortalSite, options }) {
     let showOn = show && 'showOnMobile';
     return (React__default["default"].createElement(React__default["default"].Fragment, null,
         React__default["default"].createElement("button", { className: `filters-button ${fixed}`, onClick: () => setShow(!show) },
-            React__default["default"].createElement(FormattedMessage$2, { id: "filters" })),
+            React__default["default"].createElement(FormattedMessage$1, { id: "filters" })),
         React__default["default"].createElement("div", { className: `${filterClass} ${fixed} ${showOn}` },
             React__default["default"].createElement("button", { onClick: () => {
                     let filters = {};
@@ -31941,22 +32677,22 @@ function SingleResult({ result, options }) {
                     thisOptions.showPersons && (React__default["default"].createElement("div", null,
                         result.persons,
                         " ",
-                        React__default["default"].createElement(FormattedMessage$2, { id: "persons" }))),
+                        React__default["default"].createElement(FormattedMessage$1, { id: "persons" }))),
                     thisOptions.showBedrooms && (React__default["default"].createElement("div", null,
                         result.bedrooms,
                         " ",
-                        React__default["default"].createElement(FormattedMessage$2, { id: "bedrooms" }))),
+                        React__default["default"].createElement(FormattedMessage$1, { id: "bedrooms" }))),
                     thisOptions.showBathrooms && (React__default["default"].createElement("div", null,
                         result.bathrooms,
                         " ",
-                        React__default["default"].createElement(FormattedMessage$2, { id: "bathrooms" })))),
+                        React__default["default"].createElement(FormattedMessage$1, { id: "bathrooms" })))),
                 thisOptions.showPrice && (React__default["default"].createElement("div", { className: "result-price" }, result.booking_price ? (React__default["default"].createElement(React__default["default"].Fragment, null,
-                    React__default["default"].createElement(FormattedMessage$2, { id: "price_from" }),
+                    React__default["default"].createElement(FormattedMessage$1, { id: "price_from" }),
                     React__default["default"].createElement("span", { className: "price" },
                         "\u20AC",
                         ' ',
                         React__default["default"].createElement(FormattedNumber, { value: result.booking_price.total_price, minimumFractionDigits: 0, maximumFractionDigits: 0 })))) : (React__default["default"].createElement(React__default["default"].Fragment, null,
-                    React__default["default"].createElement(FormattedMessage$2, { id: "minimum_week_price" }),
+                    React__default["default"].createElement(FormattedMessage$1, { id: "minimum_week_price" }),
                     React__default["default"].createElement("span", { className: "price" },
                         "\u20AC",
                         ' ',
@@ -31965,10 +32701,143 @@ function SingleResult({ result, options }) {
                     React__default["default"].createElement(ArrowRight$1, null))))));
 }
 
-var _templateObject$3, _templateObject2, _templateObject3;
-var HOUSES_QUERY = gql(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteral(["\n  query PortalSiteHousesQuery(\n    $id: ID!\n    $country_id: ID\n    $region_id: String\n    $city_id: String\n    $persons_min: Int\n    $persons_max: Int\n    $bedrooms_min: Int\n    $bathrooms_min: Int\n    $arrival_date: String\n    $no_nights: Int\n    $properties: String\n    $weekprice_max: Int\n    $limit: Int\n    $skip: Int\n  ) {\n    PortalSite(id: $id) {\n      id\n      houses(\n        country_id: $country_id\n        region_id: $region_id\n        city_id: $city_id\n        persons_min: $persons_min\n        persons_max: $persons_max\n        bedrooms_min: $bedrooms_min\n        bathrooms_min: $bathrooms_min\n        arrival_date: $arrival_date\n        weekprice_max: $weekprice_max\n        no_nights_min: $no_nights\n        properties: $properties\n        limit: $limit\n        skip: $skip\n      ) {\n        id\n        name\n        persons\n        bathrooms\n        bedrooms\n        description\n        image_url\n        house_url\n        province\n        city\n        country_name\n        minimum_week_price\n      }\n    }\n  }\n"])));
-var HOUSES_PRICE_QUERY = gql(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  query PortalSiteHousesQuery(\n    $id: ID!\n    $country_id: ID\n    $region_id: String\n    $city_id: String\n    $persons_min: Int\n    $persons_max: Int\n    $bedrooms_min: Int\n    $bathrooms_min: Int\n    $arrival_date: String\n    $starts_at: Date!\n    $ends_at: Date!\n    $no_nights: Int\n    $properties: String\n    $weekprice_max: Int\n    $limit: Int\n    $skip: Int\n  ) {\n    PortalSite(id: $id) {\n      houses(\n        country_id: $country_id\n        region_id: $region_id\n        city_id: $city_id\n        persons_min: $persons_min\n        persons_max: $persons_max\n        bedrooms_min: $bedrooms_min\n        bathrooms_min: $bathrooms_min\n        arrival_date: $arrival_date\n        weekprice_max: $weekprice_max\n        no_nights_min: $no_nights\n        properties: $properties\n        limit: $limit\n        skip: $skip\n      ) {\n        id\n        name\n        persons\n        bathrooms\n        bedrooms\n        description\n        image_url\n        house_url\n        province\n        city\n        country_name\n        minimum_week_price\n        booking_price(starts_at: $starts_at, ends_at: $ends_at)\n      }\n    }\n  }\n"])));
-var HOUSE_COUNT_QUERY = gql(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  query PortalSiteHouseCountQuery(\n    $id: ID!\n    $country_id: ID\n    $region_id: String\n    $city_id: String\n    $persons_min: Int\n    $persons_max: Int\n    $bedrooms_min: Int\n    $bathrooms_min: Int\n    $arrival_date: String\n    $no_nights: Int\n    $properties: String\n    $weekprice_max: Int\n  ) {\n    PortalSite(id: $id) {\n      id\n      houses(\n        country_id: $country_id\n        region_id: $region_id\n        city_id: $city_id\n        persons_min: $persons_min\n        persons_max: $persons_max\n        bedrooms_min: $bedrooms_min\n        bathrooms_min: $bathrooms_min\n        arrival_date: $arrival_date\n        weekprice_max: $weekprice_max\n        no_nights_min: $no_nights\n        properties: $properties\n      ) {\n        id\n      }\n    }\n  }\n"])));
+const HOUSES_QUERY = gql `
+  query PortalSiteHousesQuery(
+    $id: ID!
+    $country_id: ID
+    $region_id: String
+    $city_id: String
+    $persons_min: Int
+    $persons_max: Int
+    $bedrooms_min: Int
+    $bathrooms_min: Int
+    $arrival_date: String
+    $no_nights: Int
+    $properties: String
+    $weekprice_max: Int
+    $limit: Int
+    $skip: Int
+  ) {
+    PortalSite(id: $id) {
+      id
+      houses(
+        country_id: $country_id
+        region_id: $region_id
+        city_id: $city_id
+        persons_min: $persons_min
+        persons_max: $persons_max
+        bedrooms_min: $bedrooms_min
+        bathrooms_min: $bathrooms_min
+        arrival_date: $arrival_date
+        weekprice_max: $weekprice_max
+        no_nights_min: $no_nights
+        properties: $properties
+        limit: $limit
+        skip: $skip
+      ) {
+        id
+        name
+        persons
+        bathrooms
+        bedrooms
+        description
+        image_url
+        house_url
+        province
+        city
+        country_name
+        minimum_week_price
+      }
+    }
+  }
+`;
+const HOUSES_PRICE_QUERY = gql `
+  query PortalSiteHousesQuery(
+    $id: ID!
+    $country_id: ID
+    $region_id: String
+    $city_id: String
+    $persons_min: Int
+    $persons_max: Int
+    $bedrooms_min: Int
+    $bathrooms_min: Int
+    $arrival_date: String
+    $starts_at: Date!
+    $ends_at: Date!
+    $no_nights: Int
+    $properties: String
+    $weekprice_max: Int
+    $limit: Int
+    $skip: Int
+  ) {
+    PortalSite(id: $id) {
+      houses(
+        country_id: $country_id
+        region_id: $region_id
+        city_id: $city_id
+        persons_min: $persons_min
+        persons_max: $persons_max
+        bedrooms_min: $bedrooms_min
+        bathrooms_min: $bathrooms_min
+        arrival_date: $arrival_date
+        weekprice_max: $weekprice_max
+        no_nights_min: $no_nights
+        properties: $properties
+        limit: $limit
+        skip: $skip
+      ) {
+        id
+        name
+        persons
+        bathrooms
+        bedrooms
+        description
+        image_url
+        house_url
+        province
+        city
+        country_name
+        minimum_week_price
+        booking_price(starts_at: $starts_at, ends_at: $ends_at)
+      }
+    }
+  }
+`;
+const HOUSE_COUNT_QUERY = gql `
+  query PortalSiteHouseCountQuery(
+    $id: ID!
+    $country_id: ID
+    $region_id: String
+    $city_id: String
+    $persons_min: Int
+    $persons_max: Int
+    $bedrooms_min: Int
+    $bathrooms_min: Int
+    $arrival_date: String
+    $no_nights: Int
+    $properties: String
+    $weekprice_max: Int
+  ) {
+    PortalSite(id: $id) {
+      id
+      houses(
+        country_id: $country_id
+        region_id: $region_id
+        city_id: $city_id
+        persons_min: $persons_min
+        persons_max: $persons_max
+        bedrooms_min: $bedrooms_min
+        bathrooms_min: $bathrooms_min
+        arrival_date: $arrival_date
+        weekprice_max: $weekprice_max
+        no_nights_min: $no_nights
+        properties: $properties
+      ) {
+        id
+      }
+    }
+  }
+`;
 
 var reactPaginate = {exports: {}};
 
@@ -31997,7 +32866,7 @@ function Paginator({ onPageChange, variables, activePage, limit }) {
         React__default["default"].createElement("div", null,
             results.length,
             " ",
-            React__default["default"].createElement(FormattedMessage$2, { id: "results" })),
+            React__default["default"].createElement(FormattedMessage$1, { id: "results" })),
         React__default["default"].createElement(ReactPaginate, { pageCount: pageCount, onPageChange: ({ selected }) => {
                 onPageChange(selected);
             }, forcePage: activePage, pageRangeDisplayed: 5, breakLabel: "...", className: "bu-pagination", nextLabel: ">", previousLabel: "<" })));
@@ -32015,7 +32884,7 @@ function Modal({ children, buttonText }) {
                 React__default["default"].createElement("div", { className: "bukazu-modal-content" }, children),
                 React__default["default"].createElement("div", { className: "bukazu-modal-footer" },
                     React__default["default"].createElement("a", { onClick: () => setVisible(false) },
-                        React__default["default"].createElement(FormattedMessage$2, { id: "close" })))))));
+                        React__default["default"].createElement(FormattedMessage$1, { id: "close" })))))));
 }
 Modal.defaultProps = {
     show: false
@@ -32025,7 +32894,7 @@ function ApiError(errors, modal) {
     console.error({ errors });
     const errorMessage = (React__default["default"].createElement("div", { className: "bukazu-error-message" },
         React__default["default"].createElement("h2", null,
-            React__default["default"].createElement(FormattedMessage$2, { id: "something_went_wrong_please_try_again" })),
+            React__default["default"].createElement(FormattedMessage$1, { id: "something_went_wrong_please_try_again" })),
         React__default["default"].createElement("ul", null, errors.errors.graphQLErrors.map((err) => (React__default["default"].createElement("li", { key: err.message }, err.message))))));
     if (modal == true) {
         return React__default["default"].createElement(Modal, { show: true }, errorMessage);
@@ -32121,7 +32990,7 @@ function Results({ filters, PortalSite, limit, skip, locale, onPageChange, activ
             : null },
         Pagination,
         Results.length === 0 ? (React__default["default"].createElement("div", { className: "bu-noresults" },
-            React__default["default"].createElement(FormattedMessage$2, { id: "no_results" }))) : null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "no_results" }))) : null,
         Results.map((result) => (React__default["default"].createElement(SingleResult, { key: result.id, result: result, options: PortalSite.options.filtersForm }))),
         Pagination));
 }
@@ -32180,2786 +33049,6 @@ class SearchPage extends React.Component {
             React__default["default"].createElement(Results, { PortalSite: PortalSite, filters: filters, activePage: activePage, locale: locale, onPageChange: this.pageChange, skip: skip, limit: limit })));
     }
 }
-
-function isSameUTCWeek(dirtyDateLeft, dirtyDateRight, options) {
-  requiredArgs(2, arguments);
-  var dateLeftStartOfWeek = startOfUTCWeek(dirtyDateLeft, options);
-  var dateRightStartOfWeek = startOfUTCWeek(dirtyDateRight, options);
-  return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime();
-}
-
-var formatDistanceLocale$4 = {
-  lessThanXSeconds: {
-    standalone: {
-      one: 'weniger als 1 Sekunde',
-      other: 'weniger als {{count}} Sekunden'
-    },
-    withPreposition: {
-      one: 'weniger als 1 Sekunde',
-      other: 'weniger als {{count}} Sekunden'
-    }
-  },
-  xSeconds: {
-    standalone: {
-      one: '1 Sekunde',
-      other: '{{count}} Sekunden'
-    },
-    withPreposition: {
-      one: '1 Sekunde',
-      other: '{{count}} Sekunden'
-    }
-  },
-  halfAMinute: {
-    standalone: 'halbe Minute',
-    withPreposition: 'halben Minute'
-  },
-  lessThanXMinutes: {
-    standalone: {
-      one: 'weniger als 1 Minute',
-      other: 'weniger als {{count}} Minuten'
-    },
-    withPreposition: {
-      one: 'weniger als 1 Minute',
-      other: 'weniger als {{count}} Minuten'
-    }
-  },
-  xMinutes: {
-    standalone: {
-      one: '1 Minute',
-      other: '{{count}} Minuten'
-    },
-    withPreposition: {
-      one: '1 Minute',
-      other: '{{count}} Minuten'
-    }
-  },
-  aboutXHours: {
-    standalone: {
-      one: 'etwa 1 Stunde',
-      other: 'etwa {{count}} Stunden'
-    },
-    withPreposition: {
-      one: 'etwa 1 Stunde',
-      other: 'etwa {{count}} Stunden'
-    }
-  },
-  xHours: {
-    standalone: {
-      one: '1 Stunde',
-      other: '{{count}} Stunden'
-    },
-    withPreposition: {
-      one: '1 Stunde',
-      other: '{{count}} Stunden'
-    }
-  },
-  xDays: {
-    standalone: {
-      one: '1 Tag',
-      other: '{{count}} Tage'
-    },
-    withPreposition: {
-      one: '1 Tag',
-      other: '{{count}} Tagen'
-    }
-  },
-  aboutXWeeks: {
-    standalone: {
-      one: 'etwa 1 Woche',
-      other: 'etwa {{count}} Wochen'
-    },
-    withPreposition: {
-      one: 'etwa 1 Woche',
-      other: 'etwa {{count}} Wochen'
-    }
-  },
-  xWeeks: {
-    standalone: {
-      one: '1 Woche',
-      other: '{{count}} Wochen'
-    },
-    withPreposition: {
-      one: '1 Woche',
-      other: '{{count}} Wochen'
-    }
-  },
-  aboutXMonths: {
-    standalone: {
-      one: 'etwa 1 Monat',
-      other: 'etwa {{count}} Monate'
-    },
-    withPreposition: {
-      one: 'etwa 1 Monat',
-      other: 'etwa {{count}} Monaten'
-    }
-  },
-  xMonths: {
-    standalone: {
-      one: '1 Monat',
-      other: '{{count}} Monate'
-    },
-    withPreposition: {
-      one: '1 Monat',
-      other: '{{count}} Monaten'
-    }
-  },
-  aboutXYears: {
-    standalone: {
-      one: 'etwa 1 Jahr',
-      other: 'etwa {{count}} Jahre'
-    },
-    withPreposition: {
-      one: 'etwa 1 Jahr',
-      other: 'etwa {{count}} Jahren'
-    }
-  },
-  xYears: {
-    standalone: {
-      one: '1 Jahr',
-      other: '{{count}} Jahre'
-    },
-    withPreposition: {
-      one: '1 Jahr',
-      other: '{{count}} Jahren'
-    }
-  },
-  overXYears: {
-    standalone: {
-      one: 'mehr als 1 Jahr',
-      other: 'mehr als {{count}} Jahre'
-    },
-    withPreposition: {
-      one: 'mehr als 1 Jahr',
-      other: 'mehr als {{count}} Jahren'
-    }
-  },
-  almostXYears: {
-    standalone: {
-      one: 'fast 1 Jahr',
-      other: 'fast {{count}} Jahre'
-    },
-    withPreposition: {
-      one: 'fast 1 Jahr',
-      other: 'fast {{count}} Jahren'
-    }
-  }
-};
-
-var formatDistance$8 = function formatDistance(token, count, options) {
-  var result;
-  var tokenValue = options !== null && options !== void 0 && options.addSuffix ? formatDistanceLocale$4[token].withPreposition : formatDistanceLocale$4[token].standalone;
-
-  if (typeof tokenValue === 'string') {
-    result = tokenValue;
-  } else if (count === 1) {
-    result = tokenValue.one;
-  } else {
-    result = tokenValue.other.replace('{{count}}', String(count));
-  }
-
-  if (options !== null && options !== void 0 && options.addSuffix) {
-    if (options.comparison && options.comparison > 0) {
-      return 'in ' + result;
-    } else {
-      return 'vor ' + result;
-    }
-  }
-
-  return result;
-};
-
-var formatDistance$9 = formatDistance$8;
-
-// DIN 5008: https://de.wikipedia.org/wiki/Datumsformat#DIN_5008
-var dateFormats$5 = {
-  full: 'EEEE, do MMMM y',
-  // Montag, 7. Januar 2018
-  long: 'do MMMM y',
-  // 7. Januar 2018
-  medium: 'do MMM y',
-  // 7. Jan. 2018
-  short: 'dd.MM.y' // 07.01.2018
-
-};
-var timeFormats$5 = {
-  full: 'HH:mm:ss zzzz',
-  long: 'HH:mm:ss z',
-  medium: 'HH:mm:ss',
-  short: 'HH:mm'
-};
-var dateTimeFormats$5 = {
-  full: "{{date}} 'um' {{time}}",
-  long: "{{date}} 'um' {{time}}",
-  medium: '{{date}} {{time}}',
-  short: '{{date}} {{time}}'
-};
-var formatLong$a = {
-  date: buildFormatLongFn({
-    formats: dateFormats$5,
-    defaultWidth: 'full'
-  }),
-  time: buildFormatLongFn({
-    formats: timeFormats$5,
-    defaultWidth: 'full'
-  }),
-  dateTime: buildFormatLongFn({
-    formats: dateTimeFormats$5,
-    defaultWidth: 'full'
-  })
-};
-var formatLong$b = formatLong$a;
-
-var formatRelativeLocale$4 = {
-  lastWeek: "'letzten' eeee 'um' p",
-  yesterday: "'gestern um' p",
-  today: "'heute um' p",
-  tomorrow: "'morgen um' p",
-  nextWeek: "eeee 'um' p",
-  other: 'P'
-};
-
-var formatRelative$8 = function formatRelative(token, _date, _baseDate, _options) {
-  return formatRelativeLocale$4[token];
-};
-
-var formatRelative$9 = formatRelative$8;
-
-var eraValues$4 = {
-  narrow: ['v.Chr.', 'n.Chr.'],
-  abbreviated: ['v.Chr.', 'n.Chr.'],
-  wide: ['vor Christus', 'nach Christus']
-};
-var quarterValues$4 = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['1. Quartal', '2. Quartal', '3. Quartal', '4. Quartal']
-}; // Note: in German, the names of days of the week and months are capitalized.
-// If you are making a new locale based on this one, check if the same is true for the language you're working on.
-// Generally, formatted dates should look like they are in the middle of a sentence,
-// e.g. in Spanish language the weekdays and months should be in the lowercase.
-
-var monthValues$4 = {
-  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
-  wide: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
-}; // https://st.unicode.org/cldr-apps/v#/de/Gregorian/
-
-var formattingMonthValues = {
-  narrow: monthValues$4.narrow,
-  abbreviated: ['Jan.', 'Feb.', 'März', 'Apr.', 'Mai', 'Juni', 'Juli', 'Aug.', 'Sep.', 'Okt.', 'Nov.', 'Dez.'],
-  wide: monthValues$4.wide
-};
-var dayValues$4 = {
-  narrow: ['S', 'M', 'D', 'M', 'D', 'F', 'S'],
-  short: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
-  abbreviated: ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'],
-  wide: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag']
-}; // https://www.unicode.org/cldr/charts/32/summary/de.html#1881
-
-var dayPeriodValues$4 = {
-  narrow: {
-    am: 'vm.',
-    pm: 'nm.',
-    midnight: 'Mitternacht',
-    noon: 'Mittag',
-    morning: 'Morgen',
-    afternoon: 'Nachm.',
-    evening: 'Abend',
-    night: 'Nacht'
-  },
-  abbreviated: {
-    am: 'vorm.',
-    pm: 'nachm.',
-    midnight: 'Mitternacht',
-    noon: 'Mittag',
-    morning: 'Morgen',
-    afternoon: 'Nachmittag',
-    evening: 'Abend',
-    night: 'Nacht'
-  },
-  wide: {
-    am: 'vormittags',
-    pm: 'nachmittags',
-    midnight: 'Mitternacht',
-    noon: 'Mittag',
-    morning: 'Morgen',
-    afternoon: 'Nachmittag',
-    evening: 'Abend',
-    night: 'Nacht'
-  }
-};
-var formattingDayPeriodValues$2 = {
-  narrow: {
-    am: 'vm.',
-    pm: 'nm.',
-    midnight: 'Mitternacht',
-    noon: 'Mittag',
-    morning: 'morgens',
-    afternoon: 'nachm.',
-    evening: 'abends',
-    night: 'nachts'
-  },
-  abbreviated: {
-    am: 'vorm.',
-    pm: 'nachm.',
-    midnight: 'Mitternacht',
-    noon: 'Mittag',
-    morning: 'morgens',
-    afternoon: 'nachmittags',
-    evening: 'abends',
-    night: 'nachts'
-  },
-  wide: {
-    am: 'vormittags',
-    pm: 'nachmittags',
-    midnight: 'Mitternacht',
-    noon: 'Mittag',
-    morning: 'morgens',
-    afternoon: 'nachmittags',
-    evening: 'abends',
-    night: 'nachts'
-  }
-};
-
-var ordinalNumber$4 = function ordinalNumber(dirtyNumber) {
-  var number = Number(dirtyNumber);
-  return number + '.';
-};
-
-var localize$8 = {
-  ordinalNumber: ordinalNumber$4,
-  era: buildLocalizeFn({
-    values: eraValues$4,
-    defaultWidth: 'wide'
-  }),
-  quarter: buildLocalizeFn({
-    values: quarterValues$4,
-    defaultWidth: 'wide',
-    argumentCallback: function argumentCallback(quarter) {
-      return quarter - 1;
-    }
-  }),
-  month: buildLocalizeFn({
-    values: monthValues$4,
-    formattingValues: formattingMonthValues,
-    defaultWidth: 'wide'
-  }),
-  day: buildLocalizeFn({
-    values: dayValues$4,
-    defaultWidth: 'wide'
-  }),
-  dayPeriod: buildLocalizeFn({
-    values: dayPeriodValues$4,
-    defaultWidth: 'wide',
-    formattingValues: formattingDayPeriodValues$2,
-    defaultFormattingWidth: 'wide'
-  })
-};
-var localize$9 = localize$8;
-
-var matchOrdinalNumberPattern$4 = /^(\d+)(\.)?/i;
-var parseOrdinalNumberPattern$4 = /\d+/i;
-var matchEraPatterns$4 = {
-  narrow: /^(v\.? ?Chr\.?|n\.? ?Chr\.?)/i,
-  abbreviated: /^(v\.? ?Chr\.?|n\.? ?Chr\.?)/i,
-  wide: /^(vor Christus|vor unserer Zeitrechnung|nach Christus|unserer Zeitrechnung)/i
-};
-var parseEraPatterns$4 = {
-  any: [/^v/i, /^n/i]
-};
-var matchQuarterPatterns$4 = {
-  narrow: /^[1234]/i,
-  abbreviated: /^q[1234]/i,
-  wide: /^[1234](\.)? Quartal/i
-};
-var parseQuarterPatterns$4 = {
-  any: [/1/i, /2/i, /3/i, /4/i]
-};
-var matchMonthPatterns$4 = {
-  narrow: /^[jfmasond]/i,
-  abbreviated: /^(j[aä]n|feb|mär[z]?|apr|mai|jun[i]?|jul[i]?|aug|sep|okt|nov|dez)\.?/i,
-  wide: /^(januar|februar|märz|april|mai|juni|juli|august|september|oktober|november|dezember)/i
-};
-var parseMonthPatterns$4 = {
-  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
-  any: [/^j[aä]/i, /^f/i, /^mär/i, /^ap/i, /^mai/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
-};
-var matchDayPatterns$4 = {
-  narrow: /^[smdmf]/i,
-  short: /^(so|mo|di|mi|do|fr|sa)/i,
-  abbreviated: /^(son?|mon?|die?|mit?|don?|fre?|sam?)\.?/i,
-  wide: /^(sonntag|montag|dienstag|mittwoch|donnerstag|freitag|samstag)/i
-};
-var parseDayPatterns$4 = {
-  any: [/^so/i, /^mo/i, /^di/i, /^mi/i, /^do/i, /^f/i, /^sa/i]
-};
-var matchDayPeriodPatterns$4 = {
-  narrow: /^(vm\.?|nm\.?|Mitternacht|Mittag|morgens|nachm\.?|abends|nachts)/i,
-  abbreviated: /^(vorm\.?|nachm\.?|Mitternacht|Mittag|morgens|nachm\.?|abends|nachts)/i,
-  wide: /^(vormittags|nachmittags|Mitternacht|Mittag|morgens|nachmittags|abends|nachts)/i
-};
-var parseDayPeriodPatterns$4 = {
-  any: {
-    am: /^v/i,
-    pm: /^n/i,
-    midnight: /^Mitte/i,
-    noon: /^Mitta/i,
-    morning: /morgens/i,
-    afternoon: /nachmittags/i,
-    // will never be matched. Afternoon is matched by `pm`
-    evening: /abends/i,
-    night: /nachts/i // will never be matched. Night is matched by `pm`
-
-  }
-};
-var match$8 = {
-  ordinalNumber: buildMatchPatternFn({
-    matchPattern: matchOrdinalNumberPattern$4,
-    parsePattern: parseOrdinalNumberPattern$4,
-    valueCallback: function valueCallback(value) {
-      return parseInt(value);
-    }
-  }),
-  era: buildMatchFn({
-    matchPatterns: matchEraPatterns$4,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseEraPatterns$4,
-    defaultParseWidth: 'any'
-  }),
-  quarter: buildMatchFn({
-    matchPatterns: matchQuarterPatterns$4,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseQuarterPatterns$4,
-    defaultParseWidth: 'any',
-    valueCallback: function valueCallback(index) {
-      return index + 1;
-    }
-  }),
-  month: buildMatchFn({
-    matchPatterns: matchMonthPatterns$4,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseMonthPatterns$4,
-    defaultParseWidth: 'any'
-  }),
-  day: buildMatchFn({
-    matchPatterns: matchDayPatterns$4,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseDayPatterns$4,
-    defaultParseWidth: 'any'
-  }),
-  dayPeriod: buildMatchFn({
-    matchPatterns: matchDayPeriodPatterns$4,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseDayPeriodPatterns$4,
-    defaultParseWidth: 'any'
-  })
-};
-var match$9 = match$8;
-
-/**
- * @type {Locale}
- * @category Locales
- * @summary German locale.
- * @language German
- * @iso-639-2 deu
- * @author Thomas Eilmsteiner [@DeMuu]{@link https://github.com/DeMuu}
- * @author Asia [@asia-t]{@link https://github.com/asia-t}
- * @author Van Vuong Ngo [@vanvuongngo]{@link https://github.com/vanvuongngo}
- * @author RomanErnst [@pex]{@link https://github.com/pex}
- * @author Philipp Keck [@Philipp91]{@link https://github.com/Philipp91}
- */
-var locale$5 = {
-  code: 'de',
-  formatDistance: formatDistance$9,
-  formatLong: formatLong$b,
-  formatRelative: formatRelative$9,
-  localize: localize$9,
-  match: match$9,
-  options: {
-    weekStartsOn: 1
-    /* Monday */
-    ,
-    firstWeekContainsDate: 4
-  }
-};
-var de$2 = locale$5;
-
-var dateFormats$4 = {
-  full: 'EEEE, d MMMM yyyy',
-  long: 'd MMMM yyyy',
-  medium: 'd MMM yyyy',
-  short: 'dd/MM/yyyy'
-};
-var timeFormats$4 = {
-  full: 'HH:mm:ss zzzz',
-  long: 'HH:mm:ss z',
-  medium: 'HH:mm:ss',
-  short: 'HH:mm'
-};
-var dateTimeFormats$4 = {
-  full: "{{date}} 'at' {{time}}",
-  long: "{{date}} 'at' {{time}}",
-  medium: '{{date}}, {{time}}',
-  short: '{{date}}, {{time}}'
-};
-var formatLong$8 = {
-  date: buildFormatLongFn({
-    formats: dateFormats$4,
-    defaultWidth: 'full'
-  }),
-  time: buildFormatLongFn({
-    formats: timeFormats$4,
-    defaultWidth: 'full'
-  }),
-  dateTime: buildFormatLongFn({
-    formats: dateTimeFormats$4,
-    defaultWidth: 'full'
-  })
-};
-var formatLong$9 = formatLong$8;
-
-/**
- * @type {Locale}
- * @category Locales
- * @summary English locale (United Kingdom).
- * @language English
- * @iso-639-2 eng
- * @author Alex [@glintik]{@link https://github.com/glintik}
- */
-
-var locale$4 = {
-  code: 'en-GB',
-  formatDistance: formatDistance$b,
-  formatLong: formatLong$9,
-  formatRelative: formatRelative$b,
-  localize: localize$b,
-  match: match$b,
-  options: {
-    weekStartsOn: 1
-    /* Monday */
-    ,
-    firstWeekContainsDate: 4
-  }
-};
-var enGB = locale$4;
-
-var formatDistanceLocale$3 = {
-  lessThanXSeconds: {
-    one: 'menos de un segundo',
-    other: 'menos de {{count}} segundos'
-  },
-  xSeconds: {
-    one: '1 segundo',
-    other: '{{count}} segundos'
-  },
-  halfAMinute: 'medio minuto',
-  lessThanXMinutes: {
-    one: 'menos de un minuto',
-    other: 'menos de {{count}} minutos'
-  },
-  xMinutes: {
-    one: '1 minuto',
-    other: '{{count}} minutos'
-  },
-  aboutXHours: {
-    one: 'alrededor de 1 hora',
-    other: 'alrededor de {{count}} horas'
-  },
-  xHours: {
-    one: '1 hora',
-    other: '{{count}} horas'
-  },
-  xDays: {
-    one: '1 día',
-    other: '{{count}} días'
-  },
-  aboutXWeeks: {
-    one: 'alrededor de 1 semana',
-    other: 'alrededor de {{count}} semanas'
-  },
-  xWeeks: {
-    one: '1 semana',
-    other: '{{count}} semanas'
-  },
-  aboutXMonths: {
-    one: 'alrededor de 1 mes',
-    other: 'alrededor de {{count}} meses'
-  },
-  xMonths: {
-    one: '1 mes',
-    other: '{{count}} meses'
-  },
-  aboutXYears: {
-    one: 'alrededor de 1 año',
-    other: 'alrededor de {{count}} años'
-  },
-  xYears: {
-    one: '1 año',
-    other: '{{count}} años'
-  },
-  overXYears: {
-    one: 'más de 1 año',
-    other: 'más de {{count}} años'
-  },
-  almostXYears: {
-    one: 'casi 1 año',
-    other: 'casi {{count}} años'
-  }
-};
-
-var formatDistance$6 = function formatDistance(token, count, options) {
-  var result;
-  var tokenValue = formatDistanceLocale$3[token];
-
-  if (typeof tokenValue === 'string') {
-    result = tokenValue;
-  } else if (count === 1) {
-    result = tokenValue.one;
-  } else {
-    result = tokenValue.other.replace('{{count}}', count.toString());
-  }
-
-  if (options !== null && options !== void 0 && options.addSuffix) {
-    if (options.comparison && options.comparison > 0) {
-      return 'en ' + result;
-    } else {
-      return 'hace ' + result;
-    }
-  }
-
-  return result;
-};
-
-var formatDistance$7 = formatDistance$6;
-
-var dateFormats$3 = {
-  full: "EEEE, d 'de' MMMM 'de' y",
-  long: "d 'de' MMMM 'de' y",
-  medium: 'd MMM y',
-  short: 'dd/MM/y'
-};
-var timeFormats$3 = {
-  full: 'HH:mm:ss zzzz',
-  long: 'HH:mm:ss z',
-  medium: 'HH:mm:ss',
-  short: 'HH:mm'
-};
-var dateTimeFormats$3 = {
-  full: "{{date}} 'a las' {{time}}",
-  long: "{{date}} 'a las' {{time}}",
-  medium: '{{date}}, {{time}}',
-  short: '{{date}}, {{time}}'
-};
-var formatLong$6 = {
-  date: buildFormatLongFn({
-    formats: dateFormats$3,
-    defaultWidth: 'full'
-  }),
-  time: buildFormatLongFn({
-    formats: timeFormats$3,
-    defaultWidth: 'full'
-  }),
-  dateTime: buildFormatLongFn({
-    formats: dateTimeFormats$3,
-    defaultWidth: 'full'
-  })
-};
-var formatLong$7 = formatLong$6;
-
-var formatRelativeLocale$3 = {
-  lastWeek: "'el' eeee 'pasado a la' p",
-  yesterday: "'ayer a la' p",
-  today: "'hoy a la' p",
-  tomorrow: "'mañana a la' p",
-  nextWeek: "eeee 'a la' p",
-  other: 'P'
-};
-var formatRelativeLocalePlural = {
-  lastWeek: "'el' eeee 'pasado a las' p",
-  yesterday: "'ayer a las' p",
-  today: "'hoy a las' p",
-  tomorrow: "'mañana a las' p",
-  nextWeek: "eeee 'a las' p",
-  other: 'P'
-};
-
-var formatRelative$6 = function formatRelative(token, date, _baseDate, _options) {
-  if (date.getUTCHours() !== 1) {
-    return formatRelativeLocalePlural[token];
-  } else {
-    return formatRelativeLocale$3[token];
-  }
-};
-
-var formatRelative$7 = formatRelative$6;
-
-var eraValues$3 = {
-  narrow: ['AC', 'DC'],
-  abbreviated: ['AC', 'DC'],
-  wide: ['antes de cristo', 'después de cristo']
-};
-var quarterValues$3 = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['T1', 'T2', 'T3', 'T4'],
-  wide: ['1º trimestre', '2º trimestre', '3º trimestre', '4º trimestre']
-};
-var monthValues$3 = {
-  narrow: ['e', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
-  abbreviated: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
-  wide: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
-};
-var dayValues$3 = {
-  narrow: ['d', 'l', 'm', 'm', 'j', 'v', 's'],
-  short: ['do', 'lu', 'ma', 'mi', 'ju', 'vi', 'sá'],
-  abbreviated: ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'],
-  wide: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado']
-};
-var dayPeriodValues$3 = {
-  narrow: {
-    am: 'a',
-    pm: 'p',
-    midnight: 'mn',
-    noon: 'md',
-    morning: 'mañana',
-    afternoon: 'tarde',
-    evening: 'tarde',
-    night: 'noche'
-  },
-  abbreviated: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'medianoche',
-    noon: 'mediodia',
-    morning: 'mañana',
-    afternoon: 'tarde',
-    evening: 'tarde',
-    night: 'noche'
-  },
-  wide: {
-    am: 'a.m.',
-    pm: 'p.m.',
-    midnight: 'medianoche',
-    noon: 'mediodia',
-    morning: 'mañana',
-    afternoon: 'tarde',
-    evening: 'tarde',
-    night: 'noche'
-  }
-};
-var formattingDayPeriodValues$1 = {
-  narrow: {
-    am: 'a',
-    pm: 'p',
-    midnight: 'mn',
-    noon: 'md',
-    morning: 'de la mañana',
-    afternoon: 'de la tarde',
-    evening: 'de la tarde',
-    night: 'de la noche'
-  },
-  abbreviated: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'medianoche',
-    noon: 'mediodia',
-    morning: 'de la mañana',
-    afternoon: 'de la tarde',
-    evening: 'de la tarde',
-    night: 'de la noche'
-  },
-  wide: {
-    am: 'a.m.',
-    pm: 'p.m.',
-    midnight: 'medianoche',
-    noon: 'mediodia',
-    morning: 'de la mañana',
-    afternoon: 'de la tarde',
-    evening: 'de la tarde',
-    night: 'de la noche'
-  }
-};
-
-var ordinalNumber$3 = function ordinalNumber(dirtyNumber, _options) {
-  var number = Number(dirtyNumber);
-  return number + 'º';
-};
-
-var localize$6 = {
-  ordinalNumber: ordinalNumber$3,
-  era: buildLocalizeFn({
-    values: eraValues$3,
-    defaultWidth: 'wide'
-  }),
-  quarter: buildLocalizeFn({
-    values: quarterValues$3,
-    defaultWidth: 'wide',
-    argumentCallback: function argumentCallback(quarter) {
-      return Number(quarter) - 1;
-    }
-  }),
-  month: buildLocalizeFn({
-    values: monthValues$3,
-    defaultWidth: 'wide'
-  }),
-  day: buildLocalizeFn({
-    values: dayValues$3,
-    defaultWidth: 'wide'
-  }),
-  dayPeriod: buildLocalizeFn({
-    values: dayPeriodValues$3,
-    defaultWidth: 'wide',
-    formattingValues: formattingDayPeriodValues$1,
-    defaultFormattingWidth: 'wide'
-  })
-};
-var localize$7 = localize$6;
-
-var matchOrdinalNumberPattern$3 = /^(\d+)(º)?/i;
-var parseOrdinalNumberPattern$3 = /\d+/i;
-var matchEraPatterns$3 = {
-  narrow: /^(ac|dc|a|d)/i,
-  abbreviated: /^(a\.?\s?c\.?|a\.?\s?e\.?\s?c\.?|d\.?\s?c\.?|e\.?\s?c\.?)/i,
-  wide: /^(antes de cristo|antes de la era com[uú]n|despu[eé]s de cristo|era com[uú]n)/i
-};
-var parseEraPatterns$3 = {
-  any: [/^ac/i, /^dc/i],
-  wide: [/^(antes de cristo|antes de la era com[uú]n)/i, /^(despu[eé]s de cristo|era com[uú]n)/i]
-};
-var matchQuarterPatterns$3 = {
-  narrow: /^[1234]/i,
-  abbreviated: /^T[1234]/i,
-  wide: /^[1234](º)? trimestre/i
-};
-var parseQuarterPatterns$3 = {
-  any: [/1/i, /2/i, /3/i, /4/i]
-};
-var matchMonthPatterns$3 = {
-  narrow: /^[efmajsond]/i,
-  abbreviated: /^(ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic)/i,
-  wide: /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/i
-};
-var parseMonthPatterns$3 = {
-  narrow: [/^e/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
-  any: [/^en/i, /^feb/i, /^mar/i, /^abr/i, /^may/i, /^jun/i, /^jul/i, /^ago/i, /^sep/i, /^oct/i, /^nov/i, /^dic/i]
-};
-var matchDayPatterns$3 = {
-  narrow: /^[dlmjvs]/i,
-  short: /^(do|lu|ma|mi|ju|vi|s[áa])/i,
-  abbreviated: /^(dom|lun|mar|mi[ée]|jue|vie|s[áa]b)/i,
-  wide: /^(domingo|lunes|martes|mi[ée]rcoles|jueves|viernes|s[áa]bado)/i
-};
-var parseDayPatterns$3 = {
-  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^j/i, /^v/i, /^s/i],
-  any: [/^do/i, /^lu/i, /^ma/i, /^mi/i, /^ju/i, /^vi/i, /^sa/i]
-};
-var matchDayPeriodPatterns$3 = {
-  narrow: /^(a|p|mn|md|(de la|a las) (mañana|tarde|noche))/i,
-  any: /^([ap]\.?\s?m\.?|medianoche|mediodia|(de la|a las) (mañana|tarde|noche))/i
-};
-var parseDayPeriodPatterns$3 = {
-  any: {
-    am: /^a/i,
-    pm: /^p/i,
-    midnight: /^mn/i,
-    noon: /^md/i,
-    morning: /mañana/i,
-    afternoon: /tarde/i,
-    evening: /tarde/i,
-    night: /noche/i
-  }
-};
-var match$6 = {
-  ordinalNumber: buildMatchPatternFn({
-    matchPattern: matchOrdinalNumberPattern$3,
-    parsePattern: parseOrdinalNumberPattern$3,
-    valueCallback: function valueCallback(value) {
-      return parseInt(value, 10);
-    }
-  }),
-  era: buildMatchFn({
-    matchPatterns: matchEraPatterns$3,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseEraPatterns$3,
-    defaultParseWidth: 'any'
-  }),
-  quarter: buildMatchFn({
-    matchPatterns: matchQuarterPatterns$3,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseQuarterPatterns$3,
-    defaultParseWidth: 'any',
-    valueCallback: function valueCallback(index) {
-      return index + 1;
-    }
-  }),
-  month: buildMatchFn({
-    matchPatterns: matchMonthPatterns$3,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseMonthPatterns$3,
-    defaultParseWidth: 'any'
-  }),
-  day: buildMatchFn({
-    matchPatterns: matchDayPatterns$3,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseDayPatterns$3,
-    defaultParseWidth: 'any'
-  }),
-  dayPeriod: buildMatchFn({
-    matchPatterns: matchDayPeriodPatterns$3,
-    defaultMatchWidth: 'any',
-    parsePatterns: parseDayPeriodPatterns$3,
-    defaultParseWidth: 'any'
-  })
-};
-var match$7 = match$6;
-
-/**
- * @type {Locale}
- * @category Locales
- * @summary Spanish locale.
- * @language Spanish
- * @iso-639-2 spa
- * @author Juan Angosto [@juanangosto]{@link https://github.com/juanangosto}
- * @author Guillermo Grau [@guigrpa]{@link https://github.com/guigrpa}
- * @author Fernando Agüero [@fjaguero]{@link https://github.com/fjaguero}
- * @author Gastón Haro [@harogaston]{@link https://github.com/harogaston}
- * @author Yago Carballo [@YagoCarballo]{@link https://github.com/YagoCarballo}
- */
-var locale$3 = {
-  code: 'es',
-  formatDistance: formatDistance$7,
-  formatLong: formatLong$7,
-  formatRelative: formatRelative$7,
-  localize: localize$7,
-  match: match$7,
-  options: {
-    weekStartsOn: 1
-    /* Monday */
-    ,
-    firstWeekContainsDate: 1
-  }
-};
-var es$2 = locale$3;
-
-var formatDistanceLocale$2 = {
-  lessThanXSeconds: {
-    one: 'moins d’une seconde',
-    other: 'moins de {{count}} secondes'
-  },
-  xSeconds: {
-    one: '1 seconde',
-    other: '{{count}} secondes'
-  },
-  halfAMinute: '30 secondes',
-  lessThanXMinutes: {
-    one: 'moins d’une minute',
-    other: 'moins de {{count}} minutes'
-  },
-  xMinutes: {
-    one: '1 minute',
-    other: '{{count}} minutes'
-  },
-  aboutXHours: {
-    one: 'environ 1 heure',
-    other: 'environ {{count}} heures'
-  },
-  xHours: {
-    one: '1 heure',
-    other: '{{count}} heures'
-  },
-  xDays: {
-    one: '1 jour',
-    other: '{{count}} jours'
-  },
-  aboutXWeeks: {
-    one: 'environ 1 semaine',
-    other: 'environ {{count}} semaines'
-  },
-  xWeeks: {
-    one: '1 semaine',
-    other: '{{count}} semaines'
-  },
-  aboutXMonths: {
-    one: 'environ 1 mois',
-    other: 'environ {{count}} mois'
-  },
-  xMonths: {
-    one: '1 mois',
-    other: '{{count}} mois'
-  },
-  aboutXYears: {
-    one: 'environ 1 an',
-    other: 'environ {{count}} ans'
-  },
-  xYears: {
-    one: '1 an',
-    other: '{{count}} ans'
-  },
-  overXYears: {
-    one: 'plus d’un an',
-    other: 'plus de {{count}} ans'
-  },
-  almostXYears: {
-    one: 'presqu’un an',
-    other: 'presque {{count}} ans'
-  }
-};
-
-var formatDistance$4 = function formatDistance(token, count, options) {
-  var result;
-  var form = formatDistanceLocale$2[token];
-
-  if (typeof form === 'string') {
-    result = form;
-  } else if (count === 1) {
-    result = form.one;
-  } else {
-    result = form.other.replace('{{count}}', String(count));
-  }
-
-  if (options !== null && options !== void 0 && options.addSuffix) {
-    if (options.comparison && options.comparison > 0) {
-      return 'dans ' + result;
-    } else {
-      return 'il y a ' + result;
-    }
-  }
-
-  return result;
-};
-
-var formatDistance$5 = formatDistance$4;
-
-var dateFormats$2 = {
-  full: 'EEEE d MMMM y',
-  long: 'd MMMM y',
-  medium: 'd MMM y',
-  short: 'dd/MM/y'
-};
-var timeFormats$2 = {
-  full: 'HH:mm:ss zzzz',
-  long: 'HH:mm:ss z',
-  medium: 'HH:mm:ss',
-  short: 'HH:mm'
-};
-var dateTimeFormats$2 = {
-  full: "{{date}} 'à' {{time}}",
-  long: "{{date}} 'à' {{time}}",
-  medium: '{{date}}, {{time}}',
-  short: '{{date}}, {{time}}'
-};
-var formatLong$4 = {
-  date: buildFormatLongFn({
-    formats: dateFormats$2,
-    defaultWidth: 'full'
-  }),
-  time: buildFormatLongFn({
-    formats: timeFormats$2,
-    defaultWidth: 'full'
-  }),
-  dateTime: buildFormatLongFn({
-    formats: dateTimeFormats$2,
-    defaultWidth: 'full'
-  })
-};
-var formatLong$5 = formatLong$4;
-
-var formatRelativeLocale$2 = {
-  lastWeek: "eeee 'dernier à' p",
-  yesterday: "'hier à' p",
-  today: "'aujourd’hui à' p",
-  tomorrow: "'demain à' p'",
-  nextWeek: "eeee 'prochain à' p",
-  other: 'P'
-};
-
-var formatRelative$4 = function formatRelative(token, _date, _baseDate, _options) {
-  return formatRelativeLocale$2[token];
-};
-
-var formatRelative$5 = formatRelative$4;
-
-var eraValues$2 = {
-  narrow: ['av. J.-C', 'ap. J.-C'],
-  abbreviated: ['av. J.-C', 'ap. J.-C'],
-  wide: ['avant Jésus-Christ', 'après Jésus-Christ']
-};
-var quarterValues$2 = {
-  narrow: ['T1', 'T2', 'T3', 'T4'],
-  abbreviated: ['1er trim.', '2ème trim.', '3ème trim.', '4ème trim.'],
-  wide: ['1er trimestre', '2ème trimestre', '3ème trimestre', '4ème trimestre']
-};
-var monthValues$2 = {
-  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'],
-  wide: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
-};
-var dayValues$2 = {
-  narrow: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
-  short: ['di', 'lu', 'ma', 'me', 'je', 've', 'sa'],
-  abbreviated: ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'],
-  wide: ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi']
-};
-var dayPeriodValues$2 = {
-  narrow: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'minuit',
-    noon: 'midi',
-    morning: 'mat.',
-    afternoon: 'ap.m.',
-    evening: 'soir',
-    night: 'mat.'
-  },
-  abbreviated: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'minuit',
-    noon: 'midi',
-    morning: 'matin',
-    afternoon: 'après-midi',
-    evening: 'soir',
-    night: 'matin'
-  },
-  wide: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'minuit',
-    noon: 'midi',
-    morning: 'du matin',
-    afternoon: 'de l’après-midi',
-    evening: 'du soir',
-    night: 'du matin'
-  }
-};
-
-var ordinalNumber$2 = function ordinalNumber(dirtyNumber, options) {
-  var number = Number(dirtyNumber);
-  var unit = options === null || options === void 0 ? void 0 : options.unit;
-  if (number === 0) return '0';
-  var feminineUnits = ['year', 'week', 'hour', 'minute', 'second'];
-  var suffix;
-
-  if (number === 1) {
-    suffix = unit && feminineUnits.includes(unit) ? 'ère' : 'er';
-  } else {
-    suffix = 'ème';
-  }
-
-  return number + suffix;
-};
-
-var localize$4 = {
-  ordinalNumber: ordinalNumber$2,
-  era: buildLocalizeFn({
-    values: eraValues$2,
-    defaultWidth: 'wide'
-  }),
-  quarter: buildLocalizeFn({
-    values: quarterValues$2,
-    defaultWidth: 'wide',
-    argumentCallback: function argumentCallback(quarter) {
-      return quarter - 1;
-    }
-  }),
-  month: buildLocalizeFn({
-    values: monthValues$2,
-    defaultWidth: 'wide'
-  }),
-  day: buildLocalizeFn({
-    values: dayValues$2,
-    defaultWidth: 'wide'
-  }),
-  dayPeriod: buildLocalizeFn({
-    values: dayPeriodValues$2,
-    defaultWidth: 'wide'
-  })
-};
-var localize$5 = localize$4;
-
-var matchOrdinalNumberPattern$2 = /^(\d+)(ième|ère|ème|er|e)?/i;
-var parseOrdinalNumberPattern$2 = /\d+/i;
-var matchEraPatterns$2 = {
-  narrow: /^(av\.J\.C|ap\.J\.C|ap\.J\.-C)/i,
-  abbreviated: /^(av\.J\.-C|av\.J-C|apr\.J\.-C|apr\.J-C|ap\.J-C)/i,
-  wide: /^(avant Jésus-Christ|après Jésus-Christ)/i
-};
-var parseEraPatterns$2 = {
-  any: [/^av/i, /^ap/i]
-};
-var matchQuarterPatterns$2 = {
-  narrow: /^T?[1234]/i,
-  abbreviated: /^[1234](er|ème|e)? trim\.?/i,
-  wide: /^[1234](er|ème|e)? trimestre/i
-};
-var parseQuarterPatterns$2 = {
-  any: [/1/i, /2/i, /3/i, /4/i]
-};
-var matchMonthPatterns$2 = {
-  narrow: /^[jfmasond]/i,
-  abbreviated: /^(janv|févr|mars|avr|mai|juin|juill|juil|août|sept|oct|nov|déc)\.?/i,
-  wide: /^(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)/i
-};
-var parseMonthPatterns$2 = {
-  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
-  any: [/^ja/i, /^f/i, /^mar/i, /^av/i, /^ma/i, /^juin/i, /^juil/i, /^ao/i, /^s/i, /^o/i, /^n/i, /^d/i]
-};
-var matchDayPatterns$2 = {
-  narrow: /^[lmjvsd]/i,
-  short: /^(di|lu|ma|me|je|ve|sa)/i,
-  abbreviated: /^(dim|lun|mar|mer|jeu|ven|sam)\.?/i,
-  wide: /^(dimanche|lundi|mardi|mercredi|jeudi|vendredi|samedi)/i
-};
-var parseDayPatterns$2 = {
-  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^j/i, /^v/i, /^s/i],
-  any: [/^di/i, /^lu/i, /^ma/i, /^me/i, /^je/i, /^ve/i, /^sa/i]
-};
-var matchDayPeriodPatterns$2 = {
-  narrow: /^(a|p|minuit|midi|mat\.?|ap\.?m\.?|soir|nuit)/i,
-  any: /^([ap]\.?\s?m\.?|du matin|de l'après[-\s]midi|du soir|de la nuit)/i
-};
-var parseDayPeriodPatterns$2 = {
-  any: {
-    am: /^a/i,
-    pm: /^p/i,
-    midnight: /^min/i,
-    noon: /^mid/i,
-    morning: /mat/i,
-    afternoon: /ap/i,
-    evening: /soir/i,
-    night: /nuit/i
-  }
-};
-var match$4 = {
-  ordinalNumber: buildMatchPatternFn({
-    matchPattern: matchOrdinalNumberPattern$2,
-    parsePattern: parseOrdinalNumberPattern$2,
-    valueCallback: function valueCallback(value) {
-      return parseInt(value);
-    }
-  }),
-  era: buildMatchFn({
-    matchPatterns: matchEraPatterns$2,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseEraPatterns$2,
-    defaultParseWidth: 'any'
-  }),
-  quarter: buildMatchFn({
-    matchPatterns: matchQuarterPatterns$2,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseQuarterPatterns$2,
-    defaultParseWidth: 'any',
-    valueCallback: function valueCallback(index) {
-      return index + 1;
-    }
-  }),
-  month: buildMatchFn({
-    matchPatterns: matchMonthPatterns$2,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseMonthPatterns$2,
-    defaultParseWidth: 'any'
-  }),
-  day: buildMatchFn({
-    matchPatterns: matchDayPatterns$2,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseDayPatterns$2,
-    defaultParseWidth: 'any'
-  }),
-  dayPeriod: buildMatchFn({
-    matchPatterns: matchDayPeriodPatterns$2,
-    defaultMatchWidth: 'any',
-    parsePatterns: parseDayPeriodPatterns$2,
-    defaultParseWidth: 'any'
-  })
-};
-var match$5 = match$4;
-
-/**
- * @type {Locale}
- * @category Locales
- * @summary French locale.
- * @language French
- * @iso-639-2 fra
- * @author Jean Dupouy [@izeau]{@link https://github.com/izeau}
- * @author François B [@fbonzon]{@link https://github.com/fbonzon}
- */
-
-var locale$2 = {
-  code: 'fr',
-  formatDistance: formatDistance$5,
-  formatLong: formatLong$5,
-  formatRelative: formatRelative$5,
-  localize: localize$5,
-  match: match$5,
-  options: {
-    weekStartsOn: 1
-    /* Monday */
-    ,
-    firstWeekContainsDate: 4
-  }
-};
-var fr$2 = locale$2;
-
-var formatDistanceLocale$1 = {
-  lessThanXSeconds: {
-    one: 'meno di un secondo',
-    other: 'meno di {{count}} secondi'
-  },
-  xSeconds: {
-    one: 'un secondo',
-    other: '{{count}} secondi'
-  },
-  halfAMinute: 'alcuni secondi',
-  lessThanXMinutes: {
-    one: 'meno di un minuto',
-    other: 'meno di {{count}} minuti'
-  },
-  xMinutes: {
-    one: 'un minuto',
-    other: '{{count}} minuti'
-  },
-  aboutXHours: {
-    one: "circa un'ora",
-    other: 'circa {{count}} ore'
-  },
-  xHours: {
-    one: "un'ora",
-    other: '{{count}} ore'
-  },
-  xDays: {
-    one: 'un giorno',
-    other: '{{count}} giorni'
-  },
-  aboutXWeeks: {
-    one: 'circa una settimana',
-    other: 'circa {{count}} settimane'
-  },
-  xWeeks: {
-    one: 'una settimana',
-    other: '{{count}} settimane'
-  },
-  aboutXMonths: {
-    one: 'circa un mese',
-    other: 'circa {{count}} mesi'
-  },
-  xMonths: {
-    one: 'un mese',
-    other: '{{count}} mesi'
-  },
-  aboutXYears: {
-    one: 'circa un anno',
-    other: 'circa {{count}} anni'
-  },
-  xYears: {
-    one: 'un anno',
-    other: '{{count}} anni'
-  },
-  overXYears: {
-    one: 'più di un anno',
-    other: 'più di {{count}} anni'
-  },
-  almostXYears: {
-    one: 'quasi un anno',
-    other: 'quasi {{count}} anni'
-  }
-};
-
-var formatDistance$2 = function formatDistance(token, count, options) {
-  var result;
-  var tokenValue = formatDistanceLocale$1[token];
-
-  if (typeof tokenValue === 'string') {
-    result = tokenValue;
-  } else if (count === 1) {
-    result = tokenValue.one;
-  } else {
-    result = tokenValue.other.replace('{{count}}', count.toString());
-  }
-
-  if (options !== null && options !== void 0 && options.addSuffix) {
-    if (options.comparison && options.comparison > 0) {
-      return 'tra ' + result;
-    } else {
-      return result + ' fa';
-    }
-  }
-
-  return result;
-};
-
-var formatDistance$3 = formatDistance$2;
-
-var dateFormats$1 = {
-  full: 'EEEE d MMMM y',
-  long: 'd MMMM y',
-  medium: 'd MMM y',
-  short: 'dd/MM/y'
-};
-var timeFormats$1 = {
-  full: 'HH:mm:ss zzzz',
-  long: 'HH:mm:ss z',
-  medium: 'HH:mm:ss',
-  short: 'HH:mm'
-};
-var dateTimeFormats$1 = {
-  full: '{{date}} {{time}}',
-  long: '{{date}} {{time}}',
-  medium: '{{date}} {{time}}',
-  short: '{{date}} {{time}}'
-};
-var formatLong$2 = {
-  date: buildFormatLongFn({
-    formats: dateFormats$1,
-    defaultWidth: 'full'
-  }),
-  time: buildFormatLongFn({
-    formats: timeFormats$1,
-    defaultWidth: 'full'
-  }),
-  dateTime: buildFormatLongFn({
-    formats: dateTimeFormats$1,
-    defaultWidth: 'full'
-  })
-};
-var formatLong$3 = formatLong$2;
-
-var weekdays = ['domenica', 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato'];
-
-function _lastWeek(day) {
-  switch (day) {
-    case 0:
-      return "'domenica scorsa alle' p";
-
-    default:
-      return "'" + weekdays[day] + " scorso alle' p";
-  }
-}
-
-function thisWeek(day) {
-  return "'" + weekdays[day] + " alle' p";
-}
-
-function _nextWeek(day) {
-  switch (day) {
-    case 0:
-      return "'domenica prossima alle' p";
-
-    default:
-      return "'" + weekdays[day] + " prossimo alle' p";
-  }
-}
-
-var formatRelativeLocale$1 = {
-  lastWeek: function lastWeek(date, baseDate, options) {
-    var day = date.getUTCDay();
-
-    if (isSameUTCWeek(date, baseDate, options)) {
-      return thisWeek(day);
-    } else {
-      return _lastWeek(day);
-    }
-  },
-  yesterday: "'ieri alle' p",
-  today: "'oggi alle' p",
-  tomorrow: "'domani alle' p",
-  nextWeek: function nextWeek(date, baseDate, options) {
-    var day = date.getUTCDay();
-
-    if (isSameUTCWeek(date, baseDate, options)) {
-      return thisWeek(day);
-    } else {
-      return _nextWeek(day);
-    }
-  },
-  other: 'P'
-};
-
-var formatRelative$2 = function formatRelative(token, date, baseDate, options) {
-  var format = formatRelativeLocale$1[token];
-
-  if (typeof format === 'function') {
-    return format(date, baseDate, options);
-  }
-
-  return format;
-};
-
-var formatRelative$3 = formatRelative$2;
-
-var eraValues$1 = {
-  narrow: ['aC', 'dC'],
-  abbreviated: ['a.C.', 'd.C.'],
-  wide: ['avanti Cristo', 'dopo Cristo']
-};
-var quarterValues$1 = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['T1', 'T2', 'T3', 'T4'],
-  wide: ['1º trimestre', '2º trimestre', '3º trimestre', '4º trimestre']
-};
-var monthValues$1 = {
-  narrow: ['G', 'F', 'M', 'A', 'M', 'G', 'L', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic'],
-  wide: ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto', 'settembre', 'ottobre', 'novembre', 'dicembre']
-};
-var dayValues$1 = {
-  narrow: ['D', 'L', 'M', 'M', 'G', 'V', 'S'],
-  short: ['dom', 'lun', 'mar', 'mer', 'gio', 'ven', 'sab'],
-  abbreviated: ['dom', 'lun', 'mar', 'mer', 'gio', 'ven', 'sab'],
-  wide: ['domenica', 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato']
-};
-var dayPeriodValues$1 = {
-  narrow: {
-    am: 'm.',
-    pm: 'p.',
-    midnight: 'mezzanotte',
-    noon: 'mezzogiorno',
-    morning: 'mattina',
-    afternoon: 'pomeriggio',
-    evening: 'sera',
-    night: 'notte'
-  },
-  abbreviated: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'mezzanotte',
-    noon: 'mezzogiorno',
-    morning: 'mattina',
-    afternoon: 'pomeriggio',
-    evening: 'sera',
-    night: 'notte'
-  },
-  wide: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'mezzanotte',
-    noon: 'mezzogiorno',
-    morning: 'mattina',
-    afternoon: 'pomeriggio',
-    evening: 'sera',
-    night: 'notte'
-  }
-};
-var formattingDayPeriodValues = {
-  narrow: {
-    am: 'm.',
-    pm: 'p.',
-    midnight: 'mezzanotte',
-    noon: 'mezzogiorno',
-    morning: 'di mattina',
-    afternoon: 'del pomeriggio',
-    evening: 'di sera',
-    night: 'di notte'
-  },
-  abbreviated: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'mezzanotte',
-    noon: 'mezzogiorno',
-    morning: 'di mattina',
-    afternoon: 'del pomeriggio',
-    evening: 'di sera',
-    night: 'di notte'
-  },
-  wide: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'mezzanotte',
-    noon: 'mezzogiorno',
-    morning: 'di mattina',
-    afternoon: 'del pomeriggio',
-    evening: 'di sera',
-    night: 'di notte'
-  }
-};
-
-var ordinalNumber$1 = function ordinalNumber(dirtyNumber, _options) {
-  var number = Number(dirtyNumber);
-  return String(number);
-};
-
-var localize$2 = {
-  ordinalNumber: ordinalNumber$1,
-  era: buildLocalizeFn({
-    values: eraValues$1,
-    defaultWidth: 'wide'
-  }),
-  quarter: buildLocalizeFn({
-    values: quarterValues$1,
-    defaultWidth: 'wide',
-    argumentCallback: function argumentCallback(quarter) {
-      return quarter - 1;
-    }
-  }),
-  month: buildLocalizeFn({
-    values: monthValues$1,
-    defaultWidth: 'wide'
-  }),
-  day: buildLocalizeFn({
-    values: dayValues$1,
-    defaultWidth: 'wide'
-  }),
-  dayPeriod: buildLocalizeFn({
-    values: dayPeriodValues$1,
-    defaultWidth: 'wide',
-    formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
-};
-var localize$3 = localize$2;
-
-var matchOrdinalNumberPattern$1 = /^(\d+)(º)?/i;
-var parseOrdinalNumberPattern$1 = /\d+/i;
-var matchEraPatterns$1 = {
-  narrow: /^(aC|dC)/i,
-  abbreviated: /^(a\.?\s?C\.?|a\.?\s?e\.?\s?v\.?|d\.?\s?C\.?|e\.?\s?v\.?)/i,
-  wide: /^(avanti Cristo|avanti Era Volgare|dopo Cristo|Era Volgare)/i
-};
-var parseEraPatterns$1 = {
-  any: [/^a/i, /^(d|e)/i]
-};
-var matchQuarterPatterns$1 = {
-  narrow: /^[1234]/i,
-  abbreviated: /^t[1234]/i,
-  wide: /^[1234](º)? trimestre/i
-};
-var parseQuarterPatterns$1 = {
-  any: [/1/i, /2/i, /3/i, /4/i]
-};
-var matchMonthPatterns$1 = {
-  narrow: /^[gfmalsond]/i,
-  abbreviated: /^(gen|feb|mar|apr|mag|giu|lug|ago|set|ott|nov|dic)/i,
-  wide: /^(gennaio|febbraio|marzo|aprile|maggio|giugno|luglio|agosto|settembre|ottobre|novembre|dicembre)/i
-};
-var parseMonthPatterns$1 = {
-  narrow: [/^g/i, /^f/i, /^m/i, /^a/i, /^m/i, /^g/i, /^l/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
-  any: [/^ge/i, /^f/i, /^mar/i, /^ap/i, /^mag/i, /^gi/i, /^l/i, /^ag/i, /^s/i, /^o/i, /^n/i, /^d/i]
-};
-var matchDayPatterns$1 = {
-  narrow: /^[dlmgvs]/i,
-  short: /^(do|lu|ma|me|gi|ve|sa)/i,
-  abbreviated: /^(dom|lun|mar|mer|gio|ven|sab)/i,
-  wide: /^(domenica|luned[i|ì]|marted[i|ì]|mercoled[i|ì]|gioved[i|ì]|venerd[i|ì]|sabato)/i
-};
-var parseDayPatterns$1 = {
-  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^g/i, /^v/i, /^s/i],
-  any: [/^d/i, /^l/i, /^ma/i, /^me/i, /^g/i, /^v/i, /^s/i]
-};
-var matchDayPeriodPatterns$1 = {
-  narrow: /^(a|m\.|p|mezzanotte|mezzogiorno|(di|del) (mattina|pomeriggio|sera|notte))/i,
-  any: /^([ap]\.?\s?m\.?|mezzanotte|mezzogiorno|(di|del) (mattina|pomeriggio|sera|notte))/i
-};
-var parseDayPeriodPatterns$1 = {
-  any: {
-    am: /^a/i,
-    pm: /^p/i,
-    midnight: /^mezza/i,
-    noon: /^mezzo/i,
-    morning: /mattina/i,
-    afternoon: /pomeriggio/i,
-    evening: /sera/i,
-    night: /notte/i
-  }
-};
-var match$2 = {
-  ordinalNumber: buildMatchPatternFn({
-    matchPattern: matchOrdinalNumberPattern$1,
-    parsePattern: parseOrdinalNumberPattern$1,
-    valueCallback: function valueCallback(value) {
-      return parseInt(value, 10);
-    }
-  }),
-  era: buildMatchFn({
-    matchPatterns: matchEraPatterns$1,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseEraPatterns$1,
-    defaultParseWidth: 'any'
-  }),
-  quarter: buildMatchFn({
-    matchPatterns: matchQuarterPatterns$1,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseQuarterPatterns$1,
-    defaultParseWidth: 'any',
-    valueCallback: function valueCallback(index) {
-      return index + 1;
-    }
-  }),
-  month: buildMatchFn({
-    matchPatterns: matchMonthPatterns$1,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseMonthPatterns$1,
-    defaultParseWidth: 'any'
-  }),
-  day: buildMatchFn({
-    matchPatterns: matchDayPatterns$1,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseDayPatterns$1,
-    defaultParseWidth: 'any'
-  }),
-  dayPeriod: buildMatchFn({
-    matchPatterns: matchDayPeriodPatterns$1,
-    defaultMatchWidth: 'any',
-    parsePatterns: parseDayPeriodPatterns$1,
-    defaultParseWidth: 'any'
-  })
-};
-var match$3 = match$2;
-
-/**
- * @type {Locale}
- * @category Locales
- * @summary Italian locale.
- * @language Italian
- * @iso-639-2 ita
- * @author Alberto Restifo [@albertorestifo]{@link https://github.com/albertorestifo}
- * @author Giovanni Polimeni [@giofilo]{@link https://github.com/giofilo}
- * @author Vincenzo Carrese [@vin-car]{@link https://github.com/vin-car}
- */
-
-var locale$1 = {
-  code: 'it',
-  formatDistance: formatDistance$3,
-  formatLong: formatLong$3,
-  formatRelative: formatRelative$3,
-  localize: localize$3,
-  match: match$3,
-  options: {
-    weekStartsOn: 1
-    /* Monday */
-    ,
-    firstWeekContainsDate: 4
-  }
-};
-var it$2 = locale$1;
-
-var formatDistanceLocale = {
-  lessThanXSeconds: {
-    one: 'minder dan een seconde',
-    other: 'minder dan {{count}} seconden'
-  },
-  xSeconds: {
-    one: '1 seconde',
-    other: '{{count}} seconden'
-  },
-  halfAMinute: 'een halve minuut',
-  lessThanXMinutes: {
-    one: 'minder dan een minuut',
-    other: 'minder dan {{count}} minuten'
-  },
-  xMinutes: {
-    one: 'een minuut',
-    other: '{{count}} minuten'
-  },
-  aboutXHours: {
-    one: 'ongeveer 1 uur',
-    other: 'ongeveer {{count}} uur'
-  },
-  xHours: {
-    one: '1 uur',
-    other: '{{count}} uur'
-  },
-  xDays: {
-    one: '1 dag',
-    other: '{{count}} dagen'
-  },
-  aboutXWeeks: {
-    one: 'ongeveer 1 week',
-    other: 'ongeveer {{count}} weken'
-  },
-  xWeeks: {
-    one: '1 week',
-    other: '{{count}} weken'
-  },
-  aboutXMonths: {
-    one: 'ongeveer 1 maand',
-    other: 'ongeveer {{count}} maanden'
-  },
-  xMonths: {
-    one: '1 maand',
-    other: '{{count}} maanden'
-  },
-  aboutXYears: {
-    one: 'ongeveer 1 jaar',
-    other: 'ongeveer {{count}} jaar'
-  },
-  xYears: {
-    one: '1 jaar',
-    other: '{{count}} jaar'
-  },
-  overXYears: {
-    one: 'meer dan 1 jaar',
-    other: 'meer dan {{count}} jaar'
-  },
-  almostXYears: {
-    one: 'bijna 1 jaar',
-    other: 'bijna {{count}} jaar'
-  }
-};
-
-var formatDistance = function formatDistance(token, count, options) {
-  var result;
-  var tokenValue = formatDistanceLocale[token];
-
-  if (typeof tokenValue === 'string') {
-    result = tokenValue;
-  } else if (count === 1) {
-    result = tokenValue.one;
-  } else {
-    result = tokenValue.other.replace('{{count}}', String(count));
-  }
-
-  if (options !== null && options !== void 0 && options.addSuffix) {
-    if (options.comparison && options.comparison > 0) {
-      return 'over ' + result;
-    } else {
-      return result + ' geleden';
-    }
-  }
-
-  return result;
-};
-
-var formatDistance$1 = formatDistance;
-
-var dateFormats = {
-  full: 'EEEE d MMMM y',
-  long: 'd MMMM y',
-  medium: 'd MMM y',
-  short: 'dd-MM-y'
-};
-var timeFormats = {
-  full: 'HH:mm:ss zzzz',
-  long: 'HH:mm:ss z',
-  medium: 'HH:mm:ss',
-  short: 'HH:mm'
-};
-var dateTimeFormats = {
-  full: "{{date}} 'om' {{time}}",
-  long: "{{date}} 'om' {{time}}",
-  medium: '{{date}}, {{time}}',
-  short: '{{date}}, {{time}}'
-};
-var formatLong = {
-  date: buildFormatLongFn({
-    formats: dateFormats,
-    defaultWidth: 'full'
-  }),
-  time: buildFormatLongFn({
-    formats: timeFormats,
-    defaultWidth: 'full'
-  }),
-  dateTime: buildFormatLongFn({
-    formats: dateTimeFormats,
-    defaultWidth: 'full'
-  })
-};
-var formatLong$1 = formatLong;
-
-var formatRelativeLocale = {
-  lastWeek: "'afgelopen' eeee 'om' p",
-  yesterday: "'gisteren om' p",
-  today: "'vandaag om' p",
-  tomorrow: "'morgen om' p",
-  nextWeek: "eeee 'om' p",
-  other: 'P'
-};
-
-var formatRelative = function formatRelative(token, _date, _baseDate, _options) {
-  return formatRelativeLocale[token];
-};
-
-var formatRelative$1 = formatRelative;
-
-var eraValues = {
-  narrow: ['v.C.', 'n.C.'],
-  abbreviated: ['v.Chr.', 'n.Chr.'],
-  wide: ['voor Christus', 'na Christus']
-};
-var quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['K1', 'K2', 'K3', 'K4'],
-  wide: ['1e kwartaal', '2e kwartaal', '3e kwartaal', '4e kwartaal']
-};
-var monthValues = {
-  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['jan.', 'feb.', 'mrt.', 'apr.', 'mei', 'jun.', 'jul.', 'aug.', 'sep.', 'okt.', 'nov.', 'dec.'],
-  wide: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
-};
-var dayValues = {
-  narrow: ['Z', 'M', 'D', 'W', 'D', 'V', 'Z'],
-  short: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
-  abbreviated: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
-  wide: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag']
-};
-var dayPeriodValues = {
-  narrow: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'middernacht',
-    noon: 'het middaguur',
-    morning: "'s ochtends",
-    afternoon: "'s middags",
-    evening: "'s avonds",
-    night: "'s nachts"
-  },
-  abbreviated: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'middernacht',
-    noon: 'het middaguur',
-    morning: "'s ochtends",
-    afternoon: "'s middags",
-    evening: "'s avonds",
-    night: "'s nachts"
-  },
-  wide: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'middernacht',
-    noon: 'het middaguur',
-    morning: "'s ochtends",
-    afternoon: "'s middags",
-    evening: "'s avonds",
-    night: "'s nachts"
-  }
-};
-
-var ordinalNumber = function ordinalNumber(dirtyNumber, _options) {
-  var number = Number(dirtyNumber);
-  return number + 'e';
-};
-
-var localize = {
-  ordinalNumber: ordinalNumber,
-  era: buildLocalizeFn({
-    values: eraValues,
-    defaultWidth: 'wide'
-  }),
-  quarter: buildLocalizeFn({
-    values: quarterValues,
-    defaultWidth: 'wide',
-    argumentCallback: function argumentCallback(quarter) {
-      return quarter - 1;
-    }
-  }),
-  month: buildLocalizeFn({
-    values: monthValues,
-    defaultWidth: 'wide'
-  }),
-  day: buildLocalizeFn({
-    values: dayValues,
-    defaultWidth: 'wide'
-  }),
-  dayPeriod: buildLocalizeFn({
-    values: dayPeriodValues,
-    defaultWidth: 'wide'
-  })
-};
-var localize$1 = localize;
-
-var matchOrdinalNumberPattern = /^(\d+)e?/i;
-var parseOrdinalNumberPattern = /\d+/i;
-var matchEraPatterns = {
-  narrow: /^([vn]\.? ?C\.?)/,
-  abbreviated: /^([vn]\. ?Chr\.?)/,
-  wide: /^((voor|na) Christus)/
-};
-var parseEraPatterns = {
-  any: [/^v/, /^n/]
-};
-var matchQuarterPatterns = {
-  narrow: /^[1234]/i,
-  abbreviated: /^K[1234]/i,
-  wide: /^[1234]e kwartaal/i
-};
-var parseQuarterPatterns = {
-  any: [/1/i, /2/i, /3/i, /4/i]
-};
-var matchMonthPatterns = {
-  narrow: /^[jfmasond]/i,
-  abbreviated: /^(jan.|feb.|mrt.|apr.|mei|jun.|jul.|aug.|sep.|okt.|nov.|dec.)/i,
-  wide: /^(januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december)/i
-};
-var parseMonthPatterns = {
-  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
-  any: [/^jan/i, /^feb/i, /^m(r|a)/i, /^apr/i, /^mei/i, /^jun/i, /^jul/i, /^aug/i, /^sep/i, /^okt/i, /^nov/i, /^dec/i]
-};
-var matchDayPatterns = {
-  narrow: /^[zmdwv]/i,
-  short: /^(zo|ma|di|wo|do|vr|za)/i,
-  abbreviated: /^(zon|maa|din|woe|don|vri|zat)/i,
-  wide: /^(zondag|maandag|dinsdag|woensdag|donderdag|vrijdag|zaterdag)/i
-};
-var parseDayPatterns = {
-  narrow: [/^z/i, /^m/i, /^d/i, /^w/i, /^d/i, /^v/i, /^z/i],
-  any: [/^zo/i, /^ma/i, /^di/i, /^wo/i, /^do/i, /^vr/i, /^za/i]
-};
-var matchDayPeriodPatterns = {
-  any: /^(am|pm|middernacht|het middaguur|'s (ochtends|middags|avonds|nachts))/i
-};
-var parseDayPeriodPatterns = {
-  any: {
-    am: /^am/i,
-    pm: /^pm/i,
-    midnight: /^middernacht/i,
-    noon: /^het middaguur/i,
-    morning: /ochtend/i,
-    afternoon: /middag/i,
-    evening: /avond/i,
-    night: /nacht/i
-  }
-};
-var match = {
-  ordinalNumber: buildMatchPatternFn({
-    matchPattern: matchOrdinalNumberPattern,
-    parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function valueCallback(value) {
-      return parseInt(value, 10);
-    }
-  }),
-  era: buildMatchFn({
-    matchPatterns: matchEraPatterns,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseEraPatterns,
-    defaultParseWidth: 'any'
-  }),
-  quarter: buildMatchFn({
-    matchPatterns: matchQuarterPatterns,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseQuarterPatterns,
-    defaultParseWidth: 'any',
-    valueCallback: function valueCallback(index) {
-      return index + 1;
-    }
-  }),
-  month: buildMatchFn({
-    matchPatterns: matchMonthPatterns,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseMonthPatterns,
-    defaultParseWidth: 'any'
-  }),
-  day: buildMatchFn({
-    matchPatterns: matchDayPatterns,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseDayPatterns,
-    defaultParseWidth: 'any'
-  }),
-  dayPeriod: buildMatchFn({
-    matchPatterns: matchDayPeriodPatterns,
-    defaultMatchWidth: 'any',
-    parsePatterns: parseDayPeriodPatterns,
-    defaultParseWidth: 'any'
-  })
-};
-var match$1 = match;
-
-/**
- * @type {Locale}
- * @category Locales
- * @summary Dutch locale.
- * @language Dutch
- * @iso-639-2 nld
- * @author Jorik Tangelder [@jtangelder]{@link https://github.com/jtangelder}
- * @author Ruben Stolk [@rubenstolk]{@link https://github.com/rubenstolk}
- * @author Lode Vanhove [@bitcrumb]{@link https://github.com/bitcrumb}
- * @author Edo Rivai [@edorivai]{@link https://github.com/edorivai}
- * @author Niels Keurentjes [@curry684]{@link https://github.com/curry684}
- * @author Stefan Vermaas [@stefanvermaas]{@link https://github.com/stefanvermaas}
- */
-
-var locale = {
-  code: 'nl',
-  formatDistance: formatDistance$1,
-  formatLong: formatLong$1,
-  formatRelative: formatRelative$1,
-  localize: localize$1,
-  match: match$1,
-  options: {
-    weekStartsOn: 1
-    /* Monday */
-    ,
-    firstWeekContainsDate: 4
-  }
-};
-var nl$2 = locale;
-
-const locales = {
-    en: enGB,
-    nl: nl$2,
-    de: de$2,
-    fr: fr$2,
-    it: it$2,
-    es: es$2,
-};
-function FormatIntl(date, formatStr) {
-    return format(date, formatStr, {
-        locale: locales[global.__localeId__], // or global.__localeId__
-    });
-}
-function Parse_EN_US(date_string) {
-    return parse$1(date_string, 'yyyy-MM-dd', new Date());
-}
-const MONTH_FORMAT = 'MMMM yyyy';
-const LONG_DATE_FORMAT = 'EEEE dd MMMM yyyy';
-
-var ArrowRight = function ArrowRight() {
-  return /*#__PURE__*/React__default["default"].createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    xmlnsXlink: "http://www.w3.org/1999/xlink",
-    version: "1.1",
-    x: "0px",
-    y: "0px",
-    viewBox: "0 0 100 125",
-    style: {
-      enableBackground: 'new 0 0 100 100'
-    },
-    xmlSpace: "preserve"
-  }, /*#__PURE__*/React__default["default"].createElement("path", {
-    d: "M2.4,44.1l32.9-32.9c3.1-3.1,8.2-3.1,11.4,0c1.6,1.6,2.4,3.6,2.4,5.7c0,2.1-0.8,4.1-2.4,5.7L27.2,42h64.7  c2.2,0,4.2,0.9,5.7,2.4c1.5,1.5,2.4,3.5,2.4,5.7c0,4.4-3.6,8.1-8.1,8.1H27.4l19.3,19.3c1.6,1.6,2.4,3.6,2.4,5.7s-0.8,4.1-2.4,5.7  c-3.1,3.1-8.3,3.1-11.4,0L2.4,55.9C0.8,54.3,0,52.3,0,50.2c0-0.1,0-0.1,0-0.2c0-0.1,0-0.1,0-0.2C0,47.7,0.8,45.7,2.4,44.1z"
-  }));
-};
-
-function CalendarHeader(_ref) {
-  var onGoPrev = _ref.onGoPrev,
-      onReset = _ref.onReset,
-      onGoNext = _ref.onGoNext;
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "calendars-header"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "col bu-prev",
-    style: {
-      textAlign: 'center'
-    },
-    onClick: onGoPrev,
-    onKeyPress: onGoPrev,
-    tabIndex: 0,
-    role: "button"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "icon"
-  }, ' ', /*#__PURE__*/React__default["default"].createElement(ArrowRight, null))), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "col bu-reset",
-    onClick: onReset,
-    onKeyPress: onReset,
-    style: {
-      textAlign: 'center'
-    },
-    tabIndex: 0,
-    role: "button"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "icon"
-  }, /*#__PURE__*/React__default["default"].createElement(Reload, null))), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "col bu-next",
-    onClick: onGoNext,
-    onKeyPress: onGoNext,
-    style: {
-      textAlign: 'center'
-    },
-    tabIndex: 0,
-    role: "button"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "icon"
-  }, /*#__PURE__*/React__default["default"].createElement(ArrowRight$1, null))));
-}
-
-CalendarHeader.propTypes = {
-  onGoNext: PropTypes.func.isRequired,
-  onGoPrev: PropTypes.func.isRequired,
-  onReset: PropTypes.func.isRequired
-};
-
-function createPeronsArray(persons) {
-    return Array.apply(null, { length: persons + 1 }).map(Number.call, Number);
-}
-function initializeBookingFields(bookingFields) {
-    let obj = {};
-    bookingFields.map((field) => {
-        obj[field.id] = '';
-    });
-    return obj;
-}
-function byString(o, s) {
-    s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
-    s = s.replace(/^\./, ''); // strip a leading dot
-    var a = s.split('.');
-    for (var i = 0, n = a.length; i < n; ++i) {
-        var k = a[i];
-        if (k in o) {
-            o = o[k];
-        }
-        else {
-            return;
-        }
-    }
-    return o;
-}
-function translatedOption(id, value) {
-    return (React__default["default"].createElement(FormattedMessage$2, { id: id }, (formattedMessage) => React__default["default"].createElement("option", { value: value }, formattedMessage)));
-}
-function validateAge(string) {
-    const dob = new Date(string);
-    const minAge = subYears(new Date(), 18);
-    if (isAfter(dob, minAge)) {
-        return true;
-    }
-    else
-        return false;
-}
-
-const BOOKING_PRICE_QUERY = gql `
-  query BookingPriceQuery(
-    $id: ID!
-    $house_id: String!
-    $starts_at: Date!
-    $ends_at: Date!
-    $persons: Int
-  ) {
-    PortalSite(id: $id) {
-      houses(house_code: $house_id) {
-        id
-        name
-        booking_price(
-          starts_at: $starts_at
-          ends_at: $ends_at
-          persons: $persons
-        )
-      }
-    }
-  }
-`;
-
-function Price({ persons, variables }) {
-    const { loading, error, data } = useQuery(BOOKING_PRICE_QUERY, { variables: Object.assign(Object.assign({}, variables), { persons }) });
-    if (loading)
-        return (React__default["default"].createElement("div", { className: "price-overview--build" },
-            React__default["default"].createElement(Loading, null)));
-    if (error) {
-        return (React__default["default"].createElement("div", { className: "price-overview--build" },
-            React__default["default"].createElement(ApiError, { errors: error })));
-    }
-    const result = data.PortalSite.houses[0].booking_price;
-    return (React__default["default"].createElement(React__default["default"].Fragment, null,
-        React__default["default"].createElement("div", { className: "price-overview--book" },
-            React__default["default"].createElement("div", { className: "price" },
-                "\u20AC",
-                ' ',
-                React__default["default"].createElement(FormattedNumber, { value: Math.round(result.total_price), minimumFractionDigits: 2, maximumFractionDigits: 2 })),
-            React__default["default"].createElement("div", null,
-                React__default["default"].createElement("i", null,
-                    React__default["default"].createElement(FormattedMessage$2, { id: "based_on_one_person", values: { persons } }))))));
-}
-
-var dateFormat = LONG_DATE_FORMAT;
-
-var PriceField = /*#__PURE__*/function (_Component) {
-  _inherits$A(PriceField, _Component);
-
-  var _super = _createSuper$A(PriceField);
-
-  function PriceField() {
-    var _this;
-
-    _classCallCheck$B(this, PriceField);
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _super.call.apply(_super, [this].concat(args));
-
-    _defineProperty$M(_assertThisInitialized$B(_this), "state", {
-      persons: 2
-    });
-
-    return _this;
-  }
-
-  _createClass$D(PriceField, [{
-    key: "setPersons",
-    value: function setPersons(persons) {
-      this.setState({
-        persons: persons
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var _this$props = this.props,
-          portalCode = _this$props.portalCode,
-          objectCode = _this$props.objectCode,
-          startsAt = _this$props.startsAt,
-          endsAt = _this$props.endsAt,
-          house = _this$props.house,
-          disabled = _this$props.disabled,
-          onStartBooking = _this$props.onStartBooking,
-          minNights = _this$props.minNights;
-      var persons = this.state.persons;
-      var adults = createPeronsArray(house.persons);
-      return /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "calendar--picker"
-      }, /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "calendar--picker--date"
-      }, /*#__PURE__*/React__default["default"].createElement("span", {
-        className: "name"
-      }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-        id: "".concat(house.house_type, ".arrival")
-      })), /*#__PURE__*/React__default["default"].createElement("span", {
-        className: "detail"
-      }, startsAt ? /*#__PURE__*/React__default["default"].createElement("span", null, FormatIntl(Parse_EN_US(startsAt), dateFormat)) : /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-        id: "".concat(house.house_type, ".pick_your_arrivaldate_in_the_calendar")
-      }))), /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "calendar--picker--date"
-      }, /*#__PURE__*/React__default["default"].createElement("span", {
-        className: "name"
-      }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-        id: "".concat(house.house_type, ".departure")
-      })), /*#__PURE__*/React__default["default"].createElement("span", {
-        className: "detail"
-      }, endsAt ? /*#__PURE__*/React__default["default"].createElement("span", null, FormatIntl(Parse_EN_US(endsAt), dateFormat)) : /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-        id: "".concat(house.house_type, ".pick_your_departure_in_the_calendar")
-      })), minNights && /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-        id: "minimum_nights",
-        defaultMessage: "Minimum {minimum} nights",
-        values: {
-          minimum: minNights
-        }
-      })))), /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "calendar--picker--date"
-      }, /*#__PURE__*/React__default["default"].createElement("span", {
-        className: "detail"
-      }, /*#__PURE__*/React__default["default"].createElement("select", {
-        className: "calendar--picker--persons",
-        value: persons,
-        onChange: function onChange(e) {
-          _this2.setPersons(e.target.value);
-        }
-      }, adults.map(function (person) {
-        return /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-          id: "persons",
-          key: person,
-          children: function children(text) {
-            return /*#__PURE__*/React__default["default"].createElement("option", {
-              value: person,
-              key: person
-            }, person, " ", text);
-          }
-        });
-      })))), /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "calendar--picker--date"
-      }, startsAt && endsAt && /*#__PURE__*/React__default["default"].createElement(Price, {
-        persons: parseInt(persons),
-        variables: {
-          id: portalCode,
-          house_id: objectCode,
-          starts_at: startsAt,
-          ends_at: endsAt
-        }
-      })), /*#__PURE__*/React__default["default"].createElement("button", {
-        className: "button",
-        disabled: !disabled,
-        onClick: function onClick() {
-          if (startsAt && endsAt) {
-            onStartBooking('false', persons);
-          }
-        }
-      }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-        id: "calculate"
-      })));
-    }
-  }]);
-
-  return PriceField;
-}(React.Component);
-
-PriceField.propTypes = {
-  portalCode: PropTypes.string.isRequired,
-  objectCode: PropTypes.string.isRequired,
-  startsAt: PropTypes.string,
-  endsAt: PropTypes.string,
-  onStartBooking: PropTypes.func.isRequired,
-  minNights: PropTypes.number
-};
-
-var AssistanceMessage = function AssistanceMessage(_ref) {
-  var arrivalDate = _ref.arrivalDate,
-      departureDate = _ref.departureDate,
-      house = _ref.house,
-      minNights = _ref.minNights;
-
-  if (departureDate.date) {
-    return /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "assistance"
-    }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-      id: "".concat(house.house_type, ".you_picked_arrival_date")
-    }), ":", ' ', FormatIntl(Parse_EN_US(arrivalDate.date), LONG_DATE_FORMAT), /*#__PURE__*/React__default["default"].createElement("br", null), /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-      id: "".concat(house.house_type, ".you_picked_departure_date")
-    }), ": ", FormatIntl(Parse_EN_US(departureDate.date), LONG_DATE_FORMAT));
-  }
-
-  if (arrivalDate.date) {
-    return /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "assistance"
-    }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-      id: "".concat(house.house_type, ".you_picked_arrival_date")
-    }), ":", ' ', FormatIntl(Parse_EN_US(arrivalDate.date), LONG_DATE_FORMAT), /*#__PURE__*/React__default["default"].createElement("br", null), /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-      id: "".concat(house.house_type, ".pick_your_departure_in_the_calendar")
-    }), /*#__PURE__*/React__default["default"].createElement("br", null), /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-      id: "minimum_nights",
-      values: {
-        minimum: minNights
-      },
-      defaultMessage: "Minimum {minimum} nights"
-    }));
-  }
-
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "assistance"
-  }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "".concat(house.house_type, ".pick_your_arrivaldate_in_the_calendar")
-  }));
-};
-
-function Legend({ house }) {
-    return (React__default["default"].createElement("div", { className: "legend" },
-        React__default["default"].createElement("div", null,
-            React__default["default"].createElement("span", { className: "legend-field arrival" }),
-            React__default["default"].createElement(FormattedMessage$2, { id: `${house.house_type}.arrival_date` })),
-        React__default["default"].createElement("div", null,
-            React__default["default"].createElement("span", { className: "legend-field booked" }),
-            React__default["default"].createElement(FormattedMessage$2, { id: "booked" })),
-        React__default["default"].createElement("div", null,
-            React__default["default"].createElement("span", { className: "legend-field departure" }),
-            React__default["default"].createElement(FormattedMessage$2, { id: `${house.house_type}.departure_date` })),
-        React__default["default"].createElement("div", null,
-            React__default["default"].createElement("span", { className: "legend-field last_minute_discount" }),
-            React__default["default"].createElement(FormattedMessage$2, { id: "discount" }))));
-}
-
-const MonthHeader = ({ month }) => (React__default["default"].createElement("div", { className: "header row flex-middle" },
-    React__default["default"].createElement("div", { className: "col col-center", style: { textAlign: 'center' } },
-        React__default["default"].createElement("span", null, FormatIntl(month, MONTH_FORMAT)))));
-
-function DayClasses({ day, monthStart, buDate, prevBooked, dates, house, discounts }) {
-    const { selectedDate, departureDate, arrivalDate } = dates;
-    let classes = ['col', 'cell'];
-    if (!isSameMonth(day, monthStart)) {
-        classes.push('disabled');
-        return classes.join(" ");
-    }
-    if (buDate) {
-        if (buDate.arrival && isAfter(day, new Date()) && buDate.max_nights !== 0) {
-            if (prevBooked.max_nights === 0) {
-                classes.push('departure-arrival');
-            }
-            else {
-                classes.push('arrival');
-                classes.push('arrival');
-            }
-        }
-        else if (buDate.max_nights === 0) {
-            if (prevBooked.max_nights !== 0) {
-                classes.push("booked-departure");
-            }
-            else {
-                classes.push("booked");
-            }
-        }
-    }
-    if (selectedDate) {
-        if (isSameDay(day, selectedDate)) {
-            classes.push('selected');
-        }
-        const minimum = differenceInCalendarDays(day, selectedDate) >=
-            arrivalDate.min_nights;
-        const maximum = differenceInCalendarDays(day, selectedDate) <= house.max_nights &&
-            differenceInCalendarDays(day, selectedDate) <=
-                arrivalDate.max_nights;
-        if (buDate.departure && isAfter(day, selectedDate) && minimum && maximum && prevBooked.max_nights !== 0) {
-            classes.push('departure');
-        }
-    }
-    if (departureDate) {
-        if (isAfter(day, selectedDate) &&
-            isBefore(day, Parse_EN_US(departureDate.date))) {
-            classes.push('selected');
-        }
-        if (isSameDay(day, Parse_EN_US(departureDate.date))) {
-            classes.push('selected');
-        }
-    }
-    const daysFromToday = differenceInCalendarDays(day, new Date());
-    const last_minute = daysFromToday <= house.last_minute_days && daysFromToday > 0;
-    const discount = discounts.find((x) => isBefore(subDays(Parse_EN_US(x.discount_starts_at), 1), day) &&
-        isAfter(addDays(Parse_EN_US(x.discount_ends_at), 1), day));
-    if (last_minute || discount || buDate.special_offer > 0) {
-        classes.push('discount');
-    }
-    return classes.join(" ");
-}
-
-function RenderCells({ availabilities, month, discounts, dates, house, onDateClick }) {
-    const monthStart = startOfMonth(month);
-    const monthEnd = endOfMonth(monthStart);
-    const startDate = startOfWeek(monthStart);
-    const endDate = endOfWeek(monthEnd);
-    const rows = [];
-    let days = [];
-    let day = startDate;
-    while (day <= endDate) {
-        // for (let daz of dayz) {
-        for (let i = 0; i < 7; i++) {
-            let date = FormatIntl(day, 'yyyy-MM-dd');
-            let yesterday = FormatIntl(subDays(day, 1), 'yyyy-MM-dd');
-            let daz = availabilities.find((x) => x.date === date);
-            const prevBooked = availabilities.find((x) => x.date === yesterday);
-            const cloneDay = daz;
-            days.push(React__default["default"].createElement("div", { className: DayClasses({
-                    day,
-                    monthStart,
-                    discounts,
-                    buDate: daz,
-                    prevBooked,
-                    house,
-                    dates,
-                }), key: daz.date, date: daz.date, role: "button", tabIndex: 0, onClick: () => onDateClick(cloneDay), onKeyPress: () => onDateClick(cloneDay) },
-                React__default["default"].createElement("span", null, FormatIntl(day, 'd'))));
-            day = addDays(day, 1);
-        }
-        rows.push(React__default["default"].createElement("div", { className: "row", key: day }, days));
-        days = [];
-    }
-    return React__default["default"].createElement("div", { className: "body" }, rows);
-}
-
-function WeekDays({ month }) {
-    const dateFormat = 'E';
-    let days = [];
-    let startDate = startOfWeek(month);
-    for (let i = 0; i < 7; i++) {
-        days.push(React__default["default"].createElement("div", { className: "col col-center", key: i }, FormatIntl(addDays(startDate, i), dateFormat)));
-    }
-    return React__default["default"].createElement("div", { className: "days row" }, days);
-}
-
-function SingleMonth({ count, currentMonth, house, numberOfMonthsInARow, dates, portalCode, onDateClick }) {
-    let month = addMonths(currentMonth, count);
-    let monthStart = startOfMonth(month);
-    let monthEnd = endOfMonth(month);
-    const variables = {
-        id: portalCode,
-        house_id: house.code,
-        starts_at: startOfWeek(monthStart),
-        ends_at: endOfWeek(monthEnd)
-    };
-    const { loading, error, data } = useQuery(CALENDAR_QUERY, { variables });
-    if (loading)
-        return (React__default["default"].createElement("div", null,
-            React__default["default"].createElement(Loading, null)));
-    if (error) {
-        return React__default["default"].createElement("div", null, "Error");
-    }
-    const results = data.PortalSite.houses[0].availabilities;
-    const discounts = data.Discounts;
-    return (React__default["default"].createElement("div", { className: `calendar calendar-${numberOfMonthsInARow}`, key: month },
-        React__default["default"].createElement(MonthHeader, { month: month }),
-        React__default["default"].createElement(WeekDays, { month: month }),
-        React__default["default"].createElement(RenderCells, { availabilities: results, discounts: discounts, month: month, house: house, dates: dates, onDateClick: onDateClick })));
-}
-
-var Calendar = /*#__PURE__*/function (_React$Component) {
-  _inherits$A(Calendar, _React$Component);
-
-  var _super = _createSuper$A(Calendar);
-
-  function Calendar(props) {
-    var _this;
-
-    _classCallCheck$B(this, Calendar);
-
-    _this = _super.call(this, props);
-
-    _defineProperty$M(_assertThisInitialized$B(_this), "state", {
-      currentMonth: new Date(),
-      selectedDate: '',
-      numberOfMonths: _this.props.numberOfMonths,
-      numberOfMonthsInARow: _this.props.numberOfMonthsInARow,
-      house: _this.props.house,
-      arrivalDate: '',
-      departureDate: '',
-      startBooking: false
-    });
-
-    _defineProperty$M(_assertThisInitialized$B(_this), "onDateClick", function (day) {
-      var _this$state = _this.state,
-          arrivalDate = _this$state.arrivalDate,
-          selectedDate = _this$state.selectedDate,
-          house = _this$state.house;
-      var date = Parse_EN_US(day.date);
-
-      if (day.departure && isAfter(date, selectedDate) && differenceInCalendarDays(date, selectedDate) <= house.max_nights && differenceInCalendarDays(date, selectedDate) >= arrivalDate.min_nights && differenceInCalendarDays(date, selectedDate) <= arrivalDate.max_nights) {
-        _this.setState({
-          departureDate: day,
-          startBooking: true
-        });
-      } else if (day.arrival) {
-        _this.setState({
-          startBooking: false,
-          selectedDate: date,
-          arrivalDate: day,
-          departureDate: ''
-        });
-      }
-    });
-
-    _defineProperty$M(_assertThisInitialized$B(_this), "nextMonth", function () {
-      var _this$state2 = _this.state,
-          numberOfMonths = _this$state2.numberOfMonths,
-          currentMonth = _this$state2.currentMonth;
-
-      _this.setState({
-        currentMonth: addMonths(currentMonth, numberOfMonths)
-      });
-    });
-
-    _defineProperty$M(_assertThisInitialized$B(_this), "prevMonth", function () {
-      var _this$state3 = _this.state,
-          numberOfMonths = _this$state3.numberOfMonths,
-          currentMonth = _this$state3.currentMonth;
-
-      _this.setState({
-        currentMonth: subMonths(currentMonth, numberOfMonths)
-      });
-    });
-
-    _defineProperty$M(_assertThisInitialized$B(_this), "reset", function () {
-      _this.setState({
-        selectedDate: '',
-        arrivalDate: '',
-        departureDate: '',
-        startBooking: false
-      });
-    });
-
-    _this.bookingStart = _this.bookingStart.bind(_assertThisInitialized$B(_this));
-    return _this;
-  }
-
-  _createClass$D(Calendar, [{
-    key: "renderMonths",
-    value: function renderMonths() {
-      var _this$state4 = this.state,
-          numberOfMonthsInARow = _this$state4.numberOfMonthsInARow,
-          house = _this$state4.house,
-          arrivalDate = _this$state4.arrivalDate,
-          selectedDate = _this$state4.selectedDate,
-          departureDate = _this$state4.departureDate,
-          currentMonth = _this$state4.currentMonth;
-      var template = [];
-
-      for (var i = 0; i < this.state.numberOfMonths; i++) {
-        template.push( /*#__PURE__*/React__default["default"].createElement(SingleMonth, {
-          key: currentMonth + i,
-          house: house,
-          numberOfMonthsInARow: numberOfMonthsInARow,
-          dates: {
-            arrivalDate: arrivalDate,
-            selectedDate: selectedDate,
-            departureDate: departureDate
-          },
-          currentMonth: currentMonth,
-          count: i,
-          portalCode: this.props.portalCode,
-          onDateClick: this.onDateClick
-        }));
-      }
-
-      return template;
-    }
-  }, {
-    key: "showBooking",
-    value: function showBooking() {
-      var _this$state5 = this.state,
-          startBooking = _this$state5.startBooking,
-          arrivalDate = _this$state5.arrivalDate,
-          departureDate = _this$state5.departureDate,
-          house = _this$state5.house;
-      var _this$props = this.props,
-          portalCode = _this$props.portalCode,
-          objectCode = _this$props.objectCode;
-      return /*#__PURE__*/React__default["default"].createElement(PriceField, {
-        portalCode: portalCode,
-        objectCode: objectCode,
-        startsAt: arrivalDate.date || null,
-        endsAt: departureDate.date || null,
-        minNights: arrivalDate.min_nights || null,
-        disabled: startBooking,
-        onStartBooking: this.bookingStart,
-        house: house
-      });
-    }
-  }, {
-    key: "bookingStart",
-    value: function bookingStart(status, persons) {
-      var _this$state6 = this.state,
-          arrivalDate = _this$state6.arrivalDate,
-          departureDate = _this$state6.departureDate;
-      var _this$props2 = this.props,
-          portalCode = _this$props2.portalCode,
-          objectCode = _this$props2.objectCode;
-      var booking = {
-        portalCode: portalCode,
-        objectCode: objectCode,
-        arrivalDate: arrivalDate,
-        departureDate: departureDate,
-        is_option: status,
-        persons: persons
-      };
-      this.props.onBooking(booking);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$state7 = this.state,
-          house = _this$state7.house,
-          arrivalDate = _this$state7.arrivalDate,
-          departureDate = _this$state7.departureDate;
-      return /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "calendar-container "
-      }, /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "price-overview"
-      }, this.showBooking()), /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "calendar-section"
-      }, /*#__PURE__*/React__default["default"].createElement(CalendarHeader, {
-        onGoNext: this.nextMonth,
-        onGoPrev: this.prevMonth,
-        onReset: this.reset
-      }), /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "calendars-row"
-      }, this.renderMonths()), /*#__PURE__*/React__default["default"].createElement(Legend, {
-        house: house
-      }), /*#__PURE__*/React__default["default"].createElement(AssistanceMessage, {
-        house: house,
-        arrivalDate: arrivalDate,
-        departureDate: departureDate,
-        minNights: arrivalDate.min_nights
-      })));
-    }
-  }]);
-
-  return Calendar;
-}(React__default["default"].Component);
-
-Calendar.defaultProps = {
-  numberOfMonths: 4,
-  numberOfMonthsInARow: 2
-};
-Calendar.propTypes = {
-  numberOfMonths: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  house: PropTypes.object.isRequired,
-  onBooking: PropTypes.func.isRequired,
-  objectCode: PropTypes.string.isRequired,
-  portalCode: PropTypes.string.isRequired,
-  locale: PropTypes.string.isRequired
-};
 
 var isArray$2 = Array.isArray;
 var keyList = Object.keys;
@@ -39473,240 +37562,211 @@ var Icon = function Icon(_ref) {
   }));
 };
 
-var LocalizedAttachment = {
-  nl: "https://insurances.bukazu.com/nl/Voorwaarden%20Annuleringsverzekering.pdf",
-  de: "https://insurances.bukazu.com/de/Bedingungen%20Reiseruecktrittsversicherung.pdf",
-  en: "https://insurances.bukazu.com/en/Terms%20to%20Cancellation%20Insurance.pdf"
+const AppContext = React.createContext({
+    locale: 'nl',
+    portalCode: '',
+    objectCode: ''
+});
+
+const LocalizedAttachment = {
+    nl: 'https://insurances.bukazu.com/nl/Voorwaarden%20Annuleringsverzekering.pdf',
+    de: 'https://insurances.bukazu.com/de/Bedingungen%20Reiseruecktrittsversicherung.pdf',
+    en: 'https://insurances.bukazu.com/en/Terms%20to%20Cancellation%20Insurance.pdf',
+    es: 'https://insurances.bukazu.com/en/Terms%20to%20Cancellation%20Insurance.pdf',
+    it: 'https://insurances.bukazu.com/en/Terms%20to%20Cancellation%20Insurance.pdf',
+    fr: 'https://insurances.bukazu.com/en/Terms%20to%20Cancellation%20Insurance.pdf'
+};
+const CancelInsuranceText = () => {
+    const { locale } = React.useContext(AppContext);
+    return (React__default["default"].createElement(React__default["default"].Fragment, null,
+        React__default["default"].createElement("h2", null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "cancel_insurance" })),
+        React__default["default"].createElement("hr", null),
+        React__default["default"].createElement("p", null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "cancel_insurance_desc" })),
+        React__default["default"].createElement("h3", null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "cancel_insurance_normal_long" })),
+        React__default["default"].createElement("p", null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "cancel_insurance_normal_desc" })),
+        React__default["default"].createElement("h3", null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "cancel_insurance_all_risk_long" })),
+        React__default["default"].createElement("p", null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "cancel_insurance_all_risk_desc" })),
+        React__default["default"].createElement("h3", null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "terms_and_costs" })),
+        React__default["default"].createElement("h4", null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "costs_normal_cancel_insurance" })),
+        React__default["default"].createElement("p", null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "666_costs" })),
+        React__default["default"].createElement("h4", null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "costs_allrisk_cancel_insurance" })),
+        React__default["default"].createElement("p", null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "847_costs" })),
+        React__default["default"].createElement("p", null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "more_information" })),
+        React__default["default"].createElement("a", { href: LocalizedAttachment[locale], target: "_blank", rel: "noopener noreferrer" },
+            React__default["default"].createElement(FormattedMessage$1, { id: "show_terms" })),
+        React__default["default"].createElement("h3", null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "terms" })),
+        React__default["default"].createElement("ul", null,
+            React__default["default"].createElement("li", null,
+                React__default["default"].createElement(FormattedMessage$1, { id: "9persons_9addresses" })),
+            React__default["default"].createElement("li", null,
+                React__default["default"].createElement("strong", null,
+                    React__default["default"].createElement(FormattedMessage$1, { id: "or" }))),
+            React__default["default"].createElement("li", null,
+                React__default["default"].createElement(FormattedMessage$1, { id: "9persons_4addresses" }))),
+        React__default["default"].createElement("hr", null),
+        React__default["default"].createElement("h2", null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "poliscosts" })),
+        React__default["default"].createElement("p", null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "poliscosts_are" })),
+        React__default["default"].createElement("p", null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "youwillrecieve" }))));
 };
 
-var CancelInsuranceText = function CancelInsuranceText() {
-  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("h2", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "cancel_insurance"
-  })), /*#__PURE__*/React__default["default"].createElement("hr", null), /*#__PURE__*/React__default["default"].createElement("p", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "cancel_insurance_desc"
-  })), /*#__PURE__*/React__default["default"].createElement("h3", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "cancel_insurance_normal_long"
-  })), /*#__PURE__*/React__default["default"].createElement("p", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "cancel_insurance_normal_desc"
-  })), /*#__PURE__*/React__default["default"].createElement("h3", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "cancel_insurance_all_risk_long"
-  })), /*#__PURE__*/React__default["default"].createElement("p", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "cancel_insurance_all_risk_desc"
-  })), /*#__PURE__*/React__default["default"].createElement("h3", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "terms_and_costs"
-  })), /*#__PURE__*/React__default["default"].createElement("h4", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "costs_normal_cancel_insurance"
-  })), /*#__PURE__*/React__default["default"].createElement("p", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "666_costs"
-  })), /*#__PURE__*/React__default["default"].createElement("h4", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "costs_allrisk_cancel_insurance"
-  })), /*#__PURE__*/React__default["default"].createElement("p", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "847_costs"
-  })), /*#__PURE__*/React__default["default"].createElement("p", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "more_information"
-  })), /*#__PURE__*/React__default["default"].createElement("a", {
-    href: LocalizedAttachment[window.__localeId__],
-    target: "_blank",
-    rel: "noopener noreferrer"
-  }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "show_terms"
-  })), /*#__PURE__*/React__default["default"].createElement("h3", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "terms"
-  })), /*#__PURE__*/React__default["default"].createElement("ul", null, /*#__PURE__*/React__default["default"].createElement("li", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "9persons_9addresses"
-  })), /*#__PURE__*/React__default["default"].createElement("li", null, /*#__PURE__*/React__default["default"].createElement("strong", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "or"
-  }))), /*#__PURE__*/React__default["default"].createElement("li", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "9persons_4addresses"
-  }))), /*#__PURE__*/React__default["default"].createElement("hr", null), /*#__PURE__*/React__default["default"].createElement("h2", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "poliscosts"
-  })), /*#__PURE__*/React__default["default"].createElement("p", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "poliscosts_are"
-  })), /*#__PURE__*/React__default["default"].createElement("p", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "youwillrecieve"
-  })));
-};
+function createPeronsArray(persons) {
+    return Array.apply(null, { length: persons + 1 }).map(Number.call, Number);
+}
+function initializeBookingFields(bookingFields) {
+    let obj = {};
+    bookingFields.map((field) => {
+        obj[field.id] = '';
+    });
+    return obj;
+}
+function byString(o, s) {
+    s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+    s = s.replace(/^\./, ''); // strip a leading dot
+    var a = s.split('.');
+    for (var i = 0, n = a.length; i < n; ++i) {
+        var k = a[i];
+        if (k in o) {
+            o = o[k];
+        }
+        else {
+            return;
+        }
+    }
+    return o;
+}
+function translatedOption(id, value) {
+    return (React__default["default"].createElement(FormattedMessage$1, { id: id }, (formattedMessage) => React__default["default"].createElement("option", { value: value }, formattedMessage)));
+}
+function validateAge(string) {
+    const dob = new Date(string);
+    const minAge = subYears(new Date(), 18);
+    if (isAfter(dob, minAge)) {
+        return true;
+    }
+    else
+        return false;
+}
 
-var _excluded$2 = ["label", "description", "count"];
-function NumberSelect(_ref) {
-  var label = _ref.label,
-      description = _ref.description,
-      count = _ref.count,
-      props = _objectWithoutProperties$b(_ref, _excluded$2);
-
-  var numbers = createPeronsArray(count);
-  return /*#__PURE__*/React__default["default"].createElement(Field, {
-    name: props.name
-  }, function (_ref2) {
-    var field = _ref2.field,
-        meta = _ref2.meta;
-        _ref2.form;
-    return /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "form-row inline",
-      id: "bukazu_form_".concat(props.name)
-    }, /*#__PURE__*/React__default["default"].createElement("label", {
-      htmlFor: props.name
-    }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-      id: label
-    })), /*#__PURE__*/React__default["default"].createElement("select", _extends$e({}, field, props), numbers.map(function (opt) {
-      return /*#__PURE__*/React__default["default"].createElement("option", {
-        key: opt,
-        value: opt
-      }, opt);
-    })), description, meta.touched && meta.error && /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "error-message"
-    }, meta.error));
-  });
+function NumberSelect(_a) {
+    var { label, description, count } = _a, props = __rest(_a, ["label", "description", "count"]);
+    const numbers = createPeronsArray(count);
+    return (React__default["default"].createElement(Field, { name: props.name }, ({ field, meta }) => {
+        return (React__default["default"].createElement("div", { className: "form-row inline", id: `bukazu_form_${props.name}` },
+            React__default["default"].createElement("label", { htmlFor: props.name },
+                React__default["default"].createElement(FormattedMessage$1, { id: label })),
+            React__default["default"].createElement("select", Object.assign({}, field, props), numbers.map((opt) => {
+                return (React__default["default"].createElement("option", { key: opt, value: opt }, opt));
+            })),
+            description,
+            meta.touched && meta.error && (React__default["default"].createElement("div", { className: "error-message" }, meta.error))));
+    }));
 }
 NumberSelect.defaultProps = {
-  count: 2
+    count: 2,
 };
 
-function DateField(_ref) {
-  var label = _ref.label,
-      description = _ref.description;
-      _ref.options;
-      var name = _ref.name,
-      inline = _ref.inline;
-  return /*#__PURE__*/React__default["default"].createElement(Field, {
-    name: name
-  }, function (_ref2) {
-    var field = _ref2.field,
-        meta = _ref2.meta,
-        form = _ref2.form;
-    var value = field.value,
-        name = field.name;
-    var tempval;
-
-    if (value === '' || !value) {
-      tempval = null;
-    } else {
-      tempval = new Date(value);
-    }
-
-    return /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "form-row ".concat(inline && 'inline'),
-      id: "bukazu_form_".concat(name)
-    }, /*#__PURE__*/React__default["default"].createElement("label", {
-      htmlFor: name
-    }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-      id: label
-    })), /*#__PURE__*/React__default["default"].createElement(DatePicker, {
-      className: "bukazu-date-picker",
-      name: name,
-      format: "dd-MM-y",
-      value: tempval,
-      onChange: function onChange(e) {
-        field.onChange(format(e, 'YYYY-MM-DD'));
-        form.setFieldValue(name, format(e, 'YYYY-MM-DD'));
-      }
-    }), /*#__PURE__*/React__default["default"].createElement("span", {
-      className: "bu-input-description"
-    }, description), meta.touched && meta.error && /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "error-message"
-    }, meta.error));
-  });
+function DateField({ label, description, name, inline }) {
+    return (React__default["default"].createElement(Field, { name: name }, ({ field, meta, form }) => {
+        const { value, name } = field;
+        let tempval;
+        if (value === '' || !value) {
+            tempval = null;
+        }
+        else {
+            tempval = new Date(value);
+        }
+        return (React__default["default"].createElement("div", { className: `form-row ${inline && 'inline'}`, id: `bukazu_form_${name}` },
+            React__default["default"].createElement("label", { htmlFor: name },
+                React__default["default"].createElement(FormattedMessage$1, { id: label })),
+            React__default["default"].createElement(DatePicker, { className: "bukazu-date-picker", name: name, format: "dd-MM-y", value: tempval, onChange: (e) => {
+                    field.onChange(format(e, 'YYYY-MM-DD'));
+                    form.setFieldValue(name, format(e, 'YYYY-MM-DD'));
+                } }),
+            React__default["default"].createElement("span", { className: "bu-input-description" }, description),
+            meta.touched && meta.error && (React__default["default"].createElement("div", { className: "error-message" }, meta.error))));
+    }));
 }
-
 DateField.defaultValues = {
-  inline: true
+    inline: true
 };
 
 function cancelInsurance(house) {
-  if (house.cancel_insurance) {
-    return /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "form-row inline"
-    }, /*#__PURE__*/React__default["default"].createElement("label", {
-      htmlFor: "cancel_insurance"
-    }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-      id: "cancel_insurance"
-    })), /*#__PURE__*/React__default["default"].createElement(Field, {
-      component: "select",
-      name: "cancel_insurance",
-      required: true
-    }, translatedOption('choose', ''), translatedOption('cancel_insurance_all_risk', 2), translatedOption('cancel_insurance_normal', 1), translatedOption('none', 0)), /*#__PURE__*/React__default["default"].createElement(Modal, {
-      buttonText: /*#__PURE__*/React__default["default"].createElement(Icon, null)
-    }, /*#__PURE__*/React__default["default"].createElement(CancelInsuranceText, null)));
-  }
-}
-
-var Insurances = function Insurances(_ref) {
-  var house = _ref.house,
-      values = _ref.values;
-
-  if (house.cancel_insurance) {
-    return /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "form-section",
-      id: "insurances"
-    }, /*#__PURE__*/React__default["default"].createElement("h2", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-      id: "insurances"
-    })), cancelInsurance(house), values.cancel_insurance && values.cancel_insurance !== '0' && /*#__PURE__*/React__default["default"].createElement(DateField, {
-      label: "extra_fields.date_of_birth",
-      name: "extra_fields.date_of_birth",
-      required: "true",
-      description: /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-        id: "insurance_company_needs_date_of_birth"
-      })
-    }));
-  } else {
-    return /*#__PURE__*/React__default["default"].createElement("div", null);
-  }
-};
-Insurances.propTypes = {
-  house: PropTypes.object.isRequired
-};
-
-var _templateObject$2;
-
-function DiscountCode(_ref) {
-  var house = _ref.house;
-  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(Mutation, {
-    mutation: CHECK_DISCOUNT_CODE
-  }, function (checkCode, _ref2) {
-    var loading = _ref2.loading,
-        error = _ref2.error,
-        data = _ref2.data;
-
-    if (data) {
-      console.log(data);
+    if (house.cancel_insurance) {
+        return (React__default["default"].createElement("div", { className: "form-row inline" },
+            React__default["default"].createElement("label", { htmlFor: "cancel_insurance" },
+                React__default["default"].createElement(FormattedMessage$1, { id: "cancel_insurance" })),
+            React__default["default"].createElement(Field, { component: "select", name: "cancel_insurance", required: true },
+                translatedOption('choose', ''),
+                translatedOption('cancel_insurance_all_risk', '2'),
+                translatedOption('cancel_insurance_normal', '1'),
+                translatedOption('none', '0')),
+            React__default["default"].createElement(Modal, { buttonText: React__default["default"].createElement(Icon, null) },
+                React__default["default"].createElement(CancelInsuranceText, null))));
     }
-
-    return /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "form-row inline"
-    }, /*#__PURE__*/React__default["default"].createElement("label", {
-      htmlFor: "discount_code"
-    }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-      id: "discount_code"
-    })), /*#__PURE__*/React__default["default"].createElement(Field, {
-      name: "discount_code"
-    }, function (_ref3) {
-      var field = _ref3.field,
-          form = _ref3.form;
-      return /*#__PURE__*/React__default["default"].createElement("input", _extends$e({}, field, {
-        onChange: function onChange(e) {
-          // console.log({ code: house.code, e: e.target.value });
-          checkCode({
-            variables: {
-              code: e.target.value,
-              house_code: house.code
-            }
-          });
-          form.setFieldValue(field.name, e.target.value);
-        }
-      }));
-    }), loading && /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "bu_discount_code"
-    }, "Loading..."), error && /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "bu_discount_code"
-    }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-      id: "no_discount_code_found"
-    })), data && /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "bu_discount_code"
-    }, /*#__PURE__*/React__default["default"].createElement("div", null, data.checkDiscountCode.name), data.checkDiscountCode.use_price ? /*#__PURE__*/React__default["default"].createElement("div", null, "\u20AC ", data.checkDiscountCode.price) : /*#__PURE__*/React__default["default"].createElement("div", null, data.checkDiscountCode.percentage, "%")));
-  }));
 }
+const Insurances = ({ house, values }) => {
+    if (house.cancel_insurance) {
+        return (React__default["default"].createElement("div", { className: "form-section", id: "insurances" },
+            React__default["default"].createElement("h2", null,
+                React__default["default"].createElement(FormattedMessage$1, { id: "insurances" })),
+            cancelInsurance(house),
+            values.cancel_insurance && values.cancel_insurance !== '0' && (React__default["default"].createElement(DateField, { label: "extra_fields.date_of_birth", name: "extra_fields.date_of_birth", required: true, inline: false, description: React__default["default"].createElement(FormattedMessage$1, { id: "insurance_company_needs_date_of_birth" }) }))));
+    }
+    else {
+        return React__default["default"].createElement("div", null);
+    }
+};
 
-var CHECK_DISCOUNT_CODE = gql(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteral(["\n  mutation CheckDiscountCode($code: String!, $house_code: String!) {\n    checkDiscountCode(code: $code, house_code: $house_code) {\n      name\n      use_price\n      percentage\n      price\n    }\n  }\n"])));
+function DiscountCode({ house }) {
+    const [checkCode, { loading, error, data }] = useMutation(CHECK_DISCOUNT_CODE);
+    return (React__default["default"].createElement("div", { className: "form-row inline" },
+        React__default["default"].createElement("label", { htmlFor: "discount_code" },
+            React__default["default"].createElement(FormattedMessage$1, { id: "discount_code" })),
+        React__default["default"].createElement(Field, { name: "discount_code" }, ({ field, form }) => {
+            return (React__default["default"].createElement("input", Object.assign({}, field, { onChange: (e) => {
+                    checkCode({
+                        variables: { code: e.target.value, house_code: house.code }
+                    });
+                    form.setFieldValue(field.name, e.target.value);
+                } })));
+        }),
+        loading && React__default["default"].createElement("div", { className: "bu_discount_code" }, "Loading..."),
+        error && (React__default["default"].createElement("div", { className: "bu_discount_code" },
+            React__default["default"].createElement(FormattedMessage$1, { id: "no_discount_code_found" }))),
+        data && (React__default["default"].createElement("div", { className: "bu_discount_code" },
+            React__default["default"].createElement("div", null, data.checkDiscountCode.name),
+            data.checkDiscountCode.use_price ? (React__default["default"].createElement("div", null,
+                "\u20AC ",
+                data.checkDiscountCode.price)) : (React__default["default"].createElement("div", null,
+                data.checkDiscountCode.percentage,
+                "%"))))));
+}
+const CHECK_DISCOUNT_CODE = gql `
+  mutation CheckDiscountCode($code: String!, $house_code: String!) {
+    checkDiscountCode(code: $code, house_code: $house_code) {
+      name
+      use_price
+      percentage
+      price
+    }
+  }
+`;
 
 var Discount = function Discount(_ref) {
   var _options$bookingForm;
@@ -39726,7 +37786,7 @@ var Discount = function Discount(_ref) {
       className: "form-row inline"
     }, /*#__PURE__*/React__default["default"].createElement("label", {
       htmlFor: "discount"
-    }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
+    }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
       id: "discount"
     })), /*#__PURE__*/React__default["default"].createElement(Field, {
       component: "select",
@@ -39740,7 +37800,7 @@ var Discount = function Discount(_ref) {
       className: "form-row inline"
     }, /*#__PURE__*/React__default["default"].createElement("label", {
       htmlFor: "discount_reason"
-    }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
+    }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
       id: "discount_reason"
     })), /*#__PURE__*/React__default["default"].createElement(Field, {
       name: "discount_reason"
@@ -39765,7 +37825,7 @@ Discount.propTypes = {
   errors: PropTypes.object.isRequired
 };
 
-var _excluded$1 = ["field", "id", "label"];
+var _excluded = ["field", "id", "label"];
 
 var InputFeedback = function InputFeedback(_ref) {
   var error = _ref.error;
@@ -39786,7 +37846,7 @@ var RadioButton = function RadioButton(_ref2) {
       onBlur = _ref2$field.onBlur,
       id = _ref2.id,
       label = _ref2.label,
-      props = _objectWithoutProperties$b(_ref2, _excluded$1);
+      props = _objectWithoutProperties$b(_ref2, _excluded);
 
   return /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement("input", _extends$e({
     name: name,
@@ -39830,30 +37890,11 @@ RadioButtonGroup.propTypes = {
   children: PropTypes.node.isRequired
 };
 
-var _excluded = ["house"];
-function BookingOrOption(_ref) {
-  var house = _ref.house;
-      _objectWithoutProperties$b(_ref, _excluded);
-
-  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, house.allow_option && /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(RadioButtonGroup, {
-    id: "is_option",
-    className: "booking_option"
-  }, /*#__PURE__*/React__default["default"].createElement(Field, {
-    component: RadioButton,
-    name: "is_option",
-    id: "true",
-    disabled: !house.allow_option,
-    label: /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-      id: "option"
-    })
-  }), /*#__PURE__*/React__default["default"].createElement(Field, {
-    component: RadioButton,
-    name: "is_option",
-    id: "false",
-    label: /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-      id: "booking"
-    })
-  }))));
+function BookingOrOption({ house }) {
+    return (React__default["default"].createElement(React__default["default"].Fragment, null, house.allow_option && (React__default["default"].createElement("div", null,
+        React__default["default"].createElement(RadioButtonGroup, { id: "is_option", className: "booking_option" },
+            React__default["default"].createElement(Field, { component: RadioButton, name: "is_option", id: "true", disabled: !house.allow_option, label: React__default["default"].createElement(FormattedMessage$1, { id: "option" }) }),
+            React__default["default"].createElement(Field, { component: RadioButton, name: "is_option", id: "false", label: React__default["default"].createElement(FormattedMessage$1, { id: "booking" }) }))))));
 }
 
 function Description(_ref) {
@@ -39880,7 +37921,7 @@ function CostRow(_ref) {
       method_name = _ref.method_name,
       formatName = _ref.formatName,
       forceMethod = _ref.forceMethod;
-  return /*#__PURE__*/React__default["default"].createElement("tr", null, /*#__PURE__*/React__default["default"].createElement("td", null, formatName ? /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
+  return /*#__PURE__*/React__default["default"].createElement("tr", null, /*#__PURE__*/React__default["default"].createElement("td", null, formatName ? /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
     id: name
   }) : name, description && /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, ' ', /*#__PURE__*/React__default["default"].createElement(Description, {
     description: description
@@ -39936,8 +37977,8 @@ function InsurancesAndRequired(_ref) {
   }))));
 }
 
-var _templateObject$1;
-var BOOKING_PRICE_TOTAL_QUERY = gql(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteral(["\n  query BookingPriceTotalQuery(\n    $id: ID!\n    $house_id: String!\n    $starts_at: Date!\n    $ends_at: Date!\n    $persons: Int\n    $costs: Json\n    $cancel_insurance: Int\n    $discount: Int\n    $discount_code: String\n  ) {\n    PortalSite(id: $id) {\n      houses(house_code: $house_id) {\n        id\n        name\n        booking_price(\n          starts_at: $starts_at\n          ends_at: $ends_at\n          persons: $persons\n          costs: $costs\n          cancel_insurance: $cancel_insurance\n          discount: $discount\n          discount_code: $discount_code\n        )\n      }\n    }\n  }\n"])));
+var _templateObject;
+var BOOKING_PRICE_TOTAL_QUERY = gql(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query BookingPriceTotalQuery(\n    $id: ID!\n    $house_id: String!\n    $starts_at: Date!\n    $ends_at: Date!\n    $persons: Int\n    $costs: Json\n    $cancel_insurance: Int\n    $discount: Int\n    $discount_code: String\n  ) {\n    PortalSite(id: $id) {\n      houses(house_code: $house_id) {\n        id\n        name\n        booking_price(\n          starts_at: $starts_at\n          ends_at: $ends_at\n          persons: $persons\n          costs: $costs\n          cancel_insurance: $cancel_insurance\n          discount: $discount\n          discount_code: $discount_code\n        )\n      }\n    }\n  }\n"])));
 
 function RentAndDiscount(_ref) {
   var prices = _ref.prices;
@@ -40045,7 +38086,7 @@ function OnSite(_ref) {
   var on_site = required_costs.on_site;
   return /*#__PURE__*/React__default["default"].createElement("div", {
     className: "costs-section"
-  }, /*#__PURE__*/React__default["default"].createElement("strong", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
+  }, /*#__PURE__*/React__default["default"].createElement("strong", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
     id: "costs_on_site"
   })), /*#__PURE__*/React__default["default"].createElement("table", null, /*#__PURE__*/React__default["default"].createElement("tbody", null, prices.required_house_costs.map(function (cost) {
     if (cost.on_site && cost.gl !== '0120') {
@@ -40083,7 +38124,7 @@ function Totals(_ref) {
       textAlign: 'left',
       testTransform: 'capitalize'
     }
-  }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
+  }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
     id: "total"
   })), /*#__PURE__*/React__default["default"].createElement("th", {
     className: "price",
@@ -40111,7 +38152,7 @@ function Totals(_ref) {
       textAlign: 'left',
       testTransform: 'capitalize'
     }
-  }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
+  }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
     id: "total"
   })), /*#__PURE__*/React__default["default"].createElement("td", {
     className: "price"
@@ -40151,11 +38192,15 @@ function CostSummary(_ref) {
 
   var persons = Number(values.children) + Number(values.adults) + babies;
 
+  var _useContext = React.useContext(AppContext),
+      portalCode = _useContext.portalCode,
+      objectCode = _useContext.objectCode;
+
   var _useQuery = useQuery(BOOKING_PRICE_TOTAL_QUERY, {
     variables: {
-      id: values.portalCode,
+      id: portalCode,
       persons: persons,
-      house_id: values.objectCode,
+      house_id: objectCode,
       starts_at: JSON.stringify(values.arrivalDate.date),
       ends_at: JSON.stringify(values.departureDate.date),
       costs: JSON.stringify(values.costs),
@@ -40191,26 +38236,2142 @@ function CostSummary(_ref) {
   }));
 }
 
+function isSameUTCWeek(dirtyDateLeft, dirtyDateRight, options) {
+  requiredArgs(2, arguments);
+  var dateLeftStartOfWeek = startOfUTCWeek(dirtyDateLeft, options);
+  var dateRightStartOfWeek = startOfUTCWeek(dirtyDateRight, options);
+  return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime();
+}
+
+var formatDistanceLocale$4 = {
+  lessThanXSeconds: {
+    standalone: {
+      one: 'weniger als 1 Sekunde',
+      other: 'weniger als {{count}} Sekunden'
+    },
+    withPreposition: {
+      one: 'weniger als 1 Sekunde',
+      other: 'weniger als {{count}} Sekunden'
+    }
+  },
+  xSeconds: {
+    standalone: {
+      one: '1 Sekunde',
+      other: '{{count}} Sekunden'
+    },
+    withPreposition: {
+      one: '1 Sekunde',
+      other: '{{count}} Sekunden'
+    }
+  },
+  halfAMinute: {
+    standalone: 'halbe Minute',
+    withPreposition: 'halben Minute'
+  },
+  lessThanXMinutes: {
+    standalone: {
+      one: 'weniger als 1 Minute',
+      other: 'weniger als {{count}} Minuten'
+    },
+    withPreposition: {
+      one: 'weniger als 1 Minute',
+      other: 'weniger als {{count}} Minuten'
+    }
+  },
+  xMinutes: {
+    standalone: {
+      one: '1 Minute',
+      other: '{{count}} Minuten'
+    },
+    withPreposition: {
+      one: '1 Minute',
+      other: '{{count}} Minuten'
+    }
+  },
+  aboutXHours: {
+    standalone: {
+      one: 'etwa 1 Stunde',
+      other: 'etwa {{count}} Stunden'
+    },
+    withPreposition: {
+      one: 'etwa 1 Stunde',
+      other: 'etwa {{count}} Stunden'
+    }
+  },
+  xHours: {
+    standalone: {
+      one: '1 Stunde',
+      other: '{{count}} Stunden'
+    },
+    withPreposition: {
+      one: '1 Stunde',
+      other: '{{count}} Stunden'
+    }
+  },
+  xDays: {
+    standalone: {
+      one: '1 Tag',
+      other: '{{count}} Tage'
+    },
+    withPreposition: {
+      one: '1 Tag',
+      other: '{{count}} Tagen'
+    }
+  },
+  aboutXWeeks: {
+    standalone: {
+      one: 'etwa 1 Woche',
+      other: 'etwa {{count}} Wochen'
+    },
+    withPreposition: {
+      one: 'etwa 1 Woche',
+      other: 'etwa {{count}} Wochen'
+    }
+  },
+  xWeeks: {
+    standalone: {
+      one: '1 Woche',
+      other: '{{count}} Wochen'
+    },
+    withPreposition: {
+      one: '1 Woche',
+      other: '{{count}} Wochen'
+    }
+  },
+  aboutXMonths: {
+    standalone: {
+      one: 'etwa 1 Monat',
+      other: 'etwa {{count}} Monate'
+    },
+    withPreposition: {
+      one: 'etwa 1 Monat',
+      other: 'etwa {{count}} Monaten'
+    }
+  },
+  xMonths: {
+    standalone: {
+      one: '1 Monat',
+      other: '{{count}} Monate'
+    },
+    withPreposition: {
+      one: '1 Monat',
+      other: '{{count}} Monaten'
+    }
+  },
+  aboutXYears: {
+    standalone: {
+      one: 'etwa 1 Jahr',
+      other: 'etwa {{count}} Jahre'
+    },
+    withPreposition: {
+      one: 'etwa 1 Jahr',
+      other: 'etwa {{count}} Jahren'
+    }
+  },
+  xYears: {
+    standalone: {
+      one: '1 Jahr',
+      other: '{{count}} Jahre'
+    },
+    withPreposition: {
+      one: '1 Jahr',
+      other: '{{count}} Jahren'
+    }
+  },
+  overXYears: {
+    standalone: {
+      one: 'mehr als 1 Jahr',
+      other: 'mehr als {{count}} Jahre'
+    },
+    withPreposition: {
+      one: 'mehr als 1 Jahr',
+      other: 'mehr als {{count}} Jahren'
+    }
+  },
+  almostXYears: {
+    standalone: {
+      one: 'fast 1 Jahr',
+      other: 'fast {{count}} Jahre'
+    },
+    withPreposition: {
+      one: 'fast 1 Jahr',
+      other: 'fast {{count}} Jahren'
+    }
+  }
+};
+
+var formatDistance$8 = function formatDistance(token, count, options) {
+  var result;
+  var tokenValue = options !== null && options !== void 0 && options.addSuffix ? formatDistanceLocale$4[token].withPreposition : formatDistanceLocale$4[token].standalone;
+
+  if (typeof tokenValue === 'string') {
+    result = tokenValue;
+  } else if (count === 1) {
+    result = tokenValue.one;
+  } else {
+    result = tokenValue.other.replace('{{count}}', String(count));
+  }
+
+  if (options !== null && options !== void 0 && options.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
+      return 'in ' + result;
+    } else {
+      return 'vor ' + result;
+    }
+  }
+
+  return result;
+};
+
+var formatDistance$9 = formatDistance$8;
+
+// DIN 5008: https://de.wikipedia.org/wiki/Datumsformat#DIN_5008
+var dateFormats$5 = {
+  full: 'EEEE, do MMMM y',
+  // Montag, 7. Januar 2018
+  long: 'do MMMM y',
+  // 7. Januar 2018
+  medium: 'do MMM y',
+  // 7. Jan. 2018
+  short: 'dd.MM.y' // 07.01.2018
+
+};
+var timeFormats$5 = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats$5 = {
+  full: "{{date}} 'um' {{time}}",
+  long: "{{date}} 'um' {{time}}",
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong$a = {
+  date: buildFormatLongFn({
+    formats: dateFormats$5,
+    defaultWidth: 'full'
+  }),
+  time: buildFormatLongFn({
+    formats: timeFormats$5,
+    defaultWidth: 'full'
+  }),
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats$5,
+    defaultWidth: 'full'
+  })
+};
+var formatLong$b = formatLong$a;
+
+var formatRelativeLocale$4 = {
+  lastWeek: "'letzten' eeee 'um' p",
+  yesterday: "'gestern um' p",
+  today: "'heute um' p",
+  tomorrow: "'morgen um' p",
+  nextWeek: "eeee 'um' p",
+  other: 'P'
+};
+
+var formatRelative$8 = function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale$4[token];
+};
+
+var formatRelative$9 = formatRelative$8;
+
+var eraValues$4 = {
+  narrow: ['v.Chr.', 'n.Chr.'],
+  abbreviated: ['v.Chr.', 'n.Chr.'],
+  wide: ['vor Christus', 'nach Christus']
+};
+var quarterValues$4 = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
+  wide: ['1. Quartal', '2. Quartal', '3. Quartal', '4. Quartal']
+}; // Note: in German, the names of days of the week and months are capitalized.
+// If you are making a new locale based on this one, check if the same is true for the language you're working on.
+// Generally, formatted dates should look like they are in the middle of a sentence,
+// e.g. in Spanish language the weekdays and months should be in the lowercase.
+
+var monthValues$4 = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+  wide: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
+}; // https://st.unicode.org/cldr-apps/v#/de/Gregorian/
+
+var formattingMonthValues = {
+  narrow: monthValues$4.narrow,
+  abbreviated: ['Jan.', 'Feb.', 'März', 'Apr.', 'Mai', 'Juni', 'Juli', 'Aug.', 'Sep.', 'Okt.', 'Nov.', 'Dez.'],
+  wide: monthValues$4.wide
+};
+var dayValues$4 = {
+  narrow: ['S', 'M', 'D', 'M', 'D', 'F', 'S'],
+  short: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+  abbreviated: ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'],
+  wide: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag']
+}; // https://www.unicode.org/cldr/charts/32/summary/de.html#1881
+
+var dayPeriodValues$4 = {
+  narrow: {
+    am: 'vm.',
+    pm: 'nm.',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'Morgen',
+    afternoon: 'Nachm.',
+    evening: 'Abend',
+    night: 'Nacht'
+  },
+  abbreviated: {
+    am: 'vorm.',
+    pm: 'nachm.',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'Morgen',
+    afternoon: 'Nachmittag',
+    evening: 'Abend',
+    night: 'Nacht'
+  },
+  wide: {
+    am: 'vormittags',
+    pm: 'nachmittags',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'Morgen',
+    afternoon: 'Nachmittag',
+    evening: 'Abend',
+    night: 'Nacht'
+  }
+};
+var formattingDayPeriodValues$2 = {
+  narrow: {
+    am: 'vm.',
+    pm: 'nm.',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'morgens',
+    afternoon: 'nachm.',
+    evening: 'abends',
+    night: 'nachts'
+  },
+  abbreviated: {
+    am: 'vorm.',
+    pm: 'nachm.',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'morgens',
+    afternoon: 'nachmittags',
+    evening: 'abends',
+    night: 'nachts'
+  },
+  wide: {
+    am: 'vormittags',
+    pm: 'nachmittags',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'morgens',
+    afternoon: 'nachmittags',
+    evening: 'abends',
+    night: 'nachts'
+  }
+};
+
+var ordinalNumber$4 = function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  return number + '.';
+};
+
+var localize$8 = {
+  ordinalNumber: ordinalNumber$4,
+  era: buildLocalizeFn({
+    values: eraValues$4,
+    defaultWidth: 'wide'
+  }),
+  quarter: buildLocalizeFn({
+    values: quarterValues$4,
+    defaultWidth: 'wide',
+    argumentCallback: function argumentCallback(quarter) {
+      return quarter - 1;
+    }
+  }),
+  month: buildLocalizeFn({
+    values: monthValues$4,
+    formattingValues: formattingMonthValues,
+    defaultWidth: 'wide'
+  }),
+  day: buildLocalizeFn({
+    values: dayValues$4,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues$4,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues$2,
+    defaultFormattingWidth: 'wide'
+  })
+};
+var localize$9 = localize$8;
+
+var matchOrdinalNumberPattern$4 = /^(\d+)(\.)?/i;
+var parseOrdinalNumberPattern$4 = /\d+/i;
+var matchEraPatterns$4 = {
+  narrow: /^(v\.? ?Chr\.?|n\.? ?Chr\.?)/i,
+  abbreviated: /^(v\.? ?Chr\.?|n\.? ?Chr\.?)/i,
+  wide: /^(vor Christus|vor unserer Zeitrechnung|nach Christus|unserer Zeitrechnung)/i
+};
+var parseEraPatterns$4 = {
+  any: [/^v/i, /^n/i]
+};
+var matchQuarterPatterns$4 = {
+  narrow: /^[1234]/i,
+  abbreviated: /^q[1234]/i,
+  wide: /^[1234](\.)? Quartal/i
+};
+var parseQuarterPatterns$4 = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns$4 = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(j[aä]n|feb|mär[z]?|apr|mai|jun[i]?|jul[i]?|aug|sep|okt|nov|dez)\.?/i,
+  wide: /^(januar|februar|märz|april|mai|juni|juli|august|september|oktober|november|dezember)/i
+};
+var parseMonthPatterns$4 = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^j[aä]/i, /^f/i, /^mär/i, /^ap/i, /^mai/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns$4 = {
+  narrow: /^[smdmf]/i,
+  short: /^(so|mo|di|mi|do|fr|sa)/i,
+  abbreviated: /^(son?|mon?|die?|mit?|don?|fre?|sam?)\.?/i,
+  wide: /^(sonntag|montag|dienstag|mittwoch|donnerstag|freitag|samstag)/i
+};
+var parseDayPatterns$4 = {
+  any: [/^so/i, /^mo/i, /^di/i, /^mi/i, /^do/i, /^f/i, /^sa/i]
+};
+var matchDayPeriodPatterns$4 = {
+  narrow: /^(vm\.?|nm\.?|Mitternacht|Mittag|morgens|nachm\.?|abends|nachts)/i,
+  abbreviated: /^(vorm\.?|nachm\.?|Mitternacht|Mittag|morgens|nachm\.?|abends|nachts)/i,
+  wide: /^(vormittags|nachmittags|Mitternacht|Mittag|morgens|nachmittags|abends|nachts)/i
+};
+var parseDayPeriodPatterns$4 = {
+  any: {
+    am: /^v/i,
+    pm: /^n/i,
+    midnight: /^Mitte/i,
+    noon: /^Mitta/i,
+    morning: /morgens/i,
+    afternoon: /nachmittags/i,
+    // will never be matched. Afternoon is matched by `pm`
+    evening: /abends/i,
+    night: /nachts/i // will never be matched. Night is matched by `pm`
+
+  }
+};
+var match$8 = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern$4,
+    parsePattern: parseOrdinalNumberPattern$4,
+    valueCallback: function valueCallback(value) {
+      return parseInt(value);
+    }
+  }),
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns$4,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns$4,
+    defaultParseWidth: 'any'
+  }),
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns$4,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns$4,
+    defaultParseWidth: 'any',
+    valueCallback: function valueCallback(index) {
+      return index + 1;
+    }
+  }),
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns$4,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns$4,
+    defaultParseWidth: 'any'
+  }),
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns$4,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns$4,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns$4,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPeriodPatterns$4,
+    defaultParseWidth: 'any'
+  })
+};
+var match$9 = match$8;
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary German locale.
+ * @language German
+ * @iso-639-2 deu
+ * @author Thomas Eilmsteiner [@DeMuu]{@link https://github.com/DeMuu}
+ * @author Asia [@asia-t]{@link https://github.com/asia-t}
+ * @author Van Vuong Ngo [@vanvuongngo]{@link https://github.com/vanvuongngo}
+ * @author RomanErnst [@pex]{@link https://github.com/pex}
+ * @author Philipp Keck [@Philipp91]{@link https://github.com/Philipp91}
+ */
+var locale$5 = {
+  code: 'de',
+  formatDistance: formatDistance$9,
+  formatLong: formatLong$b,
+  formatRelative: formatRelative$9,
+  localize: localize$9,
+  match: match$9,
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+var de$2 = locale$5;
+
+var dateFormats$4 = {
+  full: 'EEEE, d MMMM yyyy',
+  long: 'd MMMM yyyy',
+  medium: 'd MMM yyyy',
+  short: 'dd/MM/yyyy'
+};
+var timeFormats$4 = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats$4 = {
+  full: "{{date}} 'at' {{time}}",
+  long: "{{date}} 'at' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong$8 = {
+  date: buildFormatLongFn({
+    formats: dateFormats$4,
+    defaultWidth: 'full'
+  }),
+  time: buildFormatLongFn({
+    formats: timeFormats$4,
+    defaultWidth: 'full'
+  }),
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats$4,
+    defaultWidth: 'full'
+  })
+};
+var formatLong$9 = formatLong$8;
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary English locale (United Kingdom).
+ * @language English
+ * @iso-639-2 eng
+ * @author Alex [@glintik]{@link https://github.com/glintik}
+ */
+
+var locale$4 = {
+  code: 'en-GB',
+  formatDistance: formatDistance$b,
+  formatLong: formatLong$9,
+  formatRelative: formatRelative$b,
+  localize: localize$b,
+  match: match$b,
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+var enGB = locale$4;
+
+var formatDistanceLocale$3 = {
+  lessThanXSeconds: {
+    one: 'menos de un segundo',
+    other: 'menos de {{count}} segundos'
+  },
+  xSeconds: {
+    one: '1 segundo',
+    other: '{{count}} segundos'
+  },
+  halfAMinute: 'medio minuto',
+  lessThanXMinutes: {
+    one: 'menos de un minuto',
+    other: 'menos de {{count}} minutos'
+  },
+  xMinutes: {
+    one: '1 minuto',
+    other: '{{count}} minutos'
+  },
+  aboutXHours: {
+    one: 'alrededor de 1 hora',
+    other: 'alrededor de {{count}} horas'
+  },
+  xHours: {
+    one: '1 hora',
+    other: '{{count}} horas'
+  },
+  xDays: {
+    one: '1 día',
+    other: '{{count}} días'
+  },
+  aboutXWeeks: {
+    one: 'alrededor de 1 semana',
+    other: 'alrededor de {{count}} semanas'
+  },
+  xWeeks: {
+    one: '1 semana',
+    other: '{{count}} semanas'
+  },
+  aboutXMonths: {
+    one: 'alrededor de 1 mes',
+    other: 'alrededor de {{count}} meses'
+  },
+  xMonths: {
+    one: '1 mes',
+    other: '{{count}} meses'
+  },
+  aboutXYears: {
+    one: 'alrededor de 1 año',
+    other: 'alrededor de {{count}} años'
+  },
+  xYears: {
+    one: '1 año',
+    other: '{{count}} años'
+  },
+  overXYears: {
+    one: 'más de 1 año',
+    other: 'más de {{count}} años'
+  },
+  almostXYears: {
+    one: 'casi 1 año',
+    other: 'casi {{count}} años'
+  }
+};
+
+var formatDistance$6 = function formatDistance(token, count, options) {
+  var result;
+  var tokenValue = formatDistanceLocale$3[token];
+
+  if (typeof tokenValue === 'string') {
+    result = tokenValue;
+  } else if (count === 1) {
+    result = tokenValue.one;
+  } else {
+    result = tokenValue.other.replace('{{count}}', count.toString());
+  }
+
+  if (options !== null && options !== void 0 && options.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
+      return 'en ' + result;
+    } else {
+      return 'hace ' + result;
+    }
+  }
+
+  return result;
+};
+
+var formatDistance$7 = formatDistance$6;
+
+var dateFormats$3 = {
+  full: "EEEE, d 'de' MMMM 'de' y",
+  long: "d 'de' MMMM 'de' y",
+  medium: 'd MMM y',
+  short: 'dd/MM/y'
+};
+var timeFormats$3 = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats$3 = {
+  full: "{{date}} 'a las' {{time}}",
+  long: "{{date}} 'a las' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong$6 = {
+  date: buildFormatLongFn({
+    formats: dateFormats$3,
+    defaultWidth: 'full'
+  }),
+  time: buildFormatLongFn({
+    formats: timeFormats$3,
+    defaultWidth: 'full'
+  }),
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats$3,
+    defaultWidth: 'full'
+  })
+};
+var formatLong$7 = formatLong$6;
+
+var formatRelativeLocale$3 = {
+  lastWeek: "'el' eeee 'pasado a la' p",
+  yesterday: "'ayer a la' p",
+  today: "'hoy a la' p",
+  tomorrow: "'mañana a la' p",
+  nextWeek: "eeee 'a la' p",
+  other: 'P'
+};
+var formatRelativeLocalePlural = {
+  lastWeek: "'el' eeee 'pasado a las' p",
+  yesterday: "'ayer a las' p",
+  today: "'hoy a las' p",
+  tomorrow: "'mañana a las' p",
+  nextWeek: "eeee 'a las' p",
+  other: 'P'
+};
+
+var formatRelative$6 = function formatRelative(token, date, _baseDate, _options) {
+  if (date.getUTCHours() !== 1) {
+    return formatRelativeLocalePlural[token];
+  } else {
+    return formatRelativeLocale$3[token];
+  }
+};
+
+var formatRelative$7 = formatRelative$6;
+
+var eraValues$3 = {
+  narrow: ['AC', 'DC'],
+  abbreviated: ['AC', 'DC'],
+  wide: ['antes de cristo', 'después de cristo']
+};
+var quarterValues$3 = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['T1', 'T2', 'T3', 'T4'],
+  wide: ['1º trimestre', '2º trimestre', '3º trimestre', '4º trimestre']
+};
+var monthValues$3 = {
+  narrow: ['e', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
+  abbreviated: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
+  wide: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+};
+var dayValues$3 = {
+  narrow: ['d', 'l', 'm', 'm', 'j', 'v', 's'],
+  short: ['do', 'lu', 'ma', 'mi', 'ju', 'vi', 'sá'],
+  abbreviated: ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'],
+  wide: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado']
+};
+var dayPeriodValues$3 = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'mn',
+    noon: 'md',
+    morning: 'mañana',
+    afternoon: 'tarde',
+    evening: 'tarde',
+    night: 'noche'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'medianoche',
+    noon: 'mediodia',
+    morning: 'mañana',
+    afternoon: 'tarde',
+    evening: 'tarde',
+    night: 'noche'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'medianoche',
+    noon: 'mediodia',
+    morning: 'mañana',
+    afternoon: 'tarde',
+    evening: 'tarde',
+    night: 'noche'
+  }
+};
+var formattingDayPeriodValues$1 = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'mn',
+    noon: 'md',
+    morning: 'de la mañana',
+    afternoon: 'de la tarde',
+    evening: 'de la tarde',
+    night: 'de la noche'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'medianoche',
+    noon: 'mediodia',
+    morning: 'de la mañana',
+    afternoon: 'de la tarde',
+    evening: 'de la tarde',
+    night: 'de la noche'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'medianoche',
+    noon: 'mediodia',
+    morning: 'de la mañana',
+    afternoon: 'de la tarde',
+    evening: 'de la tarde',
+    night: 'de la noche'
+  }
+};
+
+var ordinalNumber$3 = function ordinalNumber(dirtyNumber, _options) {
+  var number = Number(dirtyNumber);
+  return number + 'º';
+};
+
+var localize$6 = {
+  ordinalNumber: ordinalNumber$3,
+  era: buildLocalizeFn({
+    values: eraValues$3,
+    defaultWidth: 'wide'
+  }),
+  quarter: buildLocalizeFn({
+    values: quarterValues$3,
+    defaultWidth: 'wide',
+    argumentCallback: function argumentCallback(quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: buildLocalizeFn({
+    values: monthValues$3,
+    defaultWidth: 'wide'
+  }),
+  day: buildLocalizeFn({
+    values: dayValues$3,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues$3,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues$1,
+    defaultFormattingWidth: 'wide'
+  })
+};
+var localize$7 = localize$6;
+
+var matchOrdinalNumberPattern$3 = /^(\d+)(º)?/i;
+var parseOrdinalNumberPattern$3 = /\d+/i;
+var matchEraPatterns$3 = {
+  narrow: /^(ac|dc|a|d)/i,
+  abbreviated: /^(a\.?\s?c\.?|a\.?\s?e\.?\s?c\.?|d\.?\s?c\.?|e\.?\s?c\.?)/i,
+  wide: /^(antes de cristo|antes de la era com[uú]n|despu[eé]s de cristo|era com[uú]n)/i
+};
+var parseEraPatterns$3 = {
+  any: [/^ac/i, /^dc/i],
+  wide: [/^(antes de cristo|antes de la era com[uú]n)/i, /^(despu[eé]s de cristo|era com[uú]n)/i]
+};
+var matchQuarterPatterns$3 = {
+  narrow: /^[1234]/i,
+  abbreviated: /^T[1234]/i,
+  wide: /^[1234](º)? trimestre/i
+};
+var parseQuarterPatterns$3 = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns$3 = {
+  narrow: /^[efmajsond]/i,
+  abbreviated: /^(ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic)/i,
+  wide: /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/i
+};
+var parseMonthPatterns$3 = {
+  narrow: [/^e/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^en/i, /^feb/i, /^mar/i, /^abr/i, /^may/i, /^jun/i, /^jul/i, /^ago/i, /^sep/i, /^oct/i, /^nov/i, /^dic/i]
+};
+var matchDayPatterns$3 = {
+  narrow: /^[dlmjvs]/i,
+  short: /^(do|lu|ma|mi|ju|vi|s[áa])/i,
+  abbreviated: /^(dom|lun|mar|mi[ée]|jue|vie|s[áa]b)/i,
+  wide: /^(domingo|lunes|martes|mi[ée]rcoles|jueves|viernes|s[áa]bado)/i
+};
+var parseDayPatterns$3 = {
+  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^j/i, /^v/i, /^s/i],
+  any: [/^do/i, /^lu/i, /^ma/i, /^mi/i, /^ju/i, /^vi/i, /^sa/i]
+};
+var matchDayPeriodPatterns$3 = {
+  narrow: /^(a|p|mn|md|(de la|a las) (mañana|tarde|noche))/i,
+  any: /^([ap]\.?\s?m\.?|medianoche|mediodia|(de la|a las) (mañana|tarde|noche))/i
+};
+var parseDayPeriodPatterns$3 = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^mn/i,
+    noon: /^md/i,
+    morning: /mañana/i,
+    afternoon: /tarde/i,
+    evening: /tarde/i,
+    night: /noche/i
+  }
+};
+var match$6 = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern$3,
+    parsePattern: parseOrdinalNumberPattern$3,
+    valueCallback: function valueCallback(value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns$3,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns$3,
+    defaultParseWidth: 'any'
+  }),
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns$3,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns$3,
+    defaultParseWidth: 'any',
+    valueCallback: function valueCallback(index) {
+      return index + 1;
+    }
+  }),
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns$3,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns$3,
+    defaultParseWidth: 'any'
+  }),
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns$3,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns$3,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns$3,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns$3,
+    defaultParseWidth: 'any'
+  })
+};
+var match$7 = match$6;
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Spanish locale.
+ * @language Spanish
+ * @iso-639-2 spa
+ * @author Juan Angosto [@juanangosto]{@link https://github.com/juanangosto}
+ * @author Guillermo Grau [@guigrpa]{@link https://github.com/guigrpa}
+ * @author Fernando Agüero [@fjaguero]{@link https://github.com/fjaguero}
+ * @author Gastón Haro [@harogaston]{@link https://github.com/harogaston}
+ * @author Yago Carballo [@YagoCarballo]{@link https://github.com/YagoCarballo}
+ */
+var locale$3 = {
+  code: 'es',
+  formatDistance: formatDistance$7,
+  formatLong: formatLong$7,
+  formatRelative: formatRelative$7,
+  localize: localize$7,
+  match: match$7,
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+var es$2 = locale$3;
+
+var formatDistanceLocale$2 = {
+  lessThanXSeconds: {
+    one: 'moins d’une seconde',
+    other: 'moins de {{count}} secondes'
+  },
+  xSeconds: {
+    one: '1 seconde',
+    other: '{{count}} secondes'
+  },
+  halfAMinute: '30 secondes',
+  lessThanXMinutes: {
+    one: 'moins d’une minute',
+    other: 'moins de {{count}} minutes'
+  },
+  xMinutes: {
+    one: '1 minute',
+    other: '{{count}} minutes'
+  },
+  aboutXHours: {
+    one: 'environ 1 heure',
+    other: 'environ {{count}} heures'
+  },
+  xHours: {
+    one: '1 heure',
+    other: '{{count}} heures'
+  },
+  xDays: {
+    one: '1 jour',
+    other: '{{count}} jours'
+  },
+  aboutXWeeks: {
+    one: 'environ 1 semaine',
+    other: 'environ {{count}} semaines'
+  },
+  xWeeks: {
+    one: '1 semaine',
+    other: '{{count}} semaines'
+  },
+  aboutXMonths: {
+    one: 'environ 1 mois',
+    other: 'environ {{count}} mois'
+  },
+  xMonths: {
+    one: '1 mois',
+    other: '{{count}} mois'
+  },
+  aboutXYears: {
+    one: 'environ 1 an',
+    other: 'environ {{count}} ans'
+  },
+  xYears: {
+    one: '1 an',
+    other: '{{count}} ans'
+  },
+  overXYears: {
+    one: 'plus d’un an',
+    other: 'plus de {{count}} ans'
+  },
+  almostXYears: {
+    one: 'presqu’un an',
+    other: 'presque {{count}} ans'
+  }
+};
+
+var formatDistance$4 = function formatDistance(token, count, options) {
+  var result;
+  var form = formatDistanceLocale$2[token];
+
+  if (typeof form === 'string') {
+    result = form;
+  } else if (count === 1) {
+    result = form.one;
+  } else {
+    result = form.other.replace('{{count}}', String(count));
+  }
+
+  if (options !== null && options !== void 0 && options.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
+      return 'dans ' + result;
+    } else {
+      return 'il y a ' + result;
+    }
+  }
+
+  return result;
+};
+
+var formatDistance$5 = formatDistance$4;
+
+var dateFormats$2 = {
+  full: 'EEEE d MMMM y',
+  long: 'd MMMM y',
+  medium: 'd MMM y',
+  short: 'dd/MM/y'
+};
+var timeFormats$2 = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats$2 = {
+  full: "{{date}} 'à' {{time}}",
+  long: "{{date}} 'à' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong$4 = {
+  date: buildFormatLongFn({
+    formats: dateFormats$2,
+    defaultWidth: 'full'
+  }),
+  time: buildFormatLongFn({
+    formats: timeFormats$2,
+    defaultWidth: 'full'
+  }),
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats$2,
+    defaultWidth: 'full'
+  })
+};
+var formatLong$5 = formatLong$4;
+
+var formatRelativeLocale$2 = {
+  lastWeek: "eeee 'dernier à' p",
+  yesterday: "'hier à' p",
+  today: "'aujourd’hui à' p",
+  tomorrow: "'demain à' p'",
+  nextWeek: "eeee 'prochain à' p",
+  other: 'P'
+};
+
+var formatRelative$4 = function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale$2[token];
+};
+
+var formatRelative$5 = formatRelative$4;
+
+var eraValues$2 = {
+  narrow: ['av. J.-C', 'ap. J.-C'],
+  abbreviated: ['av. J.-C', 'ap. J.-C'],
+  wide: ['avant Jésus-Christ', 'après Jésus-Christ']
+};
+var quarterValues$2 = {
+  narrow: ['T1', 'T2', 'T3', 'T4'],
+  abbreviated: ['1er trim.', '2ème trim.', '3ème trim.', '4ème trim.'],
+  wide: ['1er trimestre', '2ème trimestre', '3ème trimestre', '4ème trimestre']
+};
+var monthValues$2 = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'],
+  wide: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
+};
+var dayValues$2 = {
+  narrow: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+  short: ['di', 'lu', 'ma', 'me', 'je', 've', 'sa'],
+  abbreviated: ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'],
+  wide: ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi']
+};
+var dayPeriodValues$2 = {
+  narrow: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'minuit',
+    noon: 'midi',
+    morning: 'mat.',
+    afternoon: 'ap.m.',
+    evening: 'soir',
+    night: 'mat.'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'minuit',
+    noon: 'midi',
+    morning: 'matin',
+    afternoon: 'après-midi',
+    evening: 'soir',
+    night: 'matin'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'minuit',
+    noon: 'midi',
+    morning: 'du matin',
+    afternoon: 'de l’après-midi',
+    evening: 'du soir',
+    night: 'du matin'
+  }
+};
+
+var ordinalNumber$2 = function ordinalNumber(dirtyNumber, options) {
+  var number = Number(dirtyNumber);
+  var unit = options === null || options === void 0 ? void 0 : options.unit;
+  if (number === 0) return '0';
+  var feminineUnits = ['year', 'week', 'hour', 'minute', 'second'];
+  var suffix;
+
+  if (number === 1) {
+    suffix = unit && feminineUnits.includes(unit) ? 'ère' : 'er';
+  } else {
+    suffix = 'ème';
+  }
+
+  return number + suffix;
+};
+
+var localize$4 = {
+  ordinalNumber: ordinalNumber$2,
+  era: buildLocalizeFn({
+    values: eraValues$2,
+    defaultWidth: 'wide'
+  }),
+  quarter: buildLocalizeFn({
+    values: quarterValues$2,
+    defaultWidth: 'wide',
+    argumentCallback: function argumentCallback(quarter) {
+      return quarter - 1;
+    }
+  }),
+  month: buildLocalizeFn({
+    values: monthValues$2,
+    defaultWidth: 'wide'
+  }),
+  day: buildLocalizeFn({
+    values: dayValues$2,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues$2,
+    defaultWidth: 'wide'
+  })
+};
+var localize$5 = localize$4;
+
+var matchOrdinalNumberPattern$2 = /^(\d+)(ième|ère|ème|er|e)?/i;
+var parseOrdinalNumberPattern$2 = /\d+/i;
+var matchEraPatterns$2 = {
+  narrow: /^(av\.J\.C|ap\.J\.C|ap\.J\.-C)/i,
+  abbreviated: /^(av\.J\.-C|av\.J-C|apr\.J\.-C|apr\.J-C|ap\.J-C)/i,
+  wide: /^(avant Jésus-Christ|après Jésus-Christ)/i
+};
+var parseEraPatterns$2 = {
+  any: [/^av/i, /^ap/i]
+};
+var matchQuarterPatterns$2 = {
+  narrow: /^T?[1234]/i,
+  abbreviated: /^[1234](er|ème|e)? trim\.?/i,
+  wide: /^[1234](er|ème|e)? trimestre/i
+};
+var parseQuarterPatterns$2 = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns$2 = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(janv|févr|mars|avr|mai|juin|juill|juil|août|sept|oct|nov|déc)\.?/i,
+  wide: /^(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)/i
+};
+var parseMonthPatterns$2 = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ja/i, /^f/i, /^mar/i, /^av/i, /^ma/i, /^juin/i, /^juil/i, /^ao/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns$2 = {
+  narrow: /^[lmjvsd]/i,
+  short: /^(di|lu|ma|me|je|ve|sa)/i,
+  abbreviated: /^(dim|lun|mar|mer|jeu|ven|sam)\.?/i,
+  wide: /^(dimanche|lundi|mardi|mercredi|jeudi|vendredi|samedi)/i
+};
+var parseDayPatterns$2 = {
+  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^j/i, /^v/i, /^s/i],
+  any: [/^di/i, /^lu/i, /^ma/i, /^me/i, /^je/i, /^ve/i, /^sa/i]
+};
+var matchDayPeriodPatterns$2 = {
+  narrow: /^(a|p|minuit|midi|mat\.?|ap\.?m\.?|soir|nuit)/i,
+  any: /^([ap]\.?\s?m\.?|du matin|de l'après[-\s]midi|du soir|de la nuit)/i
+};
+var parseDayPeriodPatterns$2 = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^min/i,
+    noon: /^mid/i,
+    morning: /mat/i,
+    afternoon: /ap/i,
+    evening: /soir/i,
+    night: /nuit/i
+  }
+};
+var match$4 = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern$2,
+    parsePattern: parseOrdinalNumberPattern$2,
+    valueCallback: function valueCallback(value) {
+      return parseInt(value);
+    }
+  }),
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns$2,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns$2,
+    defaultParseWidth: 'any'
+  }),
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns$2,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns$2,
+    defaultParseWidth: 'any',
+    valueCallback: function valueCallback(index) {
+      return index + 1;
+    }
+  }),
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns$2,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns$2,
+    defaultParseWidth: 'any'
+  }),
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns$2,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns$2,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns$2,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns$2,
+    defaultParseWidth: 'any'
+  })
+};
+var match$5 = match$4;
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary French locale.
+ * @language French
+ * @iso-639-2 fra
+ * @author Jean Dupouy [@izeau]{@link https://github.com/izeau}
+ * @author François B [@fbonzon]{@link https://github.com/fbonzon}
+ */
+
+var locale$2 = {
+  code: 'fr',
+  formatDistance: formatDistance$5,
+  formatLong: formatLong$5,
+  formatRelative: formatRelative$5,
+  localize: localize$5,
+  match: match$5,
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+var fr$2 = locale$2;
+
+var formatDistanceLocale$1 = {
+  lessThanXSeconds: {
+    one: 'meno di un secondo',
+    other: 'meno di {{count}} secondi'
+  },
+  xSeconds: {
+    one: 'un secondo',
+    other: '{{count}} secondi'
+  },
+  halfAMinute: 'alcuni secondi',
+  lessThanXMinutes: {
+    one: 'meno di un minuto',
+    other: 'meno di {{count}} minuti'
+  },
+  xMinutes: {
+    one: 'un minuto',
+    other: '{{count}} minuti'
+  },
+  aboutXHours: {
+    one: "circa un'ora",
+    other: 'circa {{count}} ore'
+  },
+  xHours: {
+    one: "un'ora",
+    other: '{{count}} ore'
+  },
+  xDays: {
+    one: 'un giorno',
+    other: '{{count}} giorni'
+  },
+  aboutXWeeks: {
+    one: 'circa una settimana',
+    other: 'circa {{count}} settimane'
+  },
+  xWeeks: {
+    one: 'una settimana',
+    other: '{{count}} settimane'
+  },
+  aboutXMonths: {
+    one: 'circa un mese',
+    other: 'circa {{count}} mesi'
+  },
+  xMonths: {
+    one: 'un mese',
+    other: '{{count}} mesi'
+  },
+  aboutXYears: {
+    one: 'circa un anno',
+    other: 'circa {{count}} anni'
+  },
+  xYears: {
+    one: 'un anno',
+    other: '{{count}} anni'
+  },
+  overXYears: {
+    one: 'più di un anno',
+    other: 'più di {{count}} anni'
+  },
+  almostXYears: {
+    one: 'quasi un anno',
+    other: 'quasi {{count}} anni'
+  }
+};
+
+var formatDistance$2 = function formatDistance(token, count, options) {
+  var result;
+  var tokenValue = formatDistanceLocale$1[token];
+
+  if (typeof tokenValue === 'string') {
+    result = tokenValue;
+  } else if (count === 1) {
+    result = tokenValue.one;
+  } else {
+    result = tokenValue.other.replace('{{count}}', count.toString());
+  }
+
+  if (options !== null && options !== void 0 && options.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
+      return 'tra ' + result;
+    } else {
+      return result + ' fa';
+    }
+  }
+
+  return result;
+};
+
+var formatDistance$3 = formatDistance$2;
+
+var dateFormats$1 = {
+  full: 'EEEE d MMMM y',
+  long: 'd MMMM y',
+  medium: 'd MMM y',
+  short: 'dd/MM/y'
+};
+var timeFormats$1 = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats$1 = {
+  full: '{{date}} {{time}}',
+  long: '{{date}} {{time}}',
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong$2 = {
+  date: buildFormatLongFn({
+    formats: dateFormats$1,
+    defaultWidth: 'full'
+  }),
+  time: buildFormatLongFn({
+    formats: timeFormats$1,
+    defaultWidth: 'full'
+  }),
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats$1,
+    defaultWidth: 'full'
+  })
+};
+var formatLong$3 = formatLong$2;
+
+var weekdays = ['domenica', 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato'];
+
+function _lastWeek(day) {
+  switch (day) {
+    case 0:
+      return "'domenica scorsa alle' p";
+
+    default:
+      return "'" + weekdays[day] + " scorso alle' p";
+  }
+}
+
+function thisWeek(day) {
+  return "'" + weekdays[day] + " alle' p";
+}
+
+function _nextWeek(day) {
+  switch (day) {
+    case 0:
+      return "'domenica prossima alle' p";
+
+    default:
+      return "'" + weekdays[day] + " prossimo alle' p";
+  }
+}
+
+var formatRelativeLocale$1 = {
+  lastWeek: function lastWeek(date, baseDate, options) {
+    var day = date.getUTCDay();
+
+    if (isSameUTCWeek(date, baseDate, options)) {
+      return thisWeek(day);
+    } else {
+      return _lastWeek(day);
+    }
+  },
+  yesterday: "'ieri alle' p",
+  today: "'oggi alle' p",
+  tomorrow: "'domani alle' p",
+  nextWeek: function nextWeek(date, baseDate, options) {
+    var day = date.getUTCDay();
+
+    if (isSameUTCWeek(date, baseDate, options)) {
+      return thisWeek(day);
+    } else {
+      return _nextWeek(day);
+    }
+  },
+  other: 'P'
+};
+
+var formatRelative$2 = function formatRelative(token, date, baseDate, options) {
+  var format = formatRelativeLocale$1[token];
+
+  if (typeof format === 'function') {
+    return format(date, baseDate, options);
+  }
+
+  return format;
+};
+
+var formatRelative$3 = formatRelative$2;
+
+var eraValues$1 = {
+  narrow: ['aC', 'dC'],
+  abbreviated: ['a.C.', 'd.C.'],
+  wide: ['avanti Cristo', 'dopo Cristo']
+};
+var quarterValues$1 = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['T1', 'T2', 'T3', 'T4'],
+  wide: ['1º trimestre', '2º trimestre', '3º trimestre', '4º trimestre']
+};
+var monthValues$1 = {
+  narrow: ['G', 'F', 'M', 'A', 'M', 'G', 'L', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic'],
+  wide: ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto', 'settembre', 'ottobre', 'novembre', 'dicembre']
+};
+var dayValues$1 = {
+  narrow: ['D', 'L', 'M', 'M', 'G', 'V', 'S'],
+  short: ['dom', 'lun', 'mar', 'mer', 'gio', 'ven', 'sab'],
+  abbreviated: ['dom', 'lun', 'mar', 'mer', 'gio', 'ven', 'sab'],
+  wide: ['domenica', 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato']
+};
+var dayPeriodValues$1 = {
+  narrow: {
+    am: 'm.',
+    pm: 'p.',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'mattina',
+    afternoon: 'pomeriggio',
+    evening: 'sera',
+    night: 'notte'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'mattina',
+    afternoon: 'pomeriggio',
+    evening: 'sera',
+    night: 'notte'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'mattina',
+    afternoon: 'pomeriggio',
+    evening: 'sera',
+    night: 'notte'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'm.',
+    pm: 'p.',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'di mattina',
+    afternoon: 'del pomeriggio',
+    evening: 'di sera',
+    night: 'di notte'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'di mattina',
+    afternoon: 'del pomeriggio',
+    evening: 'di sera',
+    night: 'di notte'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'di mattina',
+    afternoon: 'del pomeriggio',
+    evening: 'di sera',
+    night: 'di notte'
+  }
+};
+
+var ordinalNumber$1 = function ordinalNumber(dirtyNumber, _options) {
+  var number = Number(dirtyNumber);
+  return String(number);
+};
+
+var localize$2 = {
+  ordinalNumber: ordinalNumber$1,
+  era: buildLocalizeFn({
+    values: eraValues$1,
+    defaultWidth: 'wide'
+  }),
+  quarter: buildLocalizeFn({
+    values: quarterValues$1,
+    defaultWidth: 'wide',
+    argumentCallback: function argumentCallback(quarter) {
+      return quarter - 1;
+    }
+  }),
+  month: buildLocalizeFn({
+    values: monthValues$1,
+    defaultWidth: 'wide'
+  }),
+  day: buildLocalizeFn({
+    values: dayValues$1,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues$1,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+var localize$3 = localize$2;
+
+var matchOrdinalNumberPattern$1 = /^(\d+)(º)?/i;
+var parseOrdinalNumberPattern$1 = /\d+/i;
+var matchEraPatterns$1 = {
+  narrow: /^(aC|dC)/i,
+  abbreviated: /^(a\.?\s?C\.?|a\.?\s?e\.?\s?v\.?|d\.?\s?C\.?|e\.?\s?v\.?)/i,
+  wide: /^(avanti Cristo|avanti Era Volgare|dopo Cristo|Era Volgare)/i
+};
+var parseEraPatterns$1 = {
+  any: [/^a/i, /^(d|e)/i]
+};
+var matchQuarterPatterns$1 = {
+  narrow: /^[1234]/i,
+  abbreviated: /^t[1234]/i,
+  wide: /^[1234](º)? trimestre/i
+};
+var parseQuarterPatterns$1 = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns$1 = {
+  narrow: /^[gfmalsond]/i,
+  abbreviated: /^(gen|feb|mar|apr|mag|giu|lug|ago|set|ott|nov|dic)/i,
+  wide: /^(gennaio|febbraio|marzo|aprile|maggio|giugno|luglio|agosto|settembre|ottobre|novembre|dicembre)/i
+};
+var parseMonthPatterns$1 = {
+  narrow: [/^g/i, /^f/i, /^m/i, /^a/i, /^m/i, /^g/i, /^l/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ge/i, /^f/i, /^mar/i, /^ap/i, /^mag/i, /^gi/i, /^l/i, /^ag/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns$1 = {
+  narrow: /^[dlmgvs]/i,
+  short: /^(do|lu|ma|me|gi|ve|sa)/i,
+  abbreviated: /^(dom|lun|mar|mer|gio|ven|sab)/i,
+  wide: /^(domenica|luned[i|ì]|marted[i|ì]|mercoled[i|ì]|gioved[i|ì]|venerd[i|ì]|sabato)/i
+};
+var parseDayPatterns$1 = {
+  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^g/i, /^v/i, /^s/i],
+  any: [/^d/i, /^l/i, /^ma/i, /^me/i, /^g/i, /^v/i, /^s/i]
+};
+var matchDayPeriodPatterns$1 = {
+  narrow: /^(a|m\.|p|mezzanotte|mezzogiorno|(di|del) (mattina|pomeriggio|sera|notte))/i,
+  any: /^([ap]\.?\s?m\.?|mezzanotte|mezzogiorno|(di|del) (mattina|pomeriggio|sera|notte))/i
+};
+var parseDayPeriodPatterns$1 = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^mezza/i,
+    noon: /^mezzo/i,
+    morning: /mattina/i,
+    afternoon: /pomeriggio/i,
+    evening: /sera/i,
+    night: /notte/i
+  }
+};
+var match$2 = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern$1,
+    parsePattern: parseOrdinalNumberPattern$1,
+    valueCallback: function valueCallback(value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns$1,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns$1,
+    defaultParseWidth: 'any'
+  }),
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns$1,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns$1,
+    defaultParseWidth: 'any',
+    valueCallback: function valueCallback(index) {
+      return index + 1;
+    }
+  }),
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns$1,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns$1,
+    defaultParseWidth: 'any'
+  }),
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns$1,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns$1,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns$1,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns$1,
+    defaultParseWidth: 'any'
+  })
+};
+var match$3 = match$2;
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Italian locale.
+ * @language Italian
+ * @iso-639-2 ita
+ * @author Alberto Restifo [@albertorestifo]{@link https://github.com/albertorestifo}
+ * @author Giovanni Polimeni [@giofilo]{@link https://github.com/giofilo}
+ * @author Vincenzo Carrese [@vin-car]{@link https://github.com/vin-car}
+ */
+
+var locale$1 = {
+  code: 'it',
+  formatDistance: formatDistance$3,
+  formatLong: formatLong$3,
+  formatRelative: formatRelative$3,
+  localize: localize$3,
+  match: match$3,
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+var it$2 = locale$1;
+
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'minder dan een seconde',
+    other: 'minder dan {{count}} seconden'
+  },
+  xSeconds: {
+    one: '1 seconde',
+    other: '{{count}} seconden'
+  },
+  halfAMinute: 'een halve minuut',
+  lessThanXMinutes: {
+    one: 'minder dan een minuut',
+    other: 'minder dan {{count}} minuten'
+  },
+  xMinutes: {
+    one: 'een minuut',
+    other: '{{count}} minuten'
+  },
+  aboutXHours: {
+    one: 'ongeveer 1 uur',
+    other: 'ongeveer {{count}} uur'
+  },
+  xHours: {
+    one: '1 uur',
+    other: '{{count}} uur'
+  },
+  xDays: {
+    one: '1 dag',
+    other: '{{count}} dagen'
+  },
+  aboutXWeeks: {
+    one: 'ongeveer 1 week',
+    other: 'ongeveer {{count}} weken'
+  },
+  xWeeks: {
+    one: '1 week',
+    other: '{{count}} weken'
+  },
+  aboutXMonths: {
+    one: 'ongeveer 1 maand',
+    other: 'ongeveer {{count}} maanden'
+  },
+  xMonths: {
+    one: '1 maand',
+    other: '{{count}} maanden'
+  },
+  aboutXYears: {
+    one: 'ongeveer 1 jaar',
+    other: 'ongeveer {{count}} jaar'
+  },
+  xYears: {
+    one: '1 jaar',
+    other: '{{count}} jaar'
+  },
+  overXYears: {
+    one: 'meer dan 1 jaar',
+    other: 'meer dan {{count}} jaar'
+  },
+  almostXYears: {
+    one: 'bijna 1 jaar',
+    other: 'bijna {{count}} jaar'
+  }
+};
+
+var formatDistance = function formatDistance(token, count, options) {
+  var result;
+  var tokenValue = formatDistanceLocale[token];
+
+  if (typeof tokenValue === 'string') {
+    result = tokenValue;
+  } else if (count === 1) {
+    result = tokenValue.one;
+  } else {
+    result = tokenValue.other.replace('{{count}}', String(count));
+  }
+
+  if (options !== null && options !== void 0 && options.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
+      return 'over ' + result;
+    } else {
+      return result + ' geleden';
+    }
+  }
+
+  return result;
+};
+
+var formatDistance$1 = formatDistance;
+
+var dateFormats = {
+  full: 'EEEE d MMMM y',
+  long: 'd MMMM y',
+  medium: 'd MMM y',
+  short: 'dd-MM-y'
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'om' {{time}}",
+  long: "{{date}} 'om' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: buildFormatLongFn({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: buildFormatLongFn({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+var formatLong$1 = formatLong;
+
+var formatRelativeLocale = {
+  lastWeek: "'afgelopen' eeee 'om' p",
+  yesterday: "'gisteren om' p",
+  today: "'vandaag om' p",
+  tomorrow: "'morgen om' p",
+  nextWeek: "eeee 'om' p",
+  other: 'P'
+};
+
+var formatRelative = function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+};
+
+var formatRelative$1 = formatRelative;
+
+var eraValues = {
+  narrow: ['v.C.', 'n.C.'],
+  abbreviated: ['v.Chr.', 'n.Chr.'],
+  wide: ['voor Christus', 'na Christus']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['K1', 'K2', 'K3', 'K4'],
+  wide: ['1e kwartaal', '2e kwartaal', '3e kwartaal', '4e kwartaal']
+};
+var monthValues = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['jan.', 'feb.', 'mrt.', 'apr.', 'mei', 'jun.', 'jul.', 'aug.', 'sep.', 'okt.', 'nov.', 'dec.'],
+  wide: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
+};
+var dayValues = {
+  narrow: ['Z', 'M', 'D', 'W', 'D', 'V', 'Z'],
+  short: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
+  abbreviated: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
+  wide: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'middernacht',
+    noon: 'het middaguur',
+    morning: "'s ochtends",
+    afternoon: "'s middags",
+    evening: "'s avonds",
+    night: "'s nachts"
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'middernacht',
+    noon: 'het middaguur',
+    morning: "'s ochtends",
+    afternoon: "'s middags",
+    evening: "'s avonds",
+    night: "'s nachts"
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'middernacht',
+    noon: 'het middaguur',
+    morning: "'s ochtends",
+    afternoon: "'s middags",
+    evening: "'s avonds",
+    night: "'s nachts"
+  }
+};
+
+var ordinalNumber = function ordinalNumber(dirtyNumber, _options) {
+  var number = Number(dirtyNumber);
+  return number + 'e';
+};
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function argumentCallback(quarter) {
+      return quarter - 1;
+    }
+  }),
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: 'wide'
+  })
+};
+var localize$1 = localize;
+
+var matchOrdinalNumberPattern = /^(\d+)e?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^([vn]\.? ?C\.?)/,
+  abbreviated: /^([vn]\. ?Chr\.?)/,
+  wide: /^((voor|na) Christus)/
+};
+var parseEraPatterns = {
+  any: [/^v/, /^n/]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^K[1234]/i,
+  wide: /^[1234]e kwartaal/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(jan.|feb.|mrt.|apr.|mei|jun.|jul.|aug.|sep.|okt.|nov.|dec.)/i,
+  wide: /^(januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^jan/i, /^feb/i, /^m(r|a)/i, /^apr/i, /^mei/i, /^jun/i, /^jul/i, /^aug/i, /^sep/i, /^okt/i, /^nov/i, /^dec/i]
+};
+var matchDayPatterns = {
+  narrow: /^[zmdwv]/i,
+  short: /^(zo|ma|di|wo|do|vr|za)/i,
+  abbreviated: /^(zon|maa|din|woe|don|vri|zat)/i,
+  wide: /^(zondag|maandag|dinsdag|woensdag|donderdag|vrijdag|zaterdag)/i
+};
+var parseDayPatterns = {
+  narrow: [/^z/i, /^m/i, /^d/i, /^w/i, /^d/i, /^v/i, /^z/i],
+  any: [/^zo/i, /^ma/i, /^di/i, /^wo/i, /^do/i, /^vr/i, /^za/i]
+};
+var matchDayPeriodPatterns = {
+  any: /^(am|pm|middernacht|het middaguur|'s (ochtends|middags|avonds|nachts))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^am/i,
+    pm: /^pm/i,
+    midnight: /^middernacht/i,
+    noon: /^het middaguur/i,
+    morning: /ochtend/i,
+    afternoon: /middag/i,
+    evening: /avond/i,
+    night: /nacht/i
+  }
+};
+var match = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function valueCallback(value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function valueCallback(index) {
+      return index + 1;
+    }
+  }),
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+var match$1 = match;
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Dutch locale.
+ * @language Dutch
+ * @iso-639-2 nld
+ * @author Jorik Tangelder [@jtangelder]{@link https://github.com/jtangelder}
+ * @author Ruben Stolk [@rubenstolk]{@link https://github.com/rubenstolk}
+ * @author Lode Vanhove [@bitcrumb]{@link https://github.com/bitcrumb}
+ * @author Edo Rivai [@edorivai]{@link https://github.com/edorivai}
+ * @author Niels Keurentjes [@curry684]{@link https://github.com/curry684}
+ * @author Stefan Vermaas [@stefanvermaas]{@link https://github.com/stefanvermaas}
+ */
+
+var locale = {
+  code: 'nl',
+  formatDistance: formatDistance$1,
+  formatLong: formatLong$1,
+  formatRelative: formatRelative$1,
+  localize: localize$1,
+  match: match$1,
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+var nl$2 = locale;
+
+const locales = {
+    en: enGB,
+    nl: nl$2,
+    de: de$2,
+    fr: fr$2,
+    it: it$2,
+    es: es$2,
+};
+function FormatIntl(date, formatStr) {
+    return format(date, formatStr, {
+        locale: locales[global.__localeId__], // or global.__localeId__
+    });
+}
+function Parse_EN_US(date_string) {
+    return parse$1(date_string, 'yyyy-MM-dd', new Date());
+}
+const MONTH_FORMAT = 'MMMM yyyy';
+const LONG_DATE_FORMAT = 'EEEE dd MMMM yyyy';
+
 var Object$1 = function Object(_ref) {
   var house = _ref.house,
       values = _ref.values;
   var arrivalDate = values.arrivalDate,
       departureDate = values.departureDate;
-  console.log({
-    values: values
-  });
-  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("h2", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
+  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("h2", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
     id: "booking_details"
   })), /*#__PURE__*/React__default["default"].createElement("div", {
     className: "house-details"
   }, /*#__PURE__*/React__default["default"].createElement("div", null, house.name), /*#__PURE__*/React__default["default"].createElement("img", {
     src: house.image_url,
     alt: ""
-  }), /*#__PURE__*/React__default["default"].createElement("table", null, /*#__PURE__*/React__default["default"].createElement("tbody", null, /*#__PURE__*/React__default["default"].createElement("tr", null, /*#__PURE__*/React__default["default"].createElement("th", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
+  }), /*#__PURE__*/React__default["default"].createElement("table", null, /*#__PURE__*/React__default["default"].createElement("tbody", null, /*#__PURE__*/React__default["default"].createElement("tr", null, /*#__PURE__*/React__default["default"].createElement("th", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
     id: "".concat(house.house_type, ".arrival")
   })), /*#__PURE__*/React__default["default"].createElement("td", {
     className: "price"
-  }, FormatIntl(Parse_EN_US(arrivalDate.date), LONG_DATE_FORMAT)), /*#__PURE__*/React__default["default"].createElement("td", null, arrivalDate.arrival_time_from, " - ", arrivalDate.arrival_time_to)), /*#__PURE__*/React__default["default"].createElement("tr", null, /*#__PURE__*/React__default["default"].createElement("th", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
+  }, FormatIntl(Parse_EN_US(arrivalDate.date), LONG_DATE_FORMAT)), /*#__PURE__*/React__default["default"].createElement("td", null, arrivalDate.arrival_time_from, " - ", arrivalDate.arrival_time_to)), /*#__PURE__*/React__default["default"].createElement("tr", null, /*#__PURE__*/React__default["default"].createElement("th", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
     id: "".concat(house.house_type, ".departure")
   })), /*#__PURE__*/React__default["default"].createElement("td", {
     className: "price"
@@ -40223,11 +40384,7 @@ Object$1.propTypes = {
 
 function Summary(_ref) {
   var values = _ref.values,
-      house = _ref.house,
-      locale = _ref.locale;
-  console.log({
-    values: values
-  });
+      house = _ref.house;
   return /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(Object$1, {
     house: house,
     values: values
@@ -40235,8 +40392,7 @@ function Summary(_ref) {
     house: house
   }), /*#__PURE__*/React__default["default"].createElement(CostSummary, {
     values: values,
-    house: house,
-    locale: locale
+    house: house
   }));
 }
 
@@ -40329,30 +40485,17 @@ var DefaultBookingFields = [{
   rows: 10
 }];
 
-var SuccessMessage = function SuccessMessage() {
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "success-message"
-  }, /*#__PURE__*/React__default["default"].createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    xmlnsXlink: "http://www.w3.org/1999/xlink",
-    version: "1.1",
-    x: "0px",
-    y: "0px",
-    viewBox: "0 0 100 125",
-    style: {
-      enableBackground: 'new 0 0 100 100;',
-      fill: 'green',
-      height: '150px'
-    },
-    xmlSpace: "preserve"
-  }, /*#__PURE__*/React__default["default"].createElement("path", {
-    d: "M50,5C25.2,5,5,25.1,5,50c0,24.8,20.2,45,45,45s45-20.2,45-45C95,25.1,74.8,5,50,5z M72.7,38.2L44.2,66.7  c-0.4,0.4-0.9,0.6-1.4,0.6s-1-0.2-1.4-0.6l-14-14c-0.8-0.8-0.8-2,0-2.8c0.8-0.8,2-0.8,2.8,0l12.6,12.6l27.1-27.1  c0.8-0.8,2-0.8,2.8,0C73.5,36.1,73.5,37.4,72.7,38.2z"
-  })), /*#__PURE__*/React__default["default"].createElement("h3", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "thank_you_for_your_request"
-  })), /*#__PURE__*/React__default["default"].createElement("p", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-    id: "we_sent_confirmation_check_email"
-  })));
-};
+const SuccessMessage = () => (React__default["default"].createElement("div", { className: "success-message" },
+    React__default["default"].createElement("svg", { xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", version: "1.1", x: "0px", y: "0px", viewBox: "0 0 100 125", style: {
+            enableBackground: 'new 0 0 100 100;',
+            fill: 'green',
+            height: '150px',
+        }, xmlSpace: "preserve" },
+        React__default["default"].createElement("path", { d: "M50,5C25.2,5,5,25.1,5,50c0,24.8,20.2,45,45,45s45-20.2,45-45C95,25.1,74.8,5,50,5z M72.7,38.2L44.2,66.7  c-0.4,0.4-0.9,0.6-1.4,0.6s-1-0.2-1.4-0.6l-14-14c-0.8-0.8-0.8-2,0-2.8c0.8-0.8,2-0.8,2.8,0l12.6,12.6l27.1-27.1  c0.8-0.8,2-0.8,2.8,0C73.5,36.1,73.5,37.4,72.7,38.2z" })),
+    React__default["default"].createElement("h3", null,
+        React__default["default"].createElement(FormattedMessage$1, { id: "thank_you_for_your_request" })),
+    React__default["default"].createElement("p", null,
+        React__default["default"].createElement(FormattedMessage$1, { id: "we_sent_confirmation_check_email" }))));
 
 var nl$1 = [
 	{
@@ -46348,13 +46491,13 @@ var it$1 = [
 	}
 ];
 
-var Countries = {
-  en: en$1,
-  nl: nl$1,
-  de: de$1,
-  fr: fr$1,
-  es: es$1,
-  it: it$1
+const Countries = {
+    en: en$1,
+    nl: nl$1,
+    de: de$1,
+    fr: fr$1,
+    es: es$1,
+    it: it$1
 };
 
 function isInt(value) {
@@ -46391,7 +46534,7 @@ function OptionalBookingFields(_ref) {
 
   return /*#__PURE__*/React__default["default"].createElement("div", {
     className: "form-section"
-  }, /*#__PURE__*/React__default["default"].createElement("h2", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
+  }, /*#__PURE__*/React__default["default"].createElement("h2", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
     id: "personal_details"
   })), fields.map(function (input) {
     if (input.id === 'telephone') {
@@ -47744,7 +47887,7 @@ function OptionalCosts(_ref) {
 
   return /*#__PURE__*/React__default["default"].createElement("div", {
     className: "form-section optional_house_costs"
-  }, /*#__PURE__*/React__default["default"].createElement("h2", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
+  }, /*#__PURE__*/React__default["default"].createElement("h2", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
     id: "extra_costs_bookable"
   })), /*#__PURE__*/React__default["default"].createElement("div", null, costs.map(function (cost) {
     if (!arrayIncludes(['none', 'total'], cost.method) && cost.max_available > 0) {
@@ -47757,13 +47900,13 @@ function OptionalCosts(_ref) {
         }, cost.name), /*#__PURE__*/React__default["default"].createElement(Field, {
           component: "select",
           name: "costs[".concat(cost.id, "]")
-        }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
+        }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
           id: "no"
         }, function (formattedMessage) {
           return /*#__PURE__*/React__default["default"].createElement("option", {
             value: 0
           }, formattedMessage);
-        }), /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
+        }), /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
           id: "yes"
         }, function (formattedMessage) {
           return /*#__PURE__*/React__default["default"].createElement("option", {
@@ -47808,536 +47951,618 @@ function OptionalCosts(_ref) {
   })));
 }
 
-function Guests(_ref) {
-  var options = _ref.options,
-      house = _ref.house;
-  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(NumberSelect, {
-    name: "adults",
-    label: "adults",
-    count: house.persons,
-    description: /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "age-description"
-    }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-      id: "adults_from",
-      defaultMessage: "> {age}",
-      values: {
-        age: options.bookingForm ? options.bookingForm.adults_from || '18' : '18'
-      }
-    }))
-  }), options.bookingForm && !options.bookingForm.children ? null : /*#__PURE__*/React__default["default"].createElement(NumberSelect, {
-    name: "children",
-    label: "children",
-    count: house.persons - 1,
-    description: /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "age-description"
-    }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-      id: "children_from",
-      defaultMessage: "{from} - {til}",
-      values: {
-        from: options.bookingForm ? options.bookingForm.children_from || '3' : '3',
-        til: options.bookingForm ? options.bookingForm.children_til || '17' : '17'
-      }
-    }))
-  }), options.bookingForm && !options.bookingForm.babies ? null : /*#__PURE__*/React__default["default"].createElement(NumberSelect, {
-    name: "babies",
-    label: "babies",
-    count: house.persons - 1,
-    description: /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "age-description"
-    }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-      id: "babies_from",
-      defaultMessage: "til {babies_til}",
-      values: {
-        babies: options.bookingForm ? options.bookingForm.babies_til || '2' : '2'
-      }
-    }))
-  }));
+function Guests({ options, house }) {
+    return (React__default["default"].createElement(React__default["default"].Fragment, null,
+        React__default["default"].createElement(NumberSelect, { name: "adults", label: "adults", count: house.persons, description: React__default["default"].createElement("div", { className: "age-description" },
+                React__default["default"].createElement(FormattedMessage$1, { id: "adults_from", defaultMessage: "> {age}", values: {
+                        age: options.bookingForm
+                            ? options.bookingForm.adults_from || '18'
+                            : '18'
+                    } })) }),
+        options.bookingForm && !options.bookingForm.children ? null : (React__default["default"].createElement(NumberSelect, { name: "children", label: "children", count: house.persons - 1, description: React__default["default"].createElement("div", { className: "age-description" },
+                React__default["default"].createElement(FormattedMessage$1, { id: "children_from", defaultMessage: "{from} - {til}", values: {
+                        from: options.bookingForm
+                            ? options.bookingForm.children_from || '3'
+                            : '3',
+                        til: options.bookingForm
+                            ? options.bookingForm.children_til || '17'
+                            : '17'
+                    } })) })),
+        options.bookingForm && !options.bookingForm.babies ? null : (React__default["default"].createElement(NumberSelect, { name: "babies", label: "babies", count: house.persons - 1, description: React__default["default"].createElement("div", { className: "age-description" },
+                React__default["default"].createElement(FormattedMessage$1, { id: "babies_from", defaultMessage: "til {babies_til}", values: {
+                        babies: options.bookingForm
+                            ? options.bookingForm.babies_til || '2'
+                            : '2'
+                    } })) }))));
 }
 
-var FormCreator = /*#__PURE__*/function (_React$Component) {
-  _inherits$A(FormCreator, _React$Component);
-
-  var _super = _createSuper$A(FormCreator);
-
-  function FormCreator() {
-    var _this;
-
-    _classCallCheck$B(this, FormCreator);
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _super.call.apply(_super, [this].concat(args));
-
-    _defineProperty$M(_assertThisInitialized$B(_this), "state", {
-      formSubmit: false,
-      bookingFields: _this.props.options.bookingFields || DefaultBookingFields
-    });
-
-    _defineProperty$M(_assertThisInitialized$B(_this), "validate", function (values) {
-      var _values$extra_fields;
-
-      var _this$props$house = _this.props.house,
-          babies_extra = _this$props$house.babies_extra,
-          persons = _this$props$house.persons;
-      var errors = {};
-      var babies = Number(values.babies) - Number(babies_extra);
-
-      if (babies < 0) {
+function validateForm(values, house, bookingFields) {
+    var _a;
+    const { babies_extra, persons } = house;
+    let errors = {};
+    let babies = Number(values.babies) - Number(babies_extra);
+    if (babies < 0) {
         babies = 0;
-      }
-
-      values.persons = Number(values.children) + Number(values.adults) + babies;
-
-      var _iterator = _createForOfIteratorHelper$1(_this.state.bookingFields),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var field = _step.value;
-
-          if (field.required) {
+    }
+    values.persons = Number(values.children) + Number(values.adults) + babies;
+    for (let field of bookingFields) {
+        if (field.required) {
             if (isInt(field.id)) {
-              var validateValue = byString(values, "extra_fields.booking_field_".concat(field.id));
-
-              if (!validateValue || validateValue === '') {
-                errors[field.id] = /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-                  id: "required"
-                });
-              }
-            } else {
-              var _validateValue = byString(values, field.id);
-
-              if (!_validateValue || _validateValue === '') {
-                errors[field.id] = /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-                  id: "required"
-                });
-              }
-            }
-          }
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-
-      if (values.adults < 1) {
-        errors.adults = /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-          id: "at_least_1_adult"
-        });
-      }
-
-      if (Number(values.discount) > 0 && !values.discount_reason) {
-        errors.discount_reason = /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-          id: "you_need_to_give_reason"
-        });
-      }
-
-      if (values.persons > persons) {
-        errors.max_persons = /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-          id: "max_persons_reached"
-        });
-      }
-
-      if (values.cancel_insurance !== 0 && validateAge((_values$extra_fields = values.extra_fields) === null || _values$extra_fields === void 0 ? void 0 : _values$extra_fields.date_of_birth)) {
-        errors['extra_fields.date_of_birth'] = /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-          id: "at_least_18y_old"
-        });
-        errors['insurances'] = /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-          id: "at_least_18y_old"
-        });
-      }
-
-      if (values.cancel_insurance !== 0 && !arrayIncludes(['nl', 'de', 'be'], values.country)) {
-        errors['insurances'] = /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-          id: "can_only_take_insurance_in_de_be_nl"
-        });
-        errors['country'] = /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-          id: "can_only_take_insurance_in_de_be_nl"
-        });
-      }
-
-      return errors;
-    });
-
-    return _this;
-  }
-
-  _createClass$D(FormCreator, [{
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var bookingFields = this.state.bookingFields;
-      var _this$props = this.props,
-          house = _this$props.house,
-          locale = _this$props.locale,
-          PortalSite = _this$props.PortalSite,
-          options = _this$props.options,
-          booking = _this$props.booking;
-      var bookingPrice = house.booking_price;
-      var costs = {};
-
-      var _iterator2 = _createForOfIteratorHelper$1(bookingPrice.optional_house_costs),
-          _step2;
-
-      try {
-        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          var val = _step2.value;
-          costs[val.id] = '0';
-        }
-      } catch (err) {
-        _iterator2.e(err);
-      } finally {
-        _iterator2.f();
-      }
-
-      var optBookingFieldsInitialized = initializeBookingFields(bookingFields);
-      return /*#__PURE__*/React__default["default"].createElement(Mutation, {
-        mutation: CREATE_BOOKING_MUTATION
-      }, function (createBooking, _ref) {
-        var loading = _ref.loading,
-            error = _ref.error,
-            data = _ref.data;
-        return /*#__PURE__*/React__default["default"].createElement(Formik, {
-          validate: _this2.validate,
-          initialValues: _objectSpread2(_objectSpread2(_objectSpread2({}, booking), optBookingFieldsInitialized), {}, {
-            costs: costs,
-            adults: booking.persons,
-            children: 0,
-            babies: 0,
-            persons: 2,
-            discount: 0,
-            country: 'nl'
-          }),
-          onSubmit: function onSubmit(values, _ref2) {
-            _ref2.setSubmitting;
-
-            var variables = _objectSpread2(_objectSpread2({}, values), {}, {
-              is_option: JSON.parse(values.is_option),
-              house_code: values.objectCode,
-              portal_code: values.portalCode,
-              comment: values.comment || '',
-              language: locale,
-              country: values.country.toUpperCase(),
-              adults: Number(values.adults),
-              children: Number(values.children) || 0,
-              babies: Number(values.babies) || 0,
-              discount: Number(values.discount) || 0,
-              damage_insurance: Number(values.damage_insurance) || 0,
-              cancel_insurance: Number(values.cancel_insurance) || 0,
-              travel_insurance: Number(values.travel_insurance) || 0,
-              arrival_date: values.arrivalDate.date,
-              departure_date: values.departureDate.date,
-              costs: JSON.stringify(values.costs),
-              extra_fields: JSON.stringify(values.extra_fields)
-            });
-
-            createBooking({
-              variables: variables
-            }).then(function () {
-              if (options.bookingForm && options.bookingForm.redirectUrl && options.bookingForm.redirectUrl !== '') {
-                window.location = options.bookingForm.redirectUrl;
-              } else {
-                setTimeout(function () {
-                  _this2.props.onReturn();
-                }, 15000);
-              }
-            })["catch"](function (err) {});
-          },
-          render: function render(_ref3) {
-            var errors = _ref3.errors,
-                touched = _ref3.touched,
-                values = _ref3.values,
-                status = _ref3.status,
-                isSubmitting = _ref3.isSubmitting;
-            return /*#__PURE__*/React__default["default"].createElement(Form, {
-              className: "form"
-            }, loading && /*#__PURE__*/React__default["default"].createElement("div", {
-              className: "return-message"
-            }, "Loading..."), error && /*#__PURE__*/React__default["default"].createElement(Modal, {
-              show: true
-            }, /*#__PURE__*/React__default["default"].createElement(ApiError, {
-              errors: error,
-              modal: true
-            })), data && /*#__PURE__*/React__default["default"].createElement(Modal, {
-              show: true
-            }, /*#__PURE__*/React__default["default"].createElement(SuccessMessage, null)), /*#__PURE__*/React__default["default"].createElement("div", {
-              className: "form-content"
-            }, /*#__PURE__*/React__default["default"].createElement("div", {
-              className: "form-section"
-            }, /*#__PURE__*/React__default["default"].createElement("a", {
-              className: "return-link",
-              role: "link",
-              tabIndex: 0,
-              onKeyPress: function onKeyPress() {
-                _this2.props.onReturn();
-              },
-              onClick: function onClick() {
-                _this2.props.onReturn();
-              }
-            }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-              id: "return_to_calendar"
-            })), /*#__PURE__*/React__default["default"].createElement("h2", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-              id: "stay_details"
-            })), /*#__PURE__*/React__default["default"].createElement(Guests, {
-              options: options,
-              house: house
-            }), errors.max_persons && /*#__PURE__*/React__default["default"].createElement("div", {
-              className: "error-message persons"
-            }, errors.max_persons)), /*#__PURE__*/React__default["default"].createElement(Discount, {
-              errors: errors,
-              house: house,
-              options: options,
-              values: values
-            }), /*#__PURE__*/React__default["default"].createElement(Insurances, {
-              house: house,
-              values: values
-            }), /*#__PURE__*/React__default["default"].createElement(OptionalCosts, {
-              costs: bookingPrice.optional_house_costs
-            }), /*#__PURE__*/React__default["default"].createElement(OptionalBookingFields, {
-              bookingFields: bookingFields,
-              errors: errors,
-              touched: touched,
-              PortalSite: PortalSite,
-              values: values
-            })), /*#__PURE__*/React__default["default"].createElement("div", {
-              className: "form-sum"
-            }, /*#__PURE__*/React__default["default"].createElement(Summary, {
-              house: house,
-              values: values
-            }), status && status.msg && /*#__PURE__*/React__default["default"].createElement("div", null, status.msg), /*#__PURE__*/React__default["default"].createElement("div", {
-              className: "terms"
-            }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-              id: "agree_with"
-            }), ' ', /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-              id: "terms"
-            }, function (fm) {
-              return /*#__PURE__*/React__default["default"].createElement(Modal, {
-                buttonText: fm
-              }, /*#__PURE__*/React__default["default"].createElement("div", {
-                style: {
-                  width: '90vh',
-                  height: '90vh'
+                const validateValue = byString(values, `extra_fields.booking_field_${field.id}`);
+                if (!validateValue || validateValue === '') {
+                    errors[field.id] = React__default["default"].createElement(FormattedMessage$1, { id: "required" });
                 }
-              }, /*#__PURE__*/React__default["default"].createElement("iframe", {
-                src: house.rental_terms,
-                width: "100%",
-                height: "100%",
-                title: "Terms",
-                frameBorder: "0"
-              })));
-            })), arrayIncludes([1, 2], Number(values.cancel_insurance)) ? /*#__PURE__*/React__default["default"].createElement("div", {
-              className: "terms"
-            }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-              id: "comply_insurance_card"
-            })) : null, /*#__PURE__*/React__default["default"].createElement("button", {
-              className: "button",
-              type: "submit",
-              disabled: isSubmitting
-            }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$2, {
-              id: "book"
-            }))));
-          }
-        });
-      });
+            }
+            else {
+                const validateValue = byString(values, field.id);
+                if (!validateValue || validateValue === '') {
+                    errors[field.id] = React__default["default"].createElement(FormattedMessage$1, { id: "required" });
+                }
+            }
+        }
     }
-  }]);
-
-  return FormCreator;
-}(React__default["default"].Component);
-
-FormCreator.propTypes = {
-  house: PropTypes.object.isRequired,
-  options: PropTypes.object.isRequired,
-  locale: PropTypes.string.isRequired,
-  booking: PropTypes.object.isRequired,
-  PortalSite: PropTypes.object.isRequired,
-  onReturn: PropTypes.func.isRequired
-};
-
-function BookingForm(_ref) {
-  var booking = _ref.booking,
-      locale = _ref.locale,
-      _onReturn = _ref.onReturn;
-
-  var _useQuery = useQuery(BOOKING_PRICE_QUERY$1, {
-    variables: {
-      id: booking.portalCode,
-      house_id: booking.objectCode,
-      starts_at: booking.arrivalDate.date,
-      ends_at: booking.departureDate.date
+    if (values.adults < 1) {
+        errors.adults = React__default["default"].createElement(FormattedMessage$1, { id: "at_least_1_adult" });
     }
-  }),
-      data = _useQuery.data,
-      loading = _useQuery.loading,
-      error = _useQuery.error;
-
-  if (loading) return /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(Loading, null));
-
-  if (error) {
-    return /*#__PURE__*/React__default["default"].createElement("div", null, "Error");
-  }
-
-  var result = data.PortalSite.houses[0];
-  var options = data.PortalSite.options;
-  return /*#__PURE__*/React__default["default"].createElement(FormCreator, {
-    house: result,
-    options: options,
-    booking: booking,
-    PortalSite: data.PortalSite,
-    locale: locale,
-    onReturn: function onReturn() {
-      _onReturn(booking);
+    if (Number(values.discount) > 0 && !values.discount_reason) {
+        errors.discount_reason = React__default["default"].createElement(FormattedMessage$1, { id: "you_need_to_give_reason" });
     }
-  });
+    if (values.persons > persons) {
+        errors.max_persons = React__default["default"].createElement(FormattedMessage$1, { id: "max_persons_reached" });
+    }
+    if (values.cancel_insurance !== 0 &&
+        validateAge((_a = values.extra_fields) === null || _a === void 0 ? void 0 : _a.date_of_birth)) {
+        errors['extra_fields.date_of_birth'] = (React__default["default"].createElement(FormattedMessage$1, { id: "at_least_18y_old" }));
+        errors['insurances'] = React__default["default"].createElement(FormattedMessage$1, { id: "at_least_18y_old" });
+    }
+    if (values.cancel_insurance !== 0 &&
+        !['nl', 'de', 'be'].includes(values.country)) {
+        errors['insurances'] = (React__default["default"].createElement(FormattedMessage$1, { id: "can_only_take_insurance_in_de_be_nl" }));
+        errors['country'] = (React__default["default"].createElement(FormattedMessage$1, { id: "can_only_take_insurance_in_de_be_nl" }));
+    }
+    return errors;
 }
 
-BookingForm.propTypes = {
-  booking: PropTypes.object.isRequired,
-  locale: PropTypes.string.isRequired,
-  onReturn: PropTypes.func.isRequired
+const initialBooking = {
+    selectedDate: null,
+    arrivalDate: null,
+    departureDate: null,
+    bookingStarted: false,
+    persons: 2
 };
-
-var _templateObject;
-var HOUSE_QUERY = gql(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query PortalSiteHousesQuery($id: ID!, $house_id: String!) {\n    PortalSite(id: $id) {\n      id\n      houses(house_code: $house_id) {\n        id\n        code\n        name\n        max_nights\n        last_minute_days\n        discounts\n        discounts_info\n        house_type\n        persons\n      }\n    }\n  }\n"])));
-
-var CalendarPage = /*#__PURE__*/function (_Component) {
-  _inherits$A(CalendarPage, _Component);
-
-  var _super = _createSuper$A(CalendarPage);
-
-  function CalendarPage(props) {
-    var _this;
-
-    _classCallCheck$B(this, CalendarPage);
-
-    _this = _super.call(this, props);
-    _this.onBooking = _this.onBooking.bind(_assertThisInitialized$B(_this));
-    _this.onReturn = _this.onReturn.bind(_assertThisInitialized$B(_this));
-    _this.state = {
-      bookingStarted: false,
-      booking: {
-        objectCode: '',
-        portalCode: '',
-        arrivalDate: {},
-        departureDate: {},
-        in_option: false
-      }
-    };
-    return _this;
-  }
-
-  _createClass$D(CalendarPage, [{
-    key: "onBooking",
-    value: function onBooking(booking) {
-      this.setState({
-        bookingStarted: true,
-        booking: booking
-      });
-    }
-  }, {
-    key: "onReturn",
-    value: function onReturn(booking) {
-      this.setState({
-        bookingStarted: false,
-        booking: booking
-      });
-    }
-  }, {
-    key: "calendar",
-    value: function calendar() {
-      var _this2 = this;
-
-      var _this$props = this.props,
-          objectCode = _this$props.objectCode,
-          PortalSite = _this$props.PortalSite,
-          locale = _this$props.locale;
-      var variables = {
-        id: PortalSite.portal_code,
-        house_id: objectCode,
-        locale: locale
-      };
-      return /*#__PURE__*/React__default["default"].createElement(Query, {
-        query: HOUSE_QUERY,
-        variables: variables
-      }, function (_ref) {
-        var loading = _ref.loading,
-            error = _ref.error,
-            data = _ref.data;
-        if (loading) return /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(Loading, null));
-
-        if (error) {
-          return /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(ApiError, {
-            errors: error
-          }));
+const CalendarContext = React.createContext(initialBooking);
+const CalendarContextDispatch = React.createContext(calendarReducer);
+function CalendarProvider({ children }) {
+    const [booking_state, dispatch] = React.useReducer(calendarReducer, initialBooking);
+    return (React__default["default"].createElement(CalendarContext.Provider, { value: booking_state },
+        React__default["default"].createElement(CalendarContextDispatch.Provider, { value: dispatch }, children)));
+}
+function calendarReducer(bookingState, action) {
+    console.log({ action });
+    switch (action.type) {
+        case 'clicked': {
+            const { day, house } = action;
+            const { selectedDate, arrivalDate } = bookingState;
+            const date = Parse_EN_US(day.date);
+            if (day.departure &&
+                selectedDate &&
+                isAfter(date, selectedDate) &&
+                differenceInCalendarDays(date, selectedDate) <= house.max_nights &&
+                differenceInCalendarDays(date, selectedDate) >=
+                    arrivalDate.min_nights &&
+                differenceInCalendarDays(date, selectedDate) <= arrivalDate.max_nights) {
+                return Object.assign(Object.assign({}, bookingState), { departureDate: day });
+            }
+            else if (day.arrival) {
+                return {
+                    selectedDate: date,
+                    arrivalDate: day,
+                    departureDate: null
+                };
+            }
+            return bookingState;
         }
-
-        var Results = data.PortalSite.houses;
-        var numberOfMonths = PortalSite.options.bookingForm ? PortalSite.options.bookingForm.numberOfMonths : 4;
-        var numberOfMonthsInARow = PortalSite.options.bookingForm ? PortalSite.options.bookingForm.numberOfMonthsInARow : 4;
-        return /*#__PURE__*/React__default["default"].createElement("div", {
-          id: "calendar-container"
-        }, Results.length === 0 && /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage, {
-          id: "no_house_found"
-        })), Results.map(function (result) {
-          return /*#__PURE__*/React__default["default"].createElement("div", {
-            key: result.id
-          }, /*#__PURE__*/React__default["default"].createElement("div", {
-            className: "house-name"
-          }, result.name), /*#__PURE__*/React__default["default"].createElement(Calendar, {
-            portalCode: variables.id,
-            objectCode: variables.house_id,
-            numberOfMonths: numberOfMonths,
-            numberOfMonthsInARow: numberOfMonthsInARow,
-            house: result,
-            locale: locale,
-            onBooking: _this2.onBooking
-          }));
-        }));
-      });
+        case 'reset': {
+            return initialBooking;
+        }
+        case 'start': {
+            return Object.assign(Object.assign({}, bookingState), { bookingStarted: true, persons: action.persons });
+        }
+        case 'return': {
+            return Object.assign(Object.assign({}, bookingState), { bookingStarted: false });
+        }
+        default: {
+            throw Error('Unknown action: ' + action.type);
+        }
     }
-  }, {
-    key: "bookingForm",
-    value: function bookingForm() {
-      return /*#__PURE__*/React__default["default"].createElement(BookingForm, {
-        booking: this.state.booking,
-        locale: this.props.locale,
-        onReturn: this.onReturn
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      if (this.state.bookingStarted) {
-        return this.bookingForm();
-      } else {
-        return this.calendar();
-      }
-    }
-  }]);
+}
 
-  return CalendarPage;
-}(React.Component);
+function FormCreator({ house, PortalSite }) {
+    const { persons, arrivalDate, departureDate } = React.useContext(CalendarContext);
+    const { locale, portalCode, objectCode } = React.useContext(AppContext);
+    const dispatch = React.useContext(CalendarContextDispatch);
+    const { options } = PortalSite;
+    const bookingFields = options.bookingFields || DefaultBookingFields;
+    const bookingPrice = house.booking_price;
+    let costs = {};
+    for (const val of bookingPrice.optional_house_costs) {
+        costs[val.id] = '0';
+    }
+    const [createBooking, { loading, error, data }] = useMutation(CREATE_BOOKING_MUTATION);
+    const optBookingFieldsInitialized = initializeBookingFields(bookingFields);
+    return (React__default["default"].createElement(Formik, { validate: (values) => validateForm(values, house, bookingFields), initialValues: Object.assign(Object.assign({}, optBookingFieldsInitialized), { arrivalDate,
+            departureDate, is_option: 'false', costs, adults: persons, children: 0, babies: 0, persons, discount: 0, country: 'nl' }), onSubmit: (values, { setSubmitting }) => {
+            let variables = Object.assign(Object.assign({}, values), { is_option: JSON.parse(values.is_option), house_code: objectCode, portal_code: portalCode, comment: values.comment || '', language: locale, country: values.country.toUpperCase(), adults: Number(values.adults), children: Number(values.children) || 0, babies: Number(values.babies) || 0, discount: Number(values.discount) || 0, damage_insurance: Number(values.damage_insurance) || 0, cancel_insurance: Number(values.cancel_insurance) || 0, travel_insurance: Number(values.travel_insurance) || 0, arrival_date: values.arrivalDate.date, departure_date: values.departureDate.date, costs: JSON.stringify(values.costs), extra_fields: JSON.stringify(values.extra_fields) });
+            createBooking({ variables })
+                .then(() => {
+                if (options.bookingForm &&
+                    options.bookingForm.redirectUrl &&
+                    options.bookingForm.redirectUrl !== '') {
+                    window.location = options.bookingForm.redirectUrl;
+                }
+                else {
+                    setTimeout(() => {
+                        dispatch({
+                            type: 'return'
+                        });
+                    }, 15000);
+                }
+            })
+                .catch((err) => { });
+        } }, ({ errors, touched, values, status, isSubmitting }) => (React__default["default"].createElement(Form, { className: "form" },
+        loading && React__default["default"].createElement("div", { className: "return-message" }, "Loading..."),
+        error && (React__default["default"].createElement(Modal, { show: true },
+            React__default["default"].createElement(ApiError, { errors: error, modal: true }))),
+        data && (React__default["default"].createElement(Modal, { show: true },
+            React__default["default"].createElement(SuccessMessage, null))),
+        React__default["default"].createElement("div", { className: "form-content" },
+            React__default["default"].createElement("div", { className: "form-section" },
+                React__default["default"].createElement("a", { className: "return-link", role: "link", tabIndex: 0, onClick: () => {
+                        dispatch({
+                            type: 'return'
+                        });
+                    } },
+                    React__default["default"].createElement(FormattedMessage$1, { id: "return_to_calendar" })),
+                React__default["default"].createElement("h2", null,
+                    React__default["default"].createElement(FormattedMessage$1, { id: "stay_details" })),
+                React__default["default"].createElement(Guests, { options: options, house: house }),
+                errors.max_persons && (React__default["default"].createElement("div", { className: "error-message persons" }, errors.max_persons))),
+            React__default["default"].createElement(Discount, { errors: errors, house: house, options: options, values: values, render: bookingPrice.optional_house_costs }),
+            React__default["default"].createElement(Insurances, { house: house, values: values }),
+            React__default["default"].createElement(OptionalCosts, { costs: bookingPrice.optional_house_costs }),
+            React__default["default"].createElement(OptionalBookingFields, { bookingFields: bookingFields, errors: errors, touched: touched, PortalSite: PortalSite, values: values })),
+        React__default["default"].createElement("div", { className: "form-sum" },
+            React__default["default"].createElement(Summary, { house: house, values: values }),
+            status && status.msg && React__default["default"].createElement("div", null, status.msg),
+            React__default["default"].createElement("div", { className: "terms" },
+                React__default["default"].createElement(FormattedMessage$1, { id: "agree_with" }),
+                ' ',
+                React__default["default"].createElement(FormattedMessage$1, { id: "terms" }, (fm) => (React__default["default"].createElement(Modal, { buttonText: fm },
+                    React__default["default"].createElement("div", { style: {
+                            width: '90vh',
+                            height: '90vh'
+                        } },
+                        React__default["default"].createElement("iframe", { src: house.rental_terms, width: "100%", height: "100%", title: "Terms" })))))),
+            [1, 2].includes(Number(values.cancel_insurance)) ? (React__default["default"].createElement("div", { className: "terms" },
+                React__default["default"].createElement(FormattedMessage$1, { id: "comply_insurance_card" }))) : null,
+            React__default["default"].createElement("button", { className: "button", type: "submit", disabled: isSubmitting },
+                React__default["default"].createElement(FormattedMessage$1, { id: "book" })))))));
+}
 
-CalendarPage.DefaultProps = {
-  PortalSite: {
-    options: {
-      bookingForm: {
-        numberOfMonths: 4,
-        numberOfMonthsInARow: 2
+function BookingForm() {
+    const { portalCode, objectCode } = React.useContext(AppContext);
+    const { arrivalDate, departureDate } = React.useContext(CalendarContext);
+    const { data, loading, error } = useQuery(BOOKING_PRICE_QUERY$1, {
+        variables: {
+            portalCode,
+            objectCode,
+            starts_at: arrivalDate.date,
+            ends_at: departureDate.date
+        }
+    });
+    if (loading)
+        return (React__default["default"].createElement("div", null,
+            React__default["default"].createElement(Loading, null)));
+    if (error) {
+        return React__default["default"].createElement("div", null, "Error");
+    }
+    const result = data.PortalSite.houses[0];
+    return (React__default["default"].createElement(FormCreator, { house: result, PortalSite: data.PortalSite }));
+}
+
+var ArrowRight = function ArrowRight() {
+  return /*#__PURE__*/React__default["default"].createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    xmlnsXlink: "http://www.w3.org/1999/xlink",
+    version: "1.1",
+    x: "0px",
+    y: "0px",
+    viewBox: "0 0 100 125",
+    style: {
+      enableBackground: 'new 0 0 100 100'
+    },
+    xmlSpace: "preserve"
+  }, /*#__PURE__*/React__default["default"].createElement("path", {
+    d: "M2.4,44.1l32.9-32.9c3.1-3.1,8.2-3.1,11.4,0c1.6,1.6,2.4,3.6,2.4,5.7c0,2.1-0.8,4.1-2.4,5.7L27.2,42h64.7  c2.2,0,4.2,0.9,5.7,2.4c1.5,1.5,2.4,3.5,2.4,5.7c0,4.4-3.6,8.1-8.1,8.1H27.4l19.3,19.3c1.6,1.6,2.4,3.6,2.4,5.7s-0.8,4.1-2.4,5.7  c-3.1,3.1-8.3,3.1-11.4,0L2.4,55.9C0.8,54.3,0,52.3,0,50.2c0-0.1,0-0.1,0-0.2c0-0.1,0-0.1,0-0.2C0,47.7,0.8,45.7,2.4,44.1z"
+  }));
+};
+
+function CalendarHeader({ changeMonth, currentMonth, numberOfMonths }) {
+    const dispatch = React.useContext(CalendarContextDispatch);
+    function next() {
+        changeMonth(addMonths(currentMonth, numberOfMonths));
+    }
+    function prev() {
+        changeMonth(subMonths(currentMonth, numberOfMonths));
+    }
+    return (React__default["default"].createElement("div", { className: "calendars-header" },
+        React__default["default"].createElement("div", { className: "col bu-prev", style: { textAlign: 'center' }, onClick: prev, tabIndex: 0, role: "button" },
+            React__default["default"].createElement("div", { className: "icon" },
+                ' ',
+                React__default["default"].createElement(ArrowRight, null))),
+        React__default["default"].createElement("div", { className: "col bu-reset", onClick: () => {
+                dispatch({
+                    type: 'reset'
+                });
+            }, style: { textAlign: 'center' }, tabIndex: 0, role: "button" },
+            React__default["default"].createElement("div", { className: "icon" },
+                React__default["default"].createElement(Reload, null))),
+        React__default["default"].createElement("div", { className: "col bu-next", onClick: next, style: { textAlign: 'center' }, tabIndex: 0, role: "button" },
+            React__default["default"].createElement("div", { className: "icon" },
+                React__default["default"].createElement(ArrowRight$1, null)))));
+}
+
+function AssistanceMessage({ house }) {
+    const { departureDate, arrivalDate } = React.useContext(CalendarContext);
+    if (departureDate === null || departureDate === void 0 ? void 0 : departureDate.date) {
+        return (React__default["default"].createElement("div", { className: "assistance" },
+            React__default["default"].createElement(FormattedMessage$1, { id: `${house.house_type}.you_picked_arrival_date` }),
+            ":",
+            ' ',
+            FormatIntl(Parse_EN_US(arrivalDate.date), LONG_DATE_FORMAT),
+            React__default["default"].createElement("br", null),
+            React__default["default"].createElement(FormattedMessage$1, { id: `${house.house_type}.you_picked_departure_date` }),
+            ": ",
+            FormatIntl(Parse_EN_US(departureDate.date), LONG_DATE_FORMAT)));
+    }
+    if (arrivalDate === null || arrivalDate === void 0 ? void 0 : arrivalDate.date) {
+        return (React__default["default"].createElement("div", { className: "assistance" },
+            React__default["default"].createElement(FormattedMessage$1, { id: `${house.house_type}.you_picked_arrival_date` }),
+            ":",
+            ' ',
+            FormatIntl(Parse_EN_US(arrivalDate.date), LONG_DATE_FORMAT),
+            React__default["default"].createElement("br", null),
+            React__default["default"].createElement(FormattedMessage$1, { id: `${house.house_type}.pick_your_departure_in_the_calendar` }),
+            React__default["default"].createElement("br", null),
+            React__default["default"].createElement(FormattedMessage$1, { id: "minimum_nights", values: { minimum: arrivalDate.min_nights }, defaultMessage: "Minimum {minimum} nights" })));
+    }
+    return (React__default["default"].createElement("div", { className: "assistance" },
+        React__default["default"].createElement(FormattedMessage$1, { id: `${house.house_type}.pick_your_arrivaldate_in_the_calendar` })));
+}
+
+function Legend({ house }) {
+    return (React__default["default"].createElement("div", { className: "legend" },
+        React__default["default"].createElement("div", null,
+            React__default["default"].createElement("span", { className: "legend-field arrival" }),
+            React__default["default"].createElement(FormattedMessage$1, { id: `${house.house_type}.arrival_date` })),
+        React__default["default"].createElement("div", null,
+            React__default["default"].createElement("span", { className: "legend-field booked" }),
+            React__default["default"].createElement(FormattedMessage$1, { id: "booked" })),
+        React__default["default"].createElement("div", null,
+            React__default["default"].createElement("span", { className: "legend-field departure" }),
+            React__default["default"].createElement(FormattedMessage$1, { id: `${house.house_type}.departure_date` })),
+        React__default["default"].createElement("div", null,
+            React__default["default"].createElement("span", { className: "legend-field last_minute_discount" }),
+            React__default["default"].createElement(FormattedMessage$1, { id: "discount" }))));
+}
+
+const MonthHeader = ({ month }) => (React__default["default"].createElement("div", { className: "header row flex-middle" },
+    React__default["default"].createElement("div", { className: "col col-center", style: { textAlign: 'center' } },
+        React__default["default"].createElement("span", null, FormatIntl(month, MONTH_FORMAT)))));
+
+function DayClasses({ day, monthStart, buDate, prevBooked, dates, house, discounts }) {
+    const { selectedDate, departureDate, arrivalDate } = dates;
+    let classes = ['col', 'cell'];
+    if (!isSameMonth(day, monthStart)) {
+        classes.push('disabled');
+        return classes.join(' ');
+    }
+    if (buDate) {
+        if (buDate.arrival && isAfter(day, new Date()) && buDate.max_nights !== 0) {
+            if (prevBooked.max_nights === 0) {
+                classes.push('departure-arrival');
+            }
+            else {
+                classes.push('arrival');
+                classes.push('arrival');
+            }
+        }
+        else if (buDate.max_nights === 0) {
+            if (prevBooked.max_nights !== 0) {
+                classes.push('booked-departure');
+            }
+            else {
+                classes.push('booked');
+            }
+        }
+    }
+    if (selectedDate) {
+        if (isSameDay(day, selectedDate)) {
+            classes.push('selected');
+        }
+        const minimum = differenceInCalendarDays(day, selectedDate) >= arrivalDate.min_nights;
+        const maximum = differenceInCalendarDays(day, selectedDate) <= house.max_nights &&
+            differenceInCalendarDays(day, selectedDate) <= arrivalDate.max_nights;
+        if (buDate.departure &&
+            isAfter(day, selectedDate) &&
+            minimum &&
+            maximum &&
+            prevBooked.max_nights !== 0) {
+            classes.push('departure');
+        }
+    }
+    if (departureDate) {
+        if (isAfter(day, selectedDate) &&
+            isBefore(day, Parse_EN_US(departureDate.date))) {
+            classes.push('selected');
+        }
+        if (isSameDay(day, Parse_EN_US(departureDate.date))) {
+            classes.push('selected');
+        }
+    }
+    const daysFromToday = differenceInCalendarDays(day, new Date());
+    const last_minute = daysFromToday <= house.last_minute_days && daysFromToday > 0;
+    const discount = discounts.find((x) => isBefore(subDays(Parse_EN_US(x.discount_starts_at), 1), day) &&
+        isAfter(addDays(Parse_EN_US(x.discount_ends_at), 1), day));
+    if (last_minute || discount || buDate.special_offer > 0) {
+        classes.push('discount');
+    }
+    return classes.join(' ');
+}
+
+function RenderCells({ availabilities, month, discounts, house }) {
+    const dispatch = React.useContext(CalendarContextDispatch);
+    const dates = React.useContext(CalendarContext);
+    const monthStart = startOfMonth(month);
+    const monthEnd = endOfMonth(monthStart);
+    const startDate = startOfWeek(monthStart);
+    const endDate = endOfWeek(monthEnd);
+    const rows = [];
+    let days = [];
+    let day = startDate;
+    while (day <= endDate) {
+        // for (let daz of dayz) {
+        for (let i = 0; i < 7; i++) {
+            let date = FormatIntl(day, 'yyyy-MM-dd');
+            let yesterday = FormatIntl(subDays(day, 1), 'yyyy-MM-dd');
+            let daz = availabilities.find((x) => x.date === date);
+            const prevBooked = availabilities.find((x) => x.date === yesterday);
+            const cloneDay = daz;
+            days.push(React__default["default"].createElement("div", { className: DayClasses({
+                    day,
+                    monthStart,
+                    discounts,
+                    buDate: daz,
+                    prevBooked,
+                    house,
+                    dates
+                }), key: daz.date, role: "button", tabIndex: 0, onClick: () => {
+                    dispatch({
+                        type: 'clicked',
+                        day: cloneDay,
+                        house
+                    });
+                } },
+                React__default["default"].createElement("span", null, FormatIntl(day, 'd'))));
+            day = addDays(day, 1);
+        }
+        rows.push(React__default["default"].createElement("div", { className: "row", key: day }, days));
+        days = [];
+    }
+    return React__default["default"].createElement("div", { className: "body" }, rows);
+}
+
+function WeekDays({ month }) {
+    const dateFormat = 'E';
+    let days = [];
+    let startDate = startOfWeek(month);
+    for (let i = 0; i < 7; i++) {
+        days.push(React__default["default"].createElement("div", { className: "col col-center", key: i }, FormatIntl(addDays(startDate, i), dateFormat)));
+    }
+    return React__default["default"].createElement("div", { className: "days row" }, days);
+}
+
+function SingleMonth({ count, currentMonth, house, numberOfMonthsInARow }) {
+    const { portalCode, objectCode } = React.useContext(AppContext);
+    let month = addMonths(currentMonth, count);
+    let monthStart = startOfMonth(month);
+    let monthEnd = endOfMonth(month);
+    const variables = {
+        id: portalCode,
+        house_id: objectCode,
+        starts_at: startOfWeek(monthStart),
+        ends_at: endOfWeek(monthEnd)
+    };
+    const { loading, error, data } = useQuery(CALENDAR_QUERY, { variables });
+    if (loading)
+        return (React__default["default"].createElement("div", null,
+            React__default["default"].createElement(Loading, null)));
+    if (error) {
+        return React__default["default"].createElement("div", null, "Error");
+    }
+    const results = data.PortalSite.houses[0].availabilities;
+    const discounts = data.Discounts;
+    return (React__default["default"].createElement("div", { className: `calendar calendar-${numberOfMonthsInARow}`, key: month },
+        React__default["default"].createElement(MonthHeader, { month: month }),
+        React__default["default"].createElement(WeekDays, { month: month }),
+        React__default["default"].createElement(RenderCells, { availabilities: results, discounts: discounts, month: month, house: house })));
+}
+
+function Months({ numberOfMonthsInARow, currentMonth, numberOfMonths, house }) {
+    let template = [];
+    for (let i = 0; i < numberOfMonths; i++) {
+        template.push(React__default["default"].createElement(SingleMonth, { key: format(addMonths(currentMonth, i), 'MM-yyyy'), house: house, numberOfMonthsInARow: numberOfMonthsInARow, currentMonth: currentMonth, count: i }));
+    }
+    return React__default["default"].createElement("div", { className: "calendars-row" }, template);
+}
+
+const BOOKING_PRICE_QUERY = gql `
+  query BookingPriceQuery(
+    $portalCode: ID!
+    $objectCode: String!
+    $starts_at: Date!
+    $ends_at: Date!
+    $persons: Int
+  ) {
+    PortalSite(id: $portalCode) {
+      houses(house_code: $objectCode) {
+        id
+        name
+        booking_price(
+          starts_at: $starts_at
+          ends_at: $ends_at
+          persons: $persons
+        )
       }
     }
   }
+`;
+
+function Price({ persons, variables }) {
+    const { portalCode, objectCode } = React.useContext(AppContext);
+    const { loading, error, data } = useQuery(BOOKING_PRICE_QUERY, {
+        variables: Object.assign(Object.assign({}, variables), { persons, portalCode, objectCode })
+    });
+    if (loading)
+        return (React__default["default"].createElement("div", { className: "price-overview--build" },
+            React__default["default"].createElement(Loading, null)));
+    if (error) {
+        return (React__default["default"].createElement("div", { className: "price-overview--build" },
+            React__default["default"].createElement(ApiError, { errors: error })));
+    }
+    const result = data.PortalSite.houses[0].booking_price;
+    return (React__default["default"].createElement(React__default["default"].Fragment, null,
+        React__default["default"].createElement("div", { className: "price-overview--book" },
+            React__default["default"].createElement("div", { className: "price" },
+                "\u20AC",
+                ' ',
+                React__default["default"].createElement(FormattedNumber, { value: Math.round(result.total_price), minimumFractionDigits: 2, maximumFractionDigits: 2 })),
+            React__default["default"].createElement("div", null,
+                React__default["default"].createElement("i", null,
+                    React__default["default"].createElement(FormattedMessage$1, { id: "based_on_one_person", values: { persons } }))))));
+}
+
+const dateFormat = LONG_DATE_FORMAT;
+function PriceField({ house }) {
+    const [persons, setPersons] = React.useState(2);
+    const { arrivalDate, departureDate } = React.useContext(CalendarContext);
+    const dispatch = React.useContext(CalendarContextDispatch);
+    let adults = createPeronsArray(house.persons);
+    return (React__default["default"].createElement("div", { className: "calendar--picker" },
+        React__default["default"].createElement("div", { className: "calendar--picker--date" },
+            React__default["default"].createElement("span", { className: "name" },
+                React__default["default"].createElement(FormattedMessage$1, { id: `${house.house_type}.arrival` })),
+            React__default["default"].createElement("span", { className: "detail" }, (arrivalDate === null || arrivalDate === void 0 ? void 0 : arrivalDate.date) ? (React__default["default"].createElement("span", null, FormatIntl(Parse_EN_US(arrivalDate === null || arrivalDate === void 0 ? void 0 : arrivalDate.date), dateFormat))) : (React__default["default"].createElement(FormattedMessage$1, { id: `${house.house_type}.pick_your_arrivaldate_in_the_calendar` })))),
+        React__default["default"].createElement("div", { className: "calendar--picker--date" },
+            React__default["default"].createElement("span", { className: "name" },
+                React__default["default"].createElement(FormattedMessage$1, { id: `${house.house_type}.departure` })),
+            React__default["default"].createElement("span", { className: "detail" }, (departureDate === null || departureDate === void 0 ? void 0 : departureDate.date) ? (React__default["default"].createElement("span", null, FormatIntl(Parse_EN_US(departureDate === null || departureDate === void 0 ? void 0 : departureDate.date), dateFormat))) : (React__default["default"].createElement("div", null,
+                React__default["default"].createElement("div", null,
+                    React__default["default"].createElement(FormattedMessage$1, { id: `${house.house_type}.pick_your_departure_in_the_calendar` })),
+                arrivalDate && (React__default["default"].createElement(FormattedMessage$1, { id: "minimum_nights", defaultMessage: "Minimum {minimum} nights", values: { minimum: arrivalDate === null || arrivalDate === void 0 ? void 0 : arrivalDate.min_nights } })))))),
+        React__default["default"].createElement("div", { className: "calendar--picker--date" },
+            React__default["default"].createElement("span", { className: "detail" },
+                React__default["default"].createElement("select", { className: "calendar--picker--persons", value: persons, onChange: (e) => {
+                        setPersons(e.target.value);
+                    } }, adults.map((person) => (React__default["default"].createElement(FormattedMessage$1, { id: "persons", key: person, children: (text) => (React__default["default"].createElement("option", { value: person, key: person },
+                        person,
+                        " ",
+                        text)) })))))),
+        React__default["default"].createElement("div", { className: "calendar--picker--date" }, arrivalDate && departureDate && (React__default["default"].createElement(Price, { persons: parseInt(persons), variables: {
+                starts_at: arrivalDate === null || arrivalDate === void 0 ? void 0 : arrivalDate.date,
+                ends_at: departureDate === null || departureDate === void 0 ? void 0 : departureDate.date
+            } }))),
+        React__default["default"].createElement("button", { className: "button", disabled: !arrivalDate || !departureDate, onClick: () => {
+                if (arrivalDate && departureDate) {
+                    dispatch({
+                        type: 'start',
+                        persons
+                    });
+                }
+            } },
+            React__default["default"].createElement(FormattedMessage$1, { id: "calculate" }))));
+}
+
+function StartBooking({ house }) {
+    return (React__default["default"].createElement("div", { className: "price-overview" },
+        React__default["default"].createElement(PriceField, { house: house })));
+}
+
+function Calendar({ numberOfMonths, house, numberOfMonthsInARow }) {
+    const [currentMonth, setCurrentMonth] = React.useState(new Date());
+    return (React__default["default"].createElement("div", { className: "calendar-container " },
+        React__default["default"].createElement(StartBooking, { house: house }),
+        React__default["default"].createElement("div", { className: "calendar-section" },
+            React__default["default"].createElement(CalendarHeader, { changeMonth: setCurrentMonth, currentMonth: currentMonth, numberOfMonths: numberOfMonths }),
+            React__default["default"].createElement(Months, { house: house, numberOfMonths: numberOfMonths, numberOfMonthsInARow: numberOfMonthsInARow, currentMonth: currentMonth }),
+            React__default["default"].createElement(Legend, { house: house }),
+            React__default["default"].createElement(AssistanceMessage, { house: house }))));
+}
+Calendar.defaultProps = {
+    numberOfMonths: 4,
+    numberOfMonthsInARow: 2
 };
-CalendarPage.propTypes = {
-  objectCode: PropTypes.string.isRequired,
-  // portalCode: PropTypes.string.isRequired,
-  PortalSite: PropTypes.object.isRequired,
-  locale: PropTypes.string.isRequired
+
+function GenerateCalendar({ PortalSite }) {
+    const { portalCode, objectCode } = React.useContext(AppContext);
+    const { loading, error, data } = useQuery(SINGLE_HOUSE_QUERY, {
+        variables: { portalCode, objectCode }
+    });
+    if (loading)
+        return (React__default["default"].createElement("div", null,
+            React__default["default"].createElement(Loading, null)));
+    if (error) {
+        return (React__default["default"].createElement("div", null,
+            React__default["default"].createElement(ApiError, { errors: error })));
+    }
+    const Results = data.PortalSite.houses;
+    const numberOfMonths = PortalSite.options.bookingForm
+        ? PortalSite.options.bookingForm.numberOfMonths
+        : 4;
+    const numberOfMonthsInARow = PortalSite.options.bookingForm
+        ? PortalSite.options.bookingForm.numberOfMonthsInARow
+        : 4;
+    return (React__default["default"].createElement("div", { id: "calendar-container" },
+        Results.length === 0 && (React__default["default"].createElement("div", null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "no_house_found" }))),
+        Results.map((result) => (React__default["default"].createElement("div", { key: result.id },
+            React__default["default"].createElement("div", { className: "house-name" }, result.name),
+            React__default["default"].createElement(Calendar, { numberOfMonths: numberOfMonths, numberOfMonthsInARow: numberOfMonthsInARow, house: result }))))));
+}
+
+function CalendarPage({ PortalSite }) {
+    const { bookingStarted } = React.useContext(CalendarContext);
+    if (bookingStarted) {
+        return React__default["default"].createElement(BookingForm, null);
+    }
+    else {
+        return React__default["default"].createElement(GenerateCalendar, { PortalSite: PortalSite });
+    }
+}
+CalendarPage.DefaultProps = {
+    PortalSite: {
+        options: {
+            bookingForm: {
+                numberOfMonths: 4,
+                numberOfMonthsInARow: 2
+            }
+        }
+    }
 };
+function CalendarWrapper({ PortalSite }) {
+    return (React__default["default"].createElement(CalendarProvider, null,
+        React__default["default"].createElement(CalendarPage, { PortalSite: PortalSite })));
+}
 
 function ReviewsPage() {
     return React__default["default"].createElement("div", null, "Display Reviews");
@@ -48376,13 +48601,12 @@ var pjson = {
 		"@types/react": "^18.0.26",
 		"@types/react-dom": "^18.0.10",
 		autoprefixer: "^10.2.5",
-		"awesome-typescript-loader": "^5.2.1",
 		"babel-core": "^6.26.3",
 		"babel-loader": "^8.2.2",
 		"babel-runtime": "^6.26.0",
 		chalk: "1.1.3",
 		"css-loader": "0.28.7",
-		cypress: "^7.1.0",
+		cypress: "^12.4.1",
 		dotenv: "4.0.0",
 		"dotenv-expand": "4.2.0",
 		eslint: "^7.28.0",
@@ -48392,7 +48616,6 @@ var pjson = {
 		"fs-extra": "3.0.1",
 		"mini-css-extract-plugin": "^1.5.0",
 		"npm-run-all": "^4.1.5",
-		parcel: "^2.8.2",
 		path: "^0.12.7",
 		"path-browserify": "^1.0.0",
 		postcss: "^8.2.12",
@@ -48421,7 +48644,7 @@ var pjson = {
 		"whatwg-fetch": "2.0.3"
 	},
 	dependencies: {
-		"@apollo/client": "^3.4.15",
+		"@apollo/client": "^3.7.5",
 		"array-includes": "^3.0.3",
 		"date-fns": "^2.29.3",
 		formik: "^2.2.9",
@@ -48457,78 +48680,60 @@ var pjson = {
 	}
 };
 
-var style = {
-  width: "100%",
-  padding: "16px",
-  display: "flex",
-  justifyContent: "center",
-  position: "relative"
+const style = {
+    width: '100%',
+    padding: '16px',
+    display: 'flex',
+    justifyContent: 'center',
+    position: 'relative'
 };
-var styleLink = {
-  color: "#808080",
-  fontSize: 14,
-  textDecoration: "none"
+const styleLink = {
+    color: '#808080',
+    fontSize: 14,
+    textDecoration: 'none'
 };
-var trans = {
-  nl: {
-    url: "http://bukazu.com/veiligheid",
-    label: "Beveiligd en mogelijk gemaakt door BUKAZU"
-  },
-  en: {
-    url: "http://bukazu.com/en/security",
-    label: "Secured and made possible by BUKAZU"
-  },
-  de: {
-    url: "http://bukazu.com/de/sicherheit",
-    label: "Gesichert und ermöglicht durch BUKAZU"
-  },
-  fr: {
-    url: "http://bukazu.com/fr/securite",
-    label: "Sécurisé et rendu possible par BUKAZU"
-  },
-  es: {
-    url: "http://bukazu.com/es/seguridad",
-    label: "Asegurado y hecho posible por BUKAZU"
-  },
-  it: {
-    url: "http://bukazu.com/it/sicurezza",
-    label: "Protetto e reso possibile da BUKAZU"
-  }
-};
-
-function SafeBooking(_ref) {
-  var locale = _ref.locale;
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    style: style
-  }, /*#__PURE__*/React__default["default"].createElement("a", {
-    href: trans[locale].url,
-    style: styleLink
-  }, /*#__PURE__*/React__default["default"].createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    xmlnsXlink: "http://www.w3.org/1999/xlink",
-    version: "1.1",
-    x: "0px",
-    y: "0px",
-    viewBox: "0 0 100 100",
-    enableBackground: "new 0 0 100 100",
-    xmlSpace: "preserve",
-    width: "16px",
-    height: "16px",
-    style: {
-      marginRight: "4px",
-      fill: "#808080"
+const trans = {
+    nl: {
+        url: 'http://bukazu.com/veiligheid',
+        label: 'Beveiligd en mogelijk gemaakt door BUKAZU'
+    },
+    en: {
+        url: 'http://bukazu.com/en/security',
+        label: 'Secured and made possible by BUKAZU'
+    },
+    de: {
+        url: 'http://bukazu.com/de/sicherheit',
+        label: 'Gesichert und ermöglicht durch BUKAZU'
+    },
+    fr: {
+        url: 'http://bukazu.com/fr/securite',
+        label: 'Sécurisé et rendu possible par BUKAZU'
+    },
+    es: {
+        url: 'http://bukazu.com/es/seguridad',
+        label: 'Asegurado y hecho posible por BUKAZU'
+    },
+    it: {
+        url: 'http://bukazu.com/it/sicurezza',
+        label: 'Protetto e reso possibile da BUKAZU'
     }
-  }, /*#__PURE__*/React__default["default"].createElement("path", {
-    d: "M75.98,41.62h-2.47L73.5,29.31C73.49,15.9,62.58,4.99,49.17,5C35.76,5.01,24.85,15.92,24.86,29.33l0.02,12.31H24  c-4.61,0.01-8.35,3.75-8.34,8.36v36.65c0,4.61,3.75,8.35,8.36,8.35L76,94.97c4.61,0,8.35-3.74,8.34-8.35V49.96  C84.34,45.35,80.59,41.62,75.98,41.62z M33.84,41.64l-0.02-12.31c0-8.47,6.88-15.36,15.35-15.37c8.47,0,15.36,6.89,15.36,15.35  l0.02,12.31L33.84,41.64z"
-  })), trans[locale].label, " ", /*#__PURE__*/React__default["default"].createElement("span", {
-    style: {
-      opacity: .5,
-      fontSize: 9,
-      position: 'absolute',
-      right: 10,
-      bottom: 0
-    }
-  }, "v", pjson.version)));
+};
+function SafeBooking({ locale }) {
+    return (React__default["default"].createElement("div", { style: style },
+        React__default["default"].createElement("a", { href: trans[locale].url, style: styleLink },
+            React__default["default"].createElement("svg", { xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", version: "1.1", x: "0px", y: "0px", viewBox: "0 0 100 100", enableBackground: "new 0 0 100 100", xmlSpace: "preserve", width: "16px", height: "16px", style: { marginRight: '4px', fill: '#808080' } },
+                React__default["default"].createElement("path", { d: "M75.98,41.62h-2.47L73.5,29.31C73.49,15.9,62.58,4.99,49.17,5C35.76,5.01,24.85,15.92,24.86,29.33l0.02,12.31H24  c-4.61,0.01-8.35,3.75-8.34,8.36v36.65c0,4.61,3.75,8.35,8.36,8.35L76,94.97c4.61,0,8.35-3.74,8.34-8.35V49.96  C84.34,45.35,80.59,41.62,75.98,41.62z M33.84,41.64l-0.02-12.31c0-8.47,6.88-15.36,15.35-15.37c8.47,0,15.36,6.89,15.36,15.35  l0.02,12.31L33.84,41.64z" })),
+            trans[locale].label,
+            ' ',
+            React__default["default"].createElement("span", { style: {
+                    opacity: 0.5,
+                    fontSize: 9,
+                    position: 'absolute',
+                    right: 10,
+                    bottom: 0
+                } },
+                "v",
+                pjson.version))));
 }
 
 class ErrorBoundary extends React__default["default"].Component {
@@ -48634,7 +48839,7 @@ var App = /*#__PURE__*/function (_Component) {
         root.style.setProperty('--bukazu-background_month', "".concat(options.colors ? options.colors.month_background : '#e28413'));
 
         if (objectCode && objectCode !== null && pageType !== 'reviews') {
-          return /*#__PURE__*/React__default["default"].createElement("section", null, /*#__PURE__*/React__default["default"].createElement(ErrorBoundary, null, /*#__PURE__*/React__default["default"].createElement(CalendarPage, {
+          return /*#__PURE__*/React__default["default"].createElement("section", null, /*#__PURE__*/React__default["default"].createElement(ErrorBoundary, null, /*#__PURE__*/React__default["default"].createElement(CalendarWrapper, {
             PortalSite: PortalSite,
             objectCode: objectCode,
             locale: locale
@@ -49371,23 +49576,24 @@ function Portal({ portalCode, objectCode, pageType, locale, filters, api_url }) 
         uri: api_url,
         cache: new InMemoryCache(),
         headers: {
-            locale,
+            locale
         },
         defaultOptions: {
             watchQuery: {
-                fetchPolicy: "cache-and-network",
-            },
-        },
+                fetchPolicy: 'cache-and-network'
+            }
+        }
     });
     const messages = { en, nl, de, fr, es, it };
     window.__localeId__ = locale;
     return (React__default["default"].createElement(ApolloProvider, { client: client },
         React__default["default"].createElement(IntlProvider$1, { locale: locale, messages: messages[locale] },
-            React__default["default"].createElement(App, { portalCode: portalCode, objectCode: objectCode, pageType: pageType, locale: locale, filters: filters }))));
+            React__default["default"].createElement(AppContext.Provider, { value: { portalCode, objectCode, locale } },
+                React__default["default"].createElement(App, { portalCode: portalCode, objectCode: objectCode, pageType: pageType, locale: locale, filters: filters })))));
 }
 Portal.defaultProps = {
     pageType: null,
-    api_url: "https://api.bukazu.com/graphql"
+    api_url: 'https://api.bukazu.com/graphql'
 };
 
 module.exports = Portal;
