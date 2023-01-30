@@ -18,6 +18,7 @@ type name_id_type = {
 
 type PortalOptions = {
   filtersForm: FiltersFormType;
+  bookingFields: object[];
 };
 
 export type PortalSiteType = {
@@ -46,4 +47,7 @@ export type HouseType = {
   code: string;
   house_type: string;
   persons: string;
+  booking_price: {
+    optional_house_costs: [];
+  };
 };

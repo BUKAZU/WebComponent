@@ -6,8 +6,13 @@ import { BOOKING_PRICE_QUERY } from '../../_lib/queries';
 import { useQuery } from '@apollo/client';
 import { AppContext } from '../AppContext';
 
-function BookingForm({ booking, onReturn }) {
-  const { portalCode, objectCode } = useContext(AppContext)
+interface Props {
+  booking: object;
+  onReturn: Function;
+}
+
+function BookingForm({ booking, onReturn }: Props): JSX.Element {
+  const { portalCode, objectCode } = useContext(AppContext);
   const { data, loading, error } = useQuery(BOOKING_PRICE_QUERY, {
     variables: {
       portalCode,
@@ -16,8 +21,6 @@ function BookingForm({ booking, onReturn }) {
       ends_at: booking.departureDate.date
     }
   });
-
-  const { locale } = useContext(AppContext)
 
   if (loading)
     return (
@@ -30,15 +33,12 @@ function BookingForm({ booking, onReturn }) {
   }
 
   const result = data.PortalSite.houses[0];
-  const options = data.PortalSite.options;
 
   return (
     <FormCreator
       house={result}
-      options={options}
       booking={booking}
       PortalSite={data.PortalSite}
-      locale={locale}
       onReturn={() => {
         onReturn(booking);
       }}
@@ -48,7 +48,6 @@ function BookingForm({ booking, onReturn }) {
 
 BookingForm.propTypes = {
   booking: PropTypes.object.isRequired,
-  locale: PropTypes.string.isRequired,
   onReturn: PropTypes.func.isRequired
 };
 
