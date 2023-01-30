@@ -103,12 +103,9 @@ class CalendarPage extends Component {
                 <div key={result.id}>
                   <div className="house-name">{result.name}</div>
                   <Calendar
-                    portalCode={variables.id}
-                    objectCode={variables.house_id}
                     numberOfMonths={numberOfMonths}
                     numberOfMonthsInARow={numberOfMonthsInARow}
                     house={result}
-                    locale={locale}
                     onBooking={this.onBooking}
                   />
                 </div>

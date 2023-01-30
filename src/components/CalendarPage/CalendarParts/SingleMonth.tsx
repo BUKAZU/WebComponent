@@ -6,8 +6,9 @@ import {
   startOfMonth,
   startOfWeek
 } from 'date-fns';
-import React from 'react';
+import React, { useContext } from 'react';
 import { CALENDAR_QUERY } from '../../../_lib/queries';
+import { AppContext } from '../../AppContext';
 import Loading from '../../icons/loading.svg';
 import MonthHeader from './MonthHeader';
 import RenderCells from './RenderCells';
@@ -34,16 +35,17 @@ function SingleMonth({
   currentMonth,
   house,
   numberOfMonthsInARow,
-  dates,
-  portalCode,
+  dates,  
   onDateClick
 }: Props): JSX.Element {
+  const { portalCode, objectCode } = useContext(AppContext)
+
   let month = addMonths(currentMonth, count);
   let monthStart = startOfMonth(month);
   let monthEnd = endOfMonth(month);
   const variables = {
     id: portalCode,
-    house_id: house.code,
+    house_id: objectCode,
     starts_at: startOfWeek(monthStart),
     ends_at: endOfWeek(monthEnd)
   };

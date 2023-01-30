@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   isAfter,
   differenceInCalendarDays,
@@ -7,35 +6,40 @@ import {
   subMonths
 } from 'date-fns';
 import { Parse_EN_US } from '../../_lib/date_helper';
-import CalendarHeader from './CalendarHeader';
-import PriceField from './PriceField';
-
+import CalendarHeader from './CalendarParts/CalendarHeader';
 import AssistanceMessage from './formParts/AssistanceMessage';
 import Legend from './CalendarParts/Legend';
-import SingleMonth from './CalendarParts/SingleMonth';
 import Months from './CalendarParts/Months';
 import StartBooking from './CalendarParts/StartBooking';
+import { BuDate, HouseType } from '../../types';
 
-class Calendar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+interface Props {
+  numberOfMonths: number;
+  numberOfMonthsInARow: number;
+  house: HouseType;
+}
 
+interface State {
+  currentMonth: Date;
+  selectedDate: string | Date;
+  startBooking: Boolean;
+  arrivalDate: string | BuDate;
+  departureDate: string | BuDate;
+}
+
+class Calendar extends React.Component<Props, State> {
   state = {
     currentMonth: new Date(),
     selectedDate: '',
-    numberOfMonths: this.props.numberOfMonths,
-    numberOfMonthsInARow: this.props.numberOfMonthsInARow,
-    house: this.props.house,
     arrivalDate: '',
     departureDate: '',
     startBooking: false
   };
 
-  onDateClick = (day) => {
+  onDateClick = (day: BuDate) => {
     const { arrivalDate, selectedDate } = this.state;
-    const { house } = this.props
-    
+    const { house } = this.props;
+
     const date = Parse_EN_US(day.date);
 
     if (
@@ -60,14 +64,17 @@ class Calendar extends React.Component {
   };
 
   nextMonth = () => {
-    const { numberOfMonths, currentMonth } = this.state;
+    const { currentMonth } = this.state;
+    const { numberOfMonths } = this.props;
+
     this.setState({
       currentMonth: addMonths(currentMonth, numberOfMonths)
     });
   };
 
   prevMonth = () => {
-    const { numberOfMonths, currentMonth } = this.state;
+    const { currentMonth } = this.state;
+    const { numberOfMonths } = this.props;
     this.setState({
       currentMonth: subMonths(currentMonth, numberOfMonths)
     });
@@ -93,7 +100,6 @@ class Calendar extends React.Component {
     const {
       numberOfMonths,
       numberOfMonthsInARow,
-      portalCode,
       house,
       onBooking
     } = this.props;
@@ -102,39 +108,33 @@ class Calendar extends React.Component {
 
     return (
       <div className="calendar-container ">
-        <div className="price-overview">
-          <StartBooking
-            dates={{
-              arrivalDate,
-              departureDate,
-              startBooking
-            }}
-            house={house}
-            portalCode={portalCode}
-            onStartBooking={onBooking}
-          />
-        </div>
+        <StartBooking
+          dates={{
+            arrivalDate,
+            departureDate,
+            startBooking
+          }}
+          house={house}
+          onStartBooking={onBooking}
+        />
         <div className="calendar-section">
           <CalendarHeader
             onGoNext={this.nextMonth}
             onGoPrev={this.prevMonth}
             onReset={this.reset}
           />
-          <div className="calendars-row">
-            <Months
-              house={house}
-              numberOfMonths={numberOfMonths}
-              numberOfMonthsInARow={numberOfMonthsInARow}
-              portalCode={portalCode}
-              dates={{
-                arrivalDate,
-                departureDate,
-                selectedDate
-              }}
-              onDateClick={this.onDateClick}
-              currentMonth={currentMonth}
-            />
-          </div>
+          <Months
+            house={house}
+            numberOfMonths={numberOfMonths}
+            numberOfMonthsInARow={numberOfMonthsInARow}
+            dates={{
+              arrivalDate,
+              departureDate,
+              selectedDate
+            }}
+            onDateClick={this.onDateClick}
+            currentMonth={currentMonth}
+          />
           <Legend house={house} />
           <AssistanceMessage
             house={house}
@@ -151,15 +151,6 @@ class Calendar extends React.Component {
 Calendar.defaultProps = {
   numberOfMonths: 4,
   numberOfMonthsInARow: 2
-};
-
-Calendar.propTypes = {
-  numberOfMonths: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  house: PropTypes.object.isRequired,
-  onBooking: PropTypes.func.isRequired,
-  objectCode: PropTypes.string.isRequired,
-  portalCode: PropTypes.string.isRequired,
-  locale: PropTypes.string.isRequired
 };
 
 export default Calendar;

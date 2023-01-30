@@ -88,13 +88,13 @@ export const CALENDAR_QUERY = gql`
 `;
 
 export const BOOKING_PRICE_QUERY = gql`
-  query BookingPriceQuery(
-    $id: ID!
-    $house_id: String!
+  query BookingFormQuery(
+    $portalCode: ID!
+    $objectCode: String!
     $starts_at: Date!
     $ends_at: Date!
   ) {
-    PortalSite(id: $id) {
+    PortalSite(id: $portalCode) {
       id
       options
       first_name_label
@@ -122,7 +122,7 @@ export const BOOKING_PRICE_QUERY = gql`
         options
         placeholder
       }
-      houses(house_code: $house_id) {
+      houses(house_code: $objectCode) {
         id
         name
         code

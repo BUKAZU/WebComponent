@@ -16,6 +16,7 @@ import {
 } from 'date-fns';
 import { FormatIntl, Parse_EN_US } from '../../../_lib/date_helper';
 import DayClasses from './DayClasses';
+import { HouseType } from '../../../types';
 
 interface CellProps {
   availabilities: [];
@@ -26,7 +27,7 @@ interface CellProps {
     departureDate: object;
     arrivalDate: string;
   };
-  house: object;
+  house: HouseType;
   onDateClick: Function;
 }
 

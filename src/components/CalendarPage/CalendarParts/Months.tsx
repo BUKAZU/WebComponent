@@ -9,7 +9,6 @@ interface Props {
     selectedDate: Object;
     departureDate: Object;
   };
-  portalCode: string;
   house: HouseType;
   numberOfMonths: number;
   numberOfMonthsInARow: number;
@@ -19,14 +18,14 @@ interface Props {
 
 function Months({
   dates,
-  portalCode,
   numberOfMonthsInARow,
   currentMonth,
   numberOfMonths,
   onDateClick,
   house
-}: Props): JSX.Element[] {
-  let template = [];
+}: Props): JSX.Element {
+  let template:JSX.Element[] = [];
+  
   for (let i = 0; i < numberOfMonths; i++) {
     template.push(
       <SingleMonth
@@ -36,12 +35,12 @@ function Months({
         dates={dates}
         currentMonth={currentMonth}
         count={i}
-        portalCode={portalCode}
         onDateClick={onDateClick}
       />
     );
   }
-  return template;
+
+  return <div className="calendars-row">{template}</div>;
 }
 
 export default Months;

@@ -44,4 +44,6 @@ export type BuDate = {
 export type HouseType = {
   id: number;
   code: string;
+  house_type: string;
+  persons: string;
 };

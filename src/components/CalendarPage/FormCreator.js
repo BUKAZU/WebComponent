@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import { FormattedMessage } from 'react-intl';
@@ -20,6 +20,7 @@ import {
 } from './formParts/BookingHelpers';
 import OptionalCosts from './formParts/OptionalCosts';
 import Guests from './formParts/Guests';
+import { AppContext } from '../AppContext';
 class FormCreator extends React.Component {
   state = {
     formSubmit: false,
@@ -97,7 +98,7 @@ class FormCreator extends React.Component {
   render() {
     const { bookingFields } = this.state;
 
-    const { house, locale, PortalSite, options, booking } = this.props;
+    const { house, PortalSite, locale, options, booking } = this.props;
     const bookingPrice = house.booking_price;
 
     let costs = {};

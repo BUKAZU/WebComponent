@@ -5,27 +5,19 @@ import PriceField from '../PriceField';
 
 interface Props {
   dates: DatesType;
-  portalCode: string;
   house: HouseType;
   onStartBooking: Function;
 }
 
 function StartBooking({
-  dates,
-  portalCode,
+  dates,  
   house,
   onStartBooking
 }: Props): JSX.Element {
   const { startBooking, arrivalDate, departureDate } = dates;
 
-  const bookingStart = ({
-    persons
-  }: {
-    persons: number;
-  }) => {    
+  const bookingStart = ({ persons }: { persons: number }) => {
     const booking = {
-      portalCode,
-      objectCode: house.code,
       arrivalDate,
       departureDate,
       is_option: 'false',
@@ -35,16 +27,16 @@ function StartBooking({
   };
 
   return (
-    <PriceField
-      portalCode={portalCode}
-      objectCode={house.code}
-      startsAt={arrivalDate.date || null}
-      endsAt={departureDate.date || null}
-      minNights={arrivalDate.min_nights || null}
-      disabled={startBooking}
-      onStartBooking={bookingStart}
-      house={house}
-    />
+    <div className="price-overview">
+      <PriceField
+        startsAt={arrivalDate.date || null}
+        endsAt={departureDate.date || null}
+        minNights={arrivalDate.min_nights || null}
+        disabled={startBooking}
+        onStartBooking={bookingStart}
+        house={house}
+      />
+    </div>
   );
 }
 
