@@ -22,6 +22,7 @@ type BookingFormType = {
   babies: boolean;
   babies_til: number;
   showDiscountCode: boolean;
+  redirectUrl: string | null;
 };
 
 type name_id_type = {

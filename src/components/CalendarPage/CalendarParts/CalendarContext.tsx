@@ -33,7 +33,7 @@ export function CalendarProvider({
 function calendarReducer(
   bookingState: BookingType,
   action: { type: string; house: HouseType; day: BuDate; persons: number }
-) {
+): BookingType {
   console.log({ action });
   switch (action.type) {
     case 'clicked': {
@@ -57,9 +57,11 @@ function calendarReducer(
         };
       } else if (day.arrival) {
         return {
+          bookingStarted: false,
           selectedDate: date,
           arrivalDate: day,
-          departureDate: null
+          departureDate: null,
+          persons: 2
         };
       }
       return bookingState;

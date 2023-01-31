@@ -13,7 +13,7 @@ const locales: any = {
 
 function FormatIntl(date: number, formatStr: string) : String {    
     return format(date, formatStr, {
-        locale: locales[global.__localeId__], // or global.__localeId__
+        locale: locales[window.__localeId__], // or global.__localeId__
     });
 };
 

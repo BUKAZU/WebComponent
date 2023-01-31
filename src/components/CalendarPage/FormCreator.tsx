@@ -50,6 +50,14 @@ function FormCreator({ house, PortalSite }: Props): JSX.Element {
     CREATE_BOOKING_MUTATION
   );
 
+  if (data) {
+    return (
+      <Modal show={true}>
+        <SuccessMessage />
+      </Modal>
+    );
+  }
+
   const optBookingFieldsInitialized = initializeBookingFields(bookingFields);
 
   return (
@@ -81,9 +89,7 @@ function FormCreator({ house, PortalSite }: Props): JSX.Element {
           children: Number(values.children) || 0,
           babies: Number(values.babies) || 0,
           discount: Number(values.discount) || 0,
-          damage_insurance: Number(values.damage_insurance) || 0,
           cancel_insurance: Number(values.cancel_insurance) || 0,
-          travel_insurance: Number(values.travel_insurance) || 0,
           arrival_date: values.arrivalDate.date,
           departure_date: values.departureDate.date,
           costs: JSON.stringify(values.costs),
@@ -115,11 +121,6 @@ function FormCreator({ house, PortalSite }: Props): JSX.Element {
           {error && (
             <Modal show={true}>
               <ApiError errors={error} modal={true} />
-            </Modal>
-          )}
-          {data && (
-            <Modal show={true}>
-              <SuccessMessage />
             </Modal>
           )}
 
