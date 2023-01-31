@@ -1,15 +1,15 @@
 {
   "name": "bukazu-portal-react",
-  "version": "2.1.21",
+  "version": "3.0.0",
   "description": "A package for loading the calendar and search module from bukazu loading into a react app.",
-  "main": "build/index.js",
   "repository": "https://github.com/BUKAZU/React-portal",
   "scripts": {
     "start": "webpack serve --open --config webpack.config.dev",
     "test": "jest",
     "test-cypress": "cypress open",
     "build": "rollup -c",
-    "watch": "rollup -c -w"
+    "watch": "rollup -c -w",
+    "dev": "vite"
   },
   "author": "Bob van Oorschot",
   "license": "MIT",
@@ -28,10 +28,12 @@
     "@jest/globals": "^29.4.1",
     "@rollup/plugin-commonjs": "^21.0.0",
     "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-terser": "^0.4.0",
     "@rollup/plugin-typescript": "^11.0.0",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.0.1",
     "autoprefixer": "^10.2.5",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.2.2",
@@ -72,6 +74,7 @@
     "ts-jest": "^29.0.5",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.4",
+    "vite": "^4.0.4",
     "webpack": "^5",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1",
@@ -85,6 +88,14 @@
     "react-date-picker": "^8.1.1",
     "react-intl": "^6.2.5",
     "react-paginate": "^8.1.4"
+  },
+  "main": "./dist/portal.umd.js",
+  "module": "./dist/portal.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/my-lib.es.js",
+      "require": "./dist/my-lib.umd.js"
+    }
   },
   "eslintConfig": {
     "extends": [
