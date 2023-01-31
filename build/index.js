@@ -47986,67 +47986,62 @@ function CalendarWrapper({ PortalSite }) {
         React__default["default"].createElement(CalendarPage, { PortalSite: PortalSite })));
 }
 
-function _taggedTemplateLiteral(strings, raw) {
-  if (!raw) {
-    raw = strings.slice(0);
-  }
-
-  return Object.freeze(Object.defineProperties(strings, {
-    raw: {
-      value: Object.freeze(raw)
+const REVIEWS_QUERY = gql `
+  query ReviewPortalSiteQuery($id: ID!, $house_id: String!) {
+    PortalSite(id: $id) {
+      houses(house_code: $house_id) {
+        id
+        name
+        rating
+        scoreAmount
+        reviews {
+          id
+          name
+          review
+          score
+          createdAt
+          reviewCriteria {
+            id
+            name
+            score
+          }
+        }
+      }
     }
-  }));
-}
-
-var _templateObject;
-var REVIEWS_QUERY = gql(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n         query ReviewPortalSiteQuery(\n           $id: ID!\n           $house_id: String!\n         ) {\n           PortalSite(id: $id) {\n             houses(house_code: $house_id) {\n               id\n               name\n               rating\n               scoreAmount\n               reviews {\n                 id\n                 name\n                 review\n                 score\n                 createdAt\n                 reviewCriteria {\n                   id\n                   name\n                   score\n                 }\n               }\n             }\n           }\n         }\n       "])));
-
-function Score(_ref) {
-  var rating = _ref.rating,
-      name = _ref.name;
-  var color = 'low';
-
-  if (rating > 7) {
-    color = 'best';
-  } else if (rating > 6) {
-    color = 'good';
-  } else if (rating > 4) {
-    color = 'medium';
   }
+`;
 
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "bu_score"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "bu_score__rating ".concat(color)
-  }, rating.toFixed(1), " /10"), /*#__PURE__*/React__default["default"].createElement("div", null, name));
+function Score({ rating, name }) {
+    let color = 'low';
+    if (rating > 7) {
+        color = 'best';
+    }
+    else if (rating > 6) {
+        color = 'good';
+    }
+    else if (rating > 4) {
+        color = 'medium';
+    }
+    return (React__default["default"].createElement("div", { className: "bu_score" },
+        React__default["default"].createElement("div", { className: `bu_score__rating ${color}` },
+            rating.toFixed(1),
+            " /10"),
+        React__default["default"].createElement("div", null, name)));
 }
 
-function SingleReview(_ref) {
-  var review = _ref.review;
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "bu_single_review"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "bu_review_summary"
-  }, /*#__PURE__*/React__default["default"].createElement(Score, {
-    rating: review.score
-  }), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "bu_review_summary__date_name"
-  }, /*#__PURE__*/React__default["default"].createElement("div", null, review.createdAt, ",\xA0"), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "bu_review_summary__name"
-  }, review.name))), /*#__PURE__*/React__default["default"].createElement("blockquote", {
-    className: "bu_review"
-  }, review.review), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "bu_criteria"
-  }, review.reviewCriteria.map(function (crit) {
-    return /*#__PURE__*/React__default["default"].createElement(Score, {
-      rating: crit.score,
-      name: crit.name,
-      key: crit.id
-    });
-  })));
+function SingleReview({ review }) {
+    return (React__default["default"].createElement("div", { className: "bu_single_review" },
+        React__default["default"].createElement("div", { className: "bu_review_summary" },
+            React__default["default"].createElement(Score, { rating: review.score }),
+            React__default["default"].createElement("div", { className: "bu_review_summary__date_name" },
+                React__default["default"].createElement("div", null,
+                    review.createdAt,
+                    ",\u00A0"),
+                React__default["default"].createElement("div", { className: "bu_review_summary__name" }, review.name))),
+        React__default["default"].createElement("blockquote", { className: "bu_review" }, review.review),
+        React__default["default"].createElement("div", { className: "bu_criteria" }, review.reviewCriteria.map((crit) => (React__default["default"].createElement(Score, { rating: crit.score, name: crit.name, key: crit.id }))))));
 }
-
-var SingleReview$1 = /*#__PURE__*/React.memo(SingleReview);
+var SingleReview$1 = React.memo(SingleReview);
 
 function ReviewsPage() {
     const { objectCode, portalCode } = React.useContext(AppContext);
@@ -48054,9 +48049,10 @@ function ReviewsPage() {
         variables: { id: portalCode, house_id: objectCode }
     });
     if (loading)
-        return null;
+        return (React__default["default"].createElement("div", null,
+            React__default["default"].createElement(Loading, null)));
     if (error)
-        return `Error! ${error}`;
+        return React__default["default"].createElement(ApiError, { errors: error });
     const house = data.PortalSite.houses[0];
     const reviews = house.reviews;
     return (React__default["default"].createElement("div", { className: "bu_reviews" },
@@ -48191,10 +48187,9 @@ function App({ pageType, locale, filters }) {
     root.style.setProperty('--bukazu-background_month', `${options.colors ? options.colors.month_background : '#e28413'}`);
     let page;
     if (objectCode && objectCode !== null && pageType !== 'reviews') {
-        page = (React__default["default"].createElement("section", null,
-            React__default["default"].createElement(ErrorBoundary, null,
-                React__default["default"].createElement(CalendarWrapper, { PortalSite: PortalSite }),
-                React__default["default"].createElement(SafeBooking, null))));
+        page = (React__default["default"].createElement(ErrorBoundary, null,
+            React__default["default"].createElement(CalendarWrapper, { PortalSite: PortalSite }),
+            React__default["default"].createElement(SafeBooking, null)));
     }
     else if (objectCode && objectCode !== null && pageType === 'reviews') {
         page = React__default["default"].createElement(ReviewsPage, null);
@@ -48202,7 +48197,7 @@ function App({ pageType, locale, filters }) {
     else {
         page = (React__default["default"].createElement(SearchPage, { PortalSite: PortalSite, locale: locale, options: options, filters: filters }));
     }
-    return (React__default["default"].createElement("div", { className: width < 875 ? 'bu-smaller' : '' }, page));
+    return React__default["default"].createElement("div", { className: width < 875 ? 'bu-smaller' : '' }, page);
 }
 App.defaultProps = {
     filters: {}

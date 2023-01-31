@@ -1,6 +1,6 @@
 import React from 'react';
 import App from './components/App';
-import { IntlProvider, MessageFormatElement } from 'react-intl';
+import { IntlProvider } from 'react-intl';
 // import registerServiceWorker from './registerServiceWorker';
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
@@ -56,7 +56,6 @@ function Portal({
       }
     }
   });
- 
 
   const messages: MessagesType = { en, nl, de, fr, es, it };
 

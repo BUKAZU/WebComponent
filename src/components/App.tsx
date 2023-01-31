@@ -23,7 +23,6 @@ const getWidth = () =>
 
 interface Props {
   pageType?: string;
-  id: string;
   filters?: FiltersType;
   locale: string;
 }
@@ -105,12 +104,10 @@ function App({ pageType, locale, filters }: Props): JSX.Element {
 
   if (objectCode && objectCode !== null && pageType !== 'reviews') {
     page = (
-      <section>
-        <ErrorBoundary>
-          <CalendarPage PortalSite={PortalSite} />
-          <SafeBooking />
-        </ErrorBoundary>
-      </section>
+      <ErrorBoundary>
+        <CalendarPage PortalSite={PortalSite} />
+        <SafeBooking />
+      </ErrorBoundary>
     );
   } else if (objectCode && objectCode !== null && pageType === 'reviews') {
     page = <ReviewsPage />;
@@ -125,11 +122,7 @@ function App({ pageType, locale, filters }: Props): JSX.Element {
     );
   }
 
-  return (
-    <div className={width < 875 ? 'bu-smaller' : ''}>
-      {page}
-    </div>
-  );
+  return <div className={width < 875 ? 'bu-smaller' : ''}>{page}</div>;
 }
 
 App.defaultProps = {
