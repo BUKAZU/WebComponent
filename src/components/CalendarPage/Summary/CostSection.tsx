@@ -1,6 +1,10 @@
 import React from 'react';
 
-export default function CostSection({ children }) {
+interface Props {
+  children: React.ReactNode;
+}
+
+export default function CostSection({ children }: Props): JSX.Element {
   return (
     <div className="costs-section">
       <table>

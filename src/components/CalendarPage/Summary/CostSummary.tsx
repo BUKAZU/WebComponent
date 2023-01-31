@@ -1,21 +1,27 @@
 import React, { useContext } from 'react';
 import { useQuery } from '@apollo/client';
-import InsurancesAndRequired from './InsurancesAndRequired';
+import InsurancesAndRequired from './InsurancesAndRequired.tsx';
 import { BOOKING_PRICE_TOTAL_QUERY } from './Queries';
 import RentAndDiscount from './RentAndDiscount';
 import OptionalNotOnSite from './OptionalNotOnSite';
 import OnSite from './OnSite';
 import Totals from './Totals';
 import { AppContext } from '../../AppContext';
+import { HouseType } from '../../../types';
+import { PossibleValues } from '../formParts/form_types';
 
-function CostSummary({ values, house }) {
+interface Props {
+  values: PossibleValues;
+  house: HouseType;
+}
+
+function CostSummary({ values, house }: Props): React.ReactNode {
   let babies = Number(values.babies) - Number(house.babies_extra);
-    if (babies < 0) {
-      babies = 0;
-    }
+  if (babies < 0) {
+    babies = 0;
+  }
   const persons = Number(values.children) + Number(values.adults) + babies;
   const { portalCode, objectCode } = useContext(AppContext);
-
 
   const { loading, error, data } = useQuery(BOOKING_PRICE_TOTAL_QUERY, {
     variables: {
@@ -27,9 +33,9 @@ function CostSummary({ values, house }) {
       costs: JSON.stringify(values.costs),
       discount: Number(values.discount),
       discount_code: values.discount_code,
-      cancel_insurance: Number(values.cancel_insurance),
+      cancel_insurance: Number(values.cancel_insurance)
     },
-    fetchPolicy: 'network-only',
+    fetchPolicy: 'network-only'
   });
 
   if (loading) {

@@ -2,7 +2,7 @@ import React, { SyntheticEvent } from 'react';
 import { Field, FiltersType, OptionsType } from './filter_types';
 
 interface Props {
-  options: OptionsType[];
+  options: OptionsType[] | string[];
   field: Field;
   filters: FiltersType;
   value: string;

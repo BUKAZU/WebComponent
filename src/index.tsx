@@ -1,6 +1,6 @@
 import React from 'react';
 import App from './components/App';
-import { IntlProvider } from 'react-intl';
+import { IntlProvider, MessageFormatElement } from 'react-intl';
 // import registerServiceWorker from './registerServiceWorker';
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
@@ -15,6 +15,17 @@ import it from './locales/it.json';
 import './styles/main.css';
 import { IntegrationError } from './components/Error';
 import { AppContext } from './components/AppContext';
+import { LocaleType } from './types';
+import { FiltersType } from './components/SearchPage/filters/filter_types';
+
+interface Props {
+  portalCode: string;
+  objectCode: string;
+  pageType?: string;
+  locale?: LocaleType;
+  filters?: FiltersType;
+  api_url?: string;
+}
 
 function Portal({
   portalCode,
@@ -23,7 +34,7 @@ function Portal({
   locale,
   filters,
   api_url
-}) {
+}: Props): JSX.Element {
   const errors = IntegrationError({ portalCode, pageType, locale, filters });
   if (errors) {
     return errors;
@@ -45,8 +56,9 @@ function Portal({
       }
     }
   });
+ 
 
-  const messages = { en, nl, de, fr, es, it };
+  const messages: MessagesType = { en, nl, de, fr, es, it };
 
   window.__localeId__ = locale;
 
@@ -54,13 +66,7 @@ function Portal({
     <ApolloProvider client={client}>
       <IntlProvider locale={locale} messages={messages[locale]}>
         <AppContext.Provider value={{ portalCode, objectCode, locale }}>
-          <App
-            portalCode={portalCode}
-            objectCode={objectCode}
-            pageType={pageType}
-            locale={locale}
-            filters={filters}
-          />
+          <App pageType={pageType} locale={locale} filters={filters} />
         </AppContext.Provider>
       </IntlProvider>
     </ApolloProvider>
@@ -73,3 +79,16 @@ Portal.defaultProps = {
 };
 
 export default Portal;
+
+type MessagesType = {
+  en: JSONType;
+  nl: JSONType;
+  de: JSONType;
+  fr: JSONType;
+  es: JSONType;
+  it: JSONType;
+};
+
+type JSONType = {
+  [key: string]: string;
+};

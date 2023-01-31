@@ -1,6 +1,6 @@
-import { gql}  from "@apollo/client";
+import { gql } from '@apollo/client';
 
-export const BOOKING_PRICE_TOTAL_QUERY= gql`
+export const BOOKING_PRICE_TOTAL_QUERY = gql`
   query BookingPriceTotalQuery(
     $id: ID!
     $house_id: String!
@@ -28,4 +28,4 @@ export const BOOKING_PRICE_TOTAL_QUERY= gql`
       }
     }
   }
-`
+`;

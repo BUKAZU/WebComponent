@@ -1,9 +1,12 @@
 import React from 'react';
 import Modal from '../Modal';
 import { FormattedMessage } from 'react-intl';
+import { ApolloError } from '@apollo/client';
 
-function ApiError(errors: object, modal: boolean): JSX.Element {
-  console.error({ errors });
+function ApiError(
+  errors: { errors: ApolloError },
+  modal: boolean
+): JSX.Element {
   const errorMessage = (
     <div className="bukazu-error-message">
       <h2>

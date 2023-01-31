@@ -1,25 +1,10 @@
 import React from 'react';
 import { FormattedMessage, FormattedNumber } from 'react-intl';
-import { FiltersFormType } from '../../types';
+import { FiltersFormType, HouseType } from '../../types';
 import ArrowRight from '../icons/ArrowRight.svg';
 
 interface Props {
-  result: {
-    image_url: string;
-    name: string;
-    house_url: string;
-    city: string;
-    province: string;
-    country_name: string;
-    description: string;
-    persons: number;
-    bedrooms: number;
-    bathrooms: number;
-    minimum_week_price: number;
-    booking_price: {
-      total_price: number;
-    };
-  };
+  result: HouseType;
   options: FiltersFormType;
 }
 

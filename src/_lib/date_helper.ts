@@ -2,7 +2,7 @@
 import { format, parse } from 'date-fns';
 import { es, nl, de, fr, it, enGB } from 'date-fns/locale';
 
-const locales:Object = {
+const locales: any = {
     en: enGB,
     nl,
     de,

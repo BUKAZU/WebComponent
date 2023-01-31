@@ -6,1365 +6,39 @@ var reactDom = require('react-dom');
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
 function _interopNamespace(e) {
-  if (e && e.__esModule) return e;
-  var n = Object.create(null);
-  if (e) {
-    Object.keys(e).forEach(function (k) {
-      if (k !== 'default') {
-        var d = Object.getOwnPropertyDescriptor(e, k);
-        Object.defineProperty(n, k, d.get ? d : {
-          enumerable: true,
-          get: function () { return e[k]; }
+    if (e && e.__esModule) return e;
+    var n = Object.create(null);
+    if (e) {
+        Object.keys(e).forEach(function (k) {
+            if (k !== 'default') {
+                var d = Object.getOwnPropertyDescriptor(e, k);
+                Object.defineProperty(n, k, d.get ? d : {
+                    enumerable: true,
+                    get: function () { return e[k]; }
+                });
+            }
         });
-      }
-    });
-  }
-  n["default"] = e;
-  return Object.freeze(n);
+    }
+    n["default"] = e;
+    return Object.freeze(n);
 }
 
-var React__namespace = /*#__PURE__*/_interopNamespace(React);
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
-
-function ownKeys$f(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    enumerableOnly && (symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    })), keys.push.apply(keys, symbols);
-  }
-
-  return keys;
-}
-
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = null != arguments[i] ? arguments[i] : {};
-    i % 2 ? ownKeys$f(Object(source), !0).forEach(function (key) {
-      _defineProperty$M(target, key, source[key]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$f(Object(source)).forEach(function (key) {
-      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-    });
-  }
-
-  return target;
-}
-
-function _classCallCheck$B(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _defineProperties$D(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass$D(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties$D(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties$D(Constructor, staticProps);
-  Object.defineProperty(Constructor, "prototype", {
-    writable: false
-  });
-  return Constructor;
-}
-
-function _defineProperty$M(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-function _extends$e() {
-  _extends$e = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-  return _extends$e.apply(this, arguments);
-}
-
-function _inherits$A(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  Object.defineProperty(subClass, "prototype", {
-    writable: false
-  });
-  if (superClass) _setPrototypeOf$A(subClass, superClass);
-}
-
-function _getPrototypeOf$A(o) {
-  _getPrototypeOf$A = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf$A(o);
-}
-
-function _setPrototypeOf$A(o, p) {
-  _setPrototypeOf$A = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-  return _setPrototypeOf$A(o, p);
-}
-
-function _isNativeReflectConstruct$A() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-
-  try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _objectWithoutPropertiesLoose$c(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  return target;
-}
-
-function _objectWithoutProperties$b(source, excluded) {
-  if (source == null) return {};
-
-  var target = _objectWithoutPropertiesLoose$c(source, excluded);
-
-  var key, i;
-
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
-  }
-
-  return target;
-}
-
-function _assertThisInitialized$B(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-function _possibleConstructorReturn$A(self, call) {
-  if (call && (typeof call === "object" || typeof call === "function")) {
-    return call;
-  } else if (call !== void 0) {
-    throw new TypeError("Derived constructors may only return object or undefined");
-  }
-
-  return _assertThisInitialized$B(self);
-}
-
-function _createSuper$A(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct$A();
-
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf$A(Derived),
-        result;
-
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf$A(this).constructor;
-
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-
-    return _possibleConstructorReturn$A(this, result);
-  };
-}
-
-function _taggedTemplateLiteral(strings, raw) {
-  if (!raw) {
-    raw = strings.slice(0);
-  }
-
-  return Object.freeze(Object.defineProperties(strings, {
-    raw: {
-      value: Object.freeze(raw)
-    }
-  }));
-}
-
-var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
-
-function getDefaultExportFromCjs (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
-}
-
-function getAugmentedNamespace(n) {
-	if (n.__esModule) return n;
-	var a = Object.defineProperty({}, '__esModule', {value: true});
-	Object.keys(n).forEach(function (k) {
-		var d = Object.getOwnPropertyDescriptor(n, k);
-		Object.defineProperty(a, k, d.get ? d : {
-			enumerable: true,
-			get: function () {
-				return n[k];
-			}
-		});
-	});
-	return a;
-}
-
-var propTypes$1 = {exports: {}};
-
-var reactIs$1 = {exports: {}};
-
-var reactIs_production_min = {};
-
-/** @license React v16.13.1
- * react-is.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-var b="function"===typeof Symbol&&Symbol.for,c=b?Symbol.for("react.element"):60103,d=b?Symbol.for("react.portal"):60106,e=b?Symbol.for("react.fragment"):60107,f=b?Symbol.for("react.strict_mode"):60108,g=b?Symbol.for("react.profiler"):60114,h=b?Symbol.for("react.provider"):60109,k=b?Symbol.for("react.context"):60110,l=b?Symbol.for("react.async_mode"):60111,m=b?Symbol.for("react.concurrent_mode"):60111,n=b?Symbol.for("react.forward_ref"):60112,p=b?Symbol.for("react.suspense"):60113,q=b?
-Symbol.for("react.suspense_list"):60120,r=b?Symbol.for("react.memo"):60115,t=b?Symbol.for("react.lazy"):60116,v=b?Symbol.for("react.block"):60121,w=b?Symbol.for("react.fundamental"):60117,x=b?Symbol.for("react.responder"):60118,y=b?Symbol.for("react.scope"):60119;
-function z(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c:switch(a=a.type,a){case l:case m:case e:case g:case f:case p:return a;default:switch(a=a&&a.$$typeof,a){case k:case n:case t:case r:case h:return a;default:return u}}case d:return u}}}function A(a){return z(a)===m}reactIs_production_min.AsyncMode=l;reactIs_production_min.ConcurrentMode=m;reactIs_production_min.ContextConsumer=k;reactIs_production_min.ContextProvider=h;reactIs_production_min.Element=c;reactIs_production_min.ForwardRef=n;reactIs_production_min.Fragment=e;reactIs_production_min.Lazy=t;reactIs_production_min.Memo=r;reactIs_production_min.Portal=d;
-reactIs_production_min.Profiler=g;reactIs_production_min.StrictMode=f;reactIs_production_min.Suspense=p;reactIs_production_min.isAsyncMode=function(a){return A(a)||z(a)===l};reactIs_production_min.isConcurrentMode=A;reactIs_production_min.isContextConsumer=function(a){return z(a)===k};reactIs_production_min.isContextProvider=function(a){return z(a)===h};reactIs_production_min.isElement=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===c};reactIs_production_min.isForwardRef=function(a){return z(a)===n};reactIs_production_min.isFragment=function(a){return z(a)===e};reactIs_production_min.isLazy=function(a){return z(a)===t};
-reactIs_production_min.isMemo=function(a){return z(a)===r};reactIs_production_min.isPortal=function(a){return z(a)===d};reactIs_production_min.isProfiler=function(a){return z(a)===g};reactIs_production_min.isStrictMode=function(a){return z(a)===f};reactIs_production_min.isSuspense=function(a){return z(a)===p};
-reactIs_production_min.isValidElementType=function(a){return "string"===typeof a||"function"===typeof a||a===e||a===m||a===g||a===f||a===p||a===q||"object"===typeof a&&null!==a&&(a.$$typeof===t||a.$$typeof===r||a.$$typeof===h||a.$$typeof===k||a.$$typeof===n||a.$$typeof===w||a.$$typeof===x||a.$$typeof===y||a.$$typeof===v)};reactIs_production_min.typeOf=z;
-
-var reactIs_development = {};
-
-/** @license React v16.13.1
- * react-is.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-
-
-if (process.env.NODE_ENV !== "production") {
-  (function() {
-
-// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
-// nor polyfill, then a plain number is used for performance.
-var hasSymbol = typeof Symbol === 'function' && Symbol.for;
-var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
-var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
-var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
-var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
-var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
-var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
-var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
-// (unstable) APIs that have been removed. Can we remove the symbols?
-
-var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
-var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
-var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
-var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
-var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
-var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
-var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
-var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
-var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
-var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
-var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
-
-function isValidElementType(type) {
-  return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
-  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
-}
-
-function typeOf(object) {
-  if (typeof object === 'object' && object !== null) {
-    var $$typeof = object.$$typeof;
-
-    switch ($$typeof) {
-      case REACT_ELEMENT_TYPE:
-        var type = object.type;
-
-        switch (type) {
-          case REACT_ASYNC_MODE_TYPE:
-          case REACT_CONCURRENT_MODE_TYPE:
-          case REACT_FRAGMENT_TYPE:
-          case REACT_PROFILER_TYPE:
-          case REACT_STRICT_MODE_TYPE:
-          case REACT_SUSPENSE_TYPE:
-            return type;
-
-          default:
-            var $$typeofType = type && type.$$typeof;
-
-            switch ($$typeofType) {
-              case REACT_CONTEXT_TYPE:
-              case REACT_FORWARD_REF_TYPE:
-              case REACT_LAZY_TYPE:
-              case REACT_MEMO_TYPE:
-              case REACT_PROVIDER_TYPE:
-                return $$typeofType;
-
-              default:
-                return $$typeof;
-            }
-
-        }
-
-      case REACT_PORTAL_TYPE:
-        return $$typeof;
-    }
-  }
-
-  return undefined;
-} // AsyncMode is deprecated along with isAsyncMode
-
-var AsyncMode = REACT_ASYNC_MODE_TYPE;
-var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
-var ContextConsumer = REACT_CONTEXT_TYPE;
-var ContextProvider = REACT_PROVIDER_TYPE;
-var Element = REACT_ELEMENT_TYPE;
-var ForwardRef = REACT_FORWARD_REF_TYPE;
-var Fragment = REACT_FRAGMENT_TYPE;
-var Lazy = REACT_LAZY_TYPE;
-var Memo = REACT_MEMO_TYPE;
-var Portal = REACT_PORTAL_TYPE;
-var Profiler = REACT_PROFILER_TYPE;
-var StrictMode = REACT_STRICT_MODE_TYPE;
-var Suspense = REACT_SUSPENSE_TYPE;
-var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
-
-function isAsyncMode(object) {
-  {
-    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
-      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
-
-      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
-    }
-  }
-
-  return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
-}
-function isConcurrentMode(object) {
-  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
-}
-function isContextConsumer(object) {
-  return typeOf(object) === REACT_CONTEXT_TYPE;
-}
-function isContextProvider(object) {
-  return typeOf(object) === REACT_PROVIDER_TYPE;
-}
-function isElement(object) {
-  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
-}
-function isForwardRef(object) {
-  return typeOf(object) === REACT_FORWARD_REF_TYPE;
-}
-function isFragment(object) {
-  return typeOf(object) === REACT_FRAGMENT_TYPE;
-}
-function isLazy(object) {
-  return typeOf(object) === REACT_LAZY_TYPE;
-}
-function isMemo(object) {
-  return typeOf(object) === REACT_MEMO_TYPE;
-}
-function isPortal(object) {
-  return typeOf(object) === REACT_PORTAL_TYPE;
-}
-function isProfiler(object) {
-  return typeOf(object) === REACT_PROFILER_TYPE;
-}
-function isStrictMode(object) {
-  return typeOf(object) === REACT_STRICT_MODE_TYPE;
-}
-function isSuspense(object) {
-  return typeOf(object) === REACT_SUSPENSE_TYPE;
-}
-
-reactIs_development.AsyncMode = AsyncMode;
-reactIs_development.ConcurrentMode = ConcurrentMode;
-reactIs_development.ContextConsumer = ContextConsumer;
-reactIs_development.ContextProvider = ContextProvider;
-reactIs_development.Element = Element;
-reactIs_development.ForwardRef = ForwardRef;
-reactIs_development.Fragment = Fragment;
-reactIs_development.Lazy = Lazy;
-reactIs_development.Memo = Memo;
-reactIs_development.Portal = Portal;
-reactIs_development.Profiler = Profiler;
-reactIs_development.StrictMode = StrictMode;
-reactIs_development.Suspense = Suspense;
-reactIs_development.isAsyncMode = isAsyncMode;
-reactIs_development.isConcurrentMode = isConcurrentMode;
-reactIs_development.isContextConsumer = isContextConsumer;
-reactIs_development.isContextProvider = isContextProvider;
-reactIs_development.isElement = isElement;
-reactIs_development.isForwardRef = isForwardRef;
-reactIs_development.isFragment = isFragment;
-reactIs_development.isLazy = isLazy;
-reactIs_development.isMemo = isMemo;
-reactIs_development.isPortal = isPortal;
-reactIs_development.isProfiler = isProfiler;
-reactIs_development.isStrictMode = isStrictMode;
-reactIs_development.isSuspense = isSuspense;
-reactIs_development.isValidElementType = isValidElementType;
-reactIs_development.typeOf = typeOf;
-  })();
-}
-
-if (process.env.NODE_ENV === 'production') {
-  reactIs$1.exports = reactIs_production_min;
-} else {
-  reactIs$1.exports = reactIs_development;
-}
-
-/*
-object-assign
-(c) Sindre Sorhus
-@license MIT
-*/
-/* eslint-disable no-unused-vars */
-var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-var hasOwnProperty$j = Object.prototype.hasOwnProperty;
-var propIsEnumerable = Object.prototype.propertyIsEnumerable;
-
-function toObject(val) {
-	if (val === null || val === undefined) {
-		throw new TypeError('Object.assign cannot be called with null or undefined');
-	}
-
-	return Object(val);
-}
-
-function shouldUseNative() {
-	try {
-		if (!Object.assign) {
-			return false;
-		}
-
-		// Detect buggy property enumeration order in older V8 versions.
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
-		test1[5] = 'de';
-		if (Object.getOwnPropertyNames(test1)[0] === '5') {
-			return false;
-		}
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test2 = {};
-		for (var i = 0; i < 10; i++) {
-			test2['_' + String.fromCharCode(i)] = i;
-		}
-		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
-			return test2[n];
-		});
-		if (order2.join('') !== '0123456789') {
-			return false;
-		}
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test3 = {};
-		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
-			test3[letter] = letter;
-		});
-		if (Object.keys(Object.assign({}, test3)).join('') !==
-				'abcdefghijklmnopqrst') {
-			return false;
-		}
-
-		return true;
-	} catch (err) {
-		// We don't expect any of the above to throw, but better to be safe.
-		return false;
-	}
-}
-
-var objectAssign = shouldUseNative() ? Object.assign : function (target, source) {
-	var from;
-	var to = toObject(target);
-	var symbols;
-
-	for (var s = 1; s < arguments.length; s++) {
-		from = Object(arguments[s]);
-
-		for (var key in from) {
-			if (hasOwnProperty$j.call(from, key)) {
-				to[key] = from[key];
-			}
-		}
-
-		if (getOwnPropertySymbols) {
-			symbols = getOwnPropertySymbols(from);
-			for (var i = 0; i < symbols.length; i++) {
-				if (propIsEnumerable.call(from, symbols[i])) {
-					to[symbols[i]] = from[symbols[i]];
-				}
-			}
-		}
-	}
-
-	return to;
-};
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-var ReactPropTypesSecret$3 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
-
-var ReactPropTypesSecret_1 = ReactPropTypesSecret$3;
-
-var has$3 = Function.call.bind(Object.prototype.hasOwnProperty);
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-var printWarning$1 = function() {};
-
-if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret$2 = ReactPropTypesSecret_1;
-  var loggedTypeFailures = {};
-  var has$2 = has$3;
-
-  printWarning$1 = function(text) {
-    var message = 'Warning: ' + text;
-    if (typeof console !== 'undefined') {
-      console.error(message);
-    }
-    try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
-      throw new Error(message);
-    } catch (x) { /**/ }
-  };
-}
-
-/**
- * Assert that the values match with the type specs.
- * Error messages are memorized and will only be shown once.
- *
- * @param {object} typeSpecs Map of name to a ReactPropType
- * @param {object} values Runtime values that need to be type-checked
- * @param {string} location e.g. "prop", "context", "child context"
- * @param {string} componentName Name of the component for error messages.
- * @param {?Function} getStack Returns the component stack.
- * @private
- */
-function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) {
-  if (process.env.NODE_ENV !== 'production') {
-    for (var typeSpecName in typeSpecs) {
-      if (has$2(typeSpecs, typeSpecName)) {
-        var error;
-        // Prop type validation may throw. In case they do, we don't want to
-        // fail the render phase where it didn't fail before. So we log it.
-        // After these have been cleaned up, we'll let them throw.
-        try {
-          // This is intentionally an invariant that gets caught. It's the same
-          // behavior as without this statement except with a better message.
-          if (typeof typeSpecs[typeSpecName] !== 'function') {
-            var err = Error(
-              (componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' +
-              'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.' +
-              'This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.'
-            );
-            err.name = 'Invariant Violation';
-            throw err;
-          }
-          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret$2);
-        } catch (ex) {
-          error = ex;
-        }
-        if (error && !(error instanceof Error)) {
-          printWarning$1(
-            (componentName || 'React class') + ': type specification of ' +
-            location + ' `' + typeSpecName + '` is invalid; the type checker ' +
-            'function must return `null` or an `Error` but returned a ' + typeof error + '. ' +
-            'You may have forgotten to pass an argument to the type checker ' +
-            'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' +
-            'shape all require an argument).'
-          );
-        }
-        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
-          // Only monitor this failure once because there tends to be a lot of the
-          // same error.
-          loggedTypeFailures[error.message] = true;
-
-          var stack = getStack ? getStack() : '';
-
-          printWarning$1(
-            'Failed ' + location + ' type: ' + error.message + (stack != null ? stack : '')
-          );
-        }
-      }
-    }
-  }
-}
-
-/**
- * Resets warning cache when testing.
- *
- * @private
- */
-checkPropTypes$1.resetWarningCache = function() {
-  if (process.env.NODE_ENV !== 'production') {
-    loggedTypeFailures = {};
-  }
-};
-
-var checkPropTypes_1 = checkPropTypes$1;
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-var ReactIs$1 = reactIs$1.exports;
-var assign$2 = objectAssign;
-
-var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
-var has$1 = has$3;
-var checkPropTypes = checkPropTypes_1;
-
-var printWarning = function() {};
-
-if (process.env.NODE_ENV !== 'production') {
-  printWarning = function(text) {
-    var message = 'Warning: ' + text;
-    if (typeof console !== 'undefined') {
-      console.error(message);
-    }
-    try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
-      throw new Error(message);
-    } catch (x) {}
-  };
-}
-
-function emptyFunctionThatReturnsNull() {
-  return null;
-}
-
-var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
-  /* global Symbol */
-  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
-  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
-
-  /**
-   * Returns the iterator method function contained on the iterable object.
-   *
-   * Be sure to invoke the function with the iterable as context:
-   *
-   *     var iteratorFn = getIteratorFn(myIterable);
-   *     if (iteratorFn) {
-   *       var iterator = iteratorFn.call(myIterable);
-   *       ...
-   *     }
-   *
-   * @param {?object} maybeIterable
-   * @return {?function}
-   */
-  function getIteratorFn(maybeIterable) {
-    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
-    if (typeof iteratorFn === 'function') {
-      return iteratorFn;
-    }
-  }
-
-  /**
-   * Collection of methods that allow declaration and validation of props that are
-   * supplied to React components. Example usage:
-   *
-   *   var Props = require('ReactPropTypes');
-   *   var MyArticle = React.createClass({
-   *     propTypes: {
-   *       // An optional string prop named "description".
-   *       description: Props.string,
-   *
-   *       // A required enum prop named "category".
-   *       category: Props.oneOf(['News','Photos']).isRequired,
-   *
-   *       // A prop named "dialog" that requires an instance of Dialog.
-   *       dialog: Props.instanceOf(Dialog).isRequired
-   *     },
-   *     render: function() { ... }
-   *   });
-   *
-   * A more formal specification of how these methods are used:
-   *
-   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
-   *   decl := ReactPropTypes.{type}(.isRequired)?
-   *
-   * Each and every declaration produces a function with the same signature. This
-   * allows the creation of custom validation functions. For example:
-   *
-   *  var MyLink = React.createClass({
-   *    propTypes: {
-   *      // An optional string or URI prop named "href".
-   *      href: function(props, propName, componentName) {
-   *        var propValue = props[propName];
-   *        if (propValue != null && typeof propValue !== 'string' &&
-   *            !(propValue instanceof URI)) {
-   *          return new Error(
-   *            'Expected a string or an URI for ' + propName + ' in ' +
-   *            componentName
-   *          );
-   *        }
-   *      }
-   *    },
-   *    render: function() {...}
-   *  });
-   *
-   * @internal
-   */
-
-  var ANONYMOUS = '<<anonymous>>';
-
-  // Important!
-  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
-  var ReactPropTypes = {
-    array: createPrimitiveTypeChecker('array'),
-    bigint: createPrimitiveTypeChecker('bigint'),
-    bool: createPrimitiveTypeChecker('boolean'),
-    func: createPrimitiveTypeChecker('function'),
-    number: createPrimitiveTypeChecker('number'),
-    object: createPrimitiveTypeChecker('object'),
-    string: createPrimitiveTypeChecker('string'),
-    symbol: createPrimitiveTypeChecker('symbol'),
-
-    any: createAnyTypeChecker(),
-    arrayOf: createArrayOfTypeChecker,
-    element: createElementTypeChecker(),
-    elementType: createElementTypeTypeChecker(),
-    instanceOf: createInstanceTypeChecker,
-    node: createNodeChecker(),
-    objectOf: createObjectOfTypeChecker,
-    oneOf: createEnumTypeChecker,
-    oneOfType: createUnionTypeChecker,
-    shape: createShapeTypeChecker,
-    exact: createStrictShapeTypeChecker,
-  };
-
-  /**
-   * inlined Object.is polyfill to avoid requiring consumers ship their own
-   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
-   */
-  /*eslint-disable no-self-compare*/
-  function is(x, y) {
-    // SameValue algorithm
-    if (x === y) {
-      // Steps 1-5, 7-10
-      // Steps 6.b-6.e: +0 != -0
-      return x !== 0 || 1 / x === 1 / y;
-    } else {
-      // Step 6.a: NaN == NaN
-      return x !== x && y !== y;
-    }
-  }
-  /*eslint-enable no-self-compare*/
-
-  /**
-   * We use an Error-like object for backward compatibility as people may call
-   * PropTypes directly and inspect their output. However, we don't use real
-   * Errors anymore. We don't inspect their stack anyway, and creating them
-   * is prohibitively expensive if they are created too often, such as what
-   * happens in oneOfType() for any type before the one that matched.
-   */
-  function PropTypeError(message, data) {
-    this.message = message;
-    this.data = data && typeof data === 'object' ? data: {};
-    this.stack = '';
-  }
-  // Make `instanceof Error` still work for returned errors.
-  PropTypeError.prototype = Error.prototype;
-
-  function createChainableTypeChecker(validate) {
-    if (process.env.NODE_ENV !== 'production') {
-      var manualPropTypeCallCache = {};
-      var manualPropTypeWarningCount = 0;
-    }
-    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
-      componentName = componentName || ANONYMOUS;
-      propFullName = propFullName || propName;
-
-      if (secret !== ReactPropTypesSecret$1) {
-        if (throwOnDirectAccess) {
-          // New behavior only for users of `prop-types` package
-          var err = new Error(
-            'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
-            'Use `PropTypes.checkPropTypes()` to call them. ' +
-            'Read more at http://fb.me/use-check-prop-types'
-          );
-          err.name = 'Invariant Violation';
-          throw err;
-        } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
-          // Old behavior for people using React.PropTypes
-          var cacheKey = componentName + ':' + propName;
-          if (
-            !manualPropTypeCallCache[cacheKey] &&
-            // Avoid spamming the console because they are often not actionable except for lib authors
-            manualPropTypeWarningCount < 3
-          ) {
-            printWarning(
-              'You are manually calling a React.PropTypes validation ' +
-              'function for the `' + propFullName + '` prop on `' + componentName + '`. This is deprecated ' +
-              'and will throw in the standalone `prop-types` package. ' +
-              'You may be seeing this warning due to a third-party PropTypes ' +
-              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.'
-            );
-            manualPropTypeCallCache[cacheKey] = true;
-            manualPropTypeWarningCount++;
-          }
-        }
-      }
-      if (props[propName] == null) {
-        if (isRequired) {
-          if (props[propName] === null) {
-            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
-          }
-          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
-        }
-        return null;
-      } else {
-        return validate(props, propName, componentName, location, propFullName);
-      }
-    }
-
-    var chainedCheckType = checkType.bind(null, false);
-    chainedCheckType.isRequired = checkType.bind(null, true);
-
-    return chainedCheckType;
-  }
-
-  function createPrimitiveTypeChecker(expectedType) {
-    function validate(props, propName, componentName, location, propFullName, secret) {
-      var propValue = props[propName];
-      var propType = getPropType(propValue);
-      if (propType !== expectedType) {
-        // `propValue` being instance of, say, date/regexp, pass the 'object'
-        // check, but we can offer a more precise error message here rather than
-        // 'of type `object`'.
-        var preciseType = getPreciseType(propValue);
-
-        return new PropTypeError(
-          'Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'),
-          {expectedType: expectedType}
-        );
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createAnyTypeChecker() {
-    return createChainableTypeChecker(emptyFunctionThatReturnsNull);
-  }
-
-  function createArrayOfTypeChecker(typeChecker) {
-    function validate(props, propName, componentName, location, propFullName) {
-      if (typeof typeChecker !== 'function') {
-        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
-      }
-      var propValue = props[propName];
-      if (!Array.isArray(propValue)) {
-        var propType = getPropType(propValue);
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
-      }
-      for (var i = 0; i < propValue.length; i++) {
-        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret$1);
-        if (error instanceof Error) {
-          return error;
-        }
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createElementTypeChecker() {
-    function validate(props, propName, componentName, location, propFullName) {
-      var propValue = props[propName];
-      if (!isValidElement(propValue)) {
-        var propType = getPropType(propValue);
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createElementTypeTypeChecker() {
-    function validate(props, propName, componentName, location, propFullName) {
-      var propValue = props[propName];
-      if (!ReactIs$1.isValidElementType(propValue)) {
-        var propType = getPropType(propValue);
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createInstanceTypeChecker(expectedClass) {
-    function validate(props, propName, componentName, location, propFullName) {
-      if (!(props[propName] instanceof expectedClass)) {
-        var expectedClassName = expectedClass.name || ANONYMOUS;
-        var actualClassName = getClassName(props[propName]);
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createEnumTypeChecker(expectedValues) {
-    if (!Array.isArray(expectedValues)) {
-      if (process.env.NODE_ENV !== 'production') {
-        if (arguments.length > 1) {
-          printWarning(
-            'Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' +
-            'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).'
-          );
-        } else {
-          printWarning('Invalid argument supplied to oneOf, expected an array.');
-        }
-      }
-      return emptyFunctionThatReturnsNull;
-    }
-
-    function validate(props, propName, componentName, location, propFullName) {
-      var propValue = props[propName];
-      for (var i = 0; i < expectedValues.length; i++) {
-        if (is(propValue, expectedValues[i])) {
-          return null;
-        }
-      }
-
-      var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
-        var type = getPreciseType(value);
-        if (type === 'symbol') {
-          return String(value);
-        }
-        return value;
-      });
-      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + String(propValue) + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createObjectOfTypeChecker(typeChecker) {
-    function validate(props, propName, componentName, location, propFullName) {
-      if (typeof typeChecker !== 'function') {
-        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
-      }
-      var propValue = props[propName];
-      var propType = getPropType(propValue);
-      if (propType !== 'object') {
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
-      }
-      for (var key in propValue) {
-        if (has$1(propValue, key)) {
-          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
-          if (error instanceof Error) {
-            return error;
-          }
-        }
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createUnionTypeChecker(arrayOfTypeCheckers) {
-    if (!Array.isArray(arrayOfTypeCheckers)) {
-      process.env.NODE_ENV !== 'production' ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
-      return emptyFunctionThatReturnsNull;
-    }
-
-    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
-      var checker = arrayOfTypeCheckers[i];
-      if (typeof checker !== 'function') {
-        printWarning(
-          'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
-          'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.'
-        );
-        return emptyFunctionThatReturnsNull;
-      }
-    }
-
-    function validate(props, propName, componentName, location, propFullName) {
-      var expectedTypes = [];
-      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
-        var checker = arrayOfTypeCheckers[i];
-        var checkerResult = checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret$1);
-        if (checkerResult == null) {
-          return null;
-        }
-        if (checkerResult.data && has$1(checkerResult.data, 'expectedType')) {
-          expectedTypes.push(checkerResult.data.expectedType);
-        }
-      }
-      var expectedTypesMessage = (expectedTypes.length > 0) ? ', expected one of type [' + expectedTypes.join(', ') + ']': '';
-      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`' + expectedTypesMessage + '.'));
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createNodeChecker() {
-    function validate(props, propName, componentName, location, propFullName) {
-      if (!isNode(props[propName])) {
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function invalidValidatorError(componentName, location, propFullName, key, type) {
-    return new PropTypeError(
-      (componentName || 'React class') + ': ' + location + ' type `' + propFullName + '.' + key + '` is invalid; ' +
-      'it must be a function, usually from the `prop-types` package, but received `' + type + '`.'
-    );
-  }
-
-  function createShapeTypeChecker(shapeTypes) {
-    function validate(props, propName, componentName, location, propFullName) {
-      var propValue = props[propName];
-      var propType = getPropType(propValue);
-      if (propType !== 'object') {
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
-      }
-      for (var key in shapeTypes) {
-        var checker = shapeTypes[key];
-        if (typeof checker !== 'function') {
-          return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
-        }
-        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
-        if (error) {
-          return error;
-        }
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createStrictShapeTypeChecker(shapeTypes) {
-    function validate(props, propName, componentName, location, propFullName) {
-      var propValue = props[propName];
-      var propType = getPropType(propValue);
-      if (propType !== 'object') {
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
-      }
-      // We need to check all keys in case some are required but missing from props.
-      var allKeys = assign$2({}, props[propName], shapeTypes);
-      for (var key in allKeys) {
-        var checker = shapeTypes[key];
-        if (has$1(shapeTypes, key) && typeof checker !== 'function') {
-          return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
-        }
-        if (!checker) {
-          return new PropTypeError(
-            'Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' +
-            '\nBad object: ' + JSON.stringify(props[propName], null, '  ') +
-            '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  ')
-          );
-        }
-        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
-        if (error) {
-          return error;
-        }
-      }
-      return null;
-    }
-
-    return createChainableTypeChecker(validate);
-  }
-
-  function isNode(propValue) {
-    switch (typeof propValue) {
-      case 'number':
-      case 'string':
-      case 'undefined':
-        return true;
-      case 'boolean':
-        return !propValue;
-      case 'object':
-        if (Array.isArray(propValue)) {
-          return propValue.every(isNode);
-        }
-        if (propValue === null || isValidElement(propValue)) {
-          return true;
-        }
-
-        var iteratorFn = getIteratorFn(propValue);
-        if (iteratorFn) {
-          var iterator = iteratorFn.call(propValue);
-          var step;
-          if (iteratorFn !== propValue.entries) {
-            while (!(step = iterator.next()).done) {
-              if (!isNode(step.value)) {
-                return false;
-              }
-            }
-          } else {
-            // Iterator will provide entry [k,v] tuples rather than values.
-            while (!(step = iterator.next()).done) {
-              var entry = step.value;
-              if (entry) {
-                if (!isNode(entry[1])) {
-                  return false;
-                }
-              }
-            }
-          }
-        } else {
-          return false;
-        }
-
-        return true;
-      default:
-        return false;
-    }
-  }
-
-  function isSymbol(propType, propValue) {
-    // Native Symbol.
-    if (propType === 'symbol') {
-      return true;
-    }
-
-    // falsy value can't be a Symbol
-    if (!propValue) {
-      return false;
-    }
-
-    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
-    if (propValue['@@toStringTag'] === 'Symbol') {
-      return true;
-    }
-
-    // Fallback for non-spec compliant Symbols which are polyfilled.
-    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
-      return true;
-    }
-
-    return false;
-  }
-
-  // Equivalent of `typeof` but with special handling for array and regexp.
-  function getPropType(propValue) {
-    var propType = typeof propValue;
-    if (Array.isArray(propValue)) {
-      return 'array';
-    }
-    if (propValue instanceof RegExp) {
-      // Old webkits (at least until Android 4.0) return 'function' rather than
-      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
-      // passes PropTypes.object.
-      return 'object';
-    }
-    if (isSymbol(propType, propValue)) {
-      return 'symbol';
-    }
-    return propType;
-  }
-
-  // This handles more types than `getPropType`. Only used for error messages.
-  // See `createPrimitiveTypeChecker`.
-  function getPreciseType(propValue) {
-    if (typeof propValue === 'undefined' || propValue === null) {
-      return '' + propValue;
-    }
-    var propType = getPropType(propValue);
-    if (propType === 'object') {
-      if (propValue instanceof Date) {
-        return 'date';
-      } else if (propValue instanceof RegExp) {
-        return 'regexp';
-      }
-    }
-    return propType;
-  }
-
-  // Returns a string that is postfixed to a warning about an invalid type.
-  // For example, "undefined" or "of type array"
-  function getPostfixForTypeWarning(value) {
-    var type = getPreciseType(value);
-    switch (type) {
-      case 'array':
-      case 'object':
-        return 'an ' + type;
-      case 'boolean':
-      case 'date':
-      case 'regexp':
-        return 'a ' + type;
-      default:
-        return type;
-    }
-  }
-
-  // Returns class name of the object, if any.
-  function getClassName(propValue) {
-    if (!propValue.constructor || !propValue.constructor.name) {
-      return ANONYMOUS;
-    }
-    return propValue.constructor.name;
-  }
-
-  ReactPropTypes.checkPropTypes = checkPropTypes;
-  ReactPropTypes.resetWarningCache = checkPropTypes.resetWarningCache;
-  ReactPropTypes.PropTypes = ReactPropTypes;
-
-  return ReactPropTypes;
-};
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-var ReactPropTypesSecret = ReactPropTypesSecret_1;
-
-function emptyFunction() {}
-function emptyFunctionWithReset() {}
-emptyFunctionWithReset.resetWarningCache = emptyFunction;
-
-var factoryWithThrowingShims = function() {
-  function shim(props, propName, componentName, location, propFullName, secret) {
-    if (secret === ReactPropTypesSecret) {
-      // It is still safe when called from React.
-      return;
-    }
-    var err = new Error(
-      'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
-      'Use PropTypes.checkPropTypes() to call them. ' +
-      'Read more at http://fb.me/use-check-prop-types'
-    );
-    err.name = 'Invariant Violation';
-    throw err;
-  }  shim.isRequired = shim;
-  function getShim() {
-    return shim;
-  }  // Important!
-  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
-  var ReactPropTypes = {
-    array: shim,
-    bigint: shim,
-    bool: shim,
-    func: shim,
-    number: shim,
-    object: shim,
-    string: shim,
-    symbol: shim,
-
-    any: shim,
-    arrayOf: getShim,
-    element: shim,
-    elementType: shim,
-    instanceOf: getShim,
-    node: shim,
-    objectOf: getShim,
-    oneOf: getShim,
-    oneOfType: getShim,
-    shape: getShim,
-    exact: getShim,
-
-    checkPropTypes: emptyFunctionWithReset,
-    resetWarningCache: emptyFunction
-  };
-
-  ReactPropTypes.PropTypes = ReactPropTypes;
-
-  return ReactPropTypes;
-};
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-if (process.env.NODE_ENV !== 'production') {
-  var ReactIs = reactIs$1.exports;
-
-  // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
-  var throwOnDirectAccess = true;
-  propTypes$1.exports = factoryWithTypeCheckers(ReactIs.isElement, throwOnDirectAccess);
-} else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  propTypes$1.exports = factoryWithThrowingShims();
-}
-
-var PropTypes = propTypes$1.exports;
+var React__namespace = /*#__PURE__*/_interopNamespace(React);
+
+const Loading = () => (React__default["default"].createElement("svg", { version: "1.1", id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "24px", height: "30px", viewBox: "0 0 24 30", style: { enableBackground: 'new 0 0 50 50' }, xmlSpace: "preserve" },
+    React__default["default"].createElement("rect", { x: "0", y: "10", width: "4", height: "10", fill: "#333", opacity: "0.2" },
+        React__default["default"].createElement("animate", { attributeName: "opacity", attributeType: "XML", values: "0.2; 1; .2", begin: "0s", dur: "0.6s", repeatCount: "indefinite" }),
+        React__default["default"].createElement("animate", { attributeName: "height", attributeType: "XML", values: "10; 20; 10", begin: "0s", dur: "0.6s", repeatCount: "indefinite" }),
+        React__default["default"].createElement("animate", { attributeName: "y", attributeType: "XML", values: "10; 5; 10", begin: "0s", dur: "0.6s", repeatCount: "indefinite" })),
+    React__default["default"].createElement("rect", { x: "8", y: "10", width: "4", height: "10", fill: "#333", opacity: "0.2" },
+        React__default["default"].createElement("animate", { attributeName: "opacity", attributeType: "XML", values: "0.2; 1; .2", begin: "0.15s", dur: "0.6s", repeatCount: "indefinite" }),
+        React__default["default"].createElement("animate", { attributeName: "height", attributeType: "XML", values: "10; 20; 10", begin: "0.15s", dur: "0.6s", repeatCount: "indefinite" }),
+        React__default["default"].createElement("animate", { attributeName: "y", attributeType: "XML", values: "10; 5; 10", begin: "0.15s", dur: "0.6s", repeatCount: "indefinite" })),
+    React__default["default"].createElement("rect", { x: "16", y: "10", width: "4", height: "10", fill: "#333", opacity: "0.2" },
+        React__default["default"].createElement("animate", { attributeName: "opacity", attributeType: "XML", values: "0.2; 1; .2", begin: "0.3s", dur: "0.6s", repeatCount: "indefinite" }),
+        React__default["default"].createElement("animate", { attributeName: "height", attributeType: "XML", values: "10; 20; 10", begin: "0.3s", dur: "0.6s", repeatCount: "indefinite" }),
+        React__default["default"].createElement("animate", { attributeName: "y", attributeType: "XML", values: "10; 5; 10", begin: "0.3s", dur: "0.6s", repeatCount: "indefinite" }))));
 
 /******************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -6042,7 +4716,7 @@ function removeClientSetsFromDocument(document) {
     return modifiedDoc;
 }
 
-var hasOwnProperty$i = Object.prototype.hasOwnProperty;
+var hasOwnProperty$j = Object.prototype.hasOwnProperty;
 function mergeDeep() {
     var sources = [];
     for (var _i = 0; _i < arguments.length; _i++) {
@@ -6079,7 +4753,7 @@ var DeepMerger = (function () {
         }
         if (isNonNullObject$1(source) && isNonNullObject$1(target)) {
             Object.keys(source).forEach(function (sourceKey) {
-                if (hasOwnProperty$i.call(target, sourceKey)) {
+                if (hasOwnProperty$j.call(target, sourceKey)) {
                     var targetValue = target[sourceKey];
                     if (source[sourceKey] !== targetValue) {
                         var result = _this.reconciler.apply(_this, __spreadArray([target, source, sourceKey], context, false));
@@ -7113,286 +5787,6 @@ function mergeOptions(defaults, options) {
     });
 }
 
-var contextKey = canUseSymbol$1
-    ? Symbol.for('__APOLLO_CONTEXT__')
-    : '__APOLLO_CONTEXT__';
-function getApolloContext() {
-    var context = React__namespace.createContext[contextKey];
-    if (!context) {
-        Object.defineProperty(React__namespace.createContext, contextKey, {
-            value: context = React__namespace.createContext({}),
-            enumerable: false,
-            writable: false,
-            configurable: true,
-        });
-        context.displayName = 'ApolloContext';
-    }
-    return context;
-}
-
-var ApolloProvider = function (_a) {
-    var client = _a.client, children = _a.children;
-    var ApolloContext = getApolloContext();
-    return (React__namespace.createElement(ApolloContext.Consumer, null, function (context) {
-        if (context === void 0) { context = {}; }
-        if (client && context.client !== client) {
-            context = Object.assign({}, context, { client: client });
-        }
-        __DEV__ ? invariant$2(context.client, 'ApolloProvider was not passed a client instance. Make ' +
-            'sure you pass in your client via the "client" prop.') : invariant$2(context.client, 28);
-        return (React__namespace.createElement(ApolloContext.Provider, { value: context }, children));
-    }));
-};
-
-function useApolloClient(override) {
-    var context = React.useContext(getApolloContext());
-    var client = override || context.client;
-    __DEV__ ? invariant$2(!!client, 'Could not find "client" in the context or passed in as an option. ' +
-        'Wrap the root component in an <ApolloProvider>, or pass an ApolloClient ' +
-        'instance in via options.') : invariant$2(!!client, 31);
-    return client;
-}
-
-var didWarnUncachedGetSnapshot = false;
-var uSESKey = "useSyncExternalStore";
-var realHook = React__namespace[uSESKey];
-var useSyncExternalStore = realHook || (function (subscribe, getSnapshot, getServerSnapshot) {
-    var value = getSnapshot();
-    if (__DEV__ &&
-        !didWarnUncachedGetSnapshot &&
-        value !== getSnapshot()) {
-        didWarnUncachedGetSnapshot = true;
-        __DEV__ && invariant$2.error('The result of getSnapshot should be cached to avoid an infinite loop');
-    }
-    var _a = React__namespace.useState({ inst: { value: value, getSnapshot: getSnapshot } }), inst = _a[0].inst, forceUpdate = _a[1];
-    if (canUseLayoutEffect) {
-        React__namespace.useLayoutEffect(function () {
-            Object.assign(inst, { value: value, getSnapshot: getSnapshot });
-            if (checkIfSnapshotChanged(inst)) {
-                forceUpdate({ inst: inst });
-            }
-        }, [subscribe, value, getSnapshot]);
-    }
-    else {
-        Object.assign(inst, { value: value, getSnapshot: getSnapshot });
-    }
-    React__namespace.useEffect(function () {
-        if (checkIfSnapshotChanged(inst)) {
-            forceUpdate({ inst: inst });
-        }
-        return subscribe(function handleStoreChange() {
-            if (checkIfSnapshotChanged(inst)) {
-                forceUpdate({ inst: inst });
-            }
-        });
-    }, [subscribe]);
-    return value;
-});
-function checkIfSnapshotChanged(_a) {
-    var value = _a.value, getSnapshot = _a.getSnapshot;
-    try {
-        return value !== getSnapshot();
-    }
-    catch (_b) {
-        return true;
-    }
-}
-
-var _a$3 = Object.prototype, toString$1 = _a$3.toString, hasOwnProperty$h = _a$3.hasOwnProperty;
-var fnToStr$1 = Function.prototype.toString;
-var previousComparisons = new Map();
-/**
- * Performs a deep equality check on two JavaScript values, tolerating cycles.
- */
-function equal$1(a, b) {
-    try {
-        return check(a, b);
-    }
-    finally {
-        previousComparisons.clear();
-    }
-}
-function check(a, b) {
-    // If the two values are strictly equal, our job is easy.
-    if (a === b) {
-        return true;
-    }
-    // Object.prototype.toString returns a representation of the runtime type of
-    // the given value that is considerably more precise than typeof.
-    var aTag = toString$1.call(a);
-    var bTag = toString$1.call(b);
-    // If the runtime types of a and b are different, they could maybe be equal
-    // under some interpretation of equality, but for simplicity and performance
-    // we just return false instead.
-    if (aTag !== bTag) {
-        return false;
-    }
-    switch (aTag) {
-        case '[object Array]':
-            // Arrays are a lot like other objects, but we can cheaply compare their
-            // lengths as a short-cut before comparing their elements.
-            if (a.length !== b.length)
-                return false;
-        // Fall through to object case...
-        case '[object Object]': {
-            if (previouslyCompared(a, b))
-                return true;
-            var aKeys = definedKeys(a);
-            var bKeys = definedKeys(b);
-            // If `a` and `b` have a different number of enumerable keys, they
-            // must be different.
-            var keyCount = aKeys.length;
-            if (keyCount !== bKeys.length)
-                return false;
-            // Now make sure they have the same keys.
-            for (var k = 0; k < keyCount; ++k) {
-                if (!hasOwnProperty$h.call(b, aKeys[k])) {
-                    return false;
-                }
-            }
-            // Finally, check deep equality of all child properties.
-            for (var k = 0; k < keyCount; ++k) {
-                var key = aKeys[k];
-                if (!check(a[key], b[key])) {
-                    return false;
-                }
-            }
-            return true;
-        }
-        case '[object Error]':
-            return a.name === b.name && a.message === b.message;
-        case '[object Number]':
-            // Handle NaN, which is !== itself.
-            if (a !== a)
-                return b !== b;
-        // Fall through to shared +a === +b case...
-        case '[object Boolean]':
-        case '[object Date]':
-            return +a === +b;
-        case '[object RegExp]':
-        case '[object String]':
-            return a == "".concat(b);
-        case '[object Map]':
-        case '[object Set]': {
-            if (a.size !== b.size)
-                return false;
-            if (previouslyCompared(a, b))
-                return true;
-            var aIterator = a.entries();
-            var isMap = aTag === '[object Map]';
-            while (true) {
-                var info = aIterator.next();
-                if (info.done)
-                    break;
-                // If a instanceof Set, aValue === aKey.
-                var _a = info.value, aKey = _a[0], aValue = _a[1];
-                // So this works the same way for both Set and Map.
-                if (!b.has(aKey)) {
-                    return false;
-                }
-                // However, we care about deep equality of values only when dealing
-                // with Map structures.
-                if (isMap && !check(aValue, b.get(aKey))) {
-                    return false;
-                }
-            }
-            return true;
-        }
-        case '[object Uint16Array]':
-        case '[object Uint8Array]': // Buffer, in Node.js.
-        case '[object Uint32Array]':
-        case '[object Int32Array]':
-        case '[object Int8Array]':
-        case '[object Int16Array]':
-        case '[object ArrayBuffer]':
-            // DataView doesn't need these conversions, but the equality check is
-            // otherwise the same.
-            a = new Uint8Array(a);
-            b = new Uint8Array(b);
-        // Fall through...
-        case '[object DataView]': {
-            var len = a.byteLength;
-            if (len === b.byteLength) {
-                while (len-- && a[len] === b[len]) {
-                    // Keep looping as long as the bytes are equal.
-                }
-            }
-            return len === -1;
-        }
-        case '[object AsyncFunction]':
-        case '[object GeneratorFunction]':
-        case '[object AsyncGeneratorFunction]':
-        case '[object Function]': {
-            var aCode = fnToStr$1.call(a);
-            if (aCode !== fnToStr$1.call(b)) {
-                return false;
-            }
-            // We consider non-native functions equal if they have the same code
-            // (native functions require === because their code is censored).
-            // Note that this behavior is not entirely sound, since !== function
-            // objects with the same code can behave differently depending on
-            // their closure scope. However, any function can behave differently
-            // depending on the values of its input arguments (including this)
-            // and its calling context (including its closure scope), even
-            // though the function object is === to itself; and it is entirely
-            // possible for functions that are not === to behave exactly the
-            // same under all conceivable circumstances. Because none of these
-            // factors are statically decidable in JavaScript, JS function
-            // equality is not well-defined. This ambiguity allows us to
-            // consider the best possible heuristic among various imperfect
-            // options, and equating non-native functions that have the same
-            // code has enormous practical benefits, such as when comparing
-            // functions that are repeatedly passed as fresh function
-            // expressions within objects that are otherwise deeply equal. Since
-            // any function created from the same syntactic expression (in the
-            // same code location) will always stringify to the same code
-            // according to fnToStr.call, we can reasonably expect these
-            // repeatedly passed function expressions to have the same code, and
-            // thus behave "the same" (with all the caveats mentioned above),
-            // even though the runtime function objects are !== to one another.
-            return !endsWith(aCode, nativeCodeSuffix);
-        }
-    }
-    // Otherwise the values are not equal.
-    return false;
-}
-function definedKeys(obj) {
-    // Remember that the second argument to Array.prototype.filter will be
-    // used as `this` within the callback function.
-    return Object.keys(obj).filter(isDefinedKey, obj);
-}
-function isDefinedKey(key) {
-    return this[key] !== void 0;
-}
-var nativeCodeSuffix = "{ [native code] }";
-function endsWith(full, suffix) {
-    var fromIndex = full.length - suffix.length;
-    return fromIndex >= 0 &&
-        full.indexOf(suffix, fromIndex) === fromIndex;
-}
-function previouslyCompared(a, b) {
-    // Though cyclic references can make an object graph appear infinite from the
-    // perspective of a depth-first traversal, the graph still contains a finite
-    // number of distinct object references. We use the previousComparisons cache
-    // to avoid comparing the same pair of object references more than once, which
-    // guarantees termination (even if we end up comparing every object in one
-    // graph to every object in the other graph, which is extremely unlikely),
-    // while still allowing weird isomorphic structures (like rings with different
-    // lengths) a chance to pass the equality test.
-    var bSet = previousComparisons.get(a);
-    if (bSet) {
-        // Return true here because we can be sure false will be returned somewhere
-        // else if the objects are not equivalent.
-        if (bSet.has(b))
-            return true;
-    }
-    else {
-        previousComparisons.set(a, bSet = new Set);
-    }
-    bSet.add(b);
-    return false;
-}
-
 function fromError(errorValue) {
     return new Observable(function (observer) {
         observer.error(errorValue);
@@ -7725,7 +6119,7 @@ function responseIterator(response) {
     throw new Error("Unknown body type for responseIterator. Please pass a streamable response.");
 }
 
-var hasOwnProperty$g = Object.prototype.hasOwnProperty;
+var hasOwnProperty$i = Object.prototype.hasOwnProperty;
 function readMultipartBody(response, observer) {
     var _a, _b, _c;
     return __awaiter(this, void 0, void 0, function () {
@@ -7859,8 +6253,8 @@ function parseAndCheckHttpResponse(operations) {
                 throwServerError(response, result, "Response not successful: Received status code ".concat(response.status));
             }
             if (!Array.isArray(result) &&
-                !hasOwnProperty$g.call(result, "data") &&
-                !hasOwnProperty$g.call(result, "errors")) {
+                !hasOwnProperty$i.call(result, "data") &&
+                !hasOwnProperty$i.call(result, "errors")) {
                 throwServerError(response, result, "Server response was missing for query '".concat(Array.isArray(operations)
                     ? operations.map(function (op) { return op.operationName; })
                     : operations.operationName, "'."));
@@ -8134,6 +6528,201 @@ var HttpLink = (function (_super) {
     }
     return HttpLink;
 }(ApolloLink));
+
+var _a$3 = Object.prototype, toString$1 = _a$3.toString, hasOwnProperty$h = _a$3.hasOwnProperty;
+var fnToStr$1 = Function.prototype.toString;
+var previousComparisons = new Map();
+/**
+ * Performs a deep equality check on two JavaScript values, tolerating cycles.
+ */
+function equal$1(a, b) {
+    try {
+        return check(a, b);
+    }
+    finally {
+        previousComparisons.clear();
+    }
+}
+function check(a, b) {
+    // If the two values are strictly equal, our job is easy.
+    if (a === b) {
+        return true;
+    }
+    // Object.prototype.toString returns a representation of the runtime type of
+    // the given value that is considerably more precise than typeof.
+    var aTag = toString$1.call(a);
+    var bTag = toString$1.call(b);
+    // If the runtime types of a and b are different, they could maybe be equal
+    // under some interpretation of equality, but for simplicity and performance
+    // we just return false instead.
+    if (aTag !== bTag) {
+        return false;
+    }
+    switch (aTag) {
+        case '[object Array]':
+            // Arrays are a lot like other objects, but we can cheaply compare their
+            // lengths as a short-cut before comparing their elements.
+            if (a.length !== b.length)
+                return false;
+        // Fall through to object case...
+        case '[object Object]': {
+            if (previouslyCompared(a, b))
+                return true;
+            var aKeys = definedKeys(a);
+            var bKeys = definedKeys(b);
+            // If `a` and `b` have a different number of enumerable keys, they
+            // must be different.
+            var keyCount = aKeys.length;
+            if (keyCount !== bKeys.length)
+                return false;
+            // Now make sure they have the same keys.
+            for (var k = 0; k < keyCount; ++k) {
+                if (!hasOwnProperty$h.call(b, aKeys[k])) {
+                    return false;
+                }
+            }
+            // Finally, check deep equality of all child properties.
+            for (var k = 0; k < keyCount; ++k) {
+                var key = aKeys[k];
+                if (!check(a[key], b[key])) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        case '[object Error]':
+            return a.name === b.name && a.message === b.message;
+        case '[object Number]':
+            // Handle NaN, which is !== itself.
+            if (a !== a)
+                return b !== b;
+        // Fall through to shared +a === +b case...
+        case '[object Boolean]':
+        case '[object Date]':
+            return +a === +b;
+        case '[object RegExp]':
+        case '[object String]':
+            return a == "".concat(b);
+        case '[object Map]':
+        case '[object Set]': {
+            if (a.size !== b.size)
+                return false;
+            if (previouslyCompared(a, b))
+                return true;
+            var aIterator = a.entries();
+            var isMap = aTag === '[object Map]';
+            while (true) {
+                var info = aIterator.next();
+                if (info.done)
+                    break;
+                // If a instanceof Set, aValue === aKey.
+                var _a = info.value, aKey = _a[0], aValue = _a[1];
+                // So this works the same way for both Set and Map.
+                if (!b.has(aKey)) {
+                    return false;
+                }
+                // However, we care about deep equality of values only when dealing
+                // with Map structures.
+                if (isMap && !check(aValue, b.get(aKey))) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        case '[object Uint16Array]':
+        case '[object Uint8Array]': // Buffer, in Node.js.
+        case '[object Uint32Array]':
+        case '[object Int32Array]':
+        case '[object Int8Array]':
+        case '[object Int16Array]':
+        case '[object ArrayBuffer]':
+            // DataView doesn't need these conversions, but the equality check is
+            // otherwise the same.
+            a = new Uint8Array(a);
+            b = new Uint8Array(b);
+        // Fall through...
+        case '[object DataView]': {
+            var len = a.byteLength;
+            if (len === b.byteLength) {
+                while (len-- && a[len] === b[len]) {
+                    // Keep looping as long as the bytes are equal.
+                }
+            }
+            return len === -1;
+        }
+        case '[object AsyncFunction]':
+        case '[object GeneratorFunction]':
+        case '[object AsyncGeneratorFunction]':
+        case '[object Function]': {
+            var aCode = fnToStr$1.call(a);
+            if (aCode !== fnToStr$1.call(b)) {
+                return false;
+            }
+            // We consider non-native functions equal if they have the same code
+            // (native functions require === because their code is censored).
+            // Note that this behavior is not entirely sound, since !== function
+            // objects with the same code can behave differently depending on
+            // their closure scope. However, any function can behave differently
+            // depending on the values of its input arguments (including this)
+            // and its calling context (including its closure scope), even
+            // though the function object is === to itself; and it is entirely
+            // possible for functions that are not === to behave exactly the
+            // same under all conceivable circumstances. Because none of these
+            // factors are statically decidable in JavaScript, JS function
+            // equality is not well-defined. This ambiguity allows us to
+            // consider the best possible heuristic among various imperfect
+            // options, and equating non-native functions that have the same
+            // code has enormous practical benefits, such as when comparing
+            // functions that are repeatedly passed as fresh function
+            // expressions within objects that are otherwise deeply equal. Since
+            // any function created from the same syntactic expression (in the
+            // same code location) will always stringify to the same code
+            // according to fnToStr.call, we can reasonably expect these
+            // repeatedly passed function expressions to have the same code, and
+            // thus behave "the same" (with all the caveats mentioned above),
+            // even though the runtime function objects are !== to one another.
+            return !endsWith(aCode, nativeCodeSuffix);
+        }
+    }
+    // Otherwise the values are not equal.
+    return false;
+}
+function definedKeys(obj) {
+    // Remember that the second argument to Array.prototype.filter will be
+    // used as `this` within the callback function.
+    return Object.keys(obj).filter(isDefinedKey, obj);
+}
+function isDefinedKey(key) {
+    return this[key] !== void 0;
+}
+var nativeCodeSuffix = "{ [native code] }";
+function endsWith(full, suffix) {
+    var fromIndex = full.length - suffix.length;
+    return fromIndex >= 0 &&
+        full.indexOf(suffix, fromIndex) === fromIndex;
+}
+function previouslyCompared(a, b) {
+    // Though cyclic references can make an object graph appear infinite from the
+    // perspective of a depth-first traversal, the graph still contains a finite
+    // number of distinct object references. We use the previousComparisons cache
+    // to avoid comparing the same pair of object references more than once, which
+    // guarantees termination (even if we end up comparing every object in one
+    // graph to every object in the other graph, which is extremely unlikely),
+    // while still allowing weird isomorphic structures (like rings with different
+    // lengths) a chance to pass the equality test.
+    var bSet = previousComparisons.get(a);
+    if (bSet) {
+        // Return true here because we can be sure false will be returned somewhere
+        // else if the objects are not equivalent.
+        if (bSet.has(b))
+            return true;
+    }
+    else {
+        previousComparisons.set(a, bSet = new Set);
+    }
+    bSet.add(b);
+    return false;
+}
 
 // A [trie](https://en.wikipedia.org/wiki/Trie) data structure that holds
 // object keys weakly, yet can also hold non-object keys, unlike the
@@ -8413,7 +7002,7 @@ var Cache = /** @class */ (function () {
 var parentEntrySlot = new Slot$1();
 
 var _a$1;
-var hasOwnProperty$f = Object.prototype.hasOwnProperty;
+var hasOwnProperty$g = Object.prototype.hasOwnProperty;
 var 
 // This Array.from polyfill is restricted to working with Set<any> for now,
 // but we can improve the polyfill and add other input types, as needed. Note
@@ -8744,7 +7333,7 @@ function dep(options) {
         var dep = depsByKey.get(key);
         if (dep) {
             var m_1 = (entryMethodName &&
-                hasOwnProperty$f.call(EntryMethods, entryMethodName)) ? entryMethodName : "setDirty";
+                hasOwnProperty$g.call(EntryMethods, entryMethodName)) ? entryMethodName : "setDirty";
             // We have to use toArray(dep).forEach instead of dep.forEach, because
             // modifying a Set while iterating over it can cause elements in the Set
             // to be removed from the Set before they've been iterated over.
@@ -11351,7 +9940,7 @@ function isNetworkRequestInFlight(networkStatus) {
     return networkStatus ? networkStatus < 7 : false;
 }
 
-var assign$1 = Object.assign, hasOwnProperty$e = Object.hasOwnProperty;
+var assign$2 = Object.assign, hasOwnProperty$f = Object.hasOwnProperty;
 var ObservableQuery = (function (_super) {
     __extends(ObservableQuery, _super);
     function ObservableQuery(_a) {
@@ -11516,7 +10105,7 @@ var ObservableQuery = (function (_super) {
         else {
             reobserveOptions.fetchPolicy = 'network-only';
         }
-        if (__DEV__ && variables && hasOwnProperty$e.call(variables, "variables")) {
+        if (__DEV__ && variables && hasOwnProperty$f.call(variables, "variables")) {
             var queryDef = getQueryDefinition(this.query);
             var vars = queryDef.variableDefinitions;
             if (!vars || !vars.some(function (v) { return v.variable.name.value === "variables"; })) {
@@ -11747,7 +10336,7 @@ var ObservableQuery = (function (_super) {
         var mergedOptions = compact(this.options, newOptions || {});
         var options = useDisposableConcast
             ? mergedOptions
-            : assign$1(this.options, mergedOptions);
+            : assign$2(this.options, mergedOptions);
         if (!useDisposableConcast) {
             this.updatePolling();
             if (newOptions &&
@@ -12384,7 +10973,7 @@ function shouldWriteResult(result, errorPolicy) {
     return writeWithErrors;
 }
 
-var hasOwnProperty$d = Object.prototype.hasOwnProperty;
+var hasOwnProperty$e = Object.prototype.hasOwnProperty;
 var QueryManager = (function () {
     function QueryManager(_a) {
         var cache = _a.cache, link = _a.link, defaultOptions = _a.defaultOptions, _b = _a.queryDeduplication, queryDeduplication = _b === void 0 ? false : _b, onBroadcast = _a.onBroadcast, _c = _a.ssrMode, ssrMode = _c === void 0 ? false : _c, _d = _a.clientAwareness, clientAwareness = _d === void 0 ? {} : _d, localState = _a.localState, assumeImmutableResults = _a.assumeImmutableResults;
@@ -12563,7 +11152,7 @@ var QueryManager = (function () {
                 this.queries.forEach(function (_a, queryId) {
                     var observableQuery = _a.observableQuery;
                     var queryName = observableQuery && observableQuery.queryName;
-                    if (!queryName || !hasOwnProperty$d.call(updateQueries_1, queryName)) {
+                    if (!queryName || !hasOwnProperty$e.call(updateQueries_1, queryName)) {
                         return;
                     }
                     var updater = updateQueries_1[queryName];
@@ -13603,6 +12192,91 @@ var extras = {
 })(gql || (gql = {}));
 gql["default"] = gql;
 
+var contextKey = canUseSymbol$1
+    ? Symbol.for('__APOLLO_CONTEXT__')
+    : '__APOLLO_CONTEXT__';
+function getApolloContext() {
+    var context = React__namespace.createContext[contextKey];
+    if (!context) {
+        Object.defineProperty(React__namespace.createContext, contextKey, {
+            value: context = React__namespace.createContext({}),
+            enumerable: false,
+            writable: false,
+            configurable: true,
+        });
+        context.displayName = 'ApolloContext';
+    }
+    return context;
+}
+
+var ApolloProvider = function (_a) {
+    var client = _a.client, children = _a.children;
+    var ApolloContext = getApolloContext();
+    return (React__namespace.createElement(ApolloContext.Consumer, null, function (context) {
+        if (context === void 0) { context = {}; }
+        if (client && context.client !== client) {
+            context = Object.assign({}, context, { client: client });
+        }
+        __DEV__ ? invariant$2(context.client, 'ApolloProvider was not passed a client instance. Make ' +
+            'sure you pass in your client via the "client" prop.') : invariant$2(context.client, 28);
+        return (React__namespace.createElement(ApolloContext.Provider, { value: context }, children));
+    }));
+};
+
+function useApolloClient(override) {
+    var context = React.useContext(getApolloContext());
+    var client = override || context.client;
+    __DEV__ ? invariant$2(!!client, 'Could not find "client" in the context or passed in as an option. ' +
+        'Wrap the root component in an <ApolloProvider>, or pass an ApolloClient ' +
+        'instance in via options.') : invariant$2(!!client, 31);
+    return client;
+}
+
+var didWarnUncachedGetSnapshot = false;
+var uSESKey = "useSyncExternalStore";
+var realHook = React__namespace[uSESKey];
+var useSyncExternalStore = realHook || (function (subscribe, getSnapshot, getServerSnapshot) {
+    var value = getSnapshot();
+    if (__DEV__ &&
+        !didWarnUncachedGetSnapshot &&
+        value !== getSnapshot()) {
+        didWarnUncachedGetSnapshot = true;
+        __DEV__ && invariant$2.error('The result of getSnapshot should be cached to avoid an infinite loop');
+    }
+    var _a = React__namespace.useState({ inst: { value: value, getSnapshot: getSnapshot } }), inst = _a[0].inst, forceUpdate = _a[1];
+    if (canUseLayoutEffect) {
+        React__namespace.useLayoutEffect(function () {
+            Object.assign(inst, { value: value, getSnapshot: getSnapshot });
+            if (checkIfSnapshotChanged(inst)) {
+                forceUpdate({ inst: inst });
+            }
+        }, [subscribe, value, getSnapshot]);
+    }
+    else {
+        Object.assign(inst, { value: value, getSnapshot: getSnapshot });
+    }
+    React__namespace.useEffect(function () {
+        if (checkIfSnapshotChanged(inst)) {
+            forceUpdate({ inst: inst });
+        }
+        return subscribe(function handleStoreChange() {
+            if (checkIfSnapshotChanged(inst)) {
+                forceUpdate({ inst: inst });
+            }
+        });
+    }, [subscribe]);
+    return value;
+});
+function checkIfSnapshotChanged(_a) {
+    var value = _a.value, getSnapshot = _a.getSnapshot;
+    try {
+        return value !== getSnapshot();
+    }
+    catch (_b) {
+        return true;
+    }
+}
+
 var DocumentType;
 (function (DocumentType) {
     DocumentType[DocumentType["Query"] = 0] = "Query";
@@ -13696,7 +12370,7 @@ function verifyDocumentType(document, type) {
         "".concat(requiredOperationName, ", but a ").concat(usedOperationName, " was used instead.")) : invariant$2(operation.type === type, 36);
 }
 
-var hasOwnProperty$c = Object.prototype.hasOwnProperty;
+var hasOwnProperty$d = Object.prototype.hasOwnProperty;
 function useQuery(query, options) {
     if (options === void 0) { options = Object.create(null); }
     return useInternalState(useApolloClient(options.client), query).useQuery(options);
@@ -13790,7 +12464,7 @@ var InternalState = (function () {
                 finally {
                     obsQuery["last"] = last;
                 }
-                if (!hasOwnProperty$c.call(error, 'graphQLErrors')) {
+                if (!hasOwnProperty$d.call(error, 'graphQLErrors')) {
                     throw error;
                 }
                 var previousResult = _this.result;
@@ -14076,128 +12750,6 @@ function useMutation(mutation, options) {
     }, []);
     return [execute, __assign({ reset: reset }, result)];
 }
-
-function Query(props) {
-    var children = props.children, query = props.query, options = __rest(props, ["children", "query"]);
-    var result = useQuery(query, options);
-    return result ? children(result) : null;
-}
-Query.propTypes = {
-    client: propTypes$1.exports.object,
-    children: propTypes$1.exports.func.isRequired,
-    fetchPolicy: propTypes$1.exports.string,
-    notifyOnNetworkStatusChange: propTypes$1.exports.bool,
-    onCompleted: propTypes$1.exports.func,
-    onError: propTypes$1.exports.func,
-    pollInterval: propTypes$1.exports.number,
-    query: propTypes$1.exports.object.isRequired,
-    variables: propTypes$1.exports.object,
-    ssr: propTypes$1.exports.bool,
-    partialRefetch: propTypes$1.exports.bool,
-    returnPartialData: propTypes$1.exports.bool
-};
-
-var Loading = function Loading() {
-  return /*#__PURE__*/React__default["default"].createElement("svg", {
-    version: "1.1",
-    id: "Layer_1",
-    xmlns: "http://www.w3.org/2000/svg",
-    xmlnsXlink: "http://www.w3.org/1999/xlink",
-    x: "0px",
-    y: "0px",
-    width: "24px",
-    height: "30px",
-    viewBox: "0 0 24 30",
-    style: {
-      enableBackground: 'new 0 0 50 50'
-    },
-    xmlSpace: "preserve"
-  }, /*#__PURE__*/React__default["default"].createElement("rect", {
-    x: "0",
-    y: "10",
-    width: "4",
-    height: "10",
-    fill: "#333",
-    opacity: "0.2"
-  }, /*#__PURE__*/React__default["default"].createElement("animate", {
-    attributeName: "opacity",
-    attributeType: "XML",
-    values: "0.2; 1; .2",
-    begin: "0s",
-    dur: "0.6s",
-    repeatCount: "indefinite"
-  }), /*#__PURE__*/React__default["default"].createElement("animate", {
-    attributeName: "height",
-    attributeType: "XML",
-    values: "10; 20; 10",
-    begin: "0s",
-    dur: "0.6s",
-    repeatCount: "indefinite"
-  }), /*#__PURE__*/React__default["default"].createElement("animate", {
-    attributeName: "y",
-    attributeType: "XML",
-    values: "10; 5; 10",
-    begin: "0s",
-    dur: "0.6s",
-    repeatCount: "indefinite"
-  })), /*#__PURE__*/React__default["default"].createElement("rect", {
-    x: "8",
-    y: "10",
-    width: "4",
-    height: "10",
-    fill: "#333",
-    opacity: "0.2"
-  }, /*#__PURE__*/React__default["default"].createElement("animate", {
-    attributeName: "opacity",
-    attributeType: "XML",
-    values: "0.2; 1; .2",
-    begin: "0.15s",
-    dur: "0.6s",
-    repeatCount: "indefinite"
-  }), /*#__PURE__*/React__default["default"].createElement("animate", {
-    attributeName: "height",
-    attributeType: "XML",
-    values: "10; 20; 10",
-    begin: "0.15s",
-    dur: "0.6s",
-    repeatCount: "indefinite"
-  }), /*#__PURE__*/React__default["default"].createElement("animate", {
-    attributeName: "y",
-    attributeType: "XML",
-    values: "10; 5; 10",
-    begin: "0.15s",
-    dur: "0.6s",
-    repeatCount: "indefinite"
-  })), /*#__PURE__*/React__default["default"].createElement("rect", {
-    x: "16",
-    y: "10",
-    width: "4",
-    height: "10",
-    fill: "#333",
-    opacity: "0.2"
-  }, /*#__PURE__*/React__default["default"].createElement("animate", {
-    attributeName: "opacity",
-    attributeType: "XML",
-    values: "0.2; 1; .2",
-    begin: "0.3s",
-    dur: "0.6s",
-    repeatCount: "indefinite"
-  }), /*#__PURE__*/React__default["default"].createElement("animate", {
-    attributeName: "height",
-    attributeType: "XML",
-    values: "10; 20; 10",
-    begin: "0.3s",
-    dur: "0.6s",
-    repeatCount: "indefinite"
-  }), /*#__PURE__*/React__default["default"].createElement("animate", {
-    attributeName: "y",
-    attributeType: "XML",
-    values: "10; 5; 10",
-    begin: "0.3s",
-    dur: "0.6s",
-    repeatCount: "indefinite"
-  })));
-};
 
 const PORTAL_QUERY = gql `
   query PortalSiteQuery($id: ID!) {
@@ -17330,7 +15882,7 @@ function cleanEscapedString$1(input) {
   return matched[1].replace(doubleQuoteRegExp$1, "'");
 }
 
-function assign(target, object) {
+function assign$1(target, object) {
   if (target == null) {
     throw new TypeError('assign requires that input parameter not be null or undefined');
   }
@@ -21224,7 +19776,7 @@ function parse$1(dirtyDateString, dirtyFormatString, dirtyReferenceDate, options
 
       if (Array.isArray(result)) {
         utcDate = result[0];
-        assign(flags, result[1]); // Result is date
+        assign$1(flags, result[1]); // Result is date
       } else {
         utcDate = result;
       }
@@ -21348,9 +19900,1135 @@ function subYears(dirtyDate, dirtyAmount) {
   return addYears(dirtyDate, -amount);
 }
 
+var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+function getDefaultExportFromCjs (x) {
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+}
+
+function getAugmentedNamespace(n) {
+	if (n.__esModule) return n;
+	var a = Object.defineProperty({}, '__esModule', {value: true});
+	Object.keys(n).forEach(function (k) {
+		var d = Object.getOwnPropertyDescriptor(n, k);
+		Object.defineProperty(a, k, d.get ? d : {
+			enumerable: true,
+			get: function () {
+				return n[k];
+			}
+		});
+	});
+	return a;
+}
+
 var entry = {};
 
 var DatePicker$1 = {};
+
+var propTypes$1 = {exports: {}};
+
+var reactIs$1 = {exports: {}};
+
+var reactIs_production_min = {};
+
+/** @license React v16.13.1
+ * react-is.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+var b="function"===typeof Symbol&&Symbol.for,c=b?Symbol.for("react.element"):60103,d=b?Symbol.for("react.portal"):60106,e=b?Symbol.for("react.fragment"):60107,f=b?Symbol.for("react.strict_mode"):60108,g=b?Symbol.for("react.profiler"):60114,h=b?Symbol.for("react.provider"):60109,k=b?Symbol.for("react.context"):60110,l=b?Symbol.for("react.async_mode"):60111,m=b?Symbol.for("react.concurrent_mode"):60111,n=b?Symbol.for("react.forward_ref"):60112,p=b?Symbol.for("react.suspense"):60113,q=b?
+Symbol.for("react.suspense_list"):60120,r=b?Symbol.for("react.memo"):60115,t=b?Symbol.for("react.lazy"):60116,v=b?Symbol.for("react.block"):60121,w=b?Symbol.for("react.fundamental"):60117,x=b?Symbol.for("react.responder"):60118,y=b?Symbol.for("react.scope"):60119;
+function z(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c:switch(a=a.type,a){case l:case m:case e:case g:case f:case p:return a;default:switch(a=a&&a.$$typeof,a){case k:case n:case t:case r:case h:return a;default:return u}}case d:return u}}}function A(a){return z(a)===m}reactIs_production_min.AsyncMode=l;reactIs_production_min.ConcurrentMode=m;reactIs_production_min.ContextConsumer=k;reactIs_production_min.ContextProvider=h;reactIs_production_min.Element=c;reactIs_production_min.ForwardRef=n;reactIs_production_min.Fragment=e;reactIs_production_min.Lazy=t;reactIs_production_min.Memo=r;reactIs_production_min.Portal=d;
+reactIs_production_min.Profiler=g;reactIs_production_min.StrictMode=f;reactIs_production_min.Suspense=p;reactIs_production_min.isAsyncMode=function(a){return A(a)||z(a)===l};reactIs_production_min.isConcurrentMode=A;reactIs_production_min.isContextConsumer=function(a){return z(a)===k};reactIs_production_min.isContextProvider=function(a){return z(a)===h};reactIs_production_min.isElement=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===c};reactIs_production_min.isForwardRef=function(a){return z(a)===n};reactIs_production_min.isFragment=function(a){return z(a)===e};reactIs_production_min.isLazy=function(a){return z(a)===t};
+reactIs_production_min.isMemo=function(a){return z(a)===r};reactIs_production_min.isPortal=function(a){return z(a)===d};reactIs_production_min.isProfiler=function(a){return z(a)===g};reactIs_production_min.isStrictMode=function(a){return z(a)===f};reactIs_production_min.isSuspense=function(a){return z(a)===p};
+reactIs_production_min.isValidElementType=function(a){return "string"===typeof a||"function"===typeof a||a===e||a===m||a===g||a===f||a===p||a===q||"object"===typeof a&&null!==a&&(a.$$typeof===t||a.$$typeof===r||a.$$typeof===h||a.$$typeof===k||a.$$typeof===n||a.$$typeof===w||a.$$typeof===x||a.$$typeof===y||a.$$typeof===v)};reactIs_production_min.typeOf=z;
+
+var reactIs_development = {};
+
+/** @license React v16.13.1
+ * react-is.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+if (process.env.NODE_ENV !== "production") {
+  (function() {
+
+// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+// nor polyfill, then a plain number is used for performance.
+var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
+// (unstable) APIs that have been removed. Can we remove the symbols?
+
+var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
+var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
+var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
+var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
+var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
+var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
+
+function isValidElementType(type) {
+  return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
+}
+
+function typeOf(object) {
+  if (typeof object === 'object' && object !== null) {
+    var $$typeof = object.$$typeof;
+
+    switch ($$typeof) {
+      case REACT_ELEMENT_TYPE:
+        var type = object.type;
+
+        switch (type) {
+          case REACT_ASYNC_MODE_TYPE:
+          case REACT_CONCURRENT_MODE_TYPE:
+          case REACT_FRAGMENT_TYPE:
+          case REACT_PROFILER_TYPE:
+          case REACT_STRICT_MODE_TYPE:
+          case REACT_SUSPENSE_TYPE:
+            return type;
+
+          default:
+            var $$typeofType = type && type.$$typeof;
+
+            switch ($$typeofType) {
+              case REACT_CONTEXT_TYPE:
+              case REACT_FORWARD_REF_TYPE:
+              case REACT_LAZY_TYPE:
+              case REACT_MEMO_TYPE:
+              case REACT_PROVIDER_TYPE:
+                return $$typeofType;
+
+              default:
+                return $$typeof;
+            }
+
+        }
+
+      case REACT_PORTAL_TYPE:
+        return $$typeof;
+    }
+  }
+
+  return undefined;
+} // AsyncMode is deprecated along with isAsyncMode
+
+var AsyncMode = REACT_ASYNC_MODE_TYPE;
+var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+var ContextConsumer = REACT_CONTEXT_TYPE;
+var ContextProvider = REACT_PROVIDER_TYPE;
+var Element = REACT_ELEMENT_TYPE;
+var ForwardRef = REACT_FORWARD_REF_TYPE;
+var Fragment = REACT_FRAGMENT_TYPE;
+var Lazy = REACT_LAZY_TYPE;
+var Memo = REACT_MEMO_TYPE;
+var Portal = REACT_PORTAL_TYPE;
+var Profiler = REACT_PROFILER_TYPE;
+var StrictMode = REACT_STRICT_MODE_TYPE;
+var Suspense = REACT_SUSPENSE_TYPE;
+var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
+
+function isAsyncMode(object) {
+  {
+    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+
+      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
+    }
+  }
+
+  return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+}
+function isConcurrentMode(object) {
+  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+}
+function isContextConsumer(object) {
+  return typeOf(object) === REACT_CONTEXT_TYPE;
+}
+function isContextProvider(object) {
+  return typeOf(object) === REACT_PROVIDER_TYPE;
+}
+function isElement(object) {
+  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+}
+function isForwardRef(object) {
+  return typeOf(object) === REACT_FORWARD_REF_TYPE;
+}
+function isFragment(object) {
+  return typeOf(object) === REACT_FRAGMENT_TYPE;
+}
+function isLazy(object) {
+  return typeOf(object) === REACT_LAZY_TYPE;
+}
+function isMemo(object) {
+  return typeOf(object) === REACT_MEMO_TYPE;
+}
+function isPortal(object) {
+  return typeOf(object) === REACT_PORTAL_TYPE;
+}
+function isProfiler(object) {
+  return typeOf(object) === REACT_PROFILER_TYPE;
+}
+function isStrictMode(object) {
+  return typeOf(object) === REACT_STRICT_MODE_TYPE;
+}
+function isSuspense(object) {
+  return typeOf(object) === REACT_SUSPENSE_TYPE;
+}
+
+reactIs_development.AsyncMode = AsyncMode;
+reactIs_development.ConcurrentMode = ConcurrentMode;
+reactIs_development.ContextConsumer = ContextConsumer;
+reactIs_development.ContextProvider = ContextProvider;
+reactIs_development.Element = Element;
+reactIs_development.ForwardRef = ForwardRef;
+reactIs_development.Fragment = Fragment;
+reactIs_development.Lazy = Lazy;
+reactIs_development.Memo = Memo;
+reactIs_development.Portal = Portal;
+reactIs_development.Profiler = Profiler;
+reactIs_development.StrictMode = StrictMode;
+reactIs_development.Suspense = Suspense;
+reactIs_development.isAsyncMode = isAsyncMode;
+reactIs_development.isConcurrentMode = isConcurrentMode;
+reactIs_development.isContextConsumer = isContextConsumer;
+reactIs_development.isContextProvider = isContextProvider;
+reactIs_development.isElement = isElement;
+reactIs_development.isForwardRef = isForwardRef;
+reactIs_development.isFragment = isFragment;
+reactIs_development.isLazy = isLazy;
+reactIs_development.isMemo = isMemo;
+reactIs_development.isPortal = isPortal;
+reactIs_development.isProfiler = isProfiler;
+reactIs_development.isStrictMode = isStrictMode;
+reactIs_development.isSuspense = isSuspense;
+reactIs_development.isValidElementType = isValidElementType;
+reactIs_development.typeOf = typeOf;
+  })();
+}
+
+if (process.env.NODE_ENV === 'production') {
+  reactIs$1.exports = reactIs_production_min;
+} else {
+  reactIs$1.exports = reactIs_development;
+}
+
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+/* eslint-disable no-unused-vars */
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty$c = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+function toObject(val) {
+	if (val === null || val === undefined) {
+		throw new TypeError('Object.assign cannot be called with null or undefined');
+	}
+
+	return Object(val);
+}
+
+function shouldUseNative() {
+	try {
+		if (!Object.assign) {
+			return false;
+		}
+
+		// Detect buggy property enumeration order in older V8 versions.
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+		test1[5] = 'de';
+		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test2 = {};
+		for (var i = 0; i < 10; i++) {
+			test2['_' + String.fromCharCode(i)] = i;
+		}
+		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+			return test2[n];
+		});
+		if (order2.join('') !== '0123456789') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test3 = {};
+		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+			test3[letter] = letter;
+		});
+		if (Object.keys(Object.assign({}, test3)).join('') !==
+				'abcdefghijklmnopqrst') {
+			return false;
+		}
+
+		return true;
+	} catch (err) {
+		// We don't expect any of the above to throw, but better to be safe.
+		return false;
+	}
+}
+
+var objectAssign = shouldUseNative() ? Object.assign : function (target, source) {
+	var from;
+	var to = toObject(target);
+	var symbols;
+
+	for (var s = 1; s < arguments.length; s++) {
+		from = Object(arguments[s]);
+
+		for (var key in from) {
+			if (hasOwnProperty$c.call(from, key)) {
+				to[key] = from[key];
+			}
+		}
+
+		if (getOwnPropertySymbols) {
+			symbols = getOwnPropertySymbols(from);
+			for (var i = 0; i < symbols.length; i++) {
+				if (propIsEnumerable.call(from, symbols[i])) {
+					to[symbols[i]] = from[symbols[i]];
+				}
+			}
+		}
+	}
+
+	return to;
+};
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var ReactPropTypesSecret$3 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+var ReactPropTypesSecret_1 = ReactPropTypesSecret$3;
+
+var has$3 = Function.call.bind(Object.prototype.hasOwnProperty);
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var printWarning$1 = function() {};
+
+if (process.env.NODE_ENV !== 'production') {
+  var ReactPropTypesSecret$2 = ReactPropTypesSecret_1;
+  var loggedTypeFailures = {};
+  var has$2 = has$3;
+
+  printWarning$1 = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) { /**/ }
+  };
+}
+
+/**
+ * Assert that the values match with the type specs.
+ * Error messages are memorized and will only be shown once.
+ *
+ * @param {object} typeSpecs Map of name to a ReactPropType
+ * @param {object} values Runtime values that need to be type-checked
+ * @param {string} location e.g. "prop", "context", "child context"
+ * @param {string} componentName Name of the component for error messages.
+ * @param {?Function} getStack Returns the component stack.
+ * @private
+ */
+function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) {
+  if (process.env.NODE_ENV !== 'production') {
+    for (var typeSpecName in typeSpecs) {
+      if (has$2(typeSpecs, typeSpecName)) {
+        var error;
+        // Prop type validation may throw. In case they do, we don't want to
+        // fail the render phase where it didn't fail before. So we log it.
+        // After these have been cleaned up, we'll let them throw.
+        try {
+          // This is intentionally an invariant that gets caught. It's the same
+          // behavior as without this statement except with a better message.
+          if (typeof typeSpecs[typeSpecName] !== 'function') {
+            var err = Error(
+              (componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' +
+              'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.' +
+              'This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.'
+            );
+            err.name = 'Invariant Violation';
+            throw err;
+          }
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret$2);
+        } catch (ex) {
+          error = ex;
+        }
+        if (error && !(error instanceof Error)) {
+          printWarning$1(
+            (componentName || 'React class') + ': type specification of ' +
+            location + ' `' + typeSpecName + '` is invalid; the type checker ' +
+            'function must return `null` or an `Error` but returned a ' + typeof error + '. ' +
+            'You may have forgotten to pass an argument to the type checker ' +
+            'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' +
+            'shape all require an argument).'
+          );
+        }
+        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+          // Only monitor this failure once because there tends to be a lot of the
+          // same error.
+          loggedTypeFailures[error.message] = true;
+
+          var stack = getStack ? getStack() : '';
+
+          printWarning$1(
+            'Failed ' + location + ' type: ' + error.message + (stack != null ? stack : '')
+          );
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Resets warning cache when testing.
+ *
+ * @private
+ */
+checkPropTypes$1.resetWarningCache = function() {
+  if (process.env.NODE_ENV !== 'production') {
+    loggedTypeFailures = {};
+  }
+};
+
+var checkPropTypes_1 = checkPropTypes$1;
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var ReactIs$1 = reactIs$1.exports;
+var assign = objectAssign;
+
+var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
+var has$1 = has$3;
+var checkPropTypes = checkPropTypes_1;
+
+var printWarning = function() {};
+
+if (process.env.NODE_ENV !== 'production') {
+  printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+function emptyFunctionThatReturnsNull() {
+  return null;
+}
+
+var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
+  /* global Symbol */
+  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+
+  /**
+   * Returns the iterator method function contained on the iterable object.
+   *
+   * Be sure to invoke the function with the iterable as context:
+   *
+   *     var iteratorFn = getIteratorFn(myIterable);
+   *     if (iteratorFn) {
+   *       var iterator = iteratorFn.call(myIterable);
+   *       ...
+   *     }
+   *
+   * @param {?object} maybeIterable
+   * @return {?function}
+   */
+  function getIteratorFn(maybeIterable) {
+    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+    if (typeof iteratorFn === 'function') {
+      return iteratorFn;
+    }
+  }
+
+  /**
+   * Collection of methods that allow declaration and validation of props that are
+   * supplied to React components. Example usage:
+   *
+   *   var Props = require('ReactPropTypes');
+   *   var MyArticle = React.createClass({
+   *     propTypes: {
+   *       // An optional string prop named "description".
+   *       description: Props.string,
+   *
+   *       // A required enum prop named "category".
+   *       category: Props.oneOf(['News','Photos']).isRequired,
+   *
+   *       // A prop named "dialog" that requires an instance of Dialog.
+   *       dialog: Props.instanceOf(Dialog).isRequired
+   *     },
+   *     render: function() { ... }
+   *   });
+   *
+   * A more formal specification of how these methods are used:
+   *
+   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+   *   decl := ReactPropTypes.{type}(.isRequired)?
+   *
+   * Each and every declaration produces a function with the same signature. This
+   * allows the creation of custom validation functions. For example:
+   *
+   *  var MyLink = React.createClass({
+   *    propTypes: {
+   *      // An optional string or URI prop named "href".
+   *      href: function(props, propName, componentName) {
+   *        var propValue = props[propName];
+   *        if (propValue != null && typeof propValue !== 'string' &&
+   *            !(propValue instanceof URI)) {
+   *          return new Error(
+   *            'Expected a string or an URI for ' + propName + ' in ' +
+   *            componentName
+   *          );
+   *        }
+   *      }
+   *    },
+   *    render: function() {...}
+   *  });
+   *
+   * @internal
+   */
+
+  var ANONYMOUS = '<<anonymous>>';
+
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+  var ReactPropTypes = {
+    array: createPrimitiveTypeChecker('array'),
+    bigint: createPrimitiveTypeChecker('bigint'),
+    bool: createPrimitiveTypeChecker('boolean'),
+    func: createPrimitiveTypeChecker('function'),
+    number: createPrimitiveTypeChecker('number'),
+    object: createPrimitiveTypeChecker('object'),
+    string: createPrimitiveTypeChecker('string'),
+    symbol: createPrimitiveTypeChecker('symbol'),
+
+    any: createAnyTypeChecker(),
+    arrayOf: createArrayOfTypeChecker,
+    element: createElementTypeChecker(),
+    elementType: createElementTypeTypeChecker(),
+    instanceOf: createInstanceTypeChecker,
+    node: createNodeChecker(),
+    objectOf: createObjectOfTypeChecker,
+    oneOf: createEnumTypeChecker,
+    oneOfType: createUnionTypeChecker,
+    shape: createShapeTypeChecker,
+    exact: createStrictShapeTypeChecker,
+  };
+
+  /**
+   * inlined Object.is polyfill to avoid requiring consumers ship their own
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+   */
+  /*eslint-disable no-self-compare*/
+  function is(x, y) {
+    // SameValue algorithm
+    if (x === y) {
+      // Steps 1-5, 7-10
+      // Steps 6.b-6.e: +0 != -0
+      return x !== 0 || 1 / x === 1 / y;
+    } else {
+      // Step 6.a: NaN == NaN
+      return x !== x && y !== y;
+    }
+  }
+  /*eslint-enable no-self-compare*/
+
+  /**
+   * We use an Error-like object for backward compatibility as people may call
+   * PropTypes directly and inspect their output. However, we don't use real
+   * Errors anymore. We don't inspect their stack anyway, and creating them
+   * is prohibitively expensive if they are created too often, such as what
+   * happens in oneOfType() for any type before the one that matched.
+   */
+  function PropTypeError(message, data) {
+    this.message = message;
+    this.data = data && typeof data === 'object' ? data: {};
+    this.stack = '';
+  }
+  // Make `instanceof Error` still work for returned errors.
+  PropTypeError.prototype = Error.prototype;
+
+  function createChainableTypeChecker(validate) {
+    if (process.env.NODE_ENV !== 'production') {
+      var manualPropTypeCallCache = {};
+      var manualPropTypeWarningCount = 0;
+    }
+    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+      componentName = componentName || ANONYMOUS;
+      propFullName = propFullName || propName;
+
+      if (secret !== ReactPropTypesSecret$1) {
+        if (throwOnDirectAccess) {
+          // New behavior only for users of `prop-types` package
+          var err = new Error(
+            'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+            'Use `PropTypes.checkPropTypes()` to call them. ' +
+            'Read more at http://fb.me/use-check-prop-types'
+          );
+          err.name = 'Invariant Violation';
+          throw err;
+        } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
+          // Old behavior for people using React.PropTypes
+          var cacheKey = componentName + ':' + propName;
+          if (
+            !manualPropTypeCallCache[cacheKey] &&
+            // Avoid spamming the console because they are often not actionable except for lib authors
+            manualPropTypeWarningCount < 3
+          ) {
+            printWarning(
+              'You are manually calling a React.PropTypes validation ' +
+              'function for the `' + propFullName + '` prop on `' + componentName + '`. This is deprecated ' +
+              'and will throw in the standalone `prop-types` package. ' +
+              'You may be seeing this warning due to a third-party PropTypes ' +
+              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.'
+            );
+            manualPropTypeCallCache[cacheKey] = true;
+            manualPropTypeWarningCount++;
+          }
+        }
+      }
+      if (props[propName] == null) {
+        if (isRequired) {
+          if (props[propName] === null) {
+            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+          }
+          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+        }
+        return null;
+      } else {
+        return validate(props, propName, componentName, location, propFullName);
+      }
+    }
+
+    var chainedCheckType = checkType.bind(null, false);
+    chainedCheckType.isRequired = checkType.bind(null, true);
+
+    return chainedCheckType;
+  }
+
+  function createPrimitiveTypeChecker(expectedType) {
+    function validate(props, propName, componentName, location, propFullName, secret) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== expectedType) {
+        // `propValue` being instance of, say, date/regexp, pass the 'object'
+        // check, but we can offer a more precise error message here rather than
+        // 'of type `object`'.
+        var preciseType = getPreciseType(propValue);
+
+        return new PropTypeError(
+          'Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'),
+          {expectedType: expectedType}
+        );
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createAnyTypeChecker() {
+    return createChainableTypeChecker(emptyFunctionThatReturnsNull);
+  }
+
+  function createArrayOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+      }
+      var propValue = props[propName];
+      if (!Array.isArray(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+      }
+      for (var i = 0; i < propValue.length; i++) {
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret$1);
+        if (error instanceof Error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!isValidElement(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!ReactIs$1.isValidElementType(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createInstanceTypeChecker(expectedClass) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!(props[propName] instanceof expectedClass)) {
+        var expectedClassName = expectedClass.name || ANONYMOUS;
+        var actualClassName = getClassName(props[propName]);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createEnumTypeChecker(expectedValues) {
+    if (!Array.isArray(expectedValues)) {
+      if (process.env.NODE_ENV !== 'production') {
+        if (arguments.length > 1) {
+          printWarning(
+            'Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' +
+            'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).'
+          );
+        } else {
+          printWarning('Invalid argument supplied to oneOf, expected an array.');
+        }
+      }
+      return emptyFunctionThatReturnsNull;
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      for (var i = 0; i < expectedValues.length; i++) {
+        if (is(propValue, expectedValues[i])) {
+          return null;
+        }
+      }
+
+      var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
+        var type = getPreciseType(value);
+        if (type === 'symbol') {
+          return String(value);
+        }
+        return value;
+      });
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + String(propValue) + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createObjectOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+      }
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+      }
+      for (var key in propValue) {
+        if (has$1(propValue, key)) {
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
+          if (error instanceof Error) {
+            return error;
+          }
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createUnionTypeChecker(arrayOfTypeCheckers) {
+    if (!Array.isArray(arrayOfTypeCheckers)) {
+      process.env.NODE_ENV !== 'production' ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+      return emptyFunctionThatReturnsNull;
+    }
+
+    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+      var checker = arrayOfTypeCheckers[i];
+      if (typeof checker !== 'function') {
+        printWarning(
+          'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
+          'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.'
+        );
+        return emptyFunctionThatReturnsNull;
+      }
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var expectedTypes = [];
+      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+        var checker = arrayOfTypeCheckers[i];
+        var checkerResult = checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret$1);
+        if (checkerResult == null) {
+          return null;
+        }
+        if (checkerResult.data && has$1(checkerResult.data, 'expectedType')) {
+          expectedTypes.push(checkerResult.data.expectedType);
+        }
+      }
+      var expectedTypesMessage = (expectedTypes.length > 0) ? ', expected one of type [' + expectedTypes.join(', ') + ']': '';
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`' + expectedTypesMessage + '.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createNodeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!isNode(props[propName])) {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function invalidValidatorError(componentName, location, propFullName, key, type) {
+    return new PropTypeError(
+      (componentName || 'React class') + ': ' + location + ' type `' + propFullName + '.' + key + '` is invalid; ' +
+      'it must be a function, usually from the `prop-types` package, but received `' + type + '`.'
+    );
+  }
+
+  function createShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      for (var key in shapeTypes) {
+        var checker = shapeTypes[key];
+        if (typeof checker !== 'function') {
+          return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createStrictShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      // We need to check all keys in case some are required but missing from props.
+      var allKeys = assign({}, props[propName], shapeTypes);
+      for (var key in allKeys) {
+        var checker = shapeTypes[key];
+        if (has$1(shapeTypes, key) && typeof checker !== 'function') {
+          return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
+        }
+        if (!checker) {
+          return new PropTypeError(
+            'Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' +
+            '\nBad object: ' + JSON.stringify(props[propName], null, '  ') +
+            '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  ')
+          );
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function isNode(propValue) {
+    switch (typeof propValue) {
+      case 'number':
+      case 'string':
+      case 'undefined':
+        return true;
+      case 'boolean':
+        return !propValue;
+      case 'object':
+        if (Array.isArray(propValue)) {
+          return propValue.every(isNode);
+        }
+        if (propValue === null || isValidElement(propValue)) {
+          return true;
+        }
+
+        var iteratorFn = getIteratorFn(propValue);
+        if (iteratorFn) {
+          var iterator = iteratorFn.call(propValue);
+          var step;
+          if (iteratorFn !== propValue.entries) {
+            while (!(step = iterator.next()).done) {
+              if (!isNode(step.value)) {
+                return false;
+              }
+            }
+          } else {
+            // Iterator will provide entry [k,v] tuples rather than values.
+            while (!(step = iterator.next()).done) {
+              var entry = step.value;
+              if (entry) {
+                if (!isNode(entry[1])) {
+                  return false;
+                }
+              }
+            }
+          }
+        } else {
+          return false;
+        }
+
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  function isSymbol(propType, propValue) {
+    // Native Symbol.
+    if (propType === 'symbol') {
+      return true;
+    }
+
+    // falsy value can't be a Symbol
+    if (!propValue) {
+      return false;
+    }
+
+    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+    if (propValue['@@toStringTag'] === 'Symbol') {
+      return true;
+    }
+
+    // Fallback for non-spec compliant Symbols which are polyfilled.
+    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // Equivalent of `typeof` but with special handling for array and regexp.
+  function getPropType(propValue) {
+    var propType = typeof propValue;
+    if (Array.isArray(propValue)) {
+      return 'array';
+    }
+    if (propValue instanceof RegExp) {
+      // Old webkits (at least until Android 4.0) return 'function' rather than
+      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+      // passes PropTypes.object.
+      return 'object';
+    }
+    if (isSymbol(propType, propValue)) {
+      return 'symbol';
+    }
+    return propType;
+  }
+
+  // This handles more types than `getPropType`. Only used for error messages.
+  // See `createPrimitiveTypeChecker`.
+  function getPreciseType(propValue) {
+    if (typeof propValue === 'undefined' || propValue === null) {
+      return '' + propValue;
+    }
+    var propType = getPropType(propValue);
+    if (propType === 'object') {
+      if (propValue instanceof Date) {
+        return 'date';
+      } else if (propValue instanceof RegExp) {
+        return 'regexp';
+      }
+    }
+    return propType;
+  }
+
+  // Returns a string that is postfixed to a warning about an invalid type.
+  // For example, "undefined" or "of type array"
+  function getPostfixForTypeWarning(value) {
+    var type = getPreciseType(value);
+    switch (type) {
+      case 'array':
+      case 'object':
+        return 'an ' + type;
+      case 'boolean':
+      case 'date':
+      case 'regexp':
+        return 'a ' + type;
+      default:
+        return type;
+    }
+  }
+
+  // Returns class name of the object, if any.
+  function getClassName(propValue) {
+    if (!propValue.constructor || !propValue.constructor.name) {
+      return ANONYMOUS;
+    }
+    return propValue.constructor.name;
+  }
+
+  ReactPropTypes.checkPropTypes = checkPropTypes;
+  ReactPropTypes.resetWarningCache = checkPropTypes.resetWarningCache;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var ReactPropTypesSecret = ReactPropTypesSecret_1;
+
+function emptyFunction() {}
+function emptyFunctionWithReset() {}
+emptyFunctionWithReset.resetWarningCache = emptyFunction;
+
+var factoryWithThrowingShims = function() {
+  function shim(props, propName, componentName, location, propFullName, secret) {
+    if (secret === ReactPropTypesSecret) {
+      // It is still safe when called from React.
+      return;
+    }
+    var err = new Error(
+      'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+      'Use PropTypes.checkPropTypes() to call them. ' +
+      'Read more at http://fb.me/use-check-prop-types'
+    );
+    err.name = 'Invariant Violation';
+    throw err;
+  }  shim.isRequired = shim;
+  function getShim() {
+    return shim;
+  }  // Important!
+  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
+  var ReactPropTypes = {
+    array: shim,
+    bigint: shim,
+    bool: shim,
+    func: shim,
+    number: shim,
+    object: shim,
+    string: shim,
+    symbol: shim,
+
+    any: shim,
+    arrayOf: getShim,
+    element: shim,
+    elementType: shim,
+    instanceOf: getShim,
+    node: shim,
+    objectOf: getShim,
+    oneOf: getShim,
+    oneOfType: getShim,
+    shape: getShim,
+    exact: getShim,
+
+    checkPropTypes: emptyFunctionWithReset,
+    resetWarningCache: emptyFunction
+  };
+
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var ReactIs = reactIs$1.exports;
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  propTypes$1.exports = factoryWithTypeCheckers(ReactIs.isElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  propTypes$1.exports = factoryWithThrowingShims();
+}
+
+var PropTypes = propTypes$1.exports;
 
 // As defined on the list of supported events: https://reactjs.org/docs/events.html
 var clipboardEvents = ['onCopy', 'onCut', 'onPaste'];
@@ -21398,26 +21076,26 @@ var makeEventProps = function makeEventProps(props, getArgs) {
 };
 
 var esm$6 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  clipboardEvents: clipboardEvents,
-  compositionEvents: compositionEvents,
-  keyboardEvents: keyboardEvents,
-  focusEvents: focusEvents,
-  formEvents: formEvents,
-  genericEvents: genericEvents,
-  mouseEvents: mouseEvents,
-  pointerEvents: pointerEvents,
-  selectionEvents: selectionEvents,
-  touchEvents: touchEvents,
-  uiEvents: uiEvents,
-  wheelEvents: wheelEvents,
-  mediaEvents: mediaEvents,
-  imageEvents: imageEvents,
-  animationEvents: animationEvents,
-  transitionEvents: transitionEvents,
-  otherEvents: otherEvents,
-  allEvents: allEvents,
-  'default': makeEventProps
+    __proto__: null,
+    clipboardEvents: clipboardEvents,
+    compositionEvents: compositionEvents,
+    keyboardEvents: keyboardEvents,
+    focusEvents: focusEvents,
+    formEvents: formEvents,
+    genericEvents: genericEvents,
+    mouseEvents: mouseEvents,
+    pointerEvents: pointerEvents,
+    selectionEvents: selectionEvents,
+    touchEvents: touchEvents,
+    uiEvents: uiEvents,
+    wheelEvents: wheelEvents,
+    mediaEvents: mediaEvents,
+    imageEvents: imageEvents,
+    animationEvents: animationEvents,
+    transitionEvents: transitionEvents,
+    otherEvents: otherEvents,
+    allEvents: allEvents,
+    'default': makeEventProps
 });
 
 var require$$2$1 = /*@__PURE__*/getAugmentedNamespace(esm$6);
@@ -21431,8 +21109,8 @@ function mergeClassNames() {
 }
 
 var esm$5 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': mergeClassNames
+    __proto__: null,
+    'default': mergeClassNames
 });
 
 var require$$3$1 = /*@__PURE__*/getAugmentedNamespace(esm$5);
@@ -22168,10 +21846,10 @@ function getUserLocaleInternal(options) {
 var getUserLocale = memoize$3(getUserLocaleInternal, resolver);
 
 var esm$4 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  getUserLocales: getUserLocales,
-  getUserLocale: getUserLocale,
-  'default': getUserLocale
+    __proto__: null,
+    getUserLocales: getUserLocales,
+    getUserLocale: getUserLocale,
+    'default': getUserLocale
 });
 
 /**
@@ -22530,55 +22208,55 @@ function getISOLocalDateTime(date) {
 }
 
 var esm$3 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  getYear: getYear,
-  getMonth: getMonth,
-  getMonthHuman: getMonthHuman,
-  getDate: getDate,
-  getHours: getHours,
-  getMinutes: getMinutes,
-  getSeconds: getSeconds,
-  getCenturyStart: getCenturyStart,
-  getPreviousCenturyStart: getPreviousCenturyStart,
-  getNextCenturyStart: getNextCenturyStart,
-  getCenturyEnd: getCenturyEnd,
-  getPreviousCenturyEnd: getPreviousCenturyEnd,
-  getNextCenturyEnd: getNextCenturyEnd,
-  getCenturyRange: getCenturyRange,
-  getDecadeStart: getDecadeStart,
-  getPreviousDecadeStart: getPreviousDecadeStart,
-  getNextDecadeStart: getNextDecadeStart,
-  getDecadeEnd: getDecadeEnd,
-  getPreviousDecadeEnd: getPreviousDecadeEnd,
-  getNextDecadeEnd: getNextDecadeEnd,
-  getDecadeRange: getDecadeRange,
-  getYearStart: getYearStart,
-  getPreviousYearStart: getPreviousYearStart,
-  getNextYearStart: getNextYearStart,
-  getYearEnd: getYearEnd,
-  getPreviousYearEnd: getPreviousYearEnd,
-  getNextYearEnd: getNextYearEnd,
-  getYearRange: getYearRange,
-  getMonthStart: getMonthStart,
-  getPreviousMonthStart: getPreviousMonthStart,
-  getNextMonthStart: getNextMonthStart,
-  getMonthEnd: getMonthEnd,
-  getPreviousMonthEnd: getPreviousMonthEnd,
-  getNextMonthEnd: getNextMonthEnd,
-  getMonthRange: getMonthRange,
-  getDayStart: getDayStart,
-  getPreviousDayStart: getPreviousDayStart,
-  getNextDayStart: getNextDayStart,
-  getDayEnd: getDayEnd,
-  getPreviousDayEnd: getPreviousDayEnd,
-  getNextDayEnd: getNextDayEnd,
-  getDayRange: getDayRange,
-  getDaysInMonth: getDaysInMonth,
-  getHoursMinutes: getHoursMinutes,
-  getHoursMinutesSeconds: getHoursMinutesSeconds,
-  getISOLocalMonth: getISOLocalMonth,
-  getISOLocalDate: getISOLocalDate,
-  getISOLocalDateTime: getISOLocalDateTime
+    __proto__: null,
+    getYear: getYear,
+    getMonth: getMonth,
+    getMonthHuman: getMonthHuman,
+    getDate: getDate,
+    getHours: getHours,
+    getMinutes: getMinutes,
+    getSeconds: getSeconds,
+    getCenturyStart: getCenturyStart,
+    getPreviousCenturyStart: getPreviousCenturyStart,
+    getNextCenturyStart: getNextCenturyStart,
+    getCenturyEnd: getCenturyEnd,
+    getPreviousCenturyEnd: getPreviousCenturyEnd,
+    getNextCenturyEnd: getNextCenturyEnd,
+    getCenturyRange: getCenturyRange,
+    getDecadeStart: getDecadeStart,
+    getPreviousDecadeStart: getPreviousDecadeStart,
+    getNextDecadeStart: getNextDecadeStart,
+    getDecadeEnd: getDecadeEnd,
+    getPreviousDecadeEnd: getPreviousDecadeEnd,
+    getNextDecadeEnd: getNextDecadeEnd,
+    getDecadeRange: getDecadeRange,
+    getYearStart: getYearStart,
+    getPreviousYearStart: getPreviousYearStart,
+    getNextYearStart: getNextYearStart,
+    getYearEnd: getYearEnd,
+    getPreviousYearEnd: getPreviousYearEnd,
+    getNextYearEnd: getNextYearEnd,
+    getYearRange: getYearRange,
+    getMonthStart: getMonthStart,
+    getPreviousMonthStart: getPreviousMonthStart,
+    getNextMonthStart: getNextMonthStart,
+    getMonthEnd: getMonthEnd,
+    getPreviousMonthEnd: getPreviousMonthEnd,
+    getNextMonthEnd: getNextMonthEnd,
+    getMonthRange: getMonthRange,
+    getDayStart: getDayStart,
+    getPreviousDayStart: getPreviousDayStart,
+    getNextDayStart: getNextDayStart,
+    getDayEnd: getDayEnd,
+    getPreviousDayEnd: getPreviousDayEnd,
+    getNextDayEnd: getNextDayEnd,
+    getDayRange: getDayRange,
+    getDaysInMonth: getDaysInMonth,
+    getHoursMinutes: getHoursMinutes,
+    getHoursMinutesSeconds: getHoursMinutesSeconds,
+    getISOLocalMonth: getISOLocalMonth,
+    getISOLocalDate: getISOLocalDate,
+    getISOLocalDateTime: getISOLocalDateTime
 });
 
 var _CALENDAR_TYPE_LOCALE;
@@ -23301,7 +22979,7 @@ Navigation.propTypes = {
   views: isViews.isRequired
 };
 
-var _excluded$b = ["children", "className", "direction", "count", "offset", "style", "wrap"];
+var _excluded$a = ["children", "className", "direction", "count", "offset", "style", "wrap"];
 
 function _extends$d() { _extends$d = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$d.apply(this, arguments); }
 
@@ -23327,7 +23005,7 @@ function Flex(_ref) {
       offset = _ref.offset,
       style = _ref.style,
       wrap = _ref.wrap,
-      otherProps = _objectWithoutProperties$a(_ref, _excluded$b);
+      otherProps = _objectWithoutProperties$a(_ref, _excluded$a);
 
   return /*#__PURE__*/React__default["default"].createElement("div", _extends$d({
     className: className,
@@ -23478,7 +23156,7 @@ function getTileClasses() {
   return classes;
 }
 
-var _excluded$a = ["className", "count", "dateTransform", "dateType", "end", "hover", "offset", "start", "step", "tile", "value", "valueType"];
+var _excluded$9 = ["className", "count", "dateTransform", "dateType", "end", "hover", "offset", "start", "step", "tile", "value", "valueType"];
 
 function ownKeys$c(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -23506,7 +23184,7 @@ function TileGroup(_ref) {
       Tile = _ref.tile,
       value = _ref.value,
       valueType = _ref.valueType,
-      tileProps = _objectWithoutProperties$9(_ref, _excluded$a);
+      tileProps = _objectWithoutProperties$9(_ref, _excluded$9);
 
   var tiles = [];
 
@@ -23683,7 +23361,7 @@ Tile.propTypes = _objectSpread$b(_objectSpread$b({}, tileProps), {}, {
   minDateTransform: PropTypes.func.isRequired
 });
 
-var _excluded$9 = ["classes", "formatYear"];
+var _excluded$8 = ["classes", "formatYear"];
 
 function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -23701,7 +23379,7 @@ function Decade(_ref) {
   var classes = _ref.classes,
       _ref$formatYear = _ref.formatYear,
       formatYear$1 = _ref$formatYear === void 0 ? formatYear : _ref$formatYear,
-      otherProps = _objectWithoutProperties$8(_ref, _excluded$9);
+      otherProps = _objectWithoutProperties$8(_ref, _excluded$8);
 
   var date = otherProps.date,
       locale = otherProps.locale;
@@ -23749,7 +23427,7 @@ function CenturyView(props) {
   }, renderDecades());
 }
 
-var _excluded$8 = ["classes", "formatYear"];
+var _excluded$7 = ["classes", "formatYear"];
 
 function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -23767,7 +23445,7 @@ function Year(_ref) {
   var classes = _ref.classes,
       _ref$formatYear = _ref.formatYear,
       formatYear$1 = _ref$formatYear === void 0 ? formatYear : _ref$formatYear,
-      otherProps = _objectWithoutProperties$7(_ref, _excluded$8);
+      otherProps = _objectWithoutProperties$7(_ref, _excluded$7);
 
   var date = otherProps.date,
       locale = otherProps.locale;
@@ -23819,7 +23497,7 @@ function DecadeView(props) {
   }, renderYears());
 }
 
-var _excluded$7 = ["classes", "formatMonth", "formatMonthYear"];
+var _excluded$6 = ["classes", "formatMonth", "formatMonthYear"];
 
 function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -23839,7 +23517,7 @@ function Month(_ref) {
       formatMonth = _ref$formatMonth === void 0 ? formatMonth$1 : _ref$formatMonth,
       _ref$formatMonthYear = _ref.formatMonthYear,
       formatMonthYear$1 = _ref$formatMonthYear === void 0 ? formatMonthYear : _ref$formatMonthYear,
-      otherProps = _objectWithoutProperties$6(_ref, _excluded$7);
+      otherProps = _objectWithoutProperties$6(_ref, _excluded$6);
 
   var date = otherProps.date,
       locale = otherProps.locale;
@@ -23896,7 +23574,7 @@ function YearView(props) {
   }, renderMonths());
 }
 
-var _excluded$6 = ["formatDay", "formatLongDate", "calendarType", "classes", "currentMonthIndex"];
+var _excluded$5 = ["formatDay", "formatLongDate", "calendarType", "classes", "currentMonthIndex"];
 
 function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -23918,7 +23596,7 @@ function Day(_ref) {
       calendarType = _ref.calendarType,
       classes = _ref.classes,
       currentMonthIndex = _ref.currentMonthIndex,
-      otherProps = _objectWithoutProperties$5(_ref, _excluded$6);
+      otherProps = _objectWithoutProperties$5(_ref, _excluded$5);
 
   var date = otherProps.date,
       locale = otherProps.locale;
@@ -23936,7 +23614,7 @@ Day.propTypes = _objectSpread$4(_objectSpread$4({}, tileProps), {}, {
   formatLongDate: PropTypes.func
 });
 
-var _excluded$5 = ["showFixedNumberOfWeeks", "showNeighboringMonth"];
+var _excluded$4 = ["showFixedNumberOfWeeks", "showNeighboringMonth"];
 
 function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -23955,7 +23633,7 @@ function Days(props) {
 
   var showFixedNumberOfWeeks = props.showFixedNumberOfWeeks,
       showNeighboringMonth = props.showNeighboringMonth,
-      otherProps = _objectWithoutProperties$4(props, _excluded$5);
+      otherProps = _objectWithoutProperties$4(props, _excluded$4);
 
   var year = getYear(activeStartDate);
   var monthIndex = getMonth(activeStartDate);
@@ -24056,7 +23734,7 @@ Weekdays.propTypes = {
   onMouseLeave: PropTypes.func
 };
 
-var _excluded$4 = ["date", "onClickWeekNumber", "weekNumber"];
+var _excluded$3 = ["date", "onClickWeekNumber", "weekNumber"];
 
 function _extends$3() { _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3.apply(this, arguments); }
 
@@ -24074,7 +23752,7 @@ function WeekNumber(_ref) {
   var date = _ref.date,
       onClickWeekNumber = _ref.onClickWeekNumber,
       weekNumber = _ref.weekNumber,
-      otherProps = _objectWithoutProperties$3(_ref, _excluded$4);
+      otherProps = _objectWithoutProperties$3(_ref, _excluded$3);
 
   var props = _objectSpread$2({
     className: className
@@ -24155,7 +23833,7 @@ WeekNumbers.propTypes = {
   showFixedNumberOfWeeks: PropTypes.bool
 };
 
-var _excluded$3 = ["calendarType", "formatShortWeekday", "onClickWeekNumber", "showWeekNumbers"];
+var _excluded$2 = ["calendarType", "formatShortWeekday", "onClickWeekNumber", "showWeekNumbers"];
 
 function _extends$2() { _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$2.apply(this, arguments); }
 
@@ -24180,7 +23858,7 @@ function MonthView(props) {
       formatShortWeekday = props.formatShortWeekday,
       onClickWeekNumber = props.onClickWeekNumber,
       showWeekNumbers = props.showWeekNumbers,
-      childProps = _objectWithoutProperties$2(props, _excluded$3);
+      childProps = _objectWithoutProperties$2(props, _excluded$2);
 
   function renderWeekdays() {
     return /*#__PURE__*/React__default["default"].createElement(Weekdays, {
@@ -24237,7 +23915,7 @@ MonthView.propTypes = {
   showWeekNumbers: PropTypes.bool
 };
 
-var _excluded$2 = ["activeStartDate", "defaultActiveStartDate", "defaultValue", "defaultView", "maxDetail", "minDetail", "value", "view"];
+var _excluded$1 = ["activeStartDate", "defaultActiveStartDate", "defaultValue", "defaultView", "maxDetail", "minDetail", "value", "view"];
 
 function _extends$1() { _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$1.apply(this, arguments); }
 
@@ -24420,7 +24098,7 @@ function getInitialActiveStartDate(props) {
       minDetail = props.minDetail,
       value = props.value,
       view = props.view,
-      otherProps = _objectWithoutProperties$1(props, _excluded$2);
+      otherProps = _objectWithoutProperties$1(props, _excluded$1);
 
   var rangeType = getView(view, minDetail, maxDetail);
   var valueFrom = activeStartDate || defaultActiveStartDate;
@@ -25003,13 +24681,13 @@ Calendar$1.propTypes = {
 };
 
 var esm$2 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': Calendar$1,
-  Calendar: Calendar$1,
-  CenturyView: CenturyView,
-  DecadeView: DecadeView,
-  YearView: YearView,
-  MonthView: MonthView
+    __proto__: null,
+    'default': Calendar$1,
+    Calendar: Calendar$1,
+    CenturyView: CenturyView,
+    DecadeView: DecadeView,
+    YearView: YearView,
+    MonthView: MonthView
 });
 
 var require$$4$1 = /*@__PURE__*/getAugmentedNamespace(esm$2);
@@ -25076,7 +24754,7 @@ function warning(condition, message) {
   }
 }
 
-var _excluded$1 = ["invertAxis", "invertSecondaryAxis"];
+var _excluded = ["invertAxis", "invertSecondaryAxis"];
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -25251,7 +24929,7 @@ function alignSecondaryAxis(args) {
 function alignBothAxis(args) {
   var invertAxis = args.invertAxis,
       invertSecondaryAxis = args.invertSecondaryAxis,
-      commonArgs = _objectWithoutProperties(args, _excluded$1);
+      commonArgs = _objectWithoutProperties(args, _excluded);
 
   alignMainAxis(_objectSpread(_objectSpread({}, commonArgs), {}, {
     invertAxis: invertAxis
@@ -25420,8 +25098,8 @@ Fit.defaultProps = {
 };
 
 var Fit$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': Fit
+    __proto__: null,
+    'default': Fit
 });
 
 var require$$5 = /*@__PURE__*/getAugmentedNamespace(Fit$1);
@@ -25497,8 +25175,8 @@ function mergeRefs() {
 }
 
 var esm$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': mergeRefs
+    __proto__: null,
+    'default': mergeRefs
 });
 
 var require$$3 = /*@__PURE__*/getAugmentedNamespace(esm$1);
@@ -25575,11 +25253,11 @@ function updateInputWidth(element) {
 }
 
 var esm = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  getFontShorthand: getFontShorthand,
-  measureText: measureText,
-  updateInputWidth: updateInputWidth,
-  'default': updateInputWidth
+    __proto__: null,
+    getFontShorthand: getFontShorthand,
+    measureText: measureText,
+    updateInputWidth: updateInputWidth,
+    'default': updateInputWidth
 });
 
 var require$$4 = /*@__PURE__*/getAugmentedNamespace(esm);
@@ -27798,23 +27476,8 @@ function Field$1({ PortalSite, field, filters, value, onFilterChange }) {
     }
 }
 
-var Reload = function Reload() {
-  return /*#__PURE__*/React__default["default"].createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    xmlnsXlink: "http://www.w3.org/1999/xlink",
-    version: "1.1",
-    x: "0px",
-    y: "0px",
-    viewBox: "0 0 100 100",
-    enableBackground: "new 0 0 100 100",
-    xmlSpace: "preserve",
-    height: "16px"
-  }, /*#__PURE__*/React__default["default"].createElement("path", {
-    fill: "#000000",
-    stroke: "2",
-    d: "M77,53.752c0,0.012,0,0.022,0,0.034c0,14.92-12.019,27.058-26.938,27.058  c-14.92,0-26.948-12.138-26.948-27.058C23.114,38.961,35,26.889,50,26.738v4.942c0,2.84,2.54,2.913,3.947,1.647l10.354-7.714  c0,0,1.128-0.942,1.128-1.979c0-1.089-1.147-1.979-1.147-1.979L53.95,13.941C52.543,12.675,50,12.749,50,15.588v5.149  c-18,0.151-32.826,14.915-32.826,33.048c0,18.229,14.686,33.058,32.914,33.058C68.314,86.844,83,72.015,83,53.786  c0-0.012,0-0.022,0-0.034c0,0,0-3.375-3.037-3.375C77.109,50.376,77,53.752,77,53.752z"
-  }));
-};
+const Reload = () => (React__default["default"].createElement("svg", { xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", version: "1.1", x: "0px", y: "0px", viewBox: "0 0 100 100", enableBackground: "new 0 0 100 100", xmlSpace: "preserve", height: "16px" },
+    React__default["default"].createElement("path", { fill: "#000000", stroke: "2", d: "M77,53.752c0,0.012,0,0.022,0,0.034c0,14.92-12.019,27.058-26.938,27.058  c-14.92,0-26.948-12.138-26.948-27.058C23.114,38.961,35,26.889,50,26.738v4.942c0,2.84,2.54,2.913,3.947,1.647l10.354-7.714  c0,0,1.128-0.942,1.128-1.979c0-1.089-1.147-1.979-1.147-1.979L53.95,13.941C52.543,12.675,50,12.749,50,15.588v5.149  c-18,0.151-32.826,14.915-32.826,33.048c0,18.229,14.686,33.058,32.914,33.058C68.314,86.844,83,72.015,83,53.786  c0-0.012,0-0.022,0-0.034c0,0,0-3.375-3.037-3.375C77.109,50.376,77,53.752,77,53.752z" })));
 
 var reactIs = reactIs$1.exports;
 var FORWARD_REF_STATICS = {
@@ -32644,17 +32307,9 @@ function Filters({ filters, onFilterChange, PortalSite, options }) {
                 React__default["default"].createElement(Field$1, { field: field, PortalSite: PortalSite, filters: filters, value: filters[field.id], onFilterChange: saveFilters })))))));
 }
 
-var ArrowRight$1 = function ArrowRight() {
-  return /*#__PURE__*/React__default["default"].createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    "data-name": "Layer 1",
-    viewBox: "0 0 100 100",
-    x: "0px",
-    y: "0px"
-  }, /*#__PURE__*/React__default["default"].createElement("title", null, "Forward"), /*#__PURE__*/React__default["default"].createElement("path", {
-    d: "M97.64,44.1,64.72,11.18a8.06,8.06,0,1,0-11.4,11.39L72.78,42H8.06a8.06,8.06,0,0,0,0,16.12H72.6L53.32,77.43a8.06,8.06,0,0,0,11.4,11.39L97.64,55.9A8,8,0,0,0,100,50.2a1.27,1.27,0,0,0,0-.2,1.41,1.41,0,0,0,0-.2A8.07,8.07,0,0,0,97.64,44.1Z"
-  }));
-};
+const ArrowRight$1 = () => (React__default["default"].createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 100 100", x: "0px", y: "0px" },
+    React__default["default"].createElement("title", null, "Forward"),
+    React__default["default"].createElement("path", { d: "M97.64,44.1,64.72,11.18a8.06,8.06,0,1,0-11.4,11.39L72.78,42H8.06a8.06,8.06,0,0,0,0,16.12H72.6L53.32,77.43a8.06,8.06,0,0,0,11.4,11.39L97.64,55.9A8,8,0,0,0,100,50.2a1.27,1.27,0,0,0,0-.2,1.41,1.41,0,0,0,0-.2A8.07,8.07,0,0,0,97.64,44.1Z" })));
 
 function SingleResult({ result, options }) {
     let thisOptions = options || {};
@@ -32891,7 +32546,6 @@ Modal.defaultProps = {
 };
 
 function ApiError(errors, modal) {
-    console.error({ errors });
     const errorMessage = (React__default["default"].createElement("div", { className: "bukazu-error-message" },
         React__default["default"].createElement("h2", null,
             React__default["default"].createElement(FormattedMessage$1, { id: "something_went_wrong_please_try_again" })),
@@ -32940,11 +32594,2137 @@ const isObject$2 = (obj) => {
     return Object.prototype.toString.call(obj) === '[object Object]';
 };
 
-function Results({ filters, PortalSite, limit, skip, locale, onPageChange, activePage }) {
+function isSameUTCWeek(dirtyDateLeft, dirtyDateRight, options) {
+  requiredArgs(2, arguments);
+  var dateLeftStartOfWeek = startOfUTCWeek(dirtyDateLeft, options);
+  var dateRightStartOfWeek = startOfUTCWeek(dirtyDateRight, options);
+  return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime();
+}
+
+var formatDistanceLocale$4 = {
+  lessThanXSeconds: {
+    standalone: {
+      one: 'weniger als 1 Sekunde',
+      other: 'weniger als {{count}} Sekunden'
+    },
+    withPreposition: {
+      one: 'weniger als 1 Sekunde',
+      other: 'weniger als {{count}} Sekunden'
+    }
+  },
+  xSeconds: {
+    standalone: {
+      one: '1 Sekunde',
+      other: '{{count}} Sekunden'
+    },
+    withPreposition: {
+      one: '1 Sekunde',
+      other: '{{count}} Sekunden'
+    }
+  },
+  halfAMinute: {
+    standalone: 'halbe Minute',
+    withPreposition: 'halben Minute'
+  },
+  lessThanXMinutes: {
+    standalone: {
+      one: 'weniger als 1 Minute',
+      other: 'weniger als {{count}} Minuten'
+    },
+    withPreposition: {
+      one: 'weniger als 1 Minute',
+      other: 'weniger als {{count}} Minuten'
+    }
+  },
+  xMinutes: {
+    standalone: {
+      one: '1 Minute',
+      other: '{{count}} Minuten'
+    },
+    withPreposition: {
+      one: '1 Minute',
+      other: '{{count}} Minuten'
+    }
+  },
+  aboutXHours: {
+    standalone: {
+      one: 'etwa 1 Stunde',
+      other: 'etwa {{count}} Stunden'
+    },
+    withPreposition: {
+      one: 'etwa 1 Stunde',
+      other: 'etwa {{count}} Stunden'
+    }
+  },
+  xHours: {
+    standalone: {
+      one: '1 Stunde',
+      other: '{{count}} Stunden'
+    },
+    withPreposition: {
+      one: '1 Stunde',
+      other: '{{count}} Stunden'
+    }
+  },
+  xDays: {
+    standalone: {
+      one: '1 Tag',
+      other: '{{count}} Tage'
+    },
+    withPreposition: {
+      one: '1 Tag',
+      other: '{{count}} Tagen'
+    }
+  },
+  aboutXWeeks: {
+    standalone: {
+      one: 'etwa 1 Woche',
+      other: 'etwa {{count}} Wochen'
+    },
+    withPreposition: {
+      one: 'etwa 1 Woche',
+      other: 'etwa {{count}} Wochen'
+    }
+  },
+  xWeeks: {
+    standalone: {
+      one: '1 Woche',
+      other: '{{count}} Wochen'
+    },
+    withPreposition: {
+      one: '1 Woche',
+      other: '{{count}} Wochen'
+    }
+  },
+  aboutXMonths: {
+    standalone: {
+      one: 'etwa 1 Monat',
+      other: 'etwa {{count}} Monate'
+    },
+    withPreposition: {
+      one: 'etwa 1 Monat',
+      other: 'etwa {{count}} Monaten'
+    }
+  },
+  xMonths: {
+    standalone: {
+      one: '1 Monat',
+      other: '{{count}} Monate'
+    },
+    withPreposition: {
+      one: '1 Monat',
+      other: '{{count}} Monaten'
+    }
+  },
+  aboutXYears: {
+    standalone: {
+      one: 'etwa 1 Jahr',
+      other: 'etwa {{count}} Jahre'
+    },
+    withPreposition: {
+      one: 'etwa 1 Jahr',
+      other: 'etwa {{count}} Jahren'
+    }
+  },
+  xYears: {
+    standalone: {
+      one: '1 Jahr',
+      other: '{{count}} Jahre'
+    },
+    withPreposition: {
+      one: '1 Jahr',
+      other: '{{count}} Jahren'
+    }
+  },
+  overXYears: {
+    standalone: {
+      one: 'mehr als 1 Jahr',
+      other: 'mehr als {{count}} Jahre'
+    },
+    withPreposition: {
+      one: 'mehr als 1 Jahr',
+      other: 'mehr als {{count}} Jahren'
+    }
+  },
+  almostXYears: {
+    standalone: {
+      one: 'fast 1 Jahr',
+      other: 'fast {{count}} Jahre'
+    },
+    withPreposition: {
+      one: 'fast 1 Jahr',
+      other: 'fast {{count}} Jahren'
+    }
+  }
+};
+
+var formatDistance$8 = function formatDistance(token, count, options) {
+  var result;
+  var tokenValue = options !== null && options !== void 0 && options.addSuffix ? formatDistanceLocale$4[token].withPreposition : formatDistanceLocale$4[token].standalone;
+
+  if (typeof tokenValue === 'string') {
+    result = tokenValue;
+  } else if (count === 1) {
+    result = tokenValue.one;
+  } else {
+    result = tokenValue.other.replace('{{count}}', String(count));
+  }
+
+  if (options !== null && options !== void 0 && options.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
+      return 'in ' + result;
+    } else {
+      return 'vor ' + result;
+    }
+  }
+
+  return result;
+};
+
+var formatDistance$9 = formatDistance$8;
+
+// DIN 5008: https://de.wikipedia.org/wiki/Datumsformat#DIN_5008
+var dateFormats$5 = {
+  full: 'EEEE, do MMMM y',
+  // Montag, 7. Januar 2018
+  long: 'do MMMM y',
+  // 7. Januar 2018
+  medium: 'do MMM y',
+  // 7. Jan. 2018
+  short: 'dd.MM.y' // 07.01.2018
+
+};
+var timeFormats$5 = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats$5 = {
+  full: "{{date}} 'um' {{time}}",
+  long: "{{date}} 'um' {{time}}",
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong$a = {
+  date: buildFormatLongFn({
+    formats: dateFormats$5,
+    defaultWidth: 'full'
+  }),
+  time: buildFormatLongFn({
+    formats: timeFormats$5,
+    defaultWidth: 'full'
+  }),
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats$5,
+    defaultWidth: 'full'
+  })
+};
+var formatLong$b = formatLong$a;
+
+var formatRelativeLocale$4 = {
+  lastWeek: "'letzten' eeee 'um' p",
+  yesterday: "'gestern um' p",
+  today: "'heute um' p",
+  tomorrow: "'morgen um' p",
+  nextWeek: "eeee 'um' p",
+  other: 'P'
+};
+
+var formatRelative$8 = function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale$4[token];
+};
+
+var formatRelative$9 = formatRelative$8;
+
+var eraValues$4 = {
+  narrow: ['v.Chr.', 'n.Chr.'],
+  abbreviated: ['v.Chr.', 'n.Chr.'],
+  wide: ['vor Christus', 'nach Christus']
+};
+var quarterValues$4 = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
+  wide: ['1. Quartal', '2. Quartal', '3. Quartal', '4. Quartal']
+}; // Note: in German, the names of days of the week and months are capitalized.
+// If you are making a new locale based on this one, check if the same is true for the language you're working on.
+// Generally, formatted dates should look like they are in the middle of a sentence,
+// e.g. in Spanish language the weekdays and months should be in the lowercase.
+
+var monthValues$4 = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+  wide: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
+}; // https://st.unicode.org/cldr-apps/v#/de/Gregorian/
+
+var formattingMonthValues = {
+  narrow: monthValues$4.narrow,
+  abbreviated: ['Jan.', 'Feb.', 'März', 'Apr.', 'Mai', 'Juni', 'Juli', 'Aug.', 'Sep.', 'Okt.', 'Nov.', 'Dez.'],
+  wide: monthValues$4.wide
+};
+var dayValues$4 = {
+  narrow: ['S', 'M', 'D', 'M', 'D', 'F', 'S'],
+  short: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+  abbreviated: ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'],
+  wide: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag']
+}; // https://www.unicode.org/cldr/charts/32/summary/de.html#1881
+
+var dayPeriodValues$4 = {
+  narrow: {
+    am: 'vm.',
+    pm: 'nm.',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'Morgen',
+    afternoon: 'Nachm.',
+    evening: 'Abend',
+    night: 'Nacht'
+  },
+  abbreviated: {
+    am: 'vorm.',
+    pm: 'nachm.',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'Morgen',
+    afternoon: 'Nachmittag',
+    evening: 'Abend',
+    night: 'Nacht'
+  },
+  wide: {
+    am: 'vormittags',
+    pm: 'nachmittags',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'Morgen',
+    afternoon: 'Nachmittag',
+    evening: 'Abend',
+    night: 'Nacht'
+  }
+};
+var formattingDayPeriodValues$2 = {
+  narrow: {
+    am: 'vm.',
+    pm: 'nm.',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'morgens',
+    afternoon: 'nachm.',
+    evening: 'abends',
+    night: 'nachts'
+  },
+  abbreviated: {
+    am: 'vorm.',
+    pm: 'nachm.',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'morgens',
+    afternoon: 'nachmittags',
+    evening: 'abends',
+    night: 'nachts'
+  },
+  wide: {
+    am: 'vormittags',
+    pm: 'nachmittags',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'morgens',
+    afternoon: 'nachmittags',
+    evening: 'abends',
+    night: 'nachts'
+  }
+};
+
+var ordinalNumber$4 = function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  return number + '.';
+};
+
+var localize$8 = {
+  ordinalNumber: ordinalNumber$4,
+  era: buildLocalizeFn({
+    values: eraValues$4,
+    defaultWidth: 'wide'
+  }),
+  quarter: buildLocalizeFn({
+    values: quarterValues$4,
+    defaultWidth: 'wide',
+    argumentCallback: function argumentCallback(quarter) {
+      return quarter - 1;
+    }
+  }),
+  month: buildLocalizeFn({
+    values: monthValues$4,
+    formattingValues: formattingMonthValues,
+    defaultWidth: 'wide'
+  }),
+  day: buildLocalizeFn({
+    values: dayValues$4,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues$4,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues$2,
+    defaultFormattingWidth: 'wide'
+  })
+};
+var localize$9 = localize$8;
+
+var matchOrdinalNumberPattern$4 = /^(\d+)(\.)?/i;
+var parseOrdinalNumberPattern$4 = /\d+/i;
+var matchEraPatterns$4 = {
+  narrow: /^(v\.? ?Chr\.?|n\.? ?Chr\.?)/i,
+  abbreviated: /^(v\.? ?Chr\.?|n\.? ?Chr\.?)/i,
+  wide: /^(vor Christus|vor unserer Zeitrechnung|nach Christus|unserer Zeitrechnung)/i
+};
+var parseEraPatterns$4 = {
+  any: [/^v/i, /^n/i]
+};
+var matchQuarterPatterns$4 = {
+  narrow: /^[1234]/i,
+  abbreviated: /^q[1234]/i,
+  wide: /^[1234](\.)? Quartal/i
+};
+var parseQuarterPatterns$4 = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns$4 = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(j[aä]n|feb|mär[z]?|apr|mai|jun[i]?|jul[i]?|aug|sep|okt|nov|dez)\.?/i,
+  wide: /^(januar|februar|märz|april|mai|juni|juli|august|september|oktober|november|dezember)/i
+};
+var parseMonthPatterns$4 = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^j[aä]/i, /^f/i, /^mär/i, /^ap/i, /^mai/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns$4 = {
+  narrow: /^[smdmf]/i,
+  short: /^(so|mo|di|mi|do|fr|sa)/i,
+  abbreviated: /^(son?|mon?|die?|mit?|don?|fre?|sam?)\.?/i,
+  wide: /^(sonntag|montag|dienstag|mittwoch|donnerstag|freitag|samstag)/i
+};
+var parseDayPatterns$4 = {
+  any: [/^so/i, /^mo/i, /^di/i, /^mi/i, /^do/i, /^f/i, /^sa/i]
+};
+var matchDayPeriodPatterns$4 = {
+  narrow: /^(vm\.?|nm\.?|Mitternacht|Mittag|morgens|nachm\.?|abends|nachts)/i,
+  abbreviated: /^(vorm\.?|nachm\.?|Mitternacht|Mittag|morgens|nachm\.?|abends|nachts)/i,
+  wide: /^(vormittags|nachmittags|Mitternacht|Mittag|morgens|nachmittags|abends|nachts)/i
+};
+var parseDayPeriodPatterns$4 = {
+  any: {
+    am: /^v/i,
+    pm: /^n/i,
+    midnight: /^Mitte/i,
+    noon: /^Mitta/i,
+    morning: /morgens/i,
+    afternoon: /nachmittags/i,
+    // will never be matched. Afternoon is matched by `pm`
+    evening: /abends/i,
+    night: /nachts/i // will never be matched. Night is matched by `pm`
+
+  }
+};
+var match$8 = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern$4,
+    parsePattern: parseOrdinalNumberPattern$4,
+    valueCallback: function valueCallback(value) {
+      return parseInt(value);
+    }
+  }),
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns$4,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns$4,
+    defaultParseWidth: 'any'
+  }),
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns$4,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns$4,
+    defaultParseWidth: 'any',
+    valueCallback: function valueCallback(index) {
+      return index + 1;
+    }
+  }),
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns$4,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns$4,
+    defaultParseWidth: 'any'
+  }),
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns$4,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns$4,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns$4,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPeriodPatterns$4,
+    defaultParseWidth: 'any'
+  })
+};
+var match$9 = match$8;
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary German locale.
+ * @language German
+ * @iso-639-2 deu
+ * @author Thomas Eilmsteiner [@DeMuu]{@link https://github.com/DeMuu}
+ * @author Asia [@asia-t]{@link https://github.com/asia-t}
+ * @author Van Vuong Ngo [@vanvuongngo]{@link https://github.com/vanvuongngo}
+ * @author RomanErnst [@pex]{@link https://github.com/pex}
+ * @author Philipp Keck [@Philipp91]{@link https://github.com/Philipp91}
+ */
+var locale$5 = {
+  code: 'de',
+  formatDistance: formatDistance$9,
+  formatLong: formatLong$b,
+  formatRelative: formatRelative$9,
+  localize: localize$9,
+  match: match$9,
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+var de$2 = locale$5;
+
+var dateFormats$4 = {
+  full: 'EEEE, d MMMM yyyy',
+  long: 'd MMMM yyyy',
+  medium: 'd MMM yyyy',
+  short: 'dd/MM/yyyy'
+};
+var timeFormats$4 = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats$4 = {
+  full: "{{date}} 'at' {{time}}",
+  long: "{{date}} 'at' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong$8 = {
+  date: buildFormatLongFn({
+    formats: dateFormats$4,
+    defaultWidth: 'full'
+  }),
+  time: buildFormatLongFn({
+    formats: timeFormats$4,
+    defaultWidth: 'full'
+  }),
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats$4,
+    defaultWidth: 'full'
+  })
+};
+var formatLong$9 = formatLong$8;
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary English locale (United Kingdom).
+ * @language English
+ * @iso-639-2 eng
+ * @author Alex [@glintik]{@link https://github.com/glintik}
+ */
+
+var locale$4 = {
+  code: 'en-GB',
+  formatDistance: formatDistance$b,
+  formatLong: formatLong$9,
+  formatRelative: formatRelative$b,
+  localize: localize$b,
+  match: match$b,
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+var enGB = locale$4;
+
+var formatDistanceLocale$3 = {
+  lessThanXSeconds: {
+    one: 'menos de un segundo',
+    other: 'menos de {{count}} segundos'
+  },
+  xSeconds: {
+    one: '1 segundo',
+    other: '{{count}} segundos'
+  },
+  halfAMinute: 'medio minuto',
+  lessThanXMinutes: {
+    one: 'menos de un minuto',
+    other: 'menos de {{count}} minutos'
+  },
+  xMinutes: {
+    one: '1 minuto',
+    other: '{{count}} minutos'
+  },
+  aboutXHours: {
+    one: 'alrededor de 1 hora',
+    other: 'alrededor de {{count}} horas'
+  },
+  xHours: {
+    one: '1 hora',
+    other: '{{count}} horas'
+  },
+  xDays: {
+    one: '1 día',
+    other: '{{count}} días'
+  },
+  aboutXWeeks: {
+    one: 'alrededor de 1 semana',
+    other: 'alrededor de {{count}} semanas'
+  },
+  xWeeks: {
+    one: '1 semana',
+    other: '{{count}} semanas'
+  },
+  aboutXMonths: {
+    one: 'alrededor de 1 mes',
+    other: 'alrededor de {{count}} meses'
+  },
+  xMonths: {
+    one: '1 mes',
+    other: '{{count}} meses'
+  },
+  aboutXYears: {
+    one: 'alrededor de 1 año',
+    other: 'alrededor de {{count}} años'
+  },
+  xYears: {
+    one: '1 año',
+    other: '{{count}} años'
+  },
+  overXYears: {
+    one: 'más de 1 año',
+    other: 'más de {{count}} años'
+  },
+  almostXYears: {
+    one: 'casi 1 año',
+    other: 'casi {{count}} años'
+  }
+};
+
+var formatDistance$6 = function formatDistance(token, count, options) {
+  var result;
+  var tokenValue = formatDistanceLocale$3[token];
+
+  if (typeof tokenValue === 'string') {
+    result = tokenValue;
+  } else if (count === 1) {
+    result = tokenValue.one;
+  } else {
+    result = tokenValue.other.replace('{{count}}', count.toString());
+  }
+
+  if (options !== null && options !== void 0 && options.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
+      return 'en ' + result;
+    } else {
+      return 'hace ' + result;
+    }
+  }
+
+  return result;
+};
+
+var formatDistance$7 = formatDistance$6;
+
+var dateFormats$3 = {
+  full: "EEEE, d 'de' MMMM 'de' y",
+  long: "d 'de' MMMM 'de' y",
+  medium: 'd MMM y',
+  short: 'dd/MM/y'
+};
+var timeFormats$3 = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats$3 = {
+  full: "{{date}} 'a las' {{time}}",
+  long: "{{date}} 'a las' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong$6 = {
+  date: buildFormatLongFn({
+    formats: dateFormats$3,
+    defaultWidth: 'full'
+  }),
+  time: buildFormatLongFn({
+    formats: timeFormats$3,
+    defaultWidth: 'full'
+  }),
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats$3,
+    defaultWidth: 'full'
+  })
+};
+var formatLong$7 = formatLong$6;
+
+var formatRelativeLocale$3 = {
+  lastWeek: "'el' eeee 'pasado a la' p",
+  yesterday: "'ayer a la' p",
+  today: "'hoy a la' p",
+  tomorrow: "'mañana a la' p",
+  nextWeek: "eeee 'a la' p",
+  other: 'P'
+};
+var formatRelativeLocalePlural = {
+  lastWeek: "'el' eeee 'pasado a las' p",
+  yesterday: "'ayer a las' p",
+  today: "'hoy a las' p",
+  tomorrow: "'mañana a las' p",
+  nextWeek: "eeee 'a las' p",
+  other: 'P'
+};
+
+var formatRelative$6 = function formatRelative(token, date, _baseDate, _options) {
+  if (date.getUTCHours() !== 1) {
+    return formatRelativeLocalePlural[token];
+  } else {
+    return formatRelativeLocale$3[token];
+  }
+};
+
+var formatRelative$7 = formatRelative$6;
+
+var eraValues$3 = {
+  narrow: ['AC', 'DC'],
+  abbreviated: ['AC', 'DC'],
+  wide: ['antes de cristo', 'después de cristo']
+};
+var quarterValues$3 = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['T1', 'T2', 'T3', 'T4'],
+  wide: ['1º trimestre', '2º trimestre', '3º trimestre', '4º trimestre']
+};
+var monthValues$3 = {
+  narrow: ['e', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
+  abbreviated: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
+  wide: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+};
+var dayValues$3 = {
+  narrow: ['d', 'l', 'm', 'm', 'j', 'v', 's'],
+  short: ['do', 'lu', 'ma', 'mi', 'ju', 'vi', 'sá'],
+  abbreviated: ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'],
+  wide: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado']
+};
+var dayPeriodValues$3 = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'mn',
+    noon: 'md',
+    morning: 'mañana',
+    afternoon: 'tarde',
+    evening: 'tarde',
+    night: 'noche'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'medianoche',
+    noon: 'mediodia',
+    morning: 'mañana',
+    afternoon: 'tarde',
+    evening: 'tarde',
+    night: 'noche'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'medianoche',
+    noon: 'mediodia',
+    morning: 'mañana',
+    afternoon: 'tarde',
+    evening: 'tarde',
+    night: 'noche'
+  }
+};
+var formattingDayPeriodValues$1 = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'mn',
+    noon: 'md',
+    morning: 'de la mañana',
+    afternoon: 'de la tarde',
+    evening: 'de la tarde',
+    night: 'de la noche'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'medianoche',
+    noon: 'mediodia',
+    morning: 'de la mañana',
+    afternoon: 'de la tarde',
+    evening: 'de la tarde',
+    night: 'de la noche'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'medianoche',
+    noon: 'mediodia',
+    morning: 'de la mañana',
+    afternoon: 'de la tarde',
+    evening: 'de la tarde',
+    night: 'de la noche'
+  }
+};
+
+var ordinalNumber$3 = function ordinalNumber(dirtyNumber, _options) {
+  var number = Number(dirtyNumber);
+  return number + 'º';
+};
+
+var localize$6 = {
+  ordinalNumber: ordinalNumber$3,
+  era: buildLocalizeFn({
+    values: eraValues$3,
+    defaultWidth: 'wide'
+  }),
+  quarter: buildLocalizeFn({
+    values: quarterValues$3,
+    defaultWidth: 'wide',
+    argumentCallback: function argumentCallback(quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: buildLocalizeFn({
+    values: monthValues$3,
+    defaultWidth: 'wide'
+  }),
+  day: buildLocalizeFn({
+    values: dayValues$3,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues$3,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues$1,
+    defaultFormattingWidth: 'wide'
+  })
+};
+var localize$7 = localize$6;
+
+var matchOrdinalNumberPattern$3 = /^(\d+)(º)?/i;
+var parseOrdinalNumberPattern$3 = /\d+/i;
+var matchEraPatterns$3 = {
+  narrow: /^(ac|dc|a|d)/i,
+  abbreviated: /^(a\.?\s?c\.?|a\.?\s?e\.?\s?c\.?|d\.?\s?c\.?|e\.?\s?c\.?)/i,
+  wide: /^(antes de cristo|antes de la era com[uú]n|despu[eé]s de cristo|era com[uú]n)/i
+};
+var parseEraPatterns$3 = {
+  any: [/^ac/i, /^dc/i],
+  wide: [/^(antes de cristo|antes de la era com[uú]n)/i, /^(despu[eé]s de cristo|era com[uú]n)/i]
+};
+var matchQuarterPatterns$3 = {
+  narrow: /^[1234]/i,
+  abbreviated: /^T[1234]/i,
+  wide: /^[1234](º)? trimestre/i
+};
+var parseQuarterPatterns$3 = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns$3 = {
+  narrow: /^[efmajsond]/i,
+  abbreviated: /^(ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic)/i,
+  wide: /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/i
+};
+var parseMonthPatterns$3 = {
+  narrow: [/^e/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^en/i, /^feb/i, /^mar/i, /^abr/i, /^may/i, /^jun/i, /^jul/i, /^ago/i, /^sep/i, /^oct/i, /^nov/i, /^dic/i]
+};
+var matchDayPatterns$3 = {
+  narrow: /^[dlmjvs]/i,
+  short: /^(do|lu|ma|mi|ju|vi|s[áa])/i,
+  abbreviated: /^(dom|lun|mar|mi[ée]|jue|vie|s[áa]b)/i,
+  wide: /^(domingo|lunes|martes|mi[ée]rcoles|jueves|viernes|s[áa]bado)/i
+};
+var parseDayPatterns$3 = {
+  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^j/i, /^v/i, /^s/i],
+  any: [/^do/i, /^lu/i, /^ma/i, /^mi/i, /^ju/i, /^vi/i, /^sa/i]
+};
+var matchDayPeriodPatterns$3 = {
+  narrow: /^(a|p|mn|md|(de la|a las) (mañana|tarde|noche))/i,
+  any: /^([ap]\.?\s?m\.?|medianoche|mediodia|(de la|a las) (mañana|tarde|noche))/i
+};
+var parseDayPeriodPatterns$3 = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^mn/i,
+    noon: /^md/i,
+    morning: /mañana/i,
+    afternoon: /tarde/i,
+    evening: /tarde/i,
+    night: /noche/i
+  }
+};
+var match$6 = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern$3,
+    parsePattern: parseOrdinalNumberPattern$3,
+    valueCallback: function valueCallback(value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns$3,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns$3,
+    defaultParseWidth: 'any'
+  }),
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns$3,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns$3,
+    defaultParseWidth: 'any',
+    valueCallback: function valueCallback(index) {
+      return index + 1;
+    }
+  }),
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns$3,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns$3,
+    defaultParseWidth: 'any'
+  }),
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns$3,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns$3,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns$3,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns$3,
+    defaultParseWidth: 'any'
+  })
+};
+var match$7 = match$6;
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Spanish locale.
+ * @language Spanish
+ * @iso-639-2 spa
+ * @author Juan Angosto [@juanangosto]{@link https://github.com/juanangosto}
+ * @author Guillermo Grau [@guigrpa]{@link https://github.com/guigrpa}
+ * @author Fernando Agüero [@fjaguero]{@link https://github.com/fjaguero}
+ * @author Gastón Haro [@harogaston]{@link https://github.com/harogaston}
+ * @author Yago Carballo [@YagoCarballo]{@link https://github.com/YagoCarballo}
+ */
+var locale$3 = {
+  code: 'es',
+  formatDistance: formatDistance$7,
+  formatLong: formatLong$7,
+  formatRelative: formatRelative$7,
+  localize: localize$7,
+  match: match$7,
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+var es$2 = locale$3;
+
+var formatDistanceLocale$2 = {
+  lessThanXSeconds: {
+    one: 'moins d’une seconde',
+    other: 'moins de {{count}} secondes'
+  },
+  xSeconds: {
+    one: '1 seconde',
+    other: '{{count}} secondes'
+  },
+  halfAMinute: '30 secondes',
+  lessThanXMinutes: {
+    one: 'moins d’une minute',
+    other: 'moins de {{count}} minutes'
+  },
+  xMinutes: {
+    one: '1 minute',
+    other: '{{count}} minutes'
+  },
+  aboutXHours: {
+    one: 'environ 1 heure',
+    other: 'environ {{count}} heures'
+  },
+  xHours: {
+    one: '1 heure',
+    other: '{{count}} heures'
+  },
+  xDays: {
+    one: '1 jour',
+    other: '{{count}} jours'
+  },
+  aboutXWeeks: {
+    one: 'environ 1 semaine',
+    other: 'environ {{count}} semaines'
+  },
+  xWeeks: {
+    one: '1 semaine',
+    other: '{{count}} semaines'
+  },
+  aboutXMonths: {
+    one: 'environ 1 mois',
+    other: 'environ {{count}} mois'
+  },
+  xMonths: {
+    one: '1 mois',
+    other: '{{count}} mois'
+  },
+  aboutXYears: {
+    one: 'environ 1 an',
+    other: 'environ {{count}} ans'
+  },
+  xYears: {
+    one: '1 an',
+    other: '{{count}} ans'
+  },
+  overXYears: {
+    one: 'plus d’un an',
+    other: 'plus de {{count}} ans'
+  },
+  almostXYears: {
+    one: 'presqu’un an',
+    other: 'presque {{count}} ans'
+  }
+};
+
+var formatDistance$4 = function formatDistance(token, count, options) {
+  var result;
+  var form = formatDistanceLocale$2[token];
+
+  if (typeof form === 'string') {
+    result = form;
+  } else if (count === 1) {
+    result = form.one;
+  } else {
+    result = form.other.replace('{{count}}', String(count));
+  }
+
+  if (options !== null && options !== void 0 && options.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
+      return 'dans ' + result;
+    } else {
+      return 'il y a ' + result;
+    }
+  }
+
+  return result;
+};
+
+var formatDistance$5 = formatDistance$4;
+
+var dateFormats$2 = {
+  full: 'EEEE d MMMM y',
+  long: 'd MMMM y',
+  medium: 'd MMM y',
+  short: 'dd/MM/y'
+};
+var timeFormats$2 = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats$2 = {
+  full: "{{date}} 'à' {{time}}",
+  long: "{{date}} 'à' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong$4 = {
+  date: buildFormatLongFn({
+    formats: dateFormats$2,
+    defaultWidth: 'full'
+  }),
+  time: buildFormatLongFn({
+    formats: timeFormats$2,
+    defaultWidth: 'full'
+  }),
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats$2,
+    defaultWidth: 'full'
+  })
+};
+var formatLong$5 = formatLong$4;
+
+var formatRelativeLocale$2 = {
+  lastWeek: "eeee 'dernier à' p",
+  yesterday: "'hier à' p",
+  today: "'aujourd’hui à' p",
+  tomorrow: "'demain à' p'",
+  nextWeek: "eeee 'prochain à' p",
+  other: 'P'
+};
+
+var formatRelative$4 = function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale$2[token];
+};
+
+var formatRelative$5 = formatRelative$4;
+
+var eraValues$2 = {
+  narrow: ['av. J.-C', 'ap. J.-C'],
+  abbreviated: ['av. J.-C', 'ap. J.-C'],
+  wide: ['avant Jésus-Christ', 'après Jésus-Christ']
+};
+var quarterValues$2 = {
+  narrow: ['T1', 'T2', 'T3', 'T4'],
+  abbreviated: ['1er trim.', '2ème trim.', '3ème trim.', '4ème trim.'],
+  wide: ['1er trimestre', '2ème trimestre', '3ème trimestre', '4ème trimestre']
+};
+var monthValues$2 = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'],
+  wide: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
+};
+var dayValues$2 = {
+  narrow: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+  short: ['di', 'lu', 'ma', 'me', 'je', 've', 'sa'],
+  abbreviated: ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'],
+  wide: ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi']
+};
+var dayPeriodValues$2 = {
+  narrow: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'minuit',
+    noon: 'midi',
+    morning: 'mat.',
+    afternoon: 'ap.m.',
+    evening: 'soir',
+    night: 'mat.'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'minuit',
+    noon: 'midi',
+    morning: 'matin',
+    afternoon: 'après-midi',
+    evening: 'soir',
+    night: 'matin'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'minuit',
+    noon: 'midi',
+    morning: 'du matin',
+    afternoon: 'de l’après-midi',
+    evening: 'du soir',
+    night: 'du matin'
+  }
+};
+
+var ordinalNumber$2 = function ordinalNumber(dirtyNumber, options) {
+  var number = Number(dirtyNumber);
+  var unit = options === null || options === void 0 ? void 0 : options.unit;
+  if (number === 0) return '0';
+  var feminineUnits = ['year', 'week', 'hour', 'minute', 'second'];
+  var suffix;
+
+  if (number === 1) {
+    suffix = unit && feminineUnits.includes(unit) ? 'ère' : 'er';
+  } else {
+    suffix = 'ème';
+  }
+
+  return number + suffix;
+};
+
+var localize$4 = {
+  ordinalNumber: ordinalNumber$2,
+  era: buildLocalizeFn({
+    values: eraValues$2,
+    defaultWidth: 'wide'
+  }),
+  quarter: buildLocalizeFn({
+    values: quarterValues$2,
+    defaultWidth: 'wide',
+    argumentCallback: function argumentCallback(quarter) {
+      return quarter - 1;
+    }
+  }),
+  month: buildLocalizeFn({
+    values: monthValues$2,
+    defaultWidth: 'wide'
+  }),
+  day: buildLocalizeFn({
+    values: dayValues$2,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues$2,
+    defaultWidth: 'wide'
+  })
+};
+var localize$5 = localize$4;
+
+var matchOrdinalNumberPattern$2 = /^(\d+)(ième|ère|ème|er|e)?/i;
+var parseOrdinalNumberPattern$2 = /\d+/i;
+var matchEraPatterns$2 = {
+  narrow: /^(av\.J\.C|ap\.J\.C|ap\.J\.-C)/i,
+  abbreviated: /^(av\.J\.-C|av\.J-C|apr\.J\.-C|apr\.J-C|ap\.J-C)/i,
+  wide: /^(avant Jésus-Christ|après Jésus-Christ)/i
+};
+var parseEraPatterns$2 = {
+  any: [/^av/i, /^ap/i]
+};
+var matchQuarterPatterns$2 = {
+  narrow: /^T?[1234]/i,
+  abbreviated: /^[1234](er|ème|e)? trim\.?/i,
+  wide: /^[1234](er|ème|e)? trimestre/i
+};
+var parseQuarterPatterns$2 = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns$2 = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(janv|févr|mars|avr|mai|juin|juill|juil|août|sept|oct|nov|déc)\.?/i,
+  wide: /^(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)/i
+};
+var parseMonthPatterns$2 = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ja/i, /^f/i, /^mar/i, /^av/i, /^ma/i, /^juin/i, /^juil/i, /^ao/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns$2 = {
+  narrow: /^[lmjvsd]/i,
+  short: /^(di|lu|ma|me|je|ve|sa)/i,
+  abbreviated: /^(dim|lun|mar|mer|jeu|ven|sam)\.?/i,
+  wide: /^(dimanche|lundi|mardi|mercredi|jeudi|vendredi|samedi)/i
+};
+var parseDayPatterns$2 = {
+  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^j/i, /^v/i, /^s/i],
+  any: [/^di/i, /^lu/i, /^ma/i, /^me/i, /^je/i, /^ve/i, /^sa/i]
+};
+var matchDayPeriodPatterns$2 = {
+  narrow: /^(a|p|minuit|midi|mat\.?|ap\.?m\.?|soir|nuit)/i,
+  any: /^([ap]\.?\s?m\.?|du matin|de l'après[-\s]midi|du soir|de la nuit)/i
+};
+var parseDayPeriodPatterns$2 = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^min/i,
+    noon: /^mid/i,
+    morning: /mat/i,
+    afternoon: /ap/i,
+    evening: /soir/i,
+    night: /nuit/i
+  }
+};
+var match$4 = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern$2,
+    parsePattern: parseOrdinalNumberPattern$2,
+    valueCallback: function valueCallback(value) {
+      return parseInt(value);
+    }
+  }),
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns$2,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns$2,
+    defaultParseWidth: 'any'
+  }),
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns$2,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns$2,
+    defaultParseWidth: 'any',
+    valueCallback: function valueCallback(index) {
+      return index + 1;
+    }
+  }),
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns$2,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns$2,
+    defaultParseWidth: 'any'
+  }),
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns$2,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns$2,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns$2,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns$2,
+    defaultParseWidth: 'any'
+  })
+};
+var match$5 = match$4;
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary French locale.
+ * @language French
+ * @iso-639-2 fra
+ * @author Jean Dupouy [@izeau]{@link https://github.com/izeau}
+ * @author François B [@fbonzon]{@link https://github.com/fbonzon}
+ */
+
+var locale$2 = {
+  code: 'fr',
+  formatDistance: formatDistance$5,
+  formatLong: formatLong$5,
+  formatRelative: formatRelative$5,
+  localize: localize$5,
+  match: match$5,
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+var fr$2 = locale$2;
+
+var formatDistanceLocale$1 = {
+  lessThanXSeconds: {
+    one: 'meno di un secondo',
+    other: 'meno di {{count}} secondi'
+  },
+  xSeconds: {
+    one: 'un secondo',
+    other: '{{count}} secondi'
+  },
+  halfAMinute: 'alcuni secondi',
+  lessThanXMinutes: {
+    one: 'meno di un minuto',
+    other: 'meno di {{count}} minuti'
+  },
+  xMinutes: {
+    one: 'un minuto',
+    other: '{{count}} minuti'
+  },
+  aboutXHours: {
+    one: "circa un'ora",
+    other: 'circa {{count}} ore'
+  },
+  xHours: {
+    one: "un'ora",
+    other: '{{count}} ore'
+  },
+  xDays: {
+    one: 'un giorno',
+    other: '{{count}} giorni'
+  },
+  aboutXWeeks: {
+    one: 'circa una settimana',
+    other: 'circa {{count}} settimane'
+  },
+  xWeeks: {
+    one: 'una settimana',
+    other: '{{count}} settimane'
+  },
+  aboutXMonths: {
+    one: 'circa un mese',
+    other: 'circa {{count}} mesi'
+  },
+  xMonths: {
+    one: 'un mese',
+    other: '{{count}} mesi'
+  },
+  aboutXYears: {
+    one: 'circa un anno',
+    other: 'circa {{count}} anni'
+  },
+  xYears: {
+    one: 'un anno',
+    other: '{{count}} anni'
+  },
+  overXYears: {
+    one: 'più di un anno',
+    other: 'più di {{count}} anni'
+  },
+  almostXYears: {
+    one: 'quasi un anno',
+    other: 'quasi {{count}} anni'
+  }
+};
+
+var formatDistance$2 = function formatDistance(token, count, options) {
+  var result;
+  var tokenValue = formatDistanceLocale$1[token];
+
+  if (typeof tokenValue === 'string') {
+    result = tokenValue;
+  } else if (count === 1) {
+    result = tokenValue.one;
+  } else {
+    result = tokenValue.other.replace('{{count}}', count.toString());
+  }
+
+  if (options !== null && options !== void 0 && options.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
+      return 'tra ' + result;
+    } else {
+      return result + ' fa';
+    }
+  }
+
+  return result;
+};
+
+var formatDistance$3 = formatDistance$2;
+
+var dateFormats$1 = {
+  full: 'EEEE d MMMM y',
+  long: 'd MMMM y',
+  medium: 'd MMM y',
+  short: 'dd/MM/y'
+};
+var timeFormats$1 = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats$1 = {
+  full: '{{date}} {{time}}',
+  long: '{{date}} {{time}}',
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong$2 = {
+  date: buildFormatLongFn({
+    formats: dateFormats$1,
+    defaultWidth: 'full'
+  }),
+  time: buildFormatLongFn({
+    formats: timeFormats$1,
+    defaultWidth: 'full'
+  }),
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats$1,
+    defaultWidth: 'full'
+  })
+};
+var formatLong$3 = formatLong$2;
+
+var weekdays = ['domenica', 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato'];
+
+function _lastWeek(day) {
+  switch (day) {
+    case 0:
+      return "'domenica scorsa alle' p";
+
+    default:
+      return "'" + weekdays[day] + " scorso alle' p";
+  }
+}
+
+function thisWeek(day) {
+  return "'" + weekdays[day] + " alle' p";
+}
+
+function _nextWeek(day) {
+  switch (day) {
+    case 0:
+      return "'domenica prossima alle' p";
+
+    default:
+      return "'" + weekdays[day] + " prossimo alle' p";
+  }
+}
+
+var formatRelativeLocale$1 = {
+  lastWeek: function lastWeek(date, baseDate, options) {
+    var day = date.getUTCDay();
+
+    if (isSameUTCWeek(date, baseDate, options)) {
+      return thisWeek(day);
+    } else {
+      return _lastWeek(day);
+    }
+  },
+  yesterday: "'ieri alle' p",
+  today: "'oggi alle' p",
+  tomorrow: "'domani alle' p",
+  nextWeek: function nextWeek(date, baseDate, options) {
+    var day = date.getUTCDay();
+
+    if (isSameUTCWeek(date, baseDate, options)) {
+      return thisWeek(day);
+    } else {
+      return _nextWeek(day);
+    }
+  },
+  other: 'P'
+};
+
+var formatRelative$2 = function formatRelative(token, date, baseDate, options) {
+  var format = formatRelativeLocale$1[token];
+
+  if (typeof format === 'function') {
+    return format(date, baseDate, options);
+  }
+
+  return format;
+};
+
+var formatRelative$3 = formatRelative$2;
+
+var eraValues$1 = {
+  narrow: ['aC', 'dC'],
+  abbreviated: ['a.C.', 'd.C.'],
+  wide: ['avanti Cristo', 'dopo Cristo']
+};
+var quarterValues$1 = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['T1', 'T2', 'T3', 'T4'],
+  wide: ['1º trimestre', '2º trimestre', '3º trimestre', '4º trimestre']
+};
+var monthValues$1 = {
+  narrow: ['G', 'F', 'M', 'A', 'M', 'G', 'L', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic'],
+  wide: ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto', 'settembre', 'ottobre', 'novembre', 'dicembre']
+};
+var dayValues$1 = {
+  narrow: ['D', 'L', 'M', 'M', 'G', 'V', 'S'],
+  short: ['dom', 'lun', 'mar', 'mer', 'gio', 'ven', 'sab'],
+  abbreviated: ['dom', 'lun', 'mar', 'mer', 'gio', 'ven', 'sab'],
+  wide: ['domenica', 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato']
+};
+var dayPeriodValues$1 = {
+  narrow: {
+    am: 'm.',
+    pm: 'p.',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'mattina',
+    afternoon: 'pomeriggio',
+    evening: 'sera',
+    night: 'notte'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'mattina',
+    afternoon: 'pomeriggio',
+    evening: 'sera',
+    night: 'notte'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'mattina',
+    afternoon: 'pomeriggio',
+    evening: 'sera',
+    night: 'notte'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'm.',
+    pm: 'p.',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'di mattina',
+    afternoon: 'del pomeriggio',
+    evening: 'di sera',
+    night: 'di notte'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'di mattina',
+    afternoon: 'del pomeriggio',
+    evening: 'di sera',
+    night: 'di notte'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'di mattina',
+    afternoon: 'del pomeriggio',
+    evening: 'di sera',
+    night: 'di notte'
+  }
+};
+
+var ordinalNumber$1 = function ordinalNumber(dirtyNumber, _options) {
+  var number = Number(dirtyNumber);
+  return String(number);
+};
+
+var localize$2 = {
+  ordinalNumber: ordinalNumber$1,
+  era: buildLocalizeFn({
+    values: eraValues$1,
+    defaultWidth: 'wide'
+  }),
+  quarter: buildLocalizeFn({
+    values: quarterValues$1,
+    defaultWidth: 'wide',
+    argumentCallback: function argumentCallback(quarter) {
+      return quarter - 1;
+    }
+  }),
+  month: buildLocalizeFn({
+    values: monthValues$1,
+    defaultWidth: 'wide'
+  }),
+  day: buildLocalizeFn({
+    values: dayValues$1,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues$1,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+var localize$3 = localize$2;
+
+var matchOrdinalNumberPattern$1 = /^(\d+)(º)?/i;
+var parseOrdinalNumberPattern$1 = /\d+/i;
+var matchEraPatterns$1 = {
+  narrow: /^(aC|dC)/i,
+  abbreviated: /^(a\.?\s?C\.?|a\.?\s?e\.?\s?v\.?|d\.?\s?C\.?|e\.?\s?v\.?)/i,
+  wide: /^(avanti Cristo|avanti Era Volgare|dopo Cristo|Era Volgare)/i
+};
+var parseEraPatterns$1 = {
+  any: [/^a/i, /^(d|e)/i]
+};
+var matchQuarterPatterns$1 = {
+  narrow: /^[1234]/i,
+  abbreviated: /^t[1234]/i,
+  wide: /^[1234](º)? trimestre/i
+};
+var parseQuarterPatterns$1 = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns$1 = {
+  narrow: /^[gfmalsond]/i,
+  abbreviated: /^(gen|feb|mar|apr|mag|giu|lug|ago|set|ott|nov|dic)/i,
+  wide: /^(gennaio|febbraio|marzo|aprile|maggio|giugno|luglio|agosto|settembre|ottobre|novembre|dicembre)/i
+};
+var parseMonthPatterns$1 = {
+  narrow: [/^g/i, /^f/i, /^m/i, /^a/i, /^m/i, /^g/i, /^l/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ge/i, /^f/i, /^mar/i, /^ap/i, /^mag/i, /^gi/i, /^l/i, /^ag/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns$1 = {
+  narrow: /^[dlmgvs]/i,
+  short: /^(do|lu|ma|me|gi|ve|sa)/i,
+  abbreviated: /^(dom|lun|mar|mer|gio|ven|sab)/i,
+  wide: /^(domenica|luned[i|ì]|marted[i|ì]|mercoled[i|ì]|gioved[i|ì]|venerd[i|ì]|sabato)/i
+};
+var parseDayPatterns$1 = {
+  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^g/i, /^v/i, /^s/i],
+  any: [/^d/i, /^l/i, /^ma/i, /^me/i, /^g/i, /^v/i, /^s/i]
+};
+var matchDayPeriodPatterns$1 = {
+  narrow: /^(a|m\.|p|mezzanotte|mezzogiorno|(di|del) (mattina|pomeriggio|sera|notte))/i,
+  any: /^([ap]\.?\s?m\.?|mezzanotte|mezzogiorno|(di|del) (mattina|pomeriggio|sera|notte))/i
+};
+var parseDayPeriodPatterns$1 = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^mezza/i,
+    noon: /^mezzo/i,
+    morning: /mattina/i,
+    afternoon: /pomeriggio/i,
+    evening: /sera/i,
+    night: /notte/i
+  }
+};
+var match$2 = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern$1,
+    parsePattern: parseOrdinalNumberPattern$1,
+    valueCallback: function valueCallback(value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns$1,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns$1,
+    defaultParseWidth: 'any'
+  }),
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns$1,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns$1,
+    defaultParseWidth: 'any',
+    valueCallback: function valueCallback(index) {
+      return index + 1;
+    }
+  }),
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns$1,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns$1,
+    defaultParseWidth: 'any'
+  }),
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns$1,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns$1,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns$1,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns$1,
+    defaultParseWidth: 'any'
+  })
+};
+var match$3 = match$2;
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Italian locale.
+ * @language Italian
+ * @iso-639-2 ita
+ * @author Alberto Restifo [@albertorestifo]{@link https://github.com/albertorestifo}
+ * @author Giovanni Polimeni [@giofilo]{@link https://github.com/giofilo}
+ * @author Vincenzo Carrese [@vin-car]{@link https://github.com/vin-car}
+ */
+
+var locale$1 = {
+  code: 'it',
+  formatDistance: formatDistance$3,
+  formatLong: formatLong$3,
+  formatRelative: formatRelative$3,
+  localize: localize$3,
+  match: match$3,
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+var it$2 = locale$1;
+
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'minder dan een seconde',
+    other: 'minder dan {{count}} seconden'
+  },
+  xSeconds: {
+    one: '1 seconde',
+    other: '{{count}} seconden'
+  },
+  halfAMinute: 'een halve minuut',
+  lessThanXMinutes: {
+    one: 'minder dan een minuut',
+    other: 'minder dan {{count}} minuten'
+  },
+  xMinutes: {
+    one: 'een minuut',
+    other: '{{count}} minuten'
+  },
+  aboutXHours: {
+    one: 'ongeveer 1 uur',
+    other: 'ongeveer {{count}} uur'
+  },
+  xHours: {
+    one: '1 uur',
+    other: '{{count}} uur'
+  },
+  xDays: {
+    one: '1 dag',
+    other: '{{count}} dagen'
+  },
+  aboutXWeeks: {
+    one: 'ongeveer 1 week',
+    other: 'ongeveer {{count}} weken'
+  },
+  xWeeks: {
+    one: '1 week',
+    other: '{{count}} weken'
+  },
+  aboutXMonths: {
+    one: 'ongeveer 1 maand',
+    other: 'ongeveer {{count}} maanden'
+  },
+  xMonths: {
+    one: '1 maand',
+    other: '{{count}} maanden'
+  },
+  aboutXYears: {
+    one: 'ongeveer 1 jaar',
+    other: 'ongeveer {{count}} jaar'
+  },
+  xYears: {
+    one: '1 jaar',
+    other: '{{count}} jaar'
+  },
+  overXYears: {
+    one: 'meer dan 1 jaar',
+    other: 'meer dan {{count}} jaar'
+  },
+  almostXYears: {
+    one: 'bijna 1 jaar',
+    other: 'bijna {{count}} jaar'
+  }
+};
+
+var formatDistance = function formatDistance(token, count, options) {
+  var result;
+  var tokenValue = formatDistanceLocale[token];
+
+  if (typeof tokenValue === 'string') {
+    result = tokenValue;
+  } else if (count === 1) {
+    result = tokenValue.one;
+  } else {
+    result = tokenValue.other.replace('{{count}}', String(count));
+  }
+
+  if (options !== null && options !== void 0 && options.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
+      return 'over ' + result;
+    } else {
+      return result + ' geleden';
+    }
+  }
+
+  return result;
+};
+
+var formatDistance$1 = formatDistance;
+
+var dateFormats = {
+  full: 'EEEE d MMMM y',
+  long: 'd MMMM y',
+  medium: 'd MMM y',
+  short: 'dd-MM-y'
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'om' {{time}}",
+  long: "{{date}} 'om' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: buildFormatLongFn({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: buildFormatLongFn({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+var formatLong$1 = formatLong;
+
+var formatRelativeLocale = {
+  lastWeek: "'afgelopen' eeee 'om' p",
+  yesterday: "'gisteren om' p",
+  today: "'vandaag om' p",
+  tomorrow: "'morgen om' p",
+  nextWeek: "eeee 'om' p",
+  other: 'P'
+};
+
+var formatRelative = function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+};
+
+var formatRelative$1 = formatRelative;
+
+var eraValues = {
+  narrow: ['v.C.', 'n.C.'],
+  abbreviated: ['v.Chr.', 'n.Chr.'],
+  wide: ['voor Christus', 'na Christus']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['K1', 'K2', 'K3', 'K4'],
+  wide: ['1e kwartaal', '2e kwartaal', '3e kwartaal', '4e kwartaal']
+};
+var monthValues = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['jan.', 'feb.', 'mrt.', 'apr.', 'mei', 'jun.', 'jul.', 'aug.', 'sep.', 'okt.', 'nov.', 'dec.'],
+  wide: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
+};
+var dayValues = {
+  narrow: ['Z', 'M', 'D', 'W', 'D', 'V', 'Z'],
+  short: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
+  abbreviated: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
+  wide: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'middernacht',
+    noon: 'het middaguur',
+    morning: "'s ochtends",
+    afternoon: "'s middags",
+    evening: "'s avonds",
+    night: "'s nachts"
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'middernacht',
+    noon: 'het middaguur',
+    morning: "'s ochtends",
+    afternoon: "'s middags",
+    evening: "'s avonds",
+    night: "'s nachts"
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'middernacht',
+    noon: 'het middaguur',
+    morning: "'s ochtends",
+    afternoon: "'s middags",
+    evening: "'s avonds",
+    night: "'s nachts"
+  }
+};
+
+var ordinalNumber = function ordinalNumber(dirtyNumber, _options) {
+  var number = Number(dirtyNumber);
+  return number + 'e';
+};
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function argumentCallback(quarter) {
+      return quarter - 1;
+    }
+  }),
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: 'wide'
+  })
+};
+var localize$1 = localize;
+
+var matchOrdinalNumberPattern = /^(\d+)e?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^([vn]\.? ?C\.?)/,
+  abbreviated: /^([vn]\. ?Chr\.?)/,
+  wide: /^((voor|na) Christus)/
+};
+var parseEraPatterns = {
+  any: [/^v/, /^n/]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^K[1234]/i,
+  wide: /^[1234]e kwartaal/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(jan.|feb.|mrt.|apr.|mei|jun.|jul.|aug.|sep.|okt.|nov.|dec.)/i,
+  wide: /^(januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^jan/i, /^feb/i, /^m(r|a)/i, /^apr/i, /^mei/i, /^jun/i, /^jul/i, /^aug/i, /^sep/i, /^okt/i, /^nov/i, /^dec/i]
+};
+var matchDayPatterns = {
+  narrow: /^[zmdwv]/i,
+  short: /^(zo|ma|di|wo|do|vr|za)/i,
+  abbreviated: /^(zon|maa|din|woe|don|vri|zat)/i,
+  wide: /^(zondag|maandag|dinsdag|woensdag|donderdag|vrijdag|zaterdag)/i
+};
+var parseDayPatterns = {
+  narrow: [/^z/i, /^m/i, /^d/i, /^w/i, /^d/i, /^v/i, /^z/i],
+  any: [/^zo/i, /^ma/i, /^di/i, /^wo/i, /^do/i, /^vr/i, /^za/i]
+};
+var matchDayPeriodPatterns = {
+  any: /^(am|pm|middernacht|het middaguur|'s (ochtends|middags|avonds|nachts))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^am/i,
+    pm: /^pm/i,
+    midnight: /^middernacht/i,
+    noon: /^het middaguur/i,
+    morning: /ochtend/i,
+    afternoon: /middag/i,
+    evening: /avond/i,
+    night: /nacht/i
+  }
+};
+var match = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function valueCallback(value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function valueCallback(index) {
+      return index + 1;
+    }
+  }),
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+var match$1 = match;
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Dutch locale.
+ * @language Dutch
+ * @iso-639-2 nld
+ * @author Jorik Tangelder [@jtangelder]{@link https://github.com/jtangelder}
+ * @author Ruben Stolk [@rubenstolk]{@link https://github.com/rubenstolk}
+ * @author Lode Vanhove [@bitcrumb]{@link https://github.com/bitcrumb}
+ * @author Edo Rivai [@edorivai]{@link https://github.com/edorivai}
+ * @author Niels Keurentjes [@curry684]{@link https://github.com/curry684}
+ * @author Stefan Vermaas [@stefanvermaas]{@link https://github.com/stefanvermaas}
+ */
+
+var locale = {
+  code: 'nl',
+  formatDistance: formatDistance$1,
+  formatLong: formatLong$1,
+  formatRelative: formatRelative$1,
+  localize: localize$1,
+  match: match$1,
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+var nl$2 = locale;
+
+const locales = {
+    en: enGB,
+    nl: nl$2,
+    de: de$2,
+    fr: fr$2,
+    it: it$2,
+    es: es$2,
+};
+function FormatIntl(date, formatStr) {
+    return format(date, formatStr, {
+        locale: locales[global.__localeId__], // or global.__localeId__
+    });
+}
+function Parse_EN_US(date_string) {
+    return parse$1(date_string, 'yyyy-MM-dd', new Date());
+}
+const MONTH_FORMAT = 'MMMM yyyy';
+const LONG_DATE_FORMAT = 'EEEE dd MMMM yyyy';
+
+const AppContext = React.createContext({
+    locale: 'nl',
+    portalCode: '',
+    objectCode: ''
+});
+
+function Results({ filters, PortalSite, limit, skip, onPageChange, activePage }) {
+    const { portalCode } = React.useContext(AppContext);
     let min_nights = null;
     let requestPrices = false;
     if (filters.departure_date && filters.arrival_date) {
-        min_nights = differenceInCalendarDays(filters.departure_date, filters.arrival_date);
+        min_nights = differenceInCalendarDays(Parse_EN_US(filters.departure_date), Parse_EN_US(filters.arrival_date));
         requestPrices = true;
     }
     else if (filters.arrival_date) {
@@ -32956,7 +34736,7 @@ function Results({ filters, PortalSite, limit, skip, locale, onPageChange, activ
     });
     let properties = filterProperties.join(',');
     let variables = {
-        id: PortalSite.portal_code,
+        id: portalCode,
         country_id: filters.countries || null,
         region_id: filters.regions || null,
         city_id: filters.cities,
@@ -32972,8 +34752,7 @@ function Results({ filters, PortalSite, limit, skip, locale, onPageChange, activ
         properties,
         weekprice_max: Number(filters.weekprice_max) || null,
         limit,
-        skip,
-        locale
+        skip
     };
     const { loading, error, data } = useQuery(requestPrices ? HOUSES_PRICE_QUERY : HOUSES_QUERY, { variables });
     if (loading)
@@ -32987,7 +34766,7 @@ function Results({ filters, PortalSite, limit, skip, locale, onPageChange, activ
     const Results = data.PortalSite.houses;
     return (React__default["default"].createElement("div", { id: "results", className: PortalSite.options.filtersForm
             ? PortalSite.options.filtersForm.mode
-            : null },
+            : '' },
         Pagination,
         Results.length === 0 ? (React__default["default"].createElement("div", { className: "bu-noresults" },
             React__default["default"].createElement(FormattedMessage$1, { id: "no_results" }))) : null,
@@ -33002,7 +34781,7 @@ class SearchPage extends React.Component {
             ? Number(this.props.options.filtersForm.no_results)
             : 20;
         this.state = {
-            filters: this.props.filters,
+            filters: this.props.filters || {},
             activePage: 1,
             limit,
             skip: 0
@@ -33013,10 +34792,14 @@ class SearchPage extends React.Component {
     componentDidMount() {
         let filters = localStorage.getItem('bukazuFilters');
         let activePage = localStorage.getItem('bukazuActivePage');
-        this.setState({
-            filters: JSON.parse(filters) || this.props.filters
-        });
-        this.pageChange(activePage || 0);
+        if (filters) {
+            this.setState({
+                filters: JSON.parse(filters)
+            });
+        }
+        if (activePage) {
+            this.pageChange(parseInt(activePage) || 0);
+        }
     }
     onFilterChange(data) {
         let filters = data;
@@ -33029,7 +34812,7 @@ class SearchPage extends React.Component {
     pageChange(pageNumber) {
         const { limit } = this.state;
         let newSkip = pageNumber * limit;
-        localStorage.setItem('bukazuActivePage', pageNumber);
+        localStorage.setItem('bukazuActivePage', pageNumber.toString());
         this.setState({
             activePage: pageNumber,
             skip: newSkip
@@ -33037,16 +34820,16 @@ class SearchPage extends React.Component {
     }
     render() {
         const { filters, activePage, limit, skip } = this.state;
-        const { options, locale, PortalSite } = this.props;
+        const { options, PortalSite } = this.props;
         return (React__default["default"].createElement("div", { id: "search-page", className: options.filtersForm
                 ? options.filtersForm.location === 'right'
                     ? 'bu-reverse'
                     : options.filtersForm.location === 'top'
                         ? 'bu-column'
-                        : null
-                : null },
+                        : ''
+                : '' },
             React__default["default"].createElement(Filters, { PortalSite: PortalSite, filters: filters, onFilterChange: this.onFilterChange, options: options }),
-            React__default["default"].createElement(Results, { PortalSite: PortalSite, filters: filters, activePage: activePage, locale: locale, onPageChange: this.pageChange, skip: skip, limit: limit })));
+            React__default["default"].createElement(Results, { PortalSite: PortalSite, filters: filters, activePage: activePage, onPageChange: this.pageChange, skip: skip, limit: limit })));
     }
 }
 
@@ -37530,43 +39313,13 @@ FieldArrayInner.defaultProps = {
   validateOnChange: true
 };
 
-var Icon = function Icon(_ref) {
-  var _ref$height = _ref.height,
-      height = _ref$height === void 0 ? '16px' : _ref$height,
-      _ref$width = _ref.width,
-      width = _ref$width === void 0 ? '16px' : _ref$width;
-  return /*#__PURE__*/React__default["default"].createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    xmlnsXlink: "http://www.w3.org/1999/xlink",
-    version: "1.1",
-    x: "0px",
-    y: "0px",
-    viewBox: "0 0 100 100",
-    enableBackground: "new 0 0 100 100",
-    xmlSpace: "preserve",
-    style: {
-      height: height,
-      width: width
-    }
-  }, /*#__PURE__*/React__default["default"].createElement("path", {
-    d: "M50,5c24.813,0,45,20.187,45,45c0,24.813-20.187,45-45,45C25.187,95,5,74.813,5,50C5,25.187,25.187,5,50,5   M50,0C22.386,0,0,22.386,0,50c0,27.614,22.386,50,50,50c27.614,0,50-22.386,50-50C100,22.386,77.614,0,50,0L50,0z"
-  }), /*#__PURE__*/React__default["default"].createElement("circle", {
-    cx: "50",
-    cy: "29.546",
-    r: "4.934"
-  }), /*#__PURE__*/React__default["default"].createElement("rect", {
-    x: "46.5",
-    y: "41.21",
-    width: "7",
-    height: "34.179"
-  }));
-};
-
-const AppContext = React.createContext({
-    locale: 'nl',
-    portalCode: '',
-    objectCode: ''
-});
+const Icon = ({ height = '16px', width = '16px' }) => (React__default["default"].createElement("svg", { xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", version: "1.1", x: "0px", y: "0px", viewBox: "0 0 100 100", enableBackground: "new 0 0 100 100", xmlSpace: "preserve", style: {
+        height,
+        width,
+    } },
+    React__default["default"].createElement("path", { d: "M50,5c24.813,0,45,20.187,45,45c0,24.813-20.187,45-45,45C25.187,95,5,74.813,5,50C5,25.187,25.187,5,50,5   M50,0C22.386,0,0,22.386,0,50c0,27.614,22.386,50,50,50c27.614,0,50-22.386,50-50C100,22.386,77.614,0,50,0L50,0z" }),
+    React__default["default"].createElement("circle", { cx: "50", cy: "29.546", r: "4.934" }),
+    React__default["default"].createElement("rect", { x: "46.5", y: "41.21", width: "7", height: "34.179" })));
 
 const LocalizedAttachment = {
     nl: 'https://insurances.bukazu.com/nl/Voorwaarden%20Annuleringsverzekering.pdf',
@@ -37768,126 +39521,67 @@ const CHECK_DISCOUNT_CODE = gql `
   }
 `;
 
-var Discount = function Discount(_ref) {
-  var _options$bookingForm;
-
-  var errors = _ref.errors,
-      house = _ref.house,
-      options = _ref.options,
-      values = _ref.values;
-
-  if (house.discounts && house.discounts !== '0' || (_options$bookingForm = options.bookingForm) !== null && _options$bookingForm !== void 0 && _options$bookingForm.showDiscountCode) {
-    var _options$bookingForm2;
-
-    var discounts = house.discounts ? house.discounts.split(',') : [];
-    return /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "form-section"
-    }, house.discounts && house.discounts !== '0' && /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "form-row inline"
-    }, /*#__PURE__*/React__default["default"].createElement("label", {
-      htmlFor: "discount"
-    }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
-      id: "discount"
-    })), /*#__PURE__*/React__default["default"].createElement(Field, {
-      component: "select",
-      name: "discount"
-    }, discounts.map(function (discount) {
-      return /*#__PURE__*/React__default["default"].createElement("option", {
-        value: discount,
-        key: discount
-      }, discount, "%");
-    }))), /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "form-row inline"
-    }, /*#__PURE__*/React__default["default"].createElement("label", {
-      htmlFor: "discount_reason"
-    }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
-      id: "discount_reason"
-    })), /*#__PURE__*/React__default["default"].createElement(Field, {
-      name: "discount_reason"
-    }), errors.discount_reason && /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "error-message"
-    }, errors.discount_reason)), /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement("i", {
-      style: {
-        fontSize: 14
-      }
-    }, house.discounts_info))), ((_options$bookingForm2 = options.bookingForm) === null || _options$bookingForm2 === void 0 ? void 0 : _options$bookingForm2.showDiscountCode) && /*#__PURE__*/React__default["default"].createElement(DiscountCode, {
-      errors: errors,
-      house: house,
-      values: values
-    }));
-  } else {
-    return null;
-  }
+const Discount = ({ errors, house, options, values }) => {
+    var _a, _b;
+    if ((house.discounts && house.discounts !== '0') ||
+        ((_a = options.bookingForm) === null || _a === void 0 ? void 0 : _a.showDiscountCode)) {
+        let discounts = house.discounts ? house.discounts.split(',') : [];
+        return (React__default["default"].createElement("div", { className: "form-section" },
+            house.discounts && house.discounts !== '0' && (React__default["default"].createElement(React__default["default"].Fragment, null,
+                React__default["default"].createElement("div", { className: "form-row inline" },
+                    React__default["default"].createElement("label", { htmlFor: "discount" },
+                        React__default["default"].createElement(FormattedMessage$1, { id: "discount" })),
+                    React__default["default"].createElement(Field, { component: "select", name: "discount" }, discounts.map((discount) => (React__default["default"].createElement("option", { value: discount, key: discount },
+                        discount,
+                        "%"))))),
+                React__default["default"].createElement("div", { className: "form-row inline" },
+                    React__default["default"].createElement("label", { htmlFor: "discount_reason" },
+                        React__default["default"].createElement(FormattedMessage$1, { id: "discount_reason" })),
+                    React__default["default"].createElement(Field, { name: "discount_reason" }),
+                    errors.discount_reason && (React__default["default"].createElement("div", { className: "error-message" }, errors.discount_reason))),
+                React__default["default"].createElement("div", null,
+                    React__default["default"].createElement("i", { style: { fontSize: 14 } }, house.discounts_info)))),
+            ((_b = options.bookingForm) === null || _b === void 0 ? void 0 : _b.showDiscountCode) && (React__default["default"].createElement(DiscountCode, { errors: errors, house: house, values: values }))));
+    }
+    else {
+        return null;
+    }
 };
-
 Discount.propTypes = {
-  house: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+    house: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
 };
 
-var _excluded = ["field", "id", "label"];
-
-var InputFeedback = function InputFeedback(_ref) {
-  var error = _ref.error;
-  return error ? /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "input-feedback"
-  }, error) : null;
-};
-
+// Input feedback
+const InputFeedback = ({ error }) => error ? React__default["default"].createElement("div", { className: "input-feedback" }, error) : null;
 InputFeedback.propTypes = {
-  error: PropTypes.object
-}; // Radio input
-
-var RadioButton = function RadioButton(_ref2) {
-  var _ref2$field = _ref2.field,
-      name = _ref2$field.name,
-      value = _ref2$field.value,
-      onChange = _ref2$field.onChange,
-      onBlur = _ref2$field.onBlur,
-      id = _ref2.id,
-      label = _ref2.label,
-      props = _objectWithoutProperties$b(_ref2, _excluded);
-
-  return /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement("input", _extends$e({
-    name: name,
-    id: id,
-    type: "radio",
-    value: id // could be something else for output?
-    ,
-    checked: id === value,
-    onChange: onChange,
-    onBlur: onBlur,
-    className: "radio-button"
-  }, props)), /*#__PURE__*/React__default["default"].createElement("label", {
-    htmlFor: id
-  }, label));
+    error: PropTypes.object,
+};
+// Radio input
+const RadioButton = (_a) => {
+    var { field: { name, value, onChange, onBlur }, id, label } = _a, props = __rest(_a, ["field", "id", "label"]);
+    return (React__default["default"].createElement("div", null,
+        React__default["default"].createElement("input", Object.assign({ name: name, id: id, type: "radio", value: id, checked: id === value, onChange: onChange, onBlur: onBlur, className: "radio-button" }, props)),
+        React__default["default"].createElement("label", { htmlFor: id }, label)));
 };
 RadioButton.propTypes = {
-  field: PropTypes.object,
-  id: PropTypes.string,
-  label: PropTypes.object
-}; // Radio group
-
-var RadioButtonGroup = function RadioButtonGroup(_ref3) {
-  var error = _ref3.error,
-      touched = _ref3.touched,
-      label = _ref3.label,
-      className = _ref3.className,
-      children = _ref3.children;
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: className
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "legend"
-  }, label), children, touched && /*#__PURE__*/React__default["default"].createElement(InputFeedback, {
-    error: error
-  }));
+    field: PropTypes.object,
+    id: PropTypes.string,
+    label: PropTypes.object,
+};
+// Radio group
+const RadioButtonGroup = ({ error, touched, label, className, children, }) => {
+    return (React__default["default"].createElement("div", { className: className },
+        React__default["default"].createElement("div", { className: "legend" }, label),
+        children,
+        touched && React__default["default"].createElement(InputFeedback, { error: error })));
 };
 RadioButtonGroup.propTypes = {
-  error: PropTypes.object,
-  touched: PropTypes.object,
-  className: PropTypes.string,
-  label: PropTypes.string,
-  children: PropTypes.node.isRequired
+    error: PropTypes.object,
+    touched: PropTypes.object,
+    className: PropTypes.string,
+    label: PropTypes.string,
+    children: PropTypes.node.isRequired,
 };
 
 function BookingOrOption({ house }) {
@@ -37897,2593 +39591,390 @@ function BookingOrOption({ house }) {
             React__default["default"].createElement(Field, { component: RadioButton, name: "is_option", id: "false", label: React__default["default"].createElement(FormattedMessage$1, { id: "booking" }) }))))));
 }
 
-function Description(_ref) {
-  var description = _ref.description;
-  var val = /*#__PURE__*/React__default["default"].createElement("span", null);
-
-  if (description) {
-    val = /*#__PURE__*/React__default["default"].createElement("span", {
-      style: {
-        padding: "0 0 0 8px"
-      }
-    }, /*#__PURE__*/React__default["default"].createElement(Modal, {
-      buttonText: /*#__PURE__*/React__default["default"].createElement(Icon, null)
-    }, /*#__PURE__*/React__default["default"].createElement("p", null, description)));
-  }
-
-  return val;
+function Description({ description }) {
+    let val = React__default["default"].createElement("span", null);
+    if (description) {
+        val = (React__default["default"].createElement("span", { style: {
+                padding: '0 0 0 8px'
+            } },
+            React__default["default"].createElement(Modal, { buttonText: React__default["default"].createElement(Icon, null) },
+                React__default["default"].createElement("p", null, description))));
+    }
+    return val;
 }
 
-function CostRow(_ref) {
-  var name = _ref.name,
-      amount = _ref.amount,
-      description = _ref.description,
-      method_name = _ref.method_name,
-      formatName = _ref.formatName,
-      forceMethod = _ref.forceMethod;
-  return /*#__PURE__*/React__default["default"].createElement("tr", null, /*#__PURE__*/React__default["default"].createElement("td", null, formatName ? /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
-    id: name
-  }) : name, description && /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, ' ', /*#__PURE__*/React__default["default"].createElement(Description, {
-    description: description
-  }))), /*#__PURE__*/React__default["default"].createElement("td", {
-    className: "price"
-  }, amount && amount > 0 ? /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, "\u20AC", ' ', /*#__PURE__*/React__default["default"].createElement(FormattedNumber, {
-    value: amount,
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  }), forceMethod && /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, ' ', method_name)) : /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, method_name)));
+function CostRow({ name, amount, description, method_name, formatName, forceMethod }) {
+    return (React__default["default"].createElement("tr", null,
+        React__default["default"].createElement("td", null,
+            formatName ? React__default["default"].createElement(FormattedMessage$1, { id: name }) : name,
+            description && (React__default["default"].createElement(React__default["default"].Fragment, null,
+                ' ',
+                React__default["default"].createElement(Description, { description: description })))),
+        React__default["default"].createElement("td", { className: "price" }, amount && amount > 0 ? (React__default["default"].createElement(React__default["default"].Fragment, null,
+            "\u20AC",
+            ' ',
+            React__default["default"].createElement(FormattedNumber, { value: amount, minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+            forceMethod && React__default["default"].createElement(React__default["default"].Fragment, null,
+                " ",
+                method_name))) : (React__default["default"].createElement(React__default["default"].Fragment, null, method_name)))));
 }
-
 CostRow.defaultValues = {
-  formatName: false,
-  forceMethod: false
+    formatName: false,
+    forceMethod: false
 };
 
-function InsurancesAndRequired(_ref) {
-  var prices = _ref.prices;
-  var _prices$total_costs = prices.total_costs,
-      insurances = _prices$total_costs.insurances,
-      required_costs = _prices$total_costs.required_costs;
-  var not_on_site = required_costs.not_on_site;
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "costs-section"
-  }, /*#__PURE__*/React__default["default"].createElement("table", null, /*#__PURE__*/React__default["default"].createElement("tbody", null, insurances.cancel_insurance && /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, Object.keys(insurances).map(function (key) {
-    return /*#__PURE__*/React__default["default"].createElement(CostRow, {
-      name: key,
-      key: key,
-      formatName: true,
-      amount: insurances[key]
+function InsurancesAndRequired({ prices }) {
+    const { insurances, required_costs } = prices.total_costs;
+    const { not_on_site } = required_costs;
+    return (React__default["default"].createElement("div", { className: "costs-section" },
+        React__default["default"].createElement("table", null,
+            React__default["default"].createElement("tbody", null,
+                insurances.cancel_insurance && (React__default["default"].createElement(React__default["default"].Fragment, null, Object.keys(insurances).map((key) => (React__default["default"].createElement(CostRow, { name: key, key: key, formatName: true, amount: insurances[key] }))))),
+                prices.required_house_costs.map((cost) => {
+                    if (!cost.on_site && cost.gl !== '0120') {
+                        if (cost.method === 'none') {
+                            return React__default["default"].createElement(CostRow, Object.assign({ key: cost.id }, cost));
+                        }
+                        else {
+                            if (cost.amount === 0) {
+                                return null;
+                            }
+                            return (React__default["default"].createElement(CostRow, { key: cost.id, name: cost.name, amount: not_on_site === null || not_on_site === void 0 ? void 0 : not_on_site.find((x) => x.id == cost.id).amount }));
+                        }
+                    }
+                })))));
+}
+
+const BOOKING_PRICE_TOTAL_QUERY = gql `
+  query BookingPriceTotalQuery(
+    $id: ID!
+    $house_id: String!
+    $starts_at: Date!
+    $ends_at: Date!
+    $persons: Int
+    $costs: Json
+    $cancel_insurance: Int
+    $discount: Int
+    $discount_code: String
+  ) {
+    PortalSite(id: $id) {
+      houses(house_code: $house_id) {
+        id
+        name
+        booking_price(
+          starts_at: $starts_at
+          ends_at: $ends_at
+          persons: $persons
+          costs: $costs
+          cancel_insurance: $cancel_insurance
+          discount: $discount
+          discount_code: $discount_code
+        )
+      }
+    }
+  }
+`;
+
+function RentAndDiscount({ prices }) {
+    const { rent_price, discount, discounted_price } = prices;
+    return (React__default["default"].createElement("div", { className: "costs-section" },
+        React__default["default"].createElement("table", null,
+            React__default["default"].createElement("tbody", null,
+                React__default["default"].createElement(CostRow, { name: "rent_price", formatName: true, amount: rent_price }),
+                discount > 0 ? (React__default["default"].createElement(React__default["default"].Fragment, null,
+                    React__default["default"].createElement(CostRow, { name: "discount", formatName: true, amount: discount }),
+                    React__default["default"].createElement(CostRow, { name: "price_after_discount", formatName: true, amount: discounted_price }))) : null))));
+}
+
+function OptionalNotOnSite({ prices }) {
+    const { optional_costs } = prices.total_costs;
+    const { not_on_site } = optional_costs;
+    return (React__default["default"].createElement("div", { className: "costs-section" },
+        React__default["default"].createElement("table", null,
+            React__default["default"].createElement("tbody", null, prices.optional_house_costs.map((cost) => {
+                if (!cost.on_site && cost.gl !== '0120') {
+                    if (cost.method === 'none') {
+                        return React__default["default"].createElement(CostRow, Object.assign({ key: cost.id }, cost));
+                    }
+                    else if (cost.method === 'on_site') {
+                        if (not_on_site.find((x) => x.id == cost.id).nr_of_items > 0) {
+                            return (React__default["default"].createElement(CostRow, Object.assign({ key: cost.id }, cost, { amount: cost.amount, forceMethod: true })));
+                        }
+                    }
+                    else {
+                        let amount = not_on_site.find((x) => x.id == cost.id).amount;
+                        if (amount > 0) {
+                            return React__default["default"].createElement(CostRow, Object.assign({ key: cost.id }, cost, { amount: amount }));
+                        }
+                    }
+                }
+            })))));
+}
+
+function OptionalOnSite({ prices }) {
+    const { optional_costs } = prices.total_costs;
+    const { on_site } = optional_costs;
+    return (React__default["default"].createElement(React__default["default"].Fragment, null, prices.optional_house_costs.map((cost) => {
+        if (cost.on_site && cost.gl !== '0120') {
+            if (cost.method === 'none') {
+                return React__default["default"].createElement(CostRow, Object.assign({ key: cost.id }, cost));
+            }
+            else if (cost.method === 'on_site') {
+                if ((on_site === null || on_site === void 0 ? void 0 : on_site.find((x) => x.id == cost.id).nr_of_items) > 0) {
+                    return (React__default["default"].createElement(CostRow, Object.assign({ key: cost.id }, cost, { amount: cost.amount, forceMethod: true })));
+                }
+            }
+            else {
+                let amount = on_site === null || on_site === void 0 ? void 0 : on_site.find((x) => x.id == cost.id).amount;
+                if (amount > 0) {
+                    return React__default["default"].createElement(CostRow, Object.assign({ key: cost.id }, cost, { amount: amount }));
+                }
+            }
+        }
+    })));
+}
+
+function OnSite({ prices }) {
+    const { required_costs } = prices.total_costs;
+    const { on_site } = required_costs;
+    return (React__default["default"].createElement("div", { className: "costs-section" },
+        React__default["default"].createElement("strong", null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "costs_on_site" })),
+        React__default["default"].createElement("table", null,
+            React__default["default"].createElement("tbody", null,
+                prices.required_house_costs.map((cost) => {
+                    var _a;
+                    if (cost.on_site && cost.gl !== '0120') {
+                        if (cost.method === 'none') {
+                            return React__default["default"].createElement(CostRow, Object.assign({ key: cost.id }, cost));
+                        }
+                        else {
+                            let amount = (_a = on_site.find((x) => x.id == cost.id)) === null || _a === void 0 ? void 0 : _a.amount;
+                            return React__default["default"].createElement(CostRow, Object.assign({ key: cost.id }, cost, { amount: amount }));
+                        }
+                    }
+                }),
+                React__default["default"].createElement(OptionalOnSite, { prices: prices })))));
+}
+
+function CostSection({ children }) {
+    return (React__default["default"].createElement("div", { className: "costs-section" },
+        React__default["default"].createElement("table", null,
+            React__default["default"].createElement("tbody", null, children))));
+}
+
+function Totals({ prices }) {
+    return (React__default["default"].createElement(React__default["default"].Fragment, null,
+        React__default["default"].createElement(CostSection, null,
+            React__default["default"].createElement("tr", null,
+                React__default["default"].createElement("th", { style: {
+                        textAlign: 'left',
+                        testTransform: 'capitalize'
+                    } },
+                    React__default["default"].createElement(FormattedMessage$1, { id: "total" })),
+                React__default["default"].createElement("th", { className: "price", style: { fontSize: 18 } },
+                    "\u20AC",
+                    ' ',
+                    React__default["default"].createElement(FormattedNumber, { value: prices.total_costs.sub_total, minimumFractionDigits: 2, maximumFractionDigits: 2 })))),
+        React__default["default"].createElement(CostSection, null,
+            React__default["default"].createElement(Deposit, { cost_array: prices.required_house_costs, price_array: prices.total_costs.required_costs.on_site }),
+            React__default["default"].createElement(Deposit, { cost_array: prices.required_house_costs, price_array: prices.total_costs.required_costs.not_on_site }),
+            React__default["default"].createElement(Deposit, { cost_array: prices.optional_house_costs, price_array: prices.total_costs.optional_costs.on_site }),
+            React__default["default"].createElement(Deposit, { cost_array: prices.optional_house_costs, price_array: prices.total_costs.optional_costs.not_on_site })),
+        React__default["default"].createElement(CostSection, null,
+            React__default["default"].createElement("tr", null,
+                React__default["default"].createElement("th", { style: {
+                        textAlign: 'left',
+                        testTransform: 'capitalize'
+                    } },
+                    React__default["default"].createElement(FormattedMessage$1, { id: "total" })),
+                React__default["default"].createElement("td", { className: "price" },
+                    "\u20AC",
+                    ' ',
+                    React__default["default"].createElement(FormattedNumber, { value: prices.total_costs.total_price, minimumFractionDigits: 2, maximumFractionDigits: 2 }))))));
+}
+function Deposit({ cost_array, price_array }) {
+    return (React__default["default"].createElement(React__default["default"].Fragment, null, cost_array.map((cost) => {
+        let price = price_array.find((x) => x.id == cost.id);
+        if (cost.gl === '0120' && (price === null || price === void 0 ? void 0 : price.amount) > 0) {
+            return React__default["default"].createElement(CostRow, Object.assign({ key: cost.id }, cost, { amount: price.amount }));
+        }
+    })));
+}
+
+function CostSummary({ values, house }) {
+    let babies = Number(values.babies) - Number(house.babies_extra);
+    if (babies < 0) {
+        babies = 0;
+    }
+    const persons = Number(values.children) + Number(values.adults) + babies;
+    const { portalCode, objectCode } = React.useContext(AppContext);
+    const { loading, error, data } = useQuery(BOOKING_PRICE_TOTAL_QUERY, {
+        variables: {
+            id: portalCode,
+            persons: persons,
+            house_id: objectCode,
+            starts_at: JSON.stringify(values.arrivalDate.date),
+            ends_at: JSON.stringify(values.departureDate.date),
+            costs: JSON.stringify(values.costs),
+            discount: Number(values.discount),
+            discount_code: values.discount_code,
+            cancel_insurance: Number(values.cancel_insurance)
+        },
+        fetchPolicy: 'network-only'
     });
-  })), prices.required_house_costs.map(function (cost) {
-    if (!cost.on_site && cost.gl !== '0120') {
-      if (cost.method === 'none') {
-        return /*#__PURE__*/React__default["default"].createElement(CostRow, _extends$e({
-          key: cost.id
-        }, cost));
-      } else {
-        if (cost.amount === 0) {
-          return null;
-        }
-
-        return /*#__PURE__*/React__default["default"].createElement(CostRow, {
-          key: cost.id,
-          name: cost.name,
-          amount: not_on_site === null || not_on_site === void 0 ? void 0 : not_on_site.find(function (x) {
-            return x.id == cost.id;
-          }).amount
-        });
-      }
+    if (loading) {
+        return 'Loading...';
     }
-  }))));
+    if (error) {
+        return React__default["default"].createElement("div", null, JSON.stringify(error));
+    }
+    const prices = data.PortalSite.houses[0].booking_price;
+    return (React__default["default"].createElement(React__default["default"].Fragment, null,
+        React__default["default"].createElement(RentAndDiscount, { prices: prices }),
+        React__default["default"].createElement(InsurancesAndRequired, { prices: prices }),
+        React__default["default"].createElement(OptionalNotOnSite, { prices: prices }),
+        React__default["default"].createElement(OnSite, { prices: prices }),
+        React__default["default"].createElement(Totals, { prices: prices })));
 }
 
-var _templateObject;
-var BOOKING_PRICE_TOTAL_QUERY = gql(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query BookingPriceTotalQuery(\n    $id: ID!\n    $house_id: String!\n    $starts_at: Date!\n    $ends_at: Date!\n    $persons: Int\n    $costs: Json\n    $cancel_insurance: Int\n    $discount: Int\n    $discount_code: String\n  ) {\n    PortalSite(id: $id) {\n      houses(house_code: $house_id) {\n        id\n        name\n        booking_price(\n          starts_at: $starts_at\n          ends_at: $ends_at\n          persons: $persons\n          costs: $costs\n          cancel_insurance: $cancel_insurance\n          discount: $discount\n          discount_code: $discount_code\n        )\n      }\n    }\n  }\n"])));
-
-function RentAndDiscount(_ref) {
-  var prices = _ref.prices;
-  var rent_price = prices.rent_price,
-      discount = prices.discount,
-      discounted_price = prices.discounted_price;
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "costs-section"
-  }, /*#__PURE__*/React__default["default"].createElement("table", null, /*#__PURE__*/React__default["default"].createElement("tbody", null, /*#__PURE__*/React__default["default"].createElement(CostRow, {
-    name: "rent_price",
-    formatName: true,
-    amount: rent_price
-  }), discount > 0 ? /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(CostRow, {
-    name: "discount",
-    formatName: true,
-    amount: discount
-  }), /*#__PURE__*/React__default["default"].createElement(CostRow, {
-    name: "price_after_discount",
-    formatName: true,
-    amount: discounted_price
-  })) : null)));
-}
-
-function OptionalNotOnSite(_ref) {
-  var prices = _ref.prices;
-  var optional_costs = prices.total_costs.optional_costs;
-  var not_on_site = optional_costs.not_on_site;
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "costs-section"
-  }, /*#__PURE__*/React__default["default"].createElement("table", null, /*#__PURE__*/React__default["default"].createElement("tbody", null, prices.optional_house_costs.map(function (cost) {
-    if (!cost.on_site && cost.gl !== '0120') {
-      if (cost.method === 'none') {
-        return /*#__PURE__*/React__default["default"].createElement(CostRow, _extends$e({
-          key: cost.id
-        }, cost));
-      } else if (cost.method === 'on_site') {
-        if (not_on_site.find(function (x) {
-          return x.id == cost.id;
-        }).nr_of_items > 0) {
-          return /*#__PURE__*/React__default["default"].createElement(CostRow, _extends$e({
-            key: cost.id
-          }, cost, {
-            amount: cost.amount,
-            forceMethod: true
-          }));
-        }
-      } else {
-        var amount = not_on_site.find(function (x) {
-          return x.id == cost.id;
-        }).amount;
-
-        if (amount > 0) {
-          return /*#__PURE__*/React__default["default"].createElement(CostRow, _extends$e({
-            key: cost.id
-          }, cost, {
-            amount: amount
-          }));
-        }
-      }
-    }
-  }))));
-}
-
-function OptionalOnSite(_ref) {
-  var prices = _ref.prices;
-  var optional_costs = prices.total_costs.optional_costs;
-  var on_site = optional_costs.on_site;
-  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, prices.optional_house_costs.map(function (cost) {
-    if (cost.on_site && cost.gl !== '0120') {
-      if (cost.method === 'none') {
-        return /*#__PURE__*/React__default["default"].createElement(CostRow, _extends$e({
-          key: cost.id
-        }, cost));
-      } else if (cost.method === 'on_site') {
-        if ((on_site === null || on_site === void 0 ? void 0 : on_site.find(function (x) {
-          return x.id == cost.id;
-        }).nr_of_items) > 0) {
-          return /*#__PURE__*/React__default["default"].createElement(CostRow, _extends$e({
-            key: cost.id
-          }, cost, {
-            amount: cost.amount,
-            forceMethod: true
-          }));
-        }
-      } else {
-        var amount = on_site === null || on_site === void 0 ? void 0 : on_site.find(function (x) {
-          return x.id == cost.id;
-        }).amount;
-
-        if (amount > 0) {
-          return /*#__PURE__*/React__default["default"].createElement(CostRow, _extends$e({
-            key: cost.id
-          }, cost, {
-            amount: amount
-          }));
-        }
-      }
-    }
-  }));
-}
-
-function OnSite(_ref) {
-  var prices = _ref.prices;
-  var required_costs = prices.total_costs.required_costs;
-  var on_site = required_costs.on_site;
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "costs-section"
-  }, /*#__PURE__*/React__default["default"].createElement("strong", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
-    id: "costs_on_site"
-  })), /*#__PURE__*/React__default["default"].createElement("table", null, /*#__PURE__*/React__default["default"].createElement("tbody", null, prices.required_house_costs.map(function (cost) {
-    if (cost.on_site && cost.gl !== '0120') {
-      if (cost.method === 'none') {
-        return /*#__PURE__*/React__default["default"].createElement(CostRow, _extends$e({
-          key: cost.id
-        }, cost));
-      } else {
-        var amount = on_site.find(function (x) {
-          return x.id == cost.id;
-        }).amount;
-        return /*#__PURE__*/React__default["default"].createElement(CostRow, _extends$e({
-          key: cost.id
-        }, cost, {
-          amount: amount
-        }));
-      }
-    }
-  }), /*#__PURE__*/React__default["default"].createElement(OptionalOnSite, {
-    prices: prices
-  }))));
-}
-
-function CostSection(_ref) {
-  var children = _ref.children;
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "costs-section"
-  }, /*#__PURE__*/React__default["default"].createElement("table", null, /*#__PURE__*/React__default["default"].createElement("tbody", null, children)));
-}
-
-function Totals(_ref) {
-  var prices = _ref.prices;
-  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(CostSection, null, /*#__PURE__*/React__default["default"].createElement("tr", null, /*#__PURE__*/React__default["default"].createElement("th", {
-    style: {
-      textAlign: 'left',
-      testTransform: 'capitalize'
-    }
-  }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
-    id: "total"
-  })), /*#__PURE__*/React__default["default"].createElement("th", {
-    className: "price",
-    style: {
-      fontSize: 18
-    }
-  }, "\u20AC", ' ', /*#__PURE__*/React__default["default"].createElement(FormattedNumber, {
-    value: prices.total_costs.sub_total,
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  })))), /*#__PURE__*/React__default["default"].createElement(CostSection, null, /*#__PURE__*/React__default["default"].createElement(Deposit, {
-    cost_array: prices.required_house_costs,
-    price_array: prices.total_costs.required_costs.on_site
-  }), /*#__PURE__*/React__default["default"].createElement(Deposit, {
-    cost_array: prices.required_house_costs,
-    price_array: prices.total_costs.required_costs.not_on_site
-  }), /*#__PURE__*/React__default["default"].createElement(Deposit, {
-    cost_array: prices.optional_house_costs,
-    price_array: prices.total_costs.optional_costs.on_site
-  }), /*#__PURE__*/React__default["default"].createElement(Deposit, {
-    cost_array: prices.optional_house_costs,
-    price_array: prices.total_costs.optional_costs.not_on_site
-  })), /*#__PURE__*/React__default["default"].createElement(CostSection, null, /*#__PURE__*/React__default["default"].createElement("tr", null, /*#__PURE__*/React__default["default"].createElement("th", {
-    style: {
-      textAlign: 'left',
-      testTransform: 'capitalize'
-    }
-  }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
-    id: "total"
-  })), /*#__PURE__*/React__default["default"].createElement("td", {
-    className: "price"
-  }, "\u20AC", ' ', /*#__PURE__*/React__default["default"].createElement(FormattedNumber, {
-    value: prices.total_costs.total_price,
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  })))));
-}
-
-function Deposit(_ref2) {
-  var cost_array = _ref2.cost_array,
-      price_array = _ref2.price_array;
-  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, cost_array.map(function (cost) {
-    var price = price_array.find(function (x) {
-      return x.id == cost.id;
-    });
-
-    if (cost.gl === '0120' && (price === null || price === void 0 ? void 0 : price.amount) > 0) {
-      return /*#__PURE__*/React__default["default"].createElement(CostRow, _extends$e({
-        key: cost.id
-      }, cost, {
-        amount: price.amount
-      }));
-    }
-  }));
-}
-
-function CostSummary(_ref) {
-  var values = _ref.values,
-      house = _ref.house;
-  var babies = Number(values.babies) - Number(house.babies_extra);
-
-  if (babies < 0) {
-    babies = 0;
-  }
-
-  var persons = Number(values.children) + Number(values.adults) + babies;
-
-  var _useContext = React.useContext(AppContext),
-      portalCode = _useContext.portalCode,
-      objectCode = _useContext.objectCode;
-
-  var _useQuery = useQuery(BOOKING_PRICE_TOTAL_QUERY, {
-    variables: {
-      id: portalCode,
-      persons: persons,
-      house_id: objectCode,
-      starts_at: JSON.stringify(values.arrivalDate.date),
-      ends_at: JSON.stringify(values.departureDate.date),
-      costs: JSON.stringify(values.costs),
-      discount: Number(values.discount),
-      discount_code: values.discount_code,
-      cancel_insurance: Number(values.cancel_insurance)
-    },
-    fetchPolicy: 'network-only'
-  }),
-      loading = _useQuery.loading,
-      error = _useQuery.error,
-      data = _useQuery.data;
-
-  if (loading) {
-    return 'Loading...';
-  }
-
-  if (error) {
-    return /*#__PURE__*/React__default["default"].createElement("div", null, JSON.stringify(error));
-  }
-
-  var prices = data.PortalSite.houses[0].booking_price;
-  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(RentAndDiscount, {
-    prices: prices
-  }), /*#__PURE__*/React__default["default"].createElement(InsurancesAndRequired, {
-    prices: prices
-  }), /*#__PURE__*/React__default["default"].createElement(OptionalNotOnSite, {
-    prices: prices
-  }), /*#__PURE__*/React__default["default"].createElement(OnSite, {
-    prices: prices
-  }), /*#__PURE__*/React__default["default"].createElement(Totals, {
-    prices: prices
-  }));
-}
-
-function isSameUTCWeek(dirtyDateLeft, dirtyDateRight, options) {
-  requiredArgs(2, arguments);
-  var dateLeftStartOfWeek = startOfUTCWeek(dirtyDateLeft, options);
-  var dateRightStartOfWeek = startOfUTCWeek(dirtyDateRight, options);
-  return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime();
-}
-
-var formatDistanceLocale$4 = {
-  lessThanXSeconds: {
-    standalone: {
-      one: 'weniger als 1 Sekunde',
-      other: 'weniger als {{count}} Sekunden'
-    },
-    withPreposition: {
-      one: 'weniger als 1 Sekunde',
-      other: 'weniger als {{count}} Sekunden'
-    }
-  },
-  xSeconds: {
-    standalone: {
-      one: '1 Sekunde',
-      other: '{{count}} Sekunden'
-    },
-    withPreposition: {
-      one: '1 Sekunde',
-      other: '{{count}} Sekunden'
-    }
-  },
-  halfAMinute: {
-    standalone: 'halbe Minute',
-    withPreposition: 'halben Minute'
-  },
-  lessThanXMinutes: {
-    standalone: {
-      one: 'weniger als 1 Minute',
-      other: 'weniger als {{count}} Minuten'
-    },
-    withPreposition: {
-      one: 'weniger als 1 Minute',
-      other: 'weniger als {{count}} Minuten'
-    }
-  },
-  xMinutes: {
-    standalone: {
-      one: '1 Minute',
-      other: '{{count}} Minuten'
-    },
-    withPreposition: {
-      one: '1 Minute',
-      other: '{{count}} Minuten'
-    }
-  },
-  aboutXHours: {
-    standalone: {
-      one: 'etwa 1 Stunde',
-      other: 'etwa {{count}} Stunden'
-    },
-    withPreposition: {
-      one: 'etwa 1 Stunde',
-      other: 'etwa {{count}} Stunden'
-    }
-  },
-  xHours: {
-    standalone: {
-      one: '1 Stunde',
-      other: '{{count}} Stunden'
-    },
-    withPreposition: {
-      one: '1 Stunde',
-      other: '{{count}} Stunden'
-    }
-  },
-  xDays: {
-    standalone: {
-      one: '1 Tag',
-      other: '{{count}} Tage'
-    },
-    withPreposition: {
-      one: '1 Tag',
-      other: '{{count}} Tagen'
-    }
-  },
-  aboutXWeeks: {
-    standalone: {
-      one: 'etwa 1 Woche',
-      other: 'etwa {{count}} Wochen'
-    },
-    withPreposition: {
-      one: 'etwa 1 Woche',
-      other: 'etwa {{count}} Wochen'
-    }
-  },
-  xWeeks: {
-    standalone: {
-      one: '1 Woche',
-      other: '{{count}} Wochen'
-    },
-    withPreposition: {
-      one: '1 Woche',
-      other: '{{count}} Wochen'
-    }
-  },
-  aboutXMonths: {
-    standalone: {
-      one: 'etwa 1 Monat',
-      other: 'etwa {{count}} Monate'
-    },
-    withPreposition: {
-      one: 'etwa 1 Monat',
-      other: 'etwa {{count}} Monaten'
-    }
-  },
-  xMonths: {
-    standalone: {
-      one: '1 Monat',
-      other: '{{count}} Monate'
-    },
-    withPreposition: {
-      one: '1 Monat',
-      other: '{{count}} Monaten'
-    }
-  },
-  aboutXYears: {
-    standalone: {
-      one: 'etwa 1 Jahr',
-      other: 'etwa {{count}} Jahre'
-    },
-    withPreposition: {
-      one: 'etwa 1 Jahr',
-      other: 'etwa {{count}} Jahren'
-    }
-  },
-  xYears: {
-    standalone: {
-      one: '1 Jahr',
-      other: '{{count}} Jahre'
-    },
-    withPreposition: {
-      one: '1 Jahr',
-      other: '{{count}} Jahren'
-    }
-  },
-  overXYears: {
-    standalone: {
-      one: 'mehr als 1 Jahr',
-      other: 'mehr als {{count}} Jahre'
-    },
-    withPreposition: {
-      one: 'mehr als 1 Jahr',
-      other: 'mehr als {{count}} Jahren'
-    }
-  },
-  almostXYears: {
-    standalone: {
-      one: 'fast 1 Jahr',
-      other: 'fast {{count}} Jahre'
-    },
-    withPreposition: {
-      one: 'fast 1 Jahr',
-      other: 'fast {{count}} Jahren'
-    }
-  }
-};
-
-var formatDistance$8 = function formatDistance(token, count, options) {
-  var result;
-  var tokenValue = options !== null && options !== void 0 && options.addSuffix ? formatDistanceLocale$4[token].withPreposition : formatDistanceLocale$4[token].standalone;
-
-  if (typeof tokenValue === 'string') {
-    result = tokenValue;
-  } else if (count === 1) {
-    result = tokenValue.one;
-  } else {
-    result = tokenValue.other.replace('{{count}}', String(count));
-  }
-
-  if (options !== null && options !== void 0 && options.addSuffix) {
-    if (options.comparison && options.comparison > 0) {
-      return 'in ' + result;
-    } else {
-      return 'vor ' + result;
-    }
-  }
-
-  return result;
-};
-
-var formatDistance$9 = formatDistance$8;
-
-// DIN 5008: https://de.wikipedia.org/wiki/Datumsformat#DIN_5008
-var dateFormats$5 = {
-  full: 'EEEE, do MMMM y',
-  // Montag, 7. Januar 2018
-  long: 'do MMMM y',
-  // 7. Januar 2018
-  medium: 'do MMM y',
-  // 7. Jan. 2018
-  short: 'dd.MM.y' // 07.01.2018
-
-};
-var timeFormats$5 = {
-  full: 'HH:mm:ss zzzz',
-  long: 'HH:mm:ss z',
-  medium: 'HH:mm:ss',
-  short: 'HH:mm'
-};
-var dateTimeFormats$5 = {
-  full: "{{date}} 'um' {{time}}",
-  long: "{{date}} 'um' {{time}}",
-  medium: '{{date}} {{time}}',
-  short: '{{date}} {{time}}'
-};
-var formatLong$a = {
-  date: buildFormatLongFn({
-    formats: dateFormats$5,
-    defaultWidth: 'full'
-  }),
-  time: buildFormatLongFn({
-    formats: timeFormats$5,
-    defaultWidth: 'full'
-  }),
-  dateTime: buildFormatLongFn({
-    formats: dateTimeFormats$5,
-    defaultWidth: 'full'
-  })
-};
-var formatLong$b = formatLong$a;
-
-var formatRelativeLocale$4 = {
-  lastWeek: "'letzten' eeee 'um' p",
-  yesterday: "'gestern um' p",
-  today: "'heute um' p",
-  tomorrow: "'morgen um' p",
-  nextWeek: "eeee 'um' p",
-  other: 'P'
-};
-
-var formatRelative$8 = function formatRelative(token, _date, _baseDate, _options) {
-  return formatRelativeLocale$4[token];
-};
-
-var formatRelative$9 = formatRelative$8;
-
-var eraValues$4 = {
-  narrow: ['v.Chr.', 'n.Chr.'],
-  abbreviated: ['v.Chr.', 'n.Chr.'],
-  wide: ['vor Christus', 'nach Christus']
-};
-var quarterValues$4 = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['1. Quartal', '2. Quartal', '3. Quartal', '4. Quartal']
-}; // Note: in German, the names of days of the week and months are capitalized.
-// If you are making a new locale based on this one, check if the same is true for the language you're working on.
-// Generally, formatted dates should look like they are in the middle of a sentence,
-// e.g. in Spanish language the weekdays and months should be in the lowercase.
-
-var monthValues$4 = {
-  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
-  wide: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
-}; // https://st.unicode.org/cldr-apps/v#/de/Gregorian/
-
-var formattingMonthValues = {
-  narrow: monthValues$4.narrow,
-  abbreviated: ['Jan.', 'Feb.', 'März', 'Apr.', 'Mai', 'Juni', 'Juli', 'Aug.', 'Sep.', 'Okt.', 'Nov.', 'Dez.'],
-  wide: monthValues$4.wide
-};
-var dayValues$4 = {
-  narrow: ['S', 'M', 'D', 'M', 'D', 'F', 'S'],
-  short: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
-  abbreviated: ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'],
-  wide: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag']
-}; // https://www.unicode.org/cldr/charts/32/summary/de.html#1881
-
-var dayPeriodValues$4 = {
-  narrow: {
-    am: 'vm.',
-    pm: 'nm.',
-    midnight: 'Mitternacht',
-    noon: 'Mittag',
-    morning: 'Morgen',
-    afternoon: 'Nachm.',
-    evening: 'Abend',
-    night: 'Nacht'
-  },
-  abbreviated: {
-    am: 'vorm.',
-    pm: 'nachm.',
-    midnight: 'Mitternacht',
-    noon: 'Mittag',
-    morning: 'Morgen',
-    afternoon: 'Nachmittag',
-    evening: 'Abend',
-    night: 'Nacht'
-  },
-  wide: {
-    am: 'vormittags',
-    pm: 'nachmittags',
-    midnight: 'Mitternacht',
-    noon: 'Mittag',
-    morning: 'Morgen',
-    afternoon: 'Nachmittag',
-    evening: 'Abend',
-    night: 'Nacht'
-  }
-};
-var formattingDayPeriodValues$2 = {
-  narrow: {
-    am: 'vm.',
-    pm: 'nm.',
-    midnight: 'Mitternacht',
-    noon: 'Mittag',
-    morning: 'morgens',
-    afternoon: 'nachm.',
-    evening: 'abends',
-    night: 'nachts'
-  },
-  abbreviated: {
-    am: 'vorm.',
-    pm: 'nachm.',
-    midnight: 'Mitternacht',
-    noon: 'Mittag',
-    morning: 'morgens',
-    afternoon: 'nachmittags',
-    evening: 'abends',
-    night: 'nachts'
-  },
-  wide: {
-    am: 'vormittags',
-    pm: 'nachmittags',
-    midnight: 'Mitternacht',
-    noon: 'Mittag',
-    morning: 'morgens',
-    afternoon: 'nachmittags',
-    evening: 'abends',
-    night: 'nachts'
-  }
-};
-
-var ordinalNumber$4 = function ordinalNumber(dirtyNumber) {
-  var number = Number(dirtyNumber);
-  return number + '.';
-};
-
-var localize$8 = {
-  ordinalNumber: ordinalNumber$4,
-  era: buildLocalizeFn({
-    values: eraValues$4,
-    defaultWidth: 'wide'
-  }),
-  quarter: buildLocalizeFn({
-    values: quarterValues$4,
-    defaultWidth: 'wide',
-    argumentCallback: function argumentCallback(quarter) {
-      return quarter - 1;
-    }
-  }),
-  month: buildLocalizeFn({
-    values: monthValues$4,
-    formattingValues: formattingMonthValues,
-    defaultWidth: 'wide'
-  }),
-  day: buildLocalizeFn({
-    values: dayValues$4,
-    defaultWidth: 'wide'
-  }),
-  dayPeriod: buildLocalizeFn({
-    values: dayPeriodValues$4,
-    defaultWidth: 'wide',
-    formattingValues: formattingDayPeriodValues$2,
-    defaultFormattingWidth: 'wide'
-  })
-};
-var localize$9 = localize$8;
-
-var matchOrdinalNumberPattern$4 = /^(\d+)(\.)?/i;
-var parseOrdinalNumberPattern$4 = /\d+/i;
-var matchEraPatterns$4 = {
-  narrow: /^(v\.? ?Chr\.?|n\.? ?Chr\.?)/i,
-  abbreviated: /^(v\.? ?Chr\.?|n\.? ?Chr\.?)/i,
-  wide: /^(vor Christus|vor unserer Zeitrechnung|nach Christus|unserer Zeitrechnung)/i
-};
-var parseEraPatterns$4 = {
-  any: [/^v/i, /^n/i]
-};
-var matchQuarterPatterns$4 = {
-  narrow: /^[1234]/i,
-  abbreviated: /^q[1234]/i,
-  wide: /^[1234](\.)? Quartal/i
-};
-var parseQuarterPatterns$4 = {
-  any: [/1/i, /2/i, /3/i, /4/i]
-};
-var matchMonthPatterns$4 = {
-  narrow: /^[jfmasond]/i,
-  abbreviated: /^(j[aä]n|feb|mär[z]?|apr|mai|jun[i]?|jul[i]?|aug|sep|okt|nov|dez)\.?/i,
-  wide: /^(januar|februar|märz|april|mai|juni|juli|august|september|oktober|november|dezember)/i
-};
-var parseMonthPatterns$4 = {
-  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
-  any: [/^j[aä]/i, /^f/i, /^mär/i, /^ap/i, /^mai/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
-};
-var matchDayPatterns$4 = {
-  narrow: /^[smdmf]/i,
-  short: /^(so|mo|di|mi|do|fr|sa)/i,
-  abbreviated: /^(son?|mon?|die?|mit?|don?|fre?|sam?)\.?/i,
-  wide: /^(sonntag|montag|dienstag|mittwoch|donnerstag|freitag|samstag)/i
-};
-var parseDayPatterns$4 = {
-  any: [/^so/i, /^mo/i, /^di/i, /^mi/i, /^do/i, /^f/i, /^sa/i]
-};
-var matchDayPeriodPatterns$4 = {
-  narrow: /^(vm\.?|nm\.?|Mitternacht|Mittag|morgens|nachm\.?|abends|nachts)/i,
-  abbreviated: /^(vorm\.?|nachm\.?|Mitternacht|Mittag|morgens|nachm\.?|abends|nachts)/i,
-  wide: /^(vormittags|nachmittags|Mitternacht|Mittag|morgens|nachmittags|abends|nachts)/i
-};
-var parseDayPeriodPatterns$4 = {
-  any: {
-    am: /^v/i,
-    pm: /^n/i,
-    midnight: /^Mitte/i,
-    noon: /^Mitta/i,
-    morning: /morgens/i,
-    afternoon: /nachmittags/i,
-    // will never be matched. Afternoon is matched by `pm`
-    evening: /abends/i,
-    night: /nachts/i // will never be matched. Night is matched by `pm`
-
-  }
-};
-var match$8 = {
-  ordinalNumber: buildMatchPatternFn({
-    matchPattern: matchOrdinalNumberPattern$4,
-    parsePattern: parseOrdinalNumberPattern$4,
-    valueCallback: function valueCallback(value) {
-      return parseInt(value);
-    }
-  }),
-  era: buildMatchFn({
-    matchPatterns: matchEraPatterns$4,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseEraPatterns$4,
-    defaultParseWidth: 'any'
-  }),
-  quarter: buildMatchFn({
-    matchPatterns: matchQuarterPatterns$4,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseQuarterPatterns$4,
-    defaultParseWidth: 'any',
-    valueCallback: function valueCallback(index) {
-      return index + 1;
-    }
-  }),
-  month: buildMatchFn({
-    matchPatterns: matchMonthPatterns$4,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseMonthPatterns$4,
-    defaultParseWidth: 'any'
-  }),
-  day: buildMatchFn({
-    matchPatterns: matchDayPatterns$4,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseDayPatterns$4,
-    defaultParseWidth: 'any'
-  }),
-  dayPeriod: buildMatchFn({
-    matchPatterns: matchDayPeriodPatterns$4,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseDayPeriodPatterns$4,
-    defaultParseWidth: 'any'
-  })
-};
-var match$9 = match$8;
-
-/**
- * @type {Locale}
- * @category Locales
- * @summary German locale.
- * @language German
- * @iso-639-2 deu
- * @author Thomas Eilmsteiner [@DeMuu]{@link https://github.com/DeMuu}
- * @author Asia [@asia-t]{@link https://github.com/asia-t}
- * @author Van Vuong Ngo [@vanvuongngo]{@link https://github.com/vanvuongngo}
- * @author RomanErnst [@pex]{@link https://github.com/pex}
- * @author Philipp Keck [@Philipp91]{@link https://github.com/Philipp91}
- */
-var locale$5 = {
-  code: 'de',
-  formatDistance: formatDistance$9,
-  formatLong: formatLong$b,
-  formatRelative: formatRelative$9,
-  localize: localize$9,
-  match: match$9,
-  options: {
-    weekStartsOn: 1
-    /* Monday */
-    ,
-    firstWeekContainsDate: 4
-  }
-};
-var de$2 = locale$5;
-
-var dateFormats$4 = {
-  full: 'EEEE, d MMMM yyyy',
-  long: 'd MMMM yyyy',
-  medium: 'd MMM yyyy',
-  short: 'dd/MM/yyyy'
-};
-var timeFormats$4 = {
-  full: 'HH:mm:ss zzzz',
-  long: 'HH:mm:ss z',
-  medium: 'HH:mm:ss',
-  short: 'HH:mm'
-};
-var dateTimeFormats$4 = {
-  full: "{{date}} 'at' {{time}}",
-  long: "{{date}} 'at' {{time}}",
-  medium: '{{date}}, {{time}}',
-  short: '{{date}}, {{time}}'
-};
-var formatLong$8 = {
-  date: buildFormatLongFn({
-    formats: dateFormats$4,
-    defaultWidth: 'full'
-  }),
-  time: buildFormatLongFn({
-    formats: timeFormats$4,
-    defaultWidth: 'full'
-  }),
-  dateTime: buildFormatLongFn({
-    formats: dateTimeFormats$4,
-    defaultWidth: 'full'
-  })
-};
-var formatLong$9 = formatLong$8;
-
-/**
- * @type {Locale}
- * @category Locales
- * @summary English locale (United Kingdom).
- * @language English
- * @iso-639-2 eng
- * @author Alex [@glintik]{@link https://github.com/glintik}
- */
-
-var locale$4 = {
-  code: 'en-GB',
-  formatDistance: formatDistance$b,
-  formatLong: formatLong$9,
-  formatRelative: formatRelative$b,
-  localize: localize$b,
-  match: match$b,
-  options: {
-    weekStartsOn: 1
-    /* Monday */
-    ,
-    firstWeekContainsDate: 4
-  }
-};
-var enGB = locale$4;
-
-var formatDistanceLocale$3 = {
-  lessThanXSeconds: {
-    one: 'menos de un segundo',
-    other: 'menos de {{count}} segundos'
-  },
-  xSeconds: {
-    one: '1 segundo',
-    other: '{{count}} segundos'
-  },
-  halfAMinute: 'medio minuto',
-  lessThanXMinutes: {
-    one: 'menos de un minuto',
-    other: 'menos de {{count}} minutos'
-  },
-  xMinutes: {
-    one: '1 minuto',
-    other: '{{count}} minutos'
-  },
-  aboutXHours: {
-    one: 'alrededor de 1 hora',
-    other: 'alrededor de {{count}} horas'
-  },
-  xHours: {
-    one: '1 hora',
-    other: '{{count}} horas'
-  },
-  xDays: {
-    one: '1 día',
-    other: '{{count}} días'
-  },
-  aboutXWeeks: {
-    one: 'alrededor de 1 semana',
-    other: 'alrededor de {{count}} semanas'
-  },
-  xWeeks: {
-    one: '1 semana',
-    other: '{{count}} semanas'
-  },
-  aboutXMonths: {
-    one: 'alrededor de 1 mes',
-    other: 'alrededor de {{count}} meses'
-  },
-  xMonths: {
-    one: '1 mes',
-    other: '{{count}} meses'
-  },
-  aboutXYears: {
-    one: 'alrededor de 1 año',
-    other: 'alrededor de {{count}} años'
-  },
-  xYears: {
-    one: '1 año',
-    other: '{{count}} años'
-  },
-  overXYears: {
-    one: 'más de 1 año',
-    other: 'más de {{count}} años'
-  },
-  almostXYears: {
-    one: 'casi 1 año',
-    other: 'casi {{count}} años'
-  }
-};
-
-var formatDistance$6 = function formatDistance(token, count, options) {
-  var result;
-  var tokenValue = formatDistanceLocale$3[token];
-
-  if (typeof tokenValue === 'string') {
-    result = tokenValue;
-  } else if (count === 1) {
-    result = tokenValue.one;
-  } else {
-    result = tokenValue.other.replace('{{count}}', count.toString());
-  }
-
-  if (options !== null && options !== void 0 && options.addSuffix) {
-    if (options.comparison && options.comparison > 0) {
-      return 'en ' + result;
-    } else {
-      return 'hace ' + result;
-    }
-  }
-
-  return result;
-};
-
-var formatDistance$7 = formatDistance$6;
-
-var dateFormats$3 = {
-  full: "EEEE, d 'de' MMMM 'de' y",
-  long: "d 'de' MMMM 'de' y",
-  medium: 'd MMM y',
-  short: 'dd/MM/y'
-};
-var timeFormats$3 = {
-  full: 'HH:mm:ss zzzz',
-  long: 'HH:mm:ss z',
-  medium: 'HH:mm:ss',
-  short: 'HH:mm'
-};
-var dateTimeFormats$3 = {
-  full: "{{date}} 'a las' {{time}}",
-  long: "{{date}} 'a las' {{time}}",
-  medium: '{{date}}, {{time}}',
-  short: '{{date}}, {{time}}'
-};
-var formatLong$6 = {
-  date: buildFormatLongFn({
-    formats: dateFormats$3,
-    defaultWidth: 'full'
-  }),
-  time: buildFormatLongFn({
-    formats: timeFormats$3,
-    defaultWidth: 'full'
-  }),
-  dateTime: buildFormatLongFn({
-    formats: dateTimeFormats$3,
-    defaultWidth: 'full'
-  })
-};
-var formatLong$7 = formatLong$6;
-
-var formatRelativeLocale$3 = {
-  lastWeek: "'el' eeee 'pasado a la' p",
-  yesterday: "'ayer a la' p",
-  today: "'hoy a la' p",
-  tomorrow: "'mañana a la' p",
-  nextWeek: "eeee 'a la' p",
-  other: 'P'
-};
-var formatRelativeLocalePlural = {
-  lastWeek: "'el' eeee 'pasado a las' p",
-  yesterday: "'ayer a las' p",
-  today: "'hoy a las' p",
-  tomorrow: "'mañana a las' p",
-  nextWeek: "eeee 'a las' p",
-  other: 'P'
-};
-
-var formatRelative$6 = function formatRelative(token, date, _baseDate, _options) {
-  if (date.getUTCHours() !== 1) {
-    return formatRelativeLocalePlural[token];
-  } else {
-    return formatRelativeLocale$3[token];
-  }
-};
-
-var formatRelative$7 = formatRelative$6;
-
-var eraValues$3 = {
-  narrow: ['AC', 'DC'],
-  abbreviated: ['AC', 'DC'],
-  wide: ['antes de cristo', 'después de cristo']
-};
-var quarterValues$3 = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['T1', 'T2', 'T3', 'T4'],
-  wide: ['1º trimestre', '2º trimestre', '3º trimestre', '4º trimestre']
-};
-var monthValues$3 = {
-  narrow: ['e', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
-  abbreviated: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
-  wide: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
-};
-var dayValues$3 = {
-  narrow: ['d', 'l', 'm', 'm', 'j', 'v', 's'],
-  short: ['do', 'lu', 'ma', 'mi', 'ju', 'vi', 'sá'],
-  abbreviated: ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'],
-  wide: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado']
-};
-var dayPeriodValues$3 = {
-  narrow: {
-    am: 'a',
-    pm: 'p',
-    midnight: 'mn',
-    noon: 'md',
-    morning: 'mañana',
-    afternoon: 'tarde',
-    evening: 'tarde',
-    night: 'noche'
-  },
-  abbreviated: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'medianoche',
-    noon: 'mediodia',
-    morning: 'mañana',
-    afternoon: 'tarde',
-    evening: 'tarde',
-    night: 'noche'
-  },
-  wide: {
-    am: 'a.m.',
-    pm: 'p.m.',
-    midnight: 'medianoche',
-    noon: 'mediodia',
-    morning: 'mañana',
-    afternoon: 'tarde',
-    evening: 'tarde',
-    night: 'noche'
-  }
-};
-var formattingDayPeriodValues$1 = {
-  narrow: {
-    am: 'a',
-    pm: 'p',
-    midnight: 'mn',
-    noon: 'md',
-    morning: 'de la mañana',
-    afternoon: 'de la tarde',
-    evening: 'de la tarde',
-    night: 'de la noche'
-  },
-  abbreviated: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'medianoche',
-    noon: 'mediodia',
-    morning: 'de la mañana',
-    afternoon: 'de la tarde',
-    evening: 'de la tarde',
-    night: 'de la noche'
-  },
-  wide: {
-    am: 'a.m.',
-    pm: 'p.m.',
-    midnight: 'medianoche',
-    noon: 'mediodia',
-    morning: 'de la mañana',
-    afternoon: 'de la tarde',
-    evening: 'de la tarde',
-    night: 'de la noche'
-  }
-};
-
-var ordinalNumber$3 = function ordinalNumber(dirtyNumber, _options) {
-  var number = Number(dirtyNumber);
-  return number + 'º';
-};
-
-var localize$6 = {
-  ordinalNumber: ordinalNumber$3,
-  era: buildLocalizeFn({
-    values: eraValues$3,
-    defaultWidth: 'wide'
-  }),
-  quarter: buildLocalizeFn({
-    values: quarterValues$3,
-    defaultWidth: 'wide',
-    argumentCallback: function argumentCallback(quarter) {
-      return Number(quarter) - 1;
-    }
-  }),
-  month: buildLocalizeFn({
-    values: monthValues$3,
-    defaultWidth: 'wide'
-  }),
-  day: buildLocalizeFn({
-    values: dayValues$3,
-    defaultWidth: 'wide'
-  }),
-  dayPeriod: buildLocalizeFn({
-    values: dayPeriodValues$3,
-    defaultWidth: 'wide',
-    formattingValues: formattingDayPeriodValues$1,
-    defaultFormattingWidth: 'wide'
-  })
-};
-var localize$7 = localize$6;
-
-var matchOrdinalNumberPattern$3 = /^(\d+)(º)?/i;
-var parseOrdinalNumberPattern$3 = /\d+/i;
-var matchEraPatterns$3 = {
-  narrow: /^(ac|dc|a|d)/i,
-  abbreviated: /^(a\.?\s?c\.?|a\.?\s?e\.?\s?c\.?|d\.?\s?c\.?|e\.?\s?c\.?)/i,
-  wide: /^(antes de cristo|antes de la era com[uú]n|despu[eé]s de cristo|era com[uú]n)/i
-};
-var parseEraPatterns$3 = {
-  any: [/^ac/i, /^dc/i],
-  wide: [/^(antes de cristo|antes de la era com[uú]n)/i, /^(despu[eé]s de cristo|era com[uú]n)/i]
-};
-var matchQuarterPatterns$3 = {
-  narrow: /^[1234]/i,
-  abbreviated: /^T[1234]/i,
-  wide: /^[1234](º)? trimestre/i
-};
-var parseQuarterPatterns$3 = {
-  any: [/1/i, /2/i, /3/i, /4/i]
-};
-var matchMonthPatterns$3 = {
-  narrow: /^[efmajsond]/i,
-  abbreviated: /^(ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic)/i,
-  wide: /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/i
-};
-var parseMonthPatterns$3 = {
-  narrow: [/^e/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
-  any: [/^en/i, /^feb/i, /^mar/i, /^abr/i, /^may/i, /^jun/i, /^jul/i, /^ago/i, /^sep/i, /^oct/i, /^nov/i, /^dic/i]
-};
-var matchDayPatterns$3 = {
-  narrow: /^[dlmjvs]/i,
-  short: /^(do|lu|ma|mi|ju|vi|s[áa])/i,
-  abbreviated: /^(dom|lun|mar|mi[ée]|jue|vie|s[áa]b)/i,
-  wide: /^(domingo|lunes|martes|mi[ée]rcoles|jueves|viernes|s[áa]bado)/i
-};
-var parseDayPatterns$3 = {
-  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^j/i, /^v/i, /^s/i],
-  any: [/^do/i, /^lu/i, /^ma/i, /^mi/i, /^ju/i, /^vi/i, /^sa/i]
-};
-var matchDayPeriodPatterns$3 = {
-  narrow: /^(a|p|mn|md|(de la|a las) (mañana|tarde|noche))/i,
-  any: /^([ap]\.?\s?m\.?|medianoche|mediodia|(de la|a las) (mañana|tarde|noche))/i
-};
-var parseDayPeriodPatterns$3 = {
-  any: {
-    am: /^a/i,
-    pm: /^p/i,
-    midnight: /^mn/i,
-    noon: /^md/i,
-    morning: /mañana/i,
-    afternoon: /tarde/i,
-    evening: /tarde/i,
-    night: /noche/i
-  }
-};
-var match$6 = {
-  ordinalNumber: buildMatchPatternFn({
-    matchPattern: matchOrdinalNumberPattern$3,
-    parsePattern: parseOrdinalNumberPattern$3,
-    valueCallback: function valueCallback(value) {
-      return parseInt(value, 10);
-    }
-  }),
-  era: buildMatchFn({
-    matchPatterns: matchEraPatterns$3,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseEraPatterns$3,
-    defaultParseWidth: 'any'
-  }),
-  quarter: buildMatchFn({
-    matchPatterns: matchQuarterPatterns$3,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseQuarterPatterns$3,
-    defaultParseWidth: 'any',
-    valueCallback: function valueCallback(index) {
-      return index + 1;
-    }
-  }),
-  month: buildMatchFn({
-    matchPatterns: matchMonthPatterns$3,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseMonthPatterns$3,
-    defaultParseWidth: 'any'
-  }),
-  day: buildMatchFn({
-    matchPatterns: matchDayPatterns$3,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseDayPatterns$3,
-    defaultParseWidth: 'any'
-  }),
-  dayPeriod: buildMatchFn({
-    matchPatterns: matchDayPeriodPatterns$3,
-    defaultMatchWidth: 'any',
-    parsePatterns: parseDayPeriodPatterns$3,
-    defaultParseWidth: 'any'
-  })
-};
-var match$7 = match$6;
-
-/**
- * @type {Locale}
- * @category Locales
- * @summary Spanish locale.
- * @language Spanish
- * @iso-639-2 spa
- * @author Juan Angosto [@juanangosto]{@link https://github.com/juanangosto}
- * @author Guillermo Grau [@guigrpa]{@link https://github.com/guigrpa}
- * @author Fernando Agüero [@fjaguero]{@link https://github.com/fjaguero}
- * @author Gastón Haro [@harogaston]{@link https://github.com/harogaston}
- * @author Yago Carballo [@YagoCarballo]{@link https://github.com/YagoCarballo}
- */
-var locale$3 = {
-  code: 'es',
-  formatDistance: formatDistance$7,
-  formatLong: formatLong$7,
-  formatRelative: formatRelative$7,
-  localize: localize$7,
-  match: match$7,
-  options: {
-    weekStartsOn: 1
-    /* Monday */
-    ,
-    firstWeekContainsDate: 1
-  }
-};
-var es$2 = locale$3;
-
-var formatDistanceLocale$2 = {
-  lessThanXSeconds: {
-    one: 'moins d’une seconde',
-    other: 'moins de {{count}} secondes'
-  },
-  xSeconds: {
-    one: '1 seconde',
-    other: '{{count}} secondes'
-  },
-  halfAMinute: '30 secondes',
-  lessThanXMinutes: {
-    one: 'moins d’une minute',
-    other: 'moins de {{count}} minutes'
-  },
-  xMinutes: {
-    one: '1 minute',
-    other: '{{count}} minutes'
-  },
-  aboutXHours: {
-    one: 'environ 1 heure',
-    other: 'environ {{count}} heures'
-  },
-  xHours: {
-    one: '1 heure',
-    other: '{{count}} heures'
-  },
-  xDays: {
-    one: '1 jour',
-    other: '{{count}} jours'
-  },
-  aboutXWeeks: {
-    one: 'environ 1 semaine',
-    other: 'environ {{count}} semaines'
-  },
-  xWeeks: {
-    one: '1 semaine',
-    other: '{{count}} semaines'
-  },
-  aboutXMonths: {
-    one: 'environ 1 mois',
-    other: 'environ {{count}} mois'
-  },
-  xMonths: {
-    one: '1 mois',
-    other: '{{count}} mois'
-  },
-  aboutXYears: {
-    one: 'environ 1 an',
-    other: 'environ {{count}} ans'
-  },
-  xYears: {
-    one: '1 an',
-    other: '{{count}} ans'
-  },
-  overXYears: {
-    one: 'plus d’un an',
-    other: 'plus de {{count}} ans'
-  },
-  almostXYears: {
-    one: 'presqu’un an',
-    other: 'presque {{count}} ans'
-  }
-};
-
-var formatDistance$4 = function formatDistance(token, count, options) {
-  var result;
-  var form = formatDistanceLocale$2[token];
-
-  if (typeof form === 'string') {
-    result = form;
-  } else if (count === 1) {
-    result = form.one;
-  } else {
-    result = form.other.replace('{{count}}', String(count));
-  }
-
-  if (options !== null && options !== void 0 && options.addSuffix) {
-    if (options.comparison && options.comparison > 0) {
-      return 'dans ' + result;
-    } else {
-      return 'il y a ' + result;
-    }
-  }
-
-  return result;
-};
-
-var formatDistance$5 = formatDistance$4;
-
-var dateFormats$2 = {
-  full: 'EEEE d MMMM y',
-  long: 'd MMMM y',
-  medium: 'd MMM y',
-  short: 'dd/MM/y'
-};
-var timeFormats$2 = {
-  full: 'HH:mm:ss zzzz',
-  long: 'HH:mm:ss z',
-  medium: 'HH:mm:ss',
-  short: 'HH:mm'
-};
-var dateTimeFormats$2 = {
-  full: "{{date}} 'à' {{time}}",
-  long: "{{date}} 'à' {{time}}",
-  medium: '{{date}}, {{time}}',
-  short: '{{date}}, {{time}}'
-};
-var formatLong$4 = {
-  date: buildFormatLongFn({
-    formats: dateFormats$2,
-    defaultWidth: 'full'
-  }),
-  time: buildFormatLongFn({
-    formats: timeFormats$2,
-    defaultWidth: 'full'
-  }),
-  dateTime: buildFormatLongFn({
-    formats: dateTimeFormats$2,
-    defaultWidth: 'full'
-  })
-};
-var formatLong$5 = formatLong$4;
-
-var formatRelativeLocale$2 = {
-  lastWeek: "eeee 'dernier à' p",
-  yesterday: "'hier à' p",
-  today: "'aujourd’hui à' p",
-  tomorrow: "'demain à' p'",
-  nextWeek: "eeee 'prochain à' p",
-  other: 'P'
-};
-
-var formatRelative$4 = function formatRelative(token, _date, _baseDate, _options) {
-  return formatRelativeLocale$2[token];
-};
-
-var formatRelative$5 = formatRelative$4;
-
-var eraValues$2 = {
-  narrow: ['av. J.-C', 'ap. J.-C'],
-  abbreviated: ['av. J.-C', 'ap. J.-C'],
-  wide: ['avant Jésus-Christ', 'après Jésus-Christ']
-};
-var quarterValues$2 = {
-  narrow: ['T1', 'T2', 'T3', 'T4'],
-  abbreviated: ['1er trim.', '2ème trim.', '3ème trim.', '4ème trim.'],
-  wide: ['1er trimestre', '2ème trimestre', '3ème trimestre', '4ème trimestre']
-};
-var monthValues$2 = {
-  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'],
-  wide: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
-};
-var dayValues$2 = {
-  narrow: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
-  short: ['di', 'lu', 'ma', 'me', 'je', 've', 'sa'],
-  abbreviated: ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'],
-  wide: ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi']
-};
-var dayPeriodValues$2 = {
-  narrow: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'minuit',
-    noon: 'midi',
-    morning: 'mat.',
-    afternoon: 'ap.m.',
-    evening: 'soir',
-    night: 'mat.'
-  },
-  abbreviated: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'minuit',
-    noon: 'midi',
-    morning: 'matin',
-    afternoon: 'après-midi',
-    evening: 'soir',
-    night: 'matin'
-  },
-  wide: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'minuit',
-    noon: 'midi',
-    morning: 'du matin',
-    afternoon: 'de l’après-midi',
-    evening: 'du soir',
-    night: 'du matin'
-  }
-};
-
-var ordinalNumber$2 = function ordinalNumber(dirtyNumber, options) {
-  var number = Number(dirtyNumber);
-  var unit = options === null || options === void 0 ? void 0 : options.unit;
-  if (number === 0) return '0';
-  var feminineUnits = ['year', 'week', 'hour', 'minute', 'second'];
-  var suffix;
-
-  if (number === 1) {
-    suffix = unit && feminineUnits.includes(unit) ? 'ère' : 'er';
-  } else {
-    suffix = 'ème';
-  }
-
-  return number + suffix;
-};
-
-var localize$4 = {
-  ordinalNumber: ordinalNumber$2,
-  era: buildLocalizeFn({
-    values: eraValues$2,
-    defaultWidth: 'wide'
-  }),
-  quarter: buildLocalizeFn({
-    values: quarterValues$2,
-    defaultWidth: 'wide',
-    argumentCallback: function argumentCallback(quarter) {
-      return quarter - 1;
-    }
-  }),
-  month: buildLocalizeFn({
-    values: monthValues$2,
-    defaultWidth: 'wide'
-  }),
-  day: buildLocalizeFn({
-    values: dayValues$2,
-    defaultWidth: 'wide'
-  }),
-  dayPeriod: buildLocalizeFn({
-    values: dayPeriodValues$2,
-    defaultWidth: 'wide'
-  })
-};
-var localize$5 = localize$4;
-
-var matchOrdinalNumberPattern$2 = /^(\d+)(ième|ère|ème|er|e)?/i;
-var parseOrdinalNumberPattern$2 = /\d+/i;
-var matchEraPatterns$2 = {
-  narrow: /^(av\.J\.C|ap\.J\.C|ap\.J\.-C)/i,
-  abbreviated: /^(av\.J\.-C|av\.J-C|apr\.J\.-C|apr\.J-C|ap\.J-C)/i,
-  wide: /^(avant Jésus-Christ|après Jésus-Christ)/i
-};
-var parseEraPatterns$2 = {
-  any: [/^av/i, /^ap/i]
-};
-var matchQuarterPatterns$2 = {
-  narrow: /^T?[1234]/i,
-  abbreviated: /^[1234](er|ème|e)? trim\.?/i,
-  wide: /^[1234](er|ème|e)? trimestre/i
-};
-var parseQuarterPatterns$2 = {
-  any: [/1/i, /2/i, /3/i, /4/i]
-};
-var matchMonthPatterns$2 = {
-  narrow: /^[jfmasond]/i,
-  abbreviated: /^(janv|févr|mars|avr|mai|juin|juill|juil|août|sept|oct|nov|déc)\.?/i,
-  wide: /^(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)/i
-};
-var parseMonthPatterns$2 = {
-  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
-  any: [/^ja/i, /^f/i, /^mar/i, /^av/i, /^ma/i, /^juin/i, /^juil/i, /^ao/i, /^s/i, /^o/i, /^n/i, /^d/i]
-};
-var matchDayPatterns$2 = {
-  narrow: /^[lmjvsd]/i,
-  short: /^(di|lu|ma|me|je|ve|sa)/i,
-  abbreviated: /^(dim|lun|mar|mer|jeu|ven|sam)\.?/i,
-  wide: /^(dimanche|lundi|mardi|mercredi|jeudi|vendredi|samedi)/i
-};
-var parseDayPatterns$2 = {
-  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^j/i, /^v/i, /^s/i],
-  any: [/^di/i, /^lu/i, /^ma/i, /^me/i, /^je/i, /^ve/i, /^sa/i]
-};
-var matchDayPeriodPatterns$2 = {
-  narrow: /^(a|p|minuit|midi|mat\.?|ap\.?m\.?|soir|nuit)/i,
-  any: /^([ap]\.?\s?m\.?|du matin|de l'après[-\s]midi|du soir|de la nuit)/i
-};
-var parseDayPeriodPatterns$2 = {
-  any: {
-    am: /^a/i,
-    pm: /^p/i,
-    midnight: /^min/i,
-    noon: /^mid/i,
-    morning: /mat/i,
-    afternoon: /ap/i,
-    evening: /soir/i,
-    night: /nuit/i
-  }
-};
-var match$4 = {
-  ordinalNumber: buildMatchPatternFn({
-    matchPattern: matchOrdinalNumberPattern$2,
-    parsePattern: parseOrdinalNumberPattern$2,
-    valueCallback: function valueCallback(value) {
-      return parseInt(value);
-    }
-  }),
-  era: buildMatchFn({
-    matchPatterns: matchEraPatterns$2,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseEraPatterns$2,
-    defaultParseWidth: 'any'
-  }),
-  quarter: buildMatchFn({
-    matchPatterns: matchQuarterPatterns$2,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseQuarterPatterns$2,
-    defaultParseWidth: 'any',
-    valueCallback: function valueCallback(index) {
-      return index + 1;
-    }
-  }),
-  month: buildMatchFn({
-    matchPatterns: matchMonthPatterns$2,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseMonthPatterns$2,
-    defaultParseWidth: 'any'
-  }),
-  day: buildMatchFn({
-    matchPatterns: matchDayPatterns$2,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseDayPatterns$2,
-    defaultParseWidth: 'any'
-  }),
-  dayPeriod: buildMatchFn({
-    matchPatterns: matchDayPeriodPatterns$2,
-    defaultMatchWidth: 'any',
-    parsePatterns: parseDayPeriodPatterns$2,
-    defaultParseWidth: 'any'
-  })
-};
-var match$5 = match$4;
-
-/**
- * @type {Locale}
- * @category Locales
- * @summary French locale.
- * @language French
- * @iso-639-2 fra
- * @author Jean Dupouy [@izeau]{@link https://github.com/izeau}
- * @author François B [@fbonzon]{@link https://github.com/fbonzon}
- */
-
-var locale$2 = {
-  code: 'fr',
-  formatDistance: formatDistance$5,
-  formatLong: formatLong$5,
-  formatRelative: formatRelative$5,
-  localize: localize$5,
-  match: match$5,
-  options: {
-    weekStartsOn: 1
-    /* Monday */
-    ,
-    firstWeekContainsDate: 4
-  }
-};
-var fr$2 = locale$2;
-
-var formatDistanceLocale$1 = {
-  lessThanXSeconds: {
-    one: 'meno di un secondo',
-    other: 'meno di {{count}} secondi'
-  },
-  xSeconds: {
-    one: 'un secondo',
-    other: '{{count}} secondi'
-  },
-  halfAMinute: 'alcuni secondi',
-  lessThanXMinutes: {
-    one: 'meno di un minuto',
-    other: 'meno di {{count}} minuti'
-  },
-  xMinutes: {
-    one: 'un minuto',
-    other: '{{count}} minuti'
-  },
-  aboutXHours: {
-    one: "circa un'ora",
-    other: 'circa {{count}} ore'
-  },
-  xHours: {
-    one: "un'ora",
-    other: '{{count}} ore'
-  },
-  xDays: {
-    one: 'un giorno',
-    other: '{{count}} giorni'
-  },
-  aboutXWeeks: {
-    one: 'circa una settimana',
-    other: 'circa {{count}} settimane'
-  },
-  xWeeks: {
-    one: 'una settimana',
-    other: '{{count}} settimane'
-  },
-  aboutXMonths: {
-    one: 'circa un mese',
-    other: 'circa {{count}} mesi'
-  },
-  xMonths: {
-    one: 'un mese',
-    other: '{{count}} mesi'
-  },
-  aboutXYears: {
-    one: 'circa un anno',
-    other: 'circa {{count}} anni'
-  },
-  xYears: {
-    one: 'un anno',
-    other: '{{count}} anni'
-  },
-  overXYears: {
-    one: 'più di un anno',
-    other: 'più di {{count}} anni'
-  },
-  almostXYears: {
-    one: 'quasi un anno',
-    other: 'quasi {{count}} anni'
-  }
-};
-
-var formatDistance$2 = function formatDistance(token, count, options) {
-  var result;
-  var tokenValue = formatDistanceLocale$1[token];
-
-  if (typeof tokenValue === 'string') {
-    result = tokenValue;
-  } else if (count === 1) {
-    result = tokenValue.one;
-  } else {
-    result = tokenValue.other.replace('{{count}}', count.toString());
-  }
-
-  if (options !== null && options !== void 0 && options.addSuffix) {
-    if (options.comparison && options.comparison > 0) {
-      return 'tra ' + result;
-    } else {
-      return result + ' fa';
-    }
-  }
-
-  return result;
-};
-
-var formatDistance$3 = formatDistance$2;
-
-var dateFormats$1 = {
-  full: 'EEEE d MMMM y',
-  long: 'd MMMM y',
-  medium: 'd MMM y',
-  short: 'dd/MM/y'
-};
-var timeFormats$1 = {
-  full: 'HH:mm:ss zzzz',
-  long: 'HH:mm:ss z',
-  medium: 'HH:mm:ss',
-  short: 'HH:mm'
-};
-var dateTimeFormats$1 = {
-  full: '{{date}} {{time}}',
-  long: '{{date}} {{time}}',
-  medium: '{{date}} {{time}}',
-  short: '{{date}} {{time}}'
-};
-var formatLong$2 = {
-  date: buildFormatLongFn({
-    formats: dateFormats$1,
-    defaultWidth: 'full'
-  }),
-  time: buildFormatLongFn({
-    formats: timeFormats$1,
-    defaultWidth: 'full'
-  }),
-  dateTime: buildFormatLongFn({
-    formats: dateTimeFormats$1,
-    defaultWidth: 'full'
-  })
-};
-var formatLong$3 = formatLong$2;
-
-var weekdays = ['domenica', 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato'];
-
-function _lastWeek(day) {
-  switch (day) {
-    case 0:
-      return "'domenica scorsa alle' p";
-
-    default:
-      return "'" + weekdays[day] + " scorso alle' p";
-  }
-}
-
-function thisWeek(day) {
-  return "'" + weekdays[day] + " alle' p";
-}
-
-function _nextWeek(day) {
-  switch (day) {
-    case 0:
-      return "'domenica prossima alle' p";
-
-    default:
-      return "'" + weekdays[day] + " prossimo alle' p";
-  }
-}
-
-var formatRelativeLocale$1 = {
-  lastWeek: function lastWeek(date, baseDate, options) {
-    var day = date.getUTCDay();
-
-    if (isSameUTCWeek(date, baseDate, options)) {
-      return thisWeek(day);
-    } else {
-      return _lastWeek(day);
-    }
-  },
-  yesterday: "'ieri alle' p",
-  today: "'oggi alle' p",
-  tomorrow: "'domani alle' p",
-  nextWeek: function nextWeek(date, baseDate, options) {
-    var day = date.getUTCDay();
-
-    if (isSameUTCWeek(date, baseDate, options)) {
-      return thisWeek(day);
-    } else {
-      return _nextWeek(day);
-    }
-  },
-  other: 'P'
-};
-
-var formatRelative$2 = function formatRelative(token, date, baseDate, options) {
-  var format = formatRelativeLocale$1[token];
-
-  if (typeof format === 'function') {
-    return format(date, baseDate, options);
-  }
-
-  return format;
-};
-
-var formatRelative$3 = formatRelative$2;
-
-var eraValues$1 = {
-  narrow: ['aC', 'dC'],
-  abbreviated: ['a.C.', 'd.C.'],
-  wide: ['avanti Cristo', 'dopo Cristo']
-};
-var quarterValues$1 = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['T1', 'T2', 'T3', 'T4'],
-  wide: ['1º trimestre', '2º trimestre', '3º trimestre', '4º trimestre']
-};
-var monthValues$1 = {
-  narrow: ['G', 'F', 'M', 'A', 'M', 'G', 'L', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic'],
-  wide: ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto', 'settembre', 'ottobre', 'novembre', 'dicembre']
-};
-var dayValues$1 = {
-  narrow: ['D', 'L', 'M', 'M', 'G', 'V', 'S'],
-  short: ['dom', 'lun', 'mar', 'mer', 'gio', 'ven', 'sab'],
-  abbreviated: ['dom', 'lun', 'mar', 'mer', 'gio', 'ven', 'sab'],
-  wide: ['domenica', 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato']
-};
-var dayPeriodValues$1 = {
-  narrow: {
-    am: 'm.',
-    pm: 'p.',
-    midnight: 'mezzanotte',
-    noon: 'mezzogiorno',
-    morning: 'mattina',
-    afternoon: 'pomeriggio',
-    evening: 'sera',
-    night: 'notte'
-  },
-  abbreviated: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'mezzanotte',
-    noon: 'mezzogiorno',
-    morning: 'mattina',
-    afternoon: 'pomeriggio',
-    evening: 'sera',
-    night: 'notte'
-  },
-  wide: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'mezzanotte',
-    noon: 'mezzogiorno',
-    morning: 'mattina',
-    afternoon: 'pomeriggio',
-    evening: 'sera',
-    night: 'notte'
-  }
-};
-var formattingDayPeriodValues = {
-  narrow: {
-    am: 'm.',
-    pm: 'p.',
-    midnight: 'mezzanotte',
-    noon: 'mezzogiorno',
-    morning: 'di mattina',
-    afternoon: 'del pomeriggio',
-    evening: 'di sera',
-    night: 'di notte'
-  },
-  abbreviated: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'mezzanotte',
-    noon: 'mezzogiorno',
-    morning: 'di mattina',
-    afternoon: 'del pomeriggio',
-    evening: 'di sera',
-    night: 'di notte'
-  },
-  wide: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'mezzanotte',
-    noon: 'mezzogiorno',
-    morning: 'di mattina',
-    afternoon: 'del pomeriggio',
-    evening: 'di sera',
-    night: 'di notte'
-  }
-};
-
-var ordinalNumber$1 = function ordinalNumber(dirtyNumber, _options) {
-  var number = Number(dirtyNumber);
-  return String(number);
-};
-
-var localize$2 = {
-  ordinalNumber: ordinalNumber$1,
-  era: buildLocalizeFn({
-    values: eraValues$1,
-    defaultWidth: 'wide'
-  }),
-  quarter: buildLocalizeFn({
-    values: quarterValues$1,
-    defaultWidth: 'wide',
-    argumentCallback: function argumentCallback(quarter) {
-      return quarter - 1;
-    }
-  }),
-  month: buildLocalizeFn({
-    values: monthValues$1,
-    defaultWidth: 'wide'
-  }),
-  day: buildLocalizeFn({
-    values: dayValues$1,
-    defaultWidth: 'wide'
-  }),
-  dayPeriod: buildLocalizeFn({
-    values: dayPeriodValues$1,
-    defaultWidth: 'wide',
-    formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
-};
-var localize$3 = localize$2;
-
-var matchOrdinalNumberPattern$1 = /^(\d+)(º)?/i;
-var parseOrdinalNumberPattern$1 = /\d+/i;
-var matchEraPatterns$1 = {
-  narrow: /^(aC|dC)/i,
-  abbreviated: /^(a\.?\s?C\.?|a\.?\s?e\.?\s?v\.?|d\.?\s?C\.?|e\.?\s?v\.?)/i,
-  wide: /^(avanti Cristo|avanti Era Volgare|dopo Cristo|Era Volgare)/i
-};
-var parseEraPatterns$1 = {
-  any: [/^a/i, /^(d|e)/i]
-};
-var matchQuarterPatterns$1 = {
-  narrow: /^[1234]/i,
-  abbreviated: /^t[1234]/i,
-  wide: /^[1234](º)? trimestre/i
-};
-var parseQuarterPatterns$1 = {
-  any: [/1/i, /2/i, /3/i, /4/i]
-};
-var matchMonthPatterns$1 = {
-  narrow: /^[gfmalsond]/i,
-  abbreviated: /^(gen|feb|mar|apr|mag|giu|lug|ago|set|ott|nov|dic)/i,
-  wide: /^(gennaio|febbraio|marzo|aprile|maggio|giugno|luglio|agosto|settembre|ottobre|novembre|dicembre)/i
-};
-var parseMonthPatterns$1 = {
-  narrow: [/^g/i, /^f/i, /^m/i, /^a/i, /^m/i, /^g/i, /^l/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
-  any: [/^ge/i, /^f/i, /^mar/i, /^ap/i, /^mag/i, /^gi/i, /^l/i, /^ag/i, /^s/i, /^o/i, /^n/i, /^d/i]
-};
-var matchDayPatterns$1 = {
-  narrow: /^[dlmgvs]/i,
-  short: /^(do|lu|ma|me|gi|ve|sa)/i,
-  abbreviated: /^(dom|lun|mar|mer|gio|ven|sab)/i,
-  wide: /^(domenica|luned[i|ì]|marted[i|ì]|mercoled[i|ì]|gioved[i|ì]|venerd[i|ì]|sabato)/i
-};
-var parseDayPatterns$1 = {
-  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^g/i, /^v/i, /^s/i],
-  any: [/^d/i, /^l/i, /^ma/i, /^me/i, /^g/i, /^v/i, /^s/i]
-};
-var matchDayPeriodPatterns$1 = {
-  narrow: /^(a|m\.|p|mezzanotte|mezzogiorno|(di|del) (mattina|pomeriggio|sera|notte))/i,
-  any: /^([ap]\.?\s?m\.?|mezzanotte|mezzogiorno|(di|del) (mattina|pomeriggio|sera|notte))/i
-};
-var parseDayPeriodPatterns$1 = {
-  any: {
-    am: /^a/i,
-    pm: /^p/i,
-    midnight: /^mezza/i,
-    noon: /^mezzo/i,
-    morning: /mattina/i,
-    afternoon: /pomeriggio/i,
-    evening: /sera/i,
-    night: /notte/i
-  }
-};
-var match$2 = {
-  ordinalNumber: buildMatchPatternFn({
-    matchPattern: matchOrdinalNumberPattern$1,
-    parsePattern: parseOrdinalNumberPattern$1,
-    valueCallback: function valueCallback(value) {
-      return parseInt(value, 10);
-    }
-  }),
-  era: buildMatchFn({
-    matchPatterns: matchEraPatterns$1,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseEraPatterns$1,
-    defaultParseWidth: 'any'
-  }),
-  quarter: buildMatchFn({
-    matchPatterns: matchQuarterPatterns$1,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseQuarterPatterns$1,
-    defaultParseWidth: 'any',
-    valueCallback: function valueCallback(index) {
-      return index + 1;
-    }
-  }),
-  month: buildMatchFn({
-    matchPatterns: matchMonthPatterns$1,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseMonthPatterns$1,
-    defaultParseWidth: 'any'
-  }),
-  day: buildMatchFn({
-    matchPatterns: matchDayPatterns$1,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseDayPatterns$1,
-    defaultParseWidth: 'any'
-  }),
-  dayPeriod: buildMatchFn({
-    matchPatterns: matchDayPeriodPatterns$1,
-    defaultMatchWidth: 'any',
-    parsePatterns: parseDayPeriodPatterns$1,
-    defaultParseWidth: 'any'
-  })
-};
-var match$3 = match$2;
-
-/**
- * @type {Locale}
- * @category Locales
- * @summary Italian locale.
- * @language Italian
- * @iso-639-2 ita
- * @author Alberto Restifo [@albertorestifo]{@link https://github.com/albertorestifo}
- * @author Giovanni Polimeni [@giofilo]{@link https://github.com/giofilo}
- * @author Vincenzo Carrese [@vin-car]{@link https://github.com/vin-car}
- */
-
-var locale$1 = {
-  code: 'it',
-  formatDistance: formatDistance$3,
-  formatLong: formatLong$3,
-  formatRelative: formatRelative$3,
-  localize: localize$3,
-  match: match$3,
-  options: {
-    weekStartsOn: 1
-    /* Monday */
-    ,
-    firstWeekContainsDate: 4
-  }
-};
-var it$2 = locale$1;
-
-var formatDistanceLocale = {
-  lessThanXSeconds: {
-    one: 'minder dan een seconde',
-    other: 'minder dan {{count}} seconden'
-  },
-  xSeconds: {
-    one: '1 seconde',
-    other: '{{count}} seconden'
-  },
-  halfAMinute: 'een halve minuut',
-  lessThanXMinutes: {
-    one: 'minder dan een minuut',
-    other: 'minder dan {{count}} minuten'
-  },
-  xMinutes: {
-    one: 'een minuut',
-    other: '{{count}} minuten'
-  },
-  aboutXHours: {
-    one: 'ongeveer 1 uur',
-    other: 'ongeveer {{count}} uur'
-  },
-  xHours: {
-    one: '1 uur',
-    other: '{{count}} uur'
-  },
-  xDays: {
-    one: '1 dag',
-    other: '{{count}} dagen'
-  },
-  aboutXWeeks: {
-    one: 'ongeveer 1 week',
-    other: 'ongeveer {{count}} weken'
-  },
-  xWeeks: {
-    one: '1 week',
-    other: '{{count}} weken'
-  },
-  aboutXMonths: {
-    one: 'ongeveer 1 maand',
-    other: 'ongeveer {{count}} maanden'
-  },
-  xMonths: {
-    one: '1 maand',
-    other: '{{count}} maanden'
-  },
-  aboutXYears: {
-    one: 'ongeveer 1 jaar',
-    other: 'ongeveer {{count}} jaar'
-  },
-  xYears: {
-    one: '1 jaar',
-    other: '{{count}} jaar'
-  },
-  overXYears: {
-    one: 'meer dan 1 jaar',
-    other: 'meer dan {{count}} jaar'
-  },
-  almostXYears: {
-    one: 'bijna 1 jaar',
-    other: 'bijna {{count}} jaar'
-  }
-};
-
-var formatDistance = function formatDistance(token, count, options) {
-  var result;
-  var tokenValue = formatDistanceLocale[token];
-
-  if (typeof tokenValue === 'string') {
-    result = tokenValue;
-  } else if (count === 1) {
-    result = tokenValue.one;
-  } else {
-    result = tokenValue.other.replace('{{count}}', String(count));
-  }
-
-  if (options !== null && options !== void 0 && options.addSuffix) {
-    if (options.comparison && options.comparison > 0) {
-      return 'over ' + result;
-    } else {
-      return result + ' geleden';
-    }
-  }
-
-  return result;
-};
-
-var formatDistance$1 = formatDistance;
-
-var dateFormats = {
-  full: 'EEEE d MMMM y',
-  long: 'd MMMM y',
-  medium: 'd MMM y',
-  short: 'dd-MM-y'
-};
-var timeFormats = {
-  full: 'HH:mm:ss zzzz',
-  long: 'HH:mm:ss z',
-  medium: 'HH:mm:ss',
-  short: 'HH:mm'
-};
-var dateTimeFormats = {
-  full: "{{date}} 'om' {{time}}",
-  long: "{{date}} 'om' {{time}}",
-  medium: '{{date}}, {{time}}',
-  short: '{{date}}, {{time}}'
-};
-var formatLong = {
-  date: buildFormatLongFn({
-    formats: dateFormats,
-    defaultWidth: 'full'
-  }),
-  time: buildFormatLongFn({
-    formats: timeFormats,
-    defaultWidth: 'full'
-  }),
-  dateTime: buildFormatLongFn({
-    formats: dateTimeFormats,
-    defaultWidth: 'full'
-  })
-};
-var formatLong$1 = formatLong;
-
-var formatRelativeLocale = {
-  lastWeek: "'afgelopen' eeee 'om' p",
-  yesterday: "'gisteren om' p",
-  today: "'vandaag om' p",
-  tomorrow: "'morgen om' p",
-  nextWeek: "eeee 'om' p",
-  other: 'P'
-};
-
-var formatRelative = function formatRelative(token, _date, _baseDate, _options) {
-  return formatRelativeLocale[token];
-};
-
-var formatRelative$1 = formatRelative;
-
-var eraValues = {
-  narrow: ['v.C.', 'n.C.'],
-  abbreviated: ['v.Chr.', 'n.Chr.'],
-  wide: ['voor Christus', 'na Christus']
-};
-var quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['K1', 'K2', 'K3', 'K4'],
-  wide: ['1e kwartaal', '2e kwartaal', '3e kwartaal', '4e kwartaal']
-};
-var monthValues = {
-  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['jan.', 'feb.', 'mrt.', 'apr.', 'mei', 'jun.', 'jul.', 'aug.', 'sep.', 'okt.', 'nov.', 'dec.'],
-  wide: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
-};
-var dayValues = {
-  narrow: ['Z', 'M', 'D', 'W', 'D', 'V', 'Z'],
-  short: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
-  abbreviated: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
-  wide: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag']
-};
-var dayPeriodValues = {
-  narrow: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'middernacht',
-    noon: 'het middaguur',
-    morning: "'s ochtends",
-    afternoon: "'s middags",
-    evening: "'s avonds",
-    night: "'s nachts"
-  },
-  abbreviated: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'middernacht',
-    noon: 'het middaguur',
-    morning: "'s ochtends",
-    afternoon: "'s middags",
-    evening: "'s avonds",
-    night: "'s nachts"
-  },
-  wide: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'middernacht',
-    noon: 'het middaguur',
-    morning: "'s ochtends",
-    afternoon: "'s middags",
-    evening: "'s avonds",
-    night: "'s nachts"
-  }
-};
-
-var ordinalNumber = function ordinalNumber(dirtyNumber, _options) {
-  var number = Number(dirtyNumber);
-  return number + 'e';
-};
-
-var localize = {
-  ordinalNumber: ordinalNumber,
-  era: buildLocalizeFn({
-    values: eraValues,
-    defaultWidth: 'wide'
-  }),
-  quarter: buildLocalizeFn({
-    values: quarterValues,
-    defaultWidth: 'wide',
-    argumentCallback: function argumentCallback(quarter) {
-      return quarter - 1;
-    }
-  }),
-  month: buildLocalizeFn({
-    values: monthValues,
-    defaultWidth: 'wide'
-  }),
-  day: buildLocalizeFn({
-    values: dayValues,
-    defaultWidth: 'wide'
-  }),
-  dayPeriod: buildLocalizeFn({
-    values: dayPeriodValues,
-    defaultWidth: 'wide'
-  })
-};
-var localize$1 = localize;
-
-var matchOrdinalNumberPattern = /^(\d+)e?/i;
-var parseOrdinalNumberPattern = /\d+/i;
-var matchEraPatterns = {
-  narrow: /^([vn]\.? ?C\.?)/,
-  abbreviated: /^([vn]\. ?Chr\.?)/,
-  wide: /^((voor|na) Christus)/
-};
-var parseEraPatterns = {
-  any: [/^v/, /^n/]
-};
-var matchQuarterPatterns = {
-  narrow: /^[1234]/i,
-  abbreviated: /^K[1234]/i,
-  wide: /^[1234]e kwartaal/i
-};
-var parseQuarterPatterns = {
-  any: [/1/i, /2/i, /3/i, /4/i]
-};
-var matchMonthPatterns = {
-  narrow: /^[jfmasond]/i,
-  abbreviated: /^(jan.|feb.|mrt.|apr.|mei|jun.|jul.|aug.|sep.|okt.|nov.|dec.)/i,
-  wide: /^(januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december)/i
-};
-var parseMonthPatterns = {
-  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
-  any: [/^jan/i, /^feb/i, /^m(r|a)/i, /^apr/i, /^mei/i, /^jun/i, /^jul/i, /^aug/i, /^sep/i, /^okt/i, /^nov/i, /^dec/i]
-};
-var matchDayPatterns = {
-  narrow: /^[zmdwv]/i,
-  short: /^(zo|ma|di|wo|do|vr|za)/i,
-  abbreviated: /^(zon|maa|din|woe|don|vri|zat)/i,
-  wide: /^(zondag|maandag|dinsdag|woensdag|donderdag|vrijdag|zaterdag)/i
-};
-var parseDayPatterns = {
-  narrow: [/^z/i, /^m/i, /^d/i, /^w/i, /^d/i, /^v/i, /^z/i],
-  any: [/^zo/i, /^ma/i, /^di/i, /^wo/i, /^do/i, /^vr/i, /^za/i]
-};
-var matchDayPeriodPatterns = {
-  any: /^(am|pm|middernacht|het middaguur|'s (ochtends|middags|avonds|nachts))/i
-};
-var parseDayPeriodPatterns = {
-  any: {
-    am: /^am/i,
-    pm: /^pm/i,
-    midnight: /^middernacht/i,
-    noon: /^het middaguur/i,
-    morning: /ochtend/i,
-    afternoon: /middag/i,
-    evening: /avond/i,
-    night: /nacht/i
-  }
-};
-var match = {
-  ordinalNumber: buildMatchPatternFn({
-    matchPattern: matchOrdinalNumberPattern,
-    parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function valueCallback(value) {
-      return parseInt(value, 10);
-    }
-  }),
-  era: buildMatchFn({
-    matchPatterns: matchEraPatterns,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseEraPatterns,
-    defaultParseWidth: 'any'
-  }),
-  quarter: buildMatchFn({
-    matchPatterns: matchQuarterPatterns,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseQuarterPatterns,
-    defaultParseWidth: 'any',
-    valueCallback: function valueCallback(index) {
-      return index + 1;
-    }
-  }),
-  month: buildMatchFn({
-    matchPatterns: matchMonthPatterns,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseMonthPatterns,
-    defaultParseWidth: 'any'
-  }),
-  day: buildMatchFn({
-    matchPatterns: matchDayPatterns,
-    defaultMatchWidth: 'wide',
-    parsePatterns: parseDayPatterns,
-    defaultParseWidth: 'any'
-  }),
-  dayPeriod: buildMatchFn({
-    matchPatterns: matchDayPeriodPatterns,
-    defaultMatchWidth: 'any',
-    parsePatterns: parseDayPeriodPatterns,
-    defaultParseWidth: 'any'
-  })
-};
-var match$1 = match;
-
-/**
- * @type {Locale}
- * @category Locales
- * @summary Dutch locale.
- * @language Dutch
- * @iso-639-2 nld
- * @author Jorik Tangelder [@jtangelder]{@link https://github.com/jtangelder}
- * @author Ruben Stolk [@rubenstolk]{@link https://github.com/rubenstolk}
- * @author Lode Vanhove [@bitcrumb]{@link https://github.com/bitcrumb}
- * @author Edo Rivai [@edorivai]{@link https://github.com/edorivai}
- * @author Niels Keurentjes [@curry684]{@link https://github.com/curry684}
- * @author Stefan Vermaas [@stefanvermaas]{@link https://github.com/stefanvermaas}
- */
-
-var locale = {
-  code: 'nl',
-  formatDistance: formatDistance$1,
-  formatLong: formatLong$1,
-  formatRelative: formatRelative$1,
-  localize: localize$1,
-  match: match$1,
-  options: {
-    weekStartsOn: 1
-    /* Monday */
-    ,
-    firstWeekContainsDate: 4
-  }
-};
-var nl$2 = locale;
-
-const locales = {
-    en: enGB,
-    nl: nl$2,
-    de: de$2,
-    fr: fr$2,
-    it: it$2,
-    es: es$2,
-};
-function FormatIntl(date, formatStr) {
-    return format(date, formatStr, {
-        locale: locales[global.__localeId__], // or global.__localeId__
-    });
-}
-function Parse_EN_US(date_string) {
-    return parse$1(date_string, 'yyyy-MM-dd', new Date());
-}
-const MONTH_FORMAT = 'MMMM yyyy';
-const LONG_DATE_FORMAT = 'EEEE dd MMMM yyyy';
-
-var Object$1 = function Object(_ref) {
-  var house = _ref.house,
-      values = _ref.values;
-  var arrivalDate = values.arrivalDate,
-      departureDate = values.departureDate;
-  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("h2", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
-    id: "booking_details"
-  })), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "house-details"
-  }, /*#__PURE__*/React__default["default"].createElement("div", null, house.name), /*#__PURE__*/React__default["default"].createElement("img", {
-    src: house.image_url,
-    alt: ""
-  }), /*#__PURE__*/React__default["default"].createElement("table", null, /*#__PURE__*/React__default["default"].createElement("tbody", null, /*#__PURE__*/React__default["default"].createElement("tr", null, /*#__PURE__*/React__default["default"].createElement("th", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
-    id: "".concat(house.house_type, ".arrival")
-  })), /*#__PURE__*/React__default["default"].createElement("td", {
-    className: "price"
-  }, FormatIntl(Parse_EN_US(arrivalDate.date), LONG_DATE_FORMAT)), /*#__PURE__*/React__default["default"].createElement("td", null, arrivalDate.arrival_time_from, " - ", arrivalDate.arrival_time_to)), /*#__PURE__*/React__default["default"].createElement("tr", null, /*#__PURE__*/React__default["default"].createElement("th", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
-    id: "".concat(house.house_type, ".departure")
-  })), /*#__PURE__*/React__default["default"].createElement("td", {
-    className: "price"
-  }, FormatIntl(Parse_EN_US(departureDate.date), LONG_DATE_FORMAT)), /*#__PURE__*/React__default["default"].createElement("td", null, departureDate.departure_time))))));
+const Object$1 = ({ house, values }) => {
+    const { arrivalDate, departureDate } = values;
+    return (React__default["default"].createElement(React__default["default"].Fragment, null,
+        React__default["default"].createElement("h2", null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "booking_details" })),
+        React__default["default"].createElement("div", { className: "house-details" },
+            React__default["default"].createElement("div", null, house.name),
+            React__default["default"].createElement("img", { src: house.image_url, alt: "" }),
+            React__default["default"].createElement("table", null,
+                React__default["default"].createElement("tbody", null,
+                    React__default["default"].createElement("tr", null,
+                        React__default["default"].createElement("th", null,
+                            React__default["default"].createElement(FormattedMessage$1, { id: `${house.house_type}.arrival` })),
+                        React__default["default"].createElement("td", { className: "price" }, FormatIntl(Parse_EN_US(arrivalDate.date), LONG_DATE_FORMAT)),
+                        React__default["default"].createElement("td", null,
+                            arrivalDate.arrival_time_from,
+                            " - ",
+                            arrivalDate.arrival_time_to)),
+                    React__default["default"].createElement("tr", null,
+                        React__default["default"].createElement("th", null,
+                            React__default["default"].createElement(FormattedMessage$1, { id: `${house.house_type}.departure` })),
+                        React__default["default"].createElement("td", { className: "price" }, FormatIntl(Parse_EN_US(departureDate.date), LONG_DATE_FORMAT)),
+                        React__default["default"].createElement("td", null, departureDate.departure_time)))))));
 };
 Object$1.propTypes = {
-  house: PropTypes.object.isRequired,
-  values: PropTypes.object.isRequired
+    house: PropTypes.object.isRequired,
+    values: PropTypes.object.isRequired
 };
 
-function Summary(_ref) {
-  var values = _ref.values,
-      house = _ref.house;
-  return /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(Object$1, {
-    house: house,
-    values: values
-  }), /*#__PURE__*/React__default["default"].createElement(BookingOrOption, {
-    house: house
-  }), /*#__PURE__*/React__default["default"].createElement(CostSummary, {
-    values: values,
-    house: house
-  }));
+function Summary({ values, house }) {
+    return (React__default["default"].createElement("div", null,
+        React__default["default"].createElement(Object$1, { house: house, values: values }),
+        React__default["default"].createElement(BookingOrOption, { house: house }),
+        React__default["default"].createElement(CostSummary, { values: values, house: house })));
 }
 
-var DefaultBookingFields = [{
-  id: 'first_name',
-  label: 'Voornaam',
-  type: 'text',
-  options: ['text'],
-  required: true,
-  placeholder: ''
-}, {
-  id: 'preposition',
-  label: 'Tussenvoegsel',
-  type: 'text',
-  options: ['text'],
-  required: false,
-  placeholder: ''
-}, {
-  id: 'last_name',
-  label: 'Achternaam',
-  type: 'text',
-  options: ['text'],
-  required: true,
-  mandatory: true,
-  placeholder: ''
-}, {
-  id: 'address',
-  label: 'Adres',
-  type: 'text',
-  options: ['text'],
-  required: true,
-  placeholder: ''
-}, {
-  id: 'house_number',
-  label: 'Huisnummer',
-  type: 'text',
-  options: ['text'],
-  required: true,
-  placeholder: ''
-}, {
-  id: 'zipcode',
-  label: 'Postcode',
-  type: 'text',
-  options: ['text'],
-  required: true,
-  placeholder: ''
-}, {
-  id: 'city',
-  label: 'Plaats',
-  type: 'text',
-  options: ['text'],
-  required: true,
-  placeholder: ''
-}, {
-  id: 'country',
-  label: 'Land',
-  type: 'select',
-  options: ['select'],
-  required: true,
-  mandatory: true,
-  placeholder: ''
-}, {
-  id: 'email',
-  label: 'E-mail',
-  type: 'email',
-  options: ['email'],
-  required: true,
-  mandatory: true,
-  placeholder: ''
-}, {
-  id: 'phone_mobile',
-  label: 'Mobiel telefoonnummer',
-  type: 'text',
-  options: ['text'],
-  required: false,
-  placeholder: ''
-}, {
-  id: 'phone',
-  label: 'Telefoonnummer',
-  type: 'text',
-  options: ['text'],
-  required: true,
-  placeholder: ''
-}, {
-  id: 'comment',
-  label: 'Opmerking',
-  type: 'textarea',
-  options: ['textarea'],
-  required: false,
-  rows: 10
-}];
+const DefaultBookingFields = [
+    {
+        id: 'first_name',
+        label: 'Voornaam',
+        type: 'text',
+        options: ['text'],
+        required: true,
+        placeholder: '',
+    },
+    {
+        id: 'preposition',
+        label: 'Tussenvoegsel',
+        type: 'text',
+        options: ['text'],
+        required: false,
+        placeholder: '',
+    },
+    {
+        id: 'last_name',
+        label: 'Achternaam',
+        type: 'text',
+        options: ['text'],
+        required: true,
+        mandatory: true,
+        placeholder: '',
+    },
+    {
+        id: 'address',
+        label: 'Adres',
+        type: 'text',
+        options: ['text'],
+        required: true,
+        placeholder: '',
+    },
+    {
+        id: 'house_number',
+        label: 'Huisnummer',
+        type: 'text',
+        options: ['text'],
+        required: true,
+        placeholder: '',
+    },
+    {
+        id: 'zipcode',
+        label: 'Postcode',
+        type: 'text',
+        options: ['text'],
+        required: true,
+        placeholder: '',
+    },
+    {
+        id: 'city',
+        label: 'Plaats',
+        type: 'text',
+        options: ['text'],
+        required: true,
+        placeholder: '',
+    },
+    {
+        id: 'country',
+        label: 'Land',
+        type: 'select',
+        options: ['select'],
+        required: true,
+        mandatory: true,
+        placeholder: '',
+    },
+    {
+        id: 'email',
+        label: 'E-mail',
+        type: 'email',
+        options: ['email'],
+        required: true,
+        mandatory: true,
+        placeholder: '',
+    },
+    {
+        id: 'phone_mobile',
+        label: 'Mobiel telefoonnummer',
+        type: 'text',
+        options: ['text'],
+        required: false,
+        placeholder: '',
+    },
+    {
+        id: 'phone',
+        label: 'Telefoonnummer',
+        type: 'text',
+        options: ['text'],
+        required: true,
+        placeholder: '',
+    },
+    {
+        id: 'comment',
+        label: 'Opmerking',
+        type: 'textarea',
+        options: ['textarea'],
+        required: false,
+        rows: 10,
+    },
+];
 
 const SuccessMessage = () => (React__default["default"].createElement("div", { className: "success-message" },
     React__default["default"].createElement("svg", { xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", version: "1.1", x: "0px", y: "0px", viewBox: "0 0 100 125", style: {
@@ -46501,115 +45992,77 @@ const Countries = {
 };
 
 function isInt(value) {
-  return !isNaN(value) && function (x) {
-    return (x | 0) === x;
-  }(parseFloat(value));
+    return !isNaN(value) && (function (x) { return (x | 0) === x; })(parseFloat(value));
 }
-function OptionalBookingFields(_ref) {
-  var bookingFields = _ref.bookingFields,
-      errors = _ref.errors,
-      touched = _ref.touched,
-      PortalSite = _ref.PortalSite,
-      values = _ref.values;
-  var fields = [].concat(bookingFields);
-  var requiredFields = ['address', 'house_number', 'zipcode', 'city'];
-
-  if (values.cancel_insurance === '1' || values.cancel_insurance === '2') {
-    requiredFields.forEach(function (key) {
-      var index = bookingFields.findIndex(function (x) {
-        return x.id === key;
-      });
-
-      if (index !== -1) {
-        fields[index] = DefaultBookingFields.find(function (x) {
-          return x.id === key;
+function OptionalBookingFields({ bookingFields, errors, touched, PortalSite, values, }) {
+    let fields = [].concat(bookingFields);
+    const requiredFields = ['address', 'house_number', 'zipcode', 'city'];
+    if (values.cancel_insurance === '1' || values.cancel_insurance === '2') {
+        requiredFields.forEach(key => {
+            let index = bookingFields.findIndex(x => x.id === key);
+            if (index !== -1) {
+                fields[index] = DefaultBookingFields.find(x => x.id === key);
+            }
+            else {
+                fields.push(DefaultBookingFields.find(x => x.id === key));
+            }
         });
-      } else {
-        fields.push(DefaultBookingFields.find(function (x) {
-          return x.id === key;
-        }));
-      }
-    });
-  }
-
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "form-section"
-  }, /*#__PURE__*/React__default["default"].createElement("h2", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
-    id: "personal_details"
-  })), fields.map(function (input) {
-    if (input.id === 'telephone') {
-      input.id = 'phonenumber';
     }
-
-    if (input.type === 'booking_field' || isInt(input.id)) {
-      var bookingField = PortalSite.booking_fields.find(function (x) {
-        return x.id === input.id;
-      });
-      return /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "form-row",
-        key: bookingField.id
-      }, /*#__PURE__*/React__default["default"].createElement("label", {
-        htmlFor: "extra_fields.booking_field_".concat(bookingField.id)
-      }, bookingField.label, ' ', input.required && /*#__PURE__*/React__default["default"].createElement("span", null, "*")), /*#__PURE__*/React__default["default"].createElement(Field, {
-        onKeyPress: function onKeyPress(e) {
-          e.which === 13 && e.preventDefault();
-        },
-        id: "extra_fields.booking_field_".concat(bookingField.id),
-        type: bookingField.field_type === 'text' ? 'input' : bookingField.field_type,
-        component: bookingField.field_type === 'text' ? 'input' : bookingField.field_type,
-        name: "extra_fields.booking_field_".concat(bookingField.id)
-      }), errors[input.id] && (touched.extra_fields && touched.extra_fields["booking_field_".concat(bookingField.id)] || touched[input.id]) && /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "error-message"
-      }, errors[input.id]));
-    } else if (input.id === 'country') {
-      return /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "form-row",
-        key: input.id
-      }, /*#__PURE__*/React__default["default"].createElement("label", {
-        htmlFor: input.id
-      }, PortalSite["".concat(input.id, "_label")], ' ', input.required && /*#__PURE__*/React__default["default"].createElement("span", null, "*")), /*#__PURE__*/React__default["default"].createElement(Field, {
-        component: "select",
-        name: input.id
-      }, Countries[window.__localeId__].map(function (country) {
-        return /*#__PURE__*/React__default["default"].createElement("option", {
-          value: country.alpha2,
-          key: country.alpha2
-        }, country.name);
-      })), errors[input.id] && /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "error-message"
-      }, errors[input.id]));
-    } else if (input.type === 'date') {
-      return /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "form-row",
-        key: input.id
-      }, /*#__PURE__*/React__default["default"].createElement(DateField, {
-        name: input.id,
-        label: input.id,
-        inline: false
-      }));
-    } else {
-      return /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "form-row",
-        key: input.id
-      }, /*#__PURE__*/React__default["default"].createElement("label", {
-        htmlFor: input.id,
-        name: "".concat(input.id.replace(/\./g, '_'), "_label")
-      }, PortalSite["".concat(input.id.replace(/\./g, '_'), "_label")], ' ', input.required && /*#__PURE__*/React__default["default"].createElement("span", null, "*")), /*#__PURE__*/React__default["default"].createElement(Field, {
-        type: input.type,
-        name: input.id,
-        onKeyPress: function onKeyPress(e) {
-          e.which === 13 && e.preventDefault();
-        }
-      }), errors[input.id] && touched[input.id] && /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "error-message"
-      }, errors[input.id]));
-    }
-  }));
+    return (React__default["default"].createElement("div", { className: "form-section" },
+        React__default["default"].createElement("h2", null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "personal_details" })),
+        fields.map((input) => {
+            if (input.id === 'telephone') {
+                input.id = 'phonenumber';
+            }
+            if (input.type === 'booking_field' || isInt(input.id)) {
+                const bookingField = PortalSite.booking_fields.find((x) => x.id === input.id);
+                return (React__default["default"].createElement("div", { className: "form-row", key: bookingField.id },
+                    React__default["default"].createElement("label", { htmlFor: `extra_fields.booking_field_${bookingField.id}` },
+                        bookingField.label,
+                        ' ',
+                        input.required && React__default["default"].createElement("span", null, "*")),
+                    React__default["default"].createElement(Field, { onKeyPress: (e) => {
+                            e.which === 13 && e.preventDefault();
+                        }, id: `extra_fields.booking_field_${bookingField.id}`, type: bookingField.field_type === 'text'
+                            ? 'input'
+                            : bookingField.field_type, component: bookingField.field_type === 'text'
+                            ? 'input'
+                            : bookingField.field_type, name: `extra_fields.booking_field_${bookingField.id}` }),
+                    errors[input.id] && ((touched.extra_fields && touched.extra_fields[`booking_field_${bookingField.id}`]) || touched[input.id]) && (React__default["default"].createElement("div", { className: "error-message" }, errors[input.id]))));
+            }
+            else if (input.id === 'country') {
+                return (React__default["default"].createElement("div", { className: "form-row", key: input.id },
+                    React__default["default"].createElement("label", { htmlFor: input.id },
+                        PortalSite[`${input.id}_label`],
+                        ' ',
+                        input.required && React__default["default"].createElement("span", null, "*")),
+                    React__default["default"].createElement(Field, { component: "select", name: input.id }, Countries[window.__localeId__].map((country) => {
+                        return (React__default["default"].createElement("option", { value: country.alpha2, key: country.alpha2 }, country.name));
+                    })),
+                    errors[input.id] && (React__default["default"].createElement("div", { className: "error-message" }, errors[input.id]))));
+            }
+            else if (input.type === 'date') {
+                return (React__default["default"].createElement("div", { className: "form-row", key: input.id },
+                    React__default["default"].createElement(DateField, { name: input.id, label: input.id, inline: false })));
+            }
+            else {
+                return (React__default["default"].createElement("div", { className: "form-row", key: input.id },
+                    React__default["default"].createElement("label", { htmlFor: input.id, name: `${input.id.replace(/\./g, '_')}_label` },
+                        PortalSite[`${input.id.replace(/\./g, '_')}_label`],
+                        ' ',
+                        input.required && React__default["default"].createElement("span", null, "*")),
+                    React__default["default"].createElement(Field, { type: input.type, name: input.id, onKeyPress: (e) => {
+                            e.which === 13 && e.preventDefault();
+                        } }),
+                    errors[input.id] && touched[input.id] && (React__default["default"].createElement("div", { className: "error-message" }, errors[input.id]))));
+            }
+        })));
 }
 OptionalBookingFields.propTypes = {
-  bookingFields: PropTypes.array.isRequired,
-  errors: PropTypes.object.isRequired,
-  PortalSite: PropTypes.object.isRequired
+    bookingFields: PropTypes.array.isRequired,
+    errors: PropTypes.object.isRequired,
+    PortalSite: PropTypes.object.isRequired,
 };
 
 var toStr$7 = Object.prototype.toString;
@@ -47878,77 +47331,51 @@ define(boundShim, {
 
 var arrayIncludes = boundShim;
 
-function OptionalCosts(_ref) {
-  var costs = _ref.costs;
-
-  if (costs.length === 0) {
-    return null;
-  }
-
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "form-section optional_house_costs"
-  }, /*#__PURE__*/React__default["default"].createElement("h2", null, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
-    id: "extra_costs_bookable"
-  })), /*#__PURE__*/React__default["default"].createElement("div", null, costs.map(function (cost) {
-    if (!arrayIncludes(['none', 'total'], cost.method) && cost.max_available > 0) {
-      if (cost.max_available === 1) {
-        return /*#__PURE__*/React__default["default"].createElement("div", {
-          className: "form-row inline",
-          key: cost.id
-        }, /*#__PURE__*/React__default["default"].createElement("label", {
-          htmlFor: cost.id
-        }, cost.name), /*#__PURE__*/React__default["default"].createElement(Field, {
-          component: "select",
-          name: "costs[".concat(cost.id, "]")
-        }, /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
-          id: "no"
-        }, function (formattedMessage) {
-          return /*#__PURE__*/React__default["default"].createElement("option", {
-            value: 0
-          }, formattedMessage);
-        }), /*#__PURE__*/React__default["default"].createElement(FormattedMessage$1, {
-          id: "yes"
-        }, function (formattedMessage) {
-          return /*#__PURE__*/React__default["default"].createElement("option", {
-            value: 1
-          }, formattedMessage);
-        })), /*#__PURE__*/React__default["default"].createElement("div", {
-          className: "price_per"
-        }, "\u20AC", ' ', /*#__PURE__*/React__default["default"].createElement(FormattedNumber, {
-          value: cost.amount,
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        }), ' ', cost.method_name), /*#__PURE__*/React__default["default"].createElement("div", null, cost.description ? /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(Modal, {
-          buttonText: /*#__PURE__*/React__default["default"].createElement(Icon, null)
-        }, /*#__PURE__*/React__default["default"].createElement("p", null, cost.description))) : null));
-      }
-
-      return /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "form-row inline",
-        key: cost.id
-      }, /*#__PURE__*/React__default["default"].createElement("label", {
-        htmlFor: cost.id
-      }, cost.name), /*#__PURE__*/React__default["default"].createElement(Field, {
-        component: "select",
-        name: "costs[".concat(cost.id, "]")
-      }, createPeronsArray(cost.max_available).map(function (opt) {
-        return /*#__PURE__*/React__default["default"].createElement("option", {
-          key: opt,
-          value: opt
-        }, opt);
-      })), /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "price_per"
-      }, "\u20AC", ' ', /*#__PURE__*/React__default["default"].createElement(FormattedNumber, {
-        value: cost.amount,
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      }), ' ', cost.method_name), /*#__PURE__*/React__default["default"].createElement("div", null, cost.description ? /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(Modal, {
-        buttonText: /*#__PURE__*/React__default["default"].createElement(Icon, null)
-      }, /*#__PURE__*/React__default["default"].createElement("p", null, cost.description))) : null));
-    } else {
-      return '';
+function OptionalCosts({ costs }) {
+    if (costs.length === 0) {
+        return null;
     }
-  })));
+    return (React__default["default"].createElement("div", { className: "form-section optional_house_costs" },
+        React__default["default"].createElement("h2", null,
+            React__default["default"].createElement(FormattedMessage$1, { id: "extra_costs_bookable" })),
+        React__default["default"].createElement("div", null, costs.map((cost) => {
+            if (!arrayIncludes(['none', 'total'], cost.method) &&
+                cost.max_available > 0) {
+                if (cost.max_available === 1) {
+                    return (React__default["default"].createElement("div", { className: "form-row inline", key: cost.id },
+                        React__default["default"].createElement("label", { htmlFor: cost.id }, cost.name),
+                        React__default["default"].createElement(Field, { component: "select", name: `costs[${cost.id}]` },
+                            React__default["default"].createElement(FormattedMessage$1, { id: "no" }, (formattedMessage) => (React__default["default"].createElement("option", { value: 0 }, formattedMessage))),
+                            React__default["default"].createElement(FormattedMessage$1, { id: "yes" }, (formattedMessage) => (React__default["default"].createElement("option", { value: 1 }, formattedMessage)))),
+                        React__default["default"].createElement("div", { className: "price_per" },
+                            "\u20AC",
+                            ' ',
+                            React__default["default"].createElement(FormattedNumber, { value: cost.amount, minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+                            ' ',
+                            cost.method_name),
+                        React__default["default"].createElement("div", null, cost.description ? (React__default["default"].createElement("div", null,
+                            React__default["default"].createElement(Modal, { buttonText: React__default["default"].createElement(Icon, null) },
+                                React__default["default"].createElement("p", null, cost.description)))) : null)));
+                }
+                return (React__default["default"].createElement("div", { className: "form-row inline", key: cost.id },
+                    React__default["default"].createElement("label", { htmlFor: cost.id }, cost.name),
+                    React__default["default"].createElement(Field, { component: "select", name: `costs[${cost.id}]` }, createPeronsArray(cost.max_available).map((opt) => {
+                        return (React__default["default"].createElement("option", { key: opt, value: opt }, opt));
+                    })),
+                    React__default["default"].createElement("div", { className: "price_per" },
+                        "\u20AC",
+                        ' ',
+                        React__default["default"].createElement(FormattedNumber, { value: cost.amount, minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+                        ' ',
+                        cost.method_name),
+                    React__default["default"].createElement("div", null, cost.description ? (React__default["default"].createElement("div", null,
+                        React__default["default"].createElement(Modal, { buttonText: React__default["default"].createElement(Icon, null) },
+                            React__default["default"].createElement("p", null, cost.description)))) : null)));
+            }
+            else {
+                return '';
+            }
+        }))));
 }
 
 function Guests({ options, house }) {
@@ -48046,6 +47473,7 @@ function calendarReducer(bookingState, action) {
             const date = Parse_EN_US(day.date);
             if (day.departure &&
                 selectedDate &&
+                arrivalDate &&
                 isAfter(date, selectedDate) &&
                 differenceInCalendarDays(date, selectedDate) <= house.max_nights &&
                 differenceInCalendarDays(date, selectedDate) >=
@@ -48170,22 +47598,8 @@ function BookingForm() {
     return (React__default["default"].createElement(FormCreator, { house: result, PortalSite: data.PortalSite }));
 }
 
-var ArrowRight = function ArrowRight() {
-  return /*#__PURE__*/React__default["default"].createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    xmlnsXlink: "http://www.w3.org/1999/xlink",
-    version: "1.1",
-    x: "0px",
-    y: "0px",
-    viewBox: "0 0 100 125",
-    style: {
-      enableBackground: 'new 0 0 100 100'
-    },
-    xmlSpace: "preserve"
-  }, /*#__PURE__*/React__default["default"].createElement("path", {
-    d: "M2.4,44.1l32.9-32.9c3.1-3.1,8.2-3.1,11.4,0c1.6,1.6,2.4,3.6,2.4,5.7c0,2.1-0.8,4.1-2.4,5.7L27.2,42h64.7  c2.2,0,4.2,0.9,5.7,2.4c1.5,1.5,2.4,3.5,2.4,5.7c0,4.4-3.6,8.1-8.1,8.1H27.4l19.3,19.3c1.6,1.6,2.4,3.6,2.4,5.7s-0.8,4.1-2.4,5.7  c-3.1,3.1-8.3,3.1-11.4,0L2.4,55.9C0.8,54.3,0,52.3,0,50.2c0-0.1,0-0.1,0-0.2c0-0.1,0-0.1,0-0.2C0,47.7,0.8,45.7,2.4,44.1z"
-  }));
-};
+const ArrowRight = () => (React__default["default"].createElement("svg", { xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", version: "1.1", x: "0px", y: "0px", viewBox: "0 0 100 125", style: { enableBackground: 'new 0 0 100 100' }, xmlSpace: "preserve" },
+    React__default["default"].createElement("path", { d: "M2.4,44.1l32.9-32.9c3.1-3.1,8.2-3.1,11.4,0c1.6,1.6,2.4,3.6,2.4,5.7c0,2.1-0.8,4.1-2.4,5.7L27.2,42h64.7  c2.2,0,4.2,0.9,5.7,2.4c1.5,1.5,2.4,3.5,2.4,5.7c0,4.4-3.6,8.1-8.1,8.1H27.4l19.3,19.3c1.6,1.6,2.4,3.6,2.4,5.7s-0.8,4.1-2.4,5.7  c-3.1,3.1-8.3,3.1-11.4,0L2.4,55.9C0.8,54.3,0,52.3,0,50.2c0-0.1,0-0.1,0-0.2c0-0.1,0-0.1,0-0.2C0,47.7,0.8,45.7,2.4,44.1z" })));
 
 function CalendarHeader({ changeMonth, currentMonth, numberOfMonths }) {
     const dispatch = React.useContext(CalendarContextDispatch);
@@ -48718,7 +48132,8 @@ const trans = {
         label: 'Protetto e reso possibile da BUKAZU'
     }
 };
-function SafeBooking({ locale }) {
+function SafeBooking() {
+    const { locale } = React.useContext(AppContext);
     return (React__default["default"].createElement("div", { style: style },
         React__default["default"].createElement("a", { href: trans[locale].url, style: styleLink },
             React__default["default"].createElement("svg", { xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", version: "1.1", x: "0px", y: "0px", viewBox: "0 0 100 100", enableBackground: "new 0 0 100 100", xmlSpace: "preserve", width: "16px", height: "16px", style: { marginRight: '4px', fill: '#808080' } },
@@ -48741,7 +48156,7 @@ class ErrorBoundary extends React__default["default"].Component {
         super(props);
         this.state = { hasError: false };
     }
-    static getDerivedStateFromError(error) {
+    static getDerivedStateFromError() {
         // Update state so the next render will show the fallback UI.
         return { hasError: true };
     }
@@ -48758,124 +48173,64 @@ class ErrorBoundary extends React__default["default"].Component {
     }
 }
 
-var App = /*#__PURE__*/function (_Component) {
-  _inherits$A(App, _Component);
-
-  var _super = _createSuper$A(App);
-
-  function App(props) {
-    var _this;
-
-    _classCallCheck$B(this, App);
-
-    _this = _super.call(this, props);
-    _this.pageWidth = /*#__PURE__*/React__default["default"].createRef();
-    return _this;
-  }
-  /**
-   * Calculate & Update state of new dimensions
-   */
-
-
-  _createClass$D(App, [{
-    key: "updateDimensions",
-    value: function updateDimensions() {
-      if (this.pageWidth.current.offsetWidth < 875) {
-        this.pageWidth.current.classList.add('bu-smaller');
-      }
+const getWidth = () => window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
+function App({ pageType, locale, filters }) {
+    const { portalCode, objectCode } = React.useContext(AppContext);
+    let [width, setWidth] = React.useState(getWidth());
+    // in this case useEffect will execute only once because
+    // it does not have any dependencies.
+    React.useEffect(() => {
+        const resizeListener = () => {
+            // change width from the state object
+            setWidth(getWidth());
+        };
+        // set resize listener
+        window.addEventListener('resize', resizeListener);
+        // clean up function
+        return () => {
+            // remove resize listener
+            window.removeEventListener('resize', resizeListener);
+        };
+    }, []);
+    const { loading, error, data } = useQuery(PORTAL_QUERY, {
+        variables: { id: portalCode }
+    });
+    if (loading) {
+        return React__default["default"].createElement(Loading, null);
     }
-    /**
-     * Add event listener
-     */
-
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.updateDimensions(); // window.addEventListener("resize", this.updateDimensions.bind(this));
+    if (error) {
+        return React__default["default"].createElement(ApiError, { errors: Object.assign({}, error) });
     }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          portalCode = _this$props.portalCode,
-          objectCode = _this$props.objectCode,
-          pageType = _this$props.pageType,
-          locale = _this$props.locale,
-          filters = _this$props.filters,
-          id = _this$props.id,
-          className = _this$props.className;
-      return /*#__PURE__*/React__default["default"].createElement("div", {
-        ref: this.pageWidth,
-        id: id,
-        className: className
-      }, /*#__PURE__*/React__default["default"].createElement(Query, {
-        query: PORTAL_QUERY,
-        variables: {
-          id: portalCode,
-          locale: locale
-        }
-      }, function (_ref) {
-        var loading = _ref.loading,
-            error = _ref.error,
-            data = _ref.data;
-        if (loading) return /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(Loading, null));
-
-        if (error) {
-          return /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(ApiError, {
-            errors: _objectSpread2({}, error)
-          }));
-        }
-
-        var PortalSite = data.PortalSite;
-        var options = data.PortalSite.options;
-        var root = document.documentElement;
-        root.style.setProperty('--bukazu-discount', "".concat(options.colors ? options.colors.discount : 'orange'));
-        root.style.setProperty('--bukazu-cell', "".concat(options.colors ? options.colors.cell : '#fff'));
-        root.style.setProperty('--bukazu-arrival', "".concat(options.colors ? options.colors.arrival : '#6eeb83'));
-        root.style.setProperty('--bukazu-booked', "".concat(options.colors ? options.colors.booked : '#ea2b1f'));
-        root.style.setProperty('--bukazu-departure', "".concat(options.colors ? options.colors.departure : 'yellow'));
-        root.style.setProperty('--bukazu-button', "".concat(options.colors ? options.colors.button : 'rgba(23, 190, 187, 0.75)'));
-        root.style.setProperty('--bukazu-button_cta', "".concat(options.colors ? options.colors.buttonCta : '#e28413'));
-        root.style.setProperty('--bukazu-background_month', "".concat(options.colors ? options.colors.month_background : '#e28413'));
-
-        if (objectCode && objectCode !== null && pageType !== 'reviews') {
-          return /*#__PURE__*/React__default["default"].createElement("section", null, /*#__PURE__*/React__default["default"].createElement(ErrorBoundary, null, /*#__PURE__*/React__default["default"].createElement(CalendarWrapper, {
-            PortalSite: PortalSite,
-            objectCode: objectCode,
-            locale: locale
-          }), /*#__PURE__*/React__default["default"].createElement(SafeBooking, {
-            locale: locale
-          })));
-        } else if (objectCode && objectCode !== null && pageType === 'reviews') {
-          return /*#__PURE__*/React__default["default"].createElement(ReviewsPage, {
-            PortalSite: PortalSite,
-            locale: locale,
-            options: options,
-            filters: filters
-          });
-        } else {
-          return /*#__PURE__*/React__default["default"].createElement(SearchPage, {
-            PortalSite: PortalSite,
-            locale: locale,
-            options: options,
-            filters: filters
-          });
-        }
-      }));
+    const PortalSite = data.PortalSite;
+    let options = data.PortalSite.options;
+    let root = document.documentElement;
+    root.style.setProperty('--bukazu-discount', `${options.colors ? options.colors.discount : 'orange'}`);
+    root.style.setProperty('--bukazu-cell', `${options.colors ? options.colors.cell : '#fff'}`);
+    root.style.setProperty('--bukazu-arrival', `${options.colors ? options.colors.arrival : '#6eeb83'}`);
+    root.style.setProperty('--bukazu-booked', `${options.colors ? options.colors.booked : '#ea2b1f'}`);
+    root.style.setProperty('--bukazu-departure', `${options.colors ? options.colors.departure : 'yellow'}`);
+    root.style.setProperty('--bukazu-button', `${options.colors ? options.colors.button : 'rgba(23, 190, 187, 0.75)'}`);
+    root.style.setProperty('--bukazu-button_cta', `${options.colors ? options.colors.buttonCta : '#e28413'}`);
+    root.style.setProperty('--bukazu-background_month', `${options.colors ? options.colors.month_background : '#e28413'}`);
+    let page;
+    if (objectCode && objectCode !== null && pageType !== 'reviews') {
+        page = (React__default["default"].createElement("section", null,
+            React__default["default"].createElement(ErrorBoundary, null,
+                React__default["default"].createElement(CalendarWrapper, { PortalSite: PortalSite }),
+                React__default["default"].createElement(SafeBooking, null))));
     }
-  }]);
-
-  return App;
-}(React.Component);
-
+    else if (objectCode && objectCode !== null && pageType === 'reviews') {
+        page = React__default["default"].createElement(ReviewsPage, null);
+    }
+    else {
+        page = (React__default["default"].createElement(SearchPage, { PortalSite: PortalSite, locale: locale, options: options, filters: filters }));
+    }
+    return (React__default["default"].createElement("div", { className: width < 875 ? 'bu-smaller' : '' }, page));
+}
 App.defaultProps = {
-  filters: {}
-};
-App.propTypes = {
-  portalCode: PropTypes.string.isRequired,
-  objectCode: PropTypes.string,
-  locale: PropTypes.string.isRequired,
-  filters: PropTypes.object.isRequired
+    filters: {}
 };
 
 var en = {
@@ -49589,7 +48944,7 @@ function Portal({ portalCode, objectCode, pageType, locale, filters, api_url }) 
     return (React__default["default"].createElement(ApolloProvider, { client: client },
         React__default["default"].createElement(IntlProvider$1, { locale: locale, messages: messages[locale] },
             React__default["default"].createElement(AppContext.Provider, { value: { portalCode, objectCode, locale } },
-                React__default["default"].createElement(App, { portalCode: portalCode, objectCode: objectCode, pageType: pageType, locale: locale, filters: filters })))));
+                React__default["default"].createElement(App, { pageType: pageType, locale: locale, filters: filters })))));
 }
 Portal.defaultProps = {
     pageType: null,

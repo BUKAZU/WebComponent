@@ -1,7 +1,24 @@
 import React from 'react';
 import CostRow from './CostRow';
+import { CostType } from './cost_types';
 
-export default function InsurancesAndRequired({ prices }) {
+interface Props {
+  prices: {
+    total_costs: {
+      insurances: {
+        cancel_insurance: number;
+      };
+      required_costs: {
+        not_on_site: CostType[];
+      };
+    };
+    required_house_costs: CostType[];
+  };
+}
+
+export default function InsurancesAndRequired({
+  prices
+}: Props): React.ReactNode {
   const { insurances, required_costs } = prices.total_costs;
   const { not_on_site } = required_costs;
   return (
@@ -25,7 +42,9 @@ export default function InsurancesAndRequired({ prices }) {
               if (cost.method === 'none') {
                 return <CostRow key={cost.id} {...cost} />;
               } else {
-                if (cost.amount === 0) { return null; }
+                if (cost.amount === 0) {
+                  return null;
+                }
                 return (
                   <CostRow
                     key={cost.id}

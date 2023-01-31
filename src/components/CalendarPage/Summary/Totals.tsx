@@ -2,8 +2,13 @@ import React from 'react';
 import CostRow from './CostRow';
 import CostSection from './CostSection';
 import { FormattedMessage, FormattedNumber } from 'react-intl';
+import { PricesType } from './cost_types';
 
-function Totals({ prices }) {
+interface Props {
+  prices: PricesType;
+}
+
+function Totals({ prices }: Props): JSX.Element {
   return (
     <>
       <CostSection>
@@ -11,7 +16,7 @@ function Totals({ prices }) {
           <th
             style={{
               textAlign: 'left',
-              testTransform: 'capitalize',
+              testTransform: 'capitalize'
             }}
           >
             <FormattedMessage id="total" />
@@ -49,7 +54,7 @@ function Totals({ prices }) {
           <th
             style={{
               textAlign: 'left',
-              testTransform: 'capitalize',
+              testTransform: 'capitalize'
             }}
           >
             <FormattedMessage id="total" />

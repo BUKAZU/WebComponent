@@ -14,13 +14,21 @@ import { ApiError } from './Error';
 import ErrorBoundary from './ErrorBoundary';
 import { useQuery } from '@apollo/client';
 import { AppContext } from './AppContext';
+import { FiltersType } from './SearchPage/filters/filter_types';
 
 const getWidth = () =>
   window.innerWidth ||
   document.documentElement.clientWidth ||
   document.body.clientWidth;
 
-function App({ pageType, locale, filters, id }) {
+interface Props {
+  pageType?: string;
+  id: string;
+  filters?: FiltersType;
+  locale: string;
+}
+
+function App({ pageType, locale, filters }: Props): JSX.Element {
   const { portalCode, objectCode } = useContext(AppContext);
 
   let [width, setWidth] = useState(getWidth());
@@ -47,11 +55,11 @@ function App({ pageType, locale, filters, id }) {
   });
 
   if (loading) {
-    return <Loading />
+    return <Loading />;
   }
 
   if (error) {
-    return <ApiError errors={{ ...error }} />
+    return <ApiError errors={{ ...error }} />;
   }
 
   const PortalSite = data.PortalSite;
@@ -99,22 +107,13 @@ function App({ pageType, locale, filters, id }) {
     page = (
       <section>
         <ErrorBoundary>
-          <CalendarPage
-            PortalSite={PortalSite}
-          />
-          <SafeBooking locale={locale} />
+          <CalendarPage PortalSite={PortalSite} />
+          <SafeBooking />
         </ErrorBoundary>
       </section>
     );
   } else if (objectCode && objectCode !== null && pageType === 'reviews') {
-    page = (
-      <ReviewsPage
-        PortalSite={PortalSite}
-        locale={locale}
-        options={options}
-        filters={filters}
-      />
-    );
+    page = <ReviewsPage />;
   } else {
     page = (
       <SearchPage
@@ -127,7 +126,7 @@ function App({ pageType, locale, filters, id }) {
   }
 
   return (
-    <div id={id} className={width < 875 ? 'bu-smaller' : ''}>
+    <div className={width < 875 ? 'bu-smaller' : ''}>
       {page}
     </div>
   );

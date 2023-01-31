@@ -6,7 +6,7 @@ import { FiltersType } from './filters/filter_types';
 
 type MyProps = {
   options: PortalOptions;
-  filters: FiltersType;
+  filters?: FiltersType;
   PortalSite: PortalSiteType;
   locale: string;
 };
@@ -25,7 +25,7 @@ class SearchPage extends Component<MyProps, MyState> {
       ? Number(this.props.options.filtersForm.no_results)
       : 20;
     this.state = {
-      filters: this.props.filters,
+      filters: this.props.filters || {},
       activePage: 1,
       limit,
       skip: 0
@@ -38,13 +38,17 @@ class SearchPage extends Component<MyProps, MyState> {
     let filters = localStorage.getItem('bukazuFilters');
     let activePage = localStorage.getItem('bukazuActivePage');
 
-    this.setState({
-      filters: JSON.parse(filters) || this.props.filters
-    });
-    this.pageChange(activePage || 0);
+    if (filters) {
+      this.setState({
+        filters: JSON.parse(filters)
+      });
+    }
+    if (activePage) {
+      this.pageChange(parseInt(activePage) || 0);
+    }
   }
 
-  onFilterChange(data) {
+  onFilterChange(data: FiltersType) {
     let filters = data;
     this.setState({
       filters
@@ -54,11 +58,11 @@ class SearchPage extends Component<MyProps, MyState> {
     this.pageChange(0);
   }
 
-  pageChange(pageNumber) {
+  pageChange(pageNumber: number) {
     const { limit } = this.state;
     let newSkip = pageNumber * limit;
 
-    localStorage.setItem('bukazuActivePage', pageNumber);
+    localStorage.setItem('bukazuActivePage', pageNumber.toString());
     this.setState({
       activePage: pageNumber,
       skip: newSkip
@@ -67,7 +71,7 @@ class SearchPage extends Component<MyProps, MyState> {
 
   render() {
     const { filters, activePage, limit, skip } = this.state;
-    const { options, locale, PortalSite } = this.props;
+    const { options, PortalSite } = this.props;
 
     return (
       <div
@@ -78,8 +82,8 @@ class SearchPage extends Component<MyProps, MyState> {
               ? 'bu-reverse'
               : options.filtersForm.location === 'top'
               ? 'bu-column'
-              : null
-            : null
+              : ''
+            : ''
         }
       >
         <Filters
@@ -92,7 +96,6 @@ class SearchPage extends Component<MyProps, MyState> {
           PortalSite={PortalSite}
           filters={filters}
           activePage={activePage}
-          locale={locale}
           onPageChange={this.pageChange}
           skip={skip}
           limit={limit}

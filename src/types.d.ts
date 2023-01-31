@@ -1,3 +1,5 @@
+import { PricesType } from './components/CalendarPage/Summary/cost_types';
+
 export type FiltersFormType = {
   showCity: boolean;
   showRegion: boolean;
@@ -9,6 +11,7 @@ export type FiltersFormType = {
   categories: number[];
   no_results: number;
   location: string;
+  mode: 'grid' | 'list';
 };
 
 type BookingFormType = {
@@ -56,16 +59,26 @@ export type BuDate = {
 export type HouseType = {
   id: number;
   code: string;
+  name: string;
+  image_url?: string;
+  house_url?: string;
   house_type: string;
   persons: number;
-  max_nights: number
+  bedrooms: number;
+  bathrooms: number;
+  minimum_week_price: number;
+  max_nights: number;
   allow_option?: boolean;
   cancel_insurance?: boolean;
   discounts?: string;
   discounts_info?: string;
+  babies_extra: number;
+  city: string;
+  province: string;
+  province: string;
+  country_name: string;
+  description: string;
   booking_price?: {
-    optional_house_costs: {
-      id: number;
-    }[];
+    total_price: number;
   };
 };

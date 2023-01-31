@@ -12,6 +12,7 @@ export type PossibleValues = {
   discount: number;
   country: number;
   cancel_insurance: '0' | '1' | '2';
+  discount_code: string;
 };
 
 export type BookingFieldsType = SingleBookingFieldType[];

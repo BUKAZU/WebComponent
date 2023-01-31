@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { CSSProperties, useContext } from 'react';
 import pjson from '../../package.json';
+import { AppContext } from './AppContext';
 
-const style = {
+const style: CSSProperties = {
   width: '100%',
   padding: '16px',
   display: 'flex',
@@ -41,7 +42,9 @@ const trans: Trans = {
   }
 };
 
-function SafeBooking({ locale }: Props): JSX.Element {
+function SafeBooking(): JSX.Element {
+  const { locale } = useContext(AppContext);
+
   return (
     <div style={style}>
       <a href={trans[locale].url} style={styleLink}>
@@ -70,15 +73,11 @@ function SafeBooking({ locale }: Props): JSX.Element {
             bottom: 0
           }}
         >
-          v{pjson.version}
+          {/* v{pjson.version} */}
         </span>
       </a>
     </div>
   );
-}
-
-interface Props {
-  locale: LocaleType;
 }
 
 type Trans = {

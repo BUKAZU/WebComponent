@@ -3,9 +3,9 @@ import { FiltersType } from '../SearchPage/filters/filter_types';
 
 interface Props {
   portalCode: string;
-  pageType: string;
-  locale: string;
-  filters: FiltersType;
+  pageType?: string;
+  locale?: string;
+  filters?: FiltersType;
 }
 
 export default function IntegrationError({
@@ -14,7 +14,7 @@ export default function IntegrationError({
   locale,
   filters
 }: Props): JSX.Element | false {
-  let errors = [];
+  let errors: string[] = [];
 
   if (!portalCode) {
     let message = 'No portal code is specified, so portal is not working';

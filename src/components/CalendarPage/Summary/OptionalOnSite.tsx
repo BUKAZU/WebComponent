@@ -1,7 +1,12 @@
 import React from 'react';
 import CostRow from './CostRow';
+import { PricesType } from './cost_types';
 
-export default function OptionalOnSite({ prices }) {
+interface Props {
+  prices: PricesType;
+}
+
+export default function OptionalOnSite({ prices }: Props): JSX.Element {
   const { optional_costs } = prices.total_costs;
   const { on_site } = optional_costs;
   return (
