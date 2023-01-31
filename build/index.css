@@ -118,6 +118,7 @@
   cursor: pointer;
 }
 .react-calendar__navigation {
+  display: flex;
   height: 44px;
   margin-bottom: 1em;
 }
@@ -125,12 +126,12 @@
   min-width: 44px;
   background: none;
 }
+.react-calendar__navigation button:disabled {
+  background-color: #f0f0f0;
+}
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
   background-color: #e6e6e6;
-}
-.react-calendar__navigation button[disabled] {
-  background-color: #f0f0f0;
 }
 .react-calendar__month-view__weekdays {
   text-align: center;
@@ -141,15 +142,12 @@
 .react-calendar__month-view__weekdays__weekday {
   padding: 0.5em;
 }
-.react-calendar__month-view__weekNumbers {
-  font-weight: bold;
-}
 .react-calendar__month-view__weekNumbers .react-calendar__tile {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.75em;
-  padding: calc(0.75em / 0.75) calc(0.5em / 0.75);
+  font-weight: bold;
 }
 .react-calendar__month-view__days__day--weekend {
   color: #d10000;
@@ -164,9 +162,10 @@
 }
 .react-calendar__tile {
   max-width: 100%;
-  text-align: center;
-  padding: 0.75em 0.5em;
+  padding: 10px 6.6667px;
   background: none;
+  text-align: center;
+  line-height: 16px;
 }
 .react-calendar__tile:disabled {
   background-color: #f0f0f0;
@@ -201,8 +200,7 @@
   background-color: #e6e6e6;
 }
 
-
-  @media screen and (min-width: 1400px) {
+@media screen and (min-width: 1400px) {
     #bukazu-app div.calendar-container {
       display: flex;
       align-items: flex-start;
@@ -225,7 +223,7 @@
             padding: 12px;
           }
   }
-@media screen and (max-width: 993px) {
+  @media screen and (max-width: 993px) {
         #bukazu-app .price-overview .calendar--picker {
           flex-direction: column;
         }
@@ -237,18 +235,20 @@
           }
     
   }
-#bukazu-app .calendars-header {
+  #bukazu-app .calendars-header {
     display: flex;
     flex-direction: row;
-    justify-content: space-around
+    justify-content: space-around;
   }
-@media screen and (max-width: 992px) {
+  @media screen and (max-width: 992px) {
+  #bukazu-app .calendars-header {
       /* flex-direction: column; */
+  }
       #bukazu-app .calendars-header .col {
         margin: 4px 8px;
       }
     }
-#bukazu-app .calendars-header .col .icon {
+  #bukazu-app .calendars-header .col .icon {
         padding: 8px 40px;
         background-color: rgb(23, 190, 187);
         background: var(--bukazu-button);
@@ -258,55 +258,61 @@
         align-items: center;
         justify-content: center;
       }
-#bukazu-app .calendars-header .col .icon svg {
+  #bukazu-app .calendars-header .col .icon svg {
           height: 18px;
         }
-#bukazu-app .calendars-header .col .icon:hover {
+  #bukazu-app .calendars-header .col .icon:hover {
           box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
         }
-#bukazu-app .assistance {
+  #bukazu-app .assistance {
     padding: 16px;
   }
-#bukazu-app .assistance span {
+  #bukazu-app .assistance span {
       font-weight: bold;
     }
-#bukazu-app .calendars-row {
+  #bukazu-app .calendars-row {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
   }
-#bukazu-app .calendar {
+  #bukazu-app .bu-smaller .calendar {
+      width: 100%;
+    }
+  #bukazu-app .bu-smaller .calendar .col {
+      padding: 16px 4px;
+    }
+  #bukazu-app .calendar {
     min-width: 48%;
     padding: 16px 1%;
     box-sizing: border-box;
-    background: var(--month_background)
-    /* box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25); */
-    /* margin: 16px 8px; */
+    background: var(--month_background);
   }
-#bukazu-app .calendar.calendar-1 {
+  /* margin: 16px 8px; */
+  #bukazu-app .calendar.calendar-1 {
       min-width: 98%;
     }
-#bukazu-app .calendar.calendar-2 {
+  /* box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25); */
+  #bukazu-app .calendar.calendar-2 {
       min-width: 48%;
     }
-#bukazu-app .calendar.calendar-3 {
+  #bukazu-app .calendar.calendar-3 {
       min-width: 32%;
     }
-#bukazu-app .calendar.calendar-4 {
+  #bukazu-app .calendar.calendar-4 {
       min-width: calc(25% - 16px);
     }
-#bukazu-app .calendar .header {
+  #bukazu-app .calendar .header {
       background-color: rgba(211, 211, 211, 0.2);
     }
-#bukazu-app .calendar .row {
+  #bukazu-app .calendar .row {
       width: 100%;
       display: flex;
-      flex: 1 1 auto
+      flex: 1 1 auto;
     }
-#bukazu-app .calendar .row.days {
+  #bukazu-app .calendar .row.days {
         border-bottom: 1px solid rgba(211, 211, 211, 0.5);
       }
-#bukazu-app .calendar .col {
+  #bukazu-app .calendar .col {
       width: 100%;
       /* border: solid 1px #fff; */
       padding: 4px;
@@ -314,55 +320,55 @@
       text-align: center;
       transition: all 0.5s ease;
     }
-#bukazu-app .calendar .col-center {
+  #bukazu-app .calendar .col-center {
         text-align: center;
       }
-#bukazu-app .calendar .col-start {
+  #bukazu-app .calendar .col-start {
         text-align: left;
       }
-#bukazu-app .calendar .col-end {
+  #bukazu-app .calendar .col-end {
         text-align: right;
       }
-#bukazu-app .calendar .cell {
+  #bukazu-app .calendar .cell {
       background: #6eeb83;
       background: var(--bukazu-cell);
     }
-#bukazu-app .calendar .disabled {
+  #bukazu-app .calendar .disabled {
       opacity: 0;
     }
-#bukazu-app .calendar .arrival {
+  #bukazu-app .calendar .arrival {
       background: #6eeb83;
       background: var(--bukazu-arrival);
       cursor: pointer;
       font-weight: bold;
       text-decoration: underline;
     }
-#bukazu-app .calendar .discount {
+  #bukazu-app .calendar .discount {
       background: orange;
       background: var(--bukazu-discount);
     }
-/* .discount.arrival {
+  /* .discount.arrival {
       background: linear-gradient(
         45deg,
         var(--bukazu-discount) 50%,
         var(--bukazu-arrival) 50%
       ); 
     } */
-#bukazu-app .calendar .booked-departure {
+  #bukazu-app .calendar .booked-departure {
       background: linear-gradient(
         45deg,
         var(--bukazu-cell) 50%,
         var(--bukazu-booked) 50%
       );
     }
-#bukazu-app .calendar .discount.booked-departure {
+  #bukazu-app .calendar .discount.booked-departure {
       background: linear-gradient(
         45deg,
         var(--bukazu-discount) 50%,
         var(--bukazu-booked) 50%
       );
     }
-#bukazu-app .calendar .departure.discount.booked-departure,
+  #bukazu-app .calendar .departure.discount.booked-departure,
     #bukazu-app .calendar .departure.booked-departure,
     #bukazu-app .calendar .departure.booked {
       background: linear-gradient(
@@ -371,90 +377,92 @@
         var(--bukazu-booked) 50%
       );
     }
-#bukazu-app .calendar .departure-arrival {
+  #bukazu-app .calendar .departure-arrival {
       background: linear-gradient(
         45deg,
         var(--bukazu-booked) 50%,
         var(--bukazu-arrival) 50%
       ) !important;
+    }
+  #bukazu-app .calendar .departure-arrival {
       cursor: pointer;
     }
-#bukazu-app .calendar .discount.departure-arrival {
+  #bukazu-app .calendar .discount.departure-arrival {
       background: linear-gradient(
         45deg,
         var(--bukazu-booked) 50%,
         var(--bukazu-discount) 50%
       ) !important;
     }
-#bukazu-app .calendar .icon {
+  #bukazu-app .calendar .icon {
       cursor: pointer;
     }
-#bukazu-app .calendar .discount.arrival.departure,
+  #bukazu-app .calendar .discount.arrival.departure,
     #bukazu-app .calendar .departure {
       font-weight: bold;
       background: yellow;
       background: var(--bukazu-departure);
       cursor: pointer;
     }
-#bukazu-app .calendar .selected {
+  #bukazu-app .calendar .selected {
       background: rgb(23, 190, 187) !important;
       background: var(--bukazu-button) !important;
     }
-#bukazu-app .calendar .booked {
+  #bukazu-app .calendar .booked {
       background: #ea2b1f;
       background: var(--bukazu-booked);
       color: #000;
       /* filter: invert(100%) */
     }
-#bukazu-app .legend {
+  #bukazu-app .legend {
     display: flex;
     flex-wrap: wrap;
-    padding: 8px 16px
+    padding: 8px 16px;
   }
-@media screen and (max-width: 992px) {
+  @media screen and (max-width: 992px) {
   #bukazu-app .legend {
       flex-direction: column
   }
     }
-#bukazu-app .legend > div {
+  #bukazu-app .legend > div {
       display: flex;
-      padding: 0 16px
+      padding: 0 16px;
     }
-@media screen and (max-width: 992px) {
-    #bukazu-app .legend > div {
+  @media screen and (max-width: 992px) {
+  #bukazu-app .legend > div {
         padding: 4px 8px
     }
       }
-#bukazu-app .legend-field {
+  #bukazu-app .legend-field {
       display: block;
       width: 16px;
       height: 16px;
-      margin: 0 8px 0 0
+      margin: 0 8px 0 0;
     }
-#bukazu-app .legend-field.booked {
+  #bukazu-app .legend-field.booked {
         background: #ea2b1f;
         background: var(--bukazu-booked);
       }
-#bukazu-app .legend-field.arrival {
+  #bukazu-app .legend-field.arrival {
         background: #6eeb83;
         background: var(--bukazu-arrival);
       }
-#bukazu-app .legend-field.departure {
+  #bukazu-app .legend-field.departure {
         background: yellow;
         background: var(--bukazu-departure);
       }
-#bukazu-app .legend-field.last_minute_discount {
+  #bukazu-app .legend-field.last_minute_discount {
         background: orange;
         background: var(--bukazu-discount);
       }
-#bukazu-app .calendar--picker {
+  #bukazu-app .calendar--picker {
     padding: 8px;
     display: flex;
     justify-content: space-around;
     width: 100%;
     box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.25);
   }
-#bukazu-app .calendar--picker--date {
+  #bukazu-app .calendar--picker--date {
       width: 20%;
       display: flex;
       flex-direction: column;
@@ -462,30 +470,30 @@
       align-items: center;
       padding: 8px 16px;
     }
-#bukazu-app .calendar--picker--date span.name {
+  #bukazu-app .calendar--picker--date span.name {
         font-size: 18px;
         border-bottom: 1px solid #ccc;
-        padding: 4px 0
+        padding: 4px 0;
       }
-@media screen and (max-width: 1200px) {
-      #bukazu-app .calendar--picker--date span.name {
+  @media screen and (max-width: 1200px) {
+  #bukazu-app .calendar--picker--date span.name {
     font-size: 16px
       }
   }
-#bukazu-app .calendar--picker--date span.detail {
+  #bukazu-app .calendar--picker--date span.detail {
         display: flex;
         padding: 4px 0;
         opacity: 0.9;
         width: 100%;
         justify-content: center;
-        align-items: center
+        align-items: center;
       }
-@media screen and (max-width: 1200px) {
-      #bukazu-app .calendar--picker--date span.detail {
+  @media screen and (max-width: 1200px) {
+  #bukazu-app .calendar--picker--date span.detail {
                   font-size: 14px
       }
                 }
-#bukazu-app .calendar--picker--persons {
+  #bukazu-app .calendar--picker--persons {
       border: 1px solid #ccc;
       width: 100%;
       -webkit-appearance: none;
@@ -493,7 +501,7 @@
               appearance: none;
       font-size: 16px;
     }
-#bukazu-app .calendar--picker .button {
+  #bukazu-app .calendar--picker .button {
       width: 20%;
       background: var(--bukazu-button_cta);
       color: #fff;
@@ -504,13 +512,13 @@
       border: 0;
       font-size: 18px;
       box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
-      cursor: pointer
+      cursor: pointer;
     }
-#bukazu-app .calendar--picker .button:disabled {
+  #bukazu-app .calendar--picker .button:disabled {
        background: #ccc;
        cursor: not-allowed;
       }
-#bukazu-app .calendar--picker .button:hover {
+  #bukazu-app .calendar--picker .button:hover {
         box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
       }
 #bukazu-app .form {
@@ -518,7 +526,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-  position: relative
+  position: relative;
 }
 @media screen and (max-width: 992px) {
 #bukazu-app .form {
@@ -544,10 +552,10 @@
     padding-bottom: 4px;
   }
 #bukazu-app .form-content {
-    width: 70%
+    width: 70%;
   }
 @media screen and (max-width: 992px) {
-  #bukazu-app .form-content {
+#bukazu-app .form-content {
       width: 100%
   }
     }
@@ -569,10 +577,10 @@
     right: 10%;
     min-width: 400px;
     max-width: 500px;
-    align-self: flex-start
+    align-self: flex-start;
   }
 @media screen and (max-width: 992px) {
-  #bukazu-app .form-sum {
+#bukazu-app .form-sum {
       min-width: 100%
   }
     }
@@ -582,10 +590,10 @@
     }
 #bukazu-app .form-sum .house-details img {
         padding: 16px 0;
-        height: 200px
+        height: 200px;
       }
 @media screen and (max-width: 992px) {
-      #bukazu-app .form-sum .house-details img {
+#bukazu-app .form-sum .house-details img {
           max-width: 100%;
           height: auto
       }
@@ -665,7 +673,7 @@
         font: inherit;
         cursor: pointer;
         outline: inherit;
-        color: var(--bukazu-button)
+        color: var(--bukazu-button);
       }
 #bukazu-app .form-sum .terms button:hover {
           box-shadow: none;
@@ -678,7 +686,7 @@
       color: #fff;
       font-size: 20px;
       background: var(--bukazu-button_cta);
-      cursor: pointer
+      cursor: pointer;
     }
 #bukazu-app .form-sum button:hover {
         box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.25);
@@ -691,10 +699,10 @@
 #bukazu-app .form-row select,
     #bukazu-app .form-row input,
     #bukazu-app .form-row .bukazu-date-picker {
-      max-width: 50%
+      max-width: 50%;
     }
 @media screen and (max-width: 992px) {
-    #bukazu-app .form-row select,
+#bukazu-app .form-row select,
     #bukazu-app .form-row input,
     #bukazu-app .form-row .bukazu-date-picker {
         max-width: 100%
@@ -709,17 +717,17 @@
       flex-direction: row;
       /* justify-content: space-between; */
       flex-wrap: wrap;
-      width: 100%
+      width: 100%;
     }
 #bukazu-app .form-row.inline.hidden {
         display: none;
       }
 #bukazu-app .form-row.inline label {
         width: 30%;
-        font-size: 16px
+        font-size: 16px;
       }
 @media screen and (max-width: 992px) {
-      #bukazu-app .form-row.inline label {
+#bukazu-app .form-row.inline label {
           width: auto
       }
         }
@@ -727,10 +735,10 @@
       #bukazu-app .form-row.inline input {
         width: auto;
         min-width: 150px;
-        padding: 8px 64px 8px 16px
+        padding: 8px 64px 8px 16px;
       }
 @media screen and (max-width: 992px) {
-      #bukazu-app .form-row.inline select,
+#bukazu-app .form-row.inline select,
       #bukazu-app .form-row.inline input {
           order: 3;
           width: 100%
@@ -1232,7 +1240,6 @@
     vertical-align: top;
     -webkit-user-select: none;
     -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
   }
 #bukazu-app .CalendarMonth_table {
@@ -1309,7 +1316,6 @@
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     border: 0;
     padding: 0;
@@ -1520,7 +1526,6 @@
 #bukazu-app .DateInput_input__readOnly {
     -webkit-user-select: none;
     -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
   }
 #bukazu-app .DateInput_input__focused {
@@ -1712,7 +1717,7 @@
   right: 0;
   background-color:rgba(0,0,0,0.3);
   padding: 50px;
-  z-index: 1
+  z-index: 1;
 }
 @media screen and (max-width: 992px) {
 .bukazu-modal-container {
@@ -1787,7 +1792,7 @@
   padding: 16px;
   display: flex;
   flex-wrap: wrap;
-  background-color: #fff
+  background-color: #fff;
 }
 @media screen and (max-width: 992px) {
 .price-overview {
@@ -1801,14 +1806,14 @@
     text-align: left;
   }
 .price-overview tr {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.25)
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   }
 .price-overview tr.hidden {
       display: none;
     }
 .price-overview td {
     padding: 4px;
-    width: 50%
+    width: 50%;
   }
 .price-overview td.price {
       text-align: right;
@@ -1837,10 +1842,10 @@
     justify-content: center;
     flex-wrap: wrap;
     align-items: flex-start;
-    padding: 16px
+    padding: 16px;
   }
 @media screen and (max-width: 992px) {
-  .price-overview--build {
+.price-overview--build {
       padding: 16px 0;
       min-height: 0px
   }
@@ -1869,11 +1874,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center
+    align-items: center;
 
   }
 @media screen and (max-width: 992px) {
-  .price-overview--book {
+.price-overview--book {
       padding: 16px 0
 
   }
@@ -1885,18 +1890,18 @@
       font-size: 28px;
     }
 @media screen and (min-width: 1200px) {
-    .price-overview--book .price {
+.price-overview--book .price {
         font-size: 32px;
     }
       }
 .price-overview--book .price {
       font-weight: bold;
-    }
+}
 .price-overview--book i {
-      font-size: 14px
+      font-size: 14px;
     }
 @media screen and (min-width: 1200px) {
-    .price-overview--book i {
+.price-overview--book i {
         font-size: 16px
     }
       }
@@ -1920,7 +1925,7 @@
   display: block;
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
-  transition: all 0.5s ease
+  transition: all 0.5s ease;
 }
 .bukazu-result:hover {
     box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.25);
@@ -1989,7 +1994,7 @@
           border-radius: 0.4em;
           font-size: 14px;
           line-height: 14px;
-          box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25)
+          box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
         }
 .bukazu-result-inner .result-rating-inner:after {
             content: '';
@@ -2046,7 +2051,7 @@
           }
 @media screen and (min-width: 992px) {
 .list .bukazu-result {
-    width: 100%;
+    width: 100%
 }
     .list .bukazu-result .bukazu-result-inner {
       flex-direction: row;
@@ -2073,7 +2078,7 @@
   flex-wrap: wrap;
   padding: 16px;
   align-items: stretch;
-  align-content: flex-start
+  align-content: flex-start;
 }
 @media screen and (max-width: 992px) {
 #bukazu-app #results {
@@ -2121,7 +2126,7 @@
         background: var(--bukazu-button);
         padding: 8px;
         border: 0;
-        font-weight: bold
+        font-weight: bold;
     }
 #bukazu-app #search-page .filters-button.fixed-mobile {
             position: fixed;
@@ -2148,7 +2153,7 @@
     #bukazu-app #search-page .filters {
         width: 100%;
         display: none;
-        transition: all 0.3s ease
+        transition: all 0.3s ease;
     }
         #bukazu-app #search-page .filters.showOnMobile {
             display: block
@@ -2206,30 +2211,32 @@
   border-radius: 0.25rem;
 }
 .bu-pagination li {
-    position: relative;
-    display: block;
-    padding: 0.5rem 0.75rem;
-    margin-left: -1px;
-    line-height: 1.25;
-    color: #007bff;
-    background-color: #fff;
-    border: 1px solid #dee2e6
+    /* margin-left: -1px; */
   }
-.bu-pagination li:hover {
-      z-index: 2;
-      color: #0056b3;
-      text-decoration: none;
-      background-color: #e9ecef;
-      border-color: #dee2e6;
+.bu-pagination li a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      line-height: 1.25;
+      color: var(--bukazu-button);
+      background-color: #fff;
+      border: 1px solid #dee2e6;
+
     }
-.bu-pagination li:focus {
-      z-index: 2;
-      outline: 0;
-      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-    }
-.bu-pagination li:not(:disabled):not(.disabled) {
-      cursor: pointer;
-    }
+.bu-pagination li a:hover {
+        z-index: 2;
+        color: #0056b3;
+        text-decoration: none;
+        background-color: #e9ecef;
+        border-color: #dee2e6;
+      }
+.bu-pagination li a:focus {
+        z-index: 2;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      }
+.bu-pagination li a:not(:disabled):not(.disabled) {
+        cursor: pointer;
+      }
 .bu-pagination li:first-child a {
   margin-left: 0;
   border-top-left-radius: 0.25rem;
@@ -2239,13 +2246,13 @@
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
 }
-.bu-pagination li.active {
+.bu-pagination li.selected a {
   z-index: 1;
   color: #fff;
   background-color: var(--bukazu-button);
   border-color: var(--bukazu-button);
 }
-.bu-pagination li.active a {
+.bu-pagination li.selected a a {
     color: #000;
   }
 .bu-pagination li.disabled a {
@@ -2284,7 +2291,7 @@
 .bu_single_review {
   border-bottom: 1px solid #cecece;
   padding: 16px;
-  margin: 0 0 16px
+  margin: 0 0 16px;
 
 }
 .bu_single_review .bu_review_summary {
@@ -2306,7 +2313,7 @@
   }
 .bu_single_review .bu_criteria {
     -moz-columns: 2;
-         columns: 2
+         columns: 2;
   }
 .bu_single_review .bu_criteria .bu-smaller {
       -moz-columns: 1;

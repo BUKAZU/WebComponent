@@ -1,12 +1,26 @@
 # CHANGELOG
 
 ## Next release
+- Refactored app to typescript
 
+
+## 2.1.11
+- Fix weekview on mobile
+- Make date bigger on mobile
+
+## 2.1.4
+- Store filters in localStorage
+
+## 2.1.3
+- Fix issue with regions and city selects
+
+## 2.1.2
+- Update react-intl
+- Show actual prices for searched period instead of min_weekprice
 
 ## 2.1.0
 - Add reviews page
 - Show review score on house in search results
-- Show actual prices for searched period instead of min_weekprice
 
 ## 2.0.12
 

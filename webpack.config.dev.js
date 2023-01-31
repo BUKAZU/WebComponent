@@ -1,35 +1,35 @@
-process.env.BABEL_ENV = "development";
-process.env.NODE_ENV = "development";
+process.env.BABEL_ENV = 'development';
+process.env.NODE_ENV = 'development';
 
-var path = require("path");
+var path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require("terser-webpack-plugin");
 
-const cssFilename = "index.css";
+
+const cssFilename = 'index.css';
 
 module.exports = {
-  entry: "./dev.js",
+  entry: './dev.tsx',
   mode: 'development',
   output: {
-    path: path.resolve(__dirname, "build"),
-    filename: "index.js",
+    path: path.resolve(__dirname, 'build'),
+    filename: 'index.js',
   },
   devServer: {
-    contentBase: './build',
-    hot: true
+    static: {
+      directory: path.join(__dirname, 'build'),
+    },
+    hot: true,
   },
   module: {
     rules: [
       {
+        test: /\.(t|j)sx?$/,
+        use: { loader: 'babel-loader' },
+      },
+      {
+        enforce: 'pre',
         test: /\.js$/,
-        exclude: /(node_modules|bower_components|build)/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            compact: false,
-            presets: ['@babel/react', '@babel/env']
-          }
-        }
+        loader: 'source-map-loader',
       },
       {
         test: /\.css$/,
@@ -38,16 +38,21 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
           },
           'css-loader',
-          'postcss-loader'
+          'postcss-loader',
         ],
-      }
-    ]
+      },
+    ],
   },
-  optimization: {
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      process: 'process/browser',
+    },
   },
-  plugins: [  
+  optimization: {},
+  plugins: [    
     new MiniCssExtractPlugin({
-      filename: cssFilename
-    })
+      filename: cssFilename,
+    }),
   ],
 };

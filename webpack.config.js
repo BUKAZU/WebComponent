@@ -8,32 +8,37 @@ const TerserPlugin = require("terser-webpack-plugin");
 const cssFilename = "index.css";
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
   mode: 'production',
   output: {
-    path: path.resolve(__dirname, "build"),
-    filename: "index.js",
+    path: path.resolve(__dirname, 'build'),
+    filename: 'index.js',
     library: {
-      type: 'commonjs2'
-    }   
+      type: 'commonjs2',
+    },
   },
   devServer: {
     contentBase: './build',
-    hot: true
+    contentBase: './build',
+    hot: true,
   },
   devtool: 'source-map',
   module: {
     rules: [
       {
+        test: /\.(ts|tsx)$/,
+        loader: 'ts-loader',
+      },
+      {
         test: /\.js$/,
         exclude: [/(node_modules|build)/],
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
             compact: true,
-            presets: ['@babel/react', '@babel/env']
-          }
-        }
+            presets: ['@babel/react', '@babel/env'],
+          },
+        },
       },
       {
         test: /\.css$/,
@@ -42,14 +47,15 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
           },
           'css-loader',
-          'postcss-loader'
+          'postcss-loader',
         ],
-      }
-    ]
+      },
+    ],
   },
   optimization: {
-      minimize: true,
-      minimizer: [new TerserPlugin({
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
         parallel: true,
         terserOptions: {
           format: {
@@ -57,11 +63,12 @@ module.exports = {
           },
         },
         extractComments: false,
-      })],
+      }),
+    ],
   },
-  plugins: [  
+  plugins: [
     new MiniCssExtractPlugin({
-      filename: cssFilename
-    })
+      filename: cssFilename,
+    }),
   ],
 };
