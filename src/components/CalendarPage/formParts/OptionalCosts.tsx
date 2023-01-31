@@ -2,7 +2,6 @@ import React from 'react';
 import { Field } from 'formik';
 import {FormattedMessage, FormattedNumber } from 'react-intl'
 import Modal from '../../Modal'
-import includes from "array-includes";
 import Icon from "../../icons/info.svg";
 import { createPeronsArray } from './BookingHelpers'
 
@@ -18,7 +17,7 @@ function OptionalCosts({ costs }) {
       <div>
         {costs.map((cost) => {
           if (
-            !includes(['none', 'total'], cost.method) &&
+            !['none', 'total'].includes(cost.method) &&
             cost.max_available > 0
           ) {
             if (cost.max_available === 1) {

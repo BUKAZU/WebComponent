@@ -79,7 +79,6 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.5",
-    "array-includes": "^3.0.3",
     "date-fns": "^2.29.3",
     "formik": "^2.2.9",
     "graphql": "^15.6.0",

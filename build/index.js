@@ -4800,19 +4800,19 @@ function _defineProperties$A(target, props) { for (var i = 0; i < props.length; 
 function _createClass$A(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$A(Constructor.prototype, protoProps); if (staticProps) _defineProperties$A(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
 // === Symbol Support ===
-var hasSymbols$6 = function () {
+var hasSymbols = function () {
   return typeof Symbol === 'function';
 };
 
 var hasSymbol = function (name) {
-  return hasSymbols$6() && Boolean(Symbol[name]);
+  return hasSymbols() && Boolean(Symbol[name]);
 };
 
 var getSymbol = function (name) {
   return hasSymbol(name) ? Symbol[name] : '@@' + name;
 };
 
-if (hasSymbols$6() && !hasSymbol('observable')) {
+if (hasSymbols() && !hasSymbol('observable')) {
   Symbol.observable = Symbol('observable');
 }
 
@@ -5354,7 +5354,7 @@ var Observable = /*#__PURE__*/function () {
   return Observable;
 }();
 
-if (hasSymbols$6()) {
+if (hasSymbols()) {
   Object.defineProperty(Observable, Symbol('extensions'), {
     value: {
       symbol: SymbolObservable,
@@ -6530,7 +6530,7 @@ var HttpLink = (function (_super) {
 }(ApolloLink));
 
 var _a$3 = Object.prototype, toString$1 = _a$3.toString, hasOwnProperty$h = _a$3.hasOwnProperty;
-var fnToStr$1 = Function.prototype.toString;
+var fnToStr = Function.prototype.toString;
 var previousComparisons = new Map();
 /**
  * Performs a deep equality check on two JavaScript values, tolerating cycles.
@@ -6654,8 +6654,8 @@ function check(a, b) {
         case '[object GeneratorFunction]':
         case '[object AsyncGeneratorFunction]':
         case '[object Function]': {
-            var aCode = fnToStr$1.call(a);
-            if (aCode !== fnToStr$1.call(b)) {
+            var aCode = fnToStr.call(a);
+            if (aCode !== fnToStr.call(b)) {
                 return false;
             }
             // We consider non-native functions equal if they have the same code
@@ -6731,7 +6731,7 @@ function previouslyCompared(a, b) {
 // null-prototype Object.
 var defaultMakeData = function () { return Object.create(null); };
 // Useful for processing arguments objects as well as arrays.
-var _a$2 = Array.prototype, forEach = _a$2.forEach, slice$2 = _a$2.slice;
+var _a$2 = Array.prototype, forEach = _a$2.forEach, slice = _a$2.slice;
 var Trie = /** @class */ (function () {
     function Trie(weakness, makeData) {
         if (weakness === void 0) { weakness = true; }
@@ -6749,7 +6749,7 @@ var Trie = /** @class */ (function () {
     Trie.prototype.lookupArray = function (array) {
         var node = this;
         forEach.call(array, function (key) { return node = node.getChildTrie(key); });
-        return node.data || (node.data = this.makeData(slice$2.call(array)));
+        return node.data || (node.data = this.makeData(slice.call(array)));
     };
     Trie.prototype.getChildTrie = function (key) {
         var map = this.weakness && isObjRef(key)
@@ -7538,7 +7538,7 @@ var MissingFieldError = (function (_super) {
     return MissingFieldError;
 }(Error));
 
-var hasOwn$1 = Object.prototype.hasOwnProperty;
+var hasOwn = Object.prototype.hasOwnProperty;
 function isNullish(value) {
     return value === null || value === void 0;
 }
@@ -7591,7 +7591,7 @@ function selectionSetMatchesResult(selectionSet, result, variables) {
             : selectionSet.selections.every(function (field) {
                 if (isField(field) && shouldInclude(field, variables)) {
                     var key = resultKeyNameFromField(field);
-                    return hasOwn$1.call(result, key) &&
+                    return hasOwn.call(result, key) &&
                         (!field.selectionSet ||
                             selectionSetMatchesResult(field.selectionSet, result[key], variables));
                 }
@@ -7666,14 +7666,14 @@ var EntityStore = (function () {
     };
     EntityStore.prototype.get = function (dataId, fieldName) {
         this.group.depend(dataId, fieldName);
-        if (hasOwn$1.call(this.data, dataId)) {
+        if (hasOwn.call(this.data, dataId)) {
             var storeObject = this.data[dataId];
-            if (storeObject && hasOwn$1.call(storeObject, fieldName)) {
+            if (storeObject && hasOwn.call(storeObject, fieldName)) {
                 return storeObject[fieldName];
             }
         }
         if (fieldName === "__typename" &&
-            hasOwn$1.call(this.policies.rootTypenamesById, dataId)) {
+            hasOwn.call(this.policies.rootTypenamesById, dataId)) {
             return this.policies.rootTypenamesById[dataId];
         }
         if (this instanceof Layer) {
@@ -7683,7 +7683,7 @@ var EntityStore = (function () {
     EntityStore.prototype.lookup = function (dataId, dependOnExistence) {
         if (dependOnExistence)
             this.group.depend(dataId, "__exists");
-        if (hasOwn$1.call(this.data, dataId)) {
+        if (hasOwn.call(this.data, dataId)) {
             return this.data[dataId];
         }
         if (this instanceof Layer) {
@@ -7818,7 +7818,7 @@ var EntityStore = (function () {
     EntityStore.prototype.evict = function (options, limit) {
         var evicted = false;
         if (options.id) {
-            if (hasOwn$1.call(this.data, options.id)) {
+            if (hasOwn.call(this.data, options.id)) {
                 evicted = this.delete(options.id, options.fieldName, options.args);
             }
             if (this instanceof Layer && this !== limit) {
@@ -7838,7 +7838,7 @@ var EntityStore = (function () {
         var obj = this.toObject();
         var extraRootIds = [];
         this.getRootIdSet().forEach(function (id) {
-            if (!hasOwn$1.call(_this.policies.rootTypenamesById, id)) {
+            if (!hasOwn.call(_this.policies.rootTypenamesById, id)) {
                 extraRootIds.push(id);
             }
         });
@@ -7850,7 +7850,7 @@ var EntityStore = (function () {
     EntityStore.prototype.replace = function (newData) {
         var _this = this;
         Object.keys(this.data).forEach(function (dataId) {
-            if (!(newData && hasOwn$1.call(newData, dataId))) {
+            if (!(newData && hasOwn.call(newData, dataId))) {
                 _this.delete(dataId);
             }
         });
@@ -7892,7 +7892,7 @@ var EntityStore = (function () {
         var ids = this.getRootIdSet();
         var snapshot = this.toObject();
         ids.forEach(function (id) {
-            if (hasOwn$1.call(snapshot, id)) {
+            if (hasOwn.call(snapshot, id)) {
                 Object.keys(_this.findChildRefIds(id)).forEach(ids.add, ids);
                 delete snapshot[id];
             }
@@ -7907,7 +7907,7 @@ var EntityStore = (function () {
         return idsToRemove;
     };
     EntityStore.prototype.findChildRefIds = function (dataId) {
-        if (!hasOwn$1.call(this.refs, dataId)) {
+        if (!hasOwn.call(this.refs, dataId)) {
             var found_1 = this.refs[dataId] = Object.create(null);
             var root = this.data[dataId];
             if (!root)
@@ -8049,7 +8049,7 @@ var Layer = (function (_super) {
     };
     Layer.prototype.findChildRefIds = function (dataId) {
         var fromParent = this.parent.findChildRefIds(dataId);
-        return hasOwn$1.call(this.data, dataId) ? __assign(__assign({}, fromParent), _super.prototype.findChildRefIds.call(this, dataId)) : fromParent;
+        return hasOwn.call(this.data, dataId) ? __assign(__assign({}, fromParent), _super.prototype.findChildRefIds.call(this, dataId)) : fromParent;
     };
     Layer.prototype.getStorage = function () {
         var p = this.parent;
@@ -8696,7 +8696,7 @@ function keyFieldsFnFromSpecifier(specifier) {
             var extracted = extractKeyPath(context.storeObject, schemaKeyPath, extract);
             if (extracted === void 0 &&
                 object !== context.storeObject &&
-                hasOwn$1.call(object, schemaKeyPath[0])) {
+                hasOwn.call(object, schemaKeyPath[0])) {
                 extracted = extractKeyPath(object, schemaKeyPath, extractKey);
             }
             __DEV__ ? invariant$2(extracted !== void 0, "Missing field '".concat(schemaKeyPath.join('.'), "' while extracting keyFields from ").concat(JSON.stringify(object))) : invariant$2(extracted !== void 0, 2);
@@ -8723,7 +8723,7 @@ function keyArgsFnFromSpecifier(specifier) {
             }
             if (firstChar === "$") {
                 var variableName = firstKey.slice(1);
-                if (variables && hasOwn$1.call(variables, variableName)) {
+                if (variables && hasOwn.call(variables, variableName)) {
                     var varKeyPath = keyPath.slice(0);
                     varKeyPath[0] = variableName;
                     return extractKeyPath(variables, varKeyPath);
@@ -8873,7 +8873,7 @@ var Policies = (function () {
                 _this.setRootTypename("Mutation", typename);
             if (subscriptionType)
                 _this.setRootTypename("Subscription", typename);
-            if (hasOwn$1.call(_this.toBeAdded, typename)) {
+            if (hasOwn.call(_this.toBeAdded, typename)) {
                 _this.toBeAdded[typename].push(incoming);
             }
             else {
@@ -8951,7 +8951,7 @@ var Policies = (function () {
     };
     Policies.prototype.getTypePolicy = function (typename) {
         var _this = this;
-        if (!hasOwn$1.call(this.typePolicies, typename)) {
+        if (!hasOwn.call(this.typePolicies, typename)) {
             var policy_1 = this.typePolicies[typename] = Object.create(null);
             policy_1.fields = Object.create(null);
             var supertypes = this.supertypeMap.get(typename);
@@ -9161,7 +9161,7 @@ function normalizeReadFieldOptions(readFieldArgs, objectOrReference, variables) 
     }
     else {
         options = __assign({}, fieldNameOrOptions);
-        if (!hasOwn$1.call(options, "from")) {
+        if (!hasOwn.call(options, "from")) {
             options.from = objectOrReference;
         }
     }
@@ -9681,7 +9681,7 @@ var InMemoryCache = (function (_super) {
         }
     };
     InMemoryCache.prototype.modify = function (options) {
-        if (hasOwn$1.call(options, "id") && !options.id) {
+        if (hasOwn.call(options, "id") && !options.id) {
             return false;
         }
         var store = options.optimistic
@@ -9747,7 +9747,7 @@ var InMemoryCache = (function (_super) {
     };
     InMemoryCache.prototype.evict = function (options) {
         if (!options.id) {
-            if (hasOwn$1.call(options, "id")) {
+            if (hasOwn.call(options, "id")) {
                 return false;
             }
             options = __assign(__assign({}, options), { id: "ROOT_QUERY" });
@@ -13581,7 +13581,7 @@ function _typeof$C(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "func
  * //=> false
  */
 
-function isDate$1(value) {
+function isDate(value) {
   requiredArgs(1, arguments);
   return value instanceof Date || _typeof$C(value) === 'object' && Object.prototype.toString.call(value) === '[object Date]';
 }
@@ -13621,7 +13621,7 @@ function isDate$1(value) {
 function isValid(dirtyDate) {
   requiredArgs(1, arguments);
 
-  if (!isDate$1(dirtyDate) && typeof dirtyDate !== 'number') {
+  if (!isDate(dirtyDate) && typeof dirtyDate !== 'number') {
     return false;
   }
 
@@ -20233,7 +20233,7 @@ var ReactPropTypesSecret$3 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 var ReactPropTypesSecret_1 = ReactPropTypesSecret$3;
 
-var has$3 = Function.call.bind(Object.prototype.hasOwnProperty);
+var has$2 = Function.call.bind(Object.prototype.hasOwnProperty);
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -20247,7 +20247,7 @@ var printWarning$1 = function() {};
 if (process.env.NODE_ENV !== 'production') {
   var ReactPropTypesSecret$2 = ReactPropTypesSecret_1;
   var loggedTypeFailures = {};
-  var has$2 = has$3;
+  var has$1 = has$2;
 
   printWarning$1 = function(text) {
     var message = 'Warning: ' + text;
@@ -20277,7 +20277,7 @@ if (process.env.NODE_ENV !== 'production') {
 function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) {
   if (process.env.NODE_ENV !== 'production') {
     for (var typeSpecName in typeSpecs) {
-      if (has$2(typeSpecs, typeSpecName)) {
+      if (has$1(typeSpecs, typeSpecName)) {
         var error;
         // Prop type validation may throw. In case they do, we don't want to
         // fail the render phase where it didn't fail before. So we log it.
@@ -20348,7 +20348,7 @@ var ReactIs$1 = reactIs$1.exports;
 var assign = objectAssign;
 
 var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
-var has$1 = has$3;
+var has = has$2;
 var checkPropTypes = checkPropTypes_1;
 
 var printWarning = function() {};
@@ -20690,7 +20690,7 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
         return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
       }
       for (var key in propValue) {
-        if (has$1(propValue, key)) {
+        if (has(propValue, key)) {
           var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
           if (error instanceof Error) {
             return error;
@@ -20727,7 +20727,7 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
         if (checkerResult == null) {
           return null;
         }
-        if (checkerResult.data && has$1(checkerResult.data, 'expectedType')) {
+        if (checkerResult.data && has(checkerResult.data, 'expectedType')) {
           expectedTypes.push(checkerResult.data.expectedType);
         }
       }
@@ -20787,7 +20787,7 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
       var allKeys = assign({}, props[propName], shapeTypes);
       for (var key in allKeys) {
         var checker = shapeTypes[key];
-        if (has$1(shapeTypes, key) && typeof checker !== 'function') {
+        if (has(shapeTypes, key) && typeof checker !== 'function') {
           return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
         }
         if (!checker) {
@@ -21557,7 +21557,7 @@ function baseIsNative$1(value) {
   if (!isObject$3(value) || isMasked$1(value)) {
     return false;
   }
-  var pattern = (isFunction$3(value) || isHostObject(value)) ? reIsNative$1 : reIsHostCtor$1;
+  var pattern = (isFunction$2(value) || isHostObject(value)) ? reIsNative$1 : reIsHostCtor$1;
   return pattern.test(toSource$1(value));
 }
 
@@ -21753,7 +21753,7 @@ function eq$1(value, other) {
  * _.isFunction(/abc/);
  * // => false
  */
-function isFunction$3(value) {
+function isFunction$2(value) {
   // The use of `Object#toString` avoids issues with the `typeof` operator
   // in Safari 8-9 which returns 'object' for typed array and other constructors.
   var tag = isObject$3(value) ? objectToString$1.call(value) : '';
@@ -30824,11 +30824,11 @@ function memoize$1(fn, options) {
 //
 // Strategy
 //
-function isPrimitive$4(value) {
+function isPrimitive(value) {
     return (value == null || typeof value === 'number' || typeof value === 'boolean'); // || typeof value === "string" 'unsafe' primitive for our needs
 }
 function monadic(fn, cache, serializer, arg) {
-    var cacheKey = isPrimitive$4(arg) ? arg : serializer(arg);
+    var cacheKey = isPrimitive(arg) ? arg : serializer(arg);
     var computedValue = cache.get(cacheKey);
     if (typeof computedValue === 'undefined') {
         computedValue = fn.call(this, arg);
@@ -35512,7 +35512,7 @@ var asyncTag = '[object AsyncFunction]',
  * _.isFunction(/abc/);
  * // => false
  */
-function isFunction$2(value) {
+function isFunction$1(value) {
   if (!isObject$1(value)) {
     return false;
   }
@@ -35606,7 +35606,7 @@ function baseIsNative(value) {
   if (!isObject$1(value) || isMasked(value)) {
     return false;
   }
-  var pattern = isFunction$2(value) ? reIsNative : reIsHostCtor;
+  var pattern = isFunction$1(value) ? reIsNative : reIsHostCtor;
   return pattern.test(toSource(value));
 }
 
@@ -35964,7 +35964,7 @@ function arrayEach(array, iteratee) {
   return array;
 }
 
-var defineProperty$1 = (function() {
+var defineProperty = (function() {
   try {
     var func = getNative(Object, 'defineProperty');
     func({}, '', {});
@@ -35972,7 +35972,7 @@ var defineProperty$1 = (function() {
   } catch (e) {}
 }());
 
-var defineProperty$2 = defineProperty$1;
+var defineProperty$1 = defineProperty;
 
 /**
  * The base implementation of `assignValue` and `assignMergeValue` without
@@ -35984,8 +35984,8 @@ var defineProperty$2 = defineProperty$1;
  * @param {*} value The value to assign.
  */
 function baseAssignValue(object, key, value) {
-  if (key == '__proto__' && defineProperty$2) {
-    defineProperty$2(object, key, {
+  if (key == '__proto__' && defineProperty$1) {
+    defineProperty$1(object, key, {
       'configurable': true,
       'enumerable': true,
       'value': value,
@@ -36116,12 +36116,12 @@ var propertyIsEnumerable$1 = objectProto$6.propertyIsEnumerable;
  * _.isArguments([1, 2, 3]);
  * // => false
  */
-var isArguments$1 = baseIsArguments(function() { return arguments; }()) ? baseIsArguments : function(value) {
+var isArguments = baseIsArguments(function() { return arguments; }()) ? baseIsArguments : function(value) {
   return isObjectLike(value) && hasOwnProperty$4.call(value, 'callee') &&
     !propertyIsEnumerable$1.call(value, 'callee');
 };
 
-var isArguments$2 = isArguments$1;
+var isArguments$1 = isArguments;
 
 /**
  * Checks if `value` is classified as an `Array` object.
@@ -36204,7 +36204,7 @@ var isBuffer = nativeIsBuffer || stubFalse;
 var isBuffer$1 = isBuffer;
 
 /** Used as references for various `Number` constants. */
-var MAX_SAFE_INTEGER$2 = 9007199254740991;
+var MAX_SAFE_INTEGER$1 = 9007199254740991;
 
 /** Used to detect unsigned integer values. */
 var reIsUint = /^(?:0|[1-9]\d*)$/;
@@ -36219,7 +36219,7 @@ var reIsUint = /^(?:0|[1-9]\d*)$/;
  */
 function isIndex(value, length) {
   var type = typeof value;
-  length = length == null ? MAX_SAFE_INTEGER$2 : length;
+  length = length == null ? MAX_SAFE_INTEGER$1 : length;
 
   return !!length &&
     (type == 'number' ||
@@ -36228,7 +36228,7 @@ function isIndex(value, length) {
 }
 
 /** Used as references for various `Number` constants. */
-var MAX_SAFE_INTEGER$1 = 9007199254740991;
+var MAX_SAFE_INTEGER = 9007199254740991;
 
 /**
  * Checks if `value` is a valid array-like length.
@@ -36258,7 +36258,7 @@ var MAX_SAFE_INTEGER$1 = 9007199254740991;
  */
 function isLength(value) {
   return typeof value == 'number' &&
-    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER$1;
+    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
 }
 
 /** `Object#toString` result references. */
@@ -36398,7 +36398,7 @@ var hasOwnProperty$3 = objectProto$5.hasOwnProperty;
  */
 function arrayLikeKeys(value, inherited) {
   var isArr = isArray$1(value),
-      isArg = !isArr && isArguments$2(value),
+      isArg = !isArr && isArguments$1(value),
       isBuff = !isArr && !isArg && isBuffer$1(value),
       isType = !isArr && !isArg && !isBuff && isTypedArray$1(value),
       skipIndexes = isArr || isArg || isBuff || isType,
@@ -36497,7 +36497,7 @@ function baseKeys(object) {
  * // => false
  */
 function isArrayLike(value) {
-  return value != null && isLength(value.length) && !isFunction$2(value);
+  return value != null && isLength(value.length) && !isFunction$1(value);
 }
 
 /**
@@ -36528,7 +36528,7 @@ function isArrayLike(value) {
  * _.keys('hi');
  * // => ['0', '1']
  */
-function keys$1(object) {
+function keys(object) {
   return isArrayLike(object) ? arrayLikeKeys(object) : baseKeys(object);
 }
 
@@ -36542,7 +36542,7 @@ function keys$1(object) {
  * @returns {Object} Returns `object`.
  */
 function baseAssign(object, source) {
-  return object && copyObject(source, keys$1(source), object);
+  return object && copyObject(source, keys(source), object);
 }
 
 /**
@@ -36845,7 +36845,7 @@ function baseGetAllKeys(object, keysFunc, symbolsFunc) {
  * @returns {Array} Returns the array of property names and symbols.
  */
 function getAllKeys(object) {
-  return baseGetAllKeys(object, keys$1, getSymbols$1);
+  return baseGetAllKeys(object, keys, getSymbols$1);
 }
 
 /**
@@ -36861,9 +36861,9 @@ function getAllKeysIn(object) {
 }
 
 /* Built-in method references that are verified to be native. */
-var DataView$1 = getNative(root$1, 'DataView');
+var DataView = getNative(root$1, 'DataView');
 
-var DataView$2 = DataView$1;
+var DataView$1 = DataView;
 
 /* Built-in method references that are verified to be native. */
 var Promise$1 = getNative(root$1, 'Promise');
@@ -36890,7 +36890,7 @@ var mapTag$3 = '[object Map]',
 var dataViewTag$2 = '[object DataView]';
 
 /** Used to detect maps, sets, and weakmaps. */
-var dataViewCtorString = toSource(DataView$2),
+var dataViewCtorString = toSource(DataView$1),
     mapCtorString = toSource(Map$2),
     promiseCtorString = toSource(Promise$2),
     setCtorString = toSource(Set$2),
@@ -36906,7 +36906,7 @@ var dataViewCtorString = toSource(DataView$2),
 var getTag = baseGetTag;
 
 // Fallback for data views, maps, sets, and weak maps in IE 11 and promises in Node.js < 6.
-if ((DataView$2 && getTag(new DataView$2(new ArrayBuffer(1))) != dataViewTag$2) ||
+if ((DataView$1 && getTag(new DataView$1(new ArrayBuffer(1))) != dataViewTag$2) ||
     (Map$2 && getTag(new Map$2) != mapTag$3) ||
     (Promise$2 && getTag(Promise$2.resolve()) != promiseTag) ||
     (Set$2 && getTag(new Set$2) != setTag$3) ||
@@ -37347,7 +37347,7 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
 
   var keysFunc = isFull
     ? (isFlat ? getAllKeysIn : getAllKeys)
-    : (isFlat ? keysIn : keys$1);
+    : (isFlat ? keysIn : keys);
 
   var props = isArr ? undefined : keysFunc(value);
   arrayEach(props || value, function(subValue, key) {
@@ -37434,7 +37434,7 @@ var symbolTag = '[object Symbol]';
  * _.isSymbol('abc');
  * // => false
  */
-function isSymbol$2(value) {
+function isSymbol(value) {
   return typeof value == 'symbol' ||
     (isObjectLike(value) && baseGetTag(value) == symbolTag);
 }
@@ -37533,10 +37533,10 @@ function memoizeCapped(func) {
 }
 
 /** Used to match property names within property paths. */
-var rePropName$1 = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
+var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
 
 /** Used to match backslashes in property paths. */
-var reEscapeChar$1 = /\\(\\)?/g;
+var reEscapeChar = /\\(\\)?/g;
 
 /**
  * Converts `string` to a property path array.
@@ -37545,18 +37545,18 @@ var reEscapeChar$1 = /\\(\\)?/g;
  * @param {string} string The string to convert.
  * @returns {Array} Returns the property path array.
  */
-var stringToPath$1 = memoizeCapped(function(string) {
+var stringToPath = memoizeCapped(function(string) {
   var result = [];
   if (string.charCodeAt(0) === 46 /* . */) {
     result.push('');
   }
-  string.replace(rePropName$1, function(match, number, quote, subString) {
-    result.push(quote ? subString.replace(reEscapeChar$1, '$1') : (number || match));
+  string.replace(rePropName, function(match, number, quote, subString) {
+    result.push(quote ? subString.replace(reEscapeChar, '$1') : (number || match));
   });
   return result;
 });
 
-var stringToPath$2 = stringToPath$1;
+var stringToPath$1 = stringToPath;
 
 /** Used as references for various `Number` constants. */
 var INFINITY$1 = 1 / 0;
@@ -37569,7 +37569,7 @@ var INFINITY$1 = 1 / 0;
  * @returns {string|symbol} Returns the key.
  */
 function toKey(value) {
-  if (typeof value == 'string' || isSymbol$2(value)) {
+  if (typeof value == 'string' || isSymbol(value)) {
     return value;
   }
   var result = (value + '');
@@ -37600,7 +37600,7 @@ function baseToString(value) {
     // Recursively convert values (susceptible to call stack limits).
     return arrayMap(value, baseToString) + '';
   }
-  if (isSymbol$2(value)) {
+  if (isSymbol(value)) {
     return symbolToString ? symbolToString.call(value) : '';
   }
   var result = (value + '');
@@ -37653,7 +37653,7 @@ function toPath(value) {
   if (isArray$1(value)) {
     return arrayMap(value, toKey);
   }
-  return isSymbol$2(value) ? [value] : copyArray(stringToPath$2(toString(value)));
+  return isSymbol(value) ? [value] : copyArray(stringToPath$1(toString(value)));
 }
 
 /** Used to compose bitmasks for cloning. */
@@ -37736,7 +37736,7 @@ var isEmptyArray = function isEmptyArray(value) {
 };
 /** @private is the given object a Function? */
 
-var isFunction$1 = function isFunction(obj) {
+var isFunction = function isFunction(obj) {
   return typeof obj === 'function';
 };
 /** @private is the given object an Object? */
@@ -37751,7 +37751,7 @@ var isInteger = function isInteger(obj) {
 };
 /** @private is the given object a string? */
 
-var isString$2 = function isString(obj) {
+var isString = function isString(obj) {
   return Object.prototype.toString.call(obj) === '[object String]';
 };
 /** @private Does a React component have exactly 0 children? */
@@ -37762,7 +37762,7 @@ var isEmptyChildren = function isEmptyChildren(children) {
 /** @private is the given object/value a promise? */
 
 var isPromise = function isPromise(value) {
-  return isObject(value) && isFunction$1(value.then);
+  return isObject(value) && isFunction(value.then);
 };
 /**
  * Same as document.activeElement but wraps in a try-catch block. In IE it is
@@ -38080,7 +38080,7 @@ function useFormik(_ref) {
 
   var runValidationSchema = React.useCallback(function (values, field) {
     var validationSchema = props.validationSchema;
-    var schema = isFunction$1(validationSchema) ? validationSchema(field) : validationSchema;
+    var schema = isFunction(validationSchema) ? validationSchema(field) : validationSchema;
     var promise = field && schema.validateAt ? schema.validateAt(field, values) : validateYupSchema(values, schema);
     return new Promise(function (resolve, reject) {
       promise.then(function () {
@@ -38110,7 +38110,7 @@ function useFormik(_ref) {
   }, []);
   var runFieldLevelValidations = React.useCallback(function (values) {
     var fieldKeysWithValidation = Object.keys(fieldRegistry.current).filter(function (f) {
-      return isFunction$1(fieldRegistry.current[f].validate);
+      return isFunction(fieldRegistry.current[f].validate);
     }); // Construct an array with all of the field validation functions
 
     var fieldValidations = fieldKeysWithValidation.length > 0 ? fieldKeysWithValidation.map(function (f) {
@@ -38253,7 +38253,7 @@ function useFormik(_ref) {
     // This will efficiently validate a single field by avoiding state
     // changes if the validation function is synchronous. It's different from
     // what is called when using validateForm.
-    if (fieldRegistry.current[name] && isFunction$1(fieldRegistry.current[name].validate)) {
+    if (fieldRegistry.current[name] && isFunction(fieldRegistry.current[name].validate)) {
       var value = getIn(state.values, name);
       var maybePromise = fieldRegistry.current[name].validate(value);
 
@@ -38336,7 +38336,7 @@ function useFormik(_ref) {
     });
   }, []);
   var setValues = useEventCallback(function (values, shouldValidate) {
-    var resolvedValues = isFunction$1(values) ? values(state.values) : values;
+    var resolvedValues = isFunction(values) ? values(state.values) : values;
     dispatch({
       type: 'SET_VALUES',
       payload: resolvedValues
@@ -38373,7 +38373,7 @@ function useFormik(_ref) {
     var parsed; // If the first argument is not a string though, it has to be a synthetic React Event (or a fake one),
     // so we handle like we would a normal HTML change event.
 
-    if (!isString$2(eventOrTextValue)) {
+    if (!isString(eventOrTextValue)) {
       // If we can, persist the event
       // @see https://reactjs.org/docs/events.html#event-pooling
       if (eventOrTextValue.persist) {
@@ -38410,7 +38410,7 @@ function useFormik(_ref) {
     }
   }, [setFieldValue, state.values]);
   var handleChange = useEventCallback(function (eventOrPath) {
-    if (isString$2(eventOrPath)) {
+    if (isString(eventOrPath)) {
       return function (event) {
         return executeChange(event, eventOrPath);
       };
@@ -38455,7 +38455,7 @@ function useFormik(_ref) {
     setFieldTouched(field, true);
   }, [setFieldTouched]);
   var handleBlur = useEventCallback(function (eventOrString) {
-    if (isString$2(eventOrString)) {
+    if (isString(eventOrString)) {
       return function (event) {
         return executeBlur(event, eventOrString);
       };
@@ -38464,7 +38464,7 @@ function useFormik(_ref) {
     }
   });
   var setFormikState = React.useCallback(function (stateOrCb) {
-    if (isFunction$1(stateOrCb)) {
+    if (isFunction(stateOrCb)) {
       dispatch({
         type: 'SET_FORMIK_STATE',
         payload: stateOrCb
@@ -38561,11 +38561,11 @@ function useFormik(_ref) {
     });
   });
   var handleSubmit = useEventCallback(function (e) {
-    if (e && e.preventDefault && isFunction$1(e.preventDefault)) {
+    if (e && e.preventDefault && isFunction(e.preventDefault)) {
       e.preventDefault();
     }
 
-    if (e && e.stopPropagation && isFunction$1(e.stopPropagation)) {
+    if (e && e.stopPropagation && isFunction(e.stopPropagation)) {
       e.stopPropagation();
     } // Warn if form submission is triggered by a <button> without a
     // specified `type` attribute during development. This mitigates
@@ -38605,11 +38605,11 @@ function useFormik(_ref) {
     return onSubmit(state.values, imperativeMethods);
   });
   var handleReset = useEventCallback(function (e) {
-    if (e && e.preventDefault && isFunction$1(e.preventDefault)) {
+    if (e && e.preventDefault && isFunction(e.preventDefault)) {
       e.preventDefault();
     }
 
-    if (e && e.stopPropagation && isFunction$1(e.stopPropagation)) {
+    if (e && e.stopPropagation && isFunction(e.stopPropagation)) {
       e.stopPropagation();
     }
 
@@ -38677,7 +38677,7 @@ function useFormik(_ref) {
     return !reactFastCompare(initialValues.current, state.values);
   }, [initialValues.current, state.values]);
   var isValid = React.useMemo(function () {
-    return typeof isInitialValid !== 'undefined' ? dirty ? state.errors && Object.keys(state.errors).length === 0 : isInitialValid !== false && isFunction$1(isInitialValid) ? isInitialValid(props) : isInitialValid : state.errors && Object.keys(state.errors).length === 0;
+    return typeof isInitialValid !== 'undefined' ? dirty ? state.errors && Object.keys(state.errors).length === 0 : isInitialValid !== false && isFunction(isInitialValid) ? isInitialValid(props) : isInitialValid : state.errors && Object.keys(state.errors).length === 0;
   }, [isInitialValid, dirty, state.errors, props]);
 
   var ctx = _extends({}, state, {
@@ -38737,7 +38737,7 @@ function Formik(props) {
   return React.createElement(FormikProvider, {
     value: formikbag
   }, component ? React.createElement(component, formikbag) : render ? render(formikbag) : children // children come last, always called
-  ? isFunction$1(children) ? children(formikbag) : !isEmptyChildren(children) ? React.Children.only(children) : null : null);
+  ? isFunction(children) ? children(formikbag) : !isEmptyChildren(children) ? React.Children.only(children) : null : null);
 }
 
 function warnAboutMissingIdentifier(_ref4) {
@@ -38935,8 +38935,8 @@ function Field(_ref) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     React.useEffect(function () {
       !!render ? process.env.NODE_ENV !== "production" ? warning(false, "<Field render> has been deprecated and will be removed in future versions of Formik. Please use a child callback function instead. To get rid of this warning, replace <Field name=\"" + name + "\" render={({field, form}) => ...} /> with <Field name=\"" + name + "\">{({field, form, meta}) => ...}</Field>") : warning(false) : void 0;
-      !!(is && children && isFunction$1(children)) ? process.env.NODE_ENV !== "production" ? warning(false, 'You should not use <Field as> and <Field children> as a function in the same <Field> component; <Field as> will be ignored.') : warning(false) : void 0;
-      !!(component && children && isFunction$1(children)) ? process.env.NODE_ENV !== "production" ? warning(false, 'You should not use <Field component> and <Field children> as a function in the same <Field> component; <Field component> will be ignored.') : warning(false) : void 0;
+      !!(is && children && isFunction(children)) ? process.env.NODE_ENV !== "production" ? warning(false, 'You should not use <Field as> and <Field children> as a function in the same <Field> component; <Field as> will be ignored.') : warning(false) : void 0;
+      !!(component && children && isFunction(children)) ? process.env.NODE_ENV !== "production" ? warning(false, 'You should not use <Field component> and <Field children> as a function in the same <Field> component; <Field component> will be ignored.') : warning(false) : void 0;
       !!(render && children && !isEmptyChildren(children)) ? process.env.NODE_ENV !== "production" ? warning(false, 'You should not use <Field render> and <Field children> in the same <Field> component; <Field children> will be ignored') : warning(false) : void 0; // eslint-disable-next-line
     }, []);
   } // Register field and field-level validation with parent <Formik>
@@ -38967,7 +38967,7 @@ function Field(_ref) {
     }));
   }
 
-  if (isFunction$1(children)) {
+  if (isFunction(children)) {
     return children(_extends({}, legacyBag, {
       meta: meta
     }));
@@ -39250,7 +39250,7 @@ var FieldArrayInner = /*#__PURE__*/function (_React$Component) {
         result = copy[index];
       }
 
-      if (isFunction$1(copy.splice)) {
+      if (isFunction(copy.splice)) {
         copy.splice(index, 1);
       }
 
@@ -46071,1272 +46071,6 @@ OptionalBookingFields.propTypes = {
     PortalSite: PropTypes.object.isRequired,
 };
 
-var toStr$7 = Object.prototype.toString;
-
-var isArguments = function isArguments(value) {
-	var str = toStr$7.call(value);
-	var isArgs = str === '[object Arguments]';
-	if (!isArgs) {
-		isArgs = str !== '[object Array]' &&
-			value !== null &&
-			typeof value === 'object' &&
-			typeof value.length === 'number' &&
-			value.length >= 0 &&
-			toStr$7.call(value.callee) === '[object Function]';
-	}
-	return isArgs;
-};
-
-var keysShim$1;
-if (!Object.keys) {
-	// modified from https://github.com/es-shims/es5-shim
-	var has = Object.prototype.hasOwnProperty;
-	var toStr$6 = Object.prototype.toString;
-	var isArgs$1 = isArguments; // eslint-disable-line global-require
-	var isEnumerable = Object.prototype.propertyIsEnumerable;
-	var hasDontEnumBug = !isEnumerable.call({ toString: null }, 'toString');
-	var hasProtoEnumBug = isEnumerable.call(function () {}, 'prototype');
-	var dontEnums = [
-		'toString',
-		'toLocaleString',
-		'valueOf',
-		'hasOwnProperty',
-		'isPrototypeOf',
-		'propertyIsEnumerable',
-		'constructor'
-	];
-	var equalsConstructorPrototype = function (o) {
-		var ctor = o.constructor;
-		return ctor && ctor.prototype === o;
-	};
-	var excludedKeys = {
-		$applicationCache: true,
-		$console: true,
-		$external: true,
-		$frame: true,
-		$frameElement: true,
-		$frames: true,
-		$innerHeight: true,
-		$innerWidth: true,
-		$onmozfullscreenchange: true,
-		$onmozfullscreenerror: true,
-		$outerHeight: true,
-		$outerWidth: true,
-		$pageXOffset: true,
-		$pageYOffset: true,
-		$parent: true,
-		$scrollLeft: true,
-		$scrollTop: true,
-		$scrollX: true,
-		$scrollY: true,
-		$self: true,
-		$webkitIndexedDB: true,
-		$webkitStorageInfo: true,
-		$window: true
-	};
-	var hasAutomationEqualityBug = (function () {
-		/* global window */
-		if (typeof window === 'undefined') { return false; }
-		for (var k in window) {
-			try {
-				if (!excludedKeys['$' + k] && has.call(window, k) && window[k] !== null && typeof window[k] === 'object') {
-					try {
-						equalsConstructorPrototype(window[k]);
-					} catch (e) {
-						return true;
-					}
-				}
-			} catch (e) {
-				return true;
-			}
-		}
-		return false;
-	}());
-	var equalsConstructorPrototypeIfNotBuggy = function (o) {
-		/* global window */
-		if (typeof window === 'undefined' || !hasAutomationEqualityBug) {
-			return equalsConstructorPrototype(o);
-		}
-		try {
-			return equalsConstructorPrototype(o);
-		} catch (e) {
-			return false;
-		}
-	};
-
-	keysShim$1 = function keys(object) {
-		var isObject = object !== null && typeof object === 'object';
-		var isFunction = toStr$6.call(object) === '[object Function]';
-		var isArguments = isArgs$1(object);
-		var isString = isObject && toStr$6.call(object) === '[object String]';
-		var theKeys = [];
-
-		if (!isObject && !isFunction && !isArguments) {
-			throw new TypeError('Object.keys called on a non-object');
-		}
-
-		var skipProto = hasProtoEnumBug && isFunction;
-		if (isString && object.length > 0 && !has.call(object, 0)) {
-			for (var i = 0; i < object.length; ++i) {
-				theKeys.push(String(i));
-			}
-		}
-
-		if (isArguments && object.length > 0) {
-			for (var j = 0; j < object.length; ++j) {
-				theKeys.push(String(j));
-			}
-		} else {
-			for (var name in object) {
-				if (!(skipProto && name === 'prototype') && has.call(object, name)) {
-					theKeys.push(String(name));
-				}
-			}
-		}
-
-		if (hasDontEnumBug) {
-			var skipConstructor = equalsConstructorPrototypeIfNotBuggy(object);
-
-			for (var k = 0; k < dontEnums.length; ++k) {
-				if (!(skipConstructor && dontEnums[k] === 'constructor') && has.call(object, dontEnums[k])) {
-					theKeys.push(dontEnums[k]);
-				}
-			}
-		}
-		return theKeys;
-	};
-}
-var implementation$5 = keysShim$1;
-
-var slice$1 = Array.prototype.slice;
-var isArgs = isArguments;
-
-var origKeys = Object.keys;
-var keysShim = origKeys ? function keys(o) { return origKeys(o); } : implementation$5;
-
-var originalKeys = Object.keys;
-
-keysShim.shim = function shimObjectKeys() {
-	if (Object.keys) {
-		var keysWorksWithArguments = (function () {
-			// Safari 5.0 bug
-			var args = Object.keys(arguments);
-			return args && args.length === arguments.length;
-		}(1, 2));
-		if (!keysWorksWithArguments) {
-			Object.keys = function keys(object) { // eslint-disable-line func-name-matching
-				if (isArgs(object)) {
-					return originalKeys(slice$1.call(object));
-				}
-				return originalKeys(object);
-			};
-		}
-	} else {
-		Object.keys = keysShim;
-	}
-	return Object.keys || keysShim;
-};
-
-var objectKeys = keysShim;
-
-/* eslint complexity: [2, 18], max-statements: [2, 33] */
-var shams$1 = function hasSymbols() {
-	if (typeof Symbol !== 'function' || typeof Object.getOwnPropertySymbols !== 'function') { return false; }
-	if (typeof Symbol.iterator === 'symbol') { return true; }
-
-	var obj = {};
-	var sym = Symbol('test');
-	var symObj = Object(sym);
-	if (typeof sym === 'string') { return false; }
-
-	if (Object.prototype.toString.call(sym) !== '[object Symbol]') { return false; }
-	if (Object.prototype.toString.call(symObj) !== '[object Symbol]') { return false; }
-
-	// temp disabled per https://github.com/ljharb/object.assign/issues/17
-	// if (sym instanceof Symbol) { return false; }
-	// temp disabled per https://github.com/WebReflection/get-own-property-symbols/issues/4
-	// if (!(symObj instanceof Symbol)) { return false; }
-
-	// if (typeof Symbol.prototype.toString !== 'function') { return false; }
-	// if (String(sym) !== Symbol.prototype.toString.call(sym)) { return false; }
-
-	var symVal = 42;
-	obj[sym] = symVal;
-	for (sym in obj) { return false; } // eslint-disable-line no-restricted-syntax, no-unreachable-loop
-	if (typeof Object.keys === 'function' && Object.keys(obj).length !== 0) { return false; }
-
-	if (typeof Object.getOwnPropertyNames === 'function' && Object.getOwnPropertyNames(obj).length !== 0) { return false; }
-
-	var syms = Object.getOwnPropertySymbols(obj);
-	if (syms.length !== 1 || syms[0] !== sym) { return false; }
-
-	if (!Object.prototype.propertyIsEnumerable.call(obj, sym)) { return false; }
-
-	if (typeof Object.getOwnPropertyDescriptor === 'function') {
-		var descriptor = Object.getOwnPropertyDescriptor(obj, sym);
-		if (descriptor.value !== symVal || descriptor.enumerable !== true) { return false; }
-	}
-
-	return true;
-};
-
-var origSymbol = typeof Symbol !== 'undefined' && Symbol;
-var hasSymbolSham = shams$1;
-
-var hasSymbols$5 = function hasNativeSymbols() {
-	if (typeof origSymbol !== 'function') { return false; }
-	if (typeof Symbol !== 'function') { return false; }
-	if (typeof origSymbol('foo') !== 'symbol') { return false; }
-	if (typeof Symbol('bar') !== 'symbol') { return false; }
-
-	return hasSymbolSham();
-};
-
-/* eslint no-invalid-this: 1 */
-
-var ERROR_MESSAGE = 'Function.prototype.bind called on incompatible ';
-var slice = Array.prototype.slice;
-var toStr$5 = Object.prototype.toString;
-var funcType = '[object Function]';
-
-var implementation$4 = function bind(that) {
-    var target = this;
-    if (typeof target !== 'function' || toStr$5.call(target) !== funcType) {
-        throw new TypeError(ERROR_MESSAGE + target);
-    }
-    var args = slice.call(arguments, 1);
-
-    var bound;
-    var binder = function () {
-        if (this instanceof bound) {
-            var result = target.apply(
-                this,
-                args.concat(slice.call(arguments))
-            );
-            if (Object(result) === result) {
-                return result;
-            }
-            return this;
-        } else {
-            return target.apply(
-                that,
-                args.concat(slice.call(arguments))
-            );
-        }
-    };
-
-    var boundLength = Math.max(0, target.length - args.length);
-    var boundArgs = [];
-    for (var i = 0; i < boundLength; i++) {
-        boundArgs.push('$' + i);
-    }
-
-    bound = Function('binder', 'return function (' + boundArgs.join(',') + '){ return binder.apply(this,arguments); }')(binder);
-
-    if (target.prototype) {
-        var Empty = function Empty() {};
-        Empty.prototype = target.prototype;
-        bound.prototype = new Empty();
-        Empty.prototype = null;
-    }
-
-    return bound;
-};
-
-var implementation$3 = implementation$4;
-
-var functionBind = Function.prototype.bind || implementation$3;
-
-var bind$1 = functionBind;
-
-var src = bind$1.call(Function.call, Object.prototype.hasOwnProperty);
-
-var undefined$1;
-
-var $SyntaxError = SyntaxError;
-var $Function = Function;
-var $TypeError$2 = TypeError;
-
-// eslint-disable-next-line consistent-return
-var getEvalledConstructor = function (expressionSyntax) {
-	try {
-		return $Function('"use strict"; return (' + expressionSyntax + ').constructor;')();
-	} catch (e) {}
-};
-
-var $gOPD = Object.getOwnPropertyDescriptor;
-if ($gOPD) {
-	try {
-		$gOPD({}, '');
-	} catch (e) {
-		$gOPD = null; // this is IE 8, which has a broken gOPD
-	}
-}
-
-var throwTypeError = function () {
-	throw new $TypeError$2();
-};
-var ThrowTypeError = $gOPD
-	? (function () {
-		try {
-			// eslint-disable-next-line no-unused-expressions, no-caller, no-restricted-properties
-			arguments.callee; // IE 8 does not throw here
-			return throwTypeError;
-		} catch (calleeThrows) {
-			try {
-				// IE 8 throws on Object.getOwnPropertyDescriptor(arguments, '')
-				return $gOPD(arguments, 'callee').get;
-			} catch (gOPDthrows) {
-				return throwTypeError;
-			}
-		}
-	}())
-	: throwTypeError;
-
-var hasSymbols$4 = hasSymbols$5();
-
-var getProto = Object.getPrototypeOf || function (x) { return x.__proto__; }; // eslint-disable-line no-proto
-
-var needsEval = {};
-
-var TypedArray = typeof Uint8Array === 'undefined' ? undefined$1 : getProto(Uint8Array);
-
-var INTRINSICS = {
-	'%AggregateError%': typeof AggregateError === 'undefined' ? undefined$1 : AggregateError,
-	'%Array%': Array,
-	'%ArrayBuffer%': typeof ArrayBuffer === 'undefined' ? undefined$1 : ArrayBuffer,
-	'%ArrayIteratorPrototype%': hasSymbols$4 ? getProto([][Symbol.iterator]()) : undefined$1,
-	'%AsyncFromSyncIteratorPrototype%': undefined$1,
-	'%AsyncFunction%': needsEval,
-	'%AsyncGenerator%': needsEval,
-	'%AsyncGeneratorFunction%': needsEval,
-	'%AsyncIteratorPrototype%': needsEval,
-	'%Atomics%': typeof Atomics === 'undefined' ? undefined$1 : Atomics,
-	'%BigInt%': typeof BigInt === 'undefined' ? undefined$1 : BigInt,
-	'%Boolean%': Boolean,
-	'%DataView%': typeof DataView === 'undefined' ? undefined$1 : DataView,
-	'%Date%': Date,
-	'%decodeURI%': decodeURI,
-	'%decodeURIComponent%': decodeURIComponent,
-	'%encodeURI%': encodeURI,
-	'%encodeURIComponent%': encodeURIComponent,
-	'%Error%': Error,
-	'%eval%': eval, // eslint-disable-line no-eval
-	'%EvalError%': EvalError,
-	'%Float32Array%': typeof Float32Array === 'undefined' ? undefined$1 : Float32Array,
-	'%Float64Array%': typeof Float64Array === 'undefined' ? undefined$1 : Float64Array,
-	'%FinalizationRegistry%': typeof FinalizationRegistry === 'undefined' ? undefined$1 : FinalizationRegistry,
-	'%Function%': $Function,
-	'%GeneratorFunction%': needsEval,
-	'%Int8Array%': typeof Int8Array === 'undefined' ? undefined$1 : Int8Array,
-	'%Int16Array%': typeof Int16Array === 'undefined' ? undefined$1 : Int16Array,
-	'%Int32Array%': typeof Int32Array === 'undefined' ? undefined$1 : Int32Array,
-	'%isFinite%': isFinite,
-	'%isNaN%': isNaN,
-	'%IteratorPrototype%': hasSymbols$4 ? getProto(getProto([][Symbol.iterator]())) : undefined$1,
-	'%JSON%': typeof JSON === 'object' ? JSON : undefined$1,
-	'%Map%': typeof Map === 'undefined' ? undefined$1 : Map,
-	'%MapIteratorPrototype%': typeof Map === 'undefined' || !hasSymbols$4 ? undefined$1 : getProto(new Map()[Symbol.iterator]()),
-	'%Math%': Math,
-	'%Number%': Number,
-	'%Object%': Object,
-	'%parseFloat%': parseFloat,
-	'%parseInt%': parseInt,
-	'%Promise%': typeof Promise === 'undefined' ? undefined$1 : Promise,
-	'%Proxy%': typeof Proxy === 'undefined' ? undefined$1 : Proxy,
-	'%RangeError%': RangeError,
-	'%ReferenceError%': ReferenceError,
-	'%Reflect%': typeof Reflect === 'undefined' ? undefined$1 : Reflect,
-	'%RegExp%': RegExp,
-	'%Set%': typeof Set === 'undefined' ? undefined$1 : Set,
-	'%SetIteratorPrototype%': typeof Set === 'undefined' || !hasSymbols$4 ? undefined$1 : getProto(new Set()[Symbol.iterator]()),
-	'%SharedArrayBuffer%': typeof SharedArrayBuffer === 'undefined' ? undefined$1 : SharedArrayBuffer,
-	'%String%': String,
-	'%StringIteratorPrototype%': hasSymbols$4 ? getProto(''[Symbol.iterator]()) : undefined$1,
-	'%Symbol%': hasSymbols$4 ? Symbol : undefined$1,
-	'%SyntaxError%': $SyntaxError,
-	'%ThrowTypeError%': ThrowTypeError,
-	'%TypedArray%': TypedArray,
-	'%TypeError%': $TypeError$2,
-	'%Uint8Array%': typeof Uint8Array === 'undefined' ? undefined$1 : Uint8Array,
-	'%Uint8ClampedArray%': typeof Uint8ClampedArray === 'undefined' ? undefined$1 : Uint8ClampedArray,
-	'%Uint16Array%': typeof Uint16Array === 'undefined' ? undefined$1 : Uint16Array,
-	'%Uint32Array%': typeof Uint32Array === 'undefined' ? undefined$1 : Uint32Array,
-	'%URIError%': URIError,
-	'%WeakMap%': typeof WeakMap === 'undefined' ? undefined$1 : WeakMap,
-	'%WeakRef%': typeof WeakRef === 'undefined' ? undefined$1 : WeakRef,
-	'%WeakSet%': typeof WeakSet === 'undefined' ? undefined$1 : WeakSet
-};
-
-var doEval = function doEval(name) {
-	var value;
-	if (name === '%AsyncFunction%') {
-		value = getEvalledConstructor('async function () {}');
-	} else if (name === '%GeneratorFunction%') {
-		value = getEvalledConstructor('function* () {}');
-	} else if (name === '%AsyncGeneratorFunction%') {
-		value = getEvalledConstructor('async function* () {}');
-	} else if (name === '%AsyncGenerator%') {
-		var fn = doEval('%AsyncGeneratorFunction%');
-		if (fn) {
-			value = fn.prototype;
-		}
-	} else if (name === '%AsyncIteratorPrototype%') {
-		var gen = doEval('%AsyncGenerator%');
-		if (gen) {
-			value = getProto(gen.prototype);
-		}
-	}
-
-	INTRINSICS[name] = value;
-
-	return value;
-};
-
-var LEGACY_ALIASES = {
-	'%ArrayBufferPrototype%': ['ArrayBuffer', 'prototype'],
-	'%ArrayPrototype%': ['Array', 'prototype'],
-	'%ArrayProto_entries%': ['Array', 'prototype', 'entries'],
-	'%ArrayProto_forEach%': ['Array', 'prototype', 'forEach'],
-	'%ArrayProto_keys%': ['Array', 'prototype', 'keys'],
-	'%ArrayProto_values%': ['Array', 'prototype', 'values'],
-	'%AsyncFunctionPrototype%': ['AsyncFunction', 'prototype'],
-	'%AsyncGenerator%': ['AsyncGeneratorFunction', 'prototype'],
-	'%AsyncGeneratorPrototype%': ['AsyncGeneratorFunction', 'prototype', 'prototype'],
-	'%BooleanPrototype%': ['Boolean', 'prototype'],
-	'%DataViewPrototype%': ['DataView', 'prototype'],
-	'%DatePrototype%': ['Date', 'prototype'],
-	'%ErrorPrototype%': ['Error', 'prototype'],
-	'%EvalErrorPrototype%': ['EvalError', 'prototype'],
-	'%Float32ArrayPrototype%': ['Float32Array', 'prototype'],
-	'%Float64ArrayPrototype%': ['Float64Array', 'prototype'],
-	'%FunctionPrototype%': ['Function', 'prototype'],
-	'%Generator%': ['GeneratorFunction', 'prototype'],
-	'%GeneratorPrototype%': ['GeneratorFunction', 'prototype', 'prototype'],
-	'%Int8ArrayPrototype%': ['Int8Array', 'prototype'],
-	'%Int16ArrayPrototype%': ['Int16Array', 'prototype'],
-	'%Int32ArrayPrototype%': ['Int32Array', 'prototype'],
-	'%JSONParse%': ['JSON', 'parse'],
-	'%JSONStringify%': ['JSON', 'stringify'],
-	'%MapPrototype%': ['Map', 'prototype'],
-	'%NumberPrototype%': ['Number', 'prototype'],
-	'%ObjectPrototype%': ['Object', 'prototype'],
-	'%ObjProto_toString%': ['Object', 'prototype', 'toString'],
-	'%ObjProto_valueOf%': ['Object', 'prototype', 'valueOf'],
-	'%PromisePrototype%': ['Promise', 'prototype'],
-	'%PromiseProto_then%': ['Promise', 'prototype', 'then'],
-	'%Promise_all%': ['Promise', 'all'],
-	'%Promise_reject%': ['Promise', 'reject'],
-	'%Promise_resolve%': ['Promise', 'resolve'],
-	'%RangeErrorPrototype%': ['RangeError', 'prototype'],
-	'%ReferenceErrorPrototype%': ['ReferenceError', 'prototype'],
-	'%RegExpPrototype%': ['RegExp', 'prototype'],
-	'%SetPrototype%': ['Set', 'prototype'],
-	'%SharedArrayBufferPrototype%': ['SharedArrayBuffer', 'prototype'],
-	'%StringPrototype%': ['String', 'prototype'],
-	'%SymbolPrototype%': ['Symbol', 'prototype'],
-	'%SyntaxErrorPrototype%': ['SyntaxError', 'prototype'],
-	'%TypedArrayPrototype%': ['TypedArray', 'prototype'],
-	'%TypeErrorPrototype%': ['TypeError', 'prototype'],
-	'%Uint8ArrayPrototype%': ['Uint8Array', 'prototype'],
-	'%Uint8ClampedArrayPrototype%': ['Uint8ClampedArray', 'prototype'],
-	'%Uint16ArrayPrototype%': ['Uint16Array', 'prototype'],
-	'%Uint32ArrayPrototype%': ['Uint32Array', 'prototype'],
-	'%URIErrorPrototype%': ['URIError', 'prototype'],
-	'%WeakMapPrototype%': ['WeakMap', 'prototype'],
-	'%WeakSetPrototype%': ['WeakSet', 'prototype']
-};
-
-var bind = functionBind;
-var hasOwn = src;
-var $concat = bind.call(Function.call, Array.prototype.concat);
-var $spliceApply = bind.call(Function.apply, Array.prototype.splice);
-var $replace$1 = bind.call(Function.call, String.prototype.replace);
-var $strSlice$1 = bind.call(Function.call, String.prototype.slice);
-var $exec$1 = bind.call(Function.call, RegExp.prototype.exec);
-
-/* adapted from https://github.com/lodash/lodash/blob/4.17.15/dist/lodash.js#L6735-L6744 */
-var rePropName = /[^%.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|%$))/g;
-var reEscapeChar = /\\(\\)?/g; /** Used to match backslashes in property paths. */
-var stringToPath = function stringToPath(string) {
-	var first = $strSlice$1(string, 0, 1);
-	var last = $strSlice$1(string, -1);
-	if (first === '%' && last !== '%') {
-		throw new $SyntaxError('invalid intrinsic syntax, expected closing `%`');
-	} else if (last === '%' && first !== '%') {
-		throw new $SyntaxError('invalid intrinsic syntax, expected opening `%`');
-	}
-	var result = [];
-	$replace$1(string, rePropName, function (match, number, quote, subString) {
-		result[result.length] = quote ? $replace$1(subString, reEscapeChar, '$1') : number || match;
-	});
-	return result;
-};
-/* end adaptation */
-
-var getBaseIntrinsic = function getBaseIntrinsic(name, allowMissing) {
-	var intrinsicName = name;
-	var alias;
-	if (hasOwn(LEGACY_ALIASES, intrinsicName)) {
-		alias = LEGACY_ALIASES[intrinsicName];
-		intrinsicName = '%' + alias[0] + '%';
-	}
-
-	if (hasOwn(INTRINSICS, intrinsicName)) {
-		var value = INTRINSICS[intrinsicName];
-		if (value === needsEval) {
-			value = doEval(intrinsicName);
-		}
-		if (typeof value === 'undefined' && !allowMissing) {
-			throw new $TypeError$2('intrinsic ' + name + ' exists, but is not available. Please file an issue!');
-		}
-
-		return {
-			alias: alias,
-			name: intrinsicName,
-			value: value
-		};
-	}
-
-	throw new $SyntaxError('intrinsic ' + name + ' does not exist!');
-};
-
-var getIntrinsic = function GetIntrinsic(name, allowMissing) {
-	if (typeof name !== 'string' || name.length === 0) {
-		throw new $TypeError$2('intrinsic name must be a non-empty string');
-	}
-	if (arguments.length > 1 && typeof allowMissing !== 'boolean') {
-		throw new $TypeError$2('"allowMissing" argument must be a boolean');
-	}
-
-	if ($exec$1(/^%?[^%]*%?$/g, name) === null) {
-		throw new $SyntaxError('`%` may not be present anywhere but at the beginning and end of the intrinsic name');
-	}
-	var parts = stringToPath(name);
-	var intrinsicBaseName = parts.length > 0 ? parts[0] : '';
-
-	var intrinsic = getBaseIntrinsic('%' + intrinsicBaseName + '%', allowMissing);
-	var intrinsicRealName = intrinsic.name;
-	var value = intrinsic.value;
-	var skipFurtherCaching = false;
-
-	var alias = intrinsic.alias;
-	if (alias) {
-		intrinsicBaseName = alias[0];
-		$spliceApply(parts, $concat([0, 1], alias));
-	}
-
-	for (var i = 1, isOwn = true; i < parts.length; i += 1) {
-		var part = parts[i];
-		var first = $strSlice$1(part, 0, 1);
-		var last = $strSlice$1(part, -1);
-		if (
-			(
-				(first === '"' || first === "'" || first === '`')
-				|| (last === '"' || last === "'" || last === '`')
-			)
-			&& first !== last
-		) {
-			throw new $SyntaxError('property names with quotes must have matching quotes');
-		}
-		if (part === 'constructor' || !isOwn) {
-			skipFurtherCaching = true;
-		}
-
-		intrinsicBaseName += '.' + part;
-		intrinsicRealName = '%' + intrinsicBaseName + '%';
-
-		if (hasOwn(INTRINSICS, intrinsicRealName)) {
-			value = INTRINSICS[intrinsicRealName];
-		} else if (value != null) {
-			if (!(part in value)) {
-				if (!allowMissing) {
-					throw new $TypeError$2('base intrinsic for ' + name + ' exists, but the property is not available.');
-				}
-				return void undefined$1;
-			}
-			if ($gOPD && (i + 1) >= parts.length) {
-				var desc = $gOPD(value, part);
-				isOwn = !!desc;
-
-				// By convention, when a data property is converted to an accessor
-				// property to emulate a data property that does not suffer from
-				// the override mistake, that accessor's getter is marked with
-				// an `originalValue` property. Here, when we detect this, we
-				// uphold the illusion by pretending to see that original data
-				// property, i.e., returning the value rather than the getter
-				// itself.
-				if (isOwn && 'get' in desc && !('originalValue' in desc.get)) {
-					value = desc.get;
-				} else {
-					value = value[part];
-				}
-			} else {
-				isOwn = hasOwn(value, part);
-				value = value[part];
-			}
-
-			if (isOwn && !skipFurtherCaching) {
-				INTRINSICS[intrinsicRealName] = value;
-			}
-		}
-	}
-	return value;
-};
-
-var GetIntrinsic$7 = getIntrinsic;
-
-var $defineProperty = GetIntrinsic$7('%Object.defineProperty%', true);
-
-var hasPropertyDescriptors$1 = function hasPropertyDescriptors() {
-	if ($defineProperty) {
-		try {
-			$defineProperty({}, 'a', { value: 1 });
-			return true;
-		} catch (e) {
-			// IE 8 has a broken defineProperty
-			return false;
-		}
-	}
-	return false;
-};
-
-hasPropertyDescriptors$1.hasArrayLengthDefineBug = function hasArrayLengthDefineBug() {
-	// node v0.6 has a bug where array lengths can be Set but not Defined
-	if (!hasPropertyDescriptors$1()) {
-		return null;
-	}
-	try {
-		return $defineProperty([], 'length', { value: 1 }).length !== 1;
-	} catch (e) {
-		// In Firefox 4-22, defining length on an array throws an exception.
-		return true;
-	}
-};
-
-var hasPropertyDescriptors_1 = hasPropertyDescriptors$1;
-
-var keys = objectKeys;
-var hasSymbols$3 = typeof Symbol === 'function' && typeof Symbol('foo') === 'symbol';
-
-var toStr$4 = Object.prototype.toString;
-var concat = Array.prototype.concat;
-var origDefineProperty = Object.defineProperty;
-
-var isFunction = function (fn) {
-	return typeof fn === 'function' && toStr$4.call(fn) === '[object Function]';
-};
-
-var hasPropertyDescriptors = hasPropertyDescriptors_1();
-
-var supportsDescriptors = origDefineProperty && hasPropertyDescriptors;
-
-var defineProperty = function (object, name, value, predicate) {
-	if (name in object && (!isFunction(predicate) || !predicate())) {
-		return;
-	}
-	if (supportsDescriptors) {
-		origDefineProperty(object, name, {
-			configurable: true,
-			enumerable: false,
-			value: value,
-			writable: true
-		});
-	} else {
-		object[name] = value; // eslint-disable-line no-param-reassign
-	}
-};
-
-var defineProperties = function (object, map) {
-	var predicates = arguments.length > 2 ? arguments[2] : {};
-	var props = keys(map);
-	if (hasSymbols$3) {
-		props = concat.call(props, Object.getOwnPropertySymbols(map));
-	}
-	for (var i = 0; i < props.length; i += 1) {
-		defineProperty(object, props[i], map[props[i]], predicates[props[i]]);
-	}
-};
-
-defineProperties.supportsDescriptors = !!supportsDescriptors;
-
-var defineProperties_1 = defineProperties;
-
-var GetIntrinsic$6 = getIntrinsic;
-
-var $TypeError$1 = GetIntrinsic$6('%TypeError%');
-
-// http://262.ecma-international.org/5.1/#sec-9.10
-
-var CheckObjectCoercible = function CheckObjectCoercible(value, optMessage) {
-	if (value == null) {
-		throw new $TypeError$1(optMessage || ('Cannot call method on ' + value));
-	}
-	return value;
-};
-
-var RequireObjectCoercible$2 = CheckObjectCoercible;
-
-var callBind$2 = {exports: {}};
-
-(function (module) {
-
-var bind = functionBind;
-var GetIntrinsic = getIntrinsic;
-
-var $apply = GetIntrinsic('%Function.prototype.apply%');
-var $call = GetIntrinsic('%Function.prototype.call%');
-var $reflectApply = GetIntrinsic('%Reflect.apply%', true) || bind.call($call, $apply);
-
-var $gOPD = GetIntrinsic('%Object.getOwnPropertyDescriptor%', true);
-var $defineProperty = GetIntrinsic('%Object.defineProperty%', true);
-var $max = GetIntrinsic('%Math.max%');
-
-if ($defineProperty) {
-	try {
-		$defineProperty({}, 'a', { value: 1 });
-	} catch (e) {
-		// IE 8 has a broken defineProperty
-		$defineProperty = null;
-	}
-}
-
-module.exports = function callBind(originalFunction) {
-	var func = $reflectApply(bind, $call, arguments);
-	if ($gOPD && $defineProperty) {
-		var desc = $gOPD(func, 'length');
-		if (desc.configurable) {
-			// original length, plus the receiver, minus any additional arguments (after the receiver)
-			$defineProperty(
-				func,
-				'length',
-				{ value: 1 + $max(0, originalFunction.length - (arguments.length - 1)) }
-			);
-		}
-	}
-	return func;
-};
-
-var applyBind = function applyBind() {
-	return $reflectApply(bind, $apply, arguments);
-};
-
-if ($defineProperty) {
-	$defineProperty(module.exports, 'apply', { value: applyBind });
-} else {
-	module.exports.apply = applyBind;
-}
-}(callBind$2));
-
-var GetIntrinsic$5 = getIntrinsic;
-
-var callBind$1 = callBind$2.exports;
-
-var $indexOf$1 = callBind$1(GetIntrinsic$5('String.prototype.indexOf'));
-
-var callBound$4 = function callBoundIntrinsic(name, allowMissing) {
-	var intrinsic = GetIntrinsic$5(name, !!allowMissing);
-	if (typeof intrinsic === 'function' && $indexOf$1(name, '.prototype.') > -1) {
-		return callBind$1(intrinsic);
-	}
-	return intrinsic;
-};
-
-var GetIntrinsic$4 = getIntrinsic;
-
-var $abs = GetIntrinsic$4('%Math.abs%');
-
-// http://262.ecma-international.org/5.1/#sec-5.2
-
-var abs$1 = function abs(x) {
-	return $abs(x);
-};
-
-// var modulo = require('./modulo');
-var $floor = Math.floor;
-
-// http://262.ecma-international.org/5.1/#sec-5.2
-
-var floor$1 = function floor(x) {
-	// return x - modulo(x, 1);
-	return $floor(x);
-};
-
-var callBound$3 = callBound$4;
-
-var $exec = callBound$3('RegExp.prototype.exec');
-
-var regexTester$1 = function regexTester(regex) {
-	return function test(s) { return $exec(regex, s) !== null; };
-};
-
-var isPrimitive$3 = function isPrimitive(value) {
-	return value === null || (typeof value !== 'function' && typeof value !== 'object');
-};
-
-var isPrimitive$2 = function isPrimitive(value) {
-	return value === null || (typeof value !== 'function' && typeof value !== 'object');
-};
-
-var fnToStr = Function.prototype.toString;
-var reflectApply = typeof Reflect === 'object' && Reflect !== null && Reflect.apply;
-var badArrayLike;
-var isCallableMarker;
-if (typeof reflectApply === 'function' && typeof Object.defineProperty === 'function') {
-	try {
-		badArrayLike = Object.defineProperty({}, 'length', {
-			get: function () {
-				throw isCallableMarker;
-			}
-		});
-		isCallableMarker = {};
-		// eslint-disable-next-line no-throw-literal
-		reflectApply(function () { throw 42; }, null, badArrayLike);
-	} catch (_) {
-		if (_ !== isCallableMarker) {
-			reflectApply = null;
-		}
-	}
-} else {
-	reflectApply = null;
-}
-
-var constructorRegex = /^\s*class\b/;
-var isES6ClassFn = function isES6ClassFunction(value) {
-	try {
-		var fnStr = fnToStr.call(value);
-		return constructorRegex.test(fnStr);
-	} catch (e) {
-		return false; // not a function
-	}
-};
-
-var tryFunctionObject = function tryFunctionToStr(value) {
-	try {
-		if (isES6ClassFn(value)) { return false; }
-		fnToStr.call(value);
-		return true;
-	} catch (e) {
-		return false;
-	}
-};
-var toStr$3 = Object.prototype.toString;
-var fnClass = '[object Function]';
-var genClass = '[object GeneratorFunction]';
-var hasToStringTag$2 = typeof Symbol === 'function' && !!Symbol.toStringTag; // better: use `has-tostringtag`
-/* globals document: false */
-var documentDotAll = typeof document === 'object' && typeof document.all === 'undefined' && document.all !== undefined ? document.all : {};
-
-var isCallable$1 = reflectApply
-	? function isCallable(value) {
-		if (value === documentDotAll) { return true; }
-		if (!value) { return false; }
-		if (typeof value !== 'function' && typeof value !== 'object') { return false; }
-		if (typeof value === 'function' && !value.prototype) { return true; }
-		try {
-			reflectApply(value, null, badArrayLike);
-		} catch (e) {
-			if (e !== isCallableMarker) { return false; }
-		}
-		return !isES6ClassFn(value);
-	}
-	: function isCallable(value) {
-		if (value === documentDotAll) { return true; }
-		if (!value) { return false; }
-		if (typeof value !== 'function' && typeof value !== 'object') { return false; }
-		if (typeof value === 'function' && !value.prototype) { return true; }
-		if (hasToStringTag$2) { return tryFunctionObject(value); }
-		if (isES6ClassFn(value)) { return false; }
-		var strClass = toStr$3.call(value);
-		return strClass === fnClass || strClass === genClass;
-	};
-
-var hasSymbols$2 = shams$1;
-
-var shams = function hasToStringTagShams() {
-	return hasSymbols$2() && !!Symbol.toStringTag;
-};
-
-var getDay = Date.prototype.getDay;
-var tryDateObject = function tryDateGetDayCall(value) {
-	try {
-		getDay.call(value);
-		return true;
-	} catch (e) {
-		return false;
-	}
-};
-
-var toStr$2 = Object.prototype.toString;
-var dateClass = '[object Date]';
-var hasToStringTag$1 = shams();
-
-var isDateObject = function isDateObject(value) {
-	if (typeof value !== 'object' || value === null) {
-		return false;
-	}
-	return hasToStringTag$1 ? tryDateObject(value) : toStr$2.call(value) === dateClass;
-};
-
-var isSymbol$1 = {exports: {}};
-
-var toStr$1 = Object.prototype.toString;
-var hasSymbols$1 = hasSymbols$5();
-
-if (hasSymbols$1) {
-	var symToStr = Symbol.prototype.toString;
-	var symStringRegex = /^Symbol\(.*\)$/;
-	var isSymbolObject = function isRealSymbolObject(value) {
-		if (typeof value.valueOf() !== 'symbol') {
-			return false;
-		}
-		return symStringRegex.test(symToStr.call(value));
-	};
-
-	isSymbol$1.exports = function isSymbol(value) {
-		if (typeof value === 'symbol') {
-			return true;
-		}
-		if (toStr$1.call(value) !== '[object Symbol]') {
-			return false;
-		}
-		try {
-			return isSymbolObject(value);
-		} catch (e) {
-			return false;
-		}
-	};
-} else {
-
-	isSymbol$1.exports = function isSymbol(value) {
-		// this environment does not support Symbols.
-		return false ;
-	};
-}
-
-var hasSymbols = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol';
-
-var isPrimitive$1 = isPrimitive$2;
-var isCallable = isCallable$1;
-var isDate = isDateObject;
-var isSymbol = isSymbol$1.exports;
-
-var ordinaryToPrimitive = function OrdinaryToPrimitive(O, hint) {
-	if (typeof O === 'undefined' || O === null) {
-		throw new TypeError('Cannot call method on ' + O);
-	}
-	if (typeof hint !== 'string' || (hint !== 'number' && hint !== 'string')) {
-		throw new TypeError('hint must be "string" or "number"');
-	}
-	var methodNames = hint === 'string' ? ['toString', 'valueOf'] : ['valueOf', 'toString'];
-	var method, result, i;
-	for (i = 0; i < methodNames.length; ++i) {
-		method = O[methodNames[i]];
-		if (isCallable(method)) {
-			result = method.call(O);
-			if (isPrimitive$1(result)) {
-				return result;
-			}
-		}
-	}
-	throw new TypeError('No default value');
-};
-
-var GetMethod = function GetMethod(O, P) {
-	var func = O[P];
-	if (func !== null && typeof func !== 'undefined') {
-		if (!isCallable(func)) {
-			throw new TypeError(func + ' returned for property ' + P + ' of object ' + O + ' is not a function');
-		}
-		return func;
-	}
-	return void 0;
-};
-
-// http://www.ecma-international.org/ecma-262/6.0/#sec-toprimitive
-var es2015 = function ToPrimitive(input) {
-	if (isPrimitive$1(input)) {
-		return input;
-	}
-	var hint = 'default';
-	if (arguments.length > 1) {
-		if (arguments[1] === String) {
-			hint = 'string';
-		} else if (arguments[1] === Number) {
-			hint = 'number';
-		}
-	}
-
-	var exoticToPrim;
-	if (hasSymbols) {
-		if (Symbol.toPrimitive) {
-			exoticToPrim = GetMethod(input, Symbol.toPrimitive);
-		} else if (isSymbol(input)) {
-			exoticToPrim = Symbol.prototype.valueOf;
-		}
-	}
-	if (typeof exoticToPrim !== 'undefined') {
-		var result = exoticToPrim.call(input, hint);
-		if (isPrimitive$1(result)) {
-			return result;
-		}
-		throw new TypeError('unable to convert exotic object to primitive');
-	}
-	if (hint === 'default' && (isDate(input) || isSymbol(input))) {
-		hint = 'string';
-	}
-	return ordinaryToPrimitive(input, hint === 'default' ? 'number' : hint);
-};
-
-var toPrimitive = es2015;
-
-// https://ecma-international.org/ecma-262/6.0/#sec-toprimitive
-
-var ToPrimitive$1 = function ToPrimitive(input) {
-	if (arguments.length > 1) {
-		return toPrimitive(input, arguments[1]);
-	}
-	return toPrimitive(input);
-};
-
-var GetIntrinsic$3 = getIntrinsic;
-
-var $TypeError = GetIntrinsic$3('%TypeError%');
-var $Number$1 = GetIntrinsic$3('%Number%');
-var $RegExp = GetIntrinsic$3('%RegExp%');
-var $parseInteger = GetIntrinsic$3('%parseInt%');
-
-var callBound$2 = callBound$4;
-var regexTester = regexTester$1;
-var isPrimitive = isPrimitive$3;
-
-var $strSlice = callBound$2('String.prototype.slice');
-var isBinary = regexTester(/^0b[01]+$/i);
-var isOctal = regexTester(/^0o[0-7]+$/i);
-var isInvalidHexLiteral = regexTester(/^[-+]0x[0-9a-f]+$/i);
-var nonWS = ['\u0085', '\u200b', '\ufffe'].join('');
-var nonWSregex = new $RegExp('[' + nonWS + ']', 'g');
-var hasNonWS = regexTester(nonWSregex);
-
-// whitespace from: https://es5.github.io/#x15.5.4.20
-// implementation from https://github.com/es-shims/es5-shim/blob/v3.4.0/es5-shim.js#L1304-L1324
-var ws = [
-	'\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003',
-	'\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028',
-	'\u2029\uFEFF'
-].join('');
-var trimRegex = new RegExp('(^[' + ws + ']+)|([' + ws + ']+$)', 'g');
-var $replace = callBound$2('String.prototype.replace');
-var $trim = function (value) {
-	return $replace(value, trimRegex, '');
-};
-
-var ToPrimitive = ToPrimitive$1;
-
-// https://ecma-international.org/ecma-262/6.0/#sec-tonumber
-
-var ToNumber$1 = function ToNumber(argument) {
-	var value = isPrimitive(argument) ? argument : ToPrimitive(argument, $Number$1);
-	if (typeof value === 'symbol') {
-		throw new $TypeError('Cannot convert a Symbol value to a number');
-	}
-	if (typeof value === 'bigint') {
-		throw new $TypeError('Conversion from \'BigInt\' to \'number\' is not allowed.');
-	}
-	if (typeof value === 'string') {
-		if (isBinary(value)) {
-			return ToNumber($parseInteger($strSlice(value, 2), 2));
-		} else if (isOctal(value)) {
-			return ToNumber($parseInteger($strSlice(value, 2), 8));
-		} else if (hasNonWS(value) || isInvalidHexLiteral(value)) {
-			return NaN;
-		}
-		var trimmed = $trim(value);
-		if (trimmed !== value) {
-			return ToNumber(trimmed);
-		}
-
-	}
-	return $Number$1(value);
-};
-
-var _isNaN = Number.isNaN || function isNaN(a) {
-	return a !== a;
-};
-
-var $isNaN$3 = Number.isNaN || function (a) { return a !== a; };
-
-var _isFinite = Number.isFinite || function (x) { return typeof x === 'number' && !$isNaN$3(x) && x !== Infinity && x !== -Infinity; };
-
-var sign = function sign(number) {
-	return number >= 0 ? 1 : -1;
-};
-
-var abs = abs$1;
-var floor = floor$1;
-var ToNumber = ToNumber$1;
-
-var $isNaN$2 = _isNaN;
-var $isFinite$1 = _isFinite;
-var $sign = sign;
-
-// https://262.ecma-international.org/12.0/#sec-tointegerorinfinity
-
-var ToIntegerOrInfinity$2 = function ToIntegerOrInfinity(value) {
-	var number = ToNumber(value);
-	if ($isNaN$2(number) || number === 0) { return 0; }
-	if (!$isFinite$1(number)) { return number; }
-	return $sign(number) * floor(abs(number));
-};
-
-var GetIntrinsic$2 = getIntrinsic;
-
-var $Math = GetIntrinsic$2('%Math%');
-var $Number = GetIntrinsic$2('%Number%');
-
-var maxSafeInteger = $Number.MAX_SAFE_INTEGER || $Math.pow(2, 53) - 1;
-
-var MAX_SAFE_INTEGER = maxSafeInteger;
-
-var ToIntegerOrInfinity$1 = ToIntegerOrInfinity$2;
-
-var ToLength$1 = function ToLength(argument) {
-	var len = ToIntegerOrInfinity$1(argument);
-	if (len <= 0) { return 0; } // includes converting -0 to +0
-	if (len > MAX_SAFE_INTEGER) { return MAX_SAFE_INTEGER; }
-	return len;
-};
-
-var GetIntrinsic$1 = getIntrinsic;
-
-var $Object = GetIntrinsic$1('%Object%');
-
-var RequireObjectCoercible$1 = RequireObjectCoercible$2;
-
-// https://ecma-international.org/ecma-262/6.0/#sec-toobject
-
-var ToObject$1 = function ToObject(value) {
-	RequireObjectCoercible$1(value);
-	return $Object(value);
-};
-
-var $isNaN$1 = _isNaN;
-
-// https://ecma-international.org/ecma-262/6.0/#sec-samevaluezero
-
-var SameValueZero$1 = function SameValueZero(x, y) {
-	return (x === y) || ($isNaN$1(x) && $isNaN$1(y));
-};
-
-var strValue = String.prototype.valueOf;
-var tryStringObject = function tryStringObject(value) {
-	try {
-		strValue.call(value);
-		return true;
-	} catch (e) {
-		return false;
-	}
-};
-var toStr = Object.prototype.toString;
-var strClass = '[object String]';
-var hasToStringTag = shams();
-
-var isString$1 = function isString(value) {
-	if (typeof value === 'string') {
-		return true;
-	}
-	if (typeof value !== 'object') {
-		return false;
-	}
-	return hasToStringTag ? tryStringObject(value) : toStr.call(value) === strClass;
-};
-
-var ToIntegerOrInfinity = ToIntegerOrInfinity$2;
-var ToLength = ToLength$1;
-var ToObject = ToObject$1;
-var SameValueZero = SameValueZero$1;
-var $isNaN = _isNaN;
-var $isFinite = _isFinite;
-var GetIntrinsic = getIntrinsic;
-var callBound$1 = callBound$4;
-var isString = isString$1;
-
-var $charAt = callBound$1('String.prototype.charAt');
-var $indexOf = GetIntrinsic('%Array.prototype.indexOf%'); // TODO: use callBind.apply without breaking IE 8
-var $max = GetIntrinsic('%Math.max%');
-
-var implementation$2 = function includes(searchElement) {
-	var fromIndex = arguments.length > 1 ? ToIntegerOrInfinity(arguments[1]) : 0;
-	if ($indexOf && !$isNaN(searchElement) && $isFinite(fromIndex) && typeof searchElement !== 'undefined') {
-		return $indexOf.apply(this, arguments) > -1;
-	}
-
-	var O = ToObject(this);
-	var length = ToLength(O.length);
-	if (length === 0) {
-		return false;
-	}
-	var k = fromIndex >= 0 ? fromIndex : $max(0, length + fromIndex);
-	while (k < length) {
-		if (SameValueZero(searchElement, isString(O) ? $charAt(O, k) : O[k])) {
-			return true;
-		}
-		k += 1;
-	}
-	return false;
-};
-
-var implementation$1 = implementation$2;
-
-var polyfill$1 = function getPolyfill() {
-	if (
-		Array.prototype.includes
-		&& Array(1).includes(undefined) // https://bugzilla.mozilla.org/show_bug.cgi?id=1767541
-	) {
-		return Array.prototype.includes;
-	}
-	return implementation$1;
-};
-
-var define$1 = defineProperties_1;
-var getPolyfill$1 = polyfill$1;
-
-var shim$1 = function shimArrayPrototypeIncludes() {
-	var polyfill = getPolyfill$1();
-	define$1(
-		Array.prototype,
-		{ includes: polyfill },
-		{ includes: function () { return Array.prototype.includes !== polyfill; } }
-	);
-	return polyfill;
-};
-
-var define = defineProperties_1;
-var RequireObjectCoercible = RequireObjectCoercible$2;
-var callBind = callBind$2.exports;
-var callBound = callBound$4;
-
-var implementation = implementation$2;
-var getPolyfill = polyfill$1;
-var polyfill = callBind.apply(getPolyfill());
-var shim = shim$1;
-
-var $slice = callBound('Array.prototype.slice');
-
-/* eslint-disable no-unused-vars */
-var boundShim = function includes(array, searchElement) {
-/* eslint-enable no-unused-vars */
-	RequireObjectCoercible(array);
-	return polyfill(array, $slice(arguments, 1));
-};
-define(boundShim, {
-	getPolyfill: getPolyfill,
-	implementation: implementation,
-	shim: shim
-});
-
-var arrayIncludes = boundShim;
-
 function OptionalCosts({ costs }) {
     if (costs.length === 0) {
         return null;
@@ -47345,7 +46079,7 @@ function OptionalCosts({ costs }) {
         React__default["default"].createElement("h2", null,
             React__default["default"].createElement(FormattedMessage$1, { id: "extra_costs_bookable" })),
         React__default["default"].createElement("div", null, costs.map((cost) => {
-            if (!arrayIncludes(['none', 'total'], cost.method) &&
+            if (!['none', 'total'].includes(cost.method) &&
                 cost.max_available > 0) {
                 if (cost.max_available === 1) {
                     return (React__default["default"].createElement("div", { className: "form-row inline", key: cost.id },
