@@ -1,6 +1,6 @@
 {
   "name": "bukazu-portal-react",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "A package for loading the calendar and search module from bukazu loading into a react app.",
   "repository": "https://github.com/BUKAZU/React-portal",
   "scripts": {
@@ -67,7 +67,9 @@
     ".": {
       "import": "./build/portal.es.js",
       "require": "./build/portal.umd.js"
-    }
+    },
+    "./index.css": "./build/index.css",
+    "./build/*.css": "./build/index.css"
   },
   "eslintConfig": {
     "extends": [
