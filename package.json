@@ -68,8 +68,8 @@
       "import": "./build/portal.es.js",
       "require": "./build/portal.umd.js"
     },
-    "./index.css": ".build/index.css",
-    "./build/*.css": ".build/index.css"
+    "./index.css": "./build/index.css",
+    "./build/*.css": "./build/index.css"
   },
   "eslintConfig": {
     "extends": [
