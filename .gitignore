@@ -4,6 +4,7 @@ node_modules
 dev
 /dev
 
-yarn.lock
+dist
+/dist
+
 yarn-error.log
-package-lock.json

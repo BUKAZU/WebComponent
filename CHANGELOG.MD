@@ -1,6 +1,7 @@
 # CHANGELOG
 
 ## Next release
+- Refactored app to typescript
 
 
 ## 2.1.11
@@ -16,6 +17,10 @@
 ## 2.1.2
 - Update react-intl
 - Show actual prices for searched period instead of min_weekprice
+
+## 2.1.0
+- Add reviews page
+- Show review score on house in search results
 
 ## 2.0.12
 

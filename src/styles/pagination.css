@@ -5,29 +5,31 @@
   list-style: none;
   border-radius: 0.25rem;
   li {
-    position: relative;
-    display: block;
-    padding: 0.5rem 0.75rem;
-    margin-left: -1px;
-    line-height: 1.25;
-    color: #007bff;
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    &:hover {
-      z-index: 2;
-      color: #0056b3;
-      text-decoration: none;
-      background-color: #e9ecef;
-      border-color: #dee2e6;
+    a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      line-height: 1.25;
+      color: var(--bukazu-button);
+      background-color: #fff;
+      border: 1px solid #dee2e6;
+      &:hover {
+        z-index: 2;
+        color: #0056b3;
+        text-decoration: none;
+        background-color: #e9ecef;
+        border-color: #dee2e6;
+      }
+      &:focus {
+        z-index: 2;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      }
+      &:not(:disabled):not(.disabled) {
+        cursor: pointer;
+      }
+
     }
-    &:focus {
-      z-index: 2;
-      outline: 0;
-      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-    }
-    &:not(:disabled):not(.disabled) {
-      cursor: pointer;
-    }
+    /* margin-left: -1px; */
   }
 }
 
@@ -40,7 +42,7 @@
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
 }
-.bu-pagination li.active {
+.bu-pagination li.selected a {
   z-index: 1;
   color: #fff;
   background-color: var(--bukazu-button);
