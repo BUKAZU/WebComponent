@@ -33961,7 +33961,7 @@ function wq({ house: e, PortalSite: t }) {
           extra_fields: JSON.stringify(y.extra_fields)
         };
         p({ variables: w }).then(() => {
-          l.bookingForm && l.bookingForm.redirectUrl && l.bookingForm.redirectUrl !== "" ? window.location = l.bookingForm.redirectUrl : setTimeout(() => {
+          l.bookingForm && l.bookingForm[`redirectUrl_${i}`] && l.bookingForm[`redirectUrl_${i}`] !== "" ? window.location = l.bookingForm[`redirectUrl_${i}`] : l.bookingForm && l.bookingForm.redirectUrl && l.bookingForm.redirectUrl !== "" ? window.location = l.bookingForm.redirectUrl : setTimeout(() => {
             u({
               type: "return"
             });

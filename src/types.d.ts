@@ -23,6 +23,12 @@ type BookingFormType = {
   babies_til: number;
   showDiscountCode: boolean;
   redirectUrl: string | null;
+  redirectUrl_en: string | null;
+  redirectUrl_nl: string | null;
+  redirectUrl_de: string | null;
+  redirectUrl_fr: string | null;
+  redirectUrl_es: string | null;
+  redirectUrl_it: string | null;
 };
 
 type name_id_type = {

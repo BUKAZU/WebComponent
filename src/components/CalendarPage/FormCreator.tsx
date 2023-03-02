@@ -100,9 +100,11 @@ function FormCreator({ house, PortalSite }: Props): JSX.Element {
           .then(() => {
             if (
               options.bookingForm &&
-              options.bookingForm.redirectUrl &&
-              options.bookingForm.redirectUrl !== ''
-            ) {
+              options.bookingForm[`redirectUrl_${locale}`] &&
+              options.bookingForm[`redirectUrl_${locale}`] !== ''
+            ) {              
+              window.location = options.bookingForm[`redirectUrl_${locale}`];
+            } else if (options.bookingForm && options.bookingForm.redirectUrl && options.bookingForm.redirectUrl !== '') {
               window.location = options.bookingForm.redirectUrl;
             } else {
               setTimeout(() => {
