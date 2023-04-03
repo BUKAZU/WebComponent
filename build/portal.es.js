@@ -33866,7 +33866,7 @@ function bq(e, t, n) {
         const l = _v(e, u.id);
         (!l || l === "") && (i[u.id] = /* @__PURE__ */ d(J, { id: "required" }));
       }
-  return e.adults < 1 && (i.adults = /* @__PURE__ */ d(J, { id: "at_least_1_adult" })), Number(e.discount) > 0 && !e.discount_reason && (i.discount_reason = /* @__PURE__ */ d(J, { id: "you_need_to_give_reason" })), e.persons > a && (i.max_persons = /* @__PURE__ */ d(J, { id: "max_persons_reached" })), e.cancel_insurance !== 0 && GV((s = e.extra_fields) == null ? void 0 : s.date_of_birth) && (i["extra_fields.date_of_birth"] = /* @__PURE__ */ d(J, { id: "at_least_18y_old" }), i.insurances = /* @__PURE__ */ d(J, { id: "at_least_18y_old" })), e.cancel_insurance !== 0 && !["nl", "de", "be"].includes(e.country) && (i.insurances = /* @__PURE__ */ d(J, { id: "can_only_take_insurance_in_de_be_nl" }), i.country = /* @__PURE__ */ d(J, { id: "can_only_take_insurance_in_de_be_nl" })), i;
+  return e.adults < 1 && (i.adults = /* @__PURE__ */ d(J, { id: "at_least_1_adult" })), Number(e.discount) > 0 && !e.discount_reason && (i.discount_reason = /* @__PURE__ */ d(J, { id: "you_need_to_give_reason" })), e.persons > a && (i.max_persons = /* @__PURE__ */ d(J, { id: "max_persons_reached" })), e.cancel_insurance !== 0 && GV((s = e.extra_fields) == null ? void 0 : s.date_of_birth) && (i["extra_fields.date_of_birth"] = /* @__PURE__ */ d(J, { id: "at_least_18y_old" }), i.insurances = /* @__PURE__ */ d(J, { id: "at_least_18y_old" })), parseInt(e.cancel_insurance) !== 0 && !["nl", "de", "be"].includes(e.country) && (i.insurances = /* @__PURE__ */ d(J, { id: "can_only_take_insurance_in_de_be_nl" }), i.country = /* @__PURE__ */ d(J, { id: "can_only_take_insurance_in_de_be_nl" })), i;
 }
 const sd = {
   selectedDate: null,

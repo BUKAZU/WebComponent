@@ -63,7 +63,7 @@ export function validateForm(values, house, bookingFields): [] {
   }
 
   if (
-    values.cancel_insurance !== 0 &&
+    parseInt(values.cancel_insurance) !== 0 &&
     !['nl', 'de', 'be'].includes(values.country)
   ) {
     errors['insurances'] = (
