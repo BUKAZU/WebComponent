@@ -39,8 +39,8 @@ function DateField({ label, description, name, inline }:Props) {
               format="dd-MM-y"
               value={tempval}
               onChange={(e) => {
-                field.onChange(format(e, 'YYYY-MM-DD'));
-                form.setFieldValue(name, format(e, 'YYYY-MM-DD'));
+                field.onChange(format(e, 'yyyy-MM-dd'));
+                form.setFieldValue(name, format(e, 'yyyy-MM-dd'));
               }}
             />
             <span className="bu-input-description">{description}</span>
