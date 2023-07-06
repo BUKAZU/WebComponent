@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 3.0.25
+## 3.0.26
 - Added translations for tents
 
 ## 3.0.0
