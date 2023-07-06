@@ -1,6 +1,9 @@
 # CHANGELOG
 
-## Next release
+## 3.0.25
+- Added translations for tents
+
+## 3.0.0
 - Refactored app to typescript
 
 
