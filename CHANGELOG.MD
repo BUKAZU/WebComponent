@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 3.0.28
+- Pagination update css
+
 ## 3.0.27
 - Updated styling of form items
 
