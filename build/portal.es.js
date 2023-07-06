@@ -34041,7 +34041,7 @@ function wq({ house: e, PortalSite: t }) {
             ) }) })
           ] }),
           [1, 2].includes(Number(w.cancel_insurance)) ? /* @__PURE__ */ d("div", { className: "terms", children: /* @__PURE__ */ d(J, { id: "comply_insurance_card" }) }) : null,
-          /* @__PURE__ */ d("button", { className: "button", type: "submit", disabled: C, children: /* @__PURE__ */ d(J, { id: "book" }) })
+          /* @__PURE__ */ d("button", { className: "bu-calendar-button", type: "submit", disabled: C, children: /* @__PURE__ */ d(J, { id: "book" }) })
         ] })
       ] })
     }
@@ -34099,7 +34099,7 @@ function Eq({
     /* @__PURE__ */ d(
       "div",
       {
-        className: "col bu-prev",
+        className: "bu-calendar-col bu-prev",
         style: { textAlign: "center" },
         onClick: i,
         tabIndex: 0,
@@ -34113,7 +34113,7 @@ function Eq({
     /* @__PURE__ */ d(
       "div",
       {
-        className: "col bu-reset",
+        className: "bu-calendar-col bu-reset",
         onClick: () => {
           r({
             type: "reset"
@@ -34128,7 +34128,7 @@ function Eq({
     /* @__PURE__ */ d(
       "div",
       {
-        className: "col bu-next",
+        className: "bu-calendar-col bu-next",
         onClick: a,
         style: { textAlign: "center" },
         tabIndex: 0,
@@ -34202,7 +34202,7 @@ function Tq({ house: e }) {
     ] })
   ] });
 }
-const kq = ({ month: e }) => /* @__PURE__ */ d("div", { className: "header row flex-middle", children: /* @__PURE__ */ d("div", { className: "col col-center", style: { textAlign: "center" }, children: /* @__PURE__ */ d("span", { children: jt(e, KM) }) }) });
+const kq = ({ month: e }) => /* @__PURE__ */ d("div", { className: "header bu-calendar-row flex-middle", children: /* @__PURE__ */ d("div", { className: "bu-calendar-col col-center", style: { textAlign: "center" }, children: /* @__PURE__ */ d("span", { children: jt(e, KM) }) }) });
 function Dq({
   day: e,
   monthStart: t,
@@ -34213,7 +34213,7 @@ function Dq({
   discounts: o
 }) {
   const { selectedDate: s, departureDate: u, arrivalDate: l } = a;
-  let c = ["col", "cell"];
+  let c = ["bu-calendar-col", "cell"];
   if (!bD(e, t))
     return c.push("disabled"), c.join(" ");
   if (n && (n.arrival && fr(e, new Date()) && n.max_nights !== 0 ? r.max_nights === 0 ? c.push("departure-arrival") : (c.push("arrival"), c.push("arrival")) : n.max_nights === 0 && (r.max_nights !== 0 ? c.push("booked-departure") : c.push("booked"))), s) {
@@ -34268,7 +34268,7 @@ function xq({
       ), h = Qo(h, 1);
     }
     c.push(
-      /* @__PURE__ */ d("div", { className: "row", children: f }, h)
+      /* @__PURE__ */ d("div", { className: "bu-calendar-row", children: f }, h)
     ), f = [];
   }
   return /* @__PURE__ */ d("div", { className: "body", children: c });
@@ -34278,9 +34278,9 @@ function $q({ month: e }) {
   let n = [], r = cf(e);
   for (let a = 0; a < 7; a++)
     n.push(
-      /* @__PURE__ */ d("div", { className: "col col-center", children: jt(Qo(r, a), t) }, a)
+      /* @__PURE__ */ d("div", { className: "bu-calendar-col col-center", children: jt(Qo(r, a), t) }, a)
     );
-  return /* @__PURE__ */ d("div", { className: "days row", children: n });
+  return /* @__PURE__ */ d("div", { className: "days bu-calendar-row", children: n });
 }
 function Cq({
   count: e,
@@ -34301,7 +34301,7 @@ function Cq({
   if (f)
     return /* @__PURE__ */ d("div", { children: "Error" });
   const p = h.PortalSite.houses[0].availabilities, v = h.Discounts;
-  return /* @__PURE__ */ I("div", { className: `calendar calendar-${r}`, children: [
+  return /* @__PURE__ */ I("div", { className: `bu-calendar calendar-${r}`, children: [
     /* @__PURE__ */ d(kq, { month: o }),
     /* @__PURE__ */ d($q, { month: o }),
     /* @__PURE__ */ d(
