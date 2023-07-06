@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 3.0.27
+- Updated styling of form items
+
 ## 3.0.26
 - Added translations for tents
 
