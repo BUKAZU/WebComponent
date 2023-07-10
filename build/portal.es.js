@@ -34300,7 +34300,7 @@ function Cq({
   if (f)
     return /* @__PURE__ */ d("div", { children: "Error" });
   const p = h.PortalSite.houses[0].availabilities, v = h.Discounts;
-  return /* @__PURE__ */ F("div", { className: `bu-calendar calendar-${r}`, children: [
+  return /* @__PURE__ */ F("div", { className: `bu-calendar calendar calendar-${r}`, children: [
     /* @__PURE__ */ d(kq, { month: o }),
     /* @__PURE__ */ d($q, { month: o }),
     /* @__PURE__ */ d(
