@@ -85,7 +85,7 @@
     .bu-smaller .calendar .bu-calendar-col {
       padding: 16px 4px;
     }
-  .bu-calendar {
+  .bu-calendar, .calendar {
     min-width: 48%;
     padding: 16px 1%;
     box-sizing: border-box;
