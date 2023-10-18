@@ -33852,7 +33852,7 @@ function yU(e, t, n) {
         const l = _v(e, u.id);
         (!l || l === "") && (i[u.id] = /* @__PURE__ */ f(J, { id: "required" }));
       }
-  return e.adults < 1 && (i.adults = /* @__PURE__ */ f(J, { id: "at_least_1_adult" })), Number(e.discount) > 0 && !e.discount_reason && (i.discount_reason = /* @__PURE__ */ f(J, { id: "you_need_to_give_reason" })), e.persons > a && (i.max_persons = /* @__PURE__ */ f(J, { id: "max_persons_reached" })), e.cancel_insurance !== 0 && HV((s = e.extra_fields) == null ? void 0 : s.date_of_birth) && (i["extra_fields.date_of_birth"] = /* @__PURE__ */ f(J, { id: "at_least_18y_old" }), i.insurances = /* @__PURE__ */ f(J, { id: "at_least_18y_old" })), parseInt(e.cancel_insurance) !== 0 && !["nl", "de", "be"].includes(e.country) && (i.insurances = /* @__PURE__ */ f(J, { id: "can_only_take_insurance_in_de_be_nl" }), i.country = /* @__PURE__ */ f(J, { id: "can_only_take_insurance_in_de_be_nl" })), i;
+  return e.adults < 1 && a > 0 && (i.adults = /* @__PURE__ */ f(J, { id: "at_least_1_adult" })), Number(e.discount) > 0 && !e.discount_reason && (i.discount_reason = /* @__PURE__ */ f(J, { id: "you_need_to_give_reason" })), e.persons > a && (i.max_persons = /* @__PURE__ */ f(J, { id: "max_persons_reached" })), e.cancel_insurance !== 0 && HV((s = e.extra_fields) == null ? void 0 : s.date_of_birth) && (i["extra_fields.date_of_birth"] = /* @__PURE__ */ f(J, { id: "at_least_18y_old" }), i.insurances = /* @__PURE__ */ f(J, { id: "at_least_18y_old" })), parseInt(e.cancel_insurance) !== 0 && !["nl", "de", "be"].includes(e.country) && (i.insurances = /* @__PURE__ */ f(J, { id: "can_only_take_insurance_in_de_be_nl" }), i.country = /* @__PURE__ */ f(J, { id: "can_only_take_insurance_in_de_be_nl" })), i;
 }
 const sd = {
   selectedDate: null,
@@ -33868,9 +33868,9 @@ function gU({
   return /* @__PURE__ */ f(ar.Provider, { value: t, children: /* @__PURE__ */ f(Ma.Provider, { value: n, children: e }) });
 }
 function L_(e, t) {
-  switch (console.log({ action: t }), t.type) {
+  switch (t.type) {
     case "clicked": {
-      const { day: n, house: r } = t, { selectedDate: a, arrivalDate: i } = e, o = $t(n.date);
+      const { day: n, house: r } = t, { selectedDate: a, arrivalDate: i } = e, o = $t(n.date), s = r.persons > 2 ? r.persons : 2;
       return n.departure && a && i && fr(o, a) && _n(o, a) <= r.max_nights && _n(o, a) >= i.min_nights && _n(o, a) <= i.max_nights ? {
         ...e,
         departureDate: n
@@ -33879,7 +33879,7 @@ function L_(e, t) {
         selectedDate: o,
         arrivalDate: n,
         departureDate: null,
-        persons: 2
+        persons: s
       } : e;
     }
     case "reset":

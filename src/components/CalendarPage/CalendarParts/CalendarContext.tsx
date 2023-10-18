@@ -34,12 +34,12 @@ function calendarReducer(
   bookingState: BookingType,
   action: { type: string; house: HouseType; day: BuDate; persons: number }
 ): BookingType {
-  console.log({ action });
   switch (action.type) {
     case 'clicked': {
       const { day, house } = action;
       const { selectedDate, arrivalDate } = bookingState;
       const date = Parse_EN_US(day.date);
+      const defaultMaxPersons = house.persons > 2 ? house.persons : 2;
 
       if (
         day.departure &&
@@ -61,7 +61,7 @@ function calendarReducer(
           selectedDate: date,
           arrivalDate: day,
           departureDate: null,
-          persons: 2
+          persons: defaultMaxPersons
         };
       }
       return bookingState;

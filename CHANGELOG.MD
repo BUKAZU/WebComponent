@@ -1,7 +1,8 @@
 # CHANGELOG
 
-##
-- Allow persons to be zero if hous max is zero
+## 3.1.6
+- Set a new default persons if house is less than 2
+- Allow persons to be zero if house max is zero
 
 ## 3.1.0
 - Added review page
