@@ -1,5 +1,8 @@
 # CHANGELOG
 
+##
+- Allow persons to be zero if hous max is zero
+
 ## 3.1.0
 - Added review page
 - Updated general styling of cards

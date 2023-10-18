@@ -7,9 +7,7 @@ describe('export numbered array', () => {
 });
 
 describe('export price array', () => {
-  test('Small array', () => {        
+  test('Small array', () => {
     expect(createPriceArray(400)).toStrictEqual([0, 100, 200, 300, 400]);
   });
-
-  
 });

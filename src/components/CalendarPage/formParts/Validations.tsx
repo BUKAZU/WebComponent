@@ -42,7 +42,7 @@ export function validateForm(values, house, bookingFields): [] {
     }
   }
 
-  if (values.adults < 1) {
+  if (values.adults < 1 && persons > 0) {
     errors.adults = <FormattedMessage id="at_least_1_adult" />;
   }
   if (Number(values.discount) > 0 && !values.discount_reason) {
