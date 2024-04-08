@@ -48,7 +48,7 @@ export default function InsurancesAndRequired({
                 return (
                   <CostRow
                     key={cost.id}
-                    name={cost.name}
+                    {...cost}
                     amount={not_on_site?.find((x) => x.id == cost.id).amount}
                   />
                 );

@@ -27093,7 +27093,7 @@ function UV({
         return a.method === "none" ? /* @__PURE__ */ f(St, { ...a }, a.id) : a.amount === 0 ? null : /* @__PURE__ */ f(
           St,
           {
-            name: a.name,
+            ...a,
             amount: r == null ? void 0 : r.find((i) => i.id == a.id).amount
           },
           a.id
