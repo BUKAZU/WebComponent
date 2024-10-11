@@ -1,6 +1,6 @@
 {
   "name": "bukazu-portal-react",
-  "version": "3.2.2",
+  "version": "3.3.0",
   "description": "A package for loading the calendar and search module from bukazu loading into a react app.",
   "repository": "https://github.com/BUKAZU/React-portal",
   "scripts": {
@@ -52,7 +52,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "dependencies": {
-    "@apollo/client": "^3.7.5",
+    "@apollo/client": "^3.11.8",
     "date-fns": "^2.29.3",
     "formik": "^2.2.9",
     "graphql": "^16.9.0",

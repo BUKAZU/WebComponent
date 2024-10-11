@@ -52,6 +52,8 @@ function FormCreator({ house, PortalSite }: Props): JSX.Element {
 
   const optBookingFieldsInitialized = initializeBookingFields(bookingFields);
 
+  console.log({ PortalSite });
+
   return (
     <Formik
       validate={(values) => validateForm(values, house, bookingFields)}
@@ -175,7 +177,7 @@ function FormCreator({ house, PortalSite }: Props): JSX.Element {
             <Summary house={house} values={values} />
             {status && status.msg && <div>{status.msg}</div>}
             <div className="terms">
-              <FormattedMessage id="agree_with" />{' '}
+              {PortalSite.form_submit_text}{' '}
               <FormattedMessage id="terms">
                 {(fm) => (
                   <Modal buttonText={fm}>
@@ -212,7 +214,7 @@ function FormCreator({ house, PortalSite }: Props): JSX.Element {
               type="submit"
               disabled={isSubmitting}
             >
-              <FormattedMessage id="book" />
+              {PortalSite.form_submit_button_text}
             </button>
           </div>
         </Form>

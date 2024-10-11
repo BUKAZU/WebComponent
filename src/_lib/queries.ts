@@ -115,6 +115,8 @@ export const BOOKING_PRICE_QUERY = gql`
       company_name_label
       extra_fields_drivers_license_label
       extra_fields_destination_label
+      form_submit_text
+      form_submit_button_text
       booking_fields {
         id
         label
