@@ -9,6 +9,5 @@ const initialBooking: BookingType = {
 };
 
 export default {
-  items: ['I made this', 'Another thing'],
   bookingState: initialBooking
 };

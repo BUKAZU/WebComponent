@@ -1,12 +1,14 @@
 export default {
-    addItem(state, payload) {
-        state.items.push(payload);
-        
-        return state;
-    },
-    clearItem(state, payload) {
-        state.items.splice(payload.index, 1);
-        
+    selectDate(state, payload) {
+        state.bookingState.selectedDate = payload.date;
+        if (!state.bookingState.arrivalDate) {
+            state.bookingState.arrivalDate = payload;
+        } else if (!state.bookingState.departureDate) {
+            state.bookingState.departureDate = payload;
+        } else {
+            state.bookingState.arrivalDate = payload;
+            state.bookingState.departureDate = null;
+        }
         return state;
     }
 };

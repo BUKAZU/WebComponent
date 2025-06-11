@@ -55,16 +55,25 @@ function SingleMonth({
   const results = data.PortalSite.houses[0].availabilities;
   const discounts = data.Discounts;
 
+  const cells = new RenderCells({
+    availabilities: results,
+    discounts,
+    month,
+    house
+  }).render();
+
   return (
-    <div className={`bu-calendar calendar calendar-${numberOfMonthsInARow}`} key={month}>
+    <div
+      className={`bu-calendar calendar calendar-${numberOfMonthsInARow}`}
+      key={month}
+    >
       <MonthHeader month={month} />
       <WeekDays month={month} />
-      <RenderCells
-        availabilities={results}
-        discounts={discounts}
-        month={month}
-        house={house}
-      />
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)' }}>
+        {cells.map((cell, index) => (
+          <div ref={(ref) => ref.appendChild(cell)} key={index}></div>
+        ))}
+      </div>
     </div>
   );
 }

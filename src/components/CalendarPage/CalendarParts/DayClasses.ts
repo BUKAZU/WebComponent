@@ -35,8 +35,10 @@ function DayClasses({
   house,
   discounts
 }: Props): string {
+  // console.debug("DayClasses", dates);
   const { selectedDate, departureDate, arrivalDate } = dates;
   let classes = ['bu-calendar-col', 'cell'];
+  const selected = Parse_EN_US(selectedDate);
 
   if (!isSameMonth(day, monthStart)) {
     classes.push('disabled');
@@ -61,19 +63,19 @@ function DayClasses({
     }
   }
 
-  if (selectedDate) {
-    if (isSameDay(day, selectedDate)) {
+  if (selected && selectedDate) {
+    if (isSameDay(day, selected)) {
       classes.push('selected');
     }
     const minimum =
-      differenceInCalendarDays(day, selectedDate) >= arrivalDate.min_nights;
+      differenceInCalendarDays(day, selected) >= arrivalDate.min_nights;
     const maximum =
-      differenceInCalendarDays(day, selectedDate) <= house.max_nights &&
-      differenceInCalendarDays(day, selectedDate) <= arrivalDate.max_nights;
+      differenceInCalendarDays(day, selected) <= house.max_nights &&
+      differenceInCalendarDays(day, selected) <= arrivalDate.max_nights;
 
     if (
       buDate.departure &&
-      isAfter(day, selectedDate) &&
+      isAfter(day, selected) &&
       minimum &&
       maximum &&
       prevBooked.max_nights !== 0
@@ -84,7 +86,7 @@ function DayClasses({
 
   if (departureDate) {
     if (
-      isAfter(day, selectedDate) &&
+      isAfter(day, selected) &&
       isBefore(day, Parse_EN_US(departureDate.date))
     ) {
       classes.push('selected');
