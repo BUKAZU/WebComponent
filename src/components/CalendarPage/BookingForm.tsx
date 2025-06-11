@@ -7,8 +7,13 @@ import { AppContext } from '../AppContext';
 import { CalendarContext } from './CalendarParts/CalendarContext';
 import { TrackEvent } from '../../_lib/Tracking';
 
-function BookingForm(): JSX.Element {
-  const { portalCode, objectCode, locale } = useContext(AppContext);
+interface Props {
+  portalCode: string;
+  objectCode: string;
+  locale: string;
+}
+
+function BookingForm({ portalCode, objectCode, locale }: Props): JSX.Element {
   const { arrivalDate, departureDate } = useContext(CalendarContext);
 
   const { data, loading, error } = useQuery(BOOKING_PRICE_QUERY, {
