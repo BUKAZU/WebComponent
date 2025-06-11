@@ -69,10 +69,10 @@ function SingleMonth({
     >
       <MonthHeader month={month} />
       <WeekDays month={month} />
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)' }}>
-        {cells.map((cell, index) => (
-          <div ref={(ref) => ref.appendChild(cell)} key={index}></div>
-        ))}
+      <div>
+        <div ref={(ref) => ref.appendChild(cells)}></div>
+        {/* {cells.map((cell, index) => (
+        ))} */}
       </div>
     </div>
   );

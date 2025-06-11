@@ -66,6 +66,7 @@ function DayClasses({
   if (selected && selectedDate) {
     if (isSameDay(day, selected)) {
       classes.push('selected');
+      console.log(classes, day);
     }
     const minimum =
       differenceInCalendarDays(day, selected) >= arrivalDate.min_nights;
@@ -108,7 +109,6 @@ function DayClasses({
   if (last_minute || discount || buDate.special_offer > 0) {
     classes.push('discount');
   }
-
   return classes.join(' ');
 }
 

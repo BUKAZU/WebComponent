@@ -12,7 +12,7 @@ import { FormatIntl } from '../../../_lib/date_helper';
 import DayClasses from './DayClasses';
 import { HouseType } from '../../../types';
 import store from '../../../store';
-
+import Component from '../../../store/component';
 interface CellProps {
   availabilities: any[];
   month: Date;
@@ -21,15 +21,21 @@ interface CellProps {
   parentElement?: HTMLElement;
 }
 
-export class RenderCells {
+export class RenderCells extends Component {
   private props: CellProps;
-  private element: HTMLElement;
   private days: HTMLElement[] = [];
 
   constructor(props: CellProps) {
+    super(
+      {
+        store,
+        element: document.createElement('div')
+      }
+    )
+this.element.style.display = 'grid';
+this.element.style.gridTemplateColumns = 'repeat(7, 1fr)';
+    
     this.props = props;
-    this.element = props.parentElement || document.createElement('div');
-    this.element.className = 'body';
   }
 
   private createDayElement(day: Date, dayData: any, prevBooked: any, className: string): HTMLElement {
@@ -59,7 +65,7 @@ export class RenderCells {
     const monthEnd = endOfMonth(monthStart);
     const startDate = startOfWeek(monthStart);
     const endDate = endOfWeek(monthEnd);
-    
+
     this.days = [];
     let day = new Date(startDate);
 
@@ -81,18 +87,19 @@ export class RenderCells {
         });
 
         const dayElement = this.createDayElement(day, dayData, prevBooked, className);
-        this.days.push(dayElement);
+        this.element.appendChild(dayElement);
         
         day = addDays(day, 1);
       }
     }
 
     
-    return this.days;
+    return this.element;
   }
 
   // Method to update the component with new props
   update(props: Partial<CellProps>): HTMLElement[] {
+    this.element.innerHTML = '';
     this.props = { ...this.props, ...props };
     return this.render();
   }
