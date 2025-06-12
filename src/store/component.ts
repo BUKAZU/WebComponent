@@ -21,4 +21,9 @@ export default class Component {
             this.element = props.element;
         }
     }
-}
+
+    update() {
+        this.element.innerHTML = '';
+        this.element.appendChild(this.render());
+    }
+    }
