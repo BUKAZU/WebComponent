@@ -91,7 +91,7 @@ function App({
           objectCode={objectCode}
           locale={locale}
         />
-        <SafeBooking />
+        <SafeBooking locale={locale} />
       </ErrorBoundary>
     );
   } else if (objectCode && objectCode !== null && pageType === 'reviews') {

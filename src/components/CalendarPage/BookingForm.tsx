@@ -3,7 +3,6 @@ import Loading from '../icons/loading.svg';
 import FormCreator from './FormCreator';
 import { BOOKING_PRICE_QUERY } from '../../_lib/queries';
 import { useQuery } from '@apollo/client';
-import { AppContext } from '../AppContext';
 import { CalendarContext } from './CalendarParts/CalendarContext';
 import { TrackEvent } from '../../_lib/Tracking';
 
