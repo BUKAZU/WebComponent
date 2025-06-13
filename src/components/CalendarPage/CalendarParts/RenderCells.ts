@@ -32,8 +32,8 @@ export class RenderCells extends Component {
         element: document.createElement('div')
       }
     )
-this.element.style.display = 'grid';
-this.element.style.gridTemplateColumns = 'repeat(7, 1fr)';
+    this.element.style.display = 'grid';
+    this.element.style.gridTemplateColumns = 'repeat(7, 1fr)';
     
     this.props = props;
   }
@@ -52,13 +52,13 @@ this.element.style.gridTemplateColumns = 'repeat(7, 1fr)';
       if (isBefore(parse(dayData.date, 'yyyy-MM-dd', new Date()), new Date())) {
         return;
       }
-      store.dispatch('selectDate', { ...dayData });
+      store.dispatch('selectDate', { ...dayData, house: this.props.house });
     });
 
     return dayElement;
   }
 
-  render(): HTMLElement[] {
+  render(): HTMLElement {
     const { month, availabilities, discounts, house } = this.props;
     const bookingState = store.state.bookingState;
     const monthStart = startOfMonth(month);

@@ -44,7 +44,7 @@ function DayClasses({
     classes.push('disabled');
     return classes.join(' ');
   }
-  if (buDate) {    
+  if (buDate) {
     if (buDate.arrival && isAfter(day, new Date()) && buDate.max_nights !== 0) {
       if (prevBooked.max_nights === 0) {
         classes.push('departure-arrival');
@@ -66,7 +66,6 @@ function DayClasses({
   if (selected && selectedDate) {
     if (isSameDay(day, selected)) {
       classes.push('selected');
-      console.log(classes, day);
     }
     const minimum =
       differenceInCalendarDays(day, selected) >= arrivalDate.min_nights;
