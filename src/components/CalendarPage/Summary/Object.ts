@@ -4,7 +4,6 @@ import { PossibleValues } from '../formParts/form_types';
 import { useLocale } from '../../../intl';
 
 export default class ObjectDetails {
-    private element: HTMLElement;
     private house: HouseType;
     private values: PossibleValues;
     private t: ReturnType<typeof useLocale>;
@@ -13,10 +12,9 @@ export default class ObjectDetails {
         this.house = house;
         this.values = values;
         this.t = useLocale();
-        this.element = this.createObjectDetails();
     }
 
-    private createObjectDetails(): HTMLElement {
+    public render(): HTMLElement {
         const { arrivalDate, departureDate } = this.values;
 
         const fragment = document.createDocumentFragment();
@@ -99,21 +97,4 @@ export default class ObjectDetails {
 
         return container;
     }
-
-    // Method to get the root element
-    public getElement(): HTMLElement {
-        return this.element;
-    }
-
-    // Update method if values change
-    public update(values: PossibleValues): void {
-        this.values = values;
-        const newElement = this.createObjectDetails();
-        this.element.parentNode?.replaceChild(newElement, this.element);
-        this.element = newElement;
-    }
 }
-
-// Usage example:
-// const bookingDetails = new BookingDetails(house, values);
-// document.body.appendChild(bookingDetails.getElement());

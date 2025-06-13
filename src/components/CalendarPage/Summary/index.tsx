@@ -15,7 +15,7 @@ function Summary({ values, house }: Props): React.ReactNode {
   const objectDetails = new ObjectDetails(house, values);
   return (
     <div>
-      <div ref={(ref) => (ref = objectDetails.getElement())}></div>
+      <div ref={(ref) => ref && ref.appendChild(objectDetails.render())}></div>
       <BookingOrOption house={house} />
       <CostSummary values={values} house={house} />
     </div>
