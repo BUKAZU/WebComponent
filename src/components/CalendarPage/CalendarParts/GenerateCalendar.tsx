@@ -67,6 +67,9 @@ function GenerateCalendar({
             numberOfMonths={numberOfMonths}
             numberOfMonthsInARow={numberOfMonthsInARow}
             house={result}
+            PortalSite={PortalSite}
+            locale={locale}
+            objectCode={objectCode}
           />
         </div>
       ))}

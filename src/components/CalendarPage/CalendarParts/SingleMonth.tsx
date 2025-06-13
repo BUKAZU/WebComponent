@@ -7,9 +7,8 @@ import {
   startOfWeek
 } from 'date-fns';
 import React, { useContext } from 'react';
-import { HouseType } from '../../../types';
+import { HouseType, PortalSiteType } from '../../../types';
 import { CALENDAR_QUERY } from '../../../_lib/queries';
-import { AppContext } from '../../AppContext';
 import Loading from '../../icons/loading.svg';
 import MonthHeader from './MonthHeader';
 import RenderCells from './RenderCells';
@@ -20,21 +19,25 @@ interface Props {
   currentMonth: Date;
   house: HouseType;
   numberOfMonthsInARow: Number;
+  PortalSite: PortalSiteType;
+  locale: string;
+  objectCode: string;
 }
 
 function SingleMonth({
   count,
   currentMonth,
   house,
-  numberOfMonthsInARow
+  numberOfMonthsInARow,
+  PortalSite,
+  locale,
+  objectCode
 }: Props): JSX.Element {
-  const { portalCode, objectCode } = useContext(AppContext);
-
   let month = addMonths(currentMonth, count);
   let monthStart = startOfMonth(month);
   let monthEnd = endOfMonth(month);
   const variables = {
-    id: portalCode,
+    id: PortalSite.portal_code,
     house_id: objectCode,
     starts_at: startOfWeek(monthStart),
     ends_at: endOfWeek(monthEnd)

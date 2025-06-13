@@ -1,7 +1,10 @@
 
 
 export default {
-    selectDate(context, payload) {
+    selectDate(context: any, payload: any) {
         context.commit('selectDate', payload);
+    },
+    resetDates(context: any) {
+        context.commit('resetDates');
     }
 };

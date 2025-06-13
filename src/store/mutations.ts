@@ -30,7 +30,17 @@ export default {
             }
         }
 
-        console.log(state);
+        return state;
+    },
+    resetDates(state: any) {
+        state.bookingState = {
+            ...state.bookingState,
+            arrivalDate: null,
+            departureDate: null,
+            persons: 2,
+            bookingStarted: false,
+            selectedDate: null
+        }
         return state;
     }
 };

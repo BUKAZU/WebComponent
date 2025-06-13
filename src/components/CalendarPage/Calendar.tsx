@@ -4,18 +4,24 @@ import AssistanceMessage from './formParts/AssistanceMessage';
 import Legend from './CalendarParts/Legend';
 import Months from './CalendarParts/Months';
 import StartBooking from './CalendarParts/StartBooking';
-import { HouseType } from '../../types';
+import { HouseType, PortalSiteType } from '../../types';
 
 interface Props {
   numberOfMonths: number;
   numberOfMonthsInARow: number;
   house: HouseType;
+  PortalSite: PortalSiteType;
+  locale: string;
+  objectCode: string;
 }
 
 function Calendar({
   numberOfMonths,
   house,
-  numberOfMonthsInARow
+  numberOfMonthsInARow,
+  PortalSite,
+  locale,
+  objectCode
 }: Props): JSX.Element {
   const [currentMonth, setCurrentMonth] = useState(new Date());
 
@@ -33,6 +39,9 @@ function Calendar({
           numberOfMonths={numberOfMonths}
           numberOfMonthsInARow={numberOfMonthsInARow}
           currentMonth={currentMonth}
+          PortalSite={PortalSite}
+          locale={locale}
+          objectCode={objectCode}
         />
         <Legend house={house} />
         <AssistanceMessage house={house} />
