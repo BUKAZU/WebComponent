@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { FormattedMessage } from 'react-intl';
 import { HouseType } from '../../../types';
 import {
   FormatIntl,
@@ -7,6 +6,7 @@ import {
   Parse_EN_US
 } from '../../../_lib/date_helper';
 import { CalendarContext } from '../CalendarParts/CalendarContext';
+import { formatMessage } from 'react-intl';
 
 interface Props {
   house: HouseType;
@@ -18,7 +18,7 @@ function AssistanceMessage({ house }: Props): JSX.Element {
   if (departureDate?.date) {
     return (
       <div className="assistance">
-        <FormattedMessage id={`${house.house_type}.you_picked_arrival_date`} />:{' '}
+        {formatMessage({ id: `${house.house_type}.you_picked_arrival_date` })}
         {FormatIntl(Parse_EN_US(arrivalDate.date), LONG_DATE_FORMAT)}
         <br />
         <FormattedMessage
