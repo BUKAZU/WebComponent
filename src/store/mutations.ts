@@ -1,9 +1,8 @@
 import { Parse_EN_US } from '../_lib/date_helper';
 import { differenceInCalendarDays, isAfter } from 'date-fns';
-import { BookingType } from '../components/CalendarPage/calender_types';
 
 export default {
-    selectDate(state: BookingType, payload: any) {
+    selectDate(state: any, payload: any) {
         const { selectedDate, arrivalDate } = state.bookingState;
         const date = Parse_EN_US(payload.date);
         const defaultMaxPersons = payload.house.persons > 2 ? 2 : payload.house.persons;
@@ -30,6 +29,8 @@ export default {
                 selectedDate: date
             }
         }
+
+        console.log(state);
         return state;
     }
 };

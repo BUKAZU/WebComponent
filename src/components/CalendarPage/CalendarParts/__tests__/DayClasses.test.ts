@@ -47,7 +47,7 @@ describe('DayClasses', () => {
         const props = {
             ...defaultProps,
             dates: {
-                selectedDate: todayString,
+                selectedDate: today,
                 departureDate: null,
                 arrivalDate: { date: '2023-06-15', arrival: true, departure: true, min_nights: 3, max_nights: 7, special_offer: 0 }
             }
@@ -58,7 +58,6 @@ describe('DayClasses', () => {
 
     it('should add departure-arrival class for available arrival days', () => {
         const props = {
-            day: tomorrow,
             ...defaultProps,
             buDate: {
                 ...defaultProps.buDate,
@@ -115,9 +114,9 @@ describe('DayClasses', () => {
         const props = {
             ...defaultProps,
             dates: {
-                selectedDate: subDays(today, 2),
-                departureDate: { date: '2023-06-17' },
-                arrivalDate: { date: '2023-06-13' }
+                selectedDate: today,
+                departureDate: { date: '2023-06-17', arrival: true, departure: true, min_nights: 3, max_nights: 7, special_offer: 0 },
+                arrivalDate: { date: '2023-06-13', arrival: true, departure: true, min_nights: 3, max_nights: 7, special_offer: 0 }
             }
         };
         const result = DayClasses(props);
@@ -133,8 +132,8 @@ describe('DayClasses', () => {
             },
             dates: {
                 selectedDate: subDays(today, 3),
-                departureDate: null,
-                arrivalDate: null
+                departureDate: { date: '2023-06-17', arrival: true, departure: true, min_nights: 3, max_nights: 7, special_offer: 0 },
+                arrivalDate: { date: '2023-06-13', arrival: true, departure: true, min_nights: 3, max_nights: 7, special_offer: 0 }
             }
         };
         const result = DayClasses(props);

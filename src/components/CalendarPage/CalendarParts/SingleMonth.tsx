@@ -70,7 +70,7 @@ function SingleMonth({
       <MonthHeader month={month} />
       <WeekDays month={month} />
       <div>
-        <div ref={(ref) => ref.appendChild(cells)}></div>
+        <div ref={(ref) => ref && ref.appendChild(cells)}></div>
         {/* {cells.map((cell, index) => (
         ))} */}
       </div>

@@ -38,14 +38,13 @@ function DayClasses({
   // console.debug("DayClasses", dates);
   const { selectedDate, departureDate, arrivalDate } = dates;
   let classes = ['bu-calendar-col', 'cell'];
-  const selected = Parse_EN_US(selectedDate);
 
   if (!isSameMonth(day, monthStart)) {
     classes.push('disabled');
     return classes.join(' ');
   }
   if (buDate) {
-    if (buDate.arrival && isAfter(day, new Date()) && buDate.max_nights !== 0) {
+    if (buDate.arrival && isAfter(subDays(day, 1), new Date()) && buDate.max_nights !== 0) {
       if (prevBooked.max_nights === 0) {
         classes.push('departure-arrival');
       } else {
@@ -63,19 +62,19 @@ function DayClasses({
     }
   }
 
-  if (selected && selectedDate) {
-    if (isSameDay(day, selected)) {
+  if (selectedDate) {
+    if (isSameDay(day, selectedDate)) {
       classes.push('selected');
     }
     const minimum =
-      differenceInCalendarDays(day, selected) >= arrivalDate.min_nights;
+      differenceInCalendarDays(day, selectedDate) >= arrivalDate.min_nights;
     const maximum =
-      differenceInCalendarDays(day, selected) <= house.max_nights &&
-      differenceInCalendarDays(day, selected) <= arrivalDate.max_nights;
+      differenceInCalendarDays(day, selectedDate) <= house.max_nights &&
+      differenceInCalendarDays(day, selectedDate) <= arrivalDate.max_nights;
 
     if (
       buDate.departure &&
-      isAfter(day, selected) &&
+      isAfter(day, selectedDate) &&
       minimum &&
       maximum &&
       prevBooked.max_nights !== 0
@@ -86,7 +85,7 @@ function DayClasses({
 
   if (departureDate) {
     if (
-      isAfter(day, selected) &&
+      isAfter(day, selectedDate) &&
       isBefore(day, Parse_EN_US(departureDate.date))
     ) {
       classes.push('selected');
