@@ -15,6 +15,9 @@ interface Props {
 }
 
 export const Object = ({ house, values }: Props): React.ReactNode => {
+  const locale = window.__localeId__;
+  console.log(locale);
+
   const { arrivalDate, departureDate } = values;
   return (
     <React.Fragment>
@@ -51,9 +54,4 @@ export const Object = ({ house, values }: Props): React.ReactNode => {
       </div>
     </React.Fragment>
   );
-};
-
-Object.propTypes = {
-  house: PropTypes.object.isRequired,
-  values: PropTypes.object.isRequired
 };
