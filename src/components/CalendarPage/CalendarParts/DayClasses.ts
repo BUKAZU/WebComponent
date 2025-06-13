@@ -44,14 +44,13 @@ function DayClasses({
     return classes.join(' ');
   }
   if (buDate) {
-    if (buDate.arrival && isAfter(subDays(day, 1), new Date()) && buDate.max_nights !== 0) {
-      if (prevBooked.max_nights === 0) {
-        classes.push('departure-arrival');
+    if (buDate.arrival && isAfter(day, subDays(new Date(), 1)) && buDate.max_nights > 0) {
+      if (prevBooked.max_nights > 0) {
+        classes.push('arrival');
       } else {
-        classes.push('arrival');
-        classes.push('arrival');
+        classes.push('departure-arrival');
       }
-    } else if (buDate.max_nights === 0) {
+    } else if (buDate.max_nights == 0) {
       if (prevBooked.max_nights !== 0) {
         classes.push('booked-departure');
       } else {
