@@ -25,6 +25,8 @@ function Calendar({
 }: Props): JSX.Element {
   const [currentMonth, setCurrentMonth] = useState(new Date());
 
+  const assistanceMessage = new AssistanceMessage({ house });
+
   return (
     <div className="calendar-container ">
       <StartBooking house={house} />
@@ -44,7 +46,9 @@ function Calendar({
           objectCode={objectCode}
         />
         <Legend house={house} />
-        <AssistanceMessage house={house} />
+        <div
+          ref={(ref) => ref && ref.appendChild(assistanceMessage.render())}
+        ></div>
       </div>
     </div>
   );

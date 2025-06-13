@@ -8,15 +8,15 @@ export default class Component {
         // We're setting a render function as the one set by whatever inherits this base
         // class or setting it to an empty by default. This is so nothing breaks if someone
         // forgets to set it.
-        this.render = this.render || function() {};
-        
+        this.render = this.render || function () { };
+
         // If there's a store passed in, subscribe to the state change
-        if(props.store instanceof Store) {
+        if (props.store instanceof Store) {
             props.store.events.subscribe('stateChange', () => self.update());
         }
-        
+
         // Store the HTML element to attach the render to if set
-        if(props.hasOwnProperty('element')) {
+        if (props.hasOwnProperty('element')) {
             console.log('element', props.element);
             this.element = props.element;
         }
@@ -26,4 +26,4 @@ export default class Component {
         this.element.innerHTML = '';
         this.element.appendChild(this.render());
     }
-    }
+}
