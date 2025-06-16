@@ -2,7 +2,7 @@
  * Interface for the GraphQL mutation options
  */
 interface GraphQLMutationOptions<TVariables = Record<string, unknown>> {
-    url: string; // GraphQL endpoint URL
+    url?: string; // GraphQL endpoint URL
     query: string; // The GraphQL mutation string
     variables?: TVariables; // Variables for the mutation
     headers?: Record<string, string>; // Additional headers
