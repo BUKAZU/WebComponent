@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Loading from './icons/loading.svg';
-import { createIntl, createIntlCache } from '@formatjs/intl';
+// Removed unused imports from '@formatjs/intl'
 
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
