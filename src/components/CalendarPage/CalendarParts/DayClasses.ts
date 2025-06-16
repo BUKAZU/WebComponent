@@ -50,7 +50,7 @@ function DayClasses({
       } else {
         classes.push('departure-arrival');
       }
-    } else if (buDate.max_nights == 0) {
+    } else if (buDate.max_nights === 0) {
       if (prevBooked.max_nights !== 0) {
         classes.push('booked-departure');
       } else {
